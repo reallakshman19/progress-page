@@ -4,9 +4,15 @@
     "key": "nudge",
     "title": "NextNudge pilot",
     "subtitle": "HOLD ALL: new task work stays held until you say otherwise.",
-    "updatedAt": "2026-10-22T01:51:30Z",
+    "updatedAt": "2026-10-22T02:01:25Z",
     "updatedBy": "OTM",
     "staleAfterMin": 120
+  },
+  "rules": {
+    "quietAfterMin": 30,
+    "idleAfterMin": 15,
+    "owesAfterMin": 15,
+    "waitingAfterMin": 15
   },
   "chats": {
     "oracle": {
@@ -65,5 +71,10 @@
       "title": "Database lane",
       "sub": "PR #14 in NextNudge-P118-Scratch."
     }
+  },
+  "hold": {
+    "active": true,
+    "note": "HOLD ALL: new task work stays held until the Owner says otherwise.",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1"
   }
 }

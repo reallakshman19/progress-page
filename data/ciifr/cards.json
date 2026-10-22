@@ -54,8 +54,8 @@
     "state": "SUBMITTED",
     "now": "Its part is finished. Reviewed PR #150 and found F01, F02 (stale-Generate race) and two P2 items. Issued repair task [XCU #153 6322554084](https://github.com/reallakshman19/XML_Compare_Utilities/issues/153#issuecomment-6322554084) EXECUTE NOW at 17:41Z. Waiting for the corrective PR.",
     "next": {
-      "actor": "ORACLE",
-      "text": "reconcile and arrange re-review when a corrective PR arrives"
+      "actor": "-",
+      "text": "waits for the corrective PR, then reconciles and arranges the re-review"
     },
     "updatedAt": "2026-10-21T17:41:42Z",
     "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/153#issuecomment-6322554084",

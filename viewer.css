@@ -9,6 +9,7 @@ h2{font-size:18px;margin:0 0 2px}
 h3{font-size:15px;margin:0}
 .muted{color:var(--mut)}
 .err{color:var(--er)}
+.tools{display:flex;gap:8px}
 .top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}
 .tabs,.views{display:flex;flex-wrap:wrap;gap:2px;border-bottom:1px solid var(--bd);margin-bottom:12px}
 .tab,.view{padding:8px 14px;color:var(--mut);text-decoration:none;border-bottom:2px solid transparent}
@@ -89,3 +90,10 @@ h3{font-size:15px;margin:0}
 .fx li{margin:2px 0}
 .foot{margin-top:28px;font-size:12px}
 @media (max-width:620px){.op{grid-template-columns:1fr}.arrow{display:none}.card{max-width:none}}
+.attn{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 6px}
+.chip.big{font:inherit;font-size:12px;padding:3px 10px;border-radius:12px}
+button.chip.big{cursor:pointer}
+.warn{display:inline-block;margin-left:6px;width:16px;height:16px;line-height:15px;border-radius:50%;background:var(--wnbg);color:var(--wn);font-size:11px;font-weight:700;text-align:center;border:1px solid var(--wn)}
+.card.flash{outline:2px solid var(--acc);outline-offset:2px}
+.card[data-trig~="needs-you"]{border-color:var(--er)}
+.card[data-trig~="owes"],.card[data-trig~="quiet"]{border-color:var(--wn)}

@@ -4,9 +4,15 @@
     "key": "landing-live",
     "title": "Progress page build",
     "subtitle": "How the Progress page itself is being built (work order #149). It tracks its own construction.",
-    "updatedAt": "2026-10-22T01:51:30Z",
+    "updatedAt": "2026-10-22T02:01:25Z",
     "updatedBy": "OTM",
     "staleAfterMin": 120
+  },
+  "rules": {
+    "quietAfterMin": 30,
+    "idleAfterMin": 15,
+    "owesAfterMin": 15,
+    "waitingAfterMin": 15
   },
   "chats": {
     "coder": {

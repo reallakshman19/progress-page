@@ -28,6 +28,9 @@
         "to": "pqrt",
         "k": "both"
       }
+    ],
+    "flags": [
+      "paused"
     ]
   },
   "pqrt": {
@@ -53,6 +56,9 @@
         "l": "CL #128",
         "u": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128"
       }
+    ],
+    "flags": [
+      "paused"
     ]
   },
   "pfal": {
@@ -117,7 +123,7 @@
     "state": "BLOCKED",
     "now": "HOLD.",
     "next": {
-      "actor": "YOU",
+      "actor": "-",
       "text": "Owner: pilot Physics first, then Math (source ZIP not available, Owner 21 Oct; Drive 403)"
     },
     "updatedAt": "2026-10-21T16:02:00Z",

@@ -1,5 +1,6 @@
 // Progress view: milestone strip, then groups of agent blocks.
-import { el, link, md, age } from './util.js';
+import { el, link, md, age } from './util.js?v=5';
+import { cardTags, fmt } from './triggers.js?v=5';
 
 const RANK = { NOT_STARTED: 0, UNKNOWN: 1, STALE: 1, IN_PROGRESS: 2, SUBMITTED: 3, VERIFIED: 4 };
 const ICON = { VERIFIED: '✓', SUBMITTED: '↑', IN_PROGRESS: '●', BLOCKED: '!', NOT_STARTED: '○', STALE: '?', UNKNOWN: '?', NOT_APPLICABLE: '–' };
@@ -70,7 +71,9 @@ function cardEl(c, ctx) {
   const pills = el('div', 'c-pills');
   pills.append(el('span', 'pill st-' + c.state, c.state));
   if (c.milestone) pills.append(el('span', 'pill', c.milestone));
-  if ((c.flags || []).includes('needs-you')) pills.append(el('span', 'chip d', 'needs you'));
+  const tags = cardTags(c, ctx.rules || {}, undefined, ctx.hold);
+  d.dataset.trig = tags.map((t) => t.k).join(' ');
+  tags.forEach((t) => pills.append(el('span', 'chip ' + (t.sev === 2 ? 'd' : t.sev === 1 ? 'w' : 'n'), t.t)));
   (c.chips || []).forEach((x) => pills.append(el('span', 'chip ' + (x.c || 'n'), x.t)));
   d.append(pills);
   const st = el('div', 'c-st');
@@ -128,8 +131,32 @@ function groupBlock(g, mine, ctx) {
   return sec;
 }
 
+// Attention strip: the trigger counts for this project. Clicking a count jumps to the first matching block.
+function attention(sum) {
+  const wrap = el('div', 'attn');
+  [['needsYou', 'needs-you', 'Needs you', 'd'], ['owes', 'owes', 'OTM owes', 'w'], ['quiet', 'quiet', 'Quiet agents', 'w'], ['waiting', 'waiting', 'Waiting on others', 'w']]
+    .forEach(([slot, k, label, cls]) => {
+      const n = sum[slot] || 0;
+      const b = el('button', 'chip big ' + (n ? cls : 'n'), label + ' ' + n);
+      b.type = 'button';
+      if (n) {
+        b.addEventListener('click', () => {
+          const t = document.querySelector('.card[data-trig~="' + k + '"]');
+          if (!t) return;
+          t.scrollIntoView({ block: 'center', behavior: 'smooth' });
+          t.classList.add('flash');
+          setTimeout(() => t.classList.remove('flash'), 1600);
+        });
+      }
+      wrap.append(b);
+    });
+  wrap.append(el('span', 'chip big ' + (sum.stale ? 'w' : 'n'), sum.stale ? 'Tab stale ' + fmt(sum.staleFor) : 'Tab fresh'));
+  return wrap;
+}
+
 export function renderProgress(root, project, ctx) {
   const cards = Object.entries(project.cards || {}).map(([id, c]) => ({ id, ...c }));
+  if (ctx.sum) root.append(attention(ctx.sum));
   root.append(strip(project.index, cards));
   const groups = Object.entries(project.index.groups || {}).sort((a, b) => (a[1].order || 0) - (b[1].order || 0));
   const used = new Set();

@@ -4,9 +4,15 @@
     "key": "g9v35",
     "title": "G9v3.5 Physics pilot",
     "subtitle": "Newton's Laws pilot on the ZIP-free track, and the owner-bank guard (PR #305)",
-    "updatedAt": "2026-10-22T01:51:30Z",
+    "updatedAt": "2026-10-22T02:01:25Z",
     "updatedBy": "OTM",
     "staleAfterMin": 120
+  },
+  "rules": {
+    "quietAfterMin": 30,
+    "idleAfterMin": 15,
+    "owesAfterMin": 15,
+    "waitingAfterMin": 15
   },
   "chats": {
     "oracle": {
