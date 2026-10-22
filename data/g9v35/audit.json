@@ -652,6 +652,48 @@
       "before": null,
       "after": "NOT_STARTED",
       "rev": "R2"
+    },
+    {
+      "seq": 50,
+      "id": "G9V35-R-0050",
+      "previous_id": "G9V35-R-0049",
+      "at": "2026-10-22T19:16:30Z",
+      "kind": "UPDATE",
+      "actor": "OTM",
+      "summary": "NLM-PROD1 returned B1; Chrome not needed",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/154#issuecomment-6348925917",
+      "card": "oracle4",
+      "before": "SUBMITTED",
+      "after": "SUBMITTED",
+      "rev": "R2"
+    },
+    {
+      "seq": 51,
+      "id": "G9V35-R-0051",
+      "previous_id": "G9V35-R-0050",
+      "at": "2026-10-22T19:16:30Z",
+      "kind": "STATE",
+      "actor": "OTM",
+      "summary": "Producer return for G9O4-2-p1 / B1 posted",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/154#issuecomment-6348925917",
+      "card": "nlmprod1",
+      "before": "IN_PROGRESS",
+      "after": "SUBMITTED",
+      "rev": "R2"
+    },
+    {
+      "seq": 52,
+      "id": "G9V35-R-0052",
+      "previous_id": "G9V35-R-0051",
+      "at": "2026-10-22T19:16:31Z",
+      "kind": "STATE",
+      "actor": "OTM",
+      "summary": "Duplicate card created by mistake (real card is oracle4)",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/154#issuecomment-6348925917",
+      "card": "o4",
+      "before": "NOT_STARTED",
+      "after": "NOT_APPLICABLE",
+      "rev": "R2"
     }
   ]
 }

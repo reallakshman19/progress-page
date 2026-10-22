@@ -259,16 +259,14 @@
       "role": "Oracle O4"
     },
     "state": "SUBMITTED",
-    "now": "Final packets posted (-p1 #154, -p2 #135); WBS task G9O4-3 sent",
+    "now": "Waits: NLM-PROD1 B1 return in; independent check first",
     "next": {
-      "actor": "Owner",
-      "text": "reconnect Claude in Chrome so OTM can start producer NLM-PROD1"
+      "actor": "OTM",
+      "text": "route B1 return to independent check, then O4"
     },
-    "updatedAt": "2026-10-22T15:48:58Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/154#issuecomment-6344449377",
-    "flags": [
-      "needs-you"
-    ]
+    "updatedAt": "2026-10-22T19:16:30Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/154#issuecomment-6348925917",
+    "flags": []
   },
   "nlmprod1": {
     "order": 11,
@@ -279,15 +277,15 @@
       "chat": "nlmprod1",
       "role": "Agent"
     },
-    "state": "IN_PROGRESS",
-    "now": "Working packet G9O4-2-p1 (WBS 1.1, B1)",
+    "state": "SUBMITTED",
+    "now": "B1 return posted on #154",
     "next": {
-      "actor": "NLM-PROD1",
-      "text": "post TASK EVIDENCE on #154"
+      "actor": "OTM",
+      "text": "independent check of B1 return"
     },
     "flags": [],
-    "updatedAt": "2026-10-22T18:39:56Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/154#issuecomment-6344449377"
+    "updatedAt": "2026-10-22T19:16:30Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/154#issuecomment-6348925917"
   },
   "o4": {
     "order": 12,
@@ -295,12 +293,14 @@
     "milestone": "M0",
     "label": "o4",
     "who": {},
-    "state": "NOT_STARTED",
-    "now": "Waiting for NLM-PROD1's return on G9O4-2-p1",
+    "state": "NOT_APPLICABLE",
+    "now": "Duplicate of oracle4; void",
     "next": {
       "actor": "NLM-PROD1",
       "text": "work packet G9O4-2-p1; Oracle waits"
     },
-    "flags": []
+    "flags": [],
+    "updatedAt": "2026-10-22T19:16:31Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/154#issuecomment-6348925917"
   }
 }
