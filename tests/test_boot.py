@@ -55,7 +55,7 @@ class Bootstrap(unittest.TestCase):
         run = lambda *a: H.run([d / "tools" / a[0], *a[1:]], cwd=d)  # noqa: E731
         r = run("pp_check.py", "data")
         self.assertEqual((r.returncode, r.stdout.strip()), (0, "OK"), r.stdout + r.stderr)
-        r = run("pp_cli.py", "project", "add", "--key", "first", "--title", "First", "--owner-words", "go", "--why", "start", *H.S)
+        r = run("pp_cli.py", "project", "add", "--key", "first", "--title", "First", "--owner-words", "go", "--aim", "test aim", "--why", "start", *H.S)
         self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
         self.assertEqual(run("pp_check.py", "data").stdout.strip(), "OK")
         r = run("pp_cli.py", "local", "page.html")

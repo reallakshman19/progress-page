@@ -46,8 +46,16 @@ def card_set(data, key, cid, actor, src, summary, at=None, label=None, group=Non
     if edges:
         card["edges"] = (card.get("edges") or []) + [dict(zip(("to", "k"), e.split(":"))) for e in edges]
     when = at or L.now_iso()
-    if card["state"] != "NOT_STARTED" or old:
+    placed_only = (old is not None and at is None and any(v is not None for v in (group, milestone, order))
+                   and all(v is None for v in (label, state, now, next_actor, next_text, chat, role, flags)) and not refs and not edges)
+    if (card["state"] != "NOT_STARTED" or old) and not placed_only:
         card["updatedAt"], card["src"] = when, src
+    if placed_only:   # a block placed in a milestone or group: a plan entry; the block keeps its evidence time and source
+        cards[cid] = card
+        where = f"milestone:{milestone}" if milestone is not None else (f"group:{group}" if group is not None else "order")
+        record(docs, key, "PLAN", actor, summary, src, scope=where)
+        _write(data, root, docs, ("index", "cards", "audit"))
+        return f"Placed card {cid} ({where}); its time and source are unchanged."
     kind = "BASELINE" if old is None else ("STATE" if old["state"] != card["state"] else "UPDATE")
     cards[cid] = card
     record(docs, key, kind, actor, summary, src, card=cid, before=old["state"] if old else None, after=card["state"],

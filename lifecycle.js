@@ -1,6 +1,8 @@
 // Project tabs with "+", the Archived list, the project header and the revision row.
-import { el, link, whenText, isHttps } from './util.js?v=9';
+import { el, link, whenText, isHttps } from './util.js?v=10';
 
+const COMMON = 'https://github.com/reallakshman19/Common/tree/main/skills/agent-work/';
+const MODULES = ['task-decomposer', 'nudge-designer', 'independent-review', 'gatekeeper', 'local-handover', 'progress-page'];
 const WORD = { archived: 'Archived', superseded: 'Superseded', cancelled: 'Cancelled' };
 
 export const isActive = (p) => (p.status || 'active') === 'active';
@@ -79,6 +81,16 @@ export function projectHead(p, c) {
   box.append(revisionRow(p, c));
   if (c.revBanner) box.append(c.revBanner);
   if (pj.subtitle) box.append(el('p', 'muted', pj.subtitle));
+  if (pj.aim) {
+    const a = el('p', 'aim');
+    a.append(el('b', null, 'Aim: '), pj.aim + ' ');
+    if (isHttps(pj.aimSrc)) a.append(link(pj.aimSrc, 'source'));
+    box.append(a);
+  } else if (isActive(p)) box.append(el("div", "banner", "No aim written yet. The Owner's aim comes first: pp_cli.py project aim."));
+  const m = el('p', 'muted');
+  m.append('How we work: ');
+  MODULES.forEach((n, i) => { if (i) m.append(' · '); m.append(link(COMMON + n, n)); });
+  box.append(m);
   box.append(c.statusLine(p));
   return box;
 }

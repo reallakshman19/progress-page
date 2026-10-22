@@ -1,7 +1,7 @@
 // Progress view: attention strip, milestone strip, then groups of agent blocks.
-import { el, link, md, age } from './util.js?v=9';
-import { cardTags, fmt, nudgeTag } from './triggers.js?v=9';
-import { nudgeRow } from './nudge.js?v=9';
+import { el, link, md, age } from './util.js?v=10';
+import { cardTags, fmt, nudgeTag } from './triggers.js?v=10';
+import { nudgeRow } from './nudge.js?v=10';
 
 const RANK = { NOT_STARTED: 0, UNKNOWN: 1, STALE: 1, IN_PROGRESS: 2, SUBMITTED: 3, VERIFIED: 4 };
 const ICON = { VERIFIED: '✓', SUBMITTED: '↑', IN_PROGRESS: '●', BLOCKED: '!', NOT_STARTED: '○', STALE: '?', UNKNOWN: '?', NOT_APPLICABLE: '–' };

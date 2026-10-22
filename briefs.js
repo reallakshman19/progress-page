@@ -1,6 +1,6 @@
 // "+" dialogs: a short form that writes a copy-paste brief, so the Owner can hand the addition to another agent.
-import { el, copyText } from './util.js?v=9';
-import { dialog } from './popup.js?v=9';
+import { el, copyText } from './util.js?v=10';
+import { dialog } from './popup.js?v=10';
 
 const quote = (s) => '"' + String(s || '').replace(/"/g, "'") + '"';
 
@@ -32,7 +32,7 @@ export function projectBrief(site, v) {
     + 'STEPS (run from the repository root with plain python)\n'
     + '1. git pull. ' + briefVia(v.mode) + '\n'
     + '2. python tools/pp_cli.py project add --key ' + (v.key || '<key>') + ' --title ' + quote(v.title || '<title>') + ' --mode ' + v.mode + ' --coordinator ' + quote(v.coordinator || '<name>')
-    + ' --actor "<your name>" --src "<GitHub link of the Owner decision>" --owner-words "<the Owner\'s words, short>" --why "<why this project starts>"\n'
+    + ' --aim "<the Owner\'s aim, at most 400 characters>" --actor "<your name>" --src "<GitHub link of the Owner decision>" --owner-words "<the Owner\'s words, short>" --why "<why this project starts>"\n'
     + '   This creates data/' + (v.key || '<key>') + '/ (index, cards, actions, fixtures, nudges, audit), adds the project to data/projects.json (the root level) and records revision R1.\n'
     + '3. Add what the project needs, each with --actor, --src and a reason:\n'
     + '   python tools/pp_cli.py plan chat --project ' + (v.key || '<key>') + ' --id <chat key> --label "<name>" --id8 <8-character chat id> --engine <ChatGPT|Antigravity|...> ...\n'

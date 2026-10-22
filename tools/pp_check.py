@@ -8,16 +8,21 @@ Prints one line per problem and exits 1; prints OK and exits 0 when clean.
 and a project whose files changed must have gained Timeline entries (see pp_history.py).
 """
 import argparse
+import json
+import unicodedata
 import re
 import sys
 from pathlib import Path
 
 import pp_lib as L
+from urllib.parse import unquote
 from pp_check_files import check_actions, check_cards, check_fixtures, check_nudges
 from pp_ctx import Ctx
 from pp_ledger_check import check_ledger
 
-SECRETS = ((re.compile(r"drive\.google\.com|docs\.google\.com"), "contains a Google Drive link"),
+SECRETS = ((re.compile(r"(?:drive|docs)\.google\.com\b", re.I), "contains a Google Drive link"),
+           (re.compile(r"(?:1drv\.ms|onedrive\.(?:live\.)?com|docs\.live\.net|sharepoint(?:-df)?\.(?:com|us|de|cn))\b", re.I),
+            "contains a OneDrive or SharePoint link"),
            (re.compile(r"[\w.+-]+@[\w-]+\.[\w.]+"), "contains an email address"),
            (re.compile(r"ghp_\w{20,}|github_pat_\w{20,}|sk-[A-Za-z0-9]{20,}"), "contains what looks like an access token"))
 CHAT = re.compile(r"chatgpt\.com/c/|chat\.openai\.com|antigravity\.google\.com|claude\.ai/(?:chat|code)/")
@@ -67,7 +72,7 @@ def check_projects(c, doc):
     return plist
 
 
-def check_index(c, key, index):
+def check_index(c, key, index, status="active"):
     w = f"{key}/index.json"
     if index.get("schema") != 3:
         c.err(w, "schema must be 3")
@@ -76,6 +81,9 @@ def check_index(c, key, index):
         c.err(w, f"project.key must be {key!r}")
     c.text(w + " project", pr, "title", limit=80)
     c.text(w + " project", pr, "subtitle", opt=True, limit=240)
+    # the Owner's aim comes first: an active project without one fails (Lesson 1, 22 Oct 2026)
+    if c.text(w + " project", pr, "aim", opt=status != "active", limit=400):
+        c.link(w + " project", pr, "aimSrc", source=True)
     c.stamp(w + " project", pr, "updatedAt")
     c.text(w + " project", pr, "updatedBy", limit=60)
     c.integer(w + " project", pr, "staleAfterMin", low=1)
@@ -127,6 +135,21 @@ def check_revisions(c, w, index):
         c.err(w, "only the last revision can be current")
 
 
+def _plain(raw):
+    """The text as a reader sees it: JSON escapes such as a backslash-u002e dot decoded, %-encoding undone however deep, invisible
+    characters dropped, so a link cannot hide behind a spelling."""
+    try:
+        t = json.dumps(json.loads(raw), ensure_ascii=False)
+    except ValueError:
+        t = raw
+    for _ in range(5):
+        u = unquote(t)
+        if u == t:
+            break
+        t = u
+    return "".join(ch for ch in unicodedata.normalize("NFKC", t) if unicodedata.category(ch) != "Cf")
+
+
 def scan_text(c, root, private):
     for path in sorted(Path(root).rglob("*.json")):
         where = str(path.relative_to(root))
@@ -136,7 +159,7 @@ def scan_text(c, root, private):
             c.err(where, f"cannot read JSON ({exc})")
             continue
         for pattern, why in SECRETS:
-            if pattern.search(raw):
+            if any(pattern.search(t) for t in (raw, _plain(raw))):
                 c.err(where, why)
         if not private and CHAT.search(raw):
             c.err(where, "contains a chat link (public data keeps the 8-character chat id only)")
@@ -157,7 +180,7 @@ def check_tree(data, private=False):
         if any(v is None for v in docs.values()):
             continue
         try:
-            check_index(c, key, docs["index"])
+            check_index(c, key, docs["index"], p.get("status") or "active")
             check_cards(c, key, docs["index"], docs["cards"])
             check_actions(c, key, docs["actions"])
             check_fixtures(c, key, docs["fixtures"])

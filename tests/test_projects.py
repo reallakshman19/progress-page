@@ -63,12 +63,12 @@ class Projects(Base):
         self.assertEqual(H.errors_of(self.d), [])
 
     def test_add_refuses_a_used_or_malformed_key(self):
-        new = ("--title", "T", "--owner-words", "w", *WW)
+        new = ("--title", "T", "--owner-words", "w", "--aim", "test aim", *WW)
         self.refuse("project", "add", "--key", KEY, *new, says="already exists")
         self.refuse("project", "add", "--key", "Bad_Key", *new, says="key must be lower-case")
 
     def test_add_starts_a_project_with_revision_r1_and_one_entry(self):
-        H.ok(self.d, "project", "add", "--key", "third", "--title", "Third", "--owner-words", "go", "--subtitle", "sub", *WW)
+        H.ok(self.d, "project", "add", "--key", "third", "--title", "Third", "--owner-words", "go", "--aim", "test aim", "--subtitle", "sub", *WW)
         idx = doc(self.d, "index", "third")
         self.assertEqual([(r["id"], r["status"], r["ownerWords"]) for r in idx["revisions"]], [("R1", "current", "go")])
         self.assertEqual([(e["kind"], e["revision"], e["rev"]) for e in events(self.d, "third")], [("REVISION", "R1", "R1")])
@@ -78,13 +78,13 @@ class Projects(Base):
     # BUG: pp_ops.add_project creates data/<key>/ before the check and Txn.rollback removes only files, so a refused `project add`
     # leaves an empty folder behind (here: after a source that is not a GitHub link).
     def test_refused_project_add_leaves_nothing_behind(self):
-        self.refuse("project", "add", "--key", "third", "--title", "T", "--owner-words", "w", "--actor", "A", "--src", "http://example.com/x", "--why", "w",
+        self.refuse("project", "add", "--key", "third", "--title", "T", "--owner-words", "w", "--aim", "test aim", "--actor", "A", "--src", "http://example.com/x", "--why", "w",
                     says="Nothing was written")
 
     # BUG: the leftover folder of a refused `project add` makes the retry fail with "Project 'third' already exists".
     def test_project_add_can_be_retried_after_a_refusal(self):
-        H.refused(self.d, "project", "add", "--key", "third", "--title", "T", "--owner-words", "w", "--actor", "A", "--src", "http://example.com/x", "--why", "w")
-        H.ok(self.d, "project", "add", "--key", "third", "--title", "T", "--owner-words", "w", *WW)
+        H.refused(self.d, "project", "add", "--key", "third", "--title", "T", "--owner-words", "w", "--aim", "test aim", "--actor", "A", "--src", "http://example.com/x", "--why", "w")
+        H.ok(self.d, "project", "add", "--key", "third", "--title", "T", "--owner-words", "w", "--aim", "test aim", *WW)
         self.assertIn("third", entries(self.d))
 
 

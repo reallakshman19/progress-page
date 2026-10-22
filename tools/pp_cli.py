@@ -47,6 +47,7 @@ def build():
     p.add_argument("--title", required=True)
     p.add_argument("--label")
     p.add_argument("--subtitle")
+    p.add_argument("--aim", required=True, help="the Owner's aim for the project (at most 400 characters; --src is its source)")
     p.add_argument("--mode", choices=("otm", "standalone"), default="standalone")
     p.add_argument("--coordinator", default="Oracle", help="who 'owes' replies on this project (OTM, or the Oracle's name)")
     p.add_argument("--owner-words", required=True, help="the Owner's words that start it (a short quote)")
@@ -54,6 +55,9 @@ def build():
     p.add_argument("--reply-template", default="owner-reply.yml")
     p.add_argument("--reply-target", default="Oracle")
     p.add_argument("--reply-site", help="published page URL, used in reply links")
+    p = W(pj.add_parser("aim"))
+    p.add_argument("--key", required=True)
+    p.add_argument("--text", required=True, help="the aim, at most 400 characters")
     for name in ("archive", "restore", "cancel", "supersede"):
         p = W(pj.add_parser(name))
         p.add_argument("--key", required=True)
@@ -169,7 +173,9 @@ def run(a):
     d, c, s = a.data, a.cmd, getattr(a, "sub", None)
     if c == "project" and s == "add":
         reply = {"kind": "github-issue", "repo": a.reply_repo, "template": a.reply_template, "target": a.reply_target, "site": a.reply_site or ""} if a.reply_repo else None
-        return O.add_project(d, a.key, a.title, a.label, a.mode, a.coordinator, a.subtitle, a.actor, a.src, a.owner_words, a.why, reply)
+        return O.add_project(d, a.key, a.title, a.label, a.mode, a.coordinator, a.subtitle, a.actor, a.src, a.owner_words, a.why, reply, a.aim)
+    if c == "project" and s == "aim":
+        return O.set_aim(d, a.key, a.text, a.actor, a.why, a.src)
     if c == "project" and s == "transfer":
         return O.transfer(d, a.key, a.to_coordinator, a.to_mode, a.reply_target, a.why, a.actor, a.src)
     if c == "project":
