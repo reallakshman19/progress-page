@@ -259,13 +259,13 @@
       "role": "Oracle O4"
     },
     "state": "SUBMITTED",
-    "now": "Waits: NLM-PROD1 B1 return in; independent check first",
+    "now": "Ruling on B1 PARTIAL (TO G9O4-4)",
     "next": {
-      "actor": "OTM",
-      "text": "route B1 return to independent check, then O4"
+      "actor": "Oracle O4",
+      "text": "rule on adaptations/cue/QRT; repair packet"
     },
-    "updatedAt": "2026-10-22T19:16:30Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/154#issuecomment-6348925917",
+    "updatedAt": "2026-10-22T19:17:48Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/154#issuecomment-6349220985",
     "flags": []
   },
   "nlmprod1": {
@@ -278,14 +278,14 @@
       "role": "Agent"
     },
     "state": "SUBMITTED",
-    "now": "B1 return posted on #154",
+    "now": "WAITS: Oracle O4 repair packet (checker PARTIAL)",
     "next": {
-      "actor": "OTM",
-      "text": "independent check of B1 return"
+      "actor": "Oracle O4",
+      "text": "repair packet"
     },
     "flags": [],
-    "updatedAt": "2026-10-22T19:16:30Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/154#issuecomment-6348925917"
+    "updatedAt": "2026-10-22T19:17:48Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/154#issuecomment-6349220985"
   },
   "o4": {
     "order": 12,

@@ -694,6 +694,34 @@
       "before": "NOT_STARTED",
       "after": "NOT_APPLICABLE",
       "rev": "R2"
+    },
+    {
+      "seq": 53,
+      "id": "G9V35-R-0053",
+      "previous_id": "G9V35-R-0052",
+      "at": "2026-10-22T19:17:48Z",
+      "kind": "UPDATE",
+      "actor": "OTM",
+      "summary": "Checker PARTIAL on B1; TO G9O4-4 to Oracle",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/154#issuecomment-6349220985",
+      "card": "oracle4",
+      "before": "SUBMITTED",
+      "after": "SUBMITTED",
+      "rev": "R2"
+    },
+    {
+      "seq": 54,
+      "id": "G9V35-R-0054",
+      "previous_id": "G9V35-R-0053",
+      "at": "2026-10-22T19:17:48Z",
+      "kind": "UPDATE",
+      "actor": "OTM",
+      "summary": "Checker PARTIAL; waits for Oracle repair packet",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/154#issuecomment-6349220985",
+      "card": "nlmprod1",
+      "before": "SUBMITTED",
+      "after": "SUBMITTED",
+      "rev": "R2"
     }
   ]
 }
