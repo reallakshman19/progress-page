@@ -100,7 +100,7 @@ def card_transfer(data, key, cid, to_chat, role, why, actor, src):
     return f"Card {cid} moved from {frm} to {to_chat}."
 
 
-def action_add(data, key, akey, title, lead, options, suggested, actor, src, links=None):
+def action_add(data, key, akey, title, lead, options, suggested, actor, src, links=None, milestone=None):
     """Add an open decision card for the Owner. Each option is KEY|label|body|reply (the reply is what the Owner sends)."""
     root, docs = open_project(data, key)
     if akey in docs["actions"]:
@@ -110,7 +110,8 @@ def action_add(data, key, akey, title, lead, options, suggested, actor, src, lin
         k, label, body, reply = (o.split("|", 3) + ["", "", "", ""])[:4]
         opts.append({"key": k, "label": label + (" (suggested)" if k == suggested else ""), "suggested": k == suggested, "body": body, "reply": reply})
     docs["actions"][akey] = {"order": max([a.get("order", 0) for a in docs["actions"].values()] + [0]) + 1, "status": "open", "title": title, "lead": lead,
-                             "options": opts, "links": [{"l": x.split("|")[0], "u": x.split("|")[1]} for x in links or []]}
+                             "options": opts, "links": [{"l": x.split("|")[0], "u": x.split("|")[1]} for x in links or []],
+                             **({"milestone": milestone} if milestone else {})}
     record(docs, key, "ACTION", actor, f"Decision for the Owner: {title}", src, action=akey)
     _write(data, root, docs, ("index", "actions", "audit"))
     return f"Decision {akey} is open for the Owner."
@@ -128,11 +129,11 @@ def action_answer(data, key, akey, text, ref, actor, at=None):
     return f"Decision {akey} answered."
 
 
-def fixture_edit(data, key, lst, op, text, actor, src, summary, url=None, status=None, note=None):
+def fixture_edit(data, key, lst, op, text, actor, src, summary, url=None, status=None, note=None, milestone=None):
     root, docs = open_project(data, key)
     items = docs["fixtures"].setdefault(lst, [])
     if op == "add":
-        items.append({"t": text, **({"u": url} if url else {}), **({"s": status} if status else {}), **({"n": note} if note else {})})
+        items.append({"t": text, **({"u": url} if url else {}), **({"s": status} if status else {}), **({"n": note} if note else {}), **({"milestone": milestone} if milestone else {})})
     else:
         hit = next((i for i in items if i["t"] == text), None)
         if hit is None:

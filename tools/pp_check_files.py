@@ -59,7 +59,7 @@ def check_cards(c, key, index, cards):
                 c.err(at, "closed.by must name the card that replaces it")
 
 
-def check_actions(c, key, actions):
+def check_actions(c, key, actions, index=None):
     w = f"{key}/actions.json"
     if not isinstance(actions, dict):
         c.err(w, "expected an object of decision cards")
@@ -68,6 +68,7 @@ def check_actions(c, key, actions):
         at = f"{w} action {ak!r}"
         c.integer(at, a, "order")
         status = c.member(at, a, "status", ("open", "done"))
+        _step(c, at, a, index)
         c.text(at, a, "title", limit=160)
         c.text(at, a, "lead", limit=1200)
         opts = a.get("options") or []
@@ -91,7 +92,13 @@ def check_actions(c, key, actions):
             c.link(at + " answer", ans, "ref", source=True)
 
 
-def check_fixtures(c, key, fixtures):
+def _step(c, at, item, index):
+    """An action or fixture may belong to one WBS step (a milestone of the project); without one it is project-wide."""
+    if item.get("milestone") is not None:
+        c.member(at, item, "milestone", list(((index or {}).get("milestones") or {}).keys()))
+
+
+def check_fixtures(c, key, fixtures, index=None):
     w = f"{key}/fixtures.json"
     for name, items in (fixtures or {}).items():
         if name not in L.FIXTURE_LISTS:
@@ -102,6 +109,7 @@ def check_fixtures(c, key, fixtures):
             c.link(f"{w} {name}", it, "u", opt=True)
             c.text(f"{w} {name}", it, "s", opt=True, limit=40)
             c.text(f"{w} {name}", it, "n", opt=True, limit=40)
+            _step(c, f"{w} {name}", it, index)
 
 
 def check_nudges(c, key, cards, doc):

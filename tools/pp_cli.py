@@ -22,6 +22,7 @@ import argparse
 import sys
 
 import pp_cards as C
+import pp_lib as L
 import pp_ops as O
 
 
@@ -81,6 +82,13 @@ def build():
         for f in ("--name", "--full", "--title", "--about", "--label", "--id8", "--engine"):
             p.add_argument(f)
         p.add_argument("--order", type=int)
+        if what == "milestone":
+            p.add_argument("--wbs", help="WBS number, for example 1.1")
+            p.add_argument("--bench", help="the benchmark this step adds, for example B1")
+            p.add_argument("--keeps", help="earlier benchmarks it must still pass, for example B1")
+            p.add_argument("--cap", choices=L.CAPABILITY, help="what the user can do: the evidence step")
+            p.add_argument("--can-do", help="one line on what the user can actually do today")
+            p.add_argument("--cap-src", help="public GitHub link of the capability evidence")
 
     cd = kind("card")
     p = W(cd.add_parser("set"), "--summary", "what changed on this card")
@@ -115,6 +123,7 @@ def build():
     p.add_argument("--option", action="append", required=True, help="KEY|label|body|reply (the reply is what the Owner sends)")
     p.add_argument("--suggested", required=True, help="KEY of the suggested option")
     p.add_argument("--link", action="append", help="label|https-url")
+    p.add_argument("--milestone", help="the WBS step (milestone id) this decision belongs to; omit for the whole project")
     p = ac.add_parser("answer")
     p.add_argument("--project", required=True)
     p.add_argument("--key", required=True)
@@ -131,6 +140,7 @@ def build():
         p.add_argument("--text", required=True)
         for f in ("--url", "--status", "--note"):
             p.add_argument(f)
+        p.add_argument("--milestone", help="the WBS step (milestone id) this item belongs to; omit for the whole project")
 
     nd = kind("nudge")
     p = W(nd.add_parser("add"), None)
@@ -183,7 +193,9 @@ def run(a):
     if c == "revision":
         return O.revision_add(d, a.project, a.why, a.owner_words, a.src, a.actor)
     if c == "plan":
-        fields = {"milestone": {"name": a.name, "full": a.full, "order": a.order}, "group": {"title": a.title, "sub": a.about, "order": a.order},
+        g = lambda f: getattr(a, f, None)  # the WBS options exist on 'plan milestone' only
+        fields = {"milestone": {"name": a.name, "full": a.full, "order": a.order, "wbs": g("wbs"), "bench": g("bench"), "keeps": g("keeps"),
+                                "cap": g("cap"), "canDo": g("can_do"), "capSrc": g("cap_src")}, "group": {"title": a.title, "sub": a.about, "order": a.order},
                   "chat": {"label": a.label, "id8": a.id8, "engine": a.engine}}[s]
         return O.plan(d, a.project, s, a.id, fields, a.actor, a.why, a.src)
     if c == "card" and s == "set":
@@ -195,11 +207,11 @@ def run(a):
     if c == "card":
         return C.card_transfer(d, a.project, a.card, a.to_chat, a.role, a.why, a.actor, a.src)
     if c == "action" and s == "add":
-        return C.action_add(d, a.project, a.key, a.title, a.lead, a.option, a.suggested, a.actor, a.src, a.link)
+        return C.action_add(d, a.project, a.key, a.title, a.lead, a.option, a.suggested, a.actor, a.src, a.link, a.milestone)
     if c == "action":
         return C.action_answer(d, a.project, a.key, a.text, a.ref, a.actor, a.at)
     if c == "fixture":
-        return C.fixture_edit(d, a.project, a.list, s, a.text, a.actor, a.src, a.why, a.url, a.status, a.note)
+        return C.fixture_edit(d, a.project, a.list, s, a.text, a.actor, a.src, a.why, a.url, a.status, a.note, a.milestone)
     if c == "nudge" and s == "add":
         return C.nudge_add(d, a.project, a.card, a.text, a.by, a.actor, a.src, a.at)
     if c == "nudge":

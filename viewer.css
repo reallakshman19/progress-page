@@ -32,6 +32,20 @@ h3{font-size:15px;margin:0}
 .ms-state{font-size:11px;font-weight:700;letter-spacing:.05em}
 .ms-count{font-size:11px;color:var(--mut)}
 .ms-sep{align-self:center;color:var(--mut)}
+.ms[data-ms]{cursor:pointer}
+.wbs-row{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:10px 0 4px}
+.wbs-row .h-label{margin:0 6px 0 0}
+.wbs-tab{border:1px solid var(--bd);border-radius:999px;background:var(--card);color:inherit;font:inherit;font-size:13px;padding:4px 12px;cursor:pointer}
+.wbs-tab.on{border-color:var(--acc);outline:2px solid var(--acc);outline-offset:1px}
+.card[hidden],.grp[hidden],.flow .arrow[hidden]{display:none}
+.ms.on,.ms-all.on{outline:2px solid var(--acc);outline-offset:1px}
+.ms-all{align-self:center;border:1px solid var(--bd);border-radius:999px;background:var(--card);color:inherit;font:inherit;font-size:12px;padding:4px 10px;cursor:pointer}
+.ms-id{margin-left:auto;font-size:11px}
+.ms-cap{font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--mut)}
+.cap-BENCHMARK_SUPPORTED .ms-cap,.cap-CANDIDATE .ms-cap{color:var(--acc)}
+.cap-INDEPENDENTLY_VERIFIED .ms-cap,.cap-AVAILABLE .ms-cap{color:var(--ok)}
+.ms-can{font-size:12px;margin:2px 0}
+.ms-bench{font-size:11px;color:var(--mut)}
 .ms-VERIFIED .ms-ic,.ms-VERIFIED .ms-state{color:var(--ok)}
 .ms-SUBMITTED .ms-ic,.ms-SUBMITTED .ms-state,.ms-IN_PROGRESS .ms-ic,.ms-IN_PROGRESS .ms-state{color:var(--acc)}
 .ms-BLOCKED .ms-ic,.ms-BLOCKED .ms-state{color:var(--er)}

@@ -33,6 +33,8 @@ and leaves every file as it was if the check fails. Nothing is deleted: supersed
 ```
 data/projects.json                 the tabs, mode, reply route, status; site info for the "+" briefs
 data/<project>/index.json          title, rules, chats (id8 only), milestones, groups, revisions
+                                   (a milestone may carry wbs, bench, keeps, cap, canDo, capSrc: a WBS step and what the user can do;
+                                    actions and fixture items may carry milestone: the WBS step they belong to)
 data/<project>/cards.json          agent blocks
 data/<project>/actions.json        decisions for the Owner
 data/<project>/fixtures.json       grounding fixtures (ten lists)

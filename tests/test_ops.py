@@ -197,6 +197,23 @@ class Plan(Base):
         self.assertEqual(doc(self.d, "index")["groups"]["g3"], {"title": "Third", "order": 3})
         self.assertEqual([e["scope"] for e in events(self.d) if e["kind"] == "PLAN"][-2:], ["milestone:M1", "group:g3"])
 
+    def test_a_milestone_takes_a_wbs_number_benchmarks_and_what_the_user_can_do(self):
+        H.ok(self.d, "plan", "milestone", *P, "--id", "M1", "--wbs", "1.1", "--bench", "B1", "--cap", "BENCHMARK_SUPPORTED",
+             "--can-do", "answers one supported question", "--cap-src", H.SRC2, *WS)
+        H.ok(self.d, "plan", "milestone", *P, "--id", "M2", "--wbs", "1.2", "--bench", "B2", "--keeps", "B1", *WS)
+        ms = doc(self.d, "index")["milestones"]
+        self.assertEqual({k: ms["M1"][k] for k in ("wbs", "bench", "cap", "canDo", "capSrc")},
+                         {"wbs": "1.1", "bench": "B1", "cap": "BENCHMARK_SUPPORTED", "canDo": "answers one supported question", "capSrc": H.SRC2})
+        self.assertEqual((ms["M2"]["keeps"], "cap" in ms["M2"]), ("B1", False))
+
+    def test_a_fixture_can_belong_to_one_wbs_step(self):
+        H.ok(self.d, "fixture", "add", *P, "--list", "issues", "--text", "step one input", "--milestone", "M1", *WS)
+        self.assertEqual(doc(self.d, "fixtures")["issues"][-1]["milestone"], "M1")
+        self.refuse("fixture", "add", *P, "--list", "issues", "--text", "t", "--milestone", "M9", *WS, says="milestone 'M9'")
+
+    def test_a_capability_claim_needs_its_evidence(self):
+        self.refuse("plan", "milestone", *P, "--id", "M1", "--cap", "INDEPENDENTLY_VERIFIED", "--can-do", "x", *WS, says="needs capSrc")
+
     def test_a_chat_id8_may_not_be_a_link(self):
         self.refuse("plan", "chat", *P, "--id", "c9", "--label", "L", "--id8", "https://example.com/x", *WS, says="id8 must be the short chat id")
 

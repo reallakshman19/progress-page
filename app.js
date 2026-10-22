@@ -1,13 +1,13 @@
 // Shell: loads the JSON, draws the project tabs and the views, refreshes every two minutes.
-import { el, link, tick, ago, whenText } from './util.js?v=10';
-import { renderProgress } from './progress.js?v=10';
-import { renderActions, renderFixtures, openCount } from './actions.js?v=10';
-import { renderTimeline } from './timeline.js?v=10';
-import { tabsRow, archivedPanel, projectHead, isActive } from './lifecycle.js?v=10';
-import { nudgesOf, openNudge } from './nudge.js?v=10';
-import { addProjectDialog, addRevisionDialog } from './briefs.js?v=10';
-import { loadLinks, takeLinksFromHash, linksPanel } from './links.js?v=10';
-import { rulesOf, holdOf, summary, needsAttention } from './triggers.js?v=10';
+import { el, link, tick, ago, whenText } from './util.js?v=11';
+import { renderProgress, wbsPick, wbsSteps } from './progress.js?v=11';
+import { renderActions, renderFixtures, openCount } from './actions.js?v=11';
+import { renderTimeline } from './timeline.js?v=11';
+import { tabsRow, archivedPanel, projectHead, isActive } from './lifecycle.js?v=11';
+import { nudgesOf, openNudge } from './nudge.js?v=11';
+import { addProjectDialog, addRevisionDialog } from './briefs.js?v=11';
+import { loadLinks, takeLinksFromHash, linksPanel } from './links.js?v=11';
+import { rulesOf, holdOf, summary, needsAttention } from './triggers.js?v=11';
 
 const LIVE_DATA = 'https://reallakshman19.github.io/progress-page/data/';
 const q = new URLSearchParams(location.search);
@@ -230,6 +230,20 @@ function render() {
   root.append(tabsRow(c));
   if (state.archivedOpen) root.append(archivedPanel(c));
   root.append(projectHead(p, c));
+  // Project > revision > WBS step > page: the WBS row narrows the pages below it to one step.
+  const steps = wbsSteps(view.index);
+  if (wbsPick(key) && !((view.index || {}).milestones || {})[wbsPick(key)]) wbsPick(key, null);
+  if (steps.length) {
+    const row = el('nav', 'wbs-row');
+    row.append(el('span', 'h-label', 'WBS'));
+    [{ key: null, label: 'All steps' }].concat(steps).forEach((x) => {
+      const b = el('button', 'wbs-tab' + (wbsPick(key) === x.key ? ' on' : ''), x.label);
+      b.type = 'button';
+      b.addEventListener('click', () => { wbsPick(key, x.key); render(); });
+      row.append(b);
+    });
+    root.append(row);
+  }
   const views = el('nav', 'views');
   [['progress', 'Progress', 0], ['actions', 'My actions', openCount(view.actions)], ['fixtures', 'Grounding fixtures', 0], ['timeline', 'Timeline', 0]].forEach(([id, label, n]) => {
     const a = navLink('#/' + key + '/' + id + (older ? '/' + rev : ''), label, 'view' + (id === v ? ' on' : ''));
@@ -247,14 +261,33 @@ function render() {
       chats: view.index.chats || {}, links: state.links, rules, hold: holdOf(view.index), sum: sumOf(view), readOnly: !!older || !isActive(p),
       nudge: { openList: (id) => nudgesOf(view, id).filter((n) => n.status === 'open'), list: (id) => nudgesOf(view, id), open: (card) => openNudge(view, card, rules.coordinator) },
     };
+    ctx.rerender = render;
+    const step = steps.length ? wbsPick(key) : null;
+    if (step) body.append(el('p', 'muted', 'Showing WBS step ' + ((steps.find((x) => x.key === step) || {}).label || step) + ' only; items for the whole project are marked so.'));
+    const sv = step ? stepView(view, step) : view;
     if (v === 'progress') renderProgress(body, view, ctx);
-    else if (v === 'actions') renderActions(body, view);
-    else if (v === 'fixtures') renderFixtures(body, view.fixtures);
+    else if (v === 'actions') renderActions(body, sv);
+    else if (v === 'fixtures') renderFixtures(body, sv.fixtures);
+    else if (step) renderTimeline(body, sv);
     else renderTimeline(body, view);
   }
   root.append(body);
   root.append(el('p', 'foot muted', 'Read-only page. It re-reads the JSON files every two minutes. "Updated X ago" is the time of the latest recorded event behind each block.'));
   tick(root);
+}
+
+// The project as seen from one WBS step: its decisions and fixtures (plus whole-project ones, marked), and the
+// Timeline entries of its agent blocks, of its own decisions and of the step itself.
+function stepView(view, step) {
+  const mine = new Set(Object.entries(view.cards || {}).filter(([, c]) => c.milestone === step).map(([id]) => id));
+  const acts = Object.fromEntries(Object.entries(view.actions || {}).filter(([, a]) => !a.milestone || a.milestone === step)
+    .map(([id, a]) => [id, a.milestone ? a : Object.assign({}, a, { wholeProject: true })]));
+  const fixtures = Object.fromEntries(Object.entries(view.fixtures || {}).map(([k, items]) => [k, (items || [])
+    .filter((i) => !i.milestone || i.milestone === step).map((i) => (i.milestone ? i : Object.assign({}, i, { wholeProject: true })))]));
+  const audit = view.audit || {};
+  const events = (audit.events || []).filter((e) => (e.card && mine.has(e.card)) || (e.target && mine.has(e.target))
+    || (e.action && (view.actions || {})[e.action] && (view.actions || {})[e.action].milestone === step) || e.scope === 'milestone:' + step);
+  return Object.assign({}, view, { actions: acts, fixtures, audit: Object.assign({}, audit, { events }) });
 }
 
 // If something breaks before the page is drawn, say so instead of staying on "Loading...".

@@ -1,6 +1,6 @@
 // My actions (decision cards) and Grounding fixtures.
-import { el, link, md, age, copyText } from './util.js?v=10';
-import { issueUrl, pageUrl } from './reply.js?v=10';
+import { el, link, md, age, copyText } from './util.js?v=11';
+import { issueUrl, pageUrl } from './reply.js?v=11';
 
 export const openCount = (actions) => Object.values(actions || {}).filter((a) => a.status === 'open').length;
 
@@ -88,7 +88,11 @@ export function renderActions(root, project) {
     root.append(el('p', 'empty', 'Nothing to answer here.'));
     return;
   }
-  items.forEach((a) => root.append(card(a, project)));
+  items.forEach((a) => {
+    const c = card(a, project);
+    if (a.wholeProject) c.prepend(el('span', 'chip n', 'whole project'));
+    root.append(c);
+  });
 }
 
 const SECTIONS = [['repository', 'Repository'], ['issues', 'Issues'], ['pullRequests', 'Pull requests'], ['roadmap', 'Roadmap'],
@@ -109,6 +113,7 @@ export function renderFixtures(root, fixtures) {
         if (i.s) li.append(el('span', 'chip n', i.s), ' ');
         li.append(i.u ? link(i.u, i.t) : i.t);
         if (i.n) li.append(el('span', 'muted', ' — ' + i.n));
+        if (i.wholeProject) li.append(' ', el('span', 'chip n', 'whole project'));
         ul.append(li);
       });
       s.append(ul);
