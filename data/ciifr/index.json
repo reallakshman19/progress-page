@@ -4,7 +4,7 @@
     "key": "ciifr",
     "title": "CII Find & Replace VNext",
     "subtitle": "Preview from the OTM board. The CIIFR Oracle owns the real data (standalone mode).",
-    "updatedAt": "2026-10-22T11:48:14Z",
+    "updatedAt": "2026-10-22T16:25:50Z",
     "updatedBy": "OTM",
     "staleAfterMin": 120,
     "aim": "NO AIM WRITTEN BY THE OWNER YET. Work on this tab waits for the Owner's aim.",
@@ -14,7 +14,8 @@
     "quietAfterMin": 30,
     "idleAfterMin": 15,
     "owesAfterMin": 15,
-    "waitingAfterMin": 15
+    "waitingAfterMin": 15,
+    "coordinator": "Owner"
   },
   "chats": {
     "ir": {
@@ -22,13 +23,13 @@
       "id8": "IR-PR150"
     },
     "o2": {
-      "label": "Oracle O2",
+      "label": "O2-CIIFR-Cond",
       "id8": "6ad8c352",
       "engine": "ChatGPT"
     },
     "g2": {
-      "label": "G2 reviewer",
-      "id8": "6ad8eeb9",
+      "label": "G2-CIIFR-Cond",
+      "id8": "6ada24a8",
       "engine": "ChatGPT"
     },
     "a1fr": {
@@ -84,7 +85,18 @@
       "why": "Founding plan on the independent Progress page, built from the OTM board rows.",
       "ownerWords": "create this progress page independent of others",
       "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6330677339",
-      "status": "current"
+      "status": "superseded",
+      "commit": "3ce9cc688960"
+    },
+    {
+      "id": "R2",
+      "at": "2026-10-22T16:25:49Z",
+      "by": "OTM",
+      "why": "R1 superseded by the Owner; R2: standalone, no Codex, OTM acts on the Owner's behalf and publishes task evidence",
+      "ownerWords": "CIIFR R1 is superseded, This is R2 ... Standalone, No Codex. You will act on my behalf. Make then publish task evidence, read via sonnet.",
+      "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6345770293",
+      "status": "current",
+      "supersedes": "R1"
     }
   ]
 }

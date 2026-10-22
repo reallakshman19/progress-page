@@ -113,6 +113,57 @@
       "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6339978122",
       "scope": "aim",
       "rev": "R1"
+    },
+    {
+      "seq": 9,
+      "id": "CIIFR-R-0009",
+      "previous_id": "CIIFR-R-0008",
+      "at": "2026-10-22T16:25:49Z",
+      "kind": "REVISION",
+      "actor": "OTM",
+      "summary": "R1 superseded by the Owner; R2: standalone, no Codex, OTM acts on the Owner's behalf and publishes task evidence",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6345770293",
+      "revision": "R2",
+      "supersedes": "R1",
+      "scope": "project",
+      "rev": "R2"
+    },
+    {
+      "seq": 10,
+      "id": "CIIFR-R-0010",
+      "previous_id": "CIIFR-R-0009",
+      "at": "2026-10-22T16:25:50Z",
+      "kind": "PLAN",
+      "actor": "OTM",
+      "summary": "R2: G2 is the new chat 6ada24a8",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6345770293",
+      "scope": "chat:g2",
+      "rev": "R2"
+    },
+    {
+      "seq": 11,
+      "id": "CIIFR-R-0011",
+      "previous_id": "CIIFR-R-0010",
+      "at": "2026-10-22T16:25:50Z",
+      "kind": "PLAN",
+      "actor": "OTM",
+      "summary": "R2 label",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6345770293",
+      "scope": "chat:o2",
+      "rev": "R2"
+    },
+    {
+      "seq": 12,
+      "id": "CIIFR-R-0012",
+      "previous_id": "CIIFR-R-0011",
+      "at": "2026-10-22T16:25:50Z",
+      "kind": "TRANSFER",
+      "actor": "OTM",
+      "summary": "Owner: Standalone, No Codex; OTM acts on the Owner's behalf",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6345770293",
+      "scope": "project",
+      "to": "standalone:Owner",
+      "rev": "R2"
     }
   ]
 }
