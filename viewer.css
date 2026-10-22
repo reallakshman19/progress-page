@@ -154,3 +154,4 @@ textarea.brief{width:100%;font:12px/1.5 ui-monospace,Menlo,Consolas,monospace;ba
 .nd-add input{flex:1}
 details.nd{margin-top:6px;font-size:12px}
 @media (max-width:620px){.tl-row{grid-template-columns:40px 1fr}.tl-row .chip{grid-column:2}.tl-m{grid-column:1 / -1}}
+.aim{font-size:15px;margin:4px 0 6px}

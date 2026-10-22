@@ -34,7 +34,7 @@ def projects_doc(data):
     return (L.read_json(path) if path.exists() else {"schema": 3, "site": {}, "projects": []}), path
 
 
-def add_project(data, key, title, label, mode, coordinator, subtitle, actor, src, owner_words, why, reply):
+def add_project(data, key, title, label, mode, coordinator, subtitle, actor, src, owner_words, why, reply, aim=None):
     if not L.KEY.match(key):
         raise SystemExit("key must be lower-case letters, digits and -")
     doc, path = projects_doc(data)
@@ -42,7 +42,7 @@ def add_project(data, key, title, label, mode, coordinator, subtitle, actor, src
         raise SystemExit(f"Project {key!r} already exists.")
     now = L.now_iso()
     docs = {
-        "index": {"schema": 3, "project": {"key": key, "title": title, "subtitle": subtitle or "", "updatedAt": now, "updatedBy": actor, "staleAfterMin": 120},
+        "index": {"schema": 3, "project": {"key": key, "title": title, "subtitle": subtitle or "", **({"aim": aim, "aimSrc": src} if aim else {}), "updatedAt": now, "updatedBy": actor, "staleAfterMin": 120},
                   "rules": {"coordinator": coordinator, "quietAfterMin": 30, "idleAfterMin": 15, "owesAfterMin": 15, "waitingAfterMin": 15},
                   "chats": {},
                   "milestones": {m: {"order": i, "name": n, "full": f} for i, (m, n, f) in enumerate(
@@ -62,6 +62,17 @@ def add_project(data, key, title, label, mode, coordinator, subtitle, actor, src
     txn.write(path, doc)
     L.finish(txn, data)
     return f"Added project {key} (revision R1). Next: add chats, milestones and groups with 'plan', then cards with 'card set'."
+
+
+def set_aim(data, key, text, actor, summary, src):
+    """Write or change the project's aim: the Owner's words first; everything on the tab serves it."""
+    root, docs = open_project(data, key)
+    docs["index"]["project"].update({"aim": text, "aimSrc": src})
+    record(docs, key, "PLAN", actor, summary, src, scope="aim")
+    txn = L.Txn()
+    save(txn, root, docs, ("index", "audit"))
+    L.finish(txn, data)
+    return f"Recorded the aim of {key}."
 
 
 def plan(data, key, what, ident, fields, actor, summary, src):

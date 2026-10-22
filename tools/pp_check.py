@@ -18,6 +18,7 @@ from pp_ctx import Ctx
 from pp_ledger_check import check_ledger
 
 SECRETS = ((re.compile(r"drive\.google\.com|docs\.google\.com"), "contains a Google Drive link"),
+           (re.compile(r"1drv\.ms|onedrive\.live\.com|sharepoint\.com", re.I), "contains a OneDrive or SharePoint link"),
            (re.compile(r"[\w.+-]+@[\w-]+\.[\w.]+"), "contains an email address"),
            (re.compile(r"ghp_\w{20,}|github_pat_\w{20,}|sk-[A-Za-z0-9]{20,}"), "contains what looks like an access token"))
 CHAT = re.compile(r"chatgpt\.com/c/|chat\.openai\.com|antigravity\.google\.com|claude\.ai/(?:chat|code)/")
@@ -67,7 +68,7 @@ def check_projects(c, doc):
     return plist
 
 
-def check_index(c, key, index):
+def check_index(c, key, index, status="active"):
     w = f"{key}/index.json"
     if index.get("schema") != 3:
         c.err(w, "schema must be 3")
@@ -76,6 +77,9 @@ def check_index(c, key, index):
         c.err(w, f"project.key must be {key!r}")
     c.text(w + " project", pr, "title", limit=80)
     c.text(w + " project", pr, "subtitle", opt=True, limit=240)
+    # the Owner's aim comes first: an active project without one fails (Lesson 1, 22 Oct 2026)
+    if c.text(w + " project", pr, "aim", opt=status != "active", limit=400):
+        c.link(w + " project", pr, "aimSrc", source=True)
     c.stamp(w + " project", pr, "updatedAt")
     c.text(w + " project", pr, "updatedBy", limit=60)
     c.integer(w + " project", pr, "staleAfterMin", low=1)
@@ -157,7 +161,7 @@ def check_tree(data, private=False):
         if any(v is None for v in docs.values()):
             continue
         try:
-            check_index(c, key, docs["index"])
+            check_index(c, key, docs["index"], p.get("status") or "active")
             check_cards(c, key, docs["index"], docs["cards"])
             check_actions(c, key, docs["actions"])
             check_fixtures(c, key, docs["fixtures"])

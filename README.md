@@ -21,6 +21,8 @@ and leaves every file as it was if the check fails. Nothing is deleted: supersed
 ## What the page shows
 
 - Project tabs, `+` to add a project (a copy-paste brief for another agent), **Archived (n)** for closed projects.
+- **Aim** first (Owner, 22 Oct 2026, Lesson 1): every active tab shows the Owner's aim under its title, with its source; the checker refuses an active project without one (`project add --aim`, `project aim`). Under it, **How we work** links the Common agent-work modules.
+- **Who writes what:** the coordinator writes agent blocks, decisions and revisions; the project's **Oracle sets the milestones** (`plan milestone`; placing a block with `card set --milestone` alone keeps the block's evidence time and source); **anybody may add grounding fixtures** under their own name; an Oracle may push its own project's data.
 - **Revisions** row: R1, R2 ... A revision is added only when an Owner decision changes direction. Older ones open read-only from GitHub history.
 - **Progress**: attention strip (needs you, owes, nudges, quiet, waiting, tab stale), milestone strip, groups of agent blocks.
   Superseded and cancelled blocks stay, greyed, with the reason. **Nudge +** on each block queues instructions for the coordinator (OTM or the Oracle), not for the agent.

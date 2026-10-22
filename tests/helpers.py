@@ -187,8 +187,8 @@ def build_valid(root):
     data.mkdir(parents=True)
     go = lambda *a: ok(data, *a)  # noqa: E731
     go("project", "add", "--key", KEY, "--title", "Demo project", "--label", "Demo", "--subtitle", "A small project for tests",
-       "--mode", "standalone", "--coordinator", "Oracle", "--owner-words", "Start the demo project", *WW)
-    go("project", "add", "--key", OTHER, "--title", "Other project", "--mode", "otm", "--coordinator", "OTM", "--owner-words", "Another project",
+       "--mode", "standalone", "--coordinator", "Oracle", "--owner-words", "Start the demo project", "--aim", "Ship a small demo", *WW)
+    go("project", "add", "--key", OTHER, "--title", "Other project", "--mode", "otm", "--coordinator", "OTM", "--owner-words", "Another project", "--aim", "Run another project",
        "--reply-repo", "acme/demo", "--reply-site", "https://acme.github.io/demo/", *WW)
     go("plan", "chat", *P, "--id", "c1", "--label", "Agent one", "--id8", "aaaa1111", "--engine", "ChatGPT", *WS)
     go("plan", "chat", *P, "--id", "c2", "--label", "Agent two", "--id8", "bbbb2222", "--engine", "Antigravity", *WS)
