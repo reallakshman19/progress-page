@@ -10,9 +10,11 @@ A file built with --links holds private chat links: keep it on your own machine 
 """
 import argparse
 import json
+import os
 import re
 import shutil
 import subprocess
+import sys
 import tempfile
 from datetime import datetime, timezone
 from pathlib import Path
@@ -72,14 +74,17 @@ def js_json(obj):
 
 
 def dump_root(browser, uri):
+    """(the drawn <main>, or None; the browser's last error lines)."""
     profile = tempfile.mkdtemp()
+    # a CI runner (Ubuntu) blocks the browser's sandbox; the page drawn is our own file, with no network
+    ci = ["--no-sandbox"] if os.environ.get("CI") and sys.platform.startswith("linux") else []
     try:
-        r = subprocess.run([browser, "--headless=new", "--disable-gpu", "--no-first-run", "--user-data-dir=" + profile,
+        r = subprocess.run([browser, "--headless=new", "--disable-gpu", "--no-first-run", "--user-data-dir=" + profile, *ci,
                             "--virtual-time-budget=8000", "--dump-dom", uri], capture_output=True, timeout=120)
     finally:
         shutil.rmtree(profile, ignore_errors=True)
     m = re.search(r'<main id="root">(.*?)</main>', r.stdout.decode("utf-8", "replace"), re.S)
-    return m.group(1) if m else None
+    return (m.group(1) if m else None), r.stderr.decode("utf-8", "replace").strip()[-400:]
 
 
 def static_root(browser, html_path):
@@ -87,9 +92,9 @@ def static_root(browser, html_path):
 
     The page is told to read data from nowhere, so the static copy shows exactly the embedded snapshot.
     Ages such as "5m ago" are as at build time; the banner says so."""
-    frag = dump_root(browser, Path(html_path).resolve().as_uri() + "?data=http://127.0.0.1:1/")
+    frag, err = dump_root(browser, Path(html_path).resolve().as_uri() + "?data=http://127.0.0.1:1/")
     if not frag or 'class="sp"' not in frag:
-        raise SystemExit("prerender failed: the headless browser did not draw the static sections")
+        raise SystemExit("prerender failed: the headless browser did not draw the static sections" + (f" ({err})" if err else ""))
     frag = re.sub(r"<button[^>]*>(?:Copy reply|\+)</button>", "", frag)
     built = datetime.now().astimezone().strftime("%d %b %H:%M UTC%z")
     banner = ('<p class="snapbar">Static copy made ' + built + '; times such as "5m ago" are as at that moment. '
