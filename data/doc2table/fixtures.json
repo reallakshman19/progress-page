@@ -58,6 +58,15 @@
     },
     {
       "t": "doc2table / doc2table_fixtures_v2_aec0563c1dd2.zip; 1774131 bytes; sha256 aec0563c1dd22bd521db3666fcf3dd7a047f00c8cc64481d19b1cd9c69b5f3d5; SELF-ASSESSED T-EXPECT; local custody; distinct spot-check pending."
+    },
+    {
+      "t": "doc2table / placeholder-addendum.v1.json; 11303 bytes; sha256 5fe51f7274a9454df6eb4929b8958c958e9a06e36205d6abaf6ba66698b8d699; SELF-ASSESSED TO6 companion, local custody."
+    },
+    {
+      "t": "doc2table / T-PRESERVE.md; 3150 bytes; sha256 d76a736ed1b4675cd2bdacf70df6ef6b38b3de800b089ec8d1daffe6413b29b6; SELF-ASSESSED TO6 companion, local custody."
+    },
+    {
+      "t": "doc2table / doc2table_expectation_addendum_3db77201c40f.zip; 4905 bytes; sha256 3db77201c40f4a515db06471783254c00bb5cd737762cf9f1921c4bb7bcc587e; SELF-ASSESSED TO6 companion, local custody."
     }
   ],
   "knownIssues": [

@@ -538,6 +538,66 @@
       "before": "SUBMITTED",
       "after": "SUBMITTED",
       "rev": "R2"
+    },
+    {
+      "seq": 41,
+      "id": "G9V35-R-0041",
+      "previous_id": "G9V35-R-0040",
+      "at": "2026-10-22T16:16:59Z",
+      "kind": "PLAN",
+      "actor": "OTM",
+      "summary": "WBS from Oracle O4 RE G9O4-3, checked by OTM against the aim and Owner words",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128#issuecomment-6345511556",
+      "scope": "milestone:M0",
+      "rev": "R2"
+    },
+    {
+      "seq": 42,
+      "id": "G9V35-R-0042",
+      "previous_id": "G9V35-R-0041",
+      "at": "2026-10-22T16:16:59Z",
+      "kind": "PLAN",
+      "actor": "OTM",
+      "summary": "WBS from Oracle O4 RE G9O4-3, checked by OTM against the aim and Owner words",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128#issuecomment-6345511556",
+      "scope": "milestone:M1",
+      "rev": "R2"
+    },
+    {
+      "seq": 43,
+      "id": "G9V35-R-0043",
+      "previous_id": "G9V35-R-0042",
+      "at": "2026-10-22T16:16:59Z",
+      "kind": "PLAN",
+      "actor": "OTM",
+      "summary": "WBS from Oracle O4 RE G9O4-3, checked by OTM against the aim and Owner words",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128#issuecomment-6345511556",
+      "scope": "milestone:M2",
+      "rev": "R2"
+    },
+    {
+      "seq": 44,
+      "id": "G9V35-R-0044",
+      "previous_id": "G9V35-R-0043",
+      "at": "2026-10-22T16:17:00Z",
+      "kind": "PLAN",
+      "actor": "OTM",
+      "summary": "WBS from Oracle O4 RE G9O4-3, checked by OTM against the aim and Owner words",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128#issuecomment-6345511556",
+      "scope": "milestone:M3",
+      "rev": "R2"
+    },
+    {
+      "seq": 45,
+      "id": "G9V35-R-0045",
+      "previous_id": "G9V35-R-0044",
+      "at": "2026-10-22T16:17:00Z",
+      "kind": "PLAN",
+      "actor": "OTM",
+      "summary": "WBS from Oracle O4 RE G9O4-3, checked by OTM against the aim and Owner words",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128#issuecomment-6345511556",
+      "scope": "milestone:M4",
+      "rev": "R2"
     }
   ]
 }

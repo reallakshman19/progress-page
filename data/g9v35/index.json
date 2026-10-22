@@ -4,7 +4,7 @@
     "key": "g9v35",
     "title": "G9v3.5 Physics pilot",
     "subtitle": "Newton's Laws pilot on the ZIP-free track, and the owner-bank guard (PR #305)",
-    "updatedAt": "2026-10-22T15:48:58Z",
+    "updatedAt": "2026-10-22T16:17:00Z",
     "updatedBy": "OTM",
     "staleAfterMin": 120,
     "aim": "A personal-use app for one Grade 9 kid to self-learn difficult Physics, Mathematics and Chemistry concepts for one of the toughest competitive exams. Not a corporate product.",
@@ -66,27 +66,51 @@
     "M0": {
       "order": 0,
       "name": "Baseline + first NLM interaction",
-      "full": "A few baseline attempts (2–3 existing prompts) plus ONE identified NLM question with staged hints, reasoning route and teacher answer. Report distinct technical checks and actual learner observations separately; preserve source identity and assistance/exposure history."
+      "full": "A few baseline attempts (2–3 existing prompts) plus ONE identified NLM question with staged hints, reasoning route and teacher answer. Report distinct technical checks and actual learner observations separately; preserve source identity and assistance/exposure history.",
+      "wbs": "1.1",
+      "bench": "B1",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "No current checked two-prompt/one-supported-question view evidenced"
     },
     "M1": {
       "order": 1,
       "name": "NLM Core 1A/1B",
-      "full": "Each fixed pilot tile has a concept-building lesson and a matching inference-before-reveal task, checked as a pair; coverage and gaps are explicit."
+      "full": "Each fixed pilot tile has a concept-building lesson and a matching inference-before-reveal task, checked as a pair; coverage and gaps are explicit.",
+      "wbs": "1.2",
+      "bench": "B2",
+      "keeps": "B1",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "No demonstrated concept-repair/reconstruction path"
     },
     "M2": {
       "order": 2,
       "name": "NLM questionnaire refinement",
-      "full": "Refine Core 1B/2B diagnostics using observed attempts after the first working learning path. Initial baseline and demand capture already occur in M0; they do not wait for this fuller questionnaire."
+      "full": "Refine Core 1B/2B diagnostics using observed attempts after the first working learning path. Initial baseline and demand capture already occur in M0; they do not wait for this fuller questionnaire.",
+      "wbs": "1.3",
+      "bench": "B3",
+      "keeps": "B1, B2",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "No current refined Core-based diagnostic path evidenced"
     },
     "M3": {
       "order": 3,
       "name": "NLM Core 2B",
-      "full": "Changed-demand transfer items address the observed gaps; a distinct spot-check covers the new decision and reveal behavior, followed by a learner retry."
+      "full": "Changed-demand transfer items address the observed gaps; a distinct spot-check covers the new decision and reveal behavior, followed by a learner retry.",
+      "wbs": "1.4",
+      "bench": "B4",
+      "keeps": "B1-B3",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "No demonstrated changed-decision transfer path"
     },
     "M4": {
       "order": 4,
       "name": "Next Physics topic (deferred)",
-      "full": "After the NLM learner cycle, select the next Physics topic from observed need and repeat the small pipeline; Mathematics and Chemistry remain later work."
+      "full": "After the NLM learner cycle, select the next Physics topic from observed need and repeat the small pipeline; Mathematics and Chemistry remain later work.",
+      "wbs": "2",
+      "bench": "B5",
+      "keeps": "B1-B4",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "No next-topic learning path evidenced"
     }
   },
   "groups": {

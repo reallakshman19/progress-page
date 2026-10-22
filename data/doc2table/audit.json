@@ -469,6 +469,45 @@
       "before": "SUBMITTED",
       "after": "SUBMITTED",
       "rev": "R1"
+    },
+    {
+      "seq": 37,
+      "id": "DOC2TABLE-R-0037",
+      "previous_id": "DOC2TABLE-R-0036",
+      "at": "2026-10-22T16:17:11Z",
+      "kind": "FIXTURE",
+      "actor": "OTM for Oracle O1",
+      "summary": "Record showingPlcHdr assumptions and the revised 23-line prepared preservation packet without publishing source bytes.",
+      "source": "https://github.com/reallakshman19/Word-to-Table/issues/1#issuecomment-6345510875",
+      "list": "inputs",
+      "op": "add",
+      "rev": "R1"
+    },
+    {
+      "seq": 38,
+      "id": "DOC2TABLE-R-0038",
+      "previous_id": "DOC2TABLE-R-0037",
+      "at": "2026-10-22T16:17:11Z",
+      "kind": "FIXTURE",
+      "actor": "OTM for Oracle O1",
+      "summary": "Record showingPlcHdr assumptions and the revised 23-line prepared preservation packet without publishing source bytes.",
+      "source": "https://github.com/reallakshman19/Word-to-Table/issues/1#issuecomment-6345510875",
+      "list": "inputs",
+      "op": "add",
+      "rev": "R1"
+    },
+    {
+      "seq": 39,
+      "id": "DOC2TABLE-R-0039",
+      "previous_id": "DOC2TABLE-R-0038",
+      "at": "2026-10-22T16:17:11Z",
+      "kind": "FIXTURE",
+      "actor": "OTM for Oracle O1",
+      "summary": "Record showingPlcHdr assumptions and the revised 23-line prepared preservation packet without publishing source bytes.",
+      "source": "https://github.com/reallakshman19/Word-to-Table/issues/1#issuecomment-6345510875",
+      "list": "inputs",
+      "op": "add",
+      "rev": "R1"
     }
   ]
 }
