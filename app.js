@@ -47,6 +47,13 @@ function route() {
   return { key, v };
 }
 
+// In-page navigation: a real anchor with a hash target (link() only makes anchors for https URLs).
+function navLink(href, text, cls) {
+  const a = el('a', cls, text);
+  a.href = href;
+  return a;
+}
+
 function badge(n) {
   return n ? el('span', 'bd', String(n)) : null;
 }
@@ -104,9 +111,7 @@ function render() {
   const { key, v } = route();
   const tabs = el('nav', 'tabs');
   state.projects.forEach((p) => {
-    const a = link('#/' + p.key + '/progress', p.label);
-    a.removeAttribute('target');
-    a.className = 'tab' + (p.key === key ? ' on' : '');
+    const a = navLink('#/' + p.key + '/progress', p.label, 'tab' + (p.key === key ? ' on' : ''));
     const b = badge(openCount((state.data[p.key] || {}).actions));
     if (b) a.append(b);
     tabs.append(a);
@@ -122,9 +127,7 @@ function render() {
   root.append(title);
   const views = el('nav', 'views');
   [['progress', 'Progress', 0], ['actions', 'My actions', openCount(p.actions)], ['fixtures', 'Grounding fixtures', 0]].forEach(([id, label, n]) => {
-    const a = link('#/' + key + '/' + id, label);
-    a.removeAttribute('target');
-    a.className = 'view' + (id === v ? ' on' : '');
+    const a = navLink('#/' + key + '/' + id, label, 'view' + (id === v ? ' on' : ''));
     const b = badge(n);
     if (b) a.append(b);
     views.append(a);

@@ -68,21 +68,33 @@ export function whenText(iso) {
   return d.toLocaleString(undefined, { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit', hour12: false });
 }
 
+// Copy inside the click gesture first (works where the async clipboard is blocked), then try the async clipboard.
+// If both fail, select the reply text so Ctrl+C works.
 export async function copyText(text, btn) {
   const old = btn.textContent;
-  const done = () => {
-    btn.textContent = 'Copied';
-    setTimeout(() => { btn.textContent = old; }, 1500);
-  };
-  const fallback = () => {
-    const ta = document.createElement('textarea');
-    ta.value = text;
-    ta.style.position = 'absolute';
-    ta.style.left = '-9999px';
-    document.body.appendChild(ta);
-    ta.select();
-    try { document.execCommand('copy'); done(); } catch (e) { btn.textContent = 'Select and copy'; }
-    document.body.removeChild(ta);
-  };
-  try { await navigator.clipboard.writeText(text); done(); } catch (e) { fallback(); }
+  let ok = false;
+  const ta = document.createElement('textarea');
+  ta.value = text;
+  ta.style.position = 'absolute';
+  ta.style.left = '-9999px';
+  document.body.appendChild(ta);
+  ta.select();
+  try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+  document.body.removeChild(ta);
+  if (!ok) {
+    try { await navigator.clipboard.writeText(text); ok = true; } catch (e) { ok = false; }
+  }
+  if (!ok) {
+    const box = btn.closest('.op-b');
+    const rp = box && box.querySelector('.rp');
+    if (rp) {
+      const range = document.createRange();
+      range.selectNodeContents(rp);
+      const sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(range);
+    }
+  }
+  btn.textContent = ok ? 'Copied' : 'Selected: press Ctrl+C';
+  setTimeout(() => { btn.textContent = old; }, 2000);
 }
