@@ -258,14 +258,14 @@
       "chat": "oracle4",
       "role": "Oracle O4"
     },
-    "state": "IN_PROGRESS",
-    "now": "Read-back, milestones M0-M4 (3740ca6, 5d6b239); first packet revised with the Owner ('ok update'): 2-3 baseline attempts + 1 supported NLM question",
+    "state": "SUBMITTED",
+    "now": "Final packets posted: G9O4-2-p1 (producer, #154) and -p2 (checker, #135)",
     "next": {
-      "actor": "Oracle O4",
-      "text": "write final packets G9O4-2-p1 (producer, #154) and -p2 (checker IR-G9V35)"
+      "actor": "OTM",
+      "text": "onboard producer NLM-PROD1 in Chrome, then deliver -p1 word for word (Chrome extension not connected)"
     },
-    "updatedAt": "2026-10-22T14:56:34Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6343831191",
+    "updatedAt": "2026-10-22T15:31:14Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/154#issuecomment-6344449377",
     "flags": []
   }
 }
