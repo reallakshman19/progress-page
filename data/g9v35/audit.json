@@ -376,6 +376,83 @@
       "list": "knownIssues",
       "op": "add",
       "rev": "R1"
+    },
+    {
+      "seq": 29,
+      "id": "G9V35-R-0029",
+      "previous_id": "G9V35-R-0028",
+      "at": "2026-10-22T13:48:10Z",
+      "kind": "REVISION",
+      "actor": "Oracle G9V35-O4",
+      "summary": "Owner approved first delivery as a few baseline attempts plus ONE identified NLM question with staged support; initial demand discovery moves into M0.",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128#issuecomment-6342342365",
+      "revision": "R2",
+      "supersedes": "R1",
+      "scope": "project",
+      "rev": "R2"
+    },
+    {
+      "seq": 30,
+      "id": "G9V35-R-0030",
+      "previous_id": "G9V35-R-0029",
+      "at": "2026-10-22T13:48:11Z",
+      "kind": "PLAN",
+      "actor": "Oracle G9V35-O4",
+      "summary": "Apply the Owner-approved first-delivery update; keep the Core instructional meanings.",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128#issuecomment-6342342365",
+      "scope": "milestone:M0",
+      "rev": "R2"
+    },
+    {
+      "seq": 31,
+      "id": "G9V35-R-0031",
+      "previous_id": "G9V35-R-0030",
+      "at": "2026-10-22T13:48:11Z",
+      "kind": "PLAN",
+      "actor": "Oracle G9V35-O4",
+      "summary": "Apply the Owner-approved first-delivery update; keep the Core instructional meanings.",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128#issuecomment-6342342365",
+      "scope": "milestone:M2",
+      "rev": "R2"
+    },
+    {
+      "seq": 32,
+      "id": "G9V35-R-0032",
+      "previous_id": "G9V35-R-0031",
+      "at": "2026-10-22T13:48:11Z",
+      "kind": "FIXTURE",
+      "actor": "Oracle G9V35-O4",
+      "summary": "Record the approved delivery unit and its observable evidence without claiming implementation or learner results.",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128#issuecomment-6342342365",
+      "list": "roadmap",
+      "op": "add",
+      "rev": "R2"
+    },
+    {
+      "seq": 33,
+      "id": "G9V35-R-0033",
+      "previous_id": "G9V35-R-0032",
+      "at": "2026-10-22T13:48:11Z",
+      "kind": "FIXTURE",
+      "actor": "Oracle G9V35-O4",
+      "summary": "Record the approved delivery unit and its observable evidence without claiming implementation or learner results.",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128#issuecomment-6342342365",
+      "list": "intent",
+      "op": "add",
+      "rev": "R2"
+    },
+    {
+      "seq": 34,
+      "id": "G9V35-R-0034",
+      "previous_id": "G9V35-R-0033",
+      "at": "2026-10-22T13:48:11Z",
+      "kind": "FIXTURE",
+      "actor": "Oracle G9V35-O4",
+      "summary": "Record the approved delivery unit and its observable evidence without claiming implementation or learner results.",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128#issuecomment-6342342365",
+      "list": "highRoi",
+      "op": "add",
+      "rev": "R2"
     }
   ]
 }

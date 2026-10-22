@@ -104,6 +104,9 @@
     },
     {
       "t": "items the kid can use today: 0 (NLM, confirmed in this restart; 13 historical FINE tile exemplars are references, with the current Core 2 learning version and hint ladder still to be spot-checked)."
+    },
+    {
+      "t": "FIRST DELIVERY (Owner approved): 2–3 baseline attempts plus ONE existing identified NLM question with staged support, a distinct check and actual learner use. This replaces the three-supported-question draft; a fuller questionnaire can follow the first working path."
     }
   ],
   "highRoi": [
@@ -154,6 +157,9 @@
       "u": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128#issuecomment-6318289999",
       "s": "proposed",
       "n": "Shared"
+    },
+    {
+      "t": "For the first working NLM interaction, retain its input, expected behavior and meaningful failure cases as regression protection. Check keys, cues, progressive hints and reveal behavior; a passing automated check covers only the properties it exercised."
     }
   ],
   "future": [
@@ -198,6 +204,9 @@
     },
     {
       "t": "PIPELINE (Owner, 22 Oct): question bank -> Core 2 with QRT label, hint ladder, reasoning route, teacher's answer -> per fixed QRT tile: Core 1A/1B -> questionnaire (Core 1B/2B) finds the kid's demand -> Core 2B by demand."
+    },
+    {
+      "t": "Owner, 22 Oct, \"ok update\": deliver one complete learning interaction first. Capture initial demand with a few existing prompts; preserve question identity/provenance, QRT meanings and non-author checks. Automated properties and actual learner evidence remain separate."
     }
   ],
   "inputs": [

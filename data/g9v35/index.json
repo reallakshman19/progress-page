@@ -4,7 +4,7 @@
     "key": "g9v35",
     "title": "G9v3.5 Physics pilot",
     "subtitle": "Newton's Laws pilot on the ZIP-free track, and the owner-bank guard (PR #305)",
-    "updatedAt": "2026-10-22T12:52:08Z",
+    "updatedAt": "2026-10-22T13:48:11Z",
     "updatedBy": "Oracle G9V35-O4",
     "staleAfterMin": 120,
     "aim": "A personal-use app for one Grade 9 kid to self-learn difficult Physics, Mathematics and Chemistry concepts for one of the toughest competitive exams. Not a corporate product.",
@@ -65,8 +65,8 @@
   "milestones": {
     "M0": {
       "order": 0,
-      "name": "NLM Core 2",
-      "full": "Small NLM bank slices keep original IDs and QRT labels; each usable item has hints, a reasoning route and teacher answer, with a distinct spot-check on the learning version."
+      "name": "Baseline + first NLM interaction",
+      "full": "A few baseline attempts (2–3 existing prompts) plus ONE identified NLM question with staged hints, reasoning route and teacher answer. Report distinct technical checks and actual learner observations separately; preserve source identity and assistance/exposure history."
     },
     "M1": {
       "order": 1,
@@ -75,8 +75,8 @@
     },
     "M2": {
       "order": 2,
-      "name": "NLM questionnaire",
-      "full": "The kid tries a short Core 1B/2B questionnaire; first attempts, support used and difficulties by QRT tile are recorded to identify demand."
+      "name": "NLM questionnaire refinement",
+      "full": "Refine Core 1B/2B diagnostics using observed attempts after the first working learning path. Initial baseline and demand capture already occur in M0; they do not wait for this fuller questionnaire."
     },
     "M3": {
       "order": 3,
@@ -122,7 +122,18 @@
       "why": "ZIP-free Physics pilot: the Owner's rule of 22 Oct replaces the ZIP-based pilot plan tracked on the old site.",
       "ownerWords": "RULE: No zip file available. proceed with task.",
       "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6329482245",
-      "status": "current"
+      "status": "superseded",
+      "commit": "5d6b23983c6d"
+    },
+    {
+      "id": "R2",
+      "at": "2026-10-22T13:48:10Z",
+      "by": "Oracle G9V35-O4",
+      "why": "Owner approved first delivery as a few baseline attempts plus ONE identified NLM question with staged support; initial demand discovery moves into M0.",
+      "ownerWords": "ok update",
+      "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128#issuecomment-6342342365",
+      "status": "current",
+      "supersedes": "R1"
     }
   ]
 }
