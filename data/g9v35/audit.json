@@ -453,6 +453,21 @@
       "list": "highRoi",
       "op": "add",
       "rev": "R2"
+    },
+    {
+      "seq": 35,
+      "id": "G9V35-R-0035",
+      "previous_id": "G9V35-R-0034",
+      "at": "2026-10-22T14:12:32Z",
+      "kind": "STATE",
+      "actor": "OTM",
+      "summary": "Oracle O4 replies G9O4-1 and -r2 recorded; block in M0 as O4 asked",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128#issuecomment-6342342365",
+      "card": "oracle4",
+      "before": "IN_PROGRESS",
+      "after": "SUBMITTED",
+      "source_at": "2026-10-22T13:46:49Z",
+      "rev": "R2"
     }
   ]
 }
