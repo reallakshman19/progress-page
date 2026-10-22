@@ -256,6 +256,21 @@
       "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6339978122",
       "scope": "aim",
       "rev": "R1"
+    },
+    {
+      "seq": 21,
+      "id": "DOC2TABLE-R-0021",
+      "previous_id": "DOC2TABLE-R-0020",
+      "at": "2026-10-22T11:58:32Z",
+      "kind": "STATE",
+      "actor": "OTM",
+      "summary": "Oracle reply D2T-O1-1 recorded; evidence clock set to the reply (the milestone-only re-stamp at 11:30 is replaced)",
+      "source": "https://github.com/reallakshman19/Word-to-Table/issues/1#issuecomment-6339942361",
+      "card": "oracle",
+      "before": "IN_PROGRESS",
+      "after": "SUBMITTED",
+      "source_at": "2026-10-22T11:45:41Z",
+      "rev": "R1"
     }
   ]
 }

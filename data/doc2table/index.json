@@ -4,7 +4,7 @@
     "key": "doc2table",
     "title": "Doc to Table",
     "subtitle": "",
-    "updatedAt": "2026-10-22T11:48:14Z",
+    "updatedAt": "2026-10-22T11:58:32Z",
     "updatedBy": "OTM",
     "staleAfterMin": 120,
     "aim": "NOT YET CONFIRMED BY THE OWNER. Recorded by Oracle O1: convert flexible .doc/.docx tables with independently selected header and data rows, row combinations and source-linked raw leftovers.",
