@@ -11,7 +11,7 @@
     "now": "Read-back D2T-O1-1: milestones M1-M7 and 8 fixtures (3a50517); 3 packets prepared, none launched",
     "next": {
       "actor": "Owner",
-      "text": "confirm the Oracle's intent read-back (5 lines, D2T-O1-1)"
+      "text": "say when to launch the first packet (T-EXPECT); briefs stay prepared by your choice"
     },
     "refs": [
       {
@@ -20,10 +20,8 @@
         "u": "https://github.com/reallakshman19/Word-to-Table/issues/1"
       }
     ],
-    "updatedAt": "2026-10-22T11:45:41Z",
-    "src": "https://github.com/reallakshman19/Word-to-Table/issues/1#issuecomment-6339942361",
-    "flags": [
-      "needs-you"
-    ]
+    "updatedAt": "2026-10-22T12:34:59Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6340863173",
+    "flags": []
   }
 }

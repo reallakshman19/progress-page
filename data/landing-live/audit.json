@@ -199,6 +199,20 @@
       "before": "SUBMITTED",
       "after": "SUBMITTED",
       "rev": "R1"
+    },
+    {
+      "seq": 15,
+      "id": "LANDING-LIVE-R-0015",
+      "previous_id": "LANDING-LIVE-R-0014",
+      "at": "2026-10-22T12:34:59Z",
+      "kind": "STATE",
+      "actor": "OTM",
+      "summary": "Owner said ok; OTM merged progress-page#2 (8b05b98) and Common#457 (d11a324)",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6340863173",
+      "card": "hub",
+      "before": "SUBMITTED",
+      "after": "IN_PROGRESS",
+      "rev": "R1"
     }
   ]
 }

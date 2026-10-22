@@ -271,6 +271,32 @@
       "after": "SUBMITTED",
       "source_at": "2026-10-22T11:45:41Z",
       "rev": "R1"
+    },
+    {
+      "seq": 22,
+      "id": "DOC2TABLE-R-0022",
+      "previous_id": "DOC2TABLE-R-0021",
+      "at": "2026-10-22T12:34:59Z",
+      "kind": "PLAN",
+      "actor": "OTM",
+      "summary": "Owner confirmed the Oracle's intent read-back",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6340863173",
+      "scope": "aim",
+      "rev": "R1"
+    },
+    {
+      "seq": 23,
+      "id": "DOC2TABLE-R-0023",
+      "previous_id": "DOC2TABLE-R-0022",
+      "at": "2026-10-22T12:34:59Z",
+      "kind": "UPDATE",
+      "actor": "OTM",
+      "summary": "Owner confirmed the intent read-back",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6340863173",
+      "card": "oracle",
+      "before": "SUBMITTED",
+      "after": "SUBMITTED",
+      "rev": "R1"
     }
   ]
 }

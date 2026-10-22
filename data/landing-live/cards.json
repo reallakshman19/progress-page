@@ -191,11 +191,11 @@
     "milestone": "M0",
     "label": "OTM hub and page tools",
     "who": {},
-    "state": "SUBMITTED",
+    "state": "IN_PROGRESS",
     "now": "Hub posting on after its 8th independent check PASSED; first 3 posts read back",
     "next": {
-      "actor": "Owner",
-      "text": "merge progress-page#2 (d8e3829) and Common#457 (81e15ab)"
+      "actor": "OTM",
+      "text": "mirror the merged page code into the Common progress-page module"
     },
     "refs": [
       {
@@ -204,10 +204,8 @@
         "u": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6339415993"
       }
     ],
-    "updatedAt": "2026-10-22T12:21:22Z",
-    "src": "https://github.com/reallakshman19/Common/pull/457",
-    "flags": [
-      "needs-you"
-    ]
+    "updatedAt": "2026-10-22T12:34:59Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6340863173",
+    "flags": []
   }
 }
