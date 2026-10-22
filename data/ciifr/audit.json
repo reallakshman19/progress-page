@@ -192,6 +192,60 @@
       "before": "VERIFIED",
       "after": "BLOCKED",
       "rev": "R2"
+    },
+    {
+      "seq": 15,
+      "id": "CIIFR-R-0015",
+      "previous_id": "CIIFR-R-0014",
+      "at": "2026-10-22T16:49:18Z",
+      "kind": "PLAN",
+      "actor": "OTM",
+      "summary": "O3 succeeds O2",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6346220289",
+      "scope": "chat:o3",
+      "rev": "R2"
+    },
+    {
+      "seq": 16,
+      "id": "CIIFR-R-0016",
+      "previous_id": "CIIFR-R-0015",
+      "at": "2026-10-22T16:49:18Z",
+      "kind": "BASELINE",
+      "actor": "OTM",
+      "summary": "Owner: O3 in progress",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6346220289",
+      "card": "o3",
+      "before": null,
+      "after": "IN_PROGRESS",
+      "rev": "R2"
+    },
+    {
+      "seq": 17,
+      "id": "CIIFR-R-0017",
+      "previous_id": "CIIFR-R-0016",
+      "at": "2026-10-22T16:49:19Z",
+      "kind": "STATE",
+      "actor": "OTM",
+      "summary": "Owner: O2 succeeded by O3",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6346220289",
+      "card": "o2",
+      "before": "IN_PROGRESS",
+      "after": "NOT_APPLICABLE",
+      "rev": "R2"
+    },
+    {
+      "seq": 18,
+      "id": "CIIFR-R-0018",
+      "previous_id": "CIIFR-R-0017",
+      "at": "2026-10-22T16:49:19Z",
+      "kind": "STATE",
+      "actor": "OTM",
+      "summary": "Owner: G2 retired",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6346220289",
+      "card": "g2",
+      "before": "BLOCKED",
+      "after": "NOT_APPLICABLE",
+      "rev": "R2"
     }
   ]
 }
