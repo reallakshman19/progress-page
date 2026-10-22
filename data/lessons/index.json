@@ -1,0 +1,58 @@
+{
+  "schema": 3,
+  "project": {
+    "key": "lessons",
+    "title": "Lessons",
+    "subtitle": "",
+    "updatedAt": "2026-10-22T11:41:38Z",
+    "updatedBy": "OTM",
+    "staleAfterMin": 120
+  },
+  "rules": {
+    "coordinator": "OTM",
+    "quietAfterMin": 30,
+    "idleAfterMin": 15,
+    "owesAfterMin": 15,
+    "waitingAfterMin": 15
+  },
+  "chats": {},
+  "milestones": {
+    "M1": {
+      "order": 1,
+      "name": "Plan",
+      "full": "Plan and approvals"
+    },
+    "M2": {
+      "order": 2,
+      "name": "Build",
+      "full": "Work in progress"
+    },
+    "M3": {
+      "order": 3,
+      "name": "Review",
+      "full": "Review and decisions"
+    },
+    "M4": {
+      "order": 4,
+      "name": "Accept",
+      "full": "Owner acceptance"
+    }
+  },
+  "groups": {
+    "main": {
+      "order": 1,
+      "title": "Work"
+    }
+  },
+  "revisions": [
+    {
+      "id": "R1",
+      "at": "2026-10-22T11:41:16Z",
+      "by": "OTM",
+      "why": "Owner asked for a lessons tab, starting with Lesson 1 (Grade9v3.5)",
+      "ownerWords": "can you save this as a Lesson 1: in our progress page as a new tab. add a migitation section, list steps taken",
+      "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6339862645",
+      "status": "current"
+    }
+  ]
+}

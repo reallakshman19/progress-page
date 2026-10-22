@@ -1,0 +1,64 @@
+{
+  "repository": [],
+  "issues": [],
+  "pullRequests": [],
+  "roadmap": [],
+  "highRoi": [
+    {
+      "t": "MITIGATION DONE 1 (22 Oct): the Owner's core aim and order of work (Core 2 -> 1A/1B -> questionnaire -> 2B) written in #1 and on the G9v3.5 tab as intent fixtures."
+    },
+    {
+      "t": "MITIGATION DONE 2 (22 Oct): Owner decisions: personal-use quality bar (rights, custody, publication, whole-bank gates dropped); Newton's laws first; at most 3 live blocks; 118 drafts parked; old blueprint package reference only; Grade9v3.5 hold lifted."
+    },
+    {
+      "t": "MITIGATION DONE 3 (22 Oct): PR #299 checked against issue #300: PARTIAL. Real progress only in Newton's laws (13 QRT tiles rated FINE by an independent reviewer on 19 Oct, 2 after a one-word fix). Do not merge #299; salvage the NLM Core 2 items in one small PR."
+    },
+    {
+      "t": "MITIGATION DONE 4 (22 Oct): milestones are set by each project's Oracle; anybody may add grounding fixtures; an Oracle may push its own project's page data."
+    },
+    {
+      "t": "MITIGATION DONE 5 (22 Oct): new Oracle O4 (local Codex) created with an aim-first prompt: the aim verbatim, the decisions, why the old plan failed, the modules to use, milestones and a 'items the kid can use today' headline. Fresh local copy C:/CodeC/Grade9v3.5."
+    }
+  ],
+  "future": [],
+  "intent": [
+    {
+      "t": "LESSON 1 (22 Oct 2026, Grade9v3.5): 20+ agents and thousands of lines of code produced no learner output. Repo then: 118 open draft PRs vs 8 merged, 130 open issues, 344 branches. Root cause: no written aim, and process built for a corporate product instead of a personal app for one kid."
+    }
+  ],
+  "inputs": [],
+  "knownIssues": [
+    {
+      "t": "L1.1 No written aim: each Oracle and agent rebuilt intent from scraps, so goals drifted (bank audit, custody, rights, golden benchmarks, validators) and the plan restarted again and again (Track A, A v2, B, B v2, blueprint-first, question-first replan)."
+    },
+    {
+      "t": "L1.2 Corporate quality bar for a home app: rights, custody, exact-byte reviews, reviewer nominations, fail-closed validators, and 'whole bank proven before any learner sees anything'. For one kid at home a wrong hint is cheap to fix; the gates cost weeks."
+    },
+    {
+      "t": "L1.3 The kid was never in the loop: no questionnaire, no demand signal. Success was measured by reviews and validators, not by learning."
+    },
+    {
+      "t": "L1.4 Breadth before depth: 3 subjects x 28 tiles x 8 topics x ~622 questions at once, in giant PRs (PR #299: +616k lines, 451 files, Maths mixed into Physics, 10 checks failing while its text claimed 100%). Not one topic finished end to end."
+    },
+    {
+      "t": "L1.5 Work never landed: drafts piled up on branches (118 open, 8 merged), so each new agent started from a different base."
+    },
+    {
+      "t": "L1.6 Coordination ate the effort, OTM included: chat limits forced handovers (Oracle 1 to 3) that lost knowledge; OTM's protocol, the hub and the Progress page grew into projects of their own (22 Oct: most OTM tokens went to hub and page tools, 8 hub checks)."
+    },
+    {
+      "t": "L1.7 Blockers stalled lanes for days: missing Maths source package, missing file receipts, then HOLD ALL."
+    }
+  ],
+  "pending": [
+    {
+      "t": "MITIGATION OPEN 1: Progress page Aim field on every tab (checker requires it) with module links; headline 'items usable today'; alert when a subject has more than 3 live blocks. Awaits the Owner's go for the Common module updates."
+    },
+    {
+      "t": "MITIGATION OPEN 2: gatekeeper personal-use profile; independent-review spot-check mode; task-decomposer and nudge-designer start from the page Aim; local-handover Drive/OneDrive files recorded as fixtures; START_HERE module table. Awaits the Owner's go."
+    },
+    {
+      "t": "MITIGATION OPEN 3: OTM skill: aim before any work, at most 3 live blocks, small PRs merged often, infrastructure work only when the Owner asks (daily token split reported); waiter alerts once per level."
+    }
+  ]
+}
