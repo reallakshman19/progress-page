@@ -4,7 +4,7 @@
     "key": "doc2table",
     "title": "Doc to Table",
     "subtitle": "",
-    "updatedAt": "2026-10-22T19:13:50Z",
+    "updatedAt": "2026-10-22T19:29:36Z",
     "updatedBy": "OTM",
     "staleAfterMin": 120,
     "aim": "Flexible .doc/.docx tables on GitHub Pages: headers and data picked independently, records combined, blocks joined. Original bytes and source evidence are the ground truth; anything not fully structured stays source-linked and inspectable. No zero-error claim; no required backend; no silent source loss. (Owner confirmed Oracle O1's read-back, 22 Oct.)",
@@ -33,37 +33,48 @@
     "M1": {
       "order": 1,
       "name": "Evidence and contracts",
-      "full": "Source hashes, scope, frozen denominators, Pages constraints and required evidence are explicit."
+      "full": "Source hashes, scope, frozen denominators, Pages constraints and required evidence are explicit.",
+      "wbs": "1"
     },
     "M2": {
       "order": 2,
       "name": "Preservation and inventory",
-      "full": "Original bytes, independent package entries, controls, nesting and geometry are retained; failures stay visible."
+      "full": "Original bytes, independent package entries, controls, nesting and geometry are retained; failures stay visible.",
+      "wbs": "2",
+      "bench": "B1",
+      "keeps": "none",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "No qualified browser custody/inventory prototype yet"
     },
     "M3": {
       "order": 3,
       "name": "Source and exceptions",
-      "full": "Raw remainders and unsupported objects open exact evidence; rendering failure leaves source-grid review usable."
+      "full": "Raw remainders and unsupported objects open exact evidence; rendering failure leaves source-grid review usable.",
+      "wbs": "3"
     },
     "M4": {
       "order": 4,
       "name": "Flexible mapping",
-      "full": "Independent headers/data, joins, selected-row combinations, contexts and matrices preserve field lineage."
+      "full": "Independent headers/data, joins, selected-row combinations, contexts and matrices preserve field lineage.",
+      "wbs": "4"
     },
     "M5": {
       "name": "Validation and exports",
       "full": "Declared native browser flow, fixed checks/reviews and portable source-linked evidence meet exact candidate requirements.",
-      "order": 5
+      "order": 5,
+      "wbs": "5"
     },
     "M6": {
       "name": "Legacy DOC",
       "full": "Browser-compatible import/normalization is qualified against retained original .doc sources.",
-      "order": 6
+      "order": 6,
+      "wbs": "6"
     },
     "M7": {
       "name": "Templates and assistance",
       "full": "Suggestions and template mismatches remain proposals and cannot bypass source/evidence gates.",
-      "order": 7
+      "order": 7,
+      "wbs": "7"
     }
   },
   "groups": {

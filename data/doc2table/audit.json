@@ -562,6 +562,90 @@
       "before": "SUBMITTED",
       "after": "SUBMITTED",
       "rev": "R1"
+    },
+    {
+      "seq": 44,
+      "id": "DOC2TABLE-R-0044",
+      "previous_id": "DOC2TABLE-R-0043",
+      "at": "2026-10-22T19:29:34Z",
+      "kind": "PLAN",
+      "actor": "OTM",
+      "summary": "WBS from RE D2T-O1-7, checked by OTM against aim",
+      "source": "https://github.com/reallakshman19/Word-to-Table/issues/1#issuecomment-6346200769",
+      "scope": "milestone:M1",
+      "rev": "R1"
+    },
+    {
+      "seq": 45,
+      "id": "DOC2TABLE-R-0045",
+      "previous_id": "DOC2TABLE-R-0044",
+      "at": "2026-10-22T19:29:34Z",
+      "kind": "PLAN",
+      "actor": "OTM",
+      "summary": "WBS from RE D2T-O1-7, checked by OTM against aim",
+      "source": "https://github.com/reallakshman19/Word-to-Table/issues/1#issuecomment-6346200769",
+      "scope": "milestone:M2",
+      "rev": "R1"
+    },
+    {
+      "seq": 46,
+      "id": "DOC2TABLE-R-0046",
+      "previous_id": "DOC2TABLE-R-0045",
+      "at": "2026-10-22T19:29:34Z",
+      "kind": "PLAN",
+      "actor": "OTM",
+      "summary": "WBS from RE D2T-O1-7, checked by OTM against aim",
+      "source": "https://github.com/reallakshman19/Word-to-Table/issues/1#issuecomment-6346200769",
+      "scope": "milestone:M3",
+      "rev": "R1"
+    },
+    {
+      "seq": 47,
+      "id": "DOC2TABLE-R-0047",
+      "previous_id": "DOC2TABLE-R-0046",
+      "at": "2026-10-22T19:29:35Z",
+      "kind": "PLAN",
+      "actor": "OTM",
+      "summary": "WBS from RE D2T-O1-7, checked by OTM against aim",
+      "source": "https://github.com/reallakshman19/Word-to-Table/issues/1#issuecomment-6346200769",
+      "scope": "milestone:M4",
+      "rev": "R1"
+    },
+    {
+      "seq": 48,
+      "id": "DOC2TABLE-R-0048",
+      "previous_id": "DOC2TABLE-R-0047",
+      "at": "2026-10-22T19:29:35Z",
+      "kind": "PLAN",
+      "actor": "OTM",
+      "summary": "WBS from RE D2T-O1-7, checked by OTM against aim",
+      "source": "https://github.com/reallakshman19/Word-to-Table/issues/1#issuecomment-6346200769",
+      "scope": "milestone:M5",
+      "rev": "R1"
+    },
+    {
+      "seq": 49,
+      "id": "DOC2TABLE-R-0049",
+      "previous_id": "DOC2TABLE-R-0048",
+      "at": "2026-10-22T19:29:35Z",
+      "kind": "PLAN",
+      "actor": "OTM",
+      "summary": "WBS from RE D2T-O1-7, checked by OTM against aim",
+      "source": "https://github.com/reallakshman19/Word-to-Table/issues/1#issuecomment-6346200769",
+      "scope": "milestone:M6",
+      "rev": "R1"
+    },
+    {
+      "seq": 50,
+      "id": "DOC2TABLE-R-0050",
+      "previous_id": "DOC2TABLE-R-0049",
+      "at": "2026-10-22T19:29:36Z",
+      "kind": "PLAN",
+      "actor": "OTM",
+      "summary": "WBS from RE D2T-O1-7, checked by OTM against aim",
+      "source": "https://github.com/reallakshman19/Word-to-Table/issues/1#issuecomment-6346200769",
+      "scope": "milestone:M7",
+      "rev": "R1"
     }
   ]
 }
