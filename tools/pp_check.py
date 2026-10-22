@@ -108,7 +108,37 @@ def check_index(c, key, index, status="active"):
         for k, v in items.items():
             c.integer(f"{w} {name} {k!r}", v, "order")
             c.text(f"{w} {name} {k!r}", v, noun, limit=80)
+    check_capability(c, w, index)
     check_revisions(c, w, index)
+
+
+def check_capability(c, w, index):
+    """Optional WBS fields of a milestone: the WBS number, the benchmark it adds and keeps, and what the user can do."""
+    items = index.get("milestones")
+    if not isinstance(items, dict):
+        return
+    seen = {}
+    for k, m in items.items():
+        at = f"{w} milestones {k!r}"
+        wbs = c.text(at, m, "wbs", opt=True, limit=15)
+        if wbs is not None:
+            if not L.WBS.match(wbs):
+                c.err(at, "wbs must be a WBS number like 1, 1.1 or 1.2.3")
+            elif wbs in seen:
+                c.err(at, f"wbs {wbs} is also used by milestone {seen[wbs]!r}")
+            else:
+                seen[wbs] = k
+        c.text(at, m, "bench", opt=True, limit=40)
+        c.text(at, m, "keeps", opt=True, limit=80)
+        cap = c.member(at, m, "cap", L.CAPABILITY, opt=True)
+        can = c.text(at, m, "canDo", opt=True, limit=200)
+        src = c.link(at, m, "capSrc", opt=True, source=True)
+        if cap is not None and can is None:
+            c.err(at, "cap needs canDo: one line on what the user can actually do")
+        if cap not in (None, "NOT_DEMONSTRATED") and src is None:
+            c.err(at, f"cap {cap} needs capSrc: the evidence link")
+        if cap is None and (can is not None or m.get("capSrc")):
+            c.err(at, "canDo and capSrc need cap")
 
 
 def check_revisions(c, w, index):

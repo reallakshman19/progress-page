@@ -22,6 +22,7 @@ import argparse
 import sys
 
 import pp_cards as C
+import pp_lib as L
 import pp_ops as O
 
 
@@ -81,6 +82,13 @@ def build():
         for f in ("--name", "--full", "--title", "--about", "--label", "--id8", "--engine"):
             p.add_argument(f)
         p.add_argument("--order", type=int)
+        if what == "milestone":
+            p.add_argument("--wbs", help="WBS number, for example 1.1")
+            p.add_argument("--bench", help="the benchmark this step adds, for example B1")
+            p.add_argument("--keeps", help="earlier benchmarks it must still pass, for example B1")
+            p.add_argument("--cap", choices=L.CAPABILITY, help="what the user can do: the evidence step")
+            p.add_argument("--can-do", help="one line on what the user can actually do today")
+            p.add_argument("--cap-src", help="public GitHub link of the capability evidence")
 
     cd = kind("card")
     p = W(cd.add_parser("set"), "--summary", "what changed on this card")
@@ -183,7 +191,9 @@ def run(a):
     if c == "revision":
         return O.revision_add(d, a.project, a.why, a.owner_words, a.src, a.actor)
     if c == "plan":
-        fields = {"milestone": {"name": a.name, "full": a.full, "order": a.order}, "group": {"title": a.title, "sub": a.about, "order": a.order},
+        g = lambda f: getattr(a, f, None)  # the WBS options exist on 'plan milestone' only
+        fields = {"milestone": {"name": a.name, "full": a.full, "order": a.order, "wbs": g("wbs"), "bench": g("bench"), "keeps": g("keeps"),
+                                "cap": g("cap"), "canDo": g("can_do"), "capSrc": g("cap_src")}, "group": {"title": a.title, "sub": a.about, "order": a.order},
                   "chat": {"label": a.label, "id8": a.id8, "engine": a.engine}}[s]
         return O.plan(d, a.project, s, a.id, fields, a.actor, a.why, a.src)
     if c == "card" and s == "set":

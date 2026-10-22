@@ -1,7 +1,7 @@
 // Progress view: attention strip, milestone strip, then groups of agent blocks.
-import { el, link, md, age } from './util.js?v=10';
-import { cardTags, fmt, nudgeTag } from './triggers.js?v=10';
-import { nudgeRow } from './nudge.js?v=10';
+import { el, link, md, age } from './util.js?v=11';
+import { cardTags, fmt, nudgeTag } from './triggers.js?v=11';
+import { nudgeRow } from './nudge.js?v=11';
 
 const RANK = { NOT_STARTED: 0, UNKNOWN: 1, STALE: 1, IN_PROGRESS: 2, SUBMITTED: 3, VERIFIED: 4 };
 const ICON = { VERIFIED: '✓', SUBMITTED: '↑', IN_PROGRESS: '●', BLOCKED: '!', NOT_STARTED: '○', STALE: '?', UNKNOWN: '?', NOT_APPLICABLE: '–' };
@@ -21,21 +21,62 @@ export function milestoneState(cards) {
   return weakest === 'VERIFIED' ? 'IN_PROGRESS' : weakest;
 }
 
+// What the user can do with a WBS step, set by its Oracle with evidence; agent block states never decide it.
+const CAP = { NOT_DEMONSTRATED: 'not demonstrated', CANDIDATE: 'candidate demonstrated', BENCHMARK_SUPPORTED: 'benchmark supported',
+  INDEPENDENTLY_VERIFIED: 'independently verified', AVAILABLE: 'available to the user' };
+
+// The WBS tab picked on this page; kept across the two-minute refresh, cleared with "All".
+let picked = null;
+
+function applyPick(root) {
+  root.querySelectorAll('.ms[data-ms]').forEach((b) => b.classList.toggle('on', b.dataset.ms === picked));
+  root.querySelectorAll('.ms-all').forEach((b) => b.classList.toggle('on', !picked));
+  root.querySelectorAll('.card').forEach((c) => { c.hidden = !!picked && c.dataset.ms !== picked; });
+  root.querySelectorAll('.grp').forEach((g) => { g.hidden = !!picked && !g.querySelector('.card:not([hidden])'); });
+  root.querySelectorAll('.flow .arrow').forEach((a) => {
+    const prev = a.previousElementSibling;
+    const next = a.nextElementSibling;
+    a.hidden = !!picked && (!prev || prev.hidden || !next || next.hidden);
+  });
+}
+
 function strip(index, cards) {
   const wrap = el('div', 'ms-wrap');
-  wrap.append(el('div', 'h-label', 'Milestones'));
-  const row = el('div', 'ms-row');
   const list = Object.entries(index.milestones || {}).sort((a, b) => (a[1].order || 0) - (b[1].order || 0));
+  const wbs = list.some(([, m]) => m.wbs);
+  const hd = el('div', 'h-label', wbs ? 'Work breakdown (WBS)' : 'Milestones');
+  wrap.append(hd);
+  const row = el('div', 'ms-row');
+  const all = el('button', 'ms-all', 'All');
+  all.type = 'button';
+  all.title = 'Show the agent blocks of every step';
+  all.addEventListener('click', () => { picked = null; applyPick(wrap.parentNode); });
+  row.append(all);
   list.forEach(([key, m], i) => {
     const mine = cards.filter((c) => c.milestone === key);
     const live = mine.filter((c) => c.state !== 'NOT_APPLICABLE');
     const state = milestoneState(mine);
-    const box = el('div', 'ms ms-' + state);
-    box.title = m.full || m.name;
+    const box = el('div', 'ms ms-' + state + (m.cap ? ' cap cap-' + m.cap : ''));
+    box.setAttribute('role', 'button');
+    box.tabIndex = 0;
+    box.dataset.ms = key;
+    box.title = (m.full || m.name) + ' (click to show only this step’s agent blocks)';
     const top = el('div', 'ms-top');
-    top.append(el('span', 'ms-ic', ICON[state] || '○'), el('span', 'ms-key', key));
-    box.append(top, el('div', 'ms-name', m.name), el('div', 'ms-state', state),
-      el('div', 'ms-count', live.filter((c) => c.state === 'VERIFIED').length + ' of ' + live.length + ' verified'));
+    top.append(el('span', 'ms-ic', ICON[state] || '○'), el('span', 'ms-key', m.wbs ? 'WBS ' + m.wbs : key));
+    if (m.wbs) top.append(el('span', 'ms-id', key));
+    box.append(top, el('div', 'ms-name', m.name));
+    if (m.cap) {
+      box.append(el('div', 'ms-cap', CAP[m.cap] || m.cap));
+      if (m.canDo) box.append(el('div', 'ms-can', 'Can do: ' + m.canDo));
+      if (m.capSrc) box.append(link(m.capSrc, 'evidence'));
+    } else {
+      box.append(el('div', 'ms-state', state));
+    }
+    if (m.bench || m.keeps) box.append(el('div', 'ms-bench', [m.bench, m.keeps ? 'keeps ' + m.keeps : ''].filter(Boolean).join(' · ')));
+    box.append(el('div', 'ms-count', live.filter((c) => c.state === 'VERIFIED').length + ' of ' + live.length + ' agent blocks verified'));
+    const pick = () => { picked = picked === key ? null : key; applyPick(wrap.parentNode); };
+    box.addEventListener('click', (e) => { if (!e.target.closest('a')) pick(); });
+    box.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pick(); } });
     row.append(box);
     if (i < list.length - 1) row.append(el('span', 'ms-sep', '›'));
   });
@@ -74,6 +115,7 @@ function cardEl(c, ctx) {
   const kind = c.kind || KIND[c.state] || 'idle';
   const d = el('article', 'card k-' + kind + (c.closed ? ' closed' : ''));
   d.dataset.card = c.id;
+  if (c.milestone) d.dataset.ms = c.milestone;
   const hd = el('div', 'c-hd');
   hd.append(el('span', 'c-nm', c.label), age(c.updatedAt, '(updated {t} ago)', c.state === 'NOT_STARTED' ? '(not started)' : '(updated: no GitHub time)'));
   d.append(hd);
@@ -212,4 +254,6 @@ export function renderProgress(root, project, ctx) {
   });
   const rest = cards.filter((c) => !used.has(c.id));
   if (rest.length) root.append(groupBlock({ title: 'Other' }, rest, ctx));
+  if (picked && !(project.index.milestones || {})[picked]) picked = null;
+  applyPick(root);
 }
