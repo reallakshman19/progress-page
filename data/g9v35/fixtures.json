@@ -224,6 +224,9 @@
       "t": "CI facts and addendum",
       "u": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128#issuecomment-6317759407",
       "n": "Shared"
+    },
+    {
+      "t": "Located; handoff upload pending: g9v35/new_items_f4883273c43e.md; 16956 bytes; sha256 f4883273c43e5622336fe84d2c6f0363201c71872f343f01a8081bab7d8f7439. Local source C:/t/nnf7/new_items.md. The 13-item reference was read by headings only; no Oracle correctness claim."
     }
   ],
   "knownIssues": [
@@ -272,6 +275,9 @@
       "t": "The old account reallaksh19 is deleted (Owner, 21 Oct): its repos and the 4 Math witness comments are gone; search only in reallakshman19",
       "s": "open",
       "n": "Shared"
+    },
+    {
+      "t": "NLM source drift: the historical 25-item review bank hashes eb7ba61bd74f; PR 299 at 455103ad has a 39-item bank, c87ad141e4db. Its first three rows declare authored scenarios, not original exam questions. Historical FINE does not certify the changed bank or a current learning display."
     }
   ],
   "pending": [

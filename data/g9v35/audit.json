@@ -350,6 +350,32 @@
       "list": "roadmap",
       "op": "add",
       "rev": "R1"
+    },
+    {
+      "seq": 27,
+      "id": "G9V35-R-0027",
+      "previous_id": "G9V35-R-0026",
+      "at": "2026-10-22T12:52:08Z",
+      "kind": "FIXTURE",
+      "actor": "Oracle G9V35-O4",
+      "summary": "Record located exemplar bytes and the remaining OTM transfer step without a storage link.",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128#issuecomment-6339825083",
+      "list": "inputs",
+      "op": "add",
+      "rev": "R1"
+    },
+    {
+      "seq": 28,
+      "id": "G9V35-R-0028",
+      "previous_id": "G9V35-R-0027",
+      "at": "2026-10-22T12:52:08Z",
+      "kind": "FIXTURE",
+      "actor": "Oracle G9V35-O4",
+      "summary": "Keep source versions and authored provenance separate from historical item-review results.",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128#issuecomment-6339825083",
+      "list": "knownIssues",
+      "op": "add",
+      "rev": "R1"
     }
   ]
 }
