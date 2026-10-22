@@ -142,6 +142,11 @@ class Inputs(unittest.TestCase):
                 cmd = self.suggest(text=f"a1: {evil}")
                 self.assertIsNone(re.search(r'"[^"]*(?<!\\)[$`][^"]*"', cmd), cmd)
 
+    def test_an_issue_without_a_listed_project_is_not_recorded(self):
+        for key in ("", "..", "."):
+            with self.subTest(key=key):
+                self.assertTrue(pp_inputs.suggest(str(self.d), {"project": key, "type": "NUDGE", "text": "a1: x"}, self.URL, H.ACTOR).startswith("NOT RECORDED"))
+
     # BUG: the card in "<card>: <line>" is copied into the command unquoted and is not checked against the project's cards.
     def test_a_card_name_with_shell_syntax_is_not_copied_into_the_command(self):
         cmd = self.suggest(text="a1;echo pwned: line")

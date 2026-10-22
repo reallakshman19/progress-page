@@ -70,7 +70,7 @@ export function summary(cardMap, index, now, nudges) {
   const rules = rulesOf(index);
   const hold = holdOf(index);
   const out = { needsYou: 0, owes: 0, quiet: 0, waiting: 0, nudges: 0, stale: false, staleFor: null };
-  cards.forEach((c) => cardTags(c, rules, now, hold).forEach((t) => { if (SLOT[t.k]) out[SLOT[t.k]] += 1; }));
+  cards.filter((c) => !c.closed).forEach((c) => cardTags(c, rules, now, hold).forEach((t) => { if (SLOT[t.k]) out[SLOT[t.k]] += 1; }));
   const live = new Set(cards.filter((c) => !c.closed && c.state !== 'NOT_APPLICABLE').map((c) => c.id));
   out.nudges = Object.values(nudges || {}).filter((n) => n.status === 'open' && live.has(n.card)).length;
   const m = minutesSince(((index && index.project) || {}).updatedAt, now);

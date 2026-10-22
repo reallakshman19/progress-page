@@ -51,7 +51,7 @@ def quote(s):
 def suggest(data, form, url, actor):
     """The command that records this input, or a note saying what to do instead."""
     key, kind, text = form.get("project", ""), (form.get("type") or "").upper(), form.get("text", "")
-    if not (Path(data) / key).is_dir():
+    if key not in {p["key"] for p in L.read_json(Path(data) / "projects.json")["projects"]} or not (Path(data) / key).is_dir():
         return f"NOT RECORDED: no project {key!r}; show the Owner in chat first"
     base = f"python tools/pp_cli.py --data {quote(data)} "
     who = f"--actor {quote(actor)} --src {quote(url)}"

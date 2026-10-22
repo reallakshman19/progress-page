@@ -22,7 +22,8 @@ export function takeLinksFromHash() {
   try {
     const raw = atob(m[1].replace(/-/g, '+').replace(/_/g, '/'));
     const map = JSON.parse(new TextDecoder().decode(Uint8Array.from(raw, (ch) => ch.charCodeAt(0))));
-    out = { status: 'saved', count: Object.keys(storeLinks(map)).length };
+    const good = map && typeof map === 'object' && !Array.isArray(map) && Object.values(map).some(isHttps);
+    out = good ? { status: 'saved', count: Object.keys(storeLinks(map)).length } : { status: 'bad' };
   } catch (e) {
     out = { status: 'bad' };
   }
