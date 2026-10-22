@@ -274,7 +274,7 @@
   },
   "shared-D3": {
     "order": 1,
-    "status": "open",
+    "status": "done",
     "stages": [
       "G7"
     ],
@@ -323,6 +323,11 @@
         "u": "https://github.com/reallakshman19/Grade9v3.5/pull/305"
       }
     ],
-    "topic": "shared"
+    "topic": "shared",
+    "answer": {
+      "text": "done (wake line pasted ~10:00, relayed by OTM as your stand-in)",
+      "at": "2026-10-22T09:20:02Z",
+      "ref": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6337284438"
+    }
   }
 }

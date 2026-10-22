@@ -182,14 +182,14 @@
       "chat": "ir",
       "role": "independent reviewer"
     },
-    "state": "BLOCKED",
-    "now": "IR1 done (PARTIAL, [#128 6317077215](https://github.com/reallakshman19/CoordinatorLandingpage/issues/128#issuecomment-6317077215)). Short new-diff check asked 02:10 on [#135 6327655150](https://github.com/reallakshman19/CoordinatorLandingpage/issues/135#issuecomment-6327655150) for PR #305 head 69b1b4b5: no reply since. The IR wake path is paused or unknown.",
+    "state": "SUBMITTED",
+    "now": "Wake line pasted by the Owner ~10:00; no RE on #135 yet (G9v3.5 held)",
     "next": {
-      "actor": "YOU",
-      "text": "paste the wake line into the IR session (My actions)"
+      "actor": "IR",
+      "text": "post its RE for the short new-diff check on #135"
     },
-    "updatedAt": "2026-10-21T22:10:08Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/135#issuecomment-6327655150",
+    "updatedAt": "2026-10-22T09:20:08Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6337284438",
     "refs": [
       {
         "k": "issue",
@@ -203,9 +203,7 @@
         "s": "draft · HOLD"
       }
     ],
-    "flags": [
-      "needs-you"
-    ]
+    "flags": []
   },
   "owner": {
     "order": 9,

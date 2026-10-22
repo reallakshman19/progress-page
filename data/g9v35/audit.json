@@ -143,6 +143,32 @@
       "revision": "R1",
       "scope": "project",
       "rev": "R1"
+    },
+    {
+      "seq": 11,
+      "id": "G9V35-R-0011",
+      "previous_id": "G9V35-R-0010",
+      "at": "2026-10-22T09:20:02Z",
+      "kind": "ANSWER",
+      "actor": "OTM",
+      "summary": "Owner answered shared-D3: done (wake line pasted ~10:00, relayed by OTM as your stand-in)",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6337284438",
+      "action": "shared-D3",
+      "rev": "R1"
+    },
+    {
+      "seq": 12,
+      "id": "G9V35-R-0012",
+      "previous_id": "G9V35-R-0011",
+      "at": "2026-10-22T09:20:08Z",
+      "kind": "STATE",
+      "actor": "OTM",
+      "summary": "Owner pasted the wake line; waiting on the IR",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6337284438",
+      "card": "ir",
+      "before": "BLOCKED",
+      "after": "SUBMITTED",
+      "rev": "R1"
     }
   ]
 }
