@@ -57,6 +57,8 @@ def card_tags(c, rules, now, hold=False):
     is_coord = str(actor).lower() == str(rules["coordinator"]).lower()
     if actor == "YOU" or "needs-you" in flags:
         return [{"k": "needs-you", "t": "needs you" + ("" if age is None else " · " + fmt(age)), "sev": 2}]
+    if c.get("state") == "BLOCKED":
+        return []
     if "paused" in flags or hold:
         return [{"k": "paused", "t": "paused", "sev": 0}]
     if age is None:
@@ -97,7 +99,9 @@ def evaluate(base, now):
         rec = {"project": key, "label": p["label"], "coordinator": rules["coordinator"], "stale": stale_for is not None and stale_for > rules["staleAfterMin"] and not hold, "staleFor": stale_for,
                "needsYou": 0, "owes": 0, "quiet": 0, "waiting": 0, "nudges": 0, "items": []}
         for cid, c in sorted(cards.items(), key=lambda kv: kv[1].get("order", 0)):
-            tags = [] if (c.get("closed") or c.get("state") == "NOT_APPLICABLE") else card_tags(c, rules, now, hold)
+            if c.get("closed") or c.get("state") == "NOT_APPLICABLE":
+                continue
+            tags = card_tags(c, rules, now, hold)
             opened = [n for n in nudges.values() if n.get("card") == cid and n.get("status") == "open"]
             nt = nudge_tag(opened, rules, now)
             if nt:

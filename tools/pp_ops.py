@@ -22,7 +22,7 @@ def save(txn, root, docs, names=L.FILES):
 def record(docs, key, kind, actor, summary, source, **extra):
     """Append one Timeline entry and move the project's 'updated' time and name."""
     ev = {"kind": kind, "actor": actor, "summary": summary, "source": source}
-    ev.update({k: v for k, v in extra.items() if v is not None})
+    ev.update({k: v for k, v in extra.items() if v is not None or k == "before"})
     out = L.append_event(docs["audit"], key, ev, L.current_rev(docs["index"]))
     docs["index"]["project"]["updatedAt"] = out["at"]
     docs["index"]["project"]["updatedBy"] = actor
@@ -57,7 +57,7 @@ def add_project(data, key, title, label, mode, coordinator, subtitle, actor, src
     doc["projects"].append({"key": key, "label": label or title, "order": max([p.get("order", 0) for p in doc["projects"]] + [0]) + 1,
                             "mode": mode, "replyTo": reply or {"kind": "none"}})
     txn = L.Txn()
-    (Path(data) / key).mkdir(parents=True, exist_ok=True)
+    txn.mkdir(Path(data) / key)
     save(txn, Path(data) / key, docs)
     txn.write(path, doc)
     L.finish(txn, data)
@@ -113,7 +113,9 @@ def lifecycle(data, key, kind, why, actor, src, to=None):
         raise SystemExit("--by must name another existing project key.")
     for f in ("statusWhy", "statusAt", "statusBy", "statusSrc", "supersededBy"):
         entry.pop(f, None)
-    if kind != "RESTORE":
+    if kind == "RESTORE":
+        entry["status"] = "active"
+    else:
         entry.update({"status": status, "statusWhy": why, "statusAt": L.now_iso(), "statusBy": actor, "statusSrc": src})
         if to:
             entry["supersededBy"] = to

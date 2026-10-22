@@ -59,6 +59,7 @@ def check_projects(c, doc):
         status = c.member(at, p, "status", L.PROJECT_STATUS, opt=True) or "active"
         if status != "active":
             c.text(at, p, "statusWhy")
+            c.text(at, p, "statusBy")
             c.stamp(at, p, "statusAt")
             c.link(at, p, "statusSrc", source=True)
         if status == "superseded" and p.get("supersededBy") not in [q.get("key") for q in plist]:
@@ -128,8 +129,12 @@ def check_revisions(c, w, index):
 
 def scan_text(c, root, private):
     for path in sorted(Path(root).rglob("*.json")):
-        raw = path.read_text(encoding="utf-8")
         where = str(path.relative_to(root))
+        try:
+            raw = path.read_text(encoding="utf-8")
+        except (OSError, ValueError) as exc:
+            c.err(where, f"cannot read JSON ({exc})")
+            continue
         for pattern, why in SECRETS:
             if pattern.search(raw):
                 c.err(where, why)

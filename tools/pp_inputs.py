@@ -8,6 +8,7 @@ Standard library only. It reads public repositories; set GITHUB_TOKEN to read pr
 import json
 import os
 import re
+import shlex
 import urllib.request
 from pathlib import Path
 
@@ -43,7 +44,8 @@ def recorded(data):
 
 
 def quote(s):
-    return '"' + s.replace('"', "'") + '"'
+    """Single-quoted for the shell (bash/sh): $, ` and operators in Owner text stay literal."""
+    return shlex.quote(str(s))
 
 
 def suggest(data, form, url, actor):
@@ -51,21 +53,23 @@ def suggest(data, form, url, actor):
     key, kind, text = form.get("project", ""), (form.get("type") or "").upper(), form.get("text", "")
     if not (Path(data) / key).is_dir():
         return f"NOT RECORDED: no project {key!r}; show the Owner in chat first"
-    base = f"python tools/pp_cli.py --data {data} "
-    who = f"--actor {quote(actor)} --src {url}"
+    base = f"python tools/pp_cli.py --data {quote(data)} "
+    who = f"--actor {quote(actor)} --src {quote(url)}"
     if kind == "DECISION":
         actions = L.read_json(Path(data) / key / "actions.json")
         norm = " ".join(text.split())
         hit = next((k for k, a in actions.items() if a.get("status") == "open" and any(" ".join(o.get("reply", "").split()) == norm for o in a.get("options", []))), None)
         if hit:
-            return base + f"action answer --project {key} --key {hit} --text {quote(text)} --ref {url} --actor {quote(actor)}"
+            return base + f"action answer --project {quote(key)} --key {quote(hit)} --text {quote(text)} --ref {quote(url)} --actor {quote(actor)}"
         return "NO MATCH with any open decision reply: show the Owner in chat first"
     if kind == "NUDGE":
         card, _, line = text.partition(": ")
-        return base + f"nudge add --project {key} --card {card} --text {quote(line)} --by Owner {who}"
+        if card not in L.read_json(Path(data) / key / "cards.json"):
+            return f"NOT RECORDED: no card {card!r} in {key}, show the Owner in chat first"
+        return base + f"nudge add --project {quote(key)} --card {quote(card)} --text {quote(line)} --by Owner {who}"
     if kind == "NUDGE-WITHDRAW":
         m = re.match(r"withdraw (N\d+)", text)
-        return base + f"nudge withdraw --project {key} --id {m.group(1)} --by Owner {who}" if m else "NOT RECORDED: cannot read the nudge id; show the Owner"
+        return base + f"nudge withdraw --project {quote(key)} --id {m.group(1)} --by Owner {who}" if m else "NOT RECORDED: cannot read the nudge id; show the Owner"
     return f"NOT RECORDED: unknown input type {kind!r}; show the Owner in chat first"
 
 

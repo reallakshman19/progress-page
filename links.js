@@ -1,5 +1,5 @@
 // Chat links: kept in this browser only, never in the repository.
-import { el, isHttps } from './util.js?v=8';
+import { el, isHttps } from './util.js?v=9';
 
 export function loadLinks() {
   try { return JSON.parse(localStorage.getItem('pp-links') || '{}'); } catch (e) { return {}; }
@@ -14,11 +14,20 @@ export function storeLinks(map) {
 
 // A private setup link (page URL + #links=<base64url JSON>) saves the chat links in this browser once.
 // The part after # never leaves the browser: it is not sent to any server.
+// Returns null (no setup link), 'saved' with the count, or 'bad' when the link is cut short or damaged (nothing is saved then).
 export function takeLinksFromHash() {
-  const m = /^#links=([A-Za-z0-9_-]+)$/.exec(location.hash || '');
-  if (!m) return;
-  try { storeLinks(JSON.parse(atob(m[1].replace(/-/g, '+').replace(/_/g, '/')))); } catch (e) { /* ignore a bad setup link */ }
+  const m = /^#links=(.*)$/.exec(location.hash || '');
+  if (!m) return null;
+  let out;
+  try {
+    const raw = atob(m[1].replace(/-/g, '+').replace(/_/g, '/'));
+    const map = JSON.parse(new TextDecoder().decode(Uint8Array.from(raw, (ch) => ch.charCodeAt(0))));
+    out = { status: 'saved', count: Object.keys(storeLinks(map)).length };
+  } catch (e) {
+    out = { status: 'bad' };
+  }
   try { history.replaceState(null, '', location.pathname + location.search + '#/'); } catch (e) { /* sandboxed frame */ }
+  return out;
 }
 
 export function linksPanel(onSave) {

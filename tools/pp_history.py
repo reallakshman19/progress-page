@@ -27,12 +27,15 @@ def check_against_base(data, ref):
     if not top:
         return [f"{data}: not inside a git repository, so --base {ref} cannot be used"]
     top = Path(top.strip()).resolve()
+    if _git(["rev-parse", "--verify", "--quiet", f"{ref}^{{commit}}"], top) is None:
+        return [f"--base {ref}: no such commit in this repository, so nothing could be compared"]
     rel = data.relative_to(top).as_posix()
     base_doc = _at_base(top, ref, f"{rel}/projects.json")
     if base_doc is None:
         return []
     errs = []
-    now_keys = {p["key"] for p in L.read_json(data / "projects.json")["projects"]}
+    now_entries = {p["key"]: p for p in L.read_json(data / "projects.json")["projects"]}
+    now_keys = set(now_entries)
     for p in base_doc["projects"]:
         key = p["key"]
         if key not in now_keys:
@@ -42,11 +45,11 @@ def check_against_base(data, ref):
         new = {f: L.read_json(data / key / f"{f}.json") for f in L.FILES}
         if any(v is None for v in old.values()):
             continue
-        errs += _project(key, old, new)
+        errs += _project(key, old, new, entry_changed=p != now_entries[key])
     return errs
 
 
-def _project(key, old, new):
+def _project(key, old, new, entry_changed=False):
     errs = []
     for what, name in (("cards", "card"), ("actions", "decision")):
         gone = sorted(set(old[what]) - set(new[what]))
@@ -62,7 +65,7 @@ def _project(key, old, new):
         now = next((x for x in new["index"].get("revisions") or [] if x.get("id") == r["id"]), None)
         if now is None or any(now.get(f) != r.get(f) for f in REV_FIXED):
             errs.append(f"{key}/index.json: revision {r['id']} was changed; a revision keeps its words")
-    changed = any(old[f] != new[f] for f in ("index", "cards", "actions", "fixtures", "nudges"))
+    changed = entry_changed or any(old[f] != new[f] for f in ("index", "cards", "actions", "fixtures", "nudges"))
     if changed and len(new_ev) <= len(old_ev):
         errs.append(f"{key}: data changed but the Timeline gained no entry (use tools/pp_cli.py so it is recorded)")
     return errs

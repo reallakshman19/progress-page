@@ -120,7 +120,8 @@ def _events(c, w, key, docs, st):
         elif e.get("kind") in ("ANSWER", "ACTION"):
             if e.get("action") not in actions:
                 c.err(at, f"{e.get('kind')} needs action = a key from actions.json")
-            st["answered"].add(e.get("action"))
+            if e.get("kind") == "ANSWER":
+                st["answered"].add(e.get("action"))
         elif e.get("kind") == "NUDGE":
             _nudge_event(c, at, e, docs["nudges"].get("nudges") or {}, st)
         elif e.get("kind") == "FIXTURE":

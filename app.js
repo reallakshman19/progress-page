@@ -1,13 +1,13 @@
 // Shell: loads the JSON, draws the project tabs and the views, refreshes every two minutes.
-import { el, link, tick, ago, whenText } from './util.js?v=8';
-import { renderProgress } from './progress.js?v=8';
-import { renderActions, renderFixtures, openCount } from './actions.js?v=8';
-import { renderTimeline } from './timeline.js?v=8';
-import { tabsRow, archivedPanel, projectHead, isActive } from './lifecycle.js?v=8';
-import { nudgesOf, openNudge } from './nudge.js?v=8';
-import { addProjectDialog, addRevisionDialog } from './briefs.js?v=8';
-import { loadLinks, takeLinksFromHash, linksPanel } from './links.js?v=8';
-import { rulesOf, holdOf, summary, needsAttention } from './triggers.js?v=8';
+import { el, link, tick, ago, whenText } from './util.js?v=9';
+import { renderProgress } from './progress.js?v=9';
+import { renderActions, renderFixtures, openCount } from './actions.js?v=9';
+import { renderTimeline } from './timeline.js?v=9';
+import { tabsRow, archivedPanel, projectHead, isActive } from './lifecycle.js?v=9';
+import { nudgesOf, openNudge } from './nudge.js?v=9';
+import { addProjectDialog, addRevisionDialog } from './briefs.js?v=9';
+import { loadLinks, takeLinksFromHash, linksPanel } from './links.js?v=9';
+import { rulesOf, holdOf, summary, needsAttention } from './triggers.js?v=9';
 
 const LIVE_DATA = 'https://reallakshman19.github.io/progress-page/data/';
 const q = new URLSearchParams(location.search);
@@ -20,7 +20,9 @@ const VIEWS = ['progress', 'actions', 'fixtures', 'timeline'];
 const snapshot = () => window.__PP_SNAPSHOT__ || null;
 const withTimeout = (p, ms) => Promise.race([p, new Promise((_, rej) => setTimeout(() => rej(new Error('timeout')), ms))]);
 
-takeLinksFromHash();
+const setupLink = takeLinksFromHash();
+// A setup link pasted into a tab that already shows the page changes only the hash: reload so it is read.
+window.addEventListener('hashchange', () => { if (location.hash.startsWith('#links=')) location.reload(); });
 
 // The route is kept in memory as well as in the address, because a preview frame cannot always change its address.
 let hash = location.hash;
@@ -144,7 +146,7 @@ function badge(n) {
 }
 
 function sumOf(p) {
-  return summary(Object.values(p.cards || {}), p.index, undefined, (p.nudges || {}).nudges);
+  return summary(p.cards || {}, p.index, undefined, (p.nudges || {}).nudges);
 }
 
 function statusLine(p) {
@@ -193,6 +195,11 @@ function render() {
   if (state.error && !state.projects.length) {
     root.append(el('p', 'err', 'Could not read the data: ' + state.error));
     return;
+  }
+  if (setupLink && setupLink.status === 'bad') {
+    root.append(el('p', 'banner', 'This setup link is incomplete or damaged (often its end was cut off when it was copied), so no chat links were saved. Copy the whole link again and open it.'));
+  } else if (setupLink && setupLink.status === 'saved') {
+    root.append(el('p', 'banner', 'Setup link read: ' + setupLink.count + ' chat links saved in this browser.'));
   }
   if (state.panel) root.append(linksPanel(() => { state.links = mergedLinks(); state.panel = false; render(); }));
   if (!Object.keys(state.links).length) {

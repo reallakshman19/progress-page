@@ -99,7 +99,7 @@ def action_add(data, key, akey, title, lead, options, suggested, actor, src, lin
         raise SystemExit(f"Decision {akey!r} exists.")
     opts = []
     for o in options:
-        k, label, body, reply = (o.split("|") + ["", "", "", ""])[:4]
+        k, label, body, reply = (o.split("|", 3) + ["", "", "", ""])[:4]
         opts.append({"key": k, "label": label + (" (suggested)" if k == suggested else ""), "suggested": k == suggested, "body": body, "reply": reply})
     docs["actions"][akey] = {"order": max([a.get("order", 0) for a in docs["actions"].values()] + [0]) + 1, "status": "open", "title": title, "lead": lead,
                              "options": opts, "links": [{"l": x.split("|")[0], "u": x.split("|")[1]} for x in links or []]}

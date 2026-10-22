@@ -89,18 +89,30 @@ class Txn:
 
     def __init__(self):
         self.saved = {}
+        self.made = []
+
+    def mkdir(self, path):
+        path = Path(path)
+        if not path.exists():
+            path.mkdir(parents=True)
+            self.made.append(path)
 
     def write(self, path, obj):
         path = Path(path)
-        self.saved.setdefault(path, path.read_text(encoding="utf-8") if path.exists() else None)
+        self.saved.setdefault(path, path.read_bytes() if path.exists() else None)
         write_json(path, obj)
 
     def rollback(self):
-        for p, text in self.saved.items():
-            if text is None:
+        for p, raw in self.saved.items():
+            if raw is None:
                 p.unlink(missing_ok=True)
             else:
-                p.write_text(text, encoding="utf-8", newline="\n")
+                p.write_bytes(raw)
+        for d in reversed(self.made):
+            try:
+                d.rmdir()
+            except OSError:
+                pass
 
 
 def finish(txn, data):

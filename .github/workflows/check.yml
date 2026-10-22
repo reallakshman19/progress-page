@@ -1,0 +1,41 @@
+name: Check progress data
+on:
+  pull_request:
+    paths: ['data/**', 'tools/**', 'tests/**', '*.js']
+  push:
+    branches: [main]
+    paths: ['data/**', 'tools/**', 'tests/**', '*.js']
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Contract check
+        run: python tools/pp_check.py data
+      - name: The Timeline only grew and nothing was deleted
+        if: github.event_name == 'pull_request'
+        run: python tools/pp_check.py data --base origin/${{ github.base_ref }}
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Seeded-defect tests
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: python -B -m unittest discover -s tests -v

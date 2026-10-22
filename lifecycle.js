@@ -1,5 +1,5 @@
 // Project tabs with "+", the Archived list, the project header and the revision row.
-import { el, link, whenText, isHttps } from './util.js?v=8';
+import { el, link, whenText, isHttps } from './util.js?v=9';
 
 const WORD = { archived: 'Archived', superseded: 'Superseded', cancelled: 'Cancelled' };
 

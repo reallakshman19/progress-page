@@ -38,6 +38,7 @@ export function cardTags(c, rules, now, hold) {
   if (actor === 'YOU' || (c.flags || []).includes('needs-you')) {
     return [{ k: 'needs-you', t: 'needs you' + (age == null ? '' : ' · ' + fmt(age)), sev: 2 }];
   }
+  if (c.state === 'BLOCKED') return [];
   if ((c.flags || []).includes('paused') || hold) return [{ k: 'paused', t: 'paused', sev: 0 }];
   if (age == null) return [];
   if (isCoord && age >= rules.owesAfterMin) {
@@ -62,13 +63,16 @@ export function nudgeTag(openList, rules, now) {
 
 const SLOT = { 'needs-you': 'needsYou', owes: 'owes', quiet: 'quiet', waiting: 'waiting' };
 
-// nudges: the nudges.json map (id -> nudge), optional.
-export function summary(cards, index, now, nudges) {
+// cards: the cards.json map (id -> card). nudges: the nudges.json map (id -> nudge), optional.
+// Open nudges count only on live cards: a closed card never triggers (rule 1).
+export function summary(cardMap, index, now, nudges) {
+  const cards = Object.entries(cardMap || {}).map(([id, c]) => Object.assign({ id }, c));
   const rules = rulesOf(index);
   const hold = holdOf(index);
   const out = { needsYou: 0, owes: 0, quiet: 0, waiting: 0, nudges: 0, stale: false, staleFor: null };
   cards.forEach((c) => cardTags(c, rules, now, hold).forEach((t) => { if (SLOT[t.k]) out[SLOT[t.k]] += 1; }));
-  out.nudges = Object.values(nudges || {}).filter((n) => n.status === 'open').length;
+  const live = new Set(cards.filter((c) => !c.closed && c.state !== 'NOT_APPLICABLE').map((c) => c.id));
+  out.nudges = Object.values(nudges || {}).filter((n) => n.status === 'open' && live.has(n.card)).length;
   const m = minutesSince(((index && index.project) || {}).updatedAt, now);
   if (m != null && m > rules.staleAfterMin && !hold) { out.stale = true; out.staleFor = m; }
   return out;

@@ -67,7 +67,8 @@ def snapshot(data):
 
 
 def js_json(obj):
-    return json.dumps(obj, ensure_ascii=False).replace("</", "<\\/")
+    # Every "<" becomes \u003c, so no </script>, <!-- or <script in the data can change how the HTML parser reads the script.
+    return json.dumps(obj, ensure_ascii=False).replace("<", "\\u003c")
 
 
 def dump_root(browser, uri):
