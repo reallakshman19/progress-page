@@ -8,10 +8,10 @@
       "chat": "oracle"
     },
     "state": "SUBMITTED",
-    "now": "WAITS: archives to coder (Owner folder answer)",
+    "now": "WAITS: Owner to confirm handoff folder (OneDrive-Handoffs?)",
     "next": {
-      "actor": "OTM",
-      "text": "archives to TPRES-C1 via handoff folder"
+      "actor": "YOU",
+      "text": "confirm handoff folder for the two archives"
     },
     "refs": [
       {
@@ -20,9 +20,11 @@
         "u": "https://github.com/reallakshman19/Word-to-Table/issues/1"
       }
     ],
-    "updatedAt": "2026-10-22T21:21:58Z",
+    "updatedAt": "2026-10-22T21:40:58Z",
     "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/155#issuecomment-6349714107",
-    "flags": []
+    "flags": [
+      "needs-you"
+    ]
   },
   "tpresc1": {
     "order": 2,
