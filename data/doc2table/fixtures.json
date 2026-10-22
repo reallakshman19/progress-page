@@ -28,6 +28,36 @@
     },
     {
       "t": "doc2table / Word Table snaps.docx; 876174 bytes; sha256 28aa7249ff4c51e1131916f39c517ac7abb38f8744a1a185483478b6f80ec33c. Twelve image occurrences; zero native tables."
+    },
+    {
+      "t": "doc2table / expectations-v1/check_expectations.py; 12765 bytes; sha256 8b61d7d4fd94d3a812d568e0973bb1c4aab9a9e7cc566c1e6e7636a96e656f23; SELF-ASSESSED T-EXPECT; local custody; distinct spot-check pending."
+    },
+    {
+      "t": "doc2table / expectations-v1/derive_expectations.py; 17675 bytes; sha256 e36ac7eeb24a21f104bf7dc88e6646d73acaf43cbac1d2ebda27ccba4f3ca7b9; SELF-ASSESSED T-EXPECT; local custody; distinct spot-check pending."
+    },
+    {
+      "t": "doc2table / expectations-v1/README.md; 5493 bytes; sha256 bc7744f4a181bbc4933f6f1d2e11dbe118500130e4dacc7b9e71a6a7eabec783; SELF-ASSESSED T-EXPECT; local custody; distinct spot-check pending."
+    },
+    {
+      "t": "doc2table / expectations-v1/source-expectations.v1.json; 700373 bytes; sha256 1085d61466ae5da608499f99d3c719e640a690a31318a88618c55d2fa6f3b1f7; SELF-ASSESSED T-EXPECT; local custody; distinct spot-check pending."
+    },
+    {
+      "t": "doc2table / expectations-v1/source-inventory.v1.json; 102578 bytes; sha256 acc5ffb9252929b2c328d2c54e9ca377a138c2412cdf5d8056c7dc588f4f5e5d; SELF-ASSESSED T-EXPECT; local custody; distinct spot-check pending."
+    },
+    {
+      "t": "doc2table / expectations-v1/SPOT_CHECK_BRIEF.md; 2308 bytes; sha256 cd9e8669d8081523c691922c812ded3bb34dd8b906462f427f809225ad847a92; SELF-ASSESSED T-EXPECT; local custody; distinct spot-check pending."
+    },
+    {
+      "t": "doc2table / expectations-v1/synthetic-source.xml; 1663 bytes; sha256 ccba12fc58fe112d0bc3e0bdb1c7e8496ee61ec6d34313c2666bfe5d466ee0d9; SELF-ASSESSED T-EXPECT; local custody; distinct spot-check pending."
+    },
+    {
+      "t": "doc2table / expectations-v1/validation.v1.json; 2414 bytes; sha256 d8ba64c12c935dfb29b6cc0162e49afc278453c43f82e8a75fa9e75103189450; SELF-ASSESSED T-EXPECT; local custody; distinct spot-check pending."
+    },
+    {
+      "t": "doc2table / fixture-manifest.v2.json; 5671 bytes; sha256 40bd425c25789c7a3c5caae313de875a72acd1b71eb615b62b3e116bab945e31; SELF-ASSESSED T-EXPECT; local custody; distinct spot-check pending."
+    },
+    {
+      "t": "doc2table / doc2table_fixtures_v2_aec0563c1dd2.zip; 1774131 bytes; sha256 aec0563c1dd22bd521db3666fcf3dd7a047f00c8cc64481d19b1cd9c69b5f3d5; SELF-ASSESSED T-EXPECT; local custody; distinct spot-check pending."
     }
   ],
   "knownIssues": [
