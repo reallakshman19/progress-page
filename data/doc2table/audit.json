@@ -441,6 +441,20 @@
       "list": "inputs",
       "op": "add",
       "rev": "R1"
+    },
+    {
+      "seq": 35,
+      "id": "DOC2TABLE-R-0035",
+      "previous_id": "DOC2TABLE-R-0034",
+      "at": "2026-10-22T15:45:38Z",
+      "kind": "STATE",
+      "actor": "OTM",
+      "summary": "O1 returned D2T-O1-5",
+      "source": "https://github.com/reallakshman19/Word-to-Table/issues/1#issuecomment-6344656201",
+      "card": "oracle",
+      "before": "IN_PROGRESS",
+      "after": "SUBMITTED",
+      "rev": "R1"
     }
   ]
 }

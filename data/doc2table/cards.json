@@ -7,11 +7,11 @@
     "who": {
       "chat": "oracle"
     },
-    "state": "IN_PROGRESS",
-    "now": "Owner: the Oracle does T-EXPECT itself (TO D2T-O1-5)",
+    "state": "SUBMITTED",
+    "now": "T-EXPECT v1 done (SELF-ASSESSED): 5 of 140 body tables annotated, 9 seeded defects rejected; T-PRESERVE prepared, not dispatched",
     "next": {
-      "actor": "Oracle O1",
-      "text": "do T-EXPECT and reply D2T-O1-5 with T-PRESERVE ready"
+      "actor": "OTM",
+      "text": "distinct spot-check of T-EXPECT running (fresh checker); then T-PRESERVE needs your launch word"
     },
     "refs": [
       {
@@ -20,8 +20,8 @@
         "u": "https://github.com/reallakshman19/Word-to-Table/issues/1"
       }
     ],
-    "updatedAt": "2026-10-22T14:56:33Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6343831191",
+    "updatedAt": "2026-10-22T15:45:38Z",
+    "src": "https://github.com/reallakshman19/Word-to-Table/issues/1#issuecomment-6344656201",
     "flags": []
   }
 }
