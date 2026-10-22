@@ -674,6 +674,20 @@
       "before": "SUBMITTED",
       "after": "SUBMITTED",
       "rev": "R1"
+    },
+    {
+      "seq": 53,
+      "id": "DOC2TABLE-R-0053",
+      "previous_id": "DOC2TABLE-R-0052",
+      "at": "2026-10-22T19:51:31Z",
+      "kind": "STATE",
+      "actor": "OTM",
+      "summary": "Synthetic-only PARTIAL return; B1 originals NOT_RUN",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/155#issuecomment-6349714107",
+      "card": "tpresc1",
+      "before": "IN_PROGRESS",
+      "after": "BLOCKED",
+      "rev": "R1"
     }
   ]
 }
