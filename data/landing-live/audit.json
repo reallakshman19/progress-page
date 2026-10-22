@@ -16,7 +16,8 @@
       "after": "VERIFIED",
       "actor": "OTM (baseline)",
       "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/149",
-      "summary": "Card created on the independent Progress page from the OTM board rows."
+      "summary": "Card created on the independent Progress page from the OTM board rows.",
+      "rev": "R1"
     },
     {
       "seq": 2,
@@ -29,7 +30,8 @@
       "after": "VERIFIED",
       "actor": "OTM (baseline)",
       "source": "https://github.com/reallakshman19/CoordinatorLandingpage/pull/151",
-      "summary": "Card created on the independent Progress page from the OTM board rows."
+      "summary": "Card created on the independent Progress page from the OTM board rows.",
+      "rev": "R1"
     },
     {
       "seq": 3,
@@ -42,7 +44,8 @@
       "after": "IN_PROGRESS",
       "actor": "OTM (baseline)",
       "source": "https://github.com/reallakshman19/CoordinatorLandingpage/pull/153",
-      "summary": "Card created on the independent Progress page from the OTM board rows."
+      "summary": "Card created on the independent Progress page from the OTM board rows.",
+      "rev": "R1"
     },
     {
       "seq": 4,
@@ -55,7 +58,8 @@
       "after": "NOT_STARTED",
       "actor": "OTM (baseline)",
       "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6330677339",
-      "summary": "Card created on the independent Progress page from the OTM board rows."
+      "summary": "Card created on the independent Progress page from the OTM board rows.",
+      "rev": "R1"
     },
     {
       "seq": 5,
@@ -68,7 +72,8 @@
       "after": "NOT_STARTED",
       "actor": "OTM (baseline)",
       "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6330677339",
-      "summary": "Card created on the independent Progress page from the OTM board rows."
+      "summary": "Card created on the independent Progress page from the OTM board rows.",
+      "rev": "R1"
     },
     {
       "seq": 6,
@@ -81,7 +86,21 @@
       "after": "NOT_STARTED",
       "actor": "OTM (baseline)",
       "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6330677339",
-      "summary": "Card created on the independent Progress page from the OTM board rows."
+      "summary": "Card created on the independent Progress page from the OTM board rows.",
+      "rev": "R1"
+    },
+    {
+      "seq": 7,
+      "id": "LANDING-LIVE-R-0007",
+      "previous_id": "LANDING-LIVE-R-0006",
+      "at": "2026-10-22T03:22:07Z",
+      "kind": "REVISION",
+      "actor": "OTM",
+      "summary": "Founding plan on the independent Progress page, built from the OTM board rows.",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6330677339",
+      "revision": "R1",
+      "scope": "project",
+      "rev": "R1"
     }
   ]
 }

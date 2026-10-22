@@ -4,7 +4,7 @@
     "key": "landing-live",
     "title": "Progress page build",
     "subtitle": "How the Progress page itself is being built (work order #149). It tracks its own construction.",
-    "updatedAt": "2026-10-22T02:01:25Z",
+    "updatedAt": "2026-10-22T03:22:07Z",
     "updatedBy": "OTM",
     "staleAfterMin": 120
   },
@@ -62,5 +62,16 @@
         }
       ]
     }
-  }
+  },
+  "revisions": [
+    {
+      "id": "R1",
+      "at": "2026-10-22T02:01:25Z",
+      "by": "OTM",
+      "why": "Founding plan on the independent Progress page, built from the OTM board rows.",
+      "ownerWords": "create this progress page independent of others",
+      "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6330677339",
+      "status": "current"
+    }
+  ]
 }

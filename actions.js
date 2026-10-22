@@ -1,10 +1,8 @@
 // My actions (decision cards) and Grounding fixtures.
-import { el, link, md, age, copyText } from './util.js?v=6';
+import { el, link, md, age, copyText } from './util.js?v=8';
+import { issueUrl, pageUrl } from './reply.js?v=8';
 
-// A reply made from a local file or a preview points back at the published page.
-const LIVE_PAGE = 'https://reallakshman19.github.io/progress-page/';
-
-export const openCount =(actions) => Object.values(actions || {}).filter((a) => a.status === 'open').length;
+export const openCount = (actions) => Object.values(actions || {}).filter((a) => a.status === 'open').length;
 
 function table(t) {
   const tb = el('table', 'tb');
@@ -20,17 +18,13 @@ function table(t) {
 }
 
 function sendUrl(a, o, project, rt) {
-  const p = new URLSearchParams({
-    template: rt.template,
+  return issueUrl(rt, {
     title: '[Owner input] ' + a.title + ' ' + o.key + ' (' + project.key + ')',
-    labels: 'owner-input',
     project: project.key,
-    target: rt.target,
     type: 'DECISION',
     text: o.reply,
-    evidence_link: (location.protocol === 'https:' ? location.href.split('#')[0] : LIVE_PAGE) + '#/' + project.key + '/actions',
+    evidence_link: pageUrl(rt) + '#/' + project.key + '/actions',
   });
-  return 'https://github.com/' + rt.repo + '/issues/new?' + p.toString();
 }
 
 function option(a, o, project) {

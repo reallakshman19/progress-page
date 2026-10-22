@@ -15,7 +15,8 @@
       "after": "VERIFIED",
       "actor": "OTM (baseline)",
       "source": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/152#issuecomment-6322145497",
-      "summary": "Card created on the independent Progress page from the OTM board rows."
+      "summary": "Card created on the independent Progress page from the OTM board rows.",
+      "rev": "R1"
     },
     {
       "seq": 2,
@@ -28,7 +29,8 @@
       "after": "SUBMITTED",
       "actor": "OTM (baseline)",
       "source": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/153#issuecomment-6322554084",
-      "summary": "Card created on the independent Progress page from the OTM board rows."
+      "summary": "Card created on the independent Progress page from the OTM board rows.",
+      "rev": "R1"
     },
     {
       "seq": 3,
@@ -41,7 +43,8 @@
       "after": "VERIFIED",
       "actor": "OTM (baseline)",
       "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6330677339",
-      "summary": "Card created on the independent Progress page from the OTM board rows."
+      "summary": "Card created on the independent Progress page from the OTM board rows.",
+      "rev": "R1"
     },
     {
       "seq": 4,
@@ -54,7 +57,8 @@
       "after": "IN_PROGRESS",
       "actor": "OTM (baseline)",
       "source": "https://github.com/reallakshman19/Grade9v3.5/issues/300#issuecomment-6330049625",
-      "summary": "Card created on the independent Progress page from the OTM board rows."
+      "summary": "Card created on the independent Progress page from the OTM board rows.",
+      "rev": "R1"
     },
     {
       "seq": 5,
@@ -67,7 +71,36 @@
       "after": "IN_PROGRESS",
       "actor": "OTM (baseline)",
       "source": "https://github.com/reallakshman19/Grade9v3.5/issues/300#issuecomment-6330322621",
-      "summary": "Card created on the independent Progress page from the OTM board rows."
+      "summary": "Card created on the independent Progress page from the OTM board rows.",
+      "rev": "R1"
+    },
+    {
+      "seq": 6,
+      "id": "CIIFR-R-0006",
+      "previous_id": "CIIFR-R-0005",
+      "at": "2026-10-22T03:22:07Z",
+      "kind": "REVISION",
+      "actor": "OTM",
+      "summary": "Founding plan on the independent Progress page, built from the OTM board rows.",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6330677339",
+      "revision": "R1",
+      "scope": "project",
+      "rev": "R1"
+    },
+    {
+      "seq": 7,
+      "id": "CIIFR-R-0007",
+      "previous_id": "CIIFR-R-0006",
+      "at": "2026-10-22T03:22:35Z",
+      "kind": "UPDATE",
+      "actor": "OTM",
+      "summary": "Source added: the Oracle's reconciliation (XCU #152) records the reviewer's confirmed findings and HOLD verdict; the reviewer's own chat has no GitHub post",
+      "source": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/152#issuecomment-6322285804",
+      "card": "g2",
+      "before": "VERIFIED",
+      "after": "VERIFIED",
+      "source_at": "2026-10-21T17:28:24Z",
+      "rev": "R1"
     }
   ]
 }

@@ -99,3 +99,58 @@ button.chip.big{cursor:pointer}
 .card[data-trig~="owes"],.card[data-trig~="quiet"]{border-color:var(--wn)}
 .hintbar{font-size:12px;color:var(--wn);background:var(--wnbg);border-radius:6px;padding:6px 10px;margin:0 0 10px}
 .c-sub a{color:var(--acc)}
+.tab.plus,.tab.arch{background:none;border:0;border-bottom:2px solid transparent;font:inherit;cursor:pointer;color:var(--mut)}
+.tab.plus{font-size:18px;line-height:1;padding:6px 12px}
+.tab.plus:hover,.tab.arch:hover{color:var(--fg)}
+.tab.arch{margin-left:auto}
+.tab.arch.on{color:var(--fg);font-weight:600;border-bottom-color:var(--acc)}
+.arch-list{display:grid;gap:6px}
+.arch-row{display:flex;flex-wrap:wrap;gap:6px;align-items:baseline}
+.arch-nm{font-weight:600}
+.rev-row{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:6px 0}
+.rev-row .h-label{margin:0 6px 0 0}
+.rev{display:inline-flex;align-items:baseline;gap:6px;border:1px solid var(--bd);border-radius:8px;padding:4px 10px;background:var(--card);color:var(--fg);font-size:12px;text-decoration:none}
+.rev b{font-size:13px}
+.rev-d{color:var(--mut)}
+.rev-s{font-size:10px;letter-spacing:.04em;text-transform:uppercase;color:var(--mut)}
+.rev.current{border-color:var(--ok)}
+.rev.current .rev-s{color:var(--ok)}
+.rev.superseded{opacity:.75}
+.rev.cancelled .rev-s{color:var(--er)}
+.rev.on{outline:2px solid var(--acc);outline-offset:1px}
+button.rev.plus{cursor:pointer;font:inherit;font-size:16px;padding:2px 10px}
+.banner{font-size:12px;background:var(--wnbg);color:var(--wn);border-radius:6px;padding:6px 10px;margin:6px 0}
+.banner a{color:inherit}
+.tl-d{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--mut);margin:16px 0 6px}
+.tl-row{display:grid;grid-template-columns:46px auto 1fr;gap:8px;align-items:start;padding:8px 0;border-bottom:1px solid var(--bd)}
+.tl-t{font-variant-numeric:tabular-nums;color:var(--mut);font-size:12px}
+.tl-x{font-size:13px}
+.tl-w{font-size:11px;color:var(--mut)}
+.chip.a{background:var(--accbg);color:var(--acc);border-color:transparent}
+.ov{position:fixed;inset:0;background:rgba(0,0,0,.55);display:flex;align-items:flex-start;justify-content:center;padding:6vh 12px;overflow:auto;z-index:50}
+.dlg{background:var(--bg);color:var(--fg);border:1px solid var(--bd);border-radius:12px;width:min(680px,100%);box-shadow:0 12px 40px rgba(0,0,0,.4)}
+.dlg.wide{width:min(820px,100%)}
+.dlg-h{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--bd)}
+.dlg-h h3{font-size:16px}
+.dlg-b{padding:12px 16px;display:grid;gap:8px}
+.dlg-f{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:10px 16px;border-top:1px solid var(--bd)}
+.fld{display:grid;gap:2px;font-size:12px;color:var(--mut)}
+.fld input,.fld select,.nd-add input{font:inherit;font-size:13px;padding:6px 8px;border:1px solid var(--bd);border-radius:6px;background:var(--card);color:var(--fg)}
+textarea.brief{width:100%;font:12px/1.5 ui-monospace,Menlo,Consolas,monospace;background:var(--card);color:var(--fg);border:1px solid var(--bd);border-radius:6px;padding:8px;min-height:240px}
+.c-ft{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:6px;flex-wrap:wrap}
+.btn.nudge{margin-left:auto;background:var(--accbg);border-color:var(--acc);color:var(--acc)}
+.card.closed{opacity:.65}
+.card.closed .c-nm{text-decoration:line-through}
+.c-closed{font-size:12px;background:var(--wnbg);color:var(--wn);border-radius:6px;padding:4px 8px;margin:4px 0}
+.nd-row{display:grid;grid-template-columns:auto 1fr;gap:4px 8px;align-items:baseline;padding:6px 0;border-bottom:1px solid var(--bd);font-size:13px}
+.nd-s{grid-column:2;font-size:11px;color:var(--mut)}
+.nd-row>a.btn,.nd-row>button{grid-column:2;justify-self:start}
+.nd-withdrawn .nd-t{text-decoration:line-through;color:var(--mut)}
+.nd-done .nd-s{color:var(--ok)}
+.nd-draft{grid-template-columns:1fr}
+.nd-draft .nd-s,.nd-draft .nd-b{grid-column:1}
+.nd-b{display:flex;gap:6px;flex-wrap:wrap}
+.nd-add{display:flex;gap:8px}
+.nd-add input{flex:1}
+details.nd{margin-top:6px;font-size:12px}
+@media (max-width:620px){.tl-row{grid-template-columns:40px 1fr}.tl-row .chip{grid-column:2}.tl-m{grid-column:1 / -1}}

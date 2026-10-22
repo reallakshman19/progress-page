@@ -4,7 +4,7 @@
     "key": "g9v35",
     "title": "G9v3.5 Physics pilot",
     "subtitle": "Newton's Laws pilot on the ZIP-free track, and the owner-bank guard (PR #305)",
-    "updatedAt": "2026-10-22T02:01:25Z",
+    "updatedAt": "2026-10-22T03:22:07Z",
     "updatedBy": "OTM",
     "staleAfterMin": 120
   },
@@ -106,5 +106,16 @@
       "order": 4,
       "title": "Done"
     }
-  }
+  },
+  "revisions": [
+    {
+      "id": "R1",
+      "at": "2026-10-22T02:01:25Z",
+      "by": "OTM",
+      "why": "ZIP-free Physics pilot: the Owner's rule of 22 Oct replaces the ZIP-based pilot plan tracked on the old site.",
+      "ownerWords": "RULE: No zip file available. proceed with task.",
+      "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6329482245",
+      "status": "current"
+    }
+  ]
 }

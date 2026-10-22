@@ -1,6 +1,7 @@
-// Progress view: milestone strip, then groups of agent blocks.
-import { el, link, md, age } from './util.js?v=6';
-import { cardTags, fmt } from './triggers.js?v=6';
+// Progress view: attention strip, milestone strip, then groups of agent blocks.
+import { el, link, md, age } from './util.js?v=8';
+import { cardTags, fmt, nudgeTag } from './triggers.js?v=8';
+import { nudgeRow } from './nudge.js?v=8';
 
 const RANK = { NOT_STARTED: 0, UNKNOWN: 1, STALE: 1, IN_PROGRESS: 2, SUBMITTED: 3, VERIFIED: 4 };
 const ICON = { VERIFIED: '✓', SUBMITTED: '↑', IN_PROGRESS: '●', BLOCKED: '!', NOT_STARTED: '○', STALE: '?', UNKNOWN: '?', NOT_APPLICABLE: '–' };
@@ -8,7 +9,7 @@ const KIND = { VERIFIED: 'done', IN_PROGRESS: 'working', SUBMITTED: 'waiting', B
 const COUNT_ORDER = [['VERIFIED', 'verified'], ['SUBMITTED', 'submitted'], ['IN_PROGRESS', 'in progress'], ['BLOCKED', 'blocked'], ['NOT_STARTED', 'not started']];
 
 // A milestone is BLOCKED if any of its cards is; VERIFIED only when every card is. Otherwise it takes the weakest
-// state among the cards that have started, and is NOT_STARTED when none has.
+// state among the cards that have started, and is NOT_STARTED when none has. Superseded and cancelled cards do not count.
 export function milestoneState(cards) {
   const live = cards.filter((c) => c.state !== 'NOT_APPLICABLE');
   if (!live.length) return 'NOT_STARTED';
@@ -39,10 +40,13 @@ function strip(index, cards) {
     if (i < list.length - 1) row.append(el('span', 'ms-sep', '›'));
   });
   wrap.append(row);
+  const live = cards.filter((c) => c.state !== 'NOT_APPLICABLE');
   const n = {};
-  cards.forEach((c) => { n[c.state] = (n[c.state] || 0) + 1; });
+  live.forEach((c) => { n[c.state] = (n[c.state] || 0) + 1; });
   const parts = COUNT_ORDER.filter(([s]) => n[s]).map(([s, label]) => n[s] + ' ' + label);
-  wrap.append(el('p', 'ms-line', parts.join(' · ') + ' of ' + cards.length + ' cards. A card count on a partial list, not a delivery percentage.'));
+  const closed = cards.length - live.length;
+  wrap.append(el('p', 'ms-line', (parts.join(' · ') || 'no cards') + ' of ' + live.length + ' cards' + (closed ? ' (' + closed + ' superseded or cancelled not counted)' : '')
+    + '. A card count on a partial list, not a delivery percentage.'));
   return wrap;
 }
 
@@ -58,9 +62,18 @@ function refLine(label, items) {
   return p;
 }
 
+function closedLine(c, ctx) {
+  const x = c.closed;
+  const by = x.by && ctx.cards && ctx.cards[x.by] ? ctx.cards[x.by].label : x.by;
+  const b = el('div', 'c-closed');
+  b.append(el('b', null, x.kind === 'superseded' ? 'Superseded' + (by ? ' by ' + by : '') : 'Cancelled'), ': ' + x.why + ' ', link(x.src, 'source'));
+  return b;
+}
+
 function cardEl(c, ctx) {
   const kind = c.kind || KIND[c.state] || 'idle';
-  const d = el('article', 'card k-' + kind);
+  const d = el('article', 'card k-' + kind + (c.closed ? ' closed' : ''));
+  d.dataset.card = c.id;
   const hd = el('div', 'c-hd');
   hd.append(el('span', 'c-nm', c.label), age(c.updatedAt, '(updated {t} ago)', c.state === 'NOT_STARTED' ? '(not started)' : '(updated: no GitHub time)'));
   d.append(hd);
@@ -70,15 +83,20 @@ function cardEl(c, ctx) {
   const chatUrl = chat.id8 ? (ctx.links || {})[chat.id8] : null;
   if (chat.id8) sub.append(chatUrl ? link(chatUrl, chat.id8) : chat.id8);
   [who.role, chat.engine].filter(Boolean).forEach((x) => sub.append((sub.childNodes.length ? ' · ' : '') + x));
+  const from = who.from && (ctx.chats || {})[who.from];
+  if (from) sub.append(' · took over from ' + (from.label || from.id8));
   if (sub.childNodes.length) d.append(sub);
   const pills = el('div', 'c-pills');
   pills.append(el('span', 'pill st-' + c.state, c.state));
   if (c.milestone) pills.append(el('span', 'pill', c.milestone));
-  const tags = cardTags(c, ctx.rules || {}, undefined, ctx.hold);
+  const tags = c.closed ? [] : cardTags(c, ctx.rules || {}, undefined, ctx.hold);
+  const nt = c.closed || !ctx.nudge ? null : nudgeTag(ctx.nudge.openList(c.id), ctx.rules || {});
+  if (nt) tags.push(nt);
   d.dataset.trig = tags.map((t) => t.k).join(' ');
   tags.forEach((t) => pills.append(el('span', 'chip ' + (t.sev === 2 ? 'd' : t.sev === 1 ? 'w' : 'n'), t.t)));
   (c.chips || []).forEach((x) => pills.append(el('span', 'chip ' + (x.c || 'n'), x.t)));
   d.append(pills);
+  if (c.closed) d.append(closedLine(c, ctx));
   const st = el('div', 'c-st');
   st.append(el('b', null, 'Status: '), el('span', 'ico ic-' + kind, ICON[c.state] || '○'), ' ', md(c.now));
   d.append(st);
@@ -98,11 +116,31 @@ function cardEl(c, ctx) {
     cl.append(url ? link(url, 'chat ' + chat.id8) : el('span', 'nolink', 'chat ' + chat.id8));
   } else cl.append('none');
   d.append(cl);
+  const ft = el('div', 'c-ft');
   if (c.src) {
     const s = el('div', 'c-src');
     s.append('source: ', link(c.src, 'event'));
-    d.append(s);
+    ft.append(s);
   }
+  if (ctx.nudge && !c.closed) {
+    if (ctx.nudge.static) {
+      const list = ctx.nudge.list(c.id);
+      if (list.length) {
+        const dt = el('details', 'nd');
+        dt.append(el('summary', null, 'Nudges (' + list.length + ')'));
+        list.forEach((n) => dt.append(nudgeRow(n)));
+        d.append(dt);
+      }
+    } else if (!ctx.readOnly) {
+      const open = ctx.nudge.openList(c.id).length;
+      const b = el('button', 'btn small nudge', 'Nudge +' + (open ? ' (' + open + ')' : ''));
+      b.type = 'button';
+      b.title = 'Instructions for ' + ((ctx.rules || {}).coordinator || 'OTM') + ' to fold into the next message to this agent';
+      b.addEventListener('click', () => ctx.nudge.open(c));
+      ft.append(b);
+    }
+  }
+  if (ft.childNodes.length) d.append(ft);
   return d;
 }
 
@@ -135,9 +173,11 @@ function groupBlock(g, mine, ctx) {
 }
 
 // Attention strip: the trigger counts for this project. Clicking a count jumps to the first matching block.
-function attention(sum) {
+function attention(sum, rules) {
   const wrap = el('div', 'attn');
-  [['needsYou', 'needs-you', 'Needs you', 'd'], ['owes', 'owes', 'OTM owes', 'w'], ['quiet', 'quiet', 'Quiet agents', 'w'], ['waiting', 'waiting', 'Waiting on others', 'w']]
+  const coord = (rules || {}).coordinator || 'OTM';
+  [['needsYou', 'needs-you', 'Needs you', 'd'], ['owes', 'owes', coord + ' owes', 'w'], ['nudges', 'nudge', 'Nudges for ' + coord, 'w'],
+    ['quiet', 'quiet', 'Quiet agents', 'w'], ['waiting', 'waiting', 'Waiting on others', 'w']]
     .forEach(([slot, k, label, cls]) => {
       const n = sum[slot] || 0;
       const b = el('button', 'chip big ' + (n ? cls : 'n'), label + ' ' + n);
@@ -158,13 +198,14 @@ function attention(sum) {
 }
 
 export function renderProgress(root, project, ctx) {
-  const cards = Object.entries(project.cards || {}).map(([id, c]) => ({ id, ...c }));
-  if (ctx.sum) root.append(attention(ctx.sum));
+  const cards = Object.entries(project.cards || {}).map(([id, c]) => Object.assign({ id }, c));
+  ctx.cards = project.cards;
+  if (ctx.sum) root.append(attention(ctx.sum, ctx.rules));
   root.append(strip(project.index, cards));
   const groups = Object.entries(project.index.groups || {}).sort((a, b) => (a[1].order || 0) - (b[1].order || 0));
   const used = new Set();
   groups.forEach(([gk, g]) => {
-    const mine = cards.filter((c) => c.group === gk).sort((a, b) => (a.order || 0) - (b.order || 0));
+    const mine = cards.filter((c) => c.group === gk).sort((a, b) => (Number(!!a.closed) - Number(!!b.closed)) || ((a.order || 0) - (b.order || 0)));
     if (!mine.length) return;
     mine.forEach((c) => used.add(c.id));
     root.append(groupBlock(g, mine, ctx));

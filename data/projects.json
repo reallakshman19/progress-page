@@ -47,7 +47,18 @@
         "template": "owner-reply.yml",
         "target": "OwnerTeammember",
         "site": "https://reallakshman19.github.io/progress-page/"
-      }
+      },
+      "status": "archived",
+      "statusWhy": "Owner: \"Drop the project, archive it\" (page only; the Nudge agents and their holds are untouched)",
+      "statusAt": "2026-10-22T03:22:40Z",
+      "statusBy": "OTM",
+      "statusSrc": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6331798549"
     }
-  ]
+  ],
+  "site": {
+    "repo": "reallakshman19/progress-page",
+    "page": "https://reallakshman19.github.io/progress-page/",
+    "tools": "tools/",
+    "guide": "https://github.com/reallakshman19/progress-page#readme"
+  }
 }

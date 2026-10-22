@@ -1,37 +1,46 @@
-# Progress page (DRAFT preview)
+# Progress page
 
-An independent Progress page for projects run with OTM or standalone with an Oracle and its agents.
-It is a static page: no build step, no database. It reads plain JSON files from `data/`.
+A static page that shows, for each project, its **milestones**, **agent blocks** (who is doing what, how long ago it moved, what is next),
+the Owner's **decisions** ("My actions"), **grounding fixtures**, a **Timeline** of every update, plan **revisions** and a **Nudge +** queue per agent.
+The data is plain JSON in `data/`. GitHub history is the trace. No build step, no database.
 
-Status: DRAFT preview, built by OTM as the visual spec. The production viewer, checker and tools follow as a sealed work order.
+Status: reference deployment, prototype v0.1. The portable copy with the full how-to is the Common module
+`skills/agent-work/progress-page` (README, references, tools, tests). Read that README first; this file is the short version.
 
-## What you see
+## Use the tools, do not edit the JSON by hand
 
-Project tabs. For each project, three views:
+```
+python tools/pp_cli.py --help          # project / revision / plan / card / action / fixture / nudge / check / triggers / local / links
+python tools/pp_cli.py check           # must print OK
+python tools/pp_cli.py triggers        # what the Owner and the coordinator owe right now
+```
 
-- **Progress**: a milestone strip, then groups of agent blocks (status, next step, "updated X ago", issue, PR and chat links).
-- **My actions**: the Owner's open decisions, each with options, a copy-ready reply and a prefilled Send link.
-- **Grounding fixtures**: the sources and starting context any agent or Oracle should read first.
+Every write needs `--actor` (who), `--src` (a public GitHub link, or `OWNER_PRIVATE_REF:<id>`) and a reason. It writes one Timeline entry, runs the checker,
+and leaves every file as it was if the check fails. Nothing is deleted: supersede, cancel, archive or withdraw. Use plain `python` (not `python -I`).
+
+## What the page shows
+
+- Project tabs, `+` to add a project (a copy-paste brief for another agent), **Archived (n)** for closed projects.
+- **Revisions** row: R1, R2 ... A revision is added only when an Owner decision changes direction. Older ones open read-only from GitHub history.
+- **Progress**: attention strip (needs you, owes, nudges, quiet, waiting, tab stale), milestone strip, groups of agent blocks.
+  Superseded and cancelled blocks stay, greyed, with the reason. **Nudge +** on each block queues instructions for the coordinator (OTM or the Oracle), not for the agent.
+- **My actions**, **Grounding fixtures**, **Timeline** (newest first, each entry with its GitHub source).
 
 ## Data (public-safe only)
 
 ```
-data/projects.json                 the project tabs
-data/<project>/index.json          title, chats (id8 only), milestones, groups, last update
-data/<project>/cards.json          the agent blocks, each with a milestone, a state, a source and an event time
-data/<project>/actions.json        the Owner's decision cards
+data/projects.json                 the tabs, mode, reply route, status; site info for the "+" briefs
+data/<project>/index.json          title, rules, chats (id8 only), milestones, groups, revisions
+data/<project>/cards.json          agent blocks
+data/<project>/actions.json        decisions for the Owner
 data/<project>/fixtures.json       grounding fixtures (ten lists)
-data/<project>/audit.json          append-only ledger of card states, each event with a public source
+data/<project>/nudges.json         Nudge + lines and their status (open, done by whom and when, withdrawn)
+data/<project>/audit.json          the Timeline: append-only, one entry per change
 ```
 
-No chat link, Drive link, email or private text belongs here. Chat ids are the first 8 characters only.
-The page can show chat links if you load your own `{ "<id8>": "https://..." }` map with "My links"; it stays in your browser.
-
-## Chat links (private, per browser)
-
-The data holds chat ids only. To make an id clickable, open the page once with a setup link
-`https://<this page>/#links=<base64url of {"<id8>": "https://..."}>`. The part after `#` is never sent to a server;
-the page saves the map in this browser (localStorage) and removes it from the address. "My links" does the same by paste.
+No chat link, Drive link, email or token belongs here. Chat ids are the short id only. The checker refuses the rest.
+To make chat ids clickable in one browser, open the page once with a private setup link
+(`python tools/pp_links.py links.private.json --page <page url>`); the part after `#` is never sent to a server.
 
 ## Run it
 
@@ -39,19 +48,20 @@ the page saves the map in this browser (localStorage) and removes it from the ad
 python -m http.server 8765
 ```
 
-then open http://127.0.0.1:8765/. Use `?data=<folder url>` to point the page at another data folder.
+then open http://127.0.0.1:8765/. `?data=<folder url>` points the page at another data folder.
 
 ## One local file (works offline and in previews)
 
 ```
-python tools/build_local.py progress-local.html --links links.private.json --prerender "<path to msedge.exe or chrome.exe>"
+python tools/pp_cli.py local progress-local.html --links links.private.json --prerender "<path to msedge.exe or chrome.exe>"
 ```
 
-The file embeds the page, a snapshot of `data/` and, with `--prerender`, a static copy of every project and view
-(expandable sections) that still shows when scripts are blocked. With scripts on it draws the snapshot at once, then
-reads the live data. A file built with `--links` holds private chat links: keep it on your machine, never commit it.
+The file embeds the page and a snapshot of `data/`. With scripts on it shows the snapshot at once, then reads the live data.
+With `--prerender` it also holds a static copy (expandable sections) that still shows when a viewer blocks scripts.
+A file built with `--links` holds private chat links: keep it on your machine, never commit it.
 
-## Triggers
+## Tests
 
-`python tools/page_triggers.py --data data/` prints the same trigger result the page shows (needs you, owes, quiet,
-waiting, stale tab) from the JSON alone, so an agent can act on it without a browser.
+```
+python -B -m unittest discover -s tests -v
+```

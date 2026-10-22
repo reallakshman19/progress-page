@@ -16,7 +16,8 @@
       "after": "SUBMITTED",
       "actor": "OTM (baseline)",
       "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128#issuecomment-6329920555",
-      "summary": "Card created on the independent Progress page from the OTM board rows."
+      "summary": "Card created on the independent Progress page from the OTM board rows.",
+      "rev": "R1"
     },
     {
       "seq": 2,
@@ -29,7 +30,8 @@
       "after": "SUBMITTED",
       "actor": "OTM (baseline)",
       "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128#issuecomment-6329713931",
-      "summary": "Card created on the independent Progress page from the OTM board rows."
+      "summary": "Card created on the independent Progress page from the OTM board rows.",
+      "rev": "R1"
     },
     {
       "seq": 3,
@@ -42,7 +44,8 @@
       "after": "BLOCKED",
       "actor": "OTM (baseline)",
       "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128#issuecomment-6315472566",
-      "summary": "Card created on the independent Progress page from the OTM board rows."
+      "summary": "Card created on the independent Progress page from the OTM board rows.",
+      "rev": "R1"
     },
     {
       "seq": 4,
@@ -55,7 +58,8 @@
       "after": "BLOCKED",
       "actor": "OTM (baseline)",
       "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128#issuecomment-6316907785",
-      "summary": "Card created on the independent Progress page from the OTM board rows."
+      "summary": "Card created on the independent Progress page from the OTM board rows.",
+      "rev": "R1"
     },
     {
       "seq": 5,
@@ -68,7 +72,8 @@
       "after": "BLOCKED",
       "actor": "OTM (baseline)",
       "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/129",
-      "summary": "Card created on the independent Progress page from the OTM board rows."
+      "summary": "Card created on the independent Progress page from the OTM board rows.",
+      "rev": "R1"
     },
     {
       "seq": 6,
@@ -81,7 +86,8 @@
       "after": "SUBMITTED",
       "actor": "OTM (baseline)",
       "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/135#issuecomment-6327655150",
-      "summary": "Card created on the independent Progress page from the OTM board rows."
+      "summary": "Card created on the independent Progress page from the OTM board rows.",
+      "rev": "R1"
     },
     {
       "seq": 7,
@@ -94,7 +100,8 @@
       "after": "BLOCKED",
       "actor": "OTM (baseline)",
       "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/135#issuecomment-6327655150",
-      "summary": "Card created on the independent Progress page from the OTM board rows."
+      "summary": "Card created on the independent Progress page from the OTM board rows.",
+      "rev": "R1"
     },
     {
       "seq": 8,
@@ -107,7 +114,8 @@
       "after": "VERIFIED",
       "actor": "OTM (baseline)",
       "source": "https://github.com/reallakshman19/Grade9v3.5/issues/300#issuecomment-6314544157",
-      "summary": "Card created on the independent Progress page from the OTM board rows."
+      "summary": "Card created on the independent Progress page from the OTM board rows.",
+      "rev": "R1"
     },
     {
       "seq": 9,
@@ -120,7 +128,21 @@
       "after": "VERIFIED",
       "actor": "OTM (baseline)",
       "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6329482245",
-      "summary": "Card created on the independent Progress page from the OTM board rows."
+      "summary": "Card created on the independent Progress page from the OTM board rows.",
+      "rev": "R1"
+    },
+    {
+      "seq": 10,
+      "id": "G9V35-R-0010",
+      "previous_id": "G9V35-R-0009",
+      "at": "2026-10-22T03:22:07Z",
+      "kind": "REVISION",
+      "actor": "OTM",
+      "summary": "ZIP-free Physics pilot: the Owner's rule of 22 Oct replaces the ZIP-based pilot plan tracked on the old site.",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6329482245",
+      "revision": "R1",
+      "scope": "project",
+      "rev": "R1"
     }
   ]
 }

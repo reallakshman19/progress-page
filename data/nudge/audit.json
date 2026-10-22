@@ -16,7 +16,8 @@
       "after": "VERIFIED",
       "actor": "OTM (baseline)",
       "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/134",
-      "summary": "Card created on the independent Progress page from the OTM board rows."
+      "summary": "Card created on the independent Progress page from the OTM board rows.",
+      "rev": "R1"
     },
     {
       "seq": 2,
@@ -29,7 +30,8 @@
       "after": "BLOCKED",
       "actor": "OTM (baseline)",
       "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/125",
-      "summary": "Card created on the independent Progress page from the OTM board rows."
+      "summary": "Card created on the independent Progress page from the OTM board rows.",
+      "rev": "R1"
     },
     {
       "seq": 3,
@@ -42,7 +44,8 @@
       "after": "SUBMITTED",
       "actor": "OTM (baseline)",
       "source": "https://github.com/reallakshman19/NextNudge-P118-Scratch/pull/14",
-      "summary": "Card created on the independent Progress page from the OTM board rows."
+      "summary": "Card created on the independent Progress page from the OTM board rows.",
+      "rev": "R1"
     },
     {
       "seq": 4,
@@ -55,7 +58,33 @@
       "after": "BLOCKED",
       "actor": "OTM (baseline)",
       "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/134#issuecomment-6312401880",
-      "summary": "Card created on the independent Progress page from the OTM board rows."
+      "summary": "Card created on the independent Progress page from the OTM board rows.",
+      "rev": "R1"
+    },
+    {
+      "seq": 5,
+      "id": "NUDGE-R-0005",
+      "previous_id": "NUDGE-R-0004",
+      "at": "2026-10-22T03:22:07Z",
+      "kind": "REVISION",
+      "actor": "OTM",
+      "summary": "Founding plan on the independent Progress page, built from the OTM board rows.",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6330677339",
+      "revision": "R1",
+      "scope": "project",
+      "rev": "R1"
+    },
+    {
+      "seq": 6,
+      "id": "NUDGE-R-0006",
+      "previous_id": "NUDGE-R-0005",
+      "at": "2026-10-22T03:22:40Z",
+      "kind": "ARCHIVE",
+      "actor": "OTM",
+      "summary": "Owner: \"Drop the project, archive it\" (page only; the Nudge agents and their holds are untouched)",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6331798549",
+      "scope": "project",
+      "rev": "R1"
     }
   ]
 }

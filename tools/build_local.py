@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """Build one self-contained HTML file from the page sources (standard library only).
 
-Usage: python tools/build_local.py <out.html> [--links <links.private.json>] [--prerender <msedge.exe or chrome.exe>]
+Usage: python tools/build_local.py <out.html> [--links <links.private.json>] [--prerender <msedge.exe or chrome.exe>] [--data <folder>]
 
-The file holds the page script and an embedded snapshot of data/. With scripts on, it shows the snapshot at once and
-then reads the live data. With --prerender it also holds a static copy of every project and view (drawn by a headless
+The file holds the page script and an embedded snapshot of the data folder. With scripts on, it shows the snapshot at once
+and then reads the live data. With --prerender it also holds a static copy of every project and view (drawn by a headless
 browser as plain <details> sections) that still shows when scripts are blocked, for example in a static HTML preview.
 A file built with --links holds private chat links: keep it on your own machine and never commit it.
 """
@@ -18,7 +18,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-ORDER = ["util.js", "triggers.js", "progress.js", "actions.js", "app.js"]
+VIEWER = ROOT if (ROOT / "app.js").exists() else ROOT / "viewer"
+DATA_FILES = ("index", "cards", "actions", "fixtures", "nudges", "audit")
 LIVE_PAGE = "https://reallakshman19.github.io/progress-page/"
 STATIC_CSS = """
 .sp{border:1px solid var(--bd);border-radius:10px;margin:0 0 12px;padding:0 14px 12px}
@@ -40,11 +41,27 @@ def strip_module(src):
     return "\n".join(lines)
 
 
-def snapshot():
-    data = ROOT / "data"
+def bundle_order(entry="app.js"):
+    """The page modules, each after the modules it imports (the entry module last)."""
+    order, seen = [], set()
+
+    def visit(name):
+        if name in seen:
+            return
+        seen.add(name)
+        for dep in re.findall(r"from\s+['\"]\./([\w.-]+\.js)", (VIEWER / name).read_text(encoding="utf-8")):
+            visit(dep)
+        order.append(name)
+
+    visit(entry)
+    return order
+
+
+def snapshot(data):
+    data = Path(data)
     files = {"projects.json": json.loads((data / "projects.json").read_text(encoding="utf-8"))}
     for p in files["projects.json"]["projects"]:
-        for f in ("index", "cards", "actions", "fixtures"):
+        for f in DATA_FILES:
             files[p["key"] + "/" + f + ".json"] = json.loads((data / p["key"] / (f + ".json")).read_text(encoding="utf-8"))
     return {"builtAt": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), "files": files}
 
@@ -72,11 +89,11 @@ def static_root(browser, html_path):
     frag = dump_root(browser, Path(html_path).resolve().as_uri() + "?data=http://127.0.0.1:1/")
     if not frag or 'class="sp"' not in frag:
         raise SystemExit("prerender failed: the headless browser did not draw the static sections")
-    frag = re.sub(r"<button[^>]*>Copy reply</button>", "", frag)
+    frag = re.sub(r"<button[^>]*>(?:Copy reply|\+)</button>", "", frag)
     built = datetime.now().astimezone().strftime("%d %b %H:%M UTC%z")
     banner = ('<p class="snapbar">Static copy made ' + built + '; times such as "5m ago" are as at that moment. '
               'Scripts are off in this view. <a href="' + LIVE_PAGE + '" target="_blank" rel="noopener">Open the live page</a>'
-              ' for current data and the Copy reply buttons.</p>')
+              ' for current data, the Nudge + dialogs and the Copy reply buttons.</p>')
     return frag.replace('<p class="snapbar" id="snapbar"></p>', banner)
 
 
@@ -92,29 +109,34 @@ def page(css, root_html, snap, links, bundle):
     )
 
 
-def main():
-    ap = argparse.ArgumentParser(description=__doc__)
-    ap.add_argument("out")
-    ap.add_argument("--links", help="JSON map {chat id8: https url}; embedded for this private copy only")
-    ap.add_argument("--prerender", help="path to msedge.exe or chrome.exe: adds a static copy that works without scripts")
-    a = ap.parse_args()
-    css = (ROOT / "viewer.css").read_text(encoding="utf-8")
-    bundle = "\n".join(strip_module((ROOT / f).read_text(encoding="utf-8")) for f in ORDER)
-    links = json.loads(Path(a.links).read_text(encoding="utf-8")) if a.links else {}
-    snap = snapshot()
+def build(out, links_path=None, prerender=None, data=None):
+    css = (VIEWER / "viewer.css").read_text(encoding="utf-8")
+    bundle = "\n".join(strip_module((VIEWER / f).read_text(encoding="utf-8")) for f in bundle_order())
+    links = json.loads(Path(links_path).read_text(encoding="utf-8")) if links_path else {}
+    snap = snapshot(data or ROOT / "data")
     loading = '<p class="muted">Loading... If this stays blank, open <a href="' + LIVE_PAGE + '">the live page</a>.</p>'
     html = page(css, loading, snap, links, bundle)
-    out = Path(a.out)
-    if a.prerender:
+    out = Path(out)
+    if prerender:
         tmp = out.with_suffix(".build.html")
-        tmp.write_text(page(css, loading, snap, links, bundle + "\n" + (ROOT / "tools" / "static_pass.js").read_text(encoding="utf-8")),
-                       encoding="utf-8", newline="\n")
+        extra = (Path(__file__).resolve().parent / "static_pass.js").read_text(encoding="utf-8")
+        tmp.write_text(page(css, loading, snap, links, bundle + "\n" + extra), encoding="utf-8", newline="\n")
         try:
-            html = page(css, static_root(a.prerender, tmp), snap, links, bundle)
+            html = page(css, static_root(prerender, tmp), snap, links, bundle)
         finally:
             tmp.unlink(missing_ok=True)
     out.write_text(html, encoding="utf-8", newline="\n")
-    print("wrote", out, len(html), "bytes;", len(links), "private links embedded;", "static copy included" if a.prerender else "no static copy")
+    return f"wrote {out} ({len(html)} bytes; {len(links)} private links embedded; " + ("static copy included)" if prerender else "no static copy)")
+
+
+def main():
+    ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument("out")
+    ap.add_argument("--links", help="JSON map {chat id8: https url}; embedded for this private copy only")
+    ap.add_argument("--prerender", help="path to msedge.exe or chrome.exe: adds a static copy that works without scripts")
+    ap.add_argument("--data", help="data folder (default: data beside the page)")
+    a = ap.parse_args()
+    print(build(a.out, a.links, a.prerender, a.data))
 
 
 if __name__ == "__main__":
