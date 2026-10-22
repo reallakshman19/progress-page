@@ -101,6 +101,21 @@
       "revision": "R1",
       "scope": "project",
       "rev": "R1"
+    },
+    {
+      "seq": 8,
+      "id": "LANDING-LIVE-R-0008",
+      "previous_id": "LANDING-LIVE-R-0007",
+      "at": "2026-10-22T05:03:41Z",
+      "kind": "STATE",
+      "actor": "OTM",
+      "summary": "Coder posted TASK EVIDENCE v2 for Stage 2 at 04:51: PR #153 exact head b8359d80, 15 files, hosted CI green; found by the new local hub",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/149#issuecomment-6329968327",
+      "card": "stage2",
+      "before": "IN_PROGRESS",
+      "after": "SUBMITTED",
+      "source_at": "2026-10-22T00:51:00Z",
+      "rev": "R1"
     }
   ]
 }

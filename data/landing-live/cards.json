@@ -67,14 +67,14 @@
       "chat": "coder",
       "role": "coder"
     },
-    "state": "IN_PROGRESS",
-    "now": "Portable viewer and standalone page. Draft [PR #153](https://github.com/reallakshman19/CoordinatorLandingpage/pull/153), head b8359d80, 15 files +1106 -859; CI 40 of 40 green at this head. No evidence post on #149 yet.",
+    "state": "SUBMITTED",
+    "now": "TASK EVIDENCE v2 posted 04:51 on #149: draft PR #153, exact head b8359d80, 15 files, hosted CI green, review hold.",
     "next": {
-      "actor": "CODER",
-      "text": "TASK EVIDENCE v2 + SELF-CHECK on #149; then an independent check at the exact head against T2 and F2"
+      "actor": "OTM",
+      "text": "independent check at exact head b8359d80 against T2/F2 (after the hub build; Owner hold)"
     },
-    "updatedAt": "2026-10-22T00:46:48Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/pull/153",
+    "updatedAt": "2026-10-22T00:51:00Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/149#issuecomment-6329968327",
     "refs": [
       {
         "k": "issue",
@@ -93,6 +93,9 @@
         "to": "check",
         "k": "to"
       }
+    ],
+    "flags": [
+      "paused"
     ]
   },
   "check": {
