@@ -269,5 +269,21 @@
     "flags": [
       "needs-you"
     ]
+  },
+  "nlmprod1": {
+    "order": 11,
+    "group": "pilot",
+    "milestone": "M0",
+    "label": "NLM-PROD1 producer",
+    "who": {
+      "chat": "nlmprod1",
+      "role": "Agent"
+    },
+    "state": "NOT_STARTED",
+    "now": "Onboarding: adoption read-back and test post on #154",
+    "next": {
+      "actor": "NLM-PROD1",
+      "text": "post the test evidence on #154; then OTM delivers G9O4-2-p1"
+    }
   }
 }

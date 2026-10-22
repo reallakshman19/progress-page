@@ -598,6 +598,32 @@
       "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128#issuecomment-6345511556",
       "scope": "milestone:M4",
       "rev": "R2"
+    },
+    {
+      "seq": 46,
+      "id": "G9V35-R-0046",
+      "previous_id": "G9V35-R-0045",
+      "at": "2026-10-22T16:17:37Z",
+      "kind": "PLAN",
+      "actor": "OTM",
+      "summary": "Producer NLM-PROD1 chat started (onboarding sent)",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6345588180",
+      "scope": "chat:nlmprod1",
+      "rev": "R2"
+    },
+    {
+      "seq": 47,
+      "id": "G9V35-R-0047",
+      "previous_id": "G9V35-R-0046",
+      "at": "2026-10-22T16:17:37Z",
+      "kind": "BASELINE",
+      "actor": "OTM",
+      "summary": "Producer card for WBS 1.1",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6345588180",
+      "card": "nlmprod1",
+      "before": null,
+      "after": "NOT_STARTED",
+      "rev": "R2"
     }
   ]
 }
