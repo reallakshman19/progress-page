@@ -646,6 +646,34 @@
       "source": "https://github.com/reallakshman19/Word-to-Table/issues/1#issuecomment-6346200769",
       "scope": "milestone:M7",
       "rev": "R1"
+    },
+    {
+      "seq": 51,
+      "id": "DOC2TABLE-R-0051",
+      "previous_id": "DOC2TABLE-R-0050",
+      "at": "2026-10-22T19:30:44Z",
+      "kind": "STATE",
+      "actor": "OTM",
+      "summary": "T-PRESERVE packet delivered",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6349477767",
+      "card": "tpresc1",
+      "before": "NOT_STARTED",
+      "after": "IN_PROGRESS",
+      "rev": "R1"
+    },
+    {
+      "seq": 52,
+      "id": "DOC2TABLE-R-0052",
+      "previous_id": "DOC2TABLE-R-0051",
+      "at": "2026-10-22T19:30:44Z",
+      "kind": "UPDATE",
+      "actor": "OTM",
+      "summary": "Packet delivered to coder",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6349477767",
+      "card": "oracle",
+      "before": "SUBMITTED",
+      "after": "SUBMITTED",
+      "rev": "R1"
     }
   ]
 }
