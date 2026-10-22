@@ -183,5 +183,30 @@
     },
     "updatedAt": "2026-10-22T16:49:18Z",
     "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6346220289"
+  },
+  "g3": {
+    "order": 7,
+    "group": "review",
+    "milestone": "M1",
+    "label": "G3-CIIFR-Cond",
+    "who": {
+      "chat": "g3",
+      "role": "Agent"
+    },
+    "state": "IN_PROGRESS",
+    "now": "Coding P1 CII->InputXML->CII round-trip",
+    "next": {
+      "actor": "G3-CIIFR-Cond",
+      "text": "finish P1; no pings (Owner)"
+    },
+    "refs": [
+      {
+        "k": "comment",
+        "l": "evidence",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/156#issuecomment-6347011984"
+      }
+    ],
+    "updatedAt": "2026-10-22T18:25:15Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6347027031"
   }
 }

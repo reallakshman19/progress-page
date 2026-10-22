@@ -4,7 +4,7 @@
     "key": "ciifr",
     "title": "CII Find & Replace VNext",
     "subtitle": "Preview from the OTM board. The CIIFR Oracle owns the real data (standalone mode).",
-    "updatedAt": "2026-10-22T16:49:19Z",
+    "updatedAt": "2026-10-22T18:25:15Z",
     "updatedBy": "OTM",
     "staleAfterMin": 120,
     "aim": "NO AIM WRITTEN BY THE OWNER YET. Work on this tab waits for the Owner's aim.",
@@ -40,6 +40,11 @@
     "o3": {
       "label": "O3-CIIFR-Cond",
       "id8": "6ada3e09",
+      "engine": "ChatGPT"
+    },
+    "g3": {
+      "label": "G3-CIIFR-Cond",
+      "id8": "6ada4669",
       "engine": "ChatGPT"
     }
   },

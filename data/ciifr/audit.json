@@ -246,6 +246,32 @@
       "before": "BLOCKED",
       "after": "NOT_APPLICABLE",
       "rev": "R2"
+    },
+    {
+      "seq": 19,
+      "id": "CIIFR-R-0019",
+      "previous_id": "CIIFR-R-0018",
+      "at": "2026-10-22T18:25:15Z",
+      "kind": "PLAN",
+      "actor": "OTM",
+      "summary": "G3-CIIFR-Cond chat (P1 coder)",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6347027031",
+      "scope": "chat:g3",
+      "rev": "R2"
+    },
+    {
+      "seq": 20,
+      "id": "CIIFR-R-0020",
+      "previous_id": "CIIFR-R-0019",
+      "at": "2026-10-22T18:25:15Z",
+      "kind": "BASELINE",
+      "actor": "OTM",
+      "summary": "Owner: G3 is the P1 coder; no pings until it finishes",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6347027031",
+      "card": "g3",
+      "before": null,
+      "after": "IN_PROGRESS",
+      "rev": "R2"
     }
   ]
 }

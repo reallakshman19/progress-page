@@ -8,10 +8,10 @@
       "chat": "oracle"
     },
     "state": "SUBMITTED",
-    "now": "T-EXPECT spot-check CONFIRMED steps 1-6, with gaps (showingPlcHdr cells, header-row decisions); relayed as TO D2T-O1-6",
+    "now": "Final T-PRESERVE packet sent (WBS 2/M2, B1)",
     "next": {
-      "actor": "Oracle O1",
-      "text": "reply D2T-O1-6: resolve placeholder cells, revise T-PRESERVE; then your launch word and mode"
+      "actor": "OTM",
+      "text": "seal packet, onboard coder; archives via Drive"
     },
     "refs": [
       {
@@ -20,8 +20,8 @@
         "u": "https://github.com/reallakshman19/Word-to-Table/issues/1"
       }
     ],
-    "updatedAt": "2026-10-22T15:48:57Z",
-    "src": "https://github.com/reallakshman19/Word-to-Table/issues/1#issuecomment-6344993832",
+    "updatedAt": "2026-10-22T18:25:02Z",
+    "src": "https://github.com/reallakshman19/Word-to-Table/issues/1",
     "flags": []
   }
 }
