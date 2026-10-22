@@ -59,6 +59,14 @@ class MilestoneOnly(H.OpsCase):
 
 
 class PrivateLinks(H.OpsCase):
+    def test_a_link_hidden_by_json_escapes_or_invisible_characters_is_caught(self):
+        import pp_check as K
+        bs = chr(92)
+        for raw in ('"drive' + bs + 'u002egoogle.com/x"', '"t.share' + bs + 'u0070oint.com/x"', '"1drv%25252Ems/x"', '"a.share​point.com/x"'):
+            self.assertTrue(any(p.search(K._plain(raw)) for p, _ in K.SECRETS[:2]), raw)
+        for raw in ('"sharepoint.company"', '"onedrive.committee"', '"docs.google.commentary"', '"SharePoint and OneDrive"'):
+            self.assertFalse(any(p.search(raw) or p.search(K._plain(raw)) for p, _ in K.SECRETS[:2]), raw)
+
     def test_a_drive_link_in_capitals_is_refused(self):
         self.refuse("fixture", "add", *P, "--list", "inputs", "--text", "see https://Drive.Google.com/x", *WS, says="Google Drive link")
 
