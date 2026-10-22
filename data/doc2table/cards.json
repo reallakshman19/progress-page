@@ -8,10 +8,10 @@
       "chat": "oracle"
     },
     "state": "SUBMITTED",
-    "now": "WAITS: TPRES-C1 return on #155",
+    "now": "WAITS: archives to coder (Owner folder answer)",
     "next": {
-      "actor": "TPRES-C1",
-      "text": "return on #155"
+      "actor": "OTM",
+      "text": "archives to TPRES-C1 via handoff folder"
     },
     "refs": [
       {
@@ -20,8 +20,8 @@
         "u": "https://github.com/reallakshman19/Word-to-Table/issues/1"
       }
     ],
-    "updatedAt": "2026-10-22T19:30:44Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6349477767",
+    "updatedAt": "2026-10-22T21:21:58Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/155#issuecomment-6349714107",
     "flags": []
   },
   "tpresc1": {
