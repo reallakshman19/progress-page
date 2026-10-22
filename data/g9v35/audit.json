@@ -195,6 +195,35 @@
       "list": "intent",
       "op": "add",
       "rev": "R1"
+    },
+    {
+      "seq": 15,
+      "id": "G9V35-R-0015",
+      "previous_id": "G9V35-R-0014",
+      "at": "2026-10-22T11:41:50Z",
+      "kind": "UPDATE",
+      "actor": "OTM",
+      "summary": "IR's RE mirrored by the hub; parked (Owner decisions #1 6339795835)",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/135#issuecomment-6339434496",
+      "card": "ir",
+      "before": "SUBMITTED",
+      "after": "SUBMITTED",
+      "source_at": "2026-10-22T11:17:36Z",
+      "rev": "R1"
+    },
+    {
+      "seq": 16,
+      "id": "G9V35-R-0016",
+      "previous_id": "G9V35-R-0015",
+      "at": "2026-10-22T11:41:50Z",
+      "kind": "UPDATE",
+      "actor": "OTM",
+      "summary": "parked: old-plan work; the new Oracle decides reuse",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6339795835",
+      "card": "pgrd",
+      "before": "SUBMITTED",
+      "after": "SUBMITTED",
+      "rev": "R1"
     }
   ]
 }

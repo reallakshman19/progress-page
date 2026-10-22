@@ -146,13 +146,13 @@
       "role": "coder"
     },
     "state": "SUBMITTED",
-    "now": "F1 PARTIAL at head 69b1b4b5; the coder has no open task. Waits for the IR short check ([#135 6327655150](https://github.com/reallakshman19/CoordinatorLandingpage/issues/135#issuecomment-6327655150), asked 02:10, no reply).",
+    "now": "PR #305 reviewed by the IR (#135); parked under the Owner's new plan",
     "next": {
-      "actor": "IR",
-      "text": "short new-diff check on #135 (Owner paste line offered)"
+      "actor": "Oracle",
+      "text": "Oracle O4 decides whether PR #305 is reused"
     },
-    "updatedAt": "2026-10-21T22:10:08Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/135#issuecomment-6327655150",
+    "updatedAt": "2026-10-22T11:41:50Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6339795835",
     "refs": [
       {
         "k": "issue",
@@ -171,6 +171,9 @@
         "to": "ir",
         "k": "back"
       }
+    ],
+    "flags": [
+      "paused"
     ]
   },
   "ir": {
@@ -183,13 +186,13 @@
       "role": "independent reviewer"
     },
     "state": "SUBMITTED",
-    "now": "Wake line pasted by the Owner ~10:00; no RE on #135 yet (G9v3.5 held)",
+    "now": "RE on PR #305 posted on #135; parked under the Owner's new plan",
     "next": {
-      "actor": "IR",
-      "text": "post its RE for the short new-diff check on #135"
+      "actor": "Oracle",
+      "text": "Oracle O4 decides whether to reuse this verdict"
     },
-    "updatedAt": "2026-10-22T09:20:08Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6337284438",
+    "updatedAt": "2026-10-22T11:17:36Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/135#issuecomment-6339434496",
     "refs": [
       {
         "k": "issue",
@@ -203,7 +206,9 @@
         "s": "draft · HOLD"
       }
     ],
-    "flags": []
+    "flags": [
+      "paused"
+    ]
   },
   "owner": {
     "order": 9,
