@@ -191,11 +191,11 @@
     "milestone": "M0",
     "label": "OTM hub and page tools",
     "who": {},
-    "state": "SUBMITTED",
-    "now": "Hub posting on after its 8th independent check PASSED; first 3 posts read back",
+    "state": "VERIFIED",
+    "now": "Common#458 merged (624ff12); hub live, skills v7.4 / v3.42 in use",
     "next": {
-      "actor": "Owner",
-      "text": "merge Common#458 (module mirror of the page code)"
+      "actor": "OTM",
+      "text": "keep the hub running; fix page drift and stale-tab triggers"
     },
     "refs": [
       {
@@ -204,10 +204,8 @@
         "u": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6339415993"
       }
     ],
-    "updatedAt": "2026-10-22T12:36:42Z",
+    "updatedAt": "2026-10-22T15:06:57Z",
     "src": "https://github.com/reallakshman19/Common/pull/458",
-    "flags": [
-      "needs-you"
-    ]
+    "flags": []
   }
 }
