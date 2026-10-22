@@ -1,12 +1,43 @@
 {
-  "repository": [],
+  "repository": [
+    {
+      "t": "Repository reallakshman19/Word-to-Table; inspected base f548803785e8ea94d5db17a110c592d4d6a7b718; bounded contributor changes remain uncommitted."
+    }
+  ],
   "issues": [],
   "pullRequests": [],
-  "roadmap": [],
-  "highRoi": [],
+  "roadmap": [
+    {
+      "t": "M1-M7 correspond to roadmap phases 0-6. Pages browser runtime supersedes required Python/SQLite hosting; this is a planning contract, not product acceptance."
+    }
+  ],
+  "highRoi": [
+    {
+      "t": "One source/ledger core preserves exact spans, control text, nested ownership and raw exceptions; adapt existing presentation only after a source-bound reuse check."
+    }
+  ],
   "future": [],
-  "intent": [],
-  "inputs": [],
-  "knownIssues": [],
-  "pending": []
+  "intent": [
+    {
+      "t": "Flexible Word tables with independent header/data selection, block/record combination and inspectable raw remainders. Deployable through GitHub Pages."
+    }
+  ],
+  "inputs": [
+    {
+      "t": "doc2table / Native Word.docx; 181448 bytes; sha256 1c20755a09041870ce2e79f00d428ea96bb147e0595f6e096d53e134da3a8363."
+    },
+    {
+      "t": "doc2table / Word Table snaps.docx; 876174 bytes; sha256 28aa7249ff4c51e1131916f39c517ac7abb38f8744a1a185483478b6f80ec33c. Twelve image occurrences; zero native tables."
+    }
+  ],
+  "knownIssues": [
+    {
+      "t": "Existing parser header/nesting assumptions remain qualification gaps. Prior text-helper checks are SELF-ASSESSED; actual complete Pages UI/import/export acceptance NOT_RUN."
+    }
+  ],
+  "pending": [
+    {
+      "t": "Owner chose to keep worker briefs prepared and retain the hashed fixture bundle locally for now. No launch authorized. Coder uses v3.6 standalone practices with a real approved label/plan/own child."
+    }
+  ]
 }
