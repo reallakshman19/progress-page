@@ -18,6 +18,15 @@
     },
     {
       "t": "MITIGATION DONE 5 (22 Oct): new Oracle O4 (local Codex) created with an aim-first prompt: the aim verbatim, the decisions, why the old plan failed, the modules to use, milestones and a 'items the kid can use today' headline. Fresh local copy C:/CodeC/Grade9v3.5."
+    },
+    {
+      "t": "MITIGATION DONE 6 (22 Oct): Aim first on the page: every active tab now carries an aim (missing ones say so); tool change in PR progress-page#2: project aim command, checker refuses a tab without an aim, Aim line and 'How we work' module links, milestone-only moves keep evidence, OneDrive/SharePoint links refused. Owner merges."
+    },
+    {
+      "t": "MITIGATION DONE 7 (22 Oct): Common modules updated in draft PR Common#457: aim first, Gatekeeper personal-use profile, independent-review spot-check mode, packets carry Aim: and Modules: lines, local-handover via Drive/OneDrive recorded as fixtures. Owner merges."
+    },
+    {
+      "t": "MITIGATION DONE 8 (22 Oct): OTM skill section 13.0 and the Codex skill: aim first, at most 3 live blocks per subject, small merged PRs, Aim/Modules in every packet, infrastructure only on the Owner's ask. OTM waiter now wakes once per set of alerts."
     }
   ],
   "future": [],
