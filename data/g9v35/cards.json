@@ -288,5 +288,19 @@
     "flags": [],
     "updatedAt": "2026-10-22T18:39:56Z",
     "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/154#issuecomment-6344449377"
+  },
+  "o4": {
+    "order": 12,
+    "group": "pilot",
+    "milestone": "M0",
+    "label": "o4",
+    "who": {},
+    "state": "NOT_STARTED",
+    "now": "Waiting for NLM-PROD1's return on G9O4-2-p1",
+    "next": {
+      "actor": "NLM-PROD1",
+      "text": "work packet G9O4-2-p1; Oracle waits"
+    },
+    "flags": []
   }
 }
