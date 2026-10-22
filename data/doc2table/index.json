@@ -4,7 +4,7 @@
     "key": "doc2table",
     "title": "Doc to Table",
     "subtitle": "",
-    "updatedAt": "2026-10-22T18:25:02Z",
+    "updatedAt": "2026-10-22T19:13:50Z",
     "updatedBy": "OTM",
     "staleAfterMin": 120,
     "aim": "Flexible .doc/.docx tables on GitHub Pages: headers and data picked independently, records combined, blocks joined. Original bytes and source evidence are the ground truth; anything not fully structured stays source-linked and inspectable. No zero-error claim; no required backend; no silent source loss. (Owner confirmed Oracle O1's read-back, 22 Oct.)",
@@ -22,6 +22,11 @@
       "label": "Oracle O1",
       "id8": "01a16256",
       "engine": "Codex"
+    },
+    "tpresc1": {
+      "label": "TPRES-C1",
+      "id8": "6ada605d",
+      "engine": "ChatGPT"
     }
   },
   "milestones": {

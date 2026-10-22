@@ -8,10 +8,10 @@
       "chat": "oracle"
     },
     "state": "SUBMITTED",
-    "now": "Final T-PRESERVE packet sent (WBS 2/M2, B1)",
+    "now": "Final T-PRESERVE packet sealed (WBS 2/M2, B1)",
     "next": {
-      "actor": "OTM",
-      "text": "seal packet, onboard coder; archives via Drive"
+      "actor": "TPRES-C1",
+      "text": "coder onboarding; packet after test post"
     },
     "refs": [
       {
@@ -20,8 +20,31 @@
         "u": "https://github.com/reallakshman19/Word-to-Table/issues/1"
       }
     ],
-    "updatedAt": "2026-10-22T18:25:02Z",
-    "src": "https://github.com/reallakshman19/Word-to-Table/issues/1",
+    "updatedAt": "2026-10-22T19:13:50Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6349142629",
     "flags": []
+  },
+  "tpresc1": {
+    "order": 2,
+    "group": "main",
+    "milestone": "M2",
+    "label": "TPRES-C1 coder",
+    "who": {
+      "chat": "tpresc1",
+      "role": "Agent"
+    },
+    "state": "NOT_STARTED",
+    "now": "Onboarding: test post on #155 due",
+    "next": {
+      "actor": "TPRES-C1",
+      "text": "test post on #155"
+    },
+    "refs": [
+      {
+        "k": "issue",
+        "l": "evidence",
+        "u": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/155"
+      }
+    ]
   }
 }
