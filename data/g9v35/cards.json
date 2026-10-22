@@ -8,14 +8,14 @@
       "chat": "oracle",
       "role": "Oracle O3"
     },
-    "state": "SUBMITTED",
+    "state": "NOT_APPLICABLE",
     "now": "Posted its challenge on [#128 6329920555](https://github.com/reallakshman19/CoordinatorLandingpage/issues/128#issuecomment-6329920555) at 04:47. OTM has not read it yet (other tasks held at the Owner's instruction).",
     "next": {
-      "actor": "OTM",
-      "text": "read the challenge and send the next ZIP-free packet (paused until the Progress page work is done)"
+      "actor": "-",
+      "text": ""
     },
-    "updatedAt": "2026-10-22T00:47:32Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128#issuecomment-6329920555",
+    "updatedAt": "2026-10-22T12:45:10Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6339795835",
     "refs": [
       {
         "k": "issue",
@@ -29,9 +29,14 @@
         "k": "both"
       }
     ],
-    "flags": [
-      "paused"
-    ]
+    "flags": [],
+    "closed": {
+      "kind": "superseded",
+      "why": "Owner's new aim and plan: Oracle O4 replaces O3",
+      "at": "2026-10-22T12:45:10Z",
+      "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6339795835",
+      "by": "oracle4"
+    }
   },
   "pqrt": {
     "order": 2,
@@ -243,5 +248,23 @@
     "now": "DONE: gap found. The replay is done (METER HIGH); the Oracle gave the fix to coder PGRD.",
     "updatedAt": "2026-10-21T11:14:01Z",
     "src": "https://github.com/reallakshman19/Grade9v3.5/issues/300#issuecomment-6314544157"
+  },
+  "oracle4": {
+    "order": 10,
+    "group": "pilot",
+    "milestone": "M0",
+    "label": "Oracle O4",
+    "who": {
+      "chat": "oracle4",
+      "role": "Oracle O4"
+    },
+    "state": "IN_PROGRESS",
+    "now": "Started on TO G9O4-1: aim read-back, milestones, first NLM Core 2 packet",
+    "next": {
+      "actor": "Oracle O4",
+      "text": "write RE G9O4-1 (read-back, milestones, first packet)"
+    },
+    "updatedAt": "2026-10-22T12:45:06Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6339795835"
   }
 }

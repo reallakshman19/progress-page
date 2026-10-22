@@ -236,6 +236,47 @@
       "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6339599529",
       "scope": "aim",
       "rev": "R1"
+    },
+    {
+      "seq": 18,
+      "id": "G9V35-R-0018",
+      "previous_id": "G9V35-R-0017",
+      "at": "2026-10-22T12:45:06Z",
+      "kind": "PLAN",
+      "actor": "OTM",
+      "summary": "Owner started Oracle O4 (local Codex, Follow G9O4-1 handover)",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6339795835",
+      "scope": "chat:oracle4",
+      "rev": "R1"
+    },
+    {
+      "seq": 19,
+      "id": "G9V35-R-0019",
+      "previous_id": "G9V35-R-0018",
+      "at": "2026-10-22T12:45:06Z",
+      "kind": "BASELINE",
+      "actor": "OTM",
+      "summary": "New Oracle for the Owner's aim",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6339795835",
+      "card": "oracle4",
+      "before": null,
+      "after": "IN_PROGRESS",
+      "rev": "R1"
+    },
+    {
+      "seq": 20,
+      "id": "G9V35-R-0020",
+      "previous_id": "G9V35-R-0019",
+      "at": "2026-10-22T12:45:10Z",
+      "kind": "SUPERSEDE",
+      "actor": "OTM",
+      "summary": "Owner's new aim and plan: Oracle O4 replaces O3",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6339795835",
+      "card": "oracle",
+      "before": "SUBMITTED",
+      "after": "NOT_APPLICABLE",
+      "to": "oracle4",
+      "rev": "R1"
     }
   ]
 }
