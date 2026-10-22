@@ -468,6 +468,20 @@
       "after": "SUBMITTED",
       "source_at": "2026-10-22T13:46:49Z",
       "rev": "R2"
+    },
+    {
+      "seq": 36,
+      "id": "G9V35-R-0036",
+      "previous_id": "G9V35-R-0035",
+      "at": "2026-10-22T14:14:59Z",
+      "kind": "UPDATE",
+      "actor": "OTM",
+      "summary": "Packet routing waits for the Owner's two answers",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128#issuecomment-6342342365",
+      "card": "oracle4",
+      "before": "SUBMITTED",
+      "after": "SUBMITTED",
+      "rev": "R2"
     }
   ]
 }

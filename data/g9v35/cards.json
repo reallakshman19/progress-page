@@ -261,10 +261,13 @@
     "state": "SUBMITTED",
     "now": "Read-back, milestones M0-M4 (3740ca6, 5d6b239); first packet revised with the Owner ('ok update'): 2-3 baseline attempts + 1 supported NLM question",
     "next": {
-      "actor": "OTM",
-      "text": "route packet G9O4-1-p1: start one producer and one checker; relay the Owner's bank answer"
+      "actor": "Owner",
+      "text": "answer O4's bank question; approve starting the producer (new ChatGPT chat) and IR-G9V35 as checker"
     },
-    "updatedAt": "2026-10-22T13:46:49Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128#issuecomment-6342342365"
+    "updatedAt": "2026-10-22T14:14:59Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128#issuecomment-6342342365",
+    "flags": [
+      "needs-you"
+    ]
   }
 }
