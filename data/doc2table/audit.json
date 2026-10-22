@@ -297,6 +297,20 @@
       "before": "SUBMITTED",
       "after": "SUBMITTED",
       "rev": "R1"
+    },
+    {
+      "seq": 24,
+      "id": "DOC2TABLE-R-0024",
+      "previous_id": "DOC2TABLE-R-0023",
+      "at": "2026-10-22T14:56:33Z",
+      "kind": "STATE",
+      "actor": "OTM",
+      "summary": "Owner said ok to T-EXPECT by the Oracle",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6343831191",
+      "card": "oracle",
+      "before": "SUBMITTED",
+      "after": "IN_PROGRESS",
+      "rev": "R1"
     }
   ]
 }

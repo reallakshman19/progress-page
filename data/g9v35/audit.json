@@ -482,6 +482,34 @@
       "before": "SUBMITTED",
       "after": "SUBMITTED",
       "rev": "R2"
+    },
+    {
+      "seq": 37,
+      "id": "G9V35-R-0037",
+      "previous_id": "G9V35-R-0036",
+      "at": "2026-10-22T14:56:34Z",
+      "kind": "STATE",
+      "actor": "OTM",
+      "summary": "Owner: authored bank with provenance; producer = new ChatGPT chat, checker = IR-G9V35 (TO G9O4-2)",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6343831191",
+      "card": "oracle4",
+      "before": "SUBMITTED",
+      "after": "IN_PROGRESS",
+      "rev": "R2"
+    },
+    {
+      "seq": 38,
+      "id": "G9V35-R-0038",
+      "previous_id": "G9V35-R-0037",
+      "at": "2026-10-22T14:56:34Z",
+      "kind": "UPDATE",
+      "actor": "OTM",
+      "summary": "Owner chose IR-G9V35 as checker",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6343831191",
+      "card": "ir",
+      "before": "SUBMITTED",
+      "after": "SUBMITTED",
+      "rev": "R2"
     }
   ]
 }

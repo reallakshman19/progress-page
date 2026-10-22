@@ -7,11 +7,11 @@
     "who": {
       "chat": "oracle"
     },
-    "state": "SUBMITTED",
-    "now": "Read-back D2T-O1-1: milestones M1-M7 and 8 fixtures (3a50517); 3 packets prepared, none launched",
+    "state": "IN_PROGRESS",
+    "now": "Owner: the Oracle does T-EXPECT itself (TO D2T-O1-5)",
     "next": {
-      "actor": "Owner",
-      "text": "say when to launch the first packet (T-EXPECT); briefs stay prepared by your choice"
+      "actor": "Oracle O1",
+      "text": "do T-EXPECT and reply D2T-O1-5 with T-PRESERVE ready"
     },
     "refs": [
       {
@@ -20,8 +20,8 @@
         "u": "https://github.com/reallakshman19/Word-to-Table/issues/1"
       }
     ],
-    "updatedAt": "2026-10-22T12:34:59Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6340863173",
+    "updatedAt": "2026-10-22T14:56:33Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6343831191",
     "flags": []
   }
 }
