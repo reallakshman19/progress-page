@@ -191,11 +191,11 @@
     "milestone": "M0",
     "label": "OTM hub and page tools",
     "who": {},
-    "state": "IN_PROGRESS",
+    "state": "SUBMITTED",
     "now": "Hub posting on after its 8th independent check PASSED; first 3 posts read back",
     "next": {
-      "actor": "OTM",
-      "text": "fix the Oracle template's check-2 findings; page tool PR (milestone-only card set, OneDrive links)"
+      "actor": "Fresh checker",
+      "text": "check progress-page#2, Common#457, skill edits, hub 6b01031; then the Owner merges"
     },
     "refs": [
       {
@@ -204,7 +204,7 @@
         "u": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6339415993"
       }
     ],
-    "updatedAt": "2026-10-22T11:16:38Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6339415993"
+    "updatedAt": "2026-10-22T11:57:41Z",
+    "src": "https://github.com/reallakshman19/progress-page/pull/2"
   }
 }

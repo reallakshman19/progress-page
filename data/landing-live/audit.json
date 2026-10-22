@@ -157,6 +157,20 @@
       "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6339978122",
       "scope": "aim",
       "rev": "R1"
+    },
+    {
+      "seq": 12,
+      "id": "LANDING-LIVE-R-0012",
+      "previous_id": "LANDING-LIVE-R-0011",
+      "at": "2026-10-22T11:57:41Z",
+      "kind": "STATE",
+      "actor": "OTM",
+      "summary": "Template check-2: M1 fixed in hub 6b01031; M3/M4 in progress-page#2; M5 settled by the Owner (Oracle pushes yes); M2 is the O4 onboarding order",
+      "source": "https://github.com/reallakshman19/progress-page/pull/2",
+      "card": "hub",
+      "before": "IN_PROGRESS",
+      "after": "SUBMITTED",
+      "rev": "R1"
     }
   ]
 }
