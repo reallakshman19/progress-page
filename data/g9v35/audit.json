@@ -169,6 +169,32 @@
       "before": "BLOCKED",
       "after": "SUBMITTED",
       "rev": "R1"
+    },
+    {
+      "seq": 13,
+      "id": "G9V35-R-0013",
+      "previous_id": "G9V35-R-0012",
+      "at": "2026-10-22T11:26:59Z",
+      "kind": "FIXTURE",
+      "actor": "OTM",
+      "summary": "Owner's core aim, which the page lacked",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6339599529",
+      "list": "intent",
+      "op": "add",
+      "rev": "R1"
+    },
+    {
+      "seq": 14,
+      "id": "G9V35-R-0014",
+      "previous_id": "G9V35-R-0013",
+      "at": "2026-10-22T11:26:59Z",
+      "kind": "FIXTURE",
+      "actor": "OTM",
+      "summary": "Owner's order of work under the core aim",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6339599529",
+      "list": "intent",
+      "op": "add",
+      "rev": "R1"
     }
   ]
 }

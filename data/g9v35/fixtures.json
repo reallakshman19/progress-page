@@ -189,6 +189,12 @@
       "t": "Keep the owner bank's identity checks strict: one bank record per original source occurrence, no reused refs, and malformed input reported instead of crashing. Approved scope: the identity guard only, no other shared contract, PR stays a draft until the Owner accepts.",
       "u": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6315384960",
       "n": "OTM summary of the Owner's words"
+    },
+    {
+      "t": "CORE AIM (Owner, 22 Oct): a personal-use app for one Grade 9 kid to self-learn difficult Physics, Maths and Chemistry concepts for a top competitive exam. Not a corporate product."
+    },
+    {
+      "t": "PIPELINE (Owner, 22 Oct): question bank -> Core 2 with QRT label, hint ladder, reasoning route, teacher's answer -> per fixed QRT tile: Core 1A/1B -> questionnaire (Core 1B/2B) finds the kid's demand -> Core 2B by demand."
     }
   ],
   "inputs": [
