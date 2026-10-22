@@ -27,6 +27,12 @@ data/<project>/audit.json          append-only ledger of card states, each event
 No chat link, Drive link, email or private text belongs here. Chat ids are the first 8 characters only.
 The page can show chat links if you load your own `{ "<id8>": "https://..." }` map with "My links"; it stays in your browser.
 
+## Chat links (private, per browser)
+
+The data holds chat ids only. To make an id clickable, open the page once with a setup link
+`https://<this page>/#links=<base64url of {"<id8>": "https://..."}>`. The part after `#` is never sent to a server;
+the page saves the map in this browser (localStorage) and removes it from the address. "My links" does the same by paste.
+
 ## Run it
 
 ```
@@ -34,3 +40,18 @@ python -m http.server 8765
 ```
 
 then open http://127.0.0.1:8765/. Use `?data=<folder url>` to point the page at another data folder.
+
+## One local file (works offline and in previews)
+
+```
+python tools/build_local.py progress-local.html --links links.private.json --prerender "<path to msedge.exe or chrome.exe>"
+```
+
+The file embeds the page, a snapshot of `data/` and, with `--prerender`, a static copy of every project and view
+(expandable sections) that still shows when scripts are blocked. With scripts on it draws the snapshot at once, then
+reads the live data. A file built with `--links` holds private chat links: keep it on your machine, never commit it.
+
+## Triggers
+
+`python tools/page_triggers.py --data data/` prints the same trigger result the page shows (needs you, owes, quiet,
+waiting, stale tab) from the JSON alone, so an agent can act on it without a browser.

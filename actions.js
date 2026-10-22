@@ -1,7 +1,10 @@
 // My actions (decision cards) and Grounding fixtures.
-import { el, link, md, age, copyText } from './util.js?v=5';
+import { el, link, md, age, copyText } from './util.js?v=6';
 
-export const openCount = (actions) => Object.values(actions || {}).filter((a) => a.status === 'open').length;
+// A reply made from a local file or a preview points back at the published page.
+const LIVE_PAGE = 'https://reallakshman19.github.io/progress-page/';
+
+export const openCount =(actions) => Object.values(actions || {}).filter((a) => a.status === 'open').length;
 
 function table(t) {
   const tb = el('table', 'tb');
@@ -25,7 +28,7 @@ function sendUrl(a, o, project, rt) {
     target: rt.target,
     type: 'DECISION',
     text: o.reply,
-    evidence_link: location.href.split('#')[0] + '#/' + project.key + '/actions',
+    evidence_link: (location.protocol === 'https:' ? location.href.split('#')[0] : LIVE_PAGE) + '#/' + project.key + '/actions',
   });
   return 'https://github.com/' + rt.repo + '/issues/new?' + p.toString();
 }

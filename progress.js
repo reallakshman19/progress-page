@@ -1,6 +1,6 @@
 // Progress view: milestone strip, then groups of agent blocks.
-import { el, link, md, age } from './util.js?v=5';
-import { cardTags, fmt } from './triggers.js?v=5';
+import { el, link, md, age } from './util.js?v=6';
+import { cardTags, fmt } from './triggers.js?v=6';
 
 const RANK = { NOT_STARTED: 0, UNKNOWN: 1, STALE: 1, IN_PROGRESS: 2, SUBMITTED: 3, VERIFIED: 4 };
 const ICON = { VERIFIED: '✓', SUBMITTED: '↑', IN_PROGRESS: '●', BLOCKED: '!', NOT_STARTED: '○', STALE: '?', UNKNOWN: '?', NOT_APPLICABLE: '–' };
@@ -66,8 +66,11 @@ function cardEl(c, ctx) {
   d.append(hd);
   const who = c.who || {};
   const chat = (ctx.chats || {})[who.chat] || {};
-  const sub = [chat.id8, who.role, chat.engine].filter(Boolean).join(' · ');
-  if (sub) d.append(el('div', 'c-sub', sub));
+  const sub = el('div', 'c-sub');
+  const chatUrl = chat.id8 ? (ctx.links || {})[chat.id8] : null;
+  if (chat.id8) sub.append(chatUrl ? link(chatUrl, chat.id8) : chat.id8);
+  [who.role, chat.engine].filter(Boolean).forEach((x) => sub.append((sub.childNodes.length ? ' · ' : '') + x));
+  if (sub.childNodes.length) d.append(sub);
   const pills = el('div', 'c-pills');
   pills.append(el('span', 'pill st-' + c.state, c.state));
   if (c.milestone) pills.append(el('span', 'pill', c.milestone));

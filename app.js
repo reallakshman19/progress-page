@@ -1,72 +1,122 @@
 // Shell: loads the JSON, draws the project tabs and the three views, refreshes every two minutes.
-import { el, link, tick, ago, whenText, isHttps } from './util.js?v=5';
-import { renderProgress } from './progress.js?v=5';
-import { renderActions, renderFixtures, openCount } from './actions.js?v=5';
-import { rulesOf, holdOf, summary, needsAttention } from './triggers.js?v=5';
+import { el, link, tick, ago, whenText, isHttps } from './util.js?v=6';
+import { renderProgress } from './progress.js?v=6';
+import { renderActions, renderFixtures, openCount } from './actions.js?v=6';
+import { rulesOf, holdOf, summary, needsAttention } from './triggers.js?v=6';
 
 const LIVE_DATA = 'https://reallakshman19.github.io/progress-page/data/';
 const q = new URLSearchParams(location.search);
-// A local file (file://) has no data folder beside it, so it reads the live data and falls back to an embedded snapshot.
-const BASE = new URL((q.get('data') || (location.protocol === 'file:' ? LIVE_DATA : 'data')).replace(/\/?$/, '/'), document.baseURI);
+const isWeb = location.protocol === 'http:' || location.protocol === 'https:';
+// A local file, a preview or a sandboxed frame has no data folder beside it: it reads the live data and keeps an embedded snapshot as a fallback.
+const BASE = new URL((q.get('data') || (isWeb ? 'data' : LIVE_DATA)).replace(/\/?$/, '/'), isWeb ? location.href : LIVE_DATA);
 const FILES = ['index', 'cards', 'actions', 'fixtures'];
 const snapshot = () => window.__PP_SNAPSHOT__ || null;
-const state = { projects: [], data: {}, links: mergedLinks(), error: null, panel: false, offline: false };
+const withTimeout = (p, ms) => Promise.race([p, new Promise((_, rej) => setTimeout(() => rej(new Error('timeout')), ms))]);
 
 function loadLinks() {
   try { return JSON.parse(localStorage.getItem('pp-links') || '{}'); } catch (e) { return {}; }
 }
 
-// Links embedded in a private local build come first; the ones you saved in this browser override them.
+function storeLinks(map) {
+  const clean = {};
+  Object.entries(map || {}).forEach(([k, v]) => { if (isHttps(v)) clean[k] = v; });
+  try { localStorage.setItem('pp-links', JSON.stringify(clean)); } catch (e) { /* private window or sandbox: keep in memory */ }
+  return clean;
+}
+
+// A private setup link (page URL + #links=<base64url JSON>) saves the chat links in this browser once.
+// The part after # never leaves the browser: it is not sent to any server.
+function takeLinksFromHash() {
+  const m = /^#links=([A-Za-z0-9_-]+)$/.exec(location.hash || '');
+  if (!m) return;
+  try { storeLinks(JSON.parse(atob(m[1].replace(/-/g, '+').replace(/_/g, '/')))); } catch (e) { /* ignore a bad setup link */ }
+  try { history.replaceState(null, '', location.pathname + location.search + '#/'); } catch (e) { /* sandboxed frame */ }
+}
+takeLinksFromHash();
+
+// The route is kept in memory as well as in the address, because a preview frame cannot always change its address.
+let hash = location.hash;
+function go(href) {
+  hash = href;
+  try { history.pushState(null, '', href); } catch (e) { /* preview frame: the in-memory route is enough */ }
+  render();
+  window.scrollTo(0, 0);
+}
+
+// Links embedded in a private local build come first; the ones saved in this browser override them.
 function mergedLinks() {
   return Object.assign({}, window.__PP_LINKS__ || {}, loadLinks());
 }
 
+const state = { projects: [], data: {}, links: mergedLinks(), error: null, panel: false, offline: false };
+
 function saveLinks(map) {
-  const clean = {};
-  Object.entries(map || {}).forEach(([k, v]) => { if (isHttps(v)) clean[k] = v; });
-  try { localStorage.setItem('pp-links', JSON.stringify(clean)); } catch (e) { /* private window: keep in memory */ }
+  storeLinks(map);
   state.links = mergedLinks();
 }
 
 async function get(path) {
-  try {
-    const r = await fetch(new URL(path, BASE), { cache: 'no-cache' });
-    if (!r.ok) throw new Error(path + ' ' + r.status);
-    return await r.json();
-  } catch (e) {
-    const s = snapshot();
-    if (s && s.files && s.files[path]) { state.offline = true; return s.files[path]; }
-    throw e;
-  }
+  const r = await fetch(new URL(path, BASE), { cache: 'no-cache' });
+  if (!r.ok) throw new Error(path + ' ' + r.status);
+  return r.json();
 }
 
-async function load() {
-  state.offline = false;
+async function loadAll(getter) {
+  const pj = await getter('projects.json');
+  const projects = (pj.projects || []).slice().sort((a, b) => (a.order || 0) - (b.order || 0));
+  const data = {};
+  await Promise.all(projects.map(async (p) => {
+    const parts = await Promise.all(FILES.map((f) => getter(p.key + '/' + f + '.json')));
+    data[p.key] = { key: p.key, label: p.label, mode: p.mode, replyTo: p.replyTo };
+    FILES.forEach((f, i) => { data[p.key][f] = parts[i]; });
+  }));
+  return { projects, data };
+}
+
+async function refresh() {
   try {
-    const pj = await get('projects.json');
-    state.projects = (pj.projects || []).slice().sort((a, b) => (a.order || 0) - (b.order || 0));
-    await Promise.all(state.projects.map(async (p) => {
-      const parts = await Promise.all(FILES.map((f) => get(p.key + '/' + f + '.json')));
-      state.data[p.key] = { key: p.key, label: p.label, mode: p.mode, replyTo: p.replyTo };
-      FILES.forEach((f, i) => { state.data[p.key][f] = parts[i]; });
-    }));
+    const r = await withTimeout(loadAll(get), 12000);
+    state.projects = r.projects;
+    state.data = r.data;
+    state.offline = false;
     state.error = null;
   } catch (e) {
     state.error = String(e.message || e);
   }
 }
 
+// Draw from the embedded snapshot at once (if there is one), then replace it with the live data.
+async function start() {
+  const s = snapshot();
+  if (s && s.files) {
+    try {
+      const r = await loadAll(async (p) => { if (s.files[p]) return s.files[p]; throw new Error('no snapshot for ' + p); });
+      state.projects = r.projects;
+      state.data = r.data;
+      state.offline = true;
+      render();
+    } catch (e) { /* no usable snapshot */ }
+  }
+  await refresh();
+  render();
+}
+
 function route() {
-  const [, pk, view] = (location.hash || '').split('/');
+  const [, pk, view] = (hash || '').split('/');
   const key = state.data[pk] ? pk : (state.projects[0] || {}).key;
   const v = ['progress', 'actions', 'fixtures'].includes(view) ? view : 'progress';
   return { key, v };
 }
 
-// In-page navigation: a real anchor with a hash target (link() only makes anchors for https URLs).
+// In-page navigation: a real anchor (it can be opened in a new tab) whose plain click is handled here (link() only makes anchors for https URLs).
 function navLink(href, text, cls) {
   const a = el('a', cls, text);
   a.href = href;
+  a.addEventListener('click', (e) => {
+    if (e.defaultPrevented || e.button || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    e.preventDefault();
+    go(href);
+  });
   return a;
 }
 
@@ -137,6 +187,9 @@ function render() {
     return;
   }
   if (state.panel) root.append(linksPanel());
+  if (!Object.keys(state.links).length) {
+    root.append(el('p', 'hintbar', 'Chat ids are not clickable in this browser yet. Open your private setup link once, or paste your links under "My links".'));
+  }
   const { key, v } = route();
   const tabs = el('nav', 'tabs');
   state.projects.forEach((p) => {
@@ -174,7 +227,18 @@ function render() {
   tick(root);
 }
 
-window.addEventListener('hashchange', () => { render(); window.scrollTo(0, 0); });
+// If something breaks before the page is drawn, say so instead of staying on "Loading...".
+function showError(msg) {
+  const root = document.getElementById('root');
+  if (root && !root.querySelector('.card, .dc, .fx')) root.replaceChildren(el('p', 'err', 'Page error: ' + msg));
+}
+window.addEventListener('error', (e) => showError(e.message));
+window.addEventListener('unhandledrejection', (e) => showError(String((e.reason && e.reason.message) || e.reason)));
+
+// Back and forward, or an edited address: follow the address (after go() the two already agree).
+const follow = () => { if (hash === location.hash) return; hash = location.hash; render(); window.scrollTo(0, 0); };
+window.addEventListener('hashchange', follow);
+window.addEventListener('popstate', follow);
 setInterval(() => tick(document), 30000);
-setInterval(async () => { if (!document.hidden) { await load(); render(); } }, 120000);
-load().then(render);
+setInterval(async () => { if (!document.hidden) { await refresh(); render(); } }, 120000);
+start();

@@ -97,3 +97,5 @@ button.chip.big{cursor:pointer}
 .card.flash{outline:2px solid var(--acc);outline-offset:2px}
 .card[data-trig~="needs-you"]{border-color:var(--er)}
 .card[data-trig~="owes"],.card[data-trig~="quiet"]{border-color:var(--wn)}
+.hintbar{font-size:12px;color:var(--wn);background:var(--wnbg);border-radius:6px;padding:6px 10px;margin:0 0 10px}
+.c-sub a{color:var(--acc)}
