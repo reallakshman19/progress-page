@@ -53,6 +53,15 @@
       "statusAt": "2026-10-22T03:22:40Z",
       "statusBy": "OTM",
       "statusSrc": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6331798549"
+    },
+    {
+      "key": "doc2table",
+      "label": "Doc to Table",
+      "order": 5,
+      "mode": "otm",
+      "replyTo": {
+        "kind": "none"
+      }
     }
   ],
   "site": {

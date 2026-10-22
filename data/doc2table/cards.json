@@ -1,0 +1,26 @@
+{
+  "oracle": {
+    "order": 1,
+    "group": "main",
+    "milestone": "M1",
+    "label": "Oracle O1",
+    "who": {
+      "chat": "oracle"
+    },
+    "state": "IN_PROGRESS",
+    "now": "Architecture, roadmap and worker briefs drafted locally; no worker launched",
+    "next": {
+      "actor": "Oracle",
+      "text": "read the OTM prompt, set the milestones, add fixtures, reply on the record issue"
+    },
+    "refs": [
+      {
+        "k": "issue",
+        "l": "Oracle record",
+        "u": "https://github.com/reallakshman19/Word-to-Table/issues/1"
+      }
+    ],
+    "updatedAt": "2026-10-22T11:08:56Z",
+    "src": "https://github.com/reallakshman19/Word-to-Table/issues/1"
+  }
+}

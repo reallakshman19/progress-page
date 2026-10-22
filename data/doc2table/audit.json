@@ -1,0 +1,47 @@
+{
+  "schema": "progress-ledger/v3",
+  "project": "doc2table",
+  "baseline_at": "2026-10-22T11:08:52Z",
+  "scope": "Ledger of published Progress maintenance from this declared baseline; not a reconstruction of historic agent execution.",
+  "events": [
+    {
+      "seq": 1,
+      "id": "DOC2TABLE-R-0001",
+      "previous_id": null,
+      "at": "2026-10-22T11:08:52Z",
+      "kind": "REVISION",
+      "actor": "OTM",
+      "summary": "Owner named the local Codex session as this new project's Oracle",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6339268022",
+      "revision": "R1",
+      "scope": "project",
+      "rev": "R1"
+    },
+    {
+      "seq": 2,
+      "id": "DOC2TABLE-R-0002",
+      "previous_id": "DOC2TABLE-R-0001",
+      "at": "2026-10-22T11:08:52Z",
+      "kind": "PLAN",
+      "actor": "OTM",
+      "summary": "Oracle 1 is the local Codex session (thread 01a16256)",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6339268022",
+      "scope": "chat:oracle",
+      "rev": "R1"
+    },
+    {
+      "seq": 3,
+      "id": "DOC2TABLE-R-0003",
+      "previous_id": "DOC2TABLE-R-0002",
+      "at": "2026-10-22T11:08:56Z",
+      "kind": "BASELINE",
+      "actor": "OTM",
+      "summary": "Record issue opened; Oracle's state from its local continuity record (docs/architecture/CONTINUITY.md), not yet on GitHub",
+      "source": "https://github.com/reallakshman19/Word-to-Table/issues/1",
+      "card": "oracle",
+      "before": null,
+      "after": "IN_PROGRESS",
+      "rev": "R1"
+    }
+  ]
+}

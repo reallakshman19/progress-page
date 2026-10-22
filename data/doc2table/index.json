@@ -1,0 +1,64 @@
+{
+  "schema": 3,
+  "project": {
+    "key": "doc2table",
+    "title": "Doc to Table",
+    "subtitle": "",
+    "updatedAt": "2026-10-22T11:08:56Z",
+    "updatedBy": "OTM",
+    "staleAfterMin": 120
+  },
+  "rules": {
+    "coordinator": "OTM",
+    "quietAfterMin": 30,
+    "idleAfterMin": 15,
+    "owesAfterMin": 15,
+    "waitingAfterMin": 15
+  },
+  "chats": {
+    "oracle": {
+      "label": "Oracle O1",
+      "id8": "01a16256",
+      "engine": "Codex"
+    }
+  },
+  "milestones": {
+    "M1": {
+      "order": 1,
+      "name": "Plan",
+      "full": "Plan and approvals"
+    },
+    "M2": {
+      "order": 2,
+      "name": "Build",
+      "full": "Work in progress"
+    },
+    "M3": {
+      "order": 3,
+      "name": "Review",
+      "full": "Review and decisions"
+    },
+    "M4": {
+      "order": 4,
+      "name": "Accept",
+      "full": "Owner acceptance"
+    }
+  },
+  "groups": {
+    "main": {
+      "order": 1,
+      "title": "Work"
+    }
+  },
+  "revisions": [
+    {
+      "id": "R1",
+      "at": "2026-10-22T11:08:52Z",
+      "by": "OTM",
+      "why": "Owner named the local Codex session as this new project's Oracle",
+      "ownerWords": "Codex(Local) is the oracle for this new project \"C:\\CodeC\\Doc to Table\"",
+      "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6339268022",
+      "status": "current"
+    }
+  ]
+}
