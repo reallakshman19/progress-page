@@ -184,3 +184,13 @@ class SetupUrl(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class ModuleVersion(unittest.TestCase):
+    def test_every_viewer_module_url_carries_the_same_version(self):
+        """A mixed ?v= bump loads two copies of a module, so the page shares no state between them."""
+        found = {}
+        for f in sorted(H.ROOT.glob("*.js")) + [H.ROOT / "index.html"]:
+            for v in re.findall(r"\.js\?v=(\d+)", f.read_text(encoding="utf-8")):
+                found.setdefault(v, []).append(f.name)
+        self.assertEqual(len(found), 1, found)

@@ -206,6 +206,11 @@ class Plan(Base):
                          {"wbs": "1.1", "bench": "B1", "cap": "BENCHMARK_SUPPORTED", "canDo": "answers one supported question", "capSrc": H.SRC2})
         self.assertEqual((ms["M2"]["keeps"], "cap" in ms["M2"]), ("B1", False))
 
+    def test_a_fixture_can_belong_to_one_wbs_step(self):
+        H.ok(self.d, "fixture", "add", *P, "--list", "issues", "--text", "step one input", "--milestone", "M1", *WS)
+        self.assertEqual(doc(self.d, "fixtures")["issues"][-1]["milestone"], "M1")
+        self.refuse("fixture", "add", *P, "--list", "issues", "--text", "t", "--milestone", "M9", *WS, says="milestone 'M9'")
+
     def test_a_capability_claim_needs_its_evidence(self):
         self.refuse("plan", "milestone", *P, "--id", "M1", "--cap", "INDEPENDENTLY_VERIFIED", "--can-do", "x", *WS, says="needs capSrc")
 

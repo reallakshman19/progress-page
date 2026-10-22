@@ -25,13 +25,14 @@ export function milestoneState(cards) {
 const CAP = { NOT_DEMONSTRATED: 'not demonstrated', CANDIDATE: 'candidate demonstrated', BENCHMARK_SUPPORTED: 'benchmark supported',
   INDEPENDENTLY_VERIFIED: 'independently verified', AVAILABLE: 'available to the user' };
 
-// The WBS tab picked on this page; kept across the two-minute refresh, cleared with "All".
-let picked = null;
+// The WBS step picked per project; kept across the two-minute refresh, cleared with "All".
+const picks = {};
+let picked = null;  // the pick of the project being drawn
 
 // Read or set the picked step (a milestone key, or null for all). The page's WBS row and the strip share it.
-export function wbsPick(key) {
-  if (key !== undefined) picked = key;
-  return picked;
+export function wbsPick(project, key) {
+  if (key !== undefined) picks[project] = key;
+  return picks[project] || null;
 }
 
 // The steps for the page's WBS row: every milestone in order, labelled with its WBS number when it has one.
@@ -55,6 +56,8 @@ function applyPick(root) {
 
 function strip(index, cards, ctx) {
   const wrap = el('div', 'ms-wrap');
+  const pk = (index.project || {}).key || '';
+  const keep = () => { picks[pk] = picked; };
   const redraw = () => (ctx && ctx.rerender ? ctx.rerender() : applyPick(wrap.parentNode));
   const list = Object.entries(index.milestones || {}).sort((a, b) => (a[1].order || 0) - (b[1].order || 0));
   const wbs = list.some(([, m]) => m.wbs);
@@ -64,7 +67,7 @@ function strip(index, cards, ctx) {
   const all = el('button', 'ms-all', 'All');
   all.type = 'button';
   all.title = 'Show the agent blocks of every step';
-  all.addEventListener('click', () => { picked = null; redraw(); });
+  all.addEventListener('click', () => { picked = null; keep(); redraw(); });
   row.append(all);
   list.forEach(([key, m], i) => {
     const mine = cards.filter((c) => c.milestone === key);
@@ -82,19 +85,24 @@ function strip(index, cards, ctx) {
     if (m.cap) {
       box.append(el('div', 'ms-cap', CAP[m.cap] || m.cap));
       if (m.canDo) box.append(el('div', 'ms-can', 'Can do: ' + m.canDo));
-      if (m.capSrc) box.append(link(m.capSrc, 'evidence'));
     } else {
       box.append(el('div', 'ms-state', state));
     }
     if (m.bench || m.keeps) box.append(el('div', 'ms-bench', [m.bench, m.keeps ? 'keeps ' + m.keeps : ''].filter(Boolean).join(' · ')));
     box.append(el('div', 'ms-count', live.filter((c) => c.state === 'VERIFIED').length + ' of ' + live.length + ' agent blocks verified'));
-    const pick = () => { picked = picked === key ? null : key; redraw(); };
+    const pick = () => { picked = picked === key ? null : key; keep(); redraw(); };
     box.addEventListener('click', (e) => { if (!e.target.closest('a')) pick(); });
-    box.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pick(); } });
+    box.addEventListener('keydown', (e) => { if (e.target === box && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); pick(); } });
     row.append(box);
     if (i < list.length - 1) row.append(el('span', 'ms-sep', '›'));
   });
   wrap.append(row);
+  const ev = list.filter(([, m]) => m.cap && m.capSrc);
+  if (ev.length) {
+    const p = el('p', 'ms-line', 'Evidence: ');
+    ev.forEach(([key, m], i) => { if (i) p.append(' · '); p.append(link(m.capSrc, m.wbs ? 'WBS ' + m.wbs : key)); });
+    wrap.append(p);
+  }
   const live = cards.filter((c) => c.state !== 'NOT_APPLICABLE');
   const n = {};
   live.forEach((c) => { n[c.state] = (n[c.state] || 0) + 1; });
@@ -257,6 +265,7 @@ export function renderProgress(root, project, ctx) {
   const cards = Object.entries(project.cards || {}).map(([id, c]) => Object.assign({ id }, c));
   ctx.cards = project.cards;
   if (ctx.sum) root.append(attention(ctx.sum, ctx.rules));
+  picked = picks[(project.index.project || {}).key || ''] || null;
   root.append(strip(project.index, cards, ctx));
   const groups = Object.entries(project.index.groups || {}).sort((a, b) => (a[1].order || 0) - (b[1].order || 0));
   const used = new Set();
@@ -268,6 +277,7 @@ export function renderProgress(root, project, ctx) {
   });
   const rest = cards.filter((c) => !used.has(c.id));
   if (rest.length) root.append(groupBlock({ title: 'Other' }, rest, ctx));
-  if (picked && !(project.index.milestones || {})[picked]) picked = null;
+  picked = picks[(project.index.project || {}).key || ''] || null;
+  if (picked && !(project.index.milestones || {})[picked]) picked = picks[(project.index.project || {}).key || ''] = null;
   applyPick(root);
 }

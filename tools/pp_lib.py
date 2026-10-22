@@ -13,7 +13,7 @@ REV_STATUS = ("current", "superseded", "cancelled")
 FLAGS = ("paused", "needs-you")
 # What the user can do with a milestone (WBS step), apart from agent activity: the concept note of 22 Oct 2026.
 CAPABILITY = ("NOT_DEMONSTRATED", "CANDIDATE", "BENCHMARK_SUPPORTED", "INDEPENDENTLY_VERIFIED", "AVAILABLE")
-WBS = re.compile(r"^[0-9]{1,3}(\.[0-9]{1,3}){0,3}$")
+WBS = re.compile(r"[1-9][0-9]{0,2}(\.[1-9][0-9]{0,2}){0,3}")  # use fullmatch
 EDGE_KINDS = ("to", "back", "both")
 FIXTURE_LISTS = ("repository", "issues", "pullRequests", "roadmap", "highRoi", "future", "intent", "inputs", "knownIssues", "pending")
 CARD_KINDS = ("BASELINE", "STATE", "UPDATE", "SUPERSEDE", "CANCEL", "TRANSFER")

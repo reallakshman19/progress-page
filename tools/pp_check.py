@@ -122,7 +122,7 @@ def check_capability(c, w, index):
         at = f"{w} milestones {k!r}"
         wbs = c.text(at, m, "wbs", opt=True, limit=15)
         if wbs is not None:
-            if not L.WBS.match(wbs):
+            if not L.WBS.fullmatch(wbs):
                 c.err(at, "wbs must be a WBS number like 1, 1.1 or 1.2.3")
             elif wbs in seen:
                 c.err(at, f"wbs {wbs} is also used by milestone {seen[wbs]!r}")
@@ -133,6 +133,9 @@ def check_capability(c, w, index):
         cap = c.member(at, m, "cap", L.CAPABILITY, opt=True)
         can = c.text(at, m, "canDo", opt=True, limit=200)
         src = c.link(at, m, "capSrc", opt=True, source=True)
+        if src is not None and not L.https(src):
+            c.err(at, "capSrc must be a public GitHub link: a capability claim needs evidence anyone can open")
+            src = None
         if cap is not None and can is None:
             c.err(at, "cap needs canDo: one line on what the user can actually do")
         if cap not in (None, "NOT_DEMONSTRATED") and src is None:
@@ -212,8 +215,8 @@ def check_tree(data, private=False):
         try:
             check_index(c, key, docs["index"], p.get("status") or "active")
             check_cards(c, key, docs["index"], docs["cards"])
-            check_actions(c, key, docs["actions"])
-            check_fixtures(c, key, docs["fixtures"])
+            check_actions(c, key, docs["actions"], docs["index"])
+            check_fixtures(c, key, docs["fixtures"], docs["index"])
             check_nudges(c, key, docs["cards"], docs["nudges"])
             check_ledger(c, key, p, docs)
         except (AttributeError, TypeError, KeyError, ValueError) as exc:
