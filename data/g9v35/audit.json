@@ -524,6 +524,20 @@
       "before": "IN_PROGRESS",
       "after": "SUBMITTED",
       "rev": "R2"
+    },
+    {
+      "seq": 40,
+      "id": "G9V35-R-0040",
+      "previous_id": "G9V35-R-0039",
+      "at": "2026-10-22T15:48:58Z",
+      "kind": "UPDATE",
+      "actor": "OTM",
+      "summary": "blocked on Chrome extension",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/154#issuecomment-6344449377",
+      "card": "oracle4",
+      "before": "SUBMITTED",
+      "after": "SUBMITTED",
+      "rev": "R2"
     }
   ]
 }

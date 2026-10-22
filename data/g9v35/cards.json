@@ -259,13 +259,15 @@
       "role": "Oracle O4"
     },
     "state": "SUBMITTED",
-    "now": "Final packets posted: G9O4-2-p1 (producer, #154) and -p2 (checker, #135)",
+    "now": "Final packets posted (-p1 #154, -p2 #135); WBS task G9O4-3 sent",
     "next": {
-      "actor": "OTM",
-      "text": "onboard producer NLM-PROD1 in Chrome, then deliver -p1 word for word (Chrome extension not connected)"
+      "actor": "Owner",
+      "text": "reconnect Claude in Chrome so OTM can start producer NLM-PROD1"
     },
-    "updatedAt": "2026-10-22T15:31:14Z",
+    "updatedAt": "2026-10-22T15:48:58Z",
     "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/154#issuecomment-6344449377",
-    "flags": []
+    "flags": [
+      "needs-you"
+    ]
   }
 }
