@@ -46,19 +46,19 @@
     "order": 2,
     "group": "review",
     "milestone": "M2",
-    "label": "Oracle",
+    "label": "O2-CIIFR-Cond",
     "who": {
       "chat": "o2",
-      "role": "O2"
+      "role": "Oracle"
     },
-    "state": "SUBMITTED",
-    "now": "Its part is finished. Reviewed PR #150 and found F01, F02 (stale-Generate race) and two P2 items. Issued repair task [XCU #153 6322554084](https://github.com/reallakshman19/XML_Compare_Utilities/issues/153#issuecomment-6322554084) EXECUTE NOW at 17:41Z. Waiting for the corrective PR.",
+    "state": "IN_PROGRESS",
+    "now": "GO for isolated Conditional sub-tab; implementation not started",
     "next": {
-      "actor": "-",
-      "text": "waits for the corrective PR, then reconciles and arranges the re-review"
+      "actor": "Owner",
+      "text": "start a Windows coding agent with a full checkout for one draft PR"
     },
-    "updatedAt": "2026-10-21T17:41:42Z",
-    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/153#issuecomment-6322554084",
+    "updatedAt": "2026-10-22T16:28:18Z",
+    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/156#issuecomment-6345819828",
     "refs": [
       {
         "k": "issue",
@@ -83,13 +83,13 @@
     "order": 3,
     "group": "review",
     "milestone": "M2",
-    "label": "G2",
+    "label": "G2-CIIFR-Cond",
     "who": {
       "chat": "g2",
-      "role": "reviewer"
+      "role": "Agent"
     },
-    "state": "VERIFIED",
-    "now": "Its part is finished. Confirmed the findings and set a HOLD verdict (recorded in the chat; no GitHub post found).",
+    "state": "BLOCKED",
+    "now": "No checkout in chat; coding-agent package built",
     "kind": "hold",
     "refs": [
       {
@@ -104,8 +104,12 @@
         "s": "draft · HOLD"
       }
     ],
-    "updatedAt": "2026-10-21T17:28:24Z",
-    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/152#issuecomment-6322285804"
+    "updatedAt": "2026-10-22T16:28:18Z",
+    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/156#issuecomment-6345820371",
+    "next": {
+      "actor": "Owner",
+      "text": "open the package in a full-checkout coding agent"
+    }
   },
   "otm": {
     "order": 4,

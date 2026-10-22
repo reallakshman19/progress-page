@@ -164,6 +164,34 @@
       "scope": "project",
       "to": "standalone:Owner",
       "rev": "R2"
+    },
+    {
+      "seq": 13,
+      "id": "CIIFR-R-0013",
+      "previous_id": "CIIFR-R-0012",
+      "at": "2026-10-22T16:28:18Z",
+      "kind": "STATE",
+      "actor": "OTM",
+      "summary": "R2 evidence read via Sonnet",
+      "source": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/156#issuecomment-6345819828",
+      "card": "o2",
+      "before": "SUBMITTED",
+      "after": "IN_PROGRESS",
+      "rev": "R2"
+    },
+    {
+      "seq": 14,
+      "id": "CIIFR-R-0014",
+      "previous_id": "CIIFR-R-0013",
+      "at": "2026-10-22T16:28:18Z",
+      "kind": "STATE",
+      "actor": "OTM",
+      "summary": "R2 evidence read via Sonnet",
+      "source": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/156#issuecomment-6345820371",
+      "card": "g2",
+      "before": "VERIFIED",
+      "after": "BLOCKED",
+      "rev": "R2"
     }
   ]
 }
