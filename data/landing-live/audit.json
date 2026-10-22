@@ -130,6 +130,21 @@
       "before": "NOT_STARTED",
       "after": "NOT_STARTED",
       "rev": "R1"
+    },
+    {
+      "seq": 10,
+      "id": "LANDING-LIVE-R-0010",
+      "previous_id": "LANDING-LIVE-R-0009",
+      "at": "2026-10-22T11:24:23Z",
+      "kind": "BASELINE",
+      "actor": "OTM",
+      "summary": "OTM's own build work on the page and hub (self-reported; checks by fresh Sonnet checkers). Milestone is the tool default; the Oracle sets milestones",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6339415993",
+      "card": "hub",
+      "before": null,
+      "after": "IN_PROGRESS",
+      "source_at": "2026-10-22T11:16:38Z",
+      "rev": "R1"
     }
   ]
 }
