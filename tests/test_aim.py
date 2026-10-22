@@ -27,6 +27,9 @@ class Aim(H.OpsCase):
         self.assertIn("--aim", H.refused(self.d, "project", "add", "--key", "third", "--title", "T", "--owner-words", "w", *WW))
         self.refuse("project", "aim", "--key", KEY, "--text", "x" * 401, *WW, says="longer than 400")
 
+    def test_a_blank_aim_is_refused(self):
+        self.refuse("project", "aim", "--key", KEY, "--text", "   ", *WW, says="aim is required")
+
     def test_an_archived_project_needs_no_aim(self):
         H.ok(self.d, "project", "archive", "--key", H.OTHER, *WW)
         p = Path(self.d) / H.OTHER / "index.json"
@@ -45,6 +48,10 @@ class MilestoneOnly(H.OpsCase):
         self.assertEqual((after["updatedAt"], after["src"]), (before["updatedAt"], before["src"]))
         self.assertEqual(events(self.d)[-1]["source"], H.SRC2)   # the Timeline still records who placed it, with its source
 
+    def test_a_group_only_move_is_scoped_to_the_group(self):
+        H.ok(self.d, "card", "set", *P, "--card", "a1", "--order", "7", *WS)
+        self.assertEqual(events(self.d)[-1]["scope"], "order")
+
     def test_a_real_update_still_stamps_the_block(self):
         before = doc(self.d, "cards")["a1"]
         card(self.d, "a1", "--now", "Something new happened", "--at", "2026-01-02T00:00:00Z")
@@ -52,8 +59,13 @@ class MilestoneOnly(H.OpsCase):
 
 
 class PrivateLinks(H.OpsCase):
+    def test_a_drive_link_in_capitals_is_refused(self):
+        self.refuse("fixture", "add", *P, "--list", "inputs", "--text", "see https://Drive.Google.com/x", *WS, says="Google Drive link")
+
     def test_onedrive_and_sharepoint_links_are_refused(self):
-        for url in ("https://1drv.ms/f/s!abc", "https://onedrive.live.com/?id=x", "https://acme.sharepoint.com/x"):
+        for url in ("https://1drv.ms/f/s!abc", "https://onedrive.live.com/?id=x", "https://acme.sharepoint.com/x",
+                    "https://onedrive.com/x", "https://a.sharepoint.us/x", "https://d.docs.live.net/x",
+                    "https://1drv%2Ems/x", "https://a.sharepoint%2Ecom/x", "https://ONEDRIVE.LIVE.COM/x"):
             self.refuse("fixture", "add", *P, "--list", "inputs", "--text", "see " + url, *WS, says="OneDrive or SharePoint link")
 
 

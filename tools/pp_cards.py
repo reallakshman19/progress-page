@@ -52,9 +52,10 @@ def card_set(data, key, cid, actor, src, summary, at=None, label=None, group=Non
         card["updatedAt"], card["src"] = when, src
     if placed_only:   # a block placed in a milestone or group: a plan entry; the block keeps its evidence time and source
         cards[cid] = card
-        record(docs, key, "PLAN", actor, summary, src, scope=f"milestone:{card['milestone']}")
+        where = f"milestone:{milestone}" if milestone is not None else (f"group:{group}" if group is not None else "order")
+        record(docs, key, "PLAN", actor, summary, src, scope=where)
         _write(data, root, docs, ("index", "cards", "audit"))
-        return f"Placed card {cid} in milestone {card['milestone']} (its time and source are unchanged)."
+        return f"Placed card {cid} ({where}); its time and source are unchanged."
     kind = "BASELINE" if old is None else ("STATE" if old["state"] != card["state"] else "UPDATE")
     cards[cid] = card
     record(docs, key, kind, actor, summary, src, card=cid, before=old["state"] if old else None, after=card["state"],

@@ -13,12 +13,14 @@ import sys
 from pathlib import Path
 
 import pp_lib as L
+from urllib.parse import unquote
 from pp_check_files import check_actions, check_cards, check_fixtures, check_nudges
 from pp_ctx import Ctx
 from pp_ledger_check import check_ledger
 
-SECRETS = ((re.compile(r"drive\.google\.com|docs\.google\.com"), "contains a Google Drive link"),
-           (re.compile(r"1drv\.ms|onedrive\.live\.com|sharepoint\.com", re.I), "contains a OneDrive or SharePoint link"),
+SECRETS = ((re.compile(r"drive\.google\.com|docs\.google\.com", re.I), "contains a Google Drive link"),
+           (re.compile(r"1drv\.ms|onedrive\.(?:live\.)?com|docs\.live\.net|sharepoint(?:-df)?\.(?:com|us|de|cn)", re.I),
+            "contains a OneDrive or SharePoint link"),
            (re.compile(r"[\w.+-]+@[\w-]+\.[\w.]+"), "contains an email address"),
            (re.compile(r"ghp_\w{20,}|github_pat_\w{20,}|sk-[A-Za-z0-9]{20,}"), "contains what looks like an access token"))
 CHAT = re.compile(r"chatgpt\.com/c/|chat\.openai\.com|antigravity\.google\.com|claude\.ai/(?:chat|code)/")
@@ -139,8 +141,9 @@ def scan_text(c, root, private):
         except (OSError, ValueError) as exc:
             c.err(where, f"cannot read JSON ({exc})")
             continue
+        plain = unquote(unquote(raw))   # a %2E or %252E spelling still names the host
         for pattern, why in SECRETS:
-            if pattern.search(raw):
+            if pattern.search(raw) or pattern.search(plain):
                 c.err(where, why)
         if not private and CHAT.search(raw):
             c.err(where, "contains a chat link (public data keeps the 8-character chat id only)")

@@ -13,7 +13,7 @@ class Ctx:
 
     def text(self, where, obj, field, opt=False, limit=None):
         v = obj.get(field)
-        if v is None or v == "":
+        if v is None or (isinstance(v, str) and not v.strip()):
             if not opt:
                 self.err(where, f"{field} is required")
             return None

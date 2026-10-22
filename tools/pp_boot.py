@@ -67,4 +67,4 @@ def bootstrap(dest, repo, page):
     (dest / ".github" / "workflows" / "check.yml").write_text(WORKFLOW, encoding="utf-8", newline="\n")
     (dest / "README.md").write_text(README.format(page=page), encoding="utf-8", newline="\n")
     return (f"Bootstrapped {dest}. Next, inside it: python tools/pp_cli.py project add --key <key> --title \"<title>\" --mode standalone "
-            "--owner-words \"<the Owner's words>\" --why \"<why>\" --actor \"<you>\" --src <GitHub link>")
+            "--aim \"<the Owner's aim>\" --owner-words \"<the Owner's words>\" --why \"<why>\" --actor \"<you>\" --src <GitHub link>")
