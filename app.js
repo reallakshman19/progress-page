@@ -1,6 +1,6 @@
 // Shell: loads the JSON, draws the project tabs and the views, refreshes every two minutes.
 import { el, link, tick, ago, whenText } from './util.js?v=11';
-import { renderProgress } from './progress.js?v=11';
+import { renderProgress, wbsPick, wbsSteps } from './progress.js?v=11';
 import { renderActions, renderFixtures, openCount } from './actions.js?v=11';
 import { renderTimeline } from './timeline.js?v=11';
 import { tabsRow, archivedPanel, projectHead, isActive } from './lifecycle.js?v=11';
@@ -230,6 +230,20 @@ function render() {
   root.append(tabsRow(c));
   if (state.archivedOpen) root.append(archivedPanel(c));
   root.append(projectHead(p, c));
+  // Project > revision > WBS step > page: the WBS row narrows the pages below it to one step.
+  const steps = wbsSteps(view.index);
+  if (wbsPick() && !steps.some((x) => x.key === wbsPick())) wbsPick(null);
+  if (steps.length) {
+    const row = el('nav', 'wbs-row');
+    row.append(el('span', 'h-label', 'WBS'));
+    [{ key: null, label: 'All steps' }].concat(steps).forEach((x) => {
+      const b = el('button', 'wbs-tab' + (wbsPick() === x.key ? ' on' : ''), x.label);
+      b.type = 'button';
+      b.addEventListener('click', () => { wbsPick(x.key); render(); });
+      row.append(b);
+    });
+    root.append(row);
+  }
   const views = el('nav', 'views');
   [['progress', 'Progress', 0], ['actions', 'My actions', openCount(view.actions)], ['fixtures', 'Grounding fixtures', 0], ['timeline', 'Timeline', 0]].forEach(([id, label, n]) => {
     const a = navLink('#/' + key + '/' + id + (older ? '/' + rev : ''), label, 'view' + (id === v ? ' on' : ''));
@@ -247,7 +261,13 @@ function render() {
       chats: view.index.chats || {}, links: state.links, rules, hold: holdOf(view.index), sum: sumOf(view), readOnly: !!older || !isActive(p),
       nudge: { openList: (id) => nudgesOf(view, id).filter((n) => n.status === 'open'), list: (id) => nudgesOf(view, id), open: (card) => openNudge(view, card, rules.coordinator) },
     };
+    ctx.rerender = render;
+    const step = wbsPick();
+    if (step && v !== 'progress') {
+      body.append(el('p', 'muted', v === 'timeline' ? 'Timeline of this WBS step only: its agent blocks and its plan entries.' : 'This page is not split by WBS step; it shows the whole project.'));
+    }
     if (v === 'progress') renderProgress(body, view, ctx);
+    else if (v === 'timeline' && step) renderTimeline(body, stepView(view, step));
     else if (v === 'actions') renderActions(body, view);
     else if (v === 'fixtures') renderFixtures(body, view.fixtures);
     else renderTimeline(body, view);
@@ -255,6 +275,14 @@ function render() {
   root.append(body);
   root.append(el('p', 'foot muted', 'Read-only page. It re-reads the JSON files every two minutes. "Updated X ago" is the time of the latest recorded event behind each block.'));
   tick(root);
+}
+
+// The project as seen from one WBS step: Timeline entries of that step's agent blocks and of the step itself.
+function stepView(view, step) {
+  const mine = new Set(Object.entries(view.cards || {}).filter(([, c]) => c.milestone === step).map(([id]) => id));
+  const audit = view.audit || {};
+  const events = (audit.events || []).filter((e) => (e.card && mine.has(e.card)) || e.scope === 'milestone:' + step);
+  return Object.assign({}, view, { audit: Object.assign({}, audit, { events }) });
 }
 
 // If something breaks before the page is drawn, say so instead of staying on "Loading...".

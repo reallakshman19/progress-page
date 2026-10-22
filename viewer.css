@@ -33,6 +33,10 @@ h3{font-size:15px;margin:0}
 .ms-count{font-size:11px;color:var(--mut)}
 .ms-sep{align-self:center;color:var(--mut)}
 .ms[data-ms]{cursor:pointer}
+.wbs-row{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:10px 0 4px}
+.wbs-row .h-label{margin:0 6px 0 0}
+.wbs-tab{border:1px solid var(--bd);border-radius:999px;background:var(--card);color:inherit;font:inherit;font-size:13px;padding:4px 12px;cursor:pointer}
+.wbs-tab.on{border-color:var(--acc);outline:2px solid var(--acc);outline-offset:1px}
 .card[hidden],.grp[hidden],.flow .arrow[hidden]{display:none}
 .ms.on,.ms-all.on{outline:2px solid var(--acc);outline-offset:1px}
 .ms-all{align-self:center;border:1px solid var(--bd);border-radius:999px;background:var(--card);color:inherit;font:inherit;font-size:12px;padding:4px 10px;cursor:pointer}

@@ -28,6 +28,19 @@ const CAP = { NOT_DEMONSTRATED: 'not demonstrated', CANDIDATE: 'candidate demons
 // The WBS tab picked on this page; kept across the two-minute refresh, cleared with "All".
 let picked = null;
 
+// Read or set the picked step (a milestone key, or null for all). The page's WBS row and the strip share it.
+export function wbsPick(key) {
+  if (key !== undefined) picked = key;
+  return picked;
+}
+
+// The steps for the page's WBS row: every milestone in order, labelled with its WBS number when it has one.
+export function wbsSteps(index) {
+  const list = Object.entries((index || {}).milestones || {}).sort((a, b) => (a[1].order || 0) - (b[1].order || 0));
+  if (!list.some(([, m]) => m.wbs)) return [];
+  return list.map(([key, m]) => ({ key, label: (m.wbs ? 'WBS ' + m.wbs : key) + ' · ' + m.name }));
+}
+
 function applyPick(root) {
   root.querySelectorAll('.ms[data-ms]').forEach((b) => b.classList.toggle('on', b.dataset.ms === picked));
   root.querySelectorAll('.ms-all').forEach((b) => b.classList.toggle('on', !picked));
@@ -40,8 +53,9 @@ function applyPick(root) {
   });
 }
 
-function strip(index, cards) {
+function strip(index, cards, ctx) {
   const wrap = el('div', 'ms-wrap');
+  const redraw = () => (ctx && ctx.rerender ? ctx.rerender() : applyPick(wrap.parentNode));
   const list = Object.entries(index.milestones || {}).sort((a, b) => (a[1].order || 0) - (b[1].order || 0));
   const wbs = list.some(([, m]) => m.wbs);
   const hd = el('div', 'h-label', wbs ? 'Work breakdown (WBS)' : 'Milestones');
@@ -50,7 +64,7 @@ function strip(index, cards) {
   const all = el('button', 'ms-all', 'All');
   all.type = 'button';
   all.title = 'Show the agent blocks of every step';
-  all.addEventListener('click', () => { picked = null; applyPick(wrap.parentNode); });
+  all.addEventListener('click', () => { picked = null; redraw(); });
   row.append(all);
   list.forEach(([key, m], i) => {
     const mine = cards.filter((c) => c.milestone === key);
@@ -74,7 +88,7 @@ function strip(index, cards) {
     }
     if (m.bench || m.keeps) box.append(el('div', 'ms-bench', [m.bench, m.keeps ? 'keeps ' + m.keeps : ''].filter(Boolean).join(' · ')));
     box.append(el('div', 'ms-count', live.filter((c) => c.state === 'VERIFIED').length + ' of ' + live.length + ' agent blocks verified'));
-    const pick = () => { picked = picked === key ? null : key; applyPick(wrap.parentNode); };
+    const pick = () => { picked = picked === key ? null : key; redraw(); };
     box.addEventListener('click', (e) => { if (!e.target.closest('a')) pick(); });
     box.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pick(); } });
     row.append(box);
@@ -243,7 +257,7 @@ export function renderProgress(root, project, ctx) {
   const cards = Object.entries(project.cards || {}).map(([id, c]) => Object.assign({ id }, c));
   ctx.cards = project.cards;
   if (ctx.sum) root.append(attention(ctx.sum, ctx.rules));
-  root.append(strip(project.index, cards));
+  root.append(strip(project.index, cards, ctx));
   const groups = Object.entries(project.index.groups || {}).sort((a, b) => (a[1].order || 0) - (b[1].order || 0));
   const used = new Set();
   groups.forEach(([gk, g]) => {
