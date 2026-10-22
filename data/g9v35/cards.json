@@ -279,11 +279,14 @@
       "chat": "nlmprod1",
       "role": "Agent"
     },
-    "state": "NOT_STARTED",
-    "now": "Onboarding: adoption read-back and test post on #154",
+    "state": "IN_PROGRESS",
+    "now": "Working packet G9O4-2-p1 (WBS 1.1, B1)",
     "next": {
       "actor": "NLM-PROD1",
-      "text": "post the test evidence on #154; then OTM delivers G9O4-2-p1"
-    }
+      "text": "post TASK EVIDENCE on #154"
+    },
+    "flags": [],
+    "updatedAt": "2026-10-22T18:39:56Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/154#issuecomment-6344449377"
   }
 }

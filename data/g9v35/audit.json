@@ -624,6 +624,20 @@
       "before": null,
       "after": "NOT_STARTED",
       "rev": "R2"
+    },
+    {
+      "seq": 48,
+      "id": "G9V35-R-0048",
+      "previous_id": "G9V35-R-0047",
+      "at": "2026-10-22T18:39:56Z",
+      "kind": "STATE",
+      "actor": "OTM",
+      "summary": "Packet G9O4-2-p1 delivered (move OTM-NLMP1-P1-2210)",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/154#issuecomment-6344449377",
+      "card": "nlmprod1",
+      "before": "NOT_STARTED",
+      "after": "IN_PROGRESS",
+      "rev": "R2"
     }
   ]
 }
