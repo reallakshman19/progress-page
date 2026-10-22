@@ -4,9 +4,11 @@
     "key": "lessons",
     "title": "Lessons",
     "subtitle": "",
-    "updatedAt": "2026-10-22T11:41:38Z",
+    "updatedAt": "2026-10-22T11:48:14Z",
     "updatedBy": "OTM",
-    "staleAfterMin": 120
+    "staleAfterMin": 120,
+    "aim": "OTM reading of the Owner's request: keep each lesson with the steps taken against it, so the same failure does not repeat.",
+    "aimSrc": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6339862645"
   },
   "rules": {
     "coordinator": "OTM",

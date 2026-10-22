@@ -145,6 +145,18 @@
       "after": "IN_PROGRESS",
       "source_at": "2026-10-22T11:16:38Z",
       "rev": "R1"
+    },
+    {
+      "seq": 11,
+      "id": "LANDING-LIVE-R-0011",
+      "previous_id": "LANDING-LIVE-R-0010",
+      "at": "2026-10-22T11:48:15Z",
+      "kind": "PLAN",
+      "actor": "OTM",
+      "summary": "the Owner has not written this project's aim",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6339978122",
+      "scope": "aim",
+      "rev": "R1"
     }
   ]
 }

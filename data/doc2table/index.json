@@ -4,9 +4,11 @@
     "key": "doc2table",
     "title": "Doc to Table",
     "subtitle": "",
-    "updatedAt": "2026-10-22T11:30:19Z",
-    "updatedBy": "Oracle DOC2TABLE-O1",
-    "staleAfterMin": 120
+    "updatedAt": "2026-10-22T11:48:14Z",
+    "updatedBy": "OTM",
+    "staleAfterMin": 120,
+    "aim": "NOT YET CONFIRMED BY THE OWNER. Recorded by Oracle O1: convert flexible .doc/.docx tables with independently selected header and data rows, row combinations and source-linked raw leftovers.",
+    "aimSrc": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6339978122"
   },
   "rules": {
     "coordinator": "OTM",

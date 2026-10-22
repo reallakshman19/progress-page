@@ -244,6 +244,18 @@
       "before": "IN_PROGRESS",
       "after": "IN_PROGRESS",
       "rev": "R1"
+    },
+    {
+      "seq": 20,
+      "id": "DOC2TABLE-R-0020",
+      "previous_id": "DOC2TABLE-R-0019",
+      "at": "2026-10-22T11:48:14Z",
+      "kind": "PLAN",
+      "actor": "OTM",
+      "summary": "Oracle's record of the Owner outcome, pending the Owner's confirmation",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6339978122",
+      "scope": "aim",
+      "rev": "R1"
     }
   ]
 }

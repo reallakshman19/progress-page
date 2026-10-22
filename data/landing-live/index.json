@@ -4,9 +4,11 @@
     "key": "landing-live",
     "title": "Progress page build",
     "subtitle": "How the Progress page itself is being built (work order #149). It tracks its own construction.",
-    "updatedAt": "2026-10-22T11:24:23Z",
+    "updatedAt": "2026-10-22T11:48:15Z",
     "updatedBy": "OTM",
-    "staleAfterMin": 120
+    "staleAfterMin": 120,
+    "aim": "NO AIM WRITTEN BY THE OWNER YET. Work on this tab waits for the Owner's aim.",
+    "aimSrc": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6339978122"
   },
   "rules": {
     "quietAfterMin": 30,

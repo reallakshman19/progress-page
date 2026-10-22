@@ -224,6 +224,18 @@
       "list": "pending",
       "op": "add",
       "rev": "R1"
+    },
+    {
+      "seq": 18,
+      "id": "LESSONS-R-0018",
+      "previous_id": "LESSONS-R-0017",
+      "at": "2026-10-22T11:48:14Z",
+      "kind": "PLAN",
+      "actor": "OTM",
+      "summary": "aim of the Lessons tab",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6339862645",
+      "scope": "aim",
+      "rev": "R1"
     }
   ]
 }

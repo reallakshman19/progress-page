@@ -101,6 +101,18 @@
       "after": "VERIFIED",
       "source_at": "2026-10-21T17:28:24Z",
       "rev": "R1"
+    },
+    {
+      "seq": 8,
+      "id": "CIIFR-R-0008",
+      "previous_id": "CIIFR-R-0007",
+      "at": "2026-10-22T11:48:14Z",
+      "kind": "PLAN",
+      "actor": "OTM",
+      "summary": "the Owner has not written this project's aim",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6339978122",
+      "scope": "aim",
+      "rev": "R1"
     }
   ]
 }
