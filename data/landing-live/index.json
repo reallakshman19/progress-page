@@ -1,0 +1,60 @@
+{
+  "schema": 3,
+  "project": {
+    "key": "landing-live",
+    "title": "Progress page build",
+    "subtitle": "How the Progress page itself is being built (work order #149). It tracks its own construction.",
+    "updatedAt": "2026-10-22T01:51:30Z",
+    "updatedBy": "OTM",
+    "staleAfterMin": 120
+  },
+  "chats": {
+    "coder": {
+      "label": "Coder L1 g5",
+      "id8": "6ad937de",
+      "engine": "ChatGPT"
+    }
+  },
+  "milestones": {
+    "M0": {
+      "order": 0,
+      "name": "Scope",
+      "full": "Work order sealed"
+    },
+    "M1": {
+      "order": 1,
+      "name": "Build",
+      "full": "Stages built"
+    },
+    "M2": {
+      "order": 2,
+      "name": "Review",
+      "full": "Independent check"
+    },
+    "M3": {
+      "order": 3,
+      "name": "Merge",
+      "full": "Owner merge"
+    }
+  },
+  "groups": {
+    "core": {
+      "order": 1,
+      "title": "PRG-CORE-1: portable Progress core",
+      "chips": [
+        {
+          "t": "Stage 1 merged",
+          "c": "s"
+        },
+        {
+          "t": "Stage 2 draft",
+          "c": "w"
+        },
+        {
+          "t": "Stage 3 not released",
+          "c": "n"
+        }
+      ]
+    }
+  }
+}

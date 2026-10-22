@@ -1,0 +1,110 @@
+{
+  "oracle": {
+    "order": 1,
+    "group": "charter",
+    "milestone": "M0",
+    "label": "Oracle",
+    "who": {
+      "chat": "oracle",
+      "role": "Nudge Oracle"
+    },
+    "state": "VERIFIED",
+    "now": "DONE: Charter v1 confirmed under your delegation ([#134](https://github.com/reallakshman19/CoordinatorLandingpage/issues/134)).",
+    "updatedAt": "2026-10-21T03:54:00Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/134",
+    "refs": [
+      {
+        "k": "issue",
+        "l": "CL #134",
+        "u": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/134"
+      }
+    ]
+  },
+  "g1ui": {
+    "order": 2,
+    "group": "ui",
+    "milestone": "M1",
+    "label": "G1-UI",
+    "who": {
+      "chat": "g1ui",
+      "role": "Antigravity UI agent"
+    },
+    "state": "BLOCKED",
+    "now": "Capability proven, 1 of 3 saves. Halted at step 3.",
+    "next": {
+      "actor": "ORACLE",
+      "text": "HOLD ALL; then the Nudge Oracle writes the P07 next packet"
+    },
+    "updatedAt": "2026-10-21T08:48:00Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/125",
+    "refs": [
+      {
+        "k": "issue",
+        "l": "CL #125",
+        "u": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/125"
+      }
+    ]
+  },
+  "g2db": {
+    "order": 3,
+    "group": "db",
+    "milestone": "M1",
+    "label": "G2-DB",
+    "who": {
+      "chat": "g2db",
+      "role": "database agent"
+    },
+    "state": "SUBMITTED",
+    "now": "In review: [NN PR #14](https://github.com/reallakshman19/NextNudge-P118-Scratch/pull/14) head 0155b691 (guard against duplicate Fetch Return answers, R3).",
+    "next": {
+      "actor": "IR",
+      "text": "review PR #14 head 0155b691"
+    },
+    "updatedAt": "2026-10-21T03:34:00Z",
+    "src": "https://github.com/reallakshman19/NextNudge-P118-Scratch/pull/14",
+    "refs": [
+      {
+        "k": "issue",
+        "l": "CL #126",
+        "u": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/126"
+      },
+      {
+        "k": "pr",
+        "l": "NN #14",
+        "u": "https://github.com/reallakshman19/NextNudge-P118-Scratch/pull/14",
+        "s": "open"
+      }
+    ],
+    "edges": [
+      {
+        "to": "nir",
+        "k": "to"
+      }
+    ]
+  },
+  "nir": {
+    "order": 4,
+    "group": "db",
+    "milestone": "M2",
+    "label": "IR",
+    "who": {
+      "chat": "ir",
+      "role": "Nudge IR"
+    },
+    "state": "BLOCKED",
+    "now": "HOLD ALL; the IR is alive but its automation is paused ([#134 6312401880](https://github.com/reallakshman19/CoordinatorLandingpage/issues/134#issuecomment-6312401880)).",
+    "next": {
+      "actor": "-",
+      "text": "HOLD ALL lifts, then the IR reviews PR #14"
+    },
+    "updatedAt": "2026-10-21T09:19:00Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/134#issuecomment-6312401880",
+    "refs": [
+      {
+        "k": "issue",
+        "l": "CL #134",
+        "u": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/134"
+      }
+    ]
+  }
+}

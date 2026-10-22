@@ -1,0 +1,71 @@
+{
+  "schema": 3,
+  "project": {
+    "key": "ciifr",
+    "title": "CII Find & Replace VNext",
+    "subtitle": "Preview from the OTM board. The CIIFR Oracle owns the real data (standalone mode).",
+    "updatedAt": "2026-10-22T01:51:30Z",
+    "updatedBy": "OTM",
+    "staleAfterMin": 120
+  },
+  "chats": {
+    "ir": {
+      "label": "IR-CIIFR-PR150",
+      "id8": "IR-PR150"
+    },
+    "o2": {
+      "label": "Oracle O2",
+      "id8": "6ad8c352",
+      "engine": "ChatGPT"
+    },
+    "g2": {
+      "label": "G2 reviewer",
+      "id8": "6ad8eeb9",
+      "engine": "ChatGPT"
+    },
+    "a1fr": {
+      "label": "A1FR coder",
+      "id8": "c3917ee8",
+      "engine": "Antigravity"
+    }
+  },
+  "milestones": {
+    "M1": {
+      "order": 1,
+      "name": "Repair",
+      "full": "Corrective PR built"
+    },
+    "M2": {
+      "order": 2,
+      "name": "Review",
+      "full": "Independent review"
+    },
+    "M3": {
+      "order": 3,
+      "name": "Merge",
+      "full": "Owner merge"
+    }
+  },
+  "groups": {
+    "review": {
+      "order": 1,
+      "title": "Review of PR #150",
+      "chips": [
+        {
+          "t": "FAIL / HOLD",
+          "c": "d"
+        }
+      ]
+    },
+    "repair": {
+      "order": 2,
+      "title": "Repair task #153",
+      "chips": [
+        {
+          "t": "PR #150 draft · HOLD",
+          "c": "n"
+        }
+      ]
+    }
+  }
+}

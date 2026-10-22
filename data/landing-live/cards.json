@@ -1,0 +1,183 @@
+{
+  "wo": {
+    "order": 1,
+    "group": "core",
+    "milestone": "M0",
+    "label": "Work order",
+    "who": {
+      "role": "OTM"
+    },
+    "state": "VERIFIED",
+    "now": "Sealed: targets T1 to T3 and falsifiers F1 to F3 were posted before any return was read.",
+    "updatedAt": "2026-10-21T16:36:55Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/149",
+    "refs": [
+      {
+        "k": "issue",
+        "l": "CL #149",
+        "u": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/149"
+      }
+    ],
+    "edges": [
+      {
+        "to": "stage1",
+        "k": "to"
+      }
+    ]
+  },
+  "stage1": {
+    "order": 2,
+    "group": "core",
+    "milestone": "M1",
+    "label": "Stage 1",
+    "who": {
+      "chat": "coder",
+      "role": "coder"
+    },
+    "state": "VERIFIED",
+    "now": "Data contracts and validator. PR #151 merged as fc1acdb1 on your words 'Merge PR #151'. 35 of 35 CI checks and an independent PASS; the validator is OK on main.",
+    "updatedAt": "2026-10-22T00:27:00Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/pull/151",
+    "refs": [
+      {
+        "k": "issue",
+        "l": "CL #149",
+        "u": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/149"
+      },
+      {
+        "k": "pr",
+        "l": "CL #151",
+        "u": "https://github.com/reallakshman19/CoordinatorLandingpage/pull/151",
+        "s": "merged"
+      }
+    ],
+    "edges": [
+      {
+        "to": "stage2",
+        "k": "to"
+      }
+    ]
+  },
+  "stage2": {
+    "order": 3,
+    "group": "core",
+    "milestone": "M1",
+    "label": "Stage 2",
+    "who": {
+      "chat": "coder",
+      "role": "coder"
+    },
+    "state": "IN_PROGRESS",
+    "now": "Portable viewer and standalone page. Draft [PR #153](https://github.com/reallakshman19/CoordinatorLandingpage/pull/153), head b8359d80, 15 files +1106 -859; CI 40 of 40 green at this head. No evidence post on #149 yet.",
+    "next": {
+      "actor": "CODER",
+      "text": "TASK EVIDENCE v2 + SELF-CHECK on #149; then an independent check at the exact head against T2 and F2"
+    },
+    "updatedAt": "2026-10-22T00:46:48Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/pull/153",
+    "refs": [
+      {
+        "k": "issue",
+        "l": "CL #149",
+        "u": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/149"
+      },
+      {
+        "k": "pr",
+        "l": "CL #153",
+        "u": "https://github.com/reallakshman19/CoordinatorLandingpage/pull/153",
+        "s": "draft"
+      }
+    ],
+    "edges": [
+      {
+        "to": "check",
+        "k": "to"
+      }
+    ]
+  },
+  "check": {
+    "order": 4,
+    "group": "core",
+    "milestone": "M2",
+    "label": "Independent check",
+    "who": {
+      "role": "fresh checker"
+    },
+    "state": "NOT_STARTED",
+    "now": "Not started. Runs after the coder's evidence: head against T2 and F2, tests RED at base and GREEN at head.",
+    "next": {
+      "actor": "OTM",
+      "text": "run the check at the exact head"
+    },
+    "refs": [
+      {
+        "k": "issue",
+        "l": "CL #149",
+        "u": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/149"
+      },
+      {
+        "k": "pr",
+        "l": "CL #153",
+        "u": "https://github.com/reallakshman19/CoordinatorLandingpage/pull/153",
+        "s": "draft"
+      }
+    ],
+    "edges": [
+      {
+        "to": "merge",
+        "k": "to"
+      }
+    ]
+  },
+  "merge": {
+    "order": 5,
+    "group": "core",
+    "milestone": "M3",
+    "label": "Owner merge",
+    "who": {
+      "role": "Owner"
+    },
+    "state": "NOT_STARTED",
+    "now": "Waits for the independent check.",
+    "next": {
+      "actor": "YOU",
+      "text": "merge Stage 2 when you are satisfied"
+    },
+    "refs": [
+      {
+        "k": "pr",
+        "l": "CL #153",
+        "u": "https://github.com/reallakshman19/CoordinatorLandingpage/pull/153",
+        "s": "draft"
+      }
+    ],
+    "edges": [
+      {
+        "to": "stage3",
+        "k": "to"
+      }
+    ]
+  },
+  "stage3": {
+    "order": 6,
+    "group": "core",
+    "milestone": "M1",
+    "label": "Stage 3",
+    "who": {
+      "role": "coder"
+    },
+    "state": "NOT_STARTED",
+    "now": "Standard-library command-line tool. Not released: OTM releases it after Stage 2 is merged.",
+    "next": {
+      "actor": "OTM",
+      "text": "release Stage 3 after the Stage 2 merge"
+    },
+    "refs": [
+      {
+        "k": "issue",
+        "l": "CL #149",
+        "u": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/149"
+      }
+    ]
+  }
+}

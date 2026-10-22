@@ -1,0 +1,238 @@
+{
+  "oracle": {
+    "order": 1,
+    "group": "pilot",
+    "milestone": "M2",
+    "label": "Oracle",
+    "who": {
+      "chat": "oracle",
+      "role": "Oracle O3"
+    },
+    "state": "SUBMITTED",
+    "now": "Posted its challenge on [#128 6329920555](https://github.com/reallakshman19/CoordinatorLandingpage/issues/128#issuecomment-6329920555) at 04:47. OTM has not read it yet (other tasks held at the Owner's instruction).",
+    "next": {
+      "actor": "OTM",
+      "text": "read the challenge and send the next ZIP-free packet (paused until the Progress page work is done)"
+    },
+    "updatedAt": "2026-10-22T00:47:32Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128#issuecomment-6329920555",
+    "refs": [
+      {
+        "k": "issue",
+        "l": "CL #128",
+        "u": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128"
+      }
+    ],
+    "edges": [
+      {
+        "to": "pqrt",
+        "k": "both"
+      }
+    ]
+  },
+  "pqrt": {
+    "order": 2,
+    "group": "pilot",
+    "milestone": "M1",
+    "label": "PQRT",
+    "who": {
+      "chat": "pqrt",
+      "role": "author"
+    },
+    "state": "SUBMITTED",
+    "now": "Returned 04:31: PUBLIC_SYNTHETIC_WORKPACK_READY / CONSUMER_VALIDATION_NOT_RUN ([#128 6329713931](https://github.com/reallakshman19/CoordinatorLandingpage/issues/128#issuecomment-6329713931)), METER MID. Text design only; every N1 check is NOT_RUN.",
+    "next": {
+      "actor": "OTM",
+      "text": "reconcile the return with the Oracle challenge (paused)"
+    },
+    "updatedAt": "2026-10-22T00:31:39Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128#issuecomment-6329713931",
+    "refs": [
+      {
+        "k": "issue",
+        "l": "CL #128",
+        "u": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128"
+      }
+    ]
+  },
+  "pfal": {
+    "order": 3,
+    "group": "held",
+    "milestone": "M2",
+    "label": "PFAL",
+    "who": {
+      "chat": "pfal",
+      "role": "independent PQRT"
+    },
+    "state": "BLOCKED",
+    "now": "HOLD.",
+    "next": {
+      "actor": "-",
+      "text": "Oracle HOLD until checker Y1 settles 007/010/022 ([#128 6315472566](https://github.com/reallakshman19/CoordinatorLandingpage/issues/128#issuecomment-6315472566))"
+    },
+    "updatedAt": "2026-10-21T12:13:00Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128#issuecomment-6315472566",
+    "refs": [
+      {
+        "k": "issue",
+        "l": "CL #128",
+        "u": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128"
+      }
+    ]
+  },
+  "pchk": {
+    "order": 4,
+    "group": "held",
+    "milestone": "M2",
+    "label": "PCHK",
+    "who": {
+      "chat": "pchk",
+      "role": "science checker"
+    },
+    "state": "BLOCKED",
+    "now": "HOLD.",
+    "next": {
+      "actor": "-",
+      "text": "held until Drive receipts exist ([#128 6316907785](https://github.com/reallakshman19/CoordinatorLandingpage/issues/128#issuecomment-6316907785))"
+    },
+    "updatedAt": "2026-10-21T13:52:00Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128#issuecomment-6316907785",
+    "refs": [
+      {
+        "k": "issue",
+        "l": "CL #128",
+        "u": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128"
+      }
+    ]
+  },
+  "math": {
+    "order": 5,
+    "group": "held",
+    "milestone": "M1",
+    "label": "Math",
+    "who": {
+      "chat": "math",
+      "role": "Math QRT"
+    },
+    "state": "BLOCKED",
+    "now": "HOLD.",
+    "next": {
+      "actor": "YOU",
+      "text": "Owner: pilot Physics first, then Math (source ZIP not available, Owner 21 Oct; Drive 403)"
+    },
+    "updatedAt": "2026-10-21T16:02:00Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/129",
+    "refs": [
+      {
+        "k": "issue",
+        "l": "CL #129",
+        "u": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/129"
+      }
+    ]
+  },
+  "pgrd": {
+    "order": 6,
+    "group": "guard",
+    "milestone": "M1",
+    "label": "PGRD",
+    "who": {
+      "chat": "pgrd",
+      "role": "coder"
+    },
+    "state": "SUBMITTED",
+    "now": "F1 PARTIAL at head 69b1b4b5; the coder has no open task. Waits for the IR short check ([#135 6327655150](https://github.com/reallakshman19/CoordinatorLandingpage/issues/135#issuecomment-6327655150), asked 02:10, no reply).",
+    "next": {
+      "actor": "IR",
+      "text": "short new-diff check on #135 (Owner paste line offered)"
+    },
+    "updatedAt": "2026-10-21T22:10:08Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/135#issuecomment-6327655150",
+    "refs": [
+      {
+        "k": "issue",
+        "l": "CL #135",
+        "u": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/135"
+      },
+      {
+        "k": "pr",
+        "l": "G9 #305",
+        "u": "https://github.com/reallakshman19/Grade9v3.5/pull/305",
+        "s": "draft · HOLD"
+      }
+    ],
+    "edges": [
+      {
+        "to": "ir",
+        "k": "back"
+      }
+    ]
+  },
+  "ir": {
+    "order": 7,
+    "group": "guard",
+    "milestone": "M2",
+    "label": "IR",
+    "who": {
+      "chat": "ir",
+      "role": "independent reviewer"
+    },
+    "state": "BLOCKED",
+    "now": "IR1 done (PARTIAL, [#128 6317077215](https://github.com/reallakshman19/CoordinatorLandingpage/issues/128#issuecomment-6317077215)). Short new-diff check asked 02:10 on [#135 6327655150](https://github.com/reallakshman19/CoordinatorLandingpage/issues/135#issuecomment-6327655150) for PR #305 head 69b1b4b5: no reply since. The IR wake path is paused or unknown.",
+    "next": {
+      "actor": "YOU",
+      "text": "paste the wake line into the IR session (My actions)"
+    },
+    "updatedAt": "2026-10-21T22:10:08Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/135#issuecomment-6327655150",
+    "refs": [
+      {
+        "k": "issue",
+        "l": "CL #135",
+        "u": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/135"
+      },
+      {
+        "k": "pr",
+        "l": "G9 #305",
+        "u": "https://github.com/reallakshman19/Grade9v3.5/pull/305",
+        "s": "draft · HOLD"
+      }
+    ],
+    "flags": [
+      "needs-you"
+    ]
+  },
+  "owner": {
+    "order": 9,
+    "group": "done",
+    "milestone": "M0",
+    "label": "Owner decisions",
+    "who": {
+      "role": "Owner"
+    },
+    "state": "VERIFIED",
+    "now": "Recorded: pilot scope and Option A, write approval for PR #305, F1-A (relayed by OTM as your stand-in), and your rule of 22 Oct: no ZIP, proceed with the task.",
+    "updatedAt": "2026-10-22T00:14:48Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6329482245",
+    "refs": [
+      {
+        "k": "issue",
+        "l": "CL #1",
+        "u": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1"
+      }
+    ]
+  },
+  "runner": {
+    "order": 8,
+    "group": "done",
+    "milestone": "M1",
+    "label": "RUNNER",
+    "who": {
+      "chat": "runner",
+      "role": "native runner"
+    },
+    "state": "VERIFIED",
+    "now": "DONE: gap found. The replay is done (METER HIGH); the Oracle gave the fix to coder PGRD.",
+    "updatedAt": "2026-10-21T11:14:01Z",
+    "src": "https://github.com/reallakshman19/Grade9v3.5/issues/300#issuecomment-6314544157"
+  }
+}

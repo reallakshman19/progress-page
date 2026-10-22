@@ -1,0 +1,104 @@
+{
+  "schema": 3,
+  "project": {
+    "key": "g9v35",
+    "title": "G9v3.5 Physics pilot",
+    "subtitle": "Newton's Laws pilot on the ZIP-free track, and the owner-bank guard (PR #305)",
+    "updatedAt": "2026-10-22T01:51:30Z",
+    "updatedBy": "OTM",
+    "staleAfterMin": 120
+  },
+  "chats": {
+    "oracle": {
+      "label": "Oracle O3",
+      "id8": "6ad87417",
+      "engine": "ChatGPT"
+    },
+    "pqrt": {
+      "label": "PQRT author",
+      "id8": "6ad7ee24",
+      "engine": "ChatGPT"
+    },
+    "pchk": {
+      "label": "PCHK checker",
+      "id8": "6ad8a3e0",
+      "engine": "ChatGPT"
+    },
+    "pfal": {
+      "label": "PFAL",
+      "id8": "6ad8914a",
+      "engine": "ChatGPT"
+    },
+    "math": {
+      "label": "Math",
+      "id8": "6ad7ee6a",
+      "engine": "ChatGPT"
+    },
+    "pgrd": {
+      "label": "PGRD coder",
+      "id8": "6ad8a9bb",
+      "engine": "ChatGPT"
+    },
+    "ir": {
+      "label": "IR-G9V35",
+      "id8": "01a159bb"
+    },
+    "runner": {
+      "label": "g9runner",
+      "id8": "g9runner",
+      "engine": "Antigravity"
+    }
+  },
+  "milestones": {
+    "M0": {
+      "order": 0,
+      "name": "Scope",
+      "full": "Scope and approvals"
+    },
+    "M1": {
+      "order": 1,
+      "name": "Build",
+      "full": "Drafts and guard built"
+    },
+    "M2": {
+      "order": 2,
+      "name": "Review",
+      "full": "Review and decisions"
+    },
+    "M3": {
+      "order": 3,
+      "name": "Acceptance",
+      "full": "Owner acceptance"
+    },
+    "M4": {
+      "order": 4,
+      "name": "Custody",
+      "full": "Custody before any protected import"
+    }
+  },
+  "groups": {
+    "pilot": {
+      "order": 1,
+      "title": "ZIP-free Physics pilot",
+      "sub": "Your rule of 22 Oct: no ZIP, proceed with the task."
+    },
+    "held": {
+      "order": 2,
+      "title": "Held, each with its own reason"
+    },
+    "guard": {
+      "order": 3,
+      "title": "PR #305 · F1 identity guard",
+      "chips": [
+        {
+          "t": "draft · merge HOLD",
+          "c": "n"
+        }
+      ]
+    },
+    "done": {
+      "order": 4,
+      "title": "Done"
+    }
+  }
+}

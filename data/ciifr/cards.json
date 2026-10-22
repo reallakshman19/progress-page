@@ -1,0 +1,163 @@
+{
+  "ir": {
+    "order": 1,
+    "group": "review",
+    "milestone": "M2",
+    "label": "IR check",
+    "who": {
+      "chat": "ir",
+      "role": "IR-CIIFR-PR150"
+    },
+    "state": "VERIFIED",
+    "now": "Independent review of PR #150 returned FAIL / HOLD ([XCU #152 6322145497](https://github.com/reallakshman19/XML_Compare_Utilities/issues/152#issuecomment-6322145497)). The Oracle reconciled it at 17:28Z ([XCU #152 6322285804](https://github.com/reallakshman19/XML_Compare_Utilities/issues/152#issuecomment-6322285804)). CIIFR IR is parked.",
+    "next": {
+      "actor": "-",
+      "text": "re-review when a corrective PR arrives"
+    },
+    "updatedAt": "2026-10-21T17:21:19Z",
+    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/152#issuecomment-6322145497",
+    "refs": [
+      {
+        "k": "issue",
+        "l": "XCU #152",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/152"
+      },
+      {
+        "k": "pr",
+        "l": "XCU #150",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/150",
+        "s": "draft · HOLD"
+      }
+    ],
+    "chips": [
+      {
+        "t": "FAIL / HOLD",
+        "c": "d"
+      }
+    ],
+    "edges": [
+      {
+        "to": "o2",
+        "k": "to"
+      }
+    ]
+  },
+  "o2": {
+    "order": 2,
+    "group": "review",
+    "milestone": "M2",
+    "label": "Oracle",
+    "who": {
+      "chat": "o2",
+      "role": "O2"
+    },
+    "state": "SUBMITTED",
+    "now": "Its part is finished. Reviewed PR #150 and found F01, F02 (stale-Generate race) and two P2 items. Issued repair task [XCU #153 6322554084](https://github.com/reallakshman19/XML_Compare_Utilities/issues/153#issuecomment-6322554084) EXECUTE NOW at 17:41Z. Waiting for the corrective PR.",
+    "next": {
+      "actor": "ORACLE",
+      "text": "reconcile and arrange re-review when a corrective PR arrives"
+    },
+    "updatedAt": "2026-10-21T17:41:42Z",
+    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/153#issuecomment-6322554084",
+    "refs": [
+      {
+        "k": "issue",
+        "l": "XCU #153",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/153"
+      },
+      {
+        "k": "pr",
+        "l": "XCU #150",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/150",
+        "s": "draft · HOLD"
+      }
+    ],
+    "edges": [
+      {
+        "to": "g2",
+        "k": "both"
+      }
+    ]
+  },
+  "g2": {
+    "order": 3,
+    "group": "review",
+    "milestone": "M2",
+    "label": "G2",
+    "who": {
+      "chat": "g2",
+      "role": "reviewer"
+    },
+    "state": "VERIFIED",
+    "now": "Its part is finished. Confirmed the findings and set a HOLD verdict (recorded in the chat; no GitHub post found).",
+    "kind": "hold",
+    "refs": [
+      {
+        "k": "issue",
+        "l": "XCU #152",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/152"
+      },
+      {
+        "k": "pr",
+        "l": "XCU #150",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/150",
+        "s": "draft · HOLD"
+      }
+    ]
+  },
+  "otm": {
+    "order": 4,
+    "group": "repair",
+    "milestone": "M1",
+    "label": "OTM",
+    "who": {
+      "role": "this session"
+    },
+    "state": "IN_PROGRESS",
+    "now": "Routed 04:57: re-issued the repair packet to the new A1FR session ([G9 #300 6330049625](https://github.com/reallakshman19/Grade9v3.5/issues/300#issuecomment-6330049625)). The first packet went to the old chat, which you cancelled.",
+    "next": {
+      "actor": "OTM",
+      "text": "re-check #153 at 05:40"
+    },
+    "updatedAt": "2026-10-22T00:57:39Z",
+    "src": "https://github.com/reallakshman19/Grade9v3.5/issues/300#issuecomment-6330049625",
+    "refs": [
+      {
+        "k": "issue",
+        "l": "XCU #153",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/153"
+      }
+    ],
+    "edges": [
+      {
+        "to": "a1fr",
+        "k": "to"
+      }
+    ]
+  },
+  "a1fr": {
+    "order": 5,
+    "group": "repair",
+    "milestone": "M1",
+    "label": "Coder",
+    "who": {
+      "chat": "a1fr",
+      "role": "Antigravity A1FR, agent c3917ee8"
+    },
+    "state": "IN_PROGRESS",
+    "now": "ADOPTED at 05:03 ([XCU #153 6330118639](https://github.com/reallakshman19/XML_Compare_Utilities/issues/153#issuecomment-6330118639)) and ACKed on [G9 #300 6330322621](https://github.com/reallakshman19/Grade9v3.5/issues/300#issuecomment-6330322621) (METER 20%). Full checkout verified; branch wip/cii-fnr-vnext/f02-p2-repair-20261022-c3917ee8 from PR #150 head 19c3cdf1. Working through backups and red tests.",
+    "next": {
+      "actor": "A1FR",
+      "text": "post the draft corrective PR and its evidence on #153"
+    },
+    "updatedAt": "2026-10-22T01:18:11Z",
+    "src": "https://github.com/reallakshman19/Grade9v3.5/issues/300#issuecomment-6330322621",
+    "refs": [
+      {
+        "k": "issue",
+        "l": "XCU #153",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/153"
+      }
+    ]
+  }
+}

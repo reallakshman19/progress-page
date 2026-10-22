@@ -1,0 +1,73 @@
+{
+  "schema": "progress-ledger/v3",
+  "project": "ciifr",
+  "baseline_at": "2026-10-22T01:51:30Z",
+  "scope": "Ledger of published Progress maintenance from this declared baseline; not a reconstruction of historic agent execution.",
+  "events": [
+    {
+      "seq": 1,
+      "id": "CIIFR-R-0001",
+      "previous_id": null,
+      "at": "2026-10-22T01:51:30Z",
+      "kind": "BASELINE",
+      "card": "ir",
+      "before": null,
+      "after": "VERIFIED",
+      "actor": "OTM (baseline)",
+      "source": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/152#issuecomment-6322145497",
+      "summary": "Card created on the independent Progress page from the OTM board rows."
+    },
+    {
+      "seq": 2,
+      "id": "CIIFR-R-0002",
+      "previous_id": "CIIFR-R-0001",
+      "at": "2026-10-22T01:51:30Z",
+      "kind": "BASELINE",
+      "card": "o2",
+      "before": null,
+      "after": "SUBMITTED",
+      "actor": "OTM (baseline)",
+      "source": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/153#issuecomment-6322554084",
+      "summary": "Card created on the independent Progress page from the OTM board rows."
+    },
+    {
+      "seq": 3,
+      "id": "CIIFR-R-0003",
+      "previous_id": "CIIFR-R-0002",
+      "at": "2026-10-22T01:51:30Z",
+      "kind": "BASELINE",
+      "card": "g2",
+      "before": null,
+      "after": "VERIFIED",
+      "actor": "OTM (baseline)",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6330677339",
+      "summary": "Card created on the independent Progress page from the OTM board rows."
+    },
+    {
+      "seq": 4,
+      "id": "CIIFR-R-0004",
+      "previous_id": "CIIFR-R-0003",
+      "at": "2026-10-22T01:51:30Z",
+      "kind": "BASELINE",
+      "card": "otm",
+      "before": null,
+      "after": "IN_PROGRESS",
+      "actor": "OTM (baseline)",
+      "source": "https://github.com/reallakshman19/Grade9v3.5/issues/300#issuecomment-6330049625",
+      "summary": "Card created on the independent Progress page from the OTM board rows."
+    },
+    {
+      "seq": 5,
+      "id": "CIIFR-R-0005",
+      "previous_id": "CIIFR-R-0004",
+      "at": "2026-10-22T01:51:30Z",
+      "kind": "BASELINE",
+      "card": "a1fr",
+      "before": null,
+      "after": "IN_PROGRESS",
+      "actor": "OTM (baseline)",
+      "source": "https://github.com/reallakshman19/Grade9v3.5/issues/300#issuecomment-6330322621",
+      "summary": "Card created on the independent Progress page from the OTM board rows."
+    }
+  ]
+}

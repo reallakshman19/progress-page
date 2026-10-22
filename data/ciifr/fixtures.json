@@ -1,0 +1,44 @@
+{
+  "repository": [
+    {
+      "t": "XML_Compare_Utilities: the CIIFR product repository",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities"
+    }
+  ],
+  "issues": [
+    {
+      "t": "#152 independent review of PR #150 and the reconciliation",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/152"
+    },
+    {
+      "t": "#153 repair task and the A1FR receipt",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/153"
+    }
+  ],
+  "pullRequests": [
+    {
+      "t": "PR #150 Config tab with shared conflict and approval policy",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/150",
+      "s": "draft · HOLD"
+    }
+  ],
+  "roadmap": [],
+  "highRoi": [],
+  "future": [],
+  "intent": [],
+  "inputs": [],
+  "knownIssues": [
+    {
+      "t": "F01 and F02 (stale-Generate race) plus two P2 items on PR #150",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/152#issuecomment-6322145497",
+      "s": "open"
+    }
+  ],
+  "pending": [
+    {
+      "t": "Corrective draft PR and evidence from the A1FR coder",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/153",
+      "s": "waiting"
+    }
+  ]
+}

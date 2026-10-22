@@ -1,0 +1,53 @@
+{
+  "schema": 3,
+  "projects": [
+    {
+      "key": "g9v35",
+      "label": "G9v3.5",
+      "order": 1,
+      "mode": "otm",
+      "replyTo": {
+        "kind": "github-issue",
+        "repo": "reallakshman19/CoordinatorLandingpage",
+        "template": "owner-reply.yml",
+        "target": "OwnerTeammember",
+        "site": "https://reallakshman19.github.io/progress-page/"
+      }
+    },
+    {
+      "key": "ciifr",
+      "label": "CIIFR",
+      "order": 2,
+      "mode": "standalone",
+      "replyTo": {
+        "kind": "none"
+      }
+    },
+    {
+      "key": "landing-live",
+      "label": "Progress page build",
+      "order": 3,
+      "mode": "otm",
+      "replyTo": {
+        "kind": "github-issue",
+        "repo": "reallakshman19/CoordinatorLandingpage",
+        "template": "owner-reply.yml",
+        "target": "OwnerTeammember",
+        "site": "https://reallakshman19.github.io/progress-page/"
+      }
+    },
+    {
+      "key": "nudge",
+      "label": "Nudge",
+      "order": 4,
+      "mode": "otm",
+      "replyTo": {
+        "kind": "github-issue",
+        "repo": "reallakshman19/CoordinatorLandingpage",
+        "template": "owner-reply.yml",
+        "target": "OwnerTeammember",
+        "site": "https://reallakshman19.github.io/progress-page/"
+      }
+    }
+  ]
+}
