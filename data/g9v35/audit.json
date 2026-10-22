@@ -277,6 +277,79 @@
       "after": "NOT_APPLICABLE",
       "to": "oracle4",
       "rev": "R1"
+    },
+    {
+      "seq": 21,
+      "id": "G9V35-R-0021",
+      "previous_id": "G9V35-R-0020",
+      "at": "2026-10-22T12:48:30Z",
+      "kind": "PLAN",
+      "actor": "Oracle G9V35-O4",
+      "summary": "Oracle-authored plan: replace old process gates with the Owner NLM learning pipeline.",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128#issuecomment-6339825083",
+      "scope": "milestone:M0",
+      "rev": "R1"
+    },
+    {
+      "seq": 22,
+      "id": "G9V35-R-0022",
+      "previous_id": "G9V35-R-0021",
+      "at": "2026-10-22T12:48:31Z",
+      "kind": "PLAN",
+      "actor": "Oracle G9V35-O4",
+      "summary": "Oracle-authored plan: replace old process gates with the Owner NLM learning pipeline.",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128#issuecomment-6339825083",
+      "scope": "milestone:M1",
+      "rev": "R1"
+    },
+    {
+      "seq": 23,
+      "id": "G9V35-R-0023",
+      "previous_id": "G9V35-R-0022",
+      "at": "2026-10-22T12:48:31Z",
+      "kind": "PLAN",
+      "actor": "Oracle G9V35-O4",
+      "summary": "Oracle-authored plan: replace old process gates with the Owner NLM learning pipeline.",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128#issuecomment-6339825083",
+      "scope": "milestone:M2",
+      "rev": "R1"
+    },
+    {
+      "seq": 24,
+      "id": "G9V35-R-0024",
+      "previous_id": "G9V35-R-0023",
+      "at": "2026-10-22T12:48:31Z",
+      "kind": "PLAN",
+      "actor": "Oracle G9V35-O4",
+      "summary": "Oracle-authored plan: replace old process gates with the Owner NLM learning pipeline.",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128#issuecomment-6339825083",
+      "scope": "milestone:M3",
+      "rev": "R1"
+    },
+    {
+      "seq": 25,
+      "id": "G9V35-R-0025",
+      "previous_id": "G9V35-R-0024",
+      "at": "2026-10-22T12:48:31Z",
+      "kind": "PLAN",
+      "actor": "Oracle G9V35-O4",
+      "summary": "Oracle-authored plan: replace old process gates with the Owner NLM learning pipeline.",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128#issuecomment-6339825083",
+      "scope": "milestone:M4",
+      "rev": "R1"
+    },
+    {
+      "seq": 26,
+      "id": "G9V35-R-0026",
+      "previous_id": "G9V35-R-0025",
+      "at": "2026-10-22T12:48:31Z",
+      "kind": "FIXTURE",
+      "actor": "Oracle G9V35-O4",
+      "summary": "Start an evidence-bound usable-item count; do not treat historical exemplar reviews as a current learning-version check.",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128#issuecomment-6339825083",
+      "list": "roadmap",
+      "op": "add",
+      "rev": "R1"
     }
   ]
 }
