@@ -1,14 +1,14 @@
 // Shell: loads the JSON, draws the project tabs and the views, refreshes every two minutes.
-import { el, link, tick, ago, whenText } from './util.js?v=14';
-import { renderProgress, wbsPick, wbsSteps } from './progress.js?v=14';
-import { renderLessons } from './lessons.js?v=14';
-import { renderActions, renderFixtures, openCount } from './actions.js?v=14';
-import { renderTimeline } from './timeline.js?v=14';
-import { tabsRow, archivedPanel, projectHead, isActive } from './lifecycle.js?v=14';
-import { nudgesOf, openNudge } from './nudge.js?v=14';
-import { addProjectDialog, addRevisionDialog } from './briefs.js?v=14';
-import { loadLinks, takeLinksFromHash, linksPanel } from './links.js?v=14';
-import { rulesOf, holdOf, summary, needsAttention } from './triggers.js?v=14';
+import { el, link, tick, ago, whenText } from './util.js?v=15';
+import { renderProgress, wbsPick, wbsSteps } from './progress.js?v=15';
+import { renderLessons } from './lessons.js?v=15';
+import { renderActions, renderFixtures, openCount } from './actions.js?v=15';
+import { renderTimeline } from './timeline.js?v=15';
+import { tabsRow, archivedPanel, projectHead, isActive } from './lifecycle.js?v=15';
+import { nudgesOf, openNudge } from './nudge.js?v=15';
+import { addProjectDialog, addRevisionDialog } from './briefs.js?v=15';
+import { loadLinks, takeLinksFromHash, linksPanel } from './links.js?v=15';
+import { rulesOf, holdOf, summary, needsAttention } from './triggers.js?v=15';
 
 const LIVE_DATA = 'https://reallakshman19.github.io/progress-page/data/';
 const q = new URLSearchParams(location.search);
@@ -138,7 +138,8 @@ function route() {
   const [, pk, view, rev] = (hash || '').split('/');
   const active = state.projects.filter(isActive);
   const key = state.data[pk] ? pk : (active[0] || state.projects[0] || {}).key;
-  const choices = key === 'learned' ? ['progress', 'L01', 'L02'] : VIEWS;
+  const lessonIds = (state.data.learned?.lessons?.items || []).map(item => item.id);
+  const choices = key === 'learned' ? ['progress', ...lessonIds] : VIEWS;
   return { key, v: choices.includes(view) ? view : 'progress', rev: rev || null };
 }
 
@@ -271,6 +272,18 @@ function render() {
   root.append(tabsRow(c));
   if (state.archivedOpen) root.append(archivedPanel(c));
   if (key === 'learned') {
+    // Lessons is a top-level tab with its own visible second row of subtabs.
+    // Sections inside L01/L02 remain vertical full-page documents, not horizontal sections.
+    const subnav = el('nav', 'views lesson-subtabs');
+    subnav.setAttribute('aria-label', 'Lessons subtabs');
+    const destinations = [{ id: 'progress', label: 'Overview' }]
+      .concat((p.lessons?.items || []).map((item, i) => ({ id: item.id, label: 'Lesson ' + (i + 1) })));
+    destinations.forEach(({ id, label }) => {
+      const a = navLink('#/learned/' + id, label, 'view' + (v === id ? ' on' : ''));
+      if (v === id) a.setAttribute('aria-current', 'page');
+      subnav.append(a);
+    });
+    root.append(subnav);
     const page = el('div', 'body');
     renderLessons(page, p.lessons, v, navLink);
     root.append(page);

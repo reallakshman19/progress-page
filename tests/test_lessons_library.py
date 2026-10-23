@@ -15,6 +15,8 @@ class LessonsTest(unittest.TestCase):
         p = {x["key"]: x for x in read("data/projects.json")["projects"]}
         self.assertEqual(p["lessons"]["status"], "archived")
         self.assertEqual(p["learned"]["label"], "Lessons")
+        self.assertNotIn("status", p["learned"])
+        self.assertEqual(p["lessons"]["label"], "Lessons (legacy R1)")
         events = read("data/lessons/audit.json")["events"]
         self.assertEqual(len(events), 23)
         self.assertEqual([e["seq"] for e in events], list(range(1, 24)))
@@ -37,7 +39,12 @@ class LessonsTest(unittest.TestCase):
         app = (ROOT / "app.js").read_text(encoding="utf-8")
         self.assertIn("llSection(page, '03", js)
         self.assertIn("llSection(page, '05", js)
-        self.assertIn("'L01', 'L02'", app)
+        self.assertIn("const lessonIds =", app)
+        self.assertIn("Lessons subtabs", app)
+        self.assertIn("'Overview'", app)
+        self.assertIn("'Lesson ' + (i + 1)", app)
+        self.assertIn("aria-current", app)
+        self.assertIn("navLink('#/learned/' + id", app)
         self.assertIn("renderLessons(page, p.lessons", app)
         self.assertNotIn("milestoneState", js)
 
