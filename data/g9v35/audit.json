@@ -1515,6 +1515,19 @@
       "list": "intent",
       "op": "add",
       "rev": "R3"
+    },
+    {
+      "seq": 113,
+      "id": "G9V35-R-0113",
+      "previous_id": "G9V35-R-0112",
+      "at": "2026-10-23T18:41:45Z",
+      "kind": "FIXTURE",
+      "actor": "OTM",
+      "summary": "Owner plan decisions for the Core1A/1B build",
+      "source": "OWNER_PRIVATE_REF:20261023-2242-wbs-nlm-first",
+      "list": "intent",
+      "op": "add",
+      "rev": "R3"
     }
   ]
 }

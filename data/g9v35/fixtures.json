@@ -233,6 +233,9 @@
     },
     {
       "t": "OWNER (23 Oct 22:35): reference inputs for the Core1A/1B per-tile build: golden/Reference/REFERENCE Blueprint (concept note, Physics_TopicAdapters, core1a/core1b blueprints for 8 Physics topics, qrt_question_banks) and physics-olympiad-grade9-master-suite.html. \"For reference ONLY not golden fixtures, MAY REUSE.\""
+    },
+    {
+      "t": "OWNER (23 Oct 22:42): plan as a WBS, \"prove with NLM first\". Top 10 tiles from reference banks + Oracle judgement (JEE past-question frequency only if it does not burn tokens). Output \"Like the olympiad master suite\" for the Owner's validation. ChatGPT content work: OTM may use the built-in browser, already signed in."
     }
   ],
   "inputs": [
