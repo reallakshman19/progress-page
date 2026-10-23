@@ -1463,6 +1463,19 @@
       "list": "intent",
       "op": "add",
       "rev": "R3"
+    },
+    {
+      "seq": 109,
+      "id": "G9V35-R-0109",
+      "previous_id": "G9V35-R-0108",
+      "at": "2026-10-23T18:17:58Z",
+      "kind": "FIXTURE",
+      "actor": "OTM",
+      "summary": "Owner intent on QRT-P2 after first look",
+      "source": "OWNER_PRIVATE_REF:20261023-2214-qrt-p2-core-link",
+      "list": "intent",
+      "op": "add",
+      "rev": "R3"
     }
   ]
 }
