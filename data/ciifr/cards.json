@@ -122,10 +122,10 @@
     "state": "IN_PROGRESS",
     "now": "Pilot navigated by the Owner; OTM records and harvests lessons",
     "next": {
-      "actor": "YOU",
-      "text": "navigate the pilot; share lessons"
+      "actor": "Pilot (Owner-led)",
+      "text": "Owner steers G3; OTM harvests lessons"
     },
-    "updatedAt": "2026-10-23T01:39:57Z",
+    "updatedAt": "2026-10-23T01:40:08Z",
     "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6355322639",
     "refs": [
       {

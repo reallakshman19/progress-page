@@ -355,6 +355,20 @@
       "before": "IN_PROGRESS",
       "after": "IN_PROGRESS",
       "rev": "R2"
+    },
+    {
+      "seq": 27,
+      "id": "CIIFR-R-0027",
+      "previous_id": "CIIFR-R-0026",
+      "at": "2026-10-23T01:40:08Z",
+      "kind": "UPDATE",
+      "actor": "OTM",
+      "summary": "Pilot is Owner-led; no ask pending from OTM",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6355322639",
+      "card": "otm",
+      "before": "IN_PROGRESS",
+      "after": "IN_PROGRESS",
+      "rev": "R2"
     }
   ]
 }
