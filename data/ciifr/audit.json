@@ -272,6 +272,20 @@
       "before": null,
       "after": "IN_PROGRESS",
       "rev": "R2"
+    },
+    {
+      "seq": 21,
+      "id": "CIIFR-R-0021",
+      "previous_id": "CIIFR-R-0020",
+      "at": "2026-10-23T00:54:16Z",
+      "kind": "STATE",
+      "actor": "OTM",
+      "summary": "Sonnet read: own-writer round trip claimed byte-identical; no GitHub evidence; scope pivot",
+      "source": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/156#issuecomment-6354748854",
+      "card": "g3",
+      "before": "IN_PROGRESS",
+      "after": "SUBMITTED",
+      "rev": "R2"
     }
   ]
 }
