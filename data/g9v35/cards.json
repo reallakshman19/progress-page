@@ -373,7 +373,7 @@
       "chat": "oracle5"
     },
     "state": "IN_PROGRESS",
-    "now": "Onboarding step 0 (aim + 3 questions) ready",
+    "now": "RE G9O5-5 used for 2.3; ChatGPT content returned 23:49",
     "next": {
       "actor": "Owner",
       "text": "answer O5's 3 questions in its chat"
@@ -381,26 +381,28 @@
     "flags": [
       "needs-you"
     ],
-    "updatedAt": "2026-10-23T15:54:16Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6368914224"
+    "updatedAt": "2026-10-23T20:44:45Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128#issuecomment-6372752959"
   },
   "builder": {
     "order": 14,
     "group": "pilot",
     "milestone": "Q0",
-    "label": "P1 builder (new agy)",
+    "label": "NLM page builder (new agy)",
     "who": {
       "role": "Agent"
     },
     "state": "NOT_STARTED",
-    "now": "P1 kid page brief ready (C:/t/g9_p1/brief_p1.txt)",
+    "now": "Waits for the 2.3 content files",
     "next": {
-      "actor": "Owner",
-      "text": "launch the P1 build (new agy session)"
+      "actor": "OTM",
+      "text": "set up the builder folder, then give the Owner the launch line"
     },
     "flags": [
       "needs-you"
-    ]
+    ],
+    "updatedAt": "2026-10-23T20:44:45Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128#issuecomment-6372752959"
   },
   "checker": {
     "order": 15,
@@ -416,5 +418,23 @@
       "actor": "OTM",
       "text": "start a fresh checker when P1 returns"
     }
+  },
+  "content": {
+    "order": 16,
+    "group": "pilot",
+    "milestone": "Q0",
+    "label": "ChatGPT content author (2.3)",
+    "who": {},
+    "state": "SUBMITTED",
+    "now": "Returned 23:49: 10 Core1A/Core1B pairs + author notes, DRAFT; 4 D4 difficulty ratings UNCERTAIN",
+    "next": {
+      "actor": "Owner",
+      "text": "OK the download of the 2 draft files"
+    },
+    "flags": [
+      "needs-you"
+    ],
+    "updatedAt": "2026-10-23T20:44:44Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128#issuecomment-6372752959"
   }
 }

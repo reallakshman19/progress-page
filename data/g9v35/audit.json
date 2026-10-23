@@ -1528,6 +1528,48 @@
       "list": "intent",
       "op": "add",
       "rev": "R3"
+    },
+    {
+      "seq": 114,
+      "id": "G9V35-R-0114",
+      "previous_id": "G9V35-R-0113",
+      "at": "2026-10-23T20:44:44Z",
+      "kind": "BASELINE",
+      "actor": "OTM",
+      "summary": "WBS 2.3 returned: 10 Core1A/1B drafts",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128#issuecomment-6372752959",
+      "card": "content",
+      "before": null,
+      "after": "SUBMITTED",
+      "rev": "R3"
+    },
+    {
+      "seq": 115,
+      "id": "G9V35-R-0115",
+      "previous_id": "G9V35-R-0114",
+      "at": "2026-10-23T20:44:45Z",
+      "kind": "UPDATE",
+      "actor": "OTM",
+      "summary": "P1 done; builder now for WBS 2.4 NLM page",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128#issuecomment-6372752959",
+      "card": "builder",
+      "before": "NOT_STARTED",
+      "after": "NOT_STARTED",
+      "rev": "R3"
+    },
+    {
+      "seq": 116,
+      "id": "G9V35-R-0116",
+      "previous_id": "G9V35-R-0115",
+      "at": "2026-10-23T20:44:45Z",
+      "kind": "UPDATE",
+      "actor": "OTM",
+      "summary": "O5 brief used; content returned",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128#issuecomment-6372752959",
+      "card": "oracle5",
+      "before": "IN_PROGRESS",
+      "after": "IN_PROGRESS",
+      "rev": "R3"
     }
   ]
 }
