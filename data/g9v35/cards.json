@@ -259,13 +259,13 @@
       "role": "Oracle O4"
     },
     "state": "SUBMITTED",
-    "now": "Repair packet issued (RE G9O4-4)",
+    "now": "WAITS: independent check of NLM-PROD1 repair",
     "next": {
-      "actor": "NLM-PROD1",
-      "text": "repair B1 on PR #306"
+      "actor": "OTM",
+      "text": "relay check verdict to O4"
     },
-    "updatedAt": "2026-10-23T00:30:08Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128#issuecomment-6349652241",
+    "updatedAt": "2026-10-23T01:28:13Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/154#issuecomment-6354743574",
     "flags": []
   },
   "nlmprod1": {
@@ -277,15 +277,15 @@
       "chat": "nlmprod1",
       "role": "Agent"
     },
-    "state": "IN_PROGRESS",
-    "now": "Repairing B1 (since 04:30); chat check 05:30 if silent",
+    "state": "SUBMITTED",
+    "now": "R1 repair returned (04:53); independent check running",
     "next": {
-      "actor": "NLM-PROD1",
-      "text": "post repair evidence on #154"
+      "actor": "OTM",
+      "text": "independent check, then O4"
     },
     "flags": [],
-    "updatedAt": "2026-10-23T01:01:48Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6354441724"
+    "updatedAt": "2026-10-23T01:28:13Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/154#issuecomment-6354743574"
   },
   "o4": {
     "order": 12,

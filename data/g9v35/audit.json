@@ -764,6 +764,34 @@
       "before": "IN_PROGRESS",
       "after": "IN_PROGRESS",
       "rev": "R2"
+    },
+    {
+      "seq": 58,
+      "id": "G9V35-R-0058",
+      "previous_id": "G9V35-R-0057",
+      "at": "2026-10-23T01:28:13Z",
+      "kind": "STATE",
+      "actor": "OTM",
+      "summary": "R1 repair return posted 04:53; independent check started",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/154#issuecomment-6354743574",
+      "card": "nlmprod1",
+      "before": "IN_PROGRESS",
+      "after": "SUBMITTED",
+      "rev": "R2"
+    },
+    {
+      "seq": 59,
+      "id": "G9V35-R-0059",
+      "previous_id": "G9V35-R-0058",
+      "at": "2026-10-23T01:28:13Z",
+      "kind": "UPDATE",
+      "actor": "OTM",
+      "summary": "Repair return in; checker running",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/154#issuecomment-6354743574",
+      "card": "oracle4",
+      "before": "SUBMITTED",
+      "after": "SUBMITTED",
+      "rev": "R2"
     }
   ]
 }
