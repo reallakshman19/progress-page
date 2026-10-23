@@ -275,6 +275,19 @@
       "list": "highRoi",
       "op": "add",
       "rev": "R1"
+    },
+    {
+      "seq": 22,
+      "id": "LESSONS-R-0022",
+      "previous_id": "LESSONS-R-0021",
+      "at": "2026-10-23T01:08:43Z",
+      "kind": "FIXTURE",
+      "actor": "OTM",
+      "summary": "Owner: G3 chat is the method benchmark",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/156",
+      "list": "highRoi",
+      "op": "add",
+      "rev": "R1"
     }
   ]
 }

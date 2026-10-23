@@ -286,6 +286,33 @@
       "before": "IN_PROGRESS",
       "after": "SUBMITTED",
       "rev": "R2"
+    },
+    {
+      "seq": 22,
+      "id": "CIIFR-R-0022",
+      "previous_id": "CIIFR-R-0021",
+      "at": "2026-10-23T01:08:42Z",
+      "kind": "FIXTURE",
+      "actor": "OTM",
+      "summary": "Owner: G3 chat is the benchmark",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/156",
+      "list": "highRoi",
+      "op": "add",
+      "rev": "R2"
+    },
+    {
+      "seq": 23,
+      "id": "CIIFR-R-0023",
+      "previous_id": "CIIFR-R-0022",
+      "at": "2026-10-23T01:08:43Z",
+      "kind": "UPDATE",
+      "actor": "OTM",
+      "summary": "Owner: this chat is the benchmark (R0); S1 = own writer + editor",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/156",
+      "card": "g3",
+      "before": "SUBMITTED",
+      "after": "SUBMITTED",
+      "rev": "R2"
     }
   ]
 }

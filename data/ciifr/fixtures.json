@@ -23,7 +23,12 @@
     }
   ],
   "roadmap": [],
-  "highRoi": [],
+  "highRoi": [
+    {
+      "t": "Benchmark R0 (method): one builder chat (G3, 6ada4669) gave the Owner a locally runnable CII branch editor in about 7 h; Owner estimate for the multi-agent route 40+ h and 5 agents",
+      "u": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/156"
+    }
+  ],
   "future": [],
   "intent": [],
   "inputs": [],
