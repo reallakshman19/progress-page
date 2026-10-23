@@ -306,5 +306,23 @@
     "flags": [],
     "updatedAt": "2026-10-22T19:16:31Z",
     "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/154#issuecomment-6348925917"
+  },
+  "oracle5": {
+    "order": 13,
+    "group": "pilot",
+    "milestone": "M0",
+    "label": "Oracle O5",
+    "who": {
+      "role": "Oracle"
+    },
+    "state": "NOT_STARTED",
+    "now": "Onboarding step 0 (aim + 3 questions) ready",
+    "next": {
+      "actor": "Owner",
+      "text": "open a new local Codex session, paste step 0; launch P1"
+    },
+    "flags": [
+      "needs-you"
+    ]
   }
 }

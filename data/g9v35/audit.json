@@ -1050,6 +1050,20 @@
       "before": "SUBMITTED",
       "after": "SUBMITTED",
       "rev": "R2"
+    },
+    {
+      "seq": 78,
+      "id": "G9V35-R-0078",
+      "previous_id": "G9V35-R-0077",
+      "at": "2026-10-23T15:48:34Z",
+      "kind": "BASELINE",
+      "actor": "OTM",
+      "summary": "New Oracle, onboarded step by step",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6368860471",
+      "card": "oracle5",
+      "before": null,
+      "after": "NOT_STARTED",
+      "rev": "R2"
     }
   ]
 }
