@@ -4,7 +4,7 @@
     "key": "doc2table",
     "title": "Doc to Table",
     "subtitle": "",
-    "updatedAt": "2026-10-23T01:26:31Z",
+    "updatedAt": "2026-10-23T05:32:51Z",
     "updatedBy": "OTM",
     "staleAfterMin": 120,
     "aim": "Flexible .doc/.docx tables on GitHub Pages: headers and data picked independently, records combined, blocks joined. Original bytes and source evidence are the ground truth; anything not fully structured stays source-linked and inspectable. No zero-error claim; no required backend; no silent source loss. (Owner confirmed Oracle O1's read-back, 22 Oct.)",
@@ -56,7 +56,11 @@
       "order": 4,
       "name": "Flexible mapping",
       "full": "Independent headers/data, joins, selected-row combinations, contexts and matrices preserve field lineage.",
-      "wbs": "4"
+      "wbs": "4",
+      "repo": "reallakshman19/Word-to-Table",
+      "branch": "d2t-s1/prototype",
+      "commit": "4cf8964",
+      "activity": "D2T-S1 runnable (start-d2t.cmd), 72/72 real-file tests; waits for the Owner's try"
     },
     "M5": {
       "name": "Validation and exports",

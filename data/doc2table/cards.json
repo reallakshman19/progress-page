@@ -8,10 +8,10 @@
       "chat": "oracle"
     },
     "state": "SUBMITTED",
-    "now": "Addendum A-D issued; WAITS coder repair",
+    "now": "D2T-S1 runnable: start-d2t.cmd; 72/72 real-file tests (OTM re-ran)",
     "next": {
-      "actor": "TPRES-C1",
-      "text": "repair at new head on #155"
+      "actor": "Owner",
+      "text": "try D2T-S1 on Native Word.docx; say works or gaps"
     },
     "refs": [
       {
@@ -20,8 +20,8 @@
         "u": "https://github.com/reallakshman19/Word-to-Table/issues/1"
       }
     ],
-    "updatedAt": "2026-10-23T00:53:04Z",
-    "src": "https://github.com/reallakshman19/Word-to-Table/issues/1#issuecomment-6354566397",
+    "updatedAt": "2026-10-23T02:30:00Z",
+    "src": "https://github.com/reallakshman19/Word-to-Table/commit/4cf8964e33e3535df1b7552830278cb230a52a08",
     "flags": []
   },
   "tpresc1": {
@@ -33,11 +33,11 @@
       "chat": "tpresc1",
       "role": "Agent"
     },
-    "state": "IN_PROGRESS",
-    "now": "Working addendum A-D since 04:53; O1 re-slicing pending",
+    "state": "SUBMITTED",
+    "now": "Idle by O1 decision: PR #2 0b8a7b4 frozen as reference; browser blocked",
     "next": {
-      "actor": "TPRES-C1",
-      "text": "evidence on #155"
+      "actor": "Owner",
+      "text": "keep idle unless chosen as S1 builder after a browser probe"
     },
     "refs": [
       {
@@ -46,8 +46,8 @@
         "u": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/155"
       }
     ],
-    "updatedAt": "2026-10-23T01:26:31Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6354744073",
+    "updatedAt": "2026-10-23T02:07:00Z",
+    "src": "https://github.com/reallakshman19/Word-to-Table/issues/1#issuecomment-6355606370",
     "flags": []
   }
 }

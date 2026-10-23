@@ -259,13 +259,13 @@
       "role": "Oracle O4"
     },
     "state": "SUBMITTED",
-    "now": "WAITS: independent check of NLM-PROD1 repair",
+    "now": "B1 repair round 2 written (002 cues, reveal text, launcher pack)",
     "next": {
-      "actor": "OTM",
-      "text": "relay check verdict to O4"
+      "actor": "NLM-PROD1",
+      "text": "repair round 2 return on #154"
     },
-    "updatedAt": "2026-10-23T01:28:13Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/154#issuecomment-6354743574",
+    "updatedAt": "2026-10-23T02:06:50Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128#issuecomment-6355691618",
     "flags": []
   },
   "nlmprod1": {
@@ -278,14 +278,14 @@
       "role": "Agent"
     },
     "state": "SUBMITTED",
-    "now": "R1 repair returned (04:53); independent check running",
+    "now": "Round 2 NOT sent: Chrome extension unreachable; message on Owner clipboard",
     "next": {
-      "actor": "OTM",
-      "text": "independent check, then O4"
+      "actor": "Owner",
+      "text": "paste OTM-NLMPROD1-R2-0630 into chat 6ada36e2"
     },
     "flags": [],
-    "updatedAt": "2026-10-23T01:28:13Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/154#issuecomment-6354743574"
+    "updatedAt": "2026-10-23T02:28:00Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128#issuecomment-6355691618"
   },
   "o4": {
     "order": 12,
