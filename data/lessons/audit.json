@@ -288,6 +288,17 @@
       "list": "highRoi",
       "op": "add",
       "rev": "R1"
+    },
+    {
+      "seq": 23,
+      "id": "LESSONS-R-0023",
+      "previous_id": "LESSONS-R-0022",
+      "at": "2026-10-23T15:16:00Z",
+      "kind": "ARCHIVE",
+      "actor": "ChatGPT (Owner instruction)",
+      "summary": "Archive original Lessons progress tab; retain 22 original entries and all fixtures unchanged.",
+      "source": "OWNER_PRIVATE_REF:20261023-vertical-lessons-ui",
+      "rev": "R1"
     }
   ]
 }

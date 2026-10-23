@@ -15,7 +15,7 @@ FUNCTIONS = {  # viewer module -> declarations the bundle must still contain
     "util.js": ("whenText", "copyText", "link", "md"), "triggers.js": ("cardTags", "nudgeTag", "summary", "fmt"), "popup.js": ("dialog",),
     "reply.js": ("issueUrl",), "nudge.js": ("openNudge", "nudgeRow"), "progress.js": ("renderProgress", "milestoneState"),
     "actions.js": ("renderActions", "renderFixtures"), "timeline.js": ("renderTimeline",), "lifecycle.js": ("tabsRow", "archivedPanel", "projectHead", "revisionRow"),
-    "briefs.js": ("addProjectDialog", "addRevisionDialog", "projectBrief"), "links.js": ("loadLinks", "takeLinksFromHash", "linksPanel"), "app.js": ("loadAll", "render", "route"),
+    "briefs.js": ("addProjectDialog", "addRevisionDialog", "projectBrief"), "links.js": ("loadLinks", "takeLinksFromHash", "linksPanel"), "lessons.js": ("renderLessons",), "app.js": ("loadAll", "render", "route"),
 }
 
 

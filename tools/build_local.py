@@ -65,6 +65,8 @@ def snapshot(data):
     for p in files["projects.json"]["projects"]:
         for f in DATA_FILES:
             files[p["key"] + "/" + f + ".json"] = json.loads((data / p["key"] / (f + ".json")).read_text(encoding="utf-8"))
+        if p["key"] == "learned":
+            files["learned/lessons.json"] = json.loads((data / "learned" / "lessons.json").read_text(encoding="utf-8"))
     return {"builtAt": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), "files": files}
 
 

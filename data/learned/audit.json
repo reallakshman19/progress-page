@@ -1,0 +1,21 @@
+{
+  "schema": "progress-ledger/v3",
+  "project": "learned",
+  "baseline_at": "2026-10-23T15:16:00Z",
+  "scope": "Read-only lesson library. Historic entries remain under original lessons project.",
+  "events": [
+    {
+      "seq": 1,
+      "id": "LEARNED-R-0001",
+      "previous_id": null,
+      "at": "2026-10-23T15:16:00Z",
+      "kind": "REVISION",
+      "actor": "ChatGPT (Owner instruction)",
+      "summary": "Create vertically scrolling Lessons 1 and 2 library.",
+      "source": "OWNER_PRIVATE_REF:20261023-vertical-lessons-ui",
+      "revision": "R1",
+      "scope": "project",
+      "rev": "R1"
+    }
+  ]
+}

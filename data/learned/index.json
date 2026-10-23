@@ -1,0 +1,45 @@
+{
+  "schema": 3,
+  "project": {
+    "key": "learned",
+    "title": "Lessons Learned",
+    "subtitle": "Failures, corrections, evidence and prevention guidance.",
+    "updatedAt": "2026-10-23T15:16:00Z",
+    "updatedBy": "ChatGPT (Owner instruction)",
+    "staleAfterMin": 120,
+    "aim": "Preserve Lessons 1 and 2 as full vertical case studies with linked causes, actions, evidence and prevention guidance.",
+    "aimSrc": "OWNER_PRIVATE_REF:20261023-vertical-lessons-ui"
+  },
+  "rules": {
+    "coordinator": "OTM",
+    "quietAfterMin": 30,
+    "idleAfterMin": 15,
+    "owesAfterMin": 15,
+    "waitingAfterMin": 15
+  },
+  "chats": {},
+  "milestones": {
+    "M1": {
+      "order": 1,
+      "name": "Knowledge records",
+      "full": "Lessons 1 and 2 are preserved and readable."
+    }
+  },
+  "groups": {
+    "main": {
+      "order": 1,
+      "title": "Knowledge"
+    }
+  },
+  "revisions": [
+    {
+      "id": "R1",
+      "at": "2026-10-23T15:16:00Z",
+      "by": "ChatGPT (Owner instruction)",
+      "why": "The Owner requested a vertical lesson interface instead of empty progress milestones.",
+      "ownerWords": "make it vertical pages; proceed fix",
+      "src": "OWNER_PRIVATE_REF:20261023-vertical-lessons-ui",
+      "status": "current"
+    }
+  ]
+}

@@ -4,8 +4,8 @@
     "key": "lessons",
     "title": "Lessons",
     "subtitle": "",
-    "updatedAt": "2026-10-23T01:08:43Z",
-    "updatedBy": "OTM",
+    "updatedAt": "2026-10-23T15:16:00Z",
+    "updatedBy": "ChatGPT (Owner instruction)",
     "staleAfterMin": 120,
     "aim": "OTM reading of the Owner's request: keep each lesson with the steps taken against it, so the same failure does not repeat.",
     "aimSrc": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6339862645"

@@ -1,13 +1,14 @@
 // Shell: loads the JSON, draws the project tabs and the views, refreshes every two minutes.
-import { el, link, tick, ago, whenText } from './util.js?v=11';
-import { renderProgress, wbsPick, wbsSteps } from './progress.js?v=11';
-import { renderActions, renderFixtures, openCount } from './actions.js?v=11';
-import { renderTimeline } from './timeline.js?v=11';
-import { tabsRow, archivedPanel, projectHead, isActive } from './lifecycle.js?v=12';
-import { nudgesOf, openNudge } from './nudge.js?v=11';
-import { addProjectDialog, addRevisionDialog } from './briefs.js?v=11';
-import { loadLinks, takeLinksFromHash, linksPanel } from './links.js?v=11';
-import { rulesOf, holdOf, summary, needsAttention } from './triggers.js?v=11';
+import { el, link, tick, ago, whenText } from './util.js?v=13';
+import { renderProgress, wbsPick, wbsSteps } from './progress.js?v=13';
+import { renderLessons } from './lessons.js?v=13';
+import { renderActions, renderFixtures, openCount } from './actions.js?v=13';
+import { renderTimeline } from './timeline.js?v=13';
+import { tabsRow, archivedPanel, projectHead, isActive } from './lifecycle.js?v=13';
+import { nudgesOf, openNudge } from './nudge.js?v=13';
+import { addProjectDialog, addRevisionDialog } from './briefs.js?v=13';
+import { loadLinks, takeLinksFromHash, linksPanel } from './links.js?v=13';
+import { rulesOf, holdOf, summary, needsAttention } from './triggers.js?v=13';
 
 const LIVE_DATA = 'https://reallakshman19.github.io/progress-page/data/';
 const q = new URLSearchParams(location.search);
@@ -93,6 +94,7 @@ async function loadAll(getter) {
     }));
     data[p.key] = Object.assign({}, p);
     FILES.forEach((f, i) => { data[p.key][f] = parts[i]; });
+    if (p.key === 'learned') data[p.key].lessons = await getter('learned/lessons.json');
   }));
   return { projects, data, site: pj.site || {} };
 }
@@ -136,7 +138,8 @@ function route() {
   const [, pk, view, rev] = (hash || '').split('/');
   const active = state.projects.filter(isActive);
   const key = state.data[pk] ? pk : (active[0] || state.projects[0] || {}).key;
-  return { key, v: VIEWS.includes(view) ? view : 'progress', rev: rev || null };
+  const choices = key === 'learned' ? ['progress', 'L01', 'L02'] : VIEWS;
+  return { key, v: choices.includes(view) ? view : 'progress', rev: rev || null };
 }
 
 // An older revision is opened read-only from the git commit it was last current in.
@@ -256,7 +259,7 @@ function render() {
     decorate: (a, pr) => {
       const b = badge(openCount(pr.actions));
       if (b) a.append(b);
-      if (pr.index && needsAttention(sumOf(pr))) a.append(el('span', 'warn', '!'));
+      if (pr.key !== 'learned' && pr.index && needsAttention(sumOf(pr))) a.append(el('span', 'warn', '!'));
     },
     addProject: () => addProjectDialog(site()),
     addRevision: (pr) => addRevisionDialog(site(), pr),
@@ -267,6 +270,12 @@ function render() {
   };
   root.append(tabsRow(c));
   if (state.archivedOpen) root.append(archivedPanel(c));
+  if (key === 'learned') {
+    const page = el('div', 'body');
+    renderLessons(page, p.lessons, v, navLink);
+    root.append(page);
+    return;
+  }
   root.append(projectHead(p, c));
   // Project > revision > WBS step > page: the WBS row narrows the pages below it to one step.
   const steps = wbsSteps(view.index);

@@ -1,0 +1,445 @@
+{
+  "schema": "lessons-library/v1",
+  "legacyProject": "lessons",
+  "legacyRevision": "R1",
+  "legacyArchivedAt": "2026-10-23T15:16:00Z",
+  "provenance": "Public-safe synthesis; originals remain in their historic source files.",
+  "items": [
+    {
+      "id": "L01",
+      "title": "When process replaces delivery",
+      "date": "2026-10-22",
+      "origin": "Grade9v3.5",
+      "status": "RECORDED_RETROSPECTIVE",
+      "summary": "A large agent effort and many draft PRs produced no completed learner-facing outcome at the recorded point.",
+      "aim": "Give one child usable learning content, starting with a focused topic that the learner can actually try.",
+      "observation": "LESSON 1 (22 Oct 2026, Grade9v3.5): 20+ agents and thousands of lines of code produced no learner output. Repo then: 118 open draft PRs vs 8 merged, 130 open issues, 344 branches. Root cause: no written aim, and process built for a corporate product instead of a personal app for one kid.",
+      "takeaway": "Aim first → deliver one small runnable slice → involve the learner → correct → verify in proportion to risk.",
+      "issues": [
+        {
+          "id": "C01",
+          "title": "No stable written aim",
+          "observation": "L1.1 No written aim: each Oracle and agent rebuilt intent from scraps, so goals drifted (bank audit, custody, rights, golden benchmarks, validators) and the plan restarted again and again (Track A, A v2, B, B v2, blueprint-first, question-first replan).",
+          "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6339862645",
+          "actions": [
+            "A01",
+            "A04",
+            "A05",
+            "A06",
+            "A08"
+          ]
+        },
+        {
+          "id": "C02",
+          "title": "Corporate-level gates for a home learning app",
+          "observation": "L1.2 Corporate quality bar for a home app: rights, custody, exact-byte reviews, reviewer nominations, fail-closed validators, and 'whole bank proven before any learner sees anything'. For one kid at home a wrong hint is cheap to fix; the gates cost weeks.",
+          "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6339862645",
+          "actions": [
+            "A02",
+            "A07",
+            "A08"
+          ]
+        },
+        {
+          "id": "C03",
+          "title": "Learner missing from the feedback loop",
+          "observation": "L1.3 The kid was never in the loop: no questionnaire, no demand signal. Success was measured by reviews and validators, not by learning.",
+          "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6339862645",
+          "actions": [
+            "A02",
+            "A03"
+          ]
+        },
+        {
+          "id": "C04",
+          "title": "Breadth before a finished topic",
+          "observation": "L1.4 Breadth before depth: 3 subjects x 28 tiles x 8 topics x ~622 questions at once, in giant PRs (PR #299: +616k lines, 451 files, Maths mixed into Physics, 10 checks failing while its text claimed 100%). Not one topic finished end to end.",
+          "source": "https://github.com/reallakshman19/Grade9v3.5/pull/299",
+          "actions": [
+            "A02",
+            "A03",
+            "A08"
+          ]
+        },
+        {
+          "id": "C05",
+          "title": "Draft PRs did not land",
+          "observation": "L1.5 Work never landed: drafts piled up on branches (118 open, 8 merged), so each new agent started from a different base.",
+          "source": "https://github.com/reallakshman19/Grade9v3.5/pulls",
+          "actions": [
+            "A02",
+            "A03",
+            "A08"
+          ]
+        },
+        {
+          "id": "C06",
+          "title": "Coordination displaced delivery",
+          "observation": "L1.6 Coordination ate the effort, OTM included: chat limits forced handovers (Oracle 1 to 3) that lost knowledge; OTM's protocol, the hub and the Progress page grew into projects of their own (22 Oct: most OTM tokens went to hub and page tools, 8 hub checks).",
+          "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6339862645",
+          "actions": [
+            "A04",
+            "A05",
+            "A07",
+            "A08"
+          ]
+        },
+        {
+          "id": "C07",
+          "title": "Missing dependencies caused prolonged holds",
+          "observation": "L1.7 Blockers stalled lanes for days: missing Maths source package, missing file receipts, then HOLD ALL.",
+          "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6339862645",
+          "actions": [
+            "A02"
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "id": "A01",
+          "text": "MITIGATION DONE 1 (22 Oct): the Owner's core aim and order of work (Core 2 -> 1A/1B -> questionnaire -> 2B) written in #1 and on the G9v3.5 tab as intent fixtures.",
+          "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6339599529",
+          "state": "RECORDED_DONE",
+          "statusNote": "Labelled done by the original recorder; effectiveness not independently established by that label."
+        },
+        {
+          "id": "A02",
+          "text": "MITIGATION DONE 2 (22 Oct): Owner decisions: personal-use quality bar (rights, custody, publication, whole-bank gates dropped); Newton's laws first; at most 3 live blocks; 118 drafts parked; old blueprint package reference only; Grade9v3.5 hold lifted.",
+          "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6339795835",
+          "state": "RECORDED_DONE",
+          "statusNote": "Labelled done by the original recorder; effectiveness not independently established by that label."
+        },
+        {
+          "id": "A03",
+          "text": "MITIGATION DONE 3 (22 Oct): PR #299 checked against issue #300: PARTIAL. Real progress only in Newton's laws (13 QRT tiles rated FINE by an independent reviewer on 19 Oct, 2 after a one-word fix). Do not merge #299; salvage the NLM Core 2 items in one small PR.",
+          "source": "https://github.com/reallakshman19/Grade9v3.5/issues/300#issuecomment-6268558967",
+          "state": "RECORDED_DONE",
+          "statusNote": "Labelled done by the original recorder; effectiveness not independently established by that label."
+        },
+        {
+          "id": "A04",
+          "text": "MITIGATION DONE 4 (22 Oct): milestones are set by each project's Oracle; anybody may add grounding fixtures; an Oracle may push its own project's page data.",
+          "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6339161961",
+          "state": "RECORDED_DONE",
+          "statusNote": "Labelled done by the original recorder; effectiveness not independently established by that label."
+        },
+        {
+          "id": "A05",
+          "text": "MITIGATION DONE 5 (22 Oct): new Oracle O4 (local Codex) created with an aim-first prompt: the aim verbatim, the decisions, why the old plan failed, the modules to use, milestones and a 'items the kid can use today' headline. Fresh local copy C:/CodeC/Grade9v3.5.",
+          "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128",
+          "state": "RECORDED_DONE",
+          "statusNote": "Labelled done by the original recorder; effectiveness not independently established by that label."
+        },
+        {
+          "id": "A06",
+          "text": "MITIGATION DONE 6 (22 Oct): Aim first on the page: every active tab now carries an aim (missing ones say so); tool change in PR progress-page#2: project aim command, checker refuses a tab without an aim, Aim line and 'How we work' module links, milestone-only moves keep evidence, OneDrive/SharePoint links refused. Owner merges.",
+          "source": "https://github.com/reallakshman19/progress-page/pull/2",
+          "state": "RECORDED_DONE",
+          "statusNote": "Labelled done by the original recorder; effectiveness not independently established by that label."
+        },
+        {
+          "id": "A07",
+          "text": "MITIGATION DONE 7 (22 Oct): Common modules updated in draft PR Common#457: aim first, Gatekeeper personal-use profile, independent-review spot-check mode, packets carry Aim: and Modules: lines, local-handover via Drive/OneDrive recorded as fixtures. Owner merges.",
+          "source": "https://github.com/reallakshman19/Common/pull/457",
+          "state": "RECORDED_DONE",
+          "statusNote": "Labelled done by the original recorder; effectiveness not independently established by that label."
+        },
+        {
+          "id": "A08",
+          "text": "MITIGATION DONE 8 (22 Oct): OTM skill section 13.0 and the Codex skill: aim first, at most 3 live blocks per subject, small merged PRs, Aim/Modules in every packet, infrastructure only on the Owner's ask. OTM waiter now wakes once per set of alerts.",
+          "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6339978122",
+          "state": "RECORDED_DONE",
+          "statusNote": "Labelled done by the original recorder; effectiveness not independently established by that label."
+        }
+      ],
+      "open": [
+        {
+          "id": "O01",
+          "text": "MITIGATION OPEN 1: Progress page Aim field on every tab (checker requires it) with module links; headline 'items usable today'; alert when a subject has more than 3 live blocks. Awaits the Owner's go for the Common module updates.",
+          "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6339862645",
+          "state": "OPEN_IN_RECORD"
+        },
+        {
+          "id": "O02",
+          "text": "MITIGATION OPEN 2: gatekeeper personal-use profile; independent-review spot-check mode; task-decomposer and nudge-designer start from the page Aim; local-handover Drive/OneDrive files recorded as fixtures; START_HERE module table. Awaits the Owner's go.",
+          "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6339862645",
+          "state": "OPEN_IN_RECORD"
+        },
+        {
+          "id": "O03",
+          "text": "MITIGATION OPEN 3: OTM skill: aim before any work, at most 3 live blocks, small PRs merged often, infrastructure work only when the Owner asks (daily token split reported); waiter alerts once per level.",
+          "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6339862645",
+          "state": "OPEN_IN_RECORD"
+        }
+      ],
+      "benchmark": {
+        "text": "Benchmark R0 (method): one builder chat (G3, 6ada4669) gave the Owner a locally runnable CII branch editor in about 7 h; Owner estimate for the multi-agent route 40+ h and 5 agents",
+        "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/156",
+        "state": "REFERENCE_ONLY"
+      },
+      "checklist": [
+        "Is the Owner's user outcome explicit?",
+        "Can the learner try a first working slice?",
+        "Are agent count and review gates proportional to risk?",
+        "Are changes landing in small integrated PRs?",
+        "Does user evidence support the claimed improvement?"
+      ],
+      "applications": [
+        {
+          "text": "Progress page aim-first tooling",
+          "source": "https://github.com/reallakshman19/progress-page/pull/2",
+          "state": "IMPLEMENTATION_RECORDED"
+        },
+        {
+          "text": "Common agent-work update",
+          "source": "https://github.com/reallakshman19/Common/pull/457",
+          "state": "ADOPTION_TO_VERIFY"
+        },
+        {
+          "text": "Prototype-first method proposal",
+          "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/156",
+          "state": "PROPOSAL_NOT_ADOPTED"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Owner's Lesson 1 request",
+          "url": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6339862645"
+        },
+        {
+          "label": "Grade9v3.5 PR #299",
+          "url": "https://github.com/reallakshman19/Grade9v3.5/pull/299"
+        },
+        {
+          "label": "Original problem and mitigation fixtures",
+          "url": "https://github.com/reallakshman19/progress-page/blob/main/data/lessons/fixtures.json"
+        },
+        {
+          "label": "Legacy timeline",
+          "url": "https://github.com/reallakshman19/progress-page/blob/main/data/lessons/audit.json"
+        }
+      ]
+    },
+    {
+      "id": "L02",
+      "title": "Outcome-led Oracle: build, observe, correct, carry forward",
+      "date": "2026-10-23",
+      "origin": "Engineering prototype",
+      "status": "DRAFT",
+      "summary": "Deliver a real inspectable artifact; challenge consequential assumptions; fix contradictions and preserve runnable continuity.",
+      "aim": "Build a usable engineering editor/converter while preserving real input artifacts and validated prior capabilities.",
+      "observation": "Converter and transfer iterations exposed ambiguous branch identity, preview-versus-Apply confusion, raw edit side effects, and insufficiently qualified integration evidence.",
+      "takeaway": "Inspect source and actual behavior → contribute or delegate one bounded slice → falsify → correct → integrate → preserve exact continuation.",
+      "recoveries": [
+        {
+          "title": "Geometry resemblance is not identity",
+          "problem": "Multiple branches shared plausible geometry even when line IDs differed.",
+          "correction": "Block blind auto-transfer; require explicit identity acceptance bound to revisions."
+        },
+        {
+          "title": "Preview is not Apply",
+          "problem": "Audit said applied:false; target output stayed unchanged despite planned changes.",
+          "correction": "Execute Apply explicitly, correct UI labels and prevent misleading export."
+        },
+        {
+          "title": "Global replacement contaminated a baseline",
+          "problem": "Find-and-replace in raw CII could change records outside the target branch.",
+          "correction": "Use controlled fixtures, preserve untouched input and compare full field/byte scope."
+        },
+        {
+          "title": "Mock UI is not authentic integration",
+          "problem": "Standalone UI tests did not establish actual engineering backend transfer.",
+          "correction": "Recover original pinned backend and test HTTP, export and native browser separately."
+        }
+      ],
+      "stages": [
+        {
+          "title": "P1 — Independent typed converter",
+          "action": "Build a converter and test byte-preserving no-edit roundtrips.",
+          "evidence": "Contributor self-test; no independent review claim."
+        },
+        {
+          "title": "P2 — Bounded branch transfer",
+          "action": "Add whole-line T1/P1 transfer behind a mode while preserving original editor.",
+          "evidence": "Contributor self-test."
+        },
+        {
+          "title": "P2.1 — Candidate discovery",
+          "action": "Experiment with signatures; retain ambiguity rather than treating geometry as identity.",
+          "evidence": "Controlled model-pair experiment."
+        },
+        {
+          "title": "P2.1 — Approval and freshness",
+          "action": "Distinguish Candidate, Accepted, Transfer-ready; bind to document revision.",
+          "evidence": "Author-tested backend."
+        },
+        {
+          "title": "P2.1 — Export contradiction",
+          "action": "Inspect applied:false and reproduce Preview versus Apply; repair labeling/export gating.",
+          "evidence": "Owner screen plus bounded reproduced correction."
+        },
+        {
+          "title": "P2.5-A — Workspace UI",
+          "action": "Keep presentation-only layouts distinct from engineering connector semantics.",
+          "evidence": "Standalone/mock UI tests."
+        },
+        {
+          "title": "P2.5-B — Actual backend integration",
+          "action": "Recover pinned original backend and distinguish mock tests from real HTTP checks.",
+          "evidence": "Agent-reported backend checks; native browser Owner acceptance outstanding."
+        }
+      ],
+      "rules": [
+        [
+          "Aim before apparatus",
+          "Deliver a useful scoped slice before building coordination machinery."
+        ],
+        [
+          "Contribute before handover when useful",
+          "A minimal proof or reproduced failure can prevent ambiguous delegation."
+        ],
+        [
+          "One continuity owner",
+          "Oracle retains integration accountability and pins exact baseline and next test."
+        ],
+        [
+          "Resemblance is not identity",
+          "Plausible geometry requires explicit identity judgment."
+        ],
+        [
+          "Make operation states explicit",
+          "Candidate is not authorized; Preview does not mutate input."
+        ],
+        [
+          "Bind approval to inputs",
+          "Mutation must invalidate stale whole-target-document approvals."
+        ],
+        [
+          "Challenge a surviving error",
+          "Parser, mock, API and served-browser checks establish different claims."
+        ],
+        [
+          "Size evidence to consequences",
+          "Engineering changes justify stronger checking than throwaway presentation experiments."
+        ]
+      ],
+      "cases": [
+        {
+          "id": "L2-C01",
+          "title": "Outcome beats orchestration",
+          "scenario": "An Owner asks for a runnable branch editor; a coordinator proposes five new agents, three protocols and extensive tracking before any editable UI exists.",
+          "contrast": "Create infrastructure first vs build a small working editor preserving original input.",
+          "expected_decision": "Name the first user-visible capability, bound a runnable vertical slice, implement or delegate it, and keep optional coordination proportional.",
+          "discriminating_test": "Demonstrate that the Owner can select a fictional branch and preview one field edit in a local application; a plan-only reply fails this claim.",
+          "evidence_limit": "Usable local UI self-test is not evidence of engineering file fidelity."
+        },
+        {
+          "id": "L2-C02",
+          "title": "Candidate is not identity",
+          "scenario": "Target line IDs differ. Two target branches share the same element lengths, diameter and wall thickness as one source branch.",
+          "contrast": "Auto-transfer to the first geometry match vs preserve two ambiguous candidates and seek owner acceptance.",
+          "expected_decision": "Do not authorize a transfer. Show ambiguity and require explicit one-to-one identity acceptance; block splits/merges.",
+          "discriminating_test": "Construct a second identical-geometry line and confirm the automatic resolver no longer yields transfer-ready.",
+          "evidence_limit": "Geometry equality is evidence of resemblance only."
+        },
+        {
+          "id": "L2-C03",
+          "title": "Accepted mapping becomes stale",
+          "scenario": "Two line pairs are accepted on the same whole-target XML hash. Apply modifies the first target branch.",
+          "contrast": "Keep second connector ready vs invalidate old approval.",
+          "expected_decision": "Mark the second accepted mapping stale, block Apply and require revalidation/reapproval against the new document revision.",
+          "discriminating_test": "Apply pair A then attempt B with its original acceptance; server must reject without silently resealing.",
+          "evidence_limit": "A UI badge is insufficient; check backend rejection."
+        },
+        {
+          "id": "L2-C04",
+          "title": "Preview is not Apply",
+          "scenario": "Transfer preview shows 3 planned temperature changes and READY; audit contains applied=false and before/after target hashes are identical. Owner says output did not change.",
+          "contrast": "Blame converter or user vs inspect plan status and reproduce Apply separately.",
+          "expected_decision": "Explain that preview did not mutate data; execute an explicit Apply; repair misleading before/after labeling and gate export during pending preview.",
+          "discriminating_test": "Preview leaves exported bytes unchanged; Apply changes exactly 3 fictional T1 cells, and audit applied=true.",
+          "evidence_limit": "Field-level diff required; count/size alone does not establish correct edit."
+        },
+        {
+          "id": "L2-C05",
+          "title": "Global edit contaminates target",
+          "scenario": "Owner manually replaces a common temperature string throughout a CII file while intending to change one branch.",
+          "contrast": "Assume only chosen branch changed vs compare against untouched baseline.",
+          "expected_decision": "Count and localize all changed records, warn about unintended global edits, and build clean renumber-only fixture separately.",
+          "discriminating_test": "A byte/field diff reveals changes outside the target branch even if the user selected a correct mapping later.",
+          "evidence_limit": "Never blame transfer logic for unrelated preexisting edits."
+        },
+        {
+          "id": "L2-C06",
+          "title": "Mock UI versus real backend",
+          "scenario": "Standalone interface and mock browser tests pass, but no authentic engineering backend was available to the successor.",
+          "contrast": "Call transfer verified vs stage the UI honestly and recover pinned backend.",
+          "expected_decision": "Label stage as mock-tested, preserve files, recover exact baseline hashes, run actual HTTP and export tests, retain browser NOT_RUN when blocked.",
+          "discriminating_test": "Unmocked Apply+convert response must produce expected edited CII; a mock fetch must not satisfy this test.",
+          "evidence_limit": "Authentic API path still does not establish native-browser operation."
+        },
+        {
+          "id": "L2-C07",
+          "title": "Contributor or reviewer?",
+          "scenario": "Oracle authors an adapter and runs 94 tests, then announces that another reviewer has verified it.",
+          "contrast": "Promote self-test to independent review vs disclose shared authorship.",
+          "expected_decision": "Label results SELF-TESTED, retain exact tested versions and add independent falsification only when the risk or acceptance process requires it.",
+          "discriminating_test": "Check test author, expectation lineage and actual candidate access; a separate name alone does not guarantee independence.",
+          "evidence_limit": "Independence cannot be retroactively created by renaming the agent."
+        },
+        {
+          "id": "L2-C08",
+          "title": "Handoff must carry executable state",
+          "scenario": "Successor can see only a generic prompt, not the frozen backend ZIP; an earlier local conversation has the exact baseline.",
+          "contrast": "Rebuild P2.1 from description vs recover and pin the original artifact.",
+          "expected_decision": "Recover the file from authorized custody, verify its hash, include exact API and continuation instructions, and preserve successor implementation.",
+          "discriminating_test": "Extract exact baseline and execute protected tests before integrating; do not swap another artifact with a similar filename.",
+          "evidence_limit": "Baseline availability removes a blocker but does not certify new P2.5 integration."
+        },
+        {
+          "id": "L2-C09",
+          "title": "Match controls to failure consequence",
+          "scenario": "A personal prototype needs a useful display. A separate project edits confidential engineering values. The agent proposes identical release gates for both.",
+          "contrast": "Apply a universal rigid process vs keep aim and tier verification to consequence.",
+          "expected_decision": "Deliver a usable small UI without excessive ceremony, while requiring field-level negative tests and explicit engineering approval for confidential model edits.",
+          "discriminating_test": "Ask which plausible failure matters in each use and require only the evidence needed for that claim.",
+          "evidence_limit": "Proportionality does not excuse mislabeling unsupported PASS."
+        }
+      ],
+      "checklist": [
+        "What usable outcome exists today?",
+        "Which original artifacts and prior behavior must survive?",
+        "Which plausible wrong solution passes a superficial test?",
+        "What exact version and claim does each test establish?",
+        "Can a successor reproduce the next step without guessing?"
+      ],
+      "applications": [
+        {
+          "text": "Oracle onboarding insert (proposed)",
+          "source": "https://github.com/reallakshman19/progress-page/blob/main/docs/lessons/lesson-02-onboard-insert.md",
+          "state": "PROPOSED"
+        },
+        {
+          "text": "Common agent-work reference",
+          "source": "https://github.com/reallakshman19/Common/blob/624ff12440651d82b9f1741c4a29a4ca76e9ac0c/skills/agent-work/START_HERE.md",
+          "state": "REFERENCE"
+        }
+      ],
+      "sources": [
+        {
+          "label": "Full Lesson 2 draft",
+          "url": "https://github.com/reallakshman19/progress-page/blob/main/docs/lessons/lesson-02-outcome-led-oracle.md"
+        },
+        {
+          "label": "Nine fictional public-safe reasoning cases",
+          "url": "https://github.com/reallakshman19/progress-page/blob/main/docs/lessons/lesson-02-oracle-cases.json"
+        },
+        {
+          "label": "Proposed onboarding insert",
+          "url": "https://github.com/reallakshman19/progress-page/blob/main/docs/lessons/lesson-02-onboard-insert.md"
+        }
+      ],
+      "evidenceLimit": "Owner confirmed a corrected P2.1 flow on Windows; later real backend transfer checks were agent-reported. Native served-browser Owner acceptance was still outstanding."
+    }
+  ]
+}

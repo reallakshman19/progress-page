@@ -65,9 +65,23 @@
     },
     {
       "key": "lessons",
-      "label": "Lessons",
+      "label": "Lessons (legacy R1)",
       "order": 6,
       "mode": "otm",
+      "replyTo": {
+        "kind": "none"
+      },
+      "status": "archived",
+      "statusWhy": "Owner requested vertical lesson pages; the original R1 progress view remains as read-only history.",
+      "statusAt": "2026-10-23T15:16:00Z",
+      "statusBy": "ChatGPT (Owner instruction)",
+      "statusSrc": "OWNER_PRIVATE_REF:20261023-vertical-lessons-ui"
+    },
+    {
+      "key": "learned",
+      "label": "Lessons",
+      "order": 7,
+      "mode": "standalone",
       "replyTo": {
         "kind": "none"
       }
