@@ -772,6 +772,34 @@
       "before": "BLOCKED",
       "after": "IN_PROGRESS",
       "rev": "R1"
+    },
+    {
+      "seq": 60,
+      "id": "DOC2TABLE-R-0060",
+      "previous_id": "DOC2TABLE-R-0059",
+      "at": "2026-10-23T00:53:04Z",
+      "kind": "UPDATE",
+      "actor": "OTM",
+      "summary": "Inputs verified; Node B1 on originals; browser NOT_RUN; O1 addendum being delivered",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/155#issuecomment-6354724799",
+      "card": "tpresc1",
+      "before": "IN_PROGRESS",
+      "after": "IN_PROGRESS",
+      "rev": "R1"
+    },
+    {
+      "seq": 61,
+      "id": "DOC2TABLE-R-0061",
+      "previous_id": "DOC2TABLE-R-0060",
+      "at": "2026-10-23T00:53:04Z",
+      "kind": "UPDATE",
+      "actor": "OTM",
+      "summary": "O1 challenge + addendum (RE D2T-O1-8)",
+      "source": "https://github.com/reallakshman19/Word-to-Table/issues/1#issuecomment-6354566397",
+      "card": "oracle",
+      "before": "SUBMITTED",
+      "after": "SUBMITTED",
+      "rev": "R1"
     }
   ]
 }

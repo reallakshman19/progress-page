@@ -8,10 +8,10 @@
       "chat": "oracle"
     },
     "state": "SUBMITTED",
-    "now": "WAITS: TPRES-C1 B1 on original inputs",
+    "now": "Addendum A-D issued; WAITS coder repair",
     "next": {
       "actor": "TPRES-C1",
-      "text": "B1 with originals on #155"
+      "text": "repair at new head on #155"
     },
     "refs": [
       {
@@ -20,8 +20,8 @@
         "u": "https://github.com/reallakshman19/Word-to-Table/issues/1"
       }
     ],
-    "updatedAt": "2026-10-23T00:11:50Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6354177591",
+    "updatedAt": "2026-10-23T00:53:04Z",
+    "src": "https://github.com/reallakshman19/Word-to-Table/issues/1#issuecomment-6354566397",
     "flags": []
   },
   "tpresc1": {
@@ -34,10 +34,10 @@
       "role": "Agent"
     },
     "state": "IN_PROGRESS",
-    "now": "Archives attached by Owner; running B1 on originals",
+    "now": "Inputs verified 24/24+2/2; applying O1 addendum A-D",
     "next": {
       "actor": "TPRES-C1",
-      "text": "B1 evidence on #155"
+      "text": "repair A-D, evidence at new head on #155"
     },
     "refs": [
       {
@@ -46,8 +46,8 @@
         "u": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/155"
       }
     ],
-    "updatedAt": "2026-10-23T00:43:10Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6354601942",
+    "updatedAt": "2026-10-23T00:53:04Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/155#issuecomment-6354724799",
     "flags": []
   }
 }
