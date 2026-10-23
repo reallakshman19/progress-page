@@ -426,7 +426,7 @@
     "label": "ChatGPT content author (2.3)",
     "who": {},
     "state": "SUBMITTED",
-    "now": "Returned 23:49: 10 Core1A/Core1B pairs + author notes, DRAFT; 4 D4 difficulty ratings UNCERTAIN",
+    "now": "Returned 23:49 (DRAFT, 10 pairs); download OK pending since 00:44",
     "next": {
       "actor": "Owner",
       "text": "OK the download of the 2 draft files"
@@ -434,7 +434,7 @@
     "flags": [
       "needs-you"
     ],
-    "updatedAt": "2026-10-23T20:44:44Z",
+    "updatedAt": "2026-10-23T22:46:11Z",
     "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128#issuecomment-6372752959"
   }
 }

@@ -1570,6 +1570,20 @@
       "before": "IN_PROGRESS",
       "after": "IN_PROGRESS",
       "rev": "R3"
+    },
+    {
+      "seq": 117,
+      "id": "G9V35-R-0117",
+      "previous_id": "G9V35-R-0116",
+      "at": "2026-10-23T22:46:11Z",
+      "kind": "UPDATE",
+      "actor": "OTM",
+      "summary": "still waiting on the Owner's download OK",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128#issuecomment-6372752959",
+      "card": "content",
+      "before": "SUBMITTED",
+      "after": "SUBMITTED",
+      "rev": "R3"
     }
   ]
 }
