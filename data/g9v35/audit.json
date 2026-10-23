@@ -1489,6 +1489,19 @@
       "list": "intent",
       "op": "add",
       "rev": "R3"
+    },
+    {
+      "seq": 111,
+      "id": "G9V35-R-0111",
+      "previous_id": "G9V35-R-0110",
+      "at": "2026-10-23T18:27:51Z",
+      "kind": "FIXTURE",
+      "actor": "OTM",
+      "summary": "Owner priority for Core1A/1B build",
+      "source": "OWNER_PRIVATE_REF:20261023-2228-28-tiles-priority",
+      "list": "intent",
+      "op": "add",
+      "rev": "R3"
     }
   ]
 }

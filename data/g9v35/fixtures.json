@@ -227,6 +227,9 @@
     },
     {
       "t": "OWNER (23 Oct 22:25): QRT-P1 is done (diagnostic by questionnaire); no P2 loop, no independent-check loop, no PR loop; OTM screenshots not a priority. \"start preparing Core 1A then 1B based on demand against each topic. IDEA IS Blueprint+Topicwise Adapter for each QRT tile => Core1A/1B structure, then compile them\"."
+    },
+    {
+      "t": "OWNER (23 Oct 22:28): \"No further P1/P2 required, need to start building all 28 tiles. But priority is D3,D4 for common tile in a topic ex: NLM apply, implement. Motion in 1D may be others. To save time priorities on Top 10.\""
     }
   ],
   "inputs": [
