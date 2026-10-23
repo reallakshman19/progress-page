@@ -224,6 +224,9 @@
     },
     {
       "t": "OWNER (23 Oct 22:14, on QRT-P2): \"'Fresh Re-Check' to be avoidable, it should be linked with Core 1B or 2B, check in the repo.\" The re-check after a lesson is not a new invented step; it uses the repo's own Core1B (reconstruction) or Core2B (transfer, a specified changed demand) roles and their existing NLM items."
+    },
+    {
+      "t": "OWNER (23 Oct 22:25): QRT-P1 is done (diagnostic by questionnaire); no P2 loop, no independent-check loop, no PR loop; OTM screenshots not a priority. \"start preparing Core 1A then 1B based on demand against each topic. IDEA IS Blueprint+Topicwise Adapter for each QRT tile => Core1A/1B structure, then compile them\"."
     }
   ],
   "inputs": [

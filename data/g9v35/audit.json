@@ -1476,6 +1476,19 @@
       "list": "intent",
       "op": "add",
       "rev": "R3"
+    },
+    {
+      "seq": 110,
+      "id": "G9V35-R-0110",
+      "previous_id": "G9V35-R-0109",
+      "at": "2026-10-23T18:25:00Z",
+      "kind": "FIXTURE",
+      "actor": "OTM",
+      "summary": "Owner direction after QRT-P1: build Core1A/1B per QRT tile",
+      "source": "OWNER_PRIVATE_REF:20261023-2225-core1a1b-blueprint",
+      "list": "intent",
+      "op": "add",
+      "rev": "R3"
     }
   ]
 }
