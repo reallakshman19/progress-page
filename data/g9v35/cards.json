@@ -258,15 +258,17 @@
       "chat": "oracle4",
       "role": "Oracle O4"
     },
-    "state": "IN_PROGRESS",
+    "state": "NOT_APPLICABLE",
     "now": "HELD. O4 RE G9O4-8: keep round 2 head 6d66428e; IR-G9V35 to judge 002 cue before any round 3",
     "next": {
-      "actor": "Owner",
-      "text": "launch the P1 build (line in OTM chat)"
+      "actor": "-",
+      "text": "superseded by O5"
     },
-    "updatedAt": "2026-10-23T15:43:47Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6368761567",
-    "flags": []
+    "updatedAt": "2026-10-23T15:48:25Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6368860471",
+    "flags": [
+      "paused"
+    ]
   },
   "nlmprod1": {
     "order": 11,
@@ -283,9 +285,11 @@
       "actor": "-",
       "text": "parked"
     },
-    "flags": [],
-    "updatedAt": "2026-10-23T15:43:48Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6368761567"
+    "flags": [
+      "paused"
+    ],
+    "updatedAt": "2026-10-23T15:48:25Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6368860471"
   },
   "o4": {
     "order": 12,

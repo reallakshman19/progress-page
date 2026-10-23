@@ -1022,6 +1022,34 @@
       "before": "SUBMITTED",
       "after": "SUBMITTED",
       "rev": "R2"
+    },
+    {
+      "seq": 76,
+      "id": "G9V35-R-0076",
+      "previous_id": "G9V35-R-0075",
+      "at": "2026-10-23T15:48:25Z",
+      "kind": "STATE",
+      "actor": "OTM",
+      "summary": "Superseded by O5 (Owner: ok O5); timer stays paused",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6368860471",
+      "card": "oracle4",
+      "before": "IN_PROGRESS",
+      "after": "NOT_APPLICABLE",
+      "rev": "R2"
+    },
+    {
+      "seq": 77,
+      "id": "G9V35-R-0077",
+      "previous_id": "G9V35-R-0076",
+      "at": "2026-10-23T15:48:25Z",
+      "kind": "UPDATE",
+      "actor": "OTM",
+      "summary": "Parked",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6368860471",
+      "card": "nlmprod1",
+      "before": "SUBMITTED",
+      "after": "SUBMITTED",
+      "rev": "R2"
     }
   ]
 }
