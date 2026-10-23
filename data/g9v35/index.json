@@ -4,7 +4,7 @@
     "key": "g9v35",
     "title": "G9v3.5 Physics pilot",
     "subtitle": "Newton's Laws pilot on the ZIP-free track, and the owner-bank guard (PR #305)",
-    "updatedAt": "2026-10-23T15:48:34Z",
+    "updatedAt": "2026-10-23T15:49:40Z",
     "updatedBy": "OTM",
     "staleAfterMin": 120,
     "aim": "A personal-use app for one Grade 9 kid to self-learn difficult Physics, Mathematics and Chemistry concepts for one of the toughest competitive exams. Not a corporate product.",
@@ -74,8 +74,13 @@
       "full": "A few baseline attempts (2–3 existing prompts) plus ONE identified NLM question with staged hints, reasoning route and teacher answer. Report distinct technical checks and actual learner observations separately; preserve source identity and assistance/exposure history.",
       "wbs": "1.1",
       "bench": "B1",
-      "cap": "NOT_DEMONSTRATED",
-      "canDo": "No current checked two-prompt/one-supported-question view evidenced"
+      "cap": "CANDIDATE",
+      "canDo": "R2 candidate page (2 questions + guided repeat) runs in a browser; never tried by the Owner or the kid",
+      "capSrc": "https://github.com/reallakshman19/Grade9v3.5/pull/306",
+      "repo": "reallakshman19/Grade9v3.5",
+      "branch": "codex/nlm-first-interaction",
+      "commit": "6d66428e820beb86a7889278905c2c69a98a0ff8",
+      "activity": "R2 frozen: draft PR #306; 3 wording rounds on item 002; O4 superseded"
     },
     "M1": {
       "order": 1,
