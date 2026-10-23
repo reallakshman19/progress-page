@@ -7,11 +7,11 @@
     "who": {
       "chat": "oracle"
     },
-    "state": "SUBMITTED",
-    "now": "D2T-S1 runnable: start-d2t.cmd; 72/72 real-file tests (OTM re-ran)",
+    "state": "IN_PROGRESS",
+    "now": "S1.2 done in the Owner's words (a57fefe; batch 50/50 OK). S1.3 Header recovery brief ready: 15 headers recovered from one-row tables above, titles as a path.",
     "next": {
-      "actor": "Owner",
-      "text": "try D2T-S1 on Native Word.docx; say works or gaps"
+      "actor": "Builder (agy)",
+      "text": "finish S1.3 build; then OTM verifies, S1.3b Group columns"
     },
     "refs": [
       {
@@ -20,8 +20,8 @@
         "u": "https://github.com/reallakshman19/Word-to-Table/issues/1"
       }
     ],
-    "updatedAt": "2026-10-23T02:30:00Z",
-    "src": "https://github.com/reallakshman19/Word-to-Table/commit/4cf8964e33e3535df1b7552830278cb230a52a08",
+    "updatedAt": "2026-10-23T15:32:51Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6368540837",
     "flags": []
   },
   "tpresc1": {

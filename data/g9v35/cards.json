@@ -259,13 +259,13 @@
       "role": "Oracle O4"
     },
     "state": "SUBMITTED",
-    "now": "B1 repair round 2 written (002 cues, reveal text, launcher pack)",
+    "now": "HELD. O4 RE G9O4-8: keep round 2 head 6d66428e; IR-G9V35 to judge 002 cue before any round 3",
     "next": {
-      "actor": "NLM-PROD1",
-      "text": "repair round 2 return on #154"
+      "actor": "-",
+      "text": "held: on HOLD lift, OTM routes head + G9O4-7/8 to IR-G9V35; Owner may try launcher (verify ZIP SHA256)"
     },
-    "updatedAt": "2026-10-23T02:06:50Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128#issuecomment-6355691618",
+    "updatedAt": "2026-10-23T14:03:27Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128",
     "flags": []
   },
   "nlmprod1": {
@@ -278,14 +278,14 @@
       "role": "Agent"
     },
     "state": "SUBMITTED",
-    "now": "Round 2 NOT sent: Chrome extension unreachable; message on Owner clipboard",
+    "now": "Round 2 at 6d66428e checked: PARTIAL; 002 cues reduced, not removed; benchmark 19/0; browser NOT_RUN",
     "next": {
-      "actor": "Owner",
-      "text": "paste OTM-NLMPROD1-R2-0630 into chat 6ada36e2"
+      "actor": "-",
+      "text": "held; producer holds writes at 6d66428e"
     },
     "flags": [],
-    "updatedAt": "2026-10-23T02:28:00Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128#issuecomment-6355691618"
+    "updatedAt": "2026-10-23T12:28:01Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6364867975"
   },
   "o4": {
     "order": 12,
