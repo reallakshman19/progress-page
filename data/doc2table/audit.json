@@ -800,6 +800,20 @@
       "before": "SUBMITTED",
       "after": "SUBMITTED",
       "rev": "R1"
+    },
+    {
+      "seq": 62,
+      "id": "DOC2TABLE-R-0062",
+      "previous_id": "DOC2TABLE-R-0061",
+      "at": "2026-10-23T01:26:31Z",
+      "kind": "UPDATE",
+      "actor": "OTM",
+      "summary": "Working addendum A-D since 04:53; O1 re-slicing (D2T-O1-10); no ping under prototype-first",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6354744073",
+      "card": "tpresc1",
+      "before": "IN_PROGRESS",
+      "after": "IN_PROGRESS",
+      "rev": "R1"
     }
   ]
 }

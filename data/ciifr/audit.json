@@ -313,6 +313,20 @@
       "before": "SUBMITTED",
       "after": "SUBMITTED",
       "rev": "R2"
+    },
+    {
+      "seq": 24,
+      "id": "CIIFR-R-0024",
+      "previous_id": "CIIFR-R-0023",
+      "at": "2026-10-23T01:26:31Z",
+      "kind": "STATE",
+      "actor": "OTM",
+      "summary": "Owner: G3 is the CIIFR Oracle and builds P2 Transfer Mode",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6355155436",
+      "card": "g3",
+      "before": "SUBMITTED",
+      "after": "IN_PROGRESS",
+      "rev": "R2"
     }
   ]
 }
