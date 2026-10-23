@@ -369,17 +369,20 @@
     "milestone": "M0",
     "label": "Oracle O5",
     "who": {
-      "role": "Oracle"
+      "role": "Oracle",
+      "chat": "oracle5"
     },
-    "state": "NOT_STARTED",
+    "state": "IN_PROGRESS",
     "now": "Onboarding step 0 (aim + 3 questions) ready",
     "next": {
       "actor": "Owner",
-      "text": "open a new local Codex session, paste step 0; launch P1"
+      "text": "answer O5's 3 questions in its chat"
     },
     "flags": [
       "needs-you"
-    ]
+    ],
+    "updatedAt": "2026-10-23T15:54:16Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6368914224"
   },
   "builder": {
     "order": 14,

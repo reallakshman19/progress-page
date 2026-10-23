@@ -1,7 +1,7 @@
 // Progress view: attention strip, milestone strip, then groups of agent blocks.
-import { el, link, md, age } from './util.js?v=13';
-import { cardTags, fmt, nudgeTag } from './triggers.js?v=13';
-import { nudgeRow } from './nudge.js?v=13';
+import { el, link, md, age } from './util.js?v=14';
+import { cardTags, fmt, nudgeTag } from './triggers.js?v=14';
+import { nudgeRow } from './nudge.js?v=14';
 
 const RANK = { NOT_STARTED: 0, UNKNOWN: 1, STALE: 1, IN_PROGRESS: 2, SUBMITTED: 3, VERIFIED: 4 };
 const ICON = { VERIFIED: '✓', SUBMITTED: '↑', IN_PROGRESS: '●', BLOCKED: '!', NOT_STARTED: '○', STALE: '?', UNKNOWN: '?', NOT_APPLICABLE: '–' };
@@ -261,10 +261,26 @@ function attention(sum, rules) {
   return wrap;
 }
 
+// The revision a card was born in: the rev of its first Timeline event (events before revisions existed count as the first).
+export function birthRev(project, id) {
+  const revs = (project.index || {}).revisions || [];
+  const first = ((project.audit || {}).events || []).find((e) => e.card === id);
+  return (first && first.rev) || (revs[0] || {}).id || null;
+}
+
+// A superseded or cancelled card shows only in the revision it was born in; older ones are seen by opening that revision.
+export function visibleCards(project) {
+  const cur = (((project.index || {}).revisions || []).find((r) => r.status === 'current') || {}).id;
+  const all = Object.entries(project.cards || {}).map(([id, c]) => Object.assign({ id }, c));
+  const shown = all.filter((c) => !c.closed || !cur || birthRev(project, c.id) === cur);
+  return { shown, hidden: all.length - shown.length };
+}
+
 export function renderProgress(root, project, ctx) {
-  const cards = Object.entries(project.cards || {}).map(([id, c]) => Object.assign({ id }, c));
+  const { shown: cards, hidden } = visibleCards(project);
   ctx.cards = project.cards;
   if (ctx.sum) root.append(attention(ctx.sum, ctx.rules));
+  if (hidden) root.append(el('p', 'ms-line', hidden + ' closed cards from earlier revisions are not shown; open that revision above to see them.'));
   picked = picks[(project.index.project || {}).key || ''] || null;
   root.append(strip(project.index, cards, ctx));
   const groups = Object.entries(project.index.groups || {}).sort((a, b) => (a[1].order || 0) - (b[1].order || 0));

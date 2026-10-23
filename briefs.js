@@ -1,6 +1,6 @@
 // "+" dialogs: a short form that writes a copy-paste brief, so the Owner can hand the addition to another agent.
-import { el, copyText } from './util.js?v=13';
-import { dialog } from './popup.js?v=13';
+import { el, copyText } from './util.js?v=14';
+import { dialog } from './popup.js?v=14';
 
 const quote = (s) => '"' + String(s || '').replace(/"/g, "'") + '"';
 
