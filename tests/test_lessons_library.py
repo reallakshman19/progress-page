@@ -50,5 +50,5 @@ class LessonsTest(unittest.TestCase):
         if not shutil.which("node"):
             self.skipTest("node not installed")
         for name in ("app.js", "lessons.js"):
-            p = subprocess.run(["node", "--check", str(ROOT / name)], text=True, capture_output=True)
+            p = subprocess.run(["node", "--input-type=module", "--check"], input=(ROOT / name).read_text(encoding="utf-8"), text=True, capture_output=True)
             self.assertEqual(p.returncode, 0, p.stderr)
