@@ -33,11 +33,11 @@
       "chat": "tpresc1",
       "role": "Agent"
     },
-    "state": "IN_PROGRESS",
-    "now": "Inputs available; running B1 on originals",
+    "state": "BLOCKED",
+    "now": "BLOCKED: cannot open OneDrive link",
     "next": {
-      "actor": "TPRES-C1",
-      "text": "B1 evidence on #155"
+      "actor": "YOU",
+      "text": "attach the two zips in the coder chat"
     },
     "refs": [
       {
@@ -46,7 +46,10 @@
         "u": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/155"
       }
     ],
-    "updatedAt": "2026-10-23T00:11:51Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6354177591"
+    "updatedAt": "2026-10-23T00:30:08Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/155#issuecomment-6354214983",
+    "flags": [
+      "needs-you"
+    ]
   }
 }

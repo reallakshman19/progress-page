@@ -744,6 +744,20 @@
       "before": "BLOCKED",
       "after": "IN_PROGRESS",
       "rev": "R1"
+    },
+    {
+      "seq": 58,
+      "id": "DOC2TABLE-R-0058",
+      "previous_id": "DOC2TABLE-R-0057",
+      "at": "2026-10-23T00:30:08Z",
+      "kind": "STATE",
+      "actor": "OTM",
+      "summary": "Coder cannot open OneDrive link (no browser); needs Owner to attach archives",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/155#issuecomment-6354214983",
+      "card": "tpresc1",
+      "before": "IN_PROGRESS",
+      "after": "BLOCKED",
+      "rev": "R1"
     }
   ]
 }

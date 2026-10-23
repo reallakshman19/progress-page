@@ -259,13 +259,13 @@
       "role": "Oracle O4"
     },
     "state": "SUBMITTED",
-    "now": "Ruling on B1 PARTIAL (TO G9O4-4)",
+    "now": "Repair packet issued (RE G9O4-4)",
     "next": {
-      "actor": "Oracle O4",
-      "text": "rule on adaptations/cue/QRT; repair packet"
+      "actor": "NLM-PROD1",
+      "text": "repair B1 on PR #306"
     },
-    "updatedAt": "2026-10-22T19:17:48Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/154#issuecomment-6349220985",
+    "updatedAt": "2026-10-23T00:30:08Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128#issuecomment-6349652241",
     "flags": []
   },
   "nlmprod1": {
@@ -277,15 +277,15 @@
       "chat": "nlmprod1",
       "role": "Agent"
     },
-    "state": "SUBMITTED",
-    "now": "WAITS: Oracle O4 repair packet (checker PARTIAL)",
+    "state": "IN_PROGRESS",
+    "now": "Repairing B1 per O4 packet",
     "next": {
-      "actor": "Oracle O4",
-      "text": "repair packet"
+      "actor": "NLM-PROD1",
+      "text": "post repair evidence on #154"
     },
     "flags": [],
-    "updatedAt": "2026-10-22T19:17:48Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/154#issuecomment-6349220985"
+    "updatedAt": "2026-10-23T00:30:09Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128#issuecomment-6349652241"
   },
   "o4": {
     "order": 12,
