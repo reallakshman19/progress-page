@@ -47,14 +47,14 @@
       "chat": "pqrt",
       "role": "author"
     },
-    "state": "SUBMITTED",
+    "state": "NOT_APPLICABLE",
     "now": "Returned 04:31: PUBLIC_SYNTHETIC_WORKPACK_READY / CONSUMER_VALIDATION_NOT_RUN ([#128 6329713931](https://github.com/reallakshman19/CoordinatorLandingpage/issues/128#issuecomment-6329713931)), METER MID. Text design only; every N1 check is NOT_RUN.",
     "next": {
-      "actor": "OTM",
-      "text": "reconcile the return with the Oracle challenge (paused)"
+      "actor": "-",
+      "text": ""
     },
-    "updatedAt": "2026-10-22T00:31:39Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128#issuecomment-6329713931",
+    "updatedAt": "2026-10-23T15:50:34Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6368887319",
     "refs": [
       {
         "k": "issue",
@@ -62,9 +62,14 @@
         "u": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128"
       }
     ],
-    "flags": [
-      "paused"
-    ]
+    "flags": [],
+    "closed": {
+      "kind": "superseded",
+      "why": "R3: all new agents, no reuse (Owner)",
+      "at": "2026-10-23T15:50:34Z",
+      "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6368887319",
+      "by": "builder"
+    }
   },
   "pfal": {
     "order": 3,
@@ -75,21 +80,29 @@
       "chat": "pfal",
       "role": "independent PQRT"
     },
-    "state": "BLOCKED",
+    "state": "NOT_APPLICABLE",
     "now": "HOLD.",
     "next": {
       "actor": "-",
-      "text": "Oracle HOLD until checker Y1 settles 007/010/022 ([#128 6315472566](https://github.com/reallakshman19/CoordinatorLandingpage/issues/128#issuecomment-6315472566))"
+      "text": ""
     },
-    "updatedAt": "2026-10-21T12:13:00Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128#issuecomment-6315472566",
+    "updatedAt": "2026-10-23T15:50:34Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6368887319",
     "refs": [
       {
         "k": "issue",
         "l": "CL #128",
         "u": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128"
       }
-    ]
+    ],
+    "closed": {
+      "kind": "superseded",
+      "why": "R3: all new agents, no reuse (Owner)",
+      "at": "2026-10-23T15:50:34Z",
+      "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6368887319",
+      "by": "builder"
+    },
+    "flags": []
   },
   "pchk": {
     "order": 4,
@@ -100,21 +113,29 @@
       "chat": "pchk",
       "role": "science checker"
     },
-    "state": "BLOCKED",
+    "state": "NOT_APPLICABLE",
     "now": "HOLD.",
     "next": {
       "actor": "-",
-      "text": "held until Drive receipts exist ([#128 6316907785](https://github.com/reallakshman19/CoordinatorLandingpage/issues/128#issuecomment-6316907785))"
+      "text": ""
     },
-    "updatedAt": "2026-10-21T13:52:00Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128#issuecomment-6316907785",
+    "updatedAt": "2026-10-23T15:50:36Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6368887319",
     "refs": [
       {
         "k": "issue",
         "l": "CL #128",
         "u": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128"
       }
-    ]
+    ],
+    "closed": {
+      "kind": "superseded",
+      "why": "R3: all new agents, no reuse (Owner)",
+      "at": "2026-10-23T15:50:36Z",
+      "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6368887319",
+      "by": "checker"
+    },
+    "flags": []
   },
   "math": {
     "order": 5,
@@ -125,21 +146,29 @@
       "chat": "math",
       "role": "Math QRT"
     },
-    "state": "BLOCKED",
+    "state": "NOT_APPLICABLE",
     "now": "HOLD.",
     "next": {
       "actor": "-",
-      "text": "Owner: pilot Physics first, then Math (source ZIP not available, Owner 21 Oct; Drive 403)"
+      "text": ""
     },
-    "updatedAt": "2026-10-21T16:02:00Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/129",
+    "updatedAt": "2026-10-23T15:50:35Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6368887319",
     "refs": [
       {
         "k": "issue",
         "l": "CL #129",
         "u": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/129"
       }
-    ]
+    ],
+    "closed": {
+      "kind": "superseded",
+      "why": "R3: all new agents, no reuse (Owner)",
+      "at": "2026-10-23T15:50:35Z",
+      "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6368887319",
+      "by": "builder"
+    },
+    "flags": []
   },
   "pgrd": {
     "order": 6,
@@ -150,14 +179,14 @@
       "chat": "pgrd",
       "role": "coder"
     },
-    "state": "SUBMITTED",
+    "state": "NOT_APPLICABLE",
     "now": "PR #305 reviewed by the IR (#135); parked under the Owner's new plan",
     "next": {
-      "actor": "Oracle",
-      "text": "Oracle O4 decides whether PR #305 is reused"
+      "actor": "-",
+      "text": ""
     },
-    "updatedAt": "2026-10-22T11:41:50Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6339795835",
+    "updatedAt": "2026-10-23T15:50:35Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6368887319",
     "refs": [
       {
         "k": "issue",
@@ -177,9 +206,14 @@
         "k": "back"
       }
     ],
-    "flags": [
-      "paused"
-    ]
+    "flags": [],
+    "closed": {
+      "kind": "superseded",
+      "why": "R3: all new agents, no reuse (Owner)",
+      "at": "2026-10-23T15:50:35Z",
+      "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6368887319",
+      "by": "builder"
+    }
   },
   "ir": {
     "order": 7,
@@ -190,14 +224,14 @@
       "chat": "ir",
       "role": "independent reviewer"
     },
-    "state": "SUBMITTED",
+    "state": "NOT_APPLICABLE",
     "now": "RE on PR #305 posted on #135; parked under the Owner's new plan",
     "next": {
-      "actor": "Oracle O4",
-      "text": "checker for the first NLM delivery once the producer freezes its PR head (packet G9O4-2-p2)"
+      "actor": "-",
+      "text": ""
     },
-    "updatedAt": "2026-10-22T14:56:34Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6343831191",
+    "updatedAt": "2026-10-23T15:50:36Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6368887319",
     "refs": [
       {
         "k": "issue",
@@ -211,9 +245,14 @@
         "s": "draft · HOLD"
       }
     ],
-    "flags": [
-      "paused"
-    ]
+    "flags": [],
+    "closed": {
+      "kind": "superseded",
+      "why": "R3: all new agents, no reuse (Owner)",
+      "at": "2026-10-23T15:50:36Z",
+      "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6368887319",
+      "by": "checker"
+    }
   },
   "owner": {
     "order": 9,
@@ -262,13 +301,18 @@
     "now": "HELD. O4 RE G9O4-8: keep round 2 head 6d66428e; IR-G9V35 to judge 002 cue before any round 3",
     "next": {
       "actor": "-",
-      "text": "superseded by O5"
+      "text": ""
     },
-    "updatedAt": "2026-10-23T15:48:25Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6368860471",
-    "flags": [
-      "paused"
-    ]
+    "updatedAt": "2026-10-23T15:50:36Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6368887319",
+    "flags": [],
+    "closed": {
+      "kind": "superseded",
+      "why": "R3: all new agents, no reuse (Owner)",
+      "at": "2026-10-23T15:50:36Z",
+      "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6368887319",
+      "by": "oracle5"
+    }
   },
   "nlmprod1": {
     "order": 11,
@@ -279,17 +323,22 @@
       "chat": "nlmprod1",
       "role": "Agent"
     },
-    "state": "SUBMITTED",
+    "state": "NOT_APPLICABLE",
     "now": "Round 2 at 6d66428e checked: PARTIAL; 002 cues reduced, not removed; benchmark 19/0; browser NOT_RUN",
     "next": {
       "actor": "-",
-      "text": "parked"
+      "text": ""
     },
-    "flags": [
-      "paused"
-    ],
-    "updatedAt": "2026-10-23T15:48:25Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6368860471"
+    "flags": [],
+    "updatedAt": "2026-10-23T15:50:34Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6368887319",
+    "closed": {
+      "kind": "superseded",
+      "why": "R3: all new agents, no reuse (Owner)",
+      "at": "2026-10-23T15:50:34Z",
+      "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6368887319",
+      "by": "builder"
+    }
   },
   "o4": {
     "order": 12,
@@ -300,12 +349,19 @@
     "state": "NOT_APPLICABLE",
     "now": "Duplicate of oracle4; void",
     "next": {
-      "actor": "NLM-PROD1",
-      "text": "work packet G9O4-2-p1; Oracle waits"
+      "actor": "-",
+      "text": ""
     },
     "flags": [],
-    "updatedAt": "2026-10-22T19:16:31Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/154#issuecomment-6348925917"
+    "updatedAt": "2026-10-23T15:50:33Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6368887319",
+    "closed": {
+      "kind": "superseded",
+      "why": "R3: all new agents, no reuse (Owner)",
+      "at": "2026-10-23T15:50:33Z",
+      "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6368887319",
+      "by": "oracle5"
+    }
   },
   "oracle5": {
     "order": 13,
@@ -324,5 +380,38 @@
     "flags": [
       "needs-you"
     ]
+  },
+  "builder": {
+    "order": 14,
+    "group": "pilot",
+    "milestone": "Q0",
+    "label": "P1 builder (new agy)",
+    "who": {
+      "role": "Agent"
+    },
+    "state": "NOT_STARTED",
+    "now": "P1 kid page brief ready (C:/t/g9_p1/brief_p1.txt)",
+    "next": {
+      "actor": "Owner",
+      "text": "launch the P1 build (new agy session)"
+    },
+    "flags": [
+      "needs-you"
+    ]
+  },
+  "checker": {
+    "order": 15,
+    "group": "pilot",
+    "milestone": "Q0",
+    "label": "Spot-checker (new)",
+    "who": {
+      "role": "Agent"
+    },
+    "state": "NOT_STARTED",
+    "now": "Non-author physics spot-check of P1, after the Owner's try",
+    "next": {
+      "actor": "OTM",
+      "text": "start a fresh checker when P1 returns"
+    }
   }
 }
