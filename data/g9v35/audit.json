@@ -1502,6 +1502,19 @@
       "list": "intent",
       "op": "add",
       "rev": "R3"
+    },
+    {
+      "seq": 112,
+      "id": "G9V35-R-0112",
+      "previous_id": "G9V35-R-0111",
+      "at": "2026-10-23T18:36:24Z",
+      "kind": "FIXTURE",
+      "actor": "OTM",
+      "summary": "Owner reference inputs for Core1A/1B build",
+      "source": "OWNER_PRIVATE_REF:20261023-2235-reference-blueprint",
+      "list": "intent",
+      "op": "add",
+      "rev": "R3"
     }
   ]
 }

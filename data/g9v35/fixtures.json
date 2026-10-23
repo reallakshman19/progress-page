@@ -230,6 +230,9 @@
     },
     {
       "t": "OWNER (23 Oct 22:28): \"No further P1/P2 required, need to start building all 28 tiles. But priority is D3,D4 for common tile in a topic ex: NLM apply, implement. Motion in 1D may be others. To save time priorities on Top 10.\""
+    },
+    {
+      "t": "OWNER (23 Oct 22:35): reference inputs for the Core1A/1B per-tile build: golden/Reference/REFERENCE Blueprint (concept note, Physics_TopicAdapters, core1a/core1b blueprints for 8 Physics topics, qrt_question_banks) and physics-olympiad-grade9-master-suite.html. \"For reference ONLY not golden fixtures, MAY REUSE.\""
     }
   ],
   "inputs": [
