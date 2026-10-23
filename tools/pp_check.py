@@ -112,6 +112,10 @@ def check_index(c, key, index, status="active"):
     check_revisions(c, w, index)
 
 
+REPO = re.compile(r"[A-Za-z0-9-]{1,39}/[A-Za-z0-9._-]{1,100}")
+SHA = re.compile(r"[0-9a-f]{7,40}")
+
+
 def check_capability(c, w, index):
     """Optional WBS fields of a milestone: the WBS number, the benchmark it adds and keeps, and what the user can do."""
     items = index.get("milestones")
@@ -142,6 +146,14 @@ def check_capability(c, w, index):
             c.err(at, f"cap {cap} needs capSrc: the evidence link")
         if cap is None and (can is not None or m.get("capSrc")):
             c.err(at, "canDo and capSrc need cap")
+        repo = c.text(at, m, "repo", opt=True, limit=100)
+        if repo is not None and not REPO.fullmatch(repo):
+            c.err(at, "repo must be owner/name (a GitHub repository, never a local path or link)")
+        c.text(at, m, "branch", opt=True, limit=100)
+        sha = c.text(at, m, "commit", opt=True, limit=40)
+        if sha is not None and not SHA.fullmatch(sha):
+            c.err(at, "commit must be 7 to 40 hex characters")
+        c.text(at, m, "activity", opt=True, limit=160)
 
 
 def check_revisions(c, w, index):

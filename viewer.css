@@ -169,3 +169,9 @@ textarea.brief{width:100%;font:12px/1.5 ui-monospace,Menlo,Consolas,monospace;ba
 details.nd{margin-top:6px;font-size:12px}
 @media (max-width:620px){.tl-row{grid-template-columns:40px 1fr}.tl-row .chip{grid-column:2}.tl-m{grid-column:1 / -1}}
 .aim{font-size:15px;margin:4px 0 6px}
+.lpath{font-size:13px;margin:2px 0 4px;color:var(--wn)}
+.lpath code{user-select:all;font-size:12px}
+.repobar{font-size:12px;margin:6px 0;padding:6px 10px;border:1px solid var(--bd);border-radius:6px;background:var(--card);overflow-wrap:anywhere}
+.rb-warn{color:var(--wn)}
+.repobar code{font-size:12px}
+.btn.tiny{font-size:11px;padding:0 6px;margin-left:2px}

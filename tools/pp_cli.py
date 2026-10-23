@@ -89,6 +89,10 @@ def build():
             p.add_argument("--cap", choices=L.CAPABILITY, help="what the user can do: the evidence step")
             p.add_argument("--can-do", help="one line on what the user can actually do today")
             p.add_argument("--cap-src", help="public GitHub link of the capability evidence")
+            p.add_argument("--repo", help="repo state bar: the step's repository, owner/name")
+            p.add_argument("--branch", help="repo state bar: the step's branch")
+            p.add_argument("--commit", help="repo state bar: the step's current commit (7 to 40 hex)")
+            p.add_argument("--activity", help="repo state bar: one line on the step's activity now")
 
     cd = kind("card")
     p = W(cd.add_parser("set"), "--summary", "what changed on this card")
@@ -195,7 +199,8 @@ def run(a):
     if c == "plan":
         g = lambda f: getattr(a, f, None)  # the WBS options exist on 'plan milestone' only
         fields = {"milestone": {"name": a.name, "full": a.full, "order": a.order, "wbs": g("wbs"), "bench": g("bench"), "keeps": g("keeps"),
-                                "cap": g("cap"), "canDo": g("can_do"), "capSrc": g("cap_src")}, "group": {"title": a.title, "sub": a.about, "order": a.order},
+                                "cap": g("cap"), "canDo": g("can_do"), "capSrc": g("cap_src"),
+                                "repo": g("repo"), "branch": g("branch"), "commit": g("commit"), "activity": g("activity")}, "group": {"title": a.title, "sub": a.about, "order": a.order},
                   "chat": {"label": a.label, "id8": a.id8, "engine": a.engine}}[s]
         return O.plan(d, a.project, s, a.id, fields, a.actor, a.why, a.src)
     if c == "card" and s == "set":

@@ -38,7 +38,44 @@ function mergedLinks() {
   return Object.assign({}, window.__PP_LINKS__ || {}, loadLinks());
 }
 
-const state = { projects: [], data: {}, site: {}, links: mergedLinks(), error: null, panel: false, offline: false, archivedOpen: false, rev: null };
+const state = { projects: [], data: {}, site: {}, links: mergedLinks(), error: null, panel: false, offline: false, archivedOpen: false, rev: null, paths: null, repo: {} };
+
+// The local hub server (127.0.0.1) serves each project's private coding and reference folders; the website never has them.
+async function loadPaths() {
+  if (!['127.0.0.1', 'localhost', '[::1]'].includes(location.hostname)) return;
+  try {
+    const r = await fetch('/api/paths', { cache: 'no-cache' });
+    if (r.ok) state.paths = await r.json();
+    await Promise.all(Object.keys(state.paths || {}).filter((k) => !k.startsWith('_') && k !== 'updated').map(async (k) => {
+      const g = await fetch('/api/repo/' + encodeURIComponent(k), { cache: 'no-cache' });
+      if (g.ok) state.repo[k] = await g.json();
+    }));
+  } catch (e) { /* no hub server: no paths line, no live git state */ }
+}
+
+// Repo state bar of the picked WBS step: the step's recorded repo, branch, commit and activity, plus live git state on the local server.
+function repoBar(index, ms, live) {
+  const m = ms ? ((index || {}).milestones || {})[ms] || {} : {};
+  const g = live ? (ms && (live.wbs || {})[ms]) || live.project : null;
+  if (!m.repo && !m.commit && !m.activity && !m.canDo && !g) return null;
+  const bar = el('div', 'repobar');
+  bar.append(el('b', null, 'Repo state' + (ms ? ' · ' + (m.wbs ? 'WBS ' + m.wbs : ms) : ' · project') + ': '));
+  const act = m.activity || (m.canDo ? (m.cap ? m.cap.replace(/_/g, ' ').toLowerCase() + ': ' : '') + m.canDo : '');
+  if (act) bar.append(act, ' · ');
+  if (m.repo || m.commit) {
+    const where = (m.repo || '') + (m.branch ? ' @ ' + m.branch : '');
+    if (where) bar.append(where + ' ');
+    if (m.commit) bar.append(m.repo ? link('https://github.com/' + m.repo + '/commit/' + m.commit, m.commit.slice(0, 7)) : el('code', null, m.commit.slice(0, 7)));
+    bar.append(' · ');
+  }
+  if (g && g.git) {
+    const sync = !g.upstream ? 'no upstream' : (g.ahead || g.behind) ? [g.ahead ? g.ahead + ' ahead' : '', g.behind ? g.behind + ' behind' : ''].filter(Boolean).join(', ') + ' of ' + g.upstream : 'pushed (' + g.upstream + ')';
+    bar.append('local ', el('code', null, (g.branch || '?') + ' ' + (g.head || '')), ' ' + (g.at ? whenText(g.at) : '') + ' "' + (g.subject || '') + '" · ' + (g.dirty ? g.dirty + ' uncommitted' : 'clean') + ' · ' + sync);
+    if (m.commit && g.head && !m.commit.startsWith(g.head) && !g.head.startsWith(m.commit.slice(0, 7))) bar.append(el('span', 'rb-warn', ' · local head differs from the recorded commit'));
+  } else if (g) bar.append(el('span', 'muted', 'local folder is not a git checkout'));
+  else if (!m.commit) bar.append(el('span', 'muted', 'no commit recorded'));
+  return bar;
+}
 
 async function get(path) {
   const r = await fetch(new URL(path, BASE), { cache: 'no-cache' });
@@ -86,7 +123,7 @@ async function start() {
       render();
     } catch (e) { /* no usable snapshot */ }
   }
-  await refresh();
+  await Promise.all([refresh(), loadPaths()]);
   render();
 }
 
@@ -225,6 +262,7 @@ function render() {
     addRevision: (pr) => addRevisionDialog(site(), pr),
     toggleArchived: () => { state.archivedOpen = !state.archivedOpen; render(); },
     statusLine,
+    paths: (state.paths || {})[key] || null,
     revBanner: older ? revBanner(p, rev, rv) : null,
   };
   root.append(tabsRow(c));
@@ -244,6 +282,8 @@ function render() {
     });
     root.append(row);
   }
+  const bar = repoBar(view.index, steps.length ? wbsPick(key) : null, state.repo[key]);
+  if (bar) root.append(bar);
   const views = el('nav', 'views');
   [['progress', 'Progress', 0], ['actions', 'My actions', openCount(view.actions)], ['fixtures', 'Grounding fixtures', 0], ['timeline', 'Timeline', 0]].forEach(([id, label, n]) => {
     const a = navLink('#/' + key + '/' + id + (older ? '/' + rev : ''), label, 'view' + (id === v ? ' on' : ''));
@@ -303,5 +343,5 @@ const follow = () => { if (hash === location.hash) return; hash = location.hash;
 window.addEventListener('hashchange', follow);
 window.addEventListener('popstate', follow);
 setInterval(() => tick(document), 30000);
-setInterval(async () => { if (!document.hidden) { await refresh(); render(); } }, 120000);
+setInterval(async () => { if (!document.hidden) { await Promise.all([refresh(), loadPaths()]); render(); } }, 120000);
 start();

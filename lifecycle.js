@@ -1,5 +1,5 @@
 // Project tabs with "+", the Archived list, the project header and the revision row.
-import { el, link, whenText, isHttps } from './util.js?v=11';
+import { el, link, whenText, isHttps, copyText } from './util.js?v=11';
 
 const COMMON = 'https://github.com/reallakshman19/Common/tree/main/skills/agent-work/';
 const MODULES = ['task-decomposer', 'nudge-designer', 'independent-review', 'gatekeeper', 'local-handover', 'progress-page'];
@@ -66,7 +66,28 @@ export function revisionRow(p, c) {
   return wrap;
 }
 
-// c adds: statusLine(p) and revBanner (a node, or null)
+// Private local folders (hub_serve /api/paths, local server only): { coding: [{path, note}], reference: [...] }.
+function localPaths(lp) {
+  const box = el('p', 'lpath');
+  [['coding', 'Local repo path (coding): '], ['reference', '(Reference): ']].forEach(([k, label], i) => {
+    if (i) box.append(' · ');
+    box.append(el('b', null, label));
+    const list = (lp[k] || []).filter((x) => x && x.path);
+    if (!list.length) box.append(el('span', 'muted', 'not set'));
+    list.forEach((x, j) => {
+      if (j) box.append(', ');
+      const code = el('code', null, x.path);
+      if (x.note) code.title = x.note;
+      const b = el('button', 'btn tiny', 'copy');
+      b.type = 'button';
+      b.addEventListener('click', () => copyText(x.path, b));
+      box.append(code, ' ', b);
+    });
+  });
+  return box;
+}
+
+// c adds: statusLine(p), revBanner (a node, or null) and paths (local server only)
 export function projectHead(p, c) {
   const box = el('div', 'ptitle');
   const pj = p.index.project || {};
@@ -91,6 +112,7 @@ export function projectHead(p, c) {
   m.append('How we work: ');
   MODULES.forEach((n, i) => { if (i) m.append(' · '); m.append(link(COMMON + n, n)); });
   box.append(m);
+  if (c.paths) box.append(localPaths(c.paths));
   box.append(c.statusLine(p));
   return box;
 }
