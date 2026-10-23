@@ -1,0 +1,95 @@
+{
+  "schema": "oracle-golden-decision-cases/v1",
+  "lesson": "L2",
+  "version": "2026-10-23-draft",
+  "provenance": "fictional public-safe variants of prototype process lessons",
+  "purpose": "decision replay and coaching, not a model score or engineering acceptance gate",
+  "rules": [
+    "Each answer states action, preserved boundary, falsifying test, evidence status and next owner/agent step.",
+    "The evaluator compares reasoning against an expected alternative; not exact wording or agent count.",
+    "Do not assign PASS beyond the test actually run."
+  ],
+  "cases": [
+    {
+      "id": "L2-C01",
+      "title": "Outcome beats orchestration",
+      "scenario": "An Owner asks for a runnable branch editor; a coordinator proposes five new agents, three protocols and extensive tracking before any editable UI exists.",
+      "contrast": "Create infrastructure first vs build a small working editor preserving original input.",
+      "expected_decision": "Name the first user-visible capability, bound a runnable vertical slice, implement or delegate it, and keep optional coordination proportional.",
+      "discriminating_test": "Demonstrate that the Owner can select a fictional branch and preview one field edit in a local application; a plan-only reply fails this claim.",
+      "evidence_limit": "Usable local UI self-test is not evidence of engineering file fidelity."
+    },
+    {
+      "id": "L2-C02",
+      "title": "Candidate is not identity",
+      "scenario": "Target line IDs differ. Two target branches share the same element lengths, diameter and wall thickness as one source branch.",
+      "contrast": "Auto-transfer to the first geometry match vs preserve two ambiguous candidates and seek owner acceptance.",
+      "expected_decision": "Do not authorize a transfer. Show ambiguity and require explicit one-to-one identity acceptance; block splits/merges.",
+      "discriminating_test": "Construct a second identical-geometry line and confirm the automatic resolver no longer yields transfer-ready.",
+      "evidence_limit": "Geometry equality is evidence of resemblance only."
+    },
+    {
+      "id": "L2-C03",
+      "title": "Accepted mapping becomes stale",
+      "scenario": "Two line pairs are accepted on the same whole-target XML hash. Apply modifies the first target branch.",
+      "contrast": "Keep second connector ready vs invalidate old approval.",
+      "expected_decision": "Mark the second accepted mapping stale, block Apply and require revalidation/reapproval against the new document revision.",
+      "discriminating_test": "Apply pair A then attempt B with its original acceptance; server must reject without silently resealing.",
+      "evidence_limit": "A UI badge is insufficient; check backend rejection."
+    },
+    {
+      "id": "L2-C04",
+      "title": "Preview is not Apply",
+      "scenario": "Transfer preview shows 3 planned temperature changes and READY; audit contains applied=false and before/after target hashes are identical. Owner says output did not change.",
+      "contrast": "Blame converter or user vs inspect plan status and reproduce Apply separately.",
+      "expected_decision": "Explain that preview did not mutate data; execute an explicit Apply; repair misleading before/after labeling and gate export during pending preview.",
+      "discriminating_test": "Preview leaves exported bytes unchanged; Apply changes exactly 3 fictional T1 cells, and audit applied=true.",
+      "evidence_limit": "Field-level diff required; count/size alone does not establish correct edit."
+    },
+    {
+      "id": "L2-C05",
+      "title": "Global edit contaminates target",
+      "scenario": "Owner manually replaces a common temperature string throughout a CII file while intending to change one branch.",
+      "contrast": "Assume only chosen branch changed vs compare against untouched baseline.",
+      "expected_decision": "Count and localize all changed records, warn about unintended global edits, and build clean renumber-only fixture separately.",
+      "discriminating_test": "A byte/field diff reveals changes outside the target branch even if the user selected a correct mapping later.",
+      "evidence_limit": "Never blame transfer logic for unrelated preexisting edits."
+    },
+    {
+      "id": "L2-C06",
+      "title": "Mock UI versus real backend",
+      "scenario": "Standalone interface and mock browser tests pass, but no authentic engineering backend was available to the successor.",
+      "contrast": "Call transfer verified vs stage the UI honestly and recover pinned backend.",
+      "expected_decision": "Label stage as mock-tested, preserve files, recover exact baseline hashes, run actual HTTP and export tests, retain browser NOT_RUN when blocked.",
+      "discriminating_test": "Unmocked Apply+convert response must produce expected edited CII; a mock fetch must not satisfy this test.",
+      "evidence_limit": "Authentic API path still does not establish native-browser operation."
+    },
+    {
+      "id": "L2-C07",
+      "title": "Contributor or reviewer?",
+      "scenario": "Oracle authors an adapter and runs 94 tests, then announces that another reviewer has verified it.",
+      "contrast": "Promote self-test to independent review vs disclose shared authorship.",
+      "expected_decision": "Label results SELF-TESTED, retain exact tested versions and add independent falsification only when the risk or acceptance process requires it.",
+      "discriminating_test": "Check test author, expectation lineage and actual candidate access; a separate name alone does not guarantee independence.",
+      "evidence_limit": "Independence cannot be retroactively created by renaming the agent."
+    },
+    {
+      "id": "L2-C08",
+      "title": "Handoff must carry executable state",
+      "scenario": "Successor can see only a generic prompt, not the frozen backend ZIP; an earlier local conversation has the exact baseline.",
+      "contrast": "Rebuild P2.1 from description vs recover and pin the original artifact.",
+      "expected_decision": "Recover the file from authorized custody, verify its hash, include exact API and continuation instructions, and preserve successor implementation.",
+      "discriminating_test": "Extract exact baseline and execute protected tests before integrating; do not swap another artifact with a similar filename.",
+      "evidence_limit": "Baseline availability removes a blocker but does not certify new P2.5 integration."
+    },
+    {
+      "id": "L2-C09",
+      "title": "Match controls to failure consequence",
+      "scenario": "A personal prototype needs a useful display. A separate project edits confidential engineering values. The agent proposes identical release gates for both.",
+      "contrast": "Apply a universal rigid process vs keep aim and tier verification to consequence.",
+      "expected_decision": "Deliver a usable small UI without excessive ceremony, while requiring field-level negative tests and explicit engineering approval for confidential model edits.",
+      "discriminating_test": "Ask which plausible failure matters in each use and require only the evidence needed for that claim.",
+      "evidence_limit": "Proportionality does not excuse mislabeling unsupported PASS."
+    }
+  ]
+}
