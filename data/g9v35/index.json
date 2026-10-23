@@ -4,7 +4,7 @@
     "key": "g9v35",
     "title": "G9v3.5 Physics pilot",
     "subtitle": "Newton's Laws pilot on the ZIP-free track, and the owner-bank guard (PR #305)",
-    "updatedAt": "2026-10-23T15:49:40Z",
+    "updatedAt": "2026-10-23T15:49:53Z",
     "updatedBy": "OTM",
     "staleAfterMin": 120,
     "aim": "A personal-use app for one Grade 9 kid to self-learn difficult Physics, Mathematics and Chemistry concepts for one of the toughest competitive exams. Not a corporate product.",
@@ -70,17 +70,17 @@
   "milestones": {
     "M0": {
       "order": 0,
-      "name": "Baseline + first NLM interaction",
-      "full": "A few baseline attempts (2–3 existing prompts) plus ONE identified NLM question with staged hints, reasoning route and teacher answer. Report distinct technical checks and actual learner observations separately; preserve source identity and assistance/exposure history.",
+      "name": "P1 kid page + first kid session",
+      "full": "P1: one page in the kid's words, opened as a plain file: 3 warm-up questions (NLM-001, 002 with the cue fix, 012), then one NEW question on the first missed idea with 3 staged hints, one retry and the full solution, then results and Save. OTM runs it, the Owner tries it, a non-author physics spot-check, then P2: a 15-minute kid session whose saved answers pick M1's first concept. At most one repair round per question.",
       "wbs": "1.1",
       "bench": "B1",
-      "cap": "CANDIDATE",
-      "canDo": "R2 candidate page (2 questions + guided repeat) runs in a browser; never tried by the Owner or the kid",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "P1 brief ready; build not launched yet",
       "capSrc": "https://github.com/reallakshman19/Grade9v3.5/pull/306",
       "repo": "reallakshman19/Grade9v3.5",
-      "branch": "codex/nlm-first-interaction",
+      "branch": "g9-p1/kid-page",
       "commit": "6d66428e820beb86a7889278905c2c69a98a0ff8",
-      "activity": "R2 frozen: draft PR #306; 3 wording rounds on item 002; O4 superseded"
+      "activity": "P1 build waits for the Owner's launch (agy)"
     },
     "M1": {
       "order": 1,
@@ -90,7 +90,8 @@
       "bench": "B2",
       "keeps": "B1",
       "cap": "NOT_DEMONSTRATED",
-      "canDo": "No demonstrated concept-repair/reconstruction path"
+      "canDo": "No demonstrated concept-repair/reconstruction path",
+      "activity": "to be re-planned in O5's roadmap (Q0 step 3)"
     },
     "M2": {
       "order": 2,
@@ -100,7 +101,8 @@
       "bench": "B3",
       "keeps": "B1, B2",
       "cap": "NOT_DEMONSTRATED",
-      "canDo": "No current refined Core-based diagnostic path evidenced"
+      "canDo": "No current refined Core-based diagnostic path evidenced",
+      "activity": "to be re-planned in O5's roadmap (Q0 step 3)"
     },
     "M3": {
       "order": 3,
@@ -110,7 +112,8 @@
       "bench": "B4",
       "keeps": "B1-B3",
       "cap": "NOT_DEMONSTRATED",
-      "canDo": "No demonstrated changed-decision transfer path"
+      "canDo": "No demonstrated changed-decision transfer path",
+      "activity": "to be re-planned in O5's roadmap (Q0 step 3)"
     },
     "M4": {
       "order": 4,
@@ -120,7 +123,8 @@
       "bench": "B5",
       "keeps": "B1-B4",
       "cap": "NOT_DEMONSTRATED",
-      "canDo": "No next-topic learning path evidenced"
+      "canDo": "No next-topic learning path evidenced",
+      "activity": "to be re-planned in O5's roadmap (Q0 step 3)"
     }
   },
   "groups": {
@@ -166,8 +170,19 @@
       "why": "Owner approved first delivery as a few baseline attempts plus ONE identified NLM question with staged support; initial demand discovery moves into M0.",
       "ownerWords": "ok update",
       "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128#issuecomment-6342342365",
+      "status": "superseded",
+      "supersedes": "R1",
+      "commit": "370833051047"
+    },
+    {
+      "id": "R3",
+      "at": "2026-10-23T15:49:41Z",
+      "by": "OTM",
+      "why": "Reset after OTM step-back: new Oracle O5 builds the requirement with the Owner step by step; P1 kid page by the local builder, Owner try, non-author spot-check, then a 15-minute kid session; at most one repair round per question.",
+      "ownerWords": "save work state, supersede R2, create R3",
+      "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6368887319",
       "status": "current",
-      "supersedes": "R1"
+      "supersedes": "R2"
     }
   ]
 }

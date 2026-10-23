@@ -1076,6 +1076,80 @@
       "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6368887319",
       "scope": "milestone:M0",
       "rev": "R2"
+    },
+    {
+      "seq": 80,
+      "id": "G9V35-R-0080",
+      "previous_id": "G9V35-R-0079",
+      "at": "2026-10-23T15:49:41Z",
+      "kind": "REVISION",
+      "actor": "OTM",
+      "summary": "Reset after OTM step-back: new Oracle O5 builds the requirement with the Owner step by step; P1 kid page by the local builder, Owner try, non-author spot-check, then a 15-minute kid session; at most one repair round per question.",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6368887319",
+      "revision": "R3",
+      "supersedes": "R2",
+      "scope": "project",
+      "rev": "R3"
+    },
+    {
+      "seq": 81,
+      "id": "G9V35-R-0081",
+      "previous_id": "G9V35-R-0080",
+      "at": "2026-10-23T15:49:52Z",
+      "kind": "PLAN",
+      "actor": "OTM",
+      "summary": "R3: M0 redefined as P1 kid page",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6368887319",
+      "scope": "milestone:M0",
+      "rev": "R3"
+    },
+    {
+      "seq": 82,
+      "id": "G9V35-R-0082",
+      "previous_id": "G9V35-R-0081",
+      "at": "2026-10-23T15:49:52Z",
+      "kind": "PLAN",
+      "actor": "OTM",
+      "summary": "R3: pending O5 roadmap",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6368887319",
+      "scope": "milestone:M1",
+      "rev": "R3"
+    },
+    {
+      "seq": 83,
+      "id": "G9V35-R-0083",
+      "previous_id": "G9V35-R-0082",
+      "at": "2026-10-23T15:49:52Z",
+      "kind": "PLAN",
+      "actor": "OTM",
+      "summary": "R3: pending O5 roadmap",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6368887319",
+      "scope": "milestone:M2",
+      "rev": "R3"
+    },
+    {
+      "seq": 84,
+      "id": "G9V35-R-0084",
+      "previous_id": "G9V35-R-0083",
+      "at": "2026-10-23T15:49:53Z",
+      "kind": "PLAN",
+      "actor": "OTM",
+      "summary": "R3: pending O5 roadmap",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6368887319",
+      "scope": "milestone:M3",
+      "rev": "R3"
+    },
+    {
+      "seq": 85,
+      "id": "G9V35-R-0085",
+      "previous_id": "G9V35-R-0084",
+      "at": "2026-10-23T15:49:53Z",
+      "kind": "PLAN",
+      "actor": "OTM",
+      "summary": "R3: pending O5 roadmap",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6368887319",
+      "scope": "milestone:M4",
+      "rev": "R3"
     }
   ]
 }
