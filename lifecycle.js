@@ -108,6 +108,12 @@ export function projectHead(p, c) {
     if (isHttps(pj.aimSrc)) a.append(link(pj.aimSrc, 'source'));
     box.append(a);
   } else if (isActive(p)) box.append(el("div", "banner", "No aim written yet. The Owner's aim comes first: pp_cli.py project aim."));
+  // Lesson links are presentation-only; the Lessons ledger remains untouched.
+  if (p.key === 'lessons') {
+    const lesson = el('p', 'muted');
+    lesson.append(el('b', null, 'Lesson 2: '), link('https://github.com/reallakshman19/progress-page/blob/main/docs/lessons/lesson-02-outcome-led-oracle.md', 'Read Outcome-led Oracle (text file)'));
+    box.append(lesson);
+  }
   const m = el('p', 'muted');
   m.append('How we work: ');
   MODULES.forEach((n, i) => { if (i) m.append(' · '); m.append(link(COMMON + n, n)); });
