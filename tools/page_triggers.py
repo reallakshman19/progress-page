@@ -55,7 +55,7 @@ def card_tags(c, rules, now, hold=False):
     actor = (c.get("next") or {}).get("actor") or "-"
     flags = c.get("flags") or []
     is_coord = str(actor).lower() == str(rules["coordinator"]).lower()
-    if actor == "YOU" or "needs-you" in flags:
+    if str(actor).strip().lower() in ("you", "owner") or "needs-you" in flags:   # "Owner" means the Owner too
         return [{"k": "needs-you", "t": "needs you" + ("" if age is None else " · " + fmt(age)), "sev": 2}]
     if c.get("state") == "BLOCKED":
         return []

@@ -68,6 +68,11 @@ class NeedsYou(unittest.TestCase):
         self.assertEqual(counts(r), dict(needsYou=2, owes=0, quiet=0, waiting=0, nudges=0))
         self.assertEqual(tag(r), [("needs-you", "needs you · 5m", 2)])
 
+    def test_owner_as_next_actor_counts_as_you(self):
+        r = rec({"c": mk("SUBMITTED", 20, "Owner"), "d": mk("SUBMITTED", 20, " owner ", order=2),
+                 "e": mk("SUBMITTED", 20, "Owner-led pilot", order=3)})
+        self.assertEqual(r["needsYou"], 2, "Owner and owner mean the Owner; a longer label does not")
+
     def test_beats_paused_and_still_shows_on_hold(self):
         r = rec({"c": mk("IN_PROGRESS", 90, "-", ["paused", "needs-you"])}, hold=True)
         self.assertEqual((r["needsYou"], tag(r)[0][0]), (1, "needs-you"))
@@ -229,7 +234,7 @@ class Command(unittest.TestCase):
 
 
 STATES = ("NOT_STARTED", "IN_PROGRESS", "SUBMITTED", "VERIFIED", "BLOCKED", "STALE", "UNKNOWN", "NOT_APPLICABLE")
-ACTORS = ("-", "YOU", "OTM", "oracle", "Reviewer")
+ACTORS = ("-", "YOU", "Owner", "owner ", "OTM", "oracle", "Reviewer")
 AGES = (None, 0, 14, 15, 29, 30, 59, 60, 61, 119, 120, 5000)
 FLAGS = (None, ["paused"], ["needs-you"], ["paused", "needs-you"])
 JS = """

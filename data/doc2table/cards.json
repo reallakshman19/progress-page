@@ -36,8 +36,8 @@
     "state": "SUBMITTED",
     "now": "Idle by O1 decision: PR #2 0b8a7b4 frozen as reference; browser blocked",
     "next": {
-      "actor": "Owner",
-      "text": "keep idle unless chosen as S1 builder after a browser probe"
+      "actor": "-",
+      "text": "idle by O1's decision; PR #2 0b8a7b4 frozen as reference"
     },
     "refs": [
       {
@@ -46,8 +46,8 @@
         "u": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/155"
       }
     ],
-    "updatedAt": "2026-10-23T02:07:00Z",
-    "src": "https://github.com/reallakshman19/Word-to-Table/issues/1#issuecomment-6355606370",
+    "updatedAt": "2026-10-23T05:53:01Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6356865282",
     "flags": []
   }
 }

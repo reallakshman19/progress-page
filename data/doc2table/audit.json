@@ -931,6 +931,20 @@
       "source": "https://github.com/reallakshman19/Word-to-Table/tree/d2t-s1/prototype",
       "scope": "milestone:M4",
       "rev": "R1"
+    },
+    {
+      "seq": 71,
+      "id": "DOC2TABLE-R-0071",
+      "previous_id": "DOC2TABLE-R-0070",
+      "at": "2026-10-23T05:53:01Z",
+      "kind": "UPDATE",
+      "actor": "OTM",
+      "summary": "next actor was Owner by mistake; it waits on nothing",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6356865282",
+      "card": "tpresc1",
+      "before": "SUBMITTED",
+      "after": "SUBMITTED",
+      "rev": "R1"
     }
   ]
 }

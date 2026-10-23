@@ -35,7 +35,7 @@ export function cardTags(c, rules, now, hold) {
   const age = minutesSince(c.updatedAt, now);
   const actor = (c.next && c.next.actor) || '-';
   const isCoord = String(actor).toLowerCase() === String(rules.coordinator).toLowerCase();
-  if (actor === 'YOU' || (c.flags || []).includes('needs-you')) {
+  if (['you', 'owner'].includes(String(actor).trim().toLowerCase()) || (c.flags || []).includes('needs-you')) {   // "Owner" means the Owner too
     return [{ k: 'needs-you', t: 'needs you' + (age == null ? '' : ' · ' + fmt(age)), sev: 2 }];
   }
   if (c.state === 'BLOCKED') return [];
