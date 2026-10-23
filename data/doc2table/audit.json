@@ -758,6 +758,20 @@
       "before": "IN_PROGRESS",
       "after": "BLOCKED",
       "rev": "R1"
+    },
+    {
+      "seq": 59,
+      "id": "DOC2TABLE-R-0059",
+      "previous_id": "DOC2TABLE-R-0058",
+      "at": "2026-10-23T00:43:10Z",
+      "kind": "STATE",
+      "actor": "OTM",
+      "summary": "Owner attached archives in chat",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6354601942",
+      "card": "tpresc1",
+      "before": "BLOCKED",
+      "after": "IN_PROGRESS",
+      "rev": "R1"
     }
   ]
 }
