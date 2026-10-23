@@ -207,6 +207,20 @@
     },
     {
       "t": "Owner, 22 Oct, \"ok update\": deliver one complete learning interaction first. Capture initial demand with a few existing prompts; preserve question identity/provenance, QRT meanings and non-author checks. Automated properties and actual learner evidence remain separate."
+    },
+    {
+      "t": "LEARNER (Owner, 23 Oct, to Oracle O5): Grade 10 (the project name says Grade 9); target JEE Main (\"JEE Main is target\", replacing \"JEE advanced\"); exam year later; textbook-quality material. Central need: the kid explains why, breaks the idea into parts, and applies it. Replaces \"Grade 9 kid\" and \"top competitive exam\" in CORE AIM (22 Oct).",
+      "u": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128#issuecomment-6369877161"
+    },
+    {
+      "t": "ORACLE OWNS IT (Owner, 23 Oct): \"just create P1 with 7 question, explain concept to codex, oracle, let him do the rest!\" OTM explains the concept, the workflow, the facts and the fixed rules to Oracle O5 (TO G9O5-2, G9O5-2a). O5 decides the design, the picks and the build route. The Owner tries the page first."
+    },
+    {
+      "t": "QRT RULE (Owner, 23 Oct): \"QRT has 7x4. so min 7 types of question in a topic is required! Follow question is unnecessary!\" A topic starts with one question per demand (7 demands x bands D1-D4) to find the kid's demand profile; no follow-up question. P1 and P2 did not meet it; P2 was stopped."
+    },
+    {
+      "t": "DISCUSSION (Owner with Oracle O5, 23 Oct, RE G9O5-0a to 1b), O5's proposal, not accepted: a 38-min Newton's third law session; a roadmap from one Physics session to Maths, Chemistry and harder problems at JEE Main depth. After the QRT rule, the session is the teaching for the demands the diagnostic shows broken.",
+      "u": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128#issuecomment-6369852619"
     }
   ],
   "inputs": [

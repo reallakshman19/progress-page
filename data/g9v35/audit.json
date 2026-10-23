@@ -1411,6 +1411,58 @@
       "before": "NOT_STARTED",
       "after": "IN_PROGRESS",
       "rev": "R3"
+    },
+    {
+      "seq": 105,
+      "id": "G9V35-R-0105",
+      "previous_id": "G9V35-R-0104",
+      "at": "2026-10-23T17:05:10Z",
+      "kind": "FIXTURE",
+      "actor": "OTM",
+      "summary": "Owner intent, 23 Oct: the learner and target, settled with Oracle O5",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6370353389",
+      "list": "intent",
+      "op": "add",
+      "rev": "R3"
+    },
+    {
+      "seq": 106,
+      "id": "G9V35-R-0106",
+      "previous_id": "G9V35-R-0105",
+      "at": "2026-10-23T17:05:10Z",
+      "kind": "FIXTURE",
+      "actor": "OTM",
+      "summary": "Owner way of working with the Oracle, 23 Oct (skill v7.13 lesson 8)",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6370353389",
+      "list": "intent",
+      "op": "add",
+      "rev": "R3"
+    },
+    {
+      "seq": 107,
+      "id": "G9V35-R-0107",
+      "previous_id": "G9V35-R-0106",
+      "at": "2026-10-23T17:05:20Z",
+      "kind": "FIXTURE",
+      "actor": "OTM",
+      "summary": "Owner rule, 23 Oct: QRT diagnostic before teaching",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6370353389",
+      "list": "intent",
+      "op": "add",
+      "rev": "R3"
+    },
+    {
+      "seq": 108,
+      "id": "G9V35-R-0108",
+      "previous_id": "G9V35-R-0107",
+      "at": "2026-10-23T17:05:21Z",
+      "kind": "FIXTURE",
+      "actor": "OTM",
+      "summary": "Owner-Oracle discussion, 23 Oct; a proposal, not accepted",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6370353389",
+      "list": "intent",
+      "op": "add",
+      "rev": "R3"
     }
   ]
 }
