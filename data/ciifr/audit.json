@@ -327,6 +327,20 @@
       "before": "SUBMITTED",
       "after": "IN_PROGRESS",
       "rev": "R2"
+    },
+    {
+      "seq": 25,
+      "id": "CIIFR-R-0025",
+      "previous_id": "CIIFR-R-0024",
+      "at": "2026-10-23T01:31:04Z",
+      "kind": "UPDATE",
+      "actor": "OTM",
+      "summary": "Owner: G3 is Oracle only; P2 needs a fresh builder",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6355213295",
+      "card": "g3",
+      "before": "IN_PROGRESS",
+      "after": "IN_PROGRESS",
+      "rev": "R2"
     }
   ]
 }

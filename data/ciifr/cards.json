@@ -188,16 +188,16 @@
     "order": 7,
     "group": "review",
     "milestone": "M1",
-    "label": "G3-CIIFR-Cond (Oracle + builder)",
+    "label": "G3-CIIFR-Cond (Oracle)",
     "who": {
       "chat": "g3",
       "role": "Oracle"
     },
     "state": "IN_PROGRESS",
-    "now": "Building P2: Transfer Mode (T1/P1 by line number, source -> target CII)",
+    "now": "Oracle only: owns P2 (transfer by line no.) and P3 (node names)",
     "next": {
       "actor": "G3-CIIFR-Cond",
-      "text": "deliver P2 runnable; no pings (Owner)"
+      "text": "P2/P3 cards + builder brief"
     },
     "refs": [
       {
@@ -206,8 +206,8 @@
         "u": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/156#issuecomment-6347011984"
       }
     ],
-    "updatedAt": "2026-10-23T01:26:31Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6355155436",
+    "updatedAt": "2026-10-23T01:31:04Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6355213295",
     "flags": []
   }
 }
