@@ -341,6 +341,20 @@
       "before": "IN_PROGRESS",
       "after": "IN_PROGRESS",
       "rev": "R2"
+    },
+    {
+      "seq": 26,
+      "id": "CIIFR-R-0026",
+      "previous_id": "CIIFR-R-0025",
+      "at": "2026-10-23T01:39:57Z",
+      "kind": "UPDATE",
+      "actor": "OTM",
+      "summary": "Owner navigates CIIFR as the prototype-first pilot",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6355322639",
+      "card": "otm",
+      "before": "IN_PROGRESS",
+      "after": "IN_PROGRESS",
+      "rev": "R2"
     }
   ]
 }
