@@ -8,10 +8,10 @@
       "chat": "oracle"
     },
     "state": "SUBMITTED",
-    "now": "WAITS: Owner to confirm handoff folder (OneDrive-Handoffs?)",
+    "now": "WAITS: TPRES-C1 B1 on original inputs",
     "next": {
-      "actor": "YOU",
-      "text": "confirm handoff folder for the two archives"
+      "actor": "TPRES-C1",
+      "text": "B1 with originals on #155"
     },
     "refs": [
       {
@@ -20,11 +20,9 @@
         "u": "https://github.com/reallakshman19/Word-to-Table/issues/1"
       }
     ],
-    "updatedAt": "2026-10-22T21:40:58Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/155#issuecomment-6349714107",
-    "flags": [
-      "needs-you"
-    ]
+    "updatedAt": "2026-10-23T00:11:50Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6354177591",
+    "flags": []
   },
   "tpresc1": {
     "order": 2,
@@ -35,11 +33,11 @@
       "chat": "tpresc1",
       "role": "Agent"
     },
-    "state": "BLOCKED",
-    "now": "Synthetic scaffold done (70904c1, CI PASS); blocked on archives",
+    "state": "IN_PROGRESS",
+    "now": "Inputs available; running B1 on originals",
     "next": {
-      "actor": "OTM",
-      "text": "make archives available via handoff folder"
+      "actor": "TPRES-C1",
+      "text": "B1 evidence on #155"
     },
     "refs": [
       {
@@ -48,7 +46,7 @@
         "u": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/155"
       }
     ],
-    "updatedAt": "2026-10-22T19:51:31Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/155#issuecomment-6349714107"
+    "updatedAt": "2026-10-23T00:11:51Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6354177591"
   }
 }

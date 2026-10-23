@@ -716,6 +716,34 @@
       "before": "SUBMITTED",
       "after": "SUBMITTED",
       "rev": "R1"
+    },
+    {
+      "seq": 56,
+      "id": "DOC2TABLE-R-0056",
+      "previous_id": "DOC2TABLE-R-0055",
+      "at": "2026-10-23T00:11:50Z",
+      "kind": "UPDATE",
+      "actor": "OTM",
+      "summary": "Owner named handoff folder; archives copied",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6354177591",
+      "card": "oracle",
+      "before": "SUBMITTED",
+      "after": "SUBMITTED",
+      "rev": "R1"
+    },
+    {
+      "seq": 57,
+      "id": "DOC2TABLE-R-0057",
+      "previous_id": "DOC2TABLE-R-0056",
+      "at": "2026-10-23T00:11:51Z",
+      "kind": "STATE",
+      "actor": "OTM",
+      "summary": "Archives in private handoff folder; location being sent",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6354177591",
+      "card": "tpresc1",
+      "before": "BLOCKED",
+      "after": "IN_PROGRESS",
+      "rev": "R1"
     }
   ]
 }
