@@ -258,14 +258,14 @@
       "chat": "oracle4",
       "role": "Oracle O4"
     },
-    "state": "SUBMITTED",
+    "state": "IN_PROGRESS",
     "now": "HELD. O4 RE G9O4-8: keep round 2 head 6d66428e; IR-G9V35 to judge 002 cue before any round 3",
     "next": {
-      "actor": "-",
-      "text": "held: on HOLD lift, OTM routes head + G9O4-7/8 to IR-G9V35; Owner may try launcher (verify ZIP SHA256)"
+      "actor": "Owner",
+      "text": "launch the P1 build (line in OTM chat)"
     },
-    "updatedAt": "2026-10-23T14:03:27Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128",
+    "updatedAt": "2026-10-23T15:43:47Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6368761567",
     "flags": []
   },
   "nlmprod1": {
@@ -281,11 +281,11 @@
     "now": "Round 2 at 6d66428e checked: PARTIAL; 002 cues reduced, not removed; benchmark 19/0; browser NOT_RUN",
     "next": {
       "actor": "-",
-      "text": "held; producer holds writes at 6d66428e"
+      "text": "parked"
     },
     "flags": [],
-    "updatedAt": "2026-10-23T12:28:01Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6364867975"
+    "updatedAt": "2026-10-23T15:43:48Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6368761567"
   },
   "o4": {
     "order": 12,

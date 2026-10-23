@@ -994,6 +994,34 @@
       "before": "SUBMITTED",
       "after": "SUBMITTED",
       "rev": "R2"
+    },
+    {
+      "seq": 74,
+      "id": "G9V35-R-0074",
+      "previous_id": "G9V35-R-0073",
+      "at": "2026-10-23T15:43:47Z",
+      "kind": "STATE",
+      "actor": "OTM",
+      "summary": "Owner adopted OTM reset: P1 kid page by local builder; O4 round-3 folded into P1 as the 002 fix",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6368761567",
+      "card": "oracle4",
+      "before": "SUBMITTED",
+      "after": "IN_PROGRESS",
+      "rev": "R2"
+    },
+    {
+      "seq": 75,
+      "id": "G9V35-R-0075",
+      "previous_id": "G9V35-R-0074",
+      "at": "2026-10-23T15:43:48Z",
+      "kind": "UPDATE",
+      "actor": "OTM",
+      "summary": "Parked: P1 is built by the local builder; PR #306 kept as reference",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6368761567",
+      "card": "nlmprod1",
+      "before": "SUBMITTED",
+      "after": "SUBMITTED",
+      "rev": "R2"
     }
   ]
 }
