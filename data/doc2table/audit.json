@@ -1370,6 +1370,20 @@
       "after": "SUBMITTED",
       "source_at": "2026-10-24T18:04:02Z",
       "rev": "R1"
+    },
+    {
+      "seq": 102,
+      "id": "DOC2TABLE-R-0102",
+      "previous_id": "DOC2TABLE-R-0101",
+      "at": "2026-10-24T18:24:12Z",
+      "kind": "STATE",
+      "actor": "OTM",
+      "summary": "O2 busy on §7 handover; agent-work link queued; G2.1 return seen: draft Word-to-Table PR #7",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6387887727",
+      "card": "D2T-O2",
+      "before": "SUBMITTED",
+      "after": "IN_PROGRESS",
+      "rev": "R1"
     }
   ]
 }

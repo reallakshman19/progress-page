@@ -2539,6 +2539,20 @@
       "after": "SUBMITTED",
       "source_at": "2026-10-24T18:04:02Z",
       "rev": "R3"
+    },
+    {
+      "seq": 194,
+      "id": "CIIFR-R-0194",
+      "previous_id": "CIIFR-R-0193",
+      "at": "2026-10-24T18:24:12Z",
+      "kind": "STATE",
+      "actor": "OTM",
+      "summary": "Onboarding addendum: pinned Common agent-work link sent (Owner words 6387879019)",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6387887727",
+      "card": "CIIFR-O4",
+      "before": "SUBMITTED",
+      "after": "IN_PROGRESS",
+      "rev": "R3"
     }
   ]
 }
