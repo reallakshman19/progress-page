@@ -25,7 +25,8 @@ from pp_ledger_check import check_ledger
 DRIVE_HOST = re.compile(r"(?:drive|docs)\.google\.com\b", re.I)
 DRIVE_FOLDER = re.compile(r"https://drive\.google\.com/drive/folders/[A-Za-z0-9_-]{20,128}(?:\?usp=drive_link)?")
 DRIVE_APPROVAL = "OWNER_APPROVED_PUBLIC_FOLDER"
-SECRETS = ((re.compile(r"(?:1drv\.ms|onedrive\.(?:live\.)?com|docs\.live\.net|sharepoint(?:-df)?\.(?:com|us|de|cn))\b", re.I),
+SECRETS = ((DRIVE_HOST, "contains a Google Drive link not approved as a public folder fixture"),
+           (re.compile(r"(?:1drv\.ms|onedrive\.(?:live\.)?com|docs\.live\.net|sharepoint(?:-df)?\.(?:com|us|de|cn))\b", re.I),
             "contains a OneDrive or SharePoint link"),
            (re.compile(r"[\w.+-]+@[\w-]+\.[\w.]+"), "contains an email address"),
            (re.compile(r"ghp_\w{20,}|github_pat_\w{20,}|sk-[A-Za-z0-9]{20,}"), "contains what looks like an access token"))
@@ -243,8 +244,6 @@ def scan_text(c, root, private):
                 pass  # normal JSON loader reports malformed data
         sanitized = [_strip_approved_folders(s, permitted)
                      for s in (raw, _plain(raw))]
-        if any(DRIVE_HOST.search(s) for s in sanitized):
-            c.err(where, "contains a Google Drive link not approved as a public folder fixture")
         for pattern, why in SECRETS:
             if any(pattern.search(s) for s in sanitized):
                 c.err(where, why)
