@@ -1211,6 +1211,60 @@
       "before": "IN_PROGRESS",
       "after": "IN_PROGRESS",
       "rev": "R1"
+    },
+    {
+      "seq": 91,
+      "id": "DOC2TABLE-R-0091",
+      "previous_id": "DOC2TABLE-R-0090",
+      "at": "2026-10-24T17:48:52Z",
+      "kind": "PLAN",
+      "actor": "OTM",
+      "summary": "Owner named chat; onboarding",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6387396368",
+      "scope": "chat:d2t-o2",
+      "rev": "R1"
+    },
+    {
+      "seq": 92,
+      "id": "DOC2TABLE-R-0092",
+      "previous_id": "DOC2TABLE-R-0091",
+      "at": "2026-10-24T17:48:53Z",
+      "kind": "PLAN",
+      "actor": "OTM",
+      "summary": "Owner named chat; onboarding",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6387396368",
+      "scope": "chat:d2t-g21",
+      "rev": "R1"
+    },
+    {
+      "seq": 93,
+      "id": "DOC2TABLE-R-0093",
+      "previous_id": "DOC2TABLE-R-0092",
+      "at": "2026-10-24T17:48:54Z",
+      "kind": "BASELINE",
+      "actor": "OTM",
+      "summary": "onboarding sent (OTM mode); self-recorded, test post not yet read back",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6387481606",
+      "card": "D2T-O2",
+      "before": null,
+      "after": "SUBMITTED",
+      "source_at": "2026-10-24T17:48:52Z",
+      "rev": "R1"
+    },
+    {
+      "seq": 94,
+      "id": "DOC2TABLE-R-0094",
+      "previous_id": "DOC2TABLE-R-0093",
+      "at": "2026-10-24T17:48:54Z",
+      "kind": "BASELINE",
+      "actor": "OTM",
+      "summary": "onboarding sent (OTM mode); self-recorded, test post not yet read back",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6387490337",
+      "card": "D2T-G21",
+      "before": null,
+      "after": "SUBMITTED",
+      "source_at": "2026-10-24T17:48:52Z",
+      "rev": "R1"
     }
   ]
 }

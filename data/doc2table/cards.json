@@ -49,5 +49,47 @@
     "updatedAt": "2026-10-23T05:53:01Z",
     "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6356865282",
     "flags": []
+  },
+  "D2T-O2": {
+    "order": 3,
+    "group": "main",
+    "milestone": "M1",
+    "label": "Oracle O2-Doc to Table",
+    "who": {
+      "chat": "d2t-o2",
+      "role": "Oracle"
+    },
+    "state": "SUBMITTED",
+    "now": "onboarding sent 24 Oct; awaiting METER, own-words role and test post",
+    "next": {
+      "actor": "Oracle O2-Doc to Table",
+      "text": "reply to onboarding; then OTM posts its test post and reads it back"
+    },
+    "flags": [
+      "paused"
+    ],
+    "updatedAt": "2026-10-24T17:48:52Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6387481606"
+  },
+  "D2T-G21": {
+    "order": 4,
+    "group": "main",
+    "milestone": "M1",
+    "label": "Coder G2.1-Doc to Table",
+    "who": {
+      "chat": "d2t-g21",
+      "role": "Agent"
+    },
+    "state": "SUBMITTED",
+    "now": "onboarding sent 24 Oct; awaiting METER, own-words role and test post",
+    "next": {
+      "actor": "Coder G2.1-Doc to Table",
+      "text": "reply to onboarding; then OTM posts its test post and reads it back"
+    },
+    "flags": [
+      "paused"
+    ],
+    "updatedAt": "2026-10-24T17:48:52Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6387490337"
   }
 }

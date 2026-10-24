@@ -4,8 +4,8 @@
     "key": "ciifr",
     "title": "CII Find & Replace VNext",
     "subtitle": "R3 current: standalone Oracle coordination of P2.5-B handoff, review, Windows acceptance and prepared Oracle succession.",
-    "updatedAt": "2026-10-24T15:46:43Z",
-    "updatedBy": "Oracle 01a16c60",
+    "updatedAt": "2026-10-24T17:48:55Z",
+    "updatedBy": "OTM",
     "staleAfterMin": 120,
     "aim": "Private CII <-> RichInputXMLv2 engine preserving CII hierarchy and exact byte/SHA round-trip, then P2.5 branch -> element -> node mapping and authorized nodal/elemental transfer with audited CII export. Keep P2/P2.1 frozen; XMLv1.1 is a separate incremental fork. Prove real Windows workflow; P3 deferred. Owner retains engineering approval.",
     "aimSrc": "OWNER_PRIVATE_REF:ciifr-r3-engineering-aim-20261024"
@@ -75,6 +75,16 @@
     "coder-nodemap": {
       "label": "Node-map coder",
       "id8": "6adc940c",
+      "engine": "ChatGPT"
+    },
+    "ciifr-o4": {
+      "label": "O4-CIIFR4",
+      "id8": "6adccfac",
+      "engine": "ChatGPT"
+    },
+    "ciifr-g41": {
+      "label": "G4.1-CIIFR4",
+      "id8": "6adcde70",
       "engine": "ChatGPT"
     }
   },

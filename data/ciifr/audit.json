@@ -2395,6 +2395,60 @@
       "list": "pending",
       "op": "add",
       "rev": "R3"
+    },
+    {
+      "seq": 184,
+      "id": "CIIFR-R-0184",
+      "previous_id": "CIIFR-R-0183",
+      "at": "2026-10-24T17:48:53Z",
+      "kind": "PLAN",
+      "actor": "OTM",
+      "summary": "Owner named chat; onboarding",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6387396368",
+      "scope": "chat:ciifr-o4",
+      "rev": "R3"
+    },
+    {
+      "seq": 185,
+      "id": "CIIFR-R-0185",
+      "previous_id": "CIIFR-R-0184",
+      "at": "2026-10-24T17:48:54Z",
+      "kind": "PLAN",
+      "actor": "OTM",
+      "summary": "Owner named chat; onboarding",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6387396368",
+      "scope": "chat:ciifr-g41",
+      "rev": "R3"
+    },
+    {
+      "seq": 186,
+      "id": "CIIFR-R-0186",
+      "previous_id": "CIIFR-R-0185",
+      "at": "2026-10-24T17:48:55Z",
+      "kind": "BASELINE",
+      "actor": "OTM",
+      "summary": "onboarding sent (OTM mode); self-recorded, test post not yet read back",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6387501335",
+      "card": "CIIFR-O4",
+      "before": null,
+      "after": "SUBMITTED",
+      "source_at": "2026-10-24T17:48:52Z",
+      "rev": "R3"
+    },
+    {
+      "seq": 187,
+      "id": "CIIFR-R-0187",
+      "previous_id": "CIIFR-R-0186",
+      "at": "2026-10-24T17:48:55Z",
+      "kind": "BASELINE",
+      "actor": "OTM",
+      "summary": "onboarding sent (OTM mode); self-recorded, test post not yet read back",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6387515146",
+      "card": "CIIFR-G41",
+      "before": null,
+      "after": "SUBMITTED",
+      "source_at": "2026-10-24T17:48:52Z",
+      "rev": "R3"
     }
   ]
 }

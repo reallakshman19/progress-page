@@ -583,5 +583,47 @@
     ],
     "updatedAt": "2026-10-24T15:45:42Z",
     "src": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/157"
+  },
+  "CIIFR-O4": {
+    "order": 11,
+    "group": "r3-engine",
+    "milestone": "M8",
+    "label": "Oracle O4-CIIFR4",
+    "who": {
+      "chat": "ciifr-o4",
+      "role": "Oracle"
+    },
+    "state": "SUBMITTED",
+    "now": "onboarding sent 24 Oct; awaiting METER, own-words role and test post",
+    "next": {
+      "actor": "Oracle O4-CIIFR4",
+      "text": "reply to onboarding; then OTM posts its test post and reads it back"
+    },
+    "flags": [
+      "paused"
+    ],
+    "updatedAt": "2026-10-24T17:48:52Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6387501335"
+  },
+  "CIIFR-G41": {
+    "order": 12,
+    "group": "r3-engine",
+    "milestone": "M8",
+    "label": "Coder G4.1-CIIFR4",
+    "who": {
+      "chat": "ciifr-g41",
+      "role": "Agent"
+    },
+    "state": "SUBMITTED",
+    "now": "onboarding sent 24 Oct; awaiting METER, own-words role and test post",
+    "next": {
+      "actor": "Coder G4.1-CIIFR4",
+      "text": "reply to onboarding; then OTM posts its test post and reads it back"
+    },
+    "flags": [
+      "paused"
+    ],
+    "updatedAt": "2026-10-24T17:48:52Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6387515146"
   }
 }
