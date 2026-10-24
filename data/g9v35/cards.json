@@ -372,8 +372,8 @@
       "role": "Oracle",
       "chat": "oracle5"
     },
-    "state": "IN_PROGRESS",
-    "now": "WAITS on WBS 2.4 builder; its 3 questions superseded (Owner 24 Oct)",
+    "state": "SUBMITTED",
+    "now": "WAITS on the WBS 2.4 builder (not launched yet); nothing for O5 until it returns",
     "next": {
       "actor": "NLM page builder",
       "text": "return the built NLM page; then O5 reads the return and keeps the two-card horizon"
@@ -390,11 +390,11 @@
     "who": {
       "role": "Agent"
     },
-    "state": "NOT_STARTED",
-    "now": "WBS 2.4: launch line ready (Codex app, new chat, workspace C:\\CodeC\\Grade9v3.5); Owner ok on read-back 24 Oct",
+    "state": "BLOCKED",
+    "now": "WBS 2.4 builder not launched: waits on the Owner (Codex app, new chat; line on the Owner's clipboard)",
     "next": {
       "actor": "YOU",
-      "text": "open a NEW Codex chat and paste the BUILDER-START line (on clipboard); expected: built NLM page, then OTM runs it"
+      "text": "open a NEW Codex app chat in C:\\CodeC\\Grade9v3.5 and paste the BUILDER-START line; expected: built NLM page, then OTM runs it"
     },
     "flags": [
       "needs-you"

@@ -1712,6 +1712,36 @@
       "after": "IN_PROGRESS",
       "source_at": "2026-10-24T03:37:16Z",
       "rev": "R3"
+    },
+    {
+      "seq": 127,
+      "id": "G9V35-R-0127",
+      "previous_id": "G9V35-R-0126",
+      "at": "2026-10-24T04:08:17Z",
+      "kind": "STATE",
+      "actor": "OTM",
+      "summary": "NOT_STARTED never triggers, so the Owner's launch was invisible; BLOCKED with YOU makes it count",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128#issuecomment-6378741959",
+      "card": "builder",
+      "before": "NOT_STARTED",
+      "after": "BLOCKED",
+      "source_at": "2026-10-24T02:27:00Z",
+      "rev": "R3"
+    },
+    {
+      "seq": 128,
+      "id": "G9V35-R-0128",
+      "previous_id": "G9V35-R-0127",
+      "at": "2026-10-24T04:08:17Z",
+      "kind": "STATE",
+      "actor": "OTM",
+      "summary": "IN_PROGRESS raised a false quiet trigger; O5 is waiting, not working",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6379392090",
+      "card": "oracle5",
+      "before": "IN_PROGRESS",
+      "after": "SUBMITTED",
+      "source_at": "2026-10-24T03:37:16Z",
+      "rev": "R3"
     }
   ]
 }
