@@ -76,6 +76,44 @@
       "source": "OWNER_PRIVATE_REF:sctl-owner-request-20261024",
       "scope": "milestone:M5",
       "rev": "R1"
+    },
+    {
+      "seq": 7,
+      "id": "SCTL-R-0007",
+      "previous_id": "SCTL-R-0006",
+      "at": "2026-10-24T17:31:23.181Z",
+      "kind": "REVISION",
+      "actor": "Oracle",
+      "summary": "Owner specifies Word-to-Table as parent repo and SCTL as independent fourth top-level application tab.",
+      "source": "OWNER_PRIVATE_REF:sctl-parent-tab-owner-20261024",
+      "revision": "R2",
+      "supersedes": "R1",
+      "scope": "project",
+      "rev": "R2"
+    },
+    {
+      "seq": 8,
+      "id": "SCTL-R-0008",
+      "previous_id": "SCTL-R-0007",
+      "at": "2026-10-24T17:31:23.181Z",
+      "kind": "PLAN",
+      "actor": "Oracle",
+      "summary": "Correct P1/P2 integration target: Word-to-Table prototype runtime, preserve Tables/CAPS/Word-HTML diff; native issue #6.",
+      "source": "https://github.com/reallakshman19/Word-to-Table/issues/6",
+      "scope": "milestone:M1",
+      "rev": "R2"
+    },
+    {
+      "seq": 9,
+      "id": "SCTL-R-0009",
+      "previous_id": "SCTL-R-0008",
+      "at": "2026-10-24T17:31:23.181Z",
+      "kind": "PLAN",
+      "actor": "Oracle",
+      "summary": "Apply single parent-app-tab scope to remaining P2–P5 milestones.",
+      "source": "https://github.com/reallakshman19/Word-to-Table/issues/6",
+      "scope": "milestone:M2-M5",
+      "rev": "R2"
     }
   ]
 }
