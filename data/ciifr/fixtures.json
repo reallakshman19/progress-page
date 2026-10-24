@@ -3,6 +3,16 @@
     {
       "t": "XML_Compare_Utilities: the CIIFR product repository",
       "u": "https://github.com/reallakshman19/XML_Compare_Utilities"
+    },
+    {
+      "t": "Common Oracle Cycle / p25b CURRENT.json and one-line Cycle protocol",
+      "u": "https://github.com/reallakshman19/Common/tree/main/oracle-cycles/p25b",
+      "s": "ACTIVE_REV1"
+    },
+    {
+      "t": "Common agent-work Oracle Standalone skill, changeover, continuity and onboarding",
+      "u": "https://github.com/reallakshman19/Common/tree/main/skills/agent-work/oracle-standalone",
+      "s": "MERGED"
     }
   ],
   "issues": [
@@ -13,6 +23,11 @@
     {
       "t": "#153 repair task and the A1FR receipt",
       "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/153"
+    },
+    {
+      "t": "Cycle issue #465: public-safe coder/reviewer return inbox; comments do not themselves advance CURRENT.json",
+      "u": "https://github.com/reallakshman19/Common/issues/465",
+      "s": "OPEN"
     }
   ],
   "pullRequests": [
@@ -20,23 +35,101 @@
       "t": "PR #150 Config tab with shared conflict and approval policy",
       "u": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/150",
       "s": "draft · HOLD"
+    },
+    {
+      "t": "Common PR #466: Cycle revision 1 activation",
+      "u": "https://github.com/reallakshman19/Common/pull/466",
+      "s": "MERGED"
+    },
+    {
+      "t": "Common PR #467: proposed revision 2 PARTIAL coder receipt reconciliation",
+      "u": "https://github.com/reallakshman19/Common/pull/467",
+      "s": "DRAFT"
+    },
+    {
+      "t": "Common PR #468: prepared successor Oracle checkpoint (no activated cutover)",
+      "u": "https://github.com/reallakshman19/Common/pull/468",
+      "s": "DRAFT"
+    },
+    {
+      "t": "Progress Page PR #8: Owner-approved public Drive FOLDER URL exception only (not merged)",
+      "u": "https://github.com/reallakshman19/progress-page/pull/8",
+      "s": "DRAFT"
     }
   ],
-  "roadmap": [],
+  "roadmap": [
+    {
+      "t": "Delivery A: unchanged v0.1.1 code-only ZIP via private Handoffs -> recipient SHA-256 and 12/12 content/protected-scope audit -> bounded independent review on issue #465.",
+      "s": "NEXT"
+    },
+    {
+      "t": "Delivery B: Owner unmocked Windows Discover -> Accept -> Preview -> Apply -> Export and authorized CII output byte audit; then explicit Owner acceptance and Progress revision update.",
+      "s": "AFTER_A"
+    }
+  ],
   "highRoi": [
     {
       "t": "Benchmark R0 (method): one builder chat (G3, 6ada4669) gave the Owner a locally runnable CII branch editor in about 7 h; Owner estimate for the multi-agent route 40+ h and 5 agents",
       "u": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/156"
     }
   ],
-  "future": [],
-  "intent": [],
-  "inputs": [],
+  "future": [
+    {
+      "t": "P3 node-naming phase deferred; do not start until Owner explicitly revises scope and authorizes a new task.",
+      "s": "DEFERRED"
+    }
+  ],
+  "intent": [
+    {
+      "t": "R3 Owner: same CIIFR project; add revision R3 current, supersede R2, record intent and fixtures, prepare future Oracle handoff. Standalone, not OTM.",
+      "s": "OWNER_DIRECT"
+    },
+    {
+      "t": "Product intent: private CAESAR II CII <-> RichInputXML tool with guarded preview/apply/export UI. Preserve frozen original P2.1 and authentic model semantics; finish P2.5-B distribution/review/native Windows acceptance. P3 deferred.",
+      "s": "OWNER_SCOPE"
+    }
+  ],
+  "inputs": [
+    {
+      "t": "Frozen private P2.1 original baseline: Owner-carried archive identity SHA-256 2faf45ddada2da531c3f1627f74fc364525e3d2b045435c69ab5ac58470b3ab1; protected 24/24 files independently reported byte-identical; Python 84 PASS, 10 SKIP, 0 FAIL.",
+      "s": "PRIVATE_REPORTED"
+    },
+    {
+      "t": "Integrated repaired runnable v0.1.1: Owner-carried IR SHA-256 378a60fefeba25d60157fd66a3e3d8b45642778e180e04b39b411df4c346988a; 64 ZIP entries; UI-01/UI-02 closed in injected browser scope; protected P2.1 unchanged.",
+      "s": "IR_OWNER_REPORTED"
+    },
+    {
+      "t": "Coder code-only v0.1.1 ZIP: 42,447 bytes; SHA-256 29d6219842e4b1dec24f7b0f702b67744c7327cbcaaa80c8a7098ebe3234761d; local ZIP integrity PASS and 12/12 corresponding entries matched, per coder.",
+      "u": "https://github.com/reallakshman19/Common/issues/465#issuecomment-6379577797",
+      "s": "CODER_PARTIAL"
+    },
+    {
+      "t": "Private Owner Handoffs storage: original customer CII/XML models, frozen baseline and final ZIPs belong in access-controlled project folder; no verified recipient-accessible v0.1.1 code-only ZIP was found in checked Drive scope.",
+      "s": "PRIVATE_PENDING"
+    }
+  ],
   "knownIssues": [
     {
       "t": "F01 and F02 (stale-Generate race) plus two P2 items on PR #150",
       "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/152#issuecomment-6322145497",
       "s": "open"
+    },
+    {
+      "t": "UI-01 before/after values and UI-02 stale preview: CLOSED only in independently reviewed v0.1.1 injected-browser test scope.",
+      "s": "SCOPED_CLOSED"
+    },
+    {
+      "t": "Code-only custody and independent review BLOCKED: coder local byte check is not authenticated reviewer download from private Drive.",
+      "u": "https://github.com/reallakshman19/Common/issues/465#issuecomment-6379577797",
+      "s": "BLOCKED"
+    },
+    {
+      "t": "QA-01 intermittent async test assertion OPEN_LOW; PKG-01 unchanged protected-source identifiers and TRUST-01 local backend trust are existing boundaries.",
+      "s": "OPEN_SCOPED"
+    },
+    {
+      "t": "Native Windows served-browser workflow and Owner acceptance NOT_RUN; authentic 32-element transfer PASS applies only to previously scoped mapping.",
+      "s": "NOT_RUN"
     }
   ],
   "pending": [
@@ -44,6 +137,22 @@
       "t": "Corrective draft PR and evidence from the A1FR coder",
       "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/153",
       "s": "waiting"
+    },
+    {
+      "t": "Coder must place exact unchanged code-only ZIP in authorized private Handoffs and return access/actual hash confirmation or honest blocker.",
+      "s": "CODER_NEXT"
+    },
+    {
+      "t": "IR must independently fetch/hash actual code-only bytes, audit patch scope and return source-bound verdict on the same candidate.",
+      "s": "AWAITING_CODER"
+    },
+    {
+      "t": "Owner Windows acceptance and actual output audit remain NOT_RUN; P2.1 immutable, P3 not authorized.",
+      "s": "OWNER_GATE"
+    },
+    {
+      "t": "Future Oracle successor UNASSIGNED: checkpoint prepared only; no control epoch, retirement, assignment adoption, or write isolation achieved.",
+      "s": "PREPARED_ONLY"
     }
   ]
 }
