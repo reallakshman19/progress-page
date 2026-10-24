@@ -8,14 +8,14 @@
       "chat": "ir",
       "role": "IR-CIIFR-PR150"
     },
-    "state": "VERIFIED",
+    "state": "NOT_APPLICABLE",
     "now": "Independent review of PR #150 returned FAIL / HOLD ([XCU #152 6322145497](https://github.com/reallakshman19/XML_Compare_Utilities/issues/152#issuecomment-6322145497)). The Oracle reconciled it at 17:28Z ([XCU #152 6322285804](https://github.com/reallakshman19/XML_Compare_Utilities/issues/152#issuecomment-6322285804)). CIIFR IR is parked.",
     "next": {
       "actor": "-",
-      "text": "re-review when a corrective PR arrives"
+      "text": ""
     },
-    "updatedAt": "2026-10-21T17:21:19Z",
-    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/152#issuecomment-6322145497",
+    "updatedAt": "2026-10-24T04:31:52Z",
+    "src": "OWNER_PRIVATE_REF:ciifr-r3-owner-intent-20261024",
     "refs": [
       {
         "k": "issue",
@@ -40,7 +40,15 @@
         "to": "o2",
         "k": "to"
       }
-    ]
+    ],
+    "closed": {
+      "kind": "superseded",
+      "why": "R2 PR150 reviewer status is historical; R3 exact code-only independent review is a new scoped gate",
+      "at": "2026-10-24T04:31:52Z",
+      "src": "OWNER_PRIVATE_REF:ciifr-r3-owner-intent-20261024",
+      "by": "reviewer-p25b"
+    },
+    "flags": []
   },
   "o2": {
     "order": 2,
@@ -119,14 +127,14 @@
     "who": {
       "role": "this session"
     },
-    "state": "IN_PROGRESS",
+    "state": "NOT_APPLICABLE",
     "now": "Pilot navigated by the Owner; OTM records and harvests lessons",
     "next": {
-      "actor": "Pilot (Owner-led)",
-      "text": "Owner steers G3; OTM harvests lessons"
+      "actor": "-",
+      "text": ""
     },
-    "updatedAt": "2026-10-23T01:40:08Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6355322639",
+    "updatedAt": "2026-10-24T04:31:52Z",
+    "src": "OWNER_PRIVATE_REF:ciifr-r3-owner-intent-20261024",
     "refs": [
       {
         "k": "issue",
@@ -140,7 +148,14 @@
         "k": "to"
       }
     ],
-    "flags": []
+    "flags": [],
+    "closed": {
+      "kind": "superseded",
+      "why": "R3 standalone Oracle replaces outdated OTM pilot-coordination card; historical evidence retained",
+      "at": "2026-10-24T04:31:52Z",
+      "src": "OWNER_PRIVATE_REF:ciifr-r3-owner-intent-20261024",
+      "by": "g3"
+    }
   },
   "a1fr": {
     "order": 5,
@@ -151,21 +166,29 @@
       "chat": "a1fr",
       "role": "Antigravity A1FR, agent c3917ee8"
     },
-    "state": "IN_PROGRESS",
+    "state": "NOT_APPLICABLE",
     "now": "ADOPTED at 05:03 ([XCU #153 6330118639](https://github.com/reallakshman19/XML_Compare_Utilities/issues/153#issuecomment-6330118639)) and ACKed on [G9 #300 6330322621](https://github.com/reallakshman19/Grade9v3.5/issues/300#issuecomment-6330322621) (METER 20%). Full checkout verified; branch wip/cii-fnr-vnext/f02-p2-repair-20261022-c3917ee8 from PR #150 head 19c3cdf1. Working through backups and red tests.",
     "next": {
-      "actor": "A1FR",
-      "text": "post the draft corrective PR and its evidence on #153"
+      "actor": "-",
+      "text": ""
     },
-    "updatedAt": "2026-10-22T01:18:11Z",
-    "src": "https://github.com/reallakshman19/Grade9v3.5/issues/300#issuecomment-6330322621",
+    "updatedAt": "2026-10-24T04:31:52Z",
+    "src": "OWNER_PRIVATE_REF:ciifr-r3-owner-intent-20261024",
     "refs": [
       {
         "k": "issue",
         "l": "XCU #153",
         "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/153"
       }
-    ]
+    ],
+    "closed": {
+      "kind": "superseded",
+      "why": "R3 current coder assignment differs from historical R2 Antigravity repair; old work remains history",
+      "at": "2026-10-24T04:31:52Z",
+      "src": "OWNER_PRIVATE_REF:ciifr-r3-owner-intent-20261024",
+      "by": "coder-p25b"
+    },
+    "flags": []
   },
   "o3": {
     "order": 6,
@@ -176,39 +199,141 @@
       "chat": "o3",
       "role": "Oracle"
     },
-    "state": "IN_PROGRESS",
+    "state": "NOT_APPLICABLE",
     "now": "New task decomposition and prototype; coder prompt in preparation",
     "next": {
-      "actor": "Oracle O3",
-      "text": "generate the coder prompt; OTM assigns an Antigravity coder"
+      "actor": "-",
+      "text": ""
     },
-    "updatedAt": "2026-10-22T16:49:18Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6346220289"
+    "updatedAt": "2026-10-24T04:31:52Z",
+    "src": "OWNER_PRIVATE_REF:ciifr-r3-owner-intent-20261024",
+    "closed": {
+      "kind": "superseded",
+      "why": "R3 incumbent Oracle card supersedes old O3 planning status; no Oracle successor cutover",
+      "at": "2026-10-24T04:31:52Z",
+      "src": "OWNER_PRIVATE_REF:ciifr-r3-owner-intent-20261024",
+      "by": "g3"
+    },
+    "flags": []
   },
   "g3": {
     "order": 7,
-    "group": "review",
-    "milestone": "M1",
-    "label": "G3-CIIFR-Cond (Oracle)",
+    "group": "r3-oracle",
+    "milestone": "M7",
+    "label": "CIIFR R3 incumbent Oracle",
     "who": {
       "chat": "g3",
-      "role": "Oracle"
+      "role": "Oracle (incumbent; no OTM)"
     },
     "state": "IN_PROGRESS",
-    "now": "Oracle only: owns P2 (transfer by line no.) and P3 (node names)",
+    "now": "Oracle 6ada4669 coordinates R3: Common Cycle ACTIVE rev1; coder PARTIAL receipt observed; reconciliation PR #467 draft; frozen P2.1 retained; successor not yet appointed.",
     "next": {
-      "actor": "G3-CIIFR-Cond",
-      "text": "P2/P3 cards + builder brief"
+      "actor": "Owner",
+      "text": "Merge applicable reviewed PRs when approved; sustain existing Cycle assignment; prepare future Oracle with unchanged aim and two connected deliveries."
     },
     "refs": [
       {
         "k": "comment",
         "l": "evidence",
         "u": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/156#issuecomment-6347011984"
+      },
+      {
+        "k": "pr",
+        "l": "Cycle reconciliation proposal",
+        "u": "https://github.com/reallakshman19/Common/pull/467",
+        "s": "DRAFT"
       }
     ],
-    "updatedAt": "2026-10-23T01:31:04Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6355213295",
+    "updatedAt": "2026-10-24T04:31:52Z",
+    "src": "OWNER_PRIVATE_REF:ciifr-r3-owner-intent-20261024",
     "flags": []
+  },
+  "coder-p25b": {
+    "order": 8,
+    "group": "r3-code",
+    "milestone": "M4",
+    "label": "Coder · v0.1.1 code-only",
+    "who": {
+      "chat": "coder-p25b",
+      "role": "Coder"
+    },
+    "state": "BLOCKED",
+    "now": "GitHub issue #465 contains coder-reported PARTIAL receipt: 42,447-byte ZIP, SHA-256 29d62198...34761d, ZIP CRC PASS and 12/12 cross-runnable entries matched locally. Recipient-accessible private Drive file NOT CONFIRMED.",
+    "next": {
+      "actor": "Coder 6adb2ff1",
+      "text": "Deliver same exact unchanged ZIP through authorized private Handoffs or report actual access blocker; issue #465 receipt; independent review still NOT_RUN."
+    },
+    "refs": [
+      {
+        "k": "comment",
+        "l": "Coder PARTIAL receipt",
+        "u": "https://github.com/reallakshman19/Common/issues/465#issuecomment-6379577797",
+        "s": "Coder-reported"
+      }
+    ],
+    "updatedAt": "2026-10-24T04:31:51Z",
+    "src": "https://github.com/reallakshman19/Common/issues/465#issuecomment-6379577797"
+  },
+  "reviewer-p25b": {
+    "order": 9,
+    "group": "r3-review",
+    "milestone": "M5",
+    "label": "IR · code-only verification",
+    "who": {
+      "chat": "reviewer-p25b",
+      "role": "Independent reviewer (actual scope-bound independence)"
+    },
+    "state": "NOT_STARTED",
+    "now": "Owner-carried IR report verified runnable v0.1.1 and protected P2.1; independent code-only ZIP download/byte check NOT_RUN.",
+    "next": {
+      "actor": "Coder then IR",
+      "text": "Once exact code-only ZIP is privately retrievable: independently hash bytes, audit 12/12 contents and return a bounded PASS/FAIL to Cycle issue #465."
+    },
+    "refs": [
+      {
+        "k": "issue",
+        "l": "Cycle receipt inbox",
+        "u": "https://github.com/reallakshman19/Common/issues/465",
+        "s": "ACTIVE"
+      }
+    ]
+  },
+  "windows-r3": {
+    "order": 10,
+    "group": "r3-windows",
+    "milestone": "M6",
+    "label": "Owner · native Windows acceptance",
+    "who": {
+      "role": "Owner"
+    },
+    "state": "NOT_STARTED",
+    "now": "Native served-browser and local backend Discover / Accept / Preview / Apply / Export CII plus authorized output byte audit: NOT_RUN; Owner acceptance NOT GRANTED.",
+    "next": {
+      "actor": "Owner after verified artifact",
+      "text": "Perform native Windows end-to-end using private authorized files; return real test observations, exceptions and explicit acceptance or refusal."
+    }
+  },
+  "successor-r3": {
+    "order": 11,
+    "group": "r3-oracle",
+    "milestone": "M7",
+    "label": "Future Oracle · preparation only",
+    "who": {
+      "role": "Oracle successor (UNASSIGNED)"
+    },
+    "state": "NOT_STARTED",
+    "now": "Successor checkpoint prepared in Common PR #468. No successor ID, generation/epoch cutover, adoption or write exclusion has been authorized or published.",
+    "next": {
+      "actor": "Owner and incumbent Oracle",
+      "text": "Nominate successor based on demonstrated understanding; read Common agent-work and prepare read-only capability check; activate only via explicit controlled cutover."
+    },
+    "refs": [
+      {
+        "k": "pr",
+        "l": "Prepared Oracle R3 onboarding",
+        "u": "https://github.com/reallakshman19/Common/pull/468",
+        "s": "DRAFT"
+      }
+    ]
   }
 }

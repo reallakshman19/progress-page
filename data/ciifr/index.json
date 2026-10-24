@@ -3,19 +3,19 @@
   "project": {
     "key": "ciifr",
     "title": "CII Find & Replace VNext",
-    "subtitle": "Preview from the OTM board. The CIIFR Oracle owns the real data (standalone mode).",
-    "updatedAt": "2026-10-23T01:40:08Z",
-    "updatedBy": "OTM",
+    "subtitle": "R3 current: standalone Oracle coordination of P2.5-B handoff, review, Windows acceptance and prepared Oracle succession.",
+    "updatedAt": "2026-10-24T04:34:34Z",
+    "updatedBy": "Oracle",
     "staleAfterMin": 120,
-    "aim": "NO AIM WRITTEN BY THE OWNER YET. Work on this tab waits for the Owner's aim.",
-    "aimSrc": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6339978122"
+    "aim": "Build and privately validate CII Find & Replace VNext (CII <-> RichInputXML) with a usable guarded UI. Preserve frozen P2.1, finish P2.5-B code-only custody and independent review, then native Windows Owner acceptance. Track GitHub Cycle handoffs and prepare a successor Oracle; P3 stays deferred.",
+    "aimSrc": "OWNER_PRIVATE_REF:ciifr-r3-owner-intent-20261024"
   },
   "rules": {
     "quietAfterMin": 30,
     "idleAfterMin": 15,
     "owesAfterMin": 15,
     "waitingAfterMin": 15,
-    "coordinator": "Owner"
+    "coordinator": "Oracle"
   },
   "chats": {
     "ir": {
@@ -46,6 +46,16 @@
       "label": "G3-CIIFR-Cond",
       "id8": "6ada4669",
       "engine": "ChatGPT"
+    },
+    "coder-p25b": {
+      "label": "P2.5-B coder",
+      "id8": "6adb2ff1",
+      "engine": "ChatGPT"
+    },
+    "reviewer-p25b": {
+      "label": "P2.5-B independent reviewer",
+      "id8": "6adb484a",
+      "engine": "ChatGPT"
     }
   },
   "milestones": {
@@ -63,6 +73,35 @@
       "order": 3,
       "name": "Merge",
       "full": "Owner merge"
+    },
+    "M4": {
+      "name": "Code-only",
+      "full": "Unchanged v0.1.1 code-only ZIP retrieved and byte-verified by an authorized recipient",
+      "order": 4,
+      "cap": "CANDIDATE",
+      "canDo": "Coder reports a locally checked code-only candidate; recipient retrieval remains blocked",
+      "capSrc": "https://github.com/reallakshman19/Common/issues/465#issuecomment-6379577797"
+    },
+    "M5": {
+      "name": "Independent review",
+      "full": "Independently audit exact code-only bytes, 12-of-12 application-file correspondence, protected source boundaries and limitations",
+      "order": 5,
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "No completed deliverable for this gate yet"
+    },
+    "M6": {
+      "name": "Windows acceptance",
+      "full": "Owner completes native unmocked Windows browser/back-end and authorized CII output checks",
+      "order": 6,
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "No completed deliverable for this gate yet"
+    },
+    "M7": {
+      "name": "Oracle succession",
+      "full": "Prepare source-grounded replacement checkpoint and publish actual epoch cutover only after Owner approval",
+      "order": 7,
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "No completed deliverable for this gate yet"
     }
   },
   "groups": {
@@ -85,6 +124,22 @@
           "c": "n"
         }
       ]
+    },
+    "r3-code": {
+      "title": "R3 · Code-only custody",
+      "order": 3
+    },
+    "r3-review": {
+      "title": "R3 · Independent verification",
+      "order": 4
+    },
+    "r3-windows": {
+      "title": "R3 · Windows / Owner acceptance",
+      "order": 5
+    },
+    "r3-oracle": {
+      "title": "R3 · Oracle successor preparation",
+      "order": 6
     }
   },
   "revisions": [
@@ -105,8 +160,19 @@
       "why": "R1 superseded by the Owner; R2: standalone, no Codex, OTM acts on the Owner's behalf and publishes task evidence",
       "ownerWords": "CIIFR R1 is superseded, This is R2 ... Standalone, No Codex. You will act on my behalf. Make then publish task evidence, read via sonnet.",
       "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6345770293",
+      "status": "superseded",
+      "supersedes": "R1",
+      "commit": "17b2af28596f"
+    },
+    {
+      "id": "R3",
+      "at": "2026-10-24T04:31:50Z",
+      "by": "Oracle",
+      "why": "Owner directs R3 to supersede R2 within the existing CIIFR standalone project; consolidate P2.5-B and prepare Oracle succession",
+      "ownerWords": "its same as CIIFR, add a new revision R3 tab, supersede. record owner intent, fixtures all details. need to prepare for an oracle hand off to new oracle, read skills/agent-work",
+      "src": "OWNER_PRIVATE_REF:ciifr-r3-owner-intent-20261024",
       "status": "current",
-      "supersedes": "R1"
+      "supersedes": "R2"
     }
   ]
 }
