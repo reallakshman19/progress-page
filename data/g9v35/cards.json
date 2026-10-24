@@ -393,15 +393,15 @@
       "role": "Agent"
     },
     "state": "NOT_STARTED",
-    "now": "Waits for the 2.3 content files",
+    "now": "Start brief ready 06:26 (O5 G9O5-5a)",
     "next": {
-      "actor": "OTM",
-      "text": "set up the builder folder, then give the Owner the launch line"
+      "actor": "Owner",
+      "text": "launch a new agy builder with the BUILDER-START.txt path"
     },
     "flags": [
       "needs-you"
     ],
-    "updatedAt": "2026-10-23T20:44:45Z",
+    "updatedAt": "2026-10-24T02:41:19Z",
     "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128#issuecomment-6372752959"
   },
   "checker": {
@@ -426,13 +426,13 @@
     "label": "ChatGPT content author (2.3)",
     "who": {},
     "state": "SUBMITTED",
-    "now": "Returned 23:49 (DRAFT, 10 pairs); files saved locally 06:25",
+    "now": "Returned 23:49 (DRAFT, 10 pairs); O5 checked structure; inputs in builder start brief",
     "next": {
-      "actor": "OTM",
-      "text": "hand files to the 2.4 builder"
+      "actor": "-",
+      "text": ""
     },
     "flags": [],
-    "updatedAt": "2026-10-24T02:25:54Z",
+    "updatedAt": "2026-10-24T02:41:19Z",
     "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128#issuecomment-6372752959"
   }
 }
