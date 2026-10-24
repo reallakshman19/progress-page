@@ -393,16 +393,16 @@
       "role": "Agent"
     },
     "state": "NOT_STARTED",
-    "now": "Start brief ready 06:26 (O5 G9O5-5a)",
+    "now": "WBS 2.4: launch line ready (Codex app, new chat, workspace C:\\CodeC\\Grade9v3.5); Owner ok on read-back 24 Oct",
     "next": {
-      "actor": "Owner",
-      "text": "launch a new agy builder with the BUILDER-START.txt path"
+      "actor": "YOU",
+      "text": "open a NEW Codex chat and paste the BUILDER-START line (on clipboard); expected: built NLM page, then OTM runs it"
     },
     "flags": [
       "needs-you"
     ],
-    "updatedAt": "2026-10-24T02:41:19Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128#issuecomment-6372752959"
+    "updatedAt": "2026-10-24T02:27:00Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128#issuecomment-6378741959"
   },
   "checker": {
     "order": 15,
@@ -428,13 +428,13 @@
       "chat": "content"
     },
     "state": "SUBMITTED",
-    "now": "Returned 23:49 (DRAFT, 10 pairs); O5 checked structure; inputs in builder start brief",
+    "now": "DRAFT 10 pairs; O5 structural PASS; 4 D4 UNCERTAIN, non-author spot-check before kid use",
     "next": {
-      "actor": "-",
-      "text": ""
+      "actor": "OTM",
+      "text": "route the 4 D4 spot-check after the 2.4 page builds"
     },
     "flags": [],
-    "updatedAt": "2026-10-24T02:44:19Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128#issuecomment-6372752959"
+    "updatedAt": "2026-10-24T02:27:00Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128#issuecomment-6378741959"
   }
 }
