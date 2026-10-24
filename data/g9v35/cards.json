@@ -428,10 +428,10 @@
       "chat": "content"
     },
     "state": "SUBMITTED",
-    "now": "DRAFT 10 pairs; O5 structural PASS; 4 D4 UNCERTAIN, non-author spot-check before kid use",
+    "now": "WAITS on 2.4 build. DRAFT 10 pairs; O5 structural PASS; 4 D4 UNCERTAIN",
     "next": {
-      "actor": "OTM",
-      "text": "route the 4 D4 spot-check after the 2.4 page builds"
+      "actor": "NLM page builder",
+      "text": "build the 2.4 page; then OTM routes the non-author D4 spot-check"
     },
     "flags": [],
     "updatedAt": "2026-10-24T02:27:00Z",
