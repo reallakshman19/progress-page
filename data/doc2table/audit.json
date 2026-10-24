@@ -1325,6 +1325,21 @@
       "after": "SUBMITTED",
       "source_at": "2026-10-24T17:53:39Z",
       "rev": "R1"
+    },
+    {
+      "seq": 99,
+      "id": "DOC2TABLE-R-0099",
+      "previous_id": "DOC2TABLE-R-0098",
+      "at": "2026-10-24T17:55:32Z",
+      "kind": "SUPERSEDE",
+      "actor": "OTM",
+      "summary": "Owner named O2-Doc to Table (6adc838d) as the Doc to Table Oracle; O1 (Codex) to standby",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6387396368",
+      "card": "oracle",
+      "before": "IN_PROGRESS",
+      "after": "NOT_APPLICABLE",
+      "to": "D2T-O2",
+      "rev": "R1"
     }
   ]
 }
