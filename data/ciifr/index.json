@@ -4,7 +4,7 @@
     "key": "ciifr",
     "title": "CII Find & Replace VNext",
     "subtitle": "R3 current: standalone Oracle coordination of P2.5-B handoff, review, Windows acceptance and prepared Oracle succession.",
-    "updatedAt": "2026-10-24T13:01:12Z",
+    "updatedAt": "2026-10-24T15:46:43Z",
     "updatedBy": "Oracle 01a16c60",
     "staleAfterMin": 120,
     "aim": "Private CII <-> RichInputXMLv2 engine preserving CII hierarchy and exact byte/SHA round-trip, then P2.5 branch -> element -> node mapping and authorized nodal/elemental transfer with audited CII export. Keep P2/P2.1 frozen; XMLv1.1 is a separate incremental fork. Prove real Windows workflow; P3 deferred. Owner retains engineering approval.",
@@ -125,24 +125,39 @@
     },
     "M8": {
       "name": "XMLv1.1 exact round-trip",
-      "full": "Source-backed incremental fork; F01-F05 closed in reviewed scope; actual integration/native acceptance pending.",
+      "full": "Pinned XMLv1.1 F05 converter plus delivered local browser wrapper; current author HTTP/encoding/edit checks pass; native/full integration acceptance pending.",
       "order": 1,
-      "cap": "NOT_DEMONSTRATED",
-      "canDo": "Owner-private component PASS: primary and supported variants round-trip exactly. Public capability proof pending; regenerate old XML lacking VERSION gaps."
+      "cap": "BENCHMARK_SUPPORTED",
+      "canDo": "Select authorized CII, inspect XML hierarchy, reconstruct from XML alone and compare exact bytes/SHA in local v1.1; benchmark supported, not Owner accepted.",
+      "capSrc": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/157",
+      "repo": "reallakshman19/XML_Compare_Utilities",
+      "branch": "codex/ciifr-r3-prototypes-01a16c60",
+      "commit": "a67487023bcafc13d68b62dbfc9bb74c61b3c64c",
+      "activity": "Draft PR157; separate qualification boundaries; no merge"
     },
     "M9": {
       "name": "Independent XMLv2 engine",
-      "full": "Preserve hierarchy and exact accepted bytes with standalone writer; repair-r2 F07-F09 verified, F10 integer -0 intake regression OPEN_P2.",
+      "full": "Independent XMLv2.1 F10-r3-derived local snapshot remains unfinished/HOLD; first-read note corrects inherited stale engine identities.",
       "order": 2,
-      "cap": "NOT_DEMONSTRATED",
-      "canDo": "Owner-private primary/A25/COORDS/real-zero probes pass. F10 HOLD remains; no public capability proof. B014 integration inventory NOT_RUN."
+      "cap": "CANDIDATE",
+      "canDo": "A local converter/inspection candidate exists as a HOLD snapshot. Finalization and native/full integration/Owner acceptance remain incomplete.",
+      "capSrc": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/157",
+      "repo": "reallakshman19/XML_Compare_Utilities",
+      "branch": "codex/ciifr-r3-prototypes-01a16c60",
+      "commit": "a67487023bcafc13d68b62dbfc9bb74c61b3c64c",
+      "activity": "Draft PR157; separate qualification boundaries; no merge"
     },
     "M10": {
       "name": "Node catalogue / map / preview",
-      "full": "Explicit one-to-one source/target node mapping by number/name with different counts/order; read-only catalogue/preview first.",
+      "full": "Later F05/BM2 node-catalogue and informational mapping/preview candidate delivered; earlier checkpoint-A missing archive remains separate history.",
       "order": 3,
-      "cap": "NOT_DEMONSTRATED",
-      "canDo": "Coder reports synthetic checkpoint A; actual72984byte archive not found at current local check. Real-primary ingestion and independent review NOT_RUN."
+      "cap": "BENCHMARK_SUPPORTED",
+      "canDo": "Inspect actual source/target catalogues, select one-to-one inspection pairs/vectors/DX-DY-DZ and see before/proposed values; export and engineering approval remain disabled.",
+      "capSrc": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/157",
+      "repo": "reallakshman19/XML_Compare_Utilities",
+      "branch": "codex/ciifr-r3-prototypes-01a16c60",
+      "commit": "a67487023bcafc13d68b62dbfc9bb74c61b3c64c",
+      "activity": "Draft PR157; separate qualification boundaries; no merge"
     },
     "M11": {
       "name": "Authorized mapped transfer",

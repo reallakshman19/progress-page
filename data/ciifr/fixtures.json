@@ -13,6 +13,20 @@
       "t": "Common agent-work Oracle Standalone skill, changeover, continuity and onboarding",
       "u": "https://github.com/reallakshman19/Common/tree/main/skills/agent-work/oracle-standalone",
       "s": "MERGED"
+    },
+    {
+      "t": "Immutable launch guide: XMLv1.1, XMLv2 HOLD and BM2 preview have separate launchers and qualification boundaries.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/blob/a67487023bcafc13d68b62dbfc9bb74c61b3c64c/prototypes/CIIFR-R3-PROTOTYPES.md",
+      "s": "PUBLIC_CODE",
+      "n": "Three separate prototype verdicts",
+      "milestone": "M8"
+    },
+    {
+      "t": "Current-checkout validation: BM235core+46HTTP; v1.120HTTP+10encoding+5edits.116focused author-exposed PASS. V2 publication ran syntax/member checks only; native/full integration/Owner acceptance NOT_RUN.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/blob/a67487023bcafc13d68b62dbfc9bb74c61b3c64c/prototypes/CIIFR-R3-VALIDATION.md",
+      "s": "SELF_ASSESSED",
+      "n": "Public report; no acceptance inferred",
+      "milestone": "M8"
     }
   ],
   "issues": [
@@ -75,6 +89,13 @@
       "t": "Common PR472: Consolidated successor/control proposal; main stillrev1, write exclusion unverified",
       "u": "https://github.com/reallakshman19/Common/pull/472",
       "s": "DRAFT"
+    },
+    {
+      "t": "Prototype source handoff PR157:78new files;3separately launched local apps. Self-authored source/validation, no engineering acceptance.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/157",
+      "s": "DRAFT_NOT_MERGED",
+      "n": "Public code; private inputs excluded",
+      "milestone": "M8"
     }
   ],
   "roadmap": [
@@ -121,6 +142,20 @@
       "t": "Official CAESAR II v14 auxiliary-data reference. Oracle inspected displacement diagram337043.png:2 slots x9 vectors x6 DOFs; format evidence does not prove engineering equivalence.",
       "u": "https://docs.hexagonppm.com/r/en-US/CAESAR-II-Users-Guide/Version-14/1471418",
       "s": "GROUNDING_CATALOGUE"
+    },
+    {
+      "t": "Scoped Git -text attributes preserve71imported payload identities across Windows/Unix checkout. Git blob and checkout-filter SHA comparisons PASS; no engine normalization or existing production-path change.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/157",
+      "s": "BYTE_PRESERVING_TRANSPORT",
+      "n": "Immutable payloads retained",
+      "milestone": "M8"
+    },
+    {
+      "t": "BM2 isolated fixes: alias uniqueness includes conflicting nodes; scientific no-op cells preserve target bytes and representable edits reject rounding/overflow. Existing F05 writer reused; both-zero target-token retention remains a distinct transfer policy.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/157",
+      "s": "BOUNDED_FIXES",
+      "n": "No writer/runtime switch",
+      "milestone": "M10"
     }
   ],
   "future": [
@@ -224,6 +259,30 @@
     {
       "t": "OWNER_PRIVATE_REF:ciifr-nodemap-disp-build-prompt-20261024. Full brief, NM-01-NM-16 benchmark contract and private source-grounding record: explicit1:1 map, vector/DOF choice, current-input digests, mask preservation and audited cell scope.",
       "s": "GROUNDING_CATALOGUE"
+    },
+    {
+      "t": "OWNER_PRIVATE_REF:ciifr-r3-local-v11-zip-20261024. CIIFR-XMLV11-LOCAL-PROTOTYPE-F05-01a16c60.zip;36857bytes/22members;SHA256 ade0766fbed4bc5830613e1153c4a553093c9278a91a5a8f485d9334f40cf082. Pinned F05 and wrapper evidence remain distinct.",
+      "s": "EXACT_ZIP_CHECKED",
+      "n": "Native/Owner acceptance NOT_RUN",
+      "milestone": "M8"
+    },
+    {
+      "t": "OWNER_PRIVATE_REF:ciifr-r3-local-v2-hold-zip-20261024. CIIFR-XMLV2-LOCAL-PROTOTYPE-R3-HOLD-01a16c60.zip;34332bytes/19members;SHA256 ea69bd390264e8572b91b8f8ce0dee4a67991c94c7b44914399203b1578ff21e. Packaging does not lift HOLD; inherited engine identity is stale.",
+      "s": "HOLD_UNFINISHED",
+      "n": "Use current package SHA inventory",
+      "milestone": "M9"
+    },
+    {
+      "t": "OWNER_PRIVATE_REF:ciifr-r3-local-bm2-zip-20261024. CIIFR-BM2-NODEMAP-LOCAL-PROTOTYPE-01a16c60.zip;69048bytes/30members;SHA256 aa4cc35749b882ad9366e09c9ac506092febcff4db32081b3ab1645dc76c0f48. Later candidate differs from old checkpoint-A; uses XMLv1.1 F05.",
+      "s": "EXACT_ZIP_CHECKED",
+      "n": "Apply/export remains DISABLED",
+      "milestone": "M10"
+    },
+    {
+      "t": "OWNER_PRIVATE_REF:ciifr-r3-source-target-bm2-20261024. Three private files observed with own-byte F05 round trips. Source-packageSHA25655b442f73a97b207a6d16258b2ee0e72e3319bf05c9885d105e0bb82c57e074c. BM2 is a name-edit reference, not a displacement expected-output oracle.",
+      "s": "PRIVATE_INPUTS_OBSERVED",
+      "n": "Private filenames and links excluded",
+      "milestone": "M10"
     }
   ],
   "knownIssues": [
@@ -273,6 +332,20 @@
       "t": "Fresh Common/main37435267c861d54998fee589e6dc91385bf59bfa remains Cycle rev1 ACTIVE with legacy Oracle binding and stale p25b Progress projection. Existing page is ciifr R3. Issue465 has one PARTIAL local-byte coder receipt; no accepted current receipt/control cutover is inferred. PR472 remains draft/unmerged.",
       "u": "https://github.com/reallakshman19/Common/blob/37435267c861d54998fee589e6dc91385bf59bfa/oracle-cycles/p25b/CURRENT.json",
       "s": "CANONICAL_PROJECTION_GAP"
+    },
+    {
+      "t": "XMLv2 local snapshot remains unfinished/HOLD. Inherited README/source-manifest identity claims are stale after a DTD guard change. First-read HOLD note and current package SHA inventory identify actual bytes; no silent finalization or acceptance.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/157",
+      "s": "OPEN_HOLD",
+      "n": "Separate engine and wrapper evidence",
+      "milestone": "M9"
+    },
+    {
+      "t": "Source/Target differ numerically beyond renumbering. BM2 name edits do not establish physical mapping or displacement equivalence. Unique number/name/geometry and inspection pairs never approve identity, common basis or chosen-vector meaning.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/157",
+      "s": "AUTHORITY_UNRESOLVED",
+      "n": "Owner engineering approval required",
+      "milestone": "M10"
     }
   ],
   "pending": [
@@ -309,6 +382,20 @@
     {
       "t": "OWNER_PRIVATE_REF:ciifr-v2-f10-repair-brief-20261024. Prepared F10 brief and literal-source falsifier; retain F01-F09. Route: XMLv2 Coder6adc7ee9 via Owner, return to Oracle01a16c60. No delivery/adoption claimed.",
       "s": "GROUNDING_CATALOGUE"
+    },
+    {
+      "t": "Historical72984byte checkpoint-A SHA6c0d0b18...8bd94 remains unreceived; later F05/BM2 bytes are a different candidate. Old Owner archive action remains unanswered; it is not a prerequisite to current BM2 preview. No Owner answer or old-archive delivery is fabricated.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/157",
+      "s": "HISTORICAL_GAP_NONBLOCKING",
+      "n": "Keep original receipt history",
+      "milestone": "M10"
+    },
+    {
+      "t": "Progress draft10 and prototype draft157 await separate Owner review. Published main page remains unchanged until Progress data merge. Preserve R3, R1/R2 history and pending PR472 continuity; no release/control transfer.",
+      "u": "https://github.com/reallakshman19/progress-page/pull/10",
+      "s": "OWNER_REVIEW_PENDING",
+      "n": "Draft update; not published main",
+      "milestone": "M7"
     }
   ]
 }

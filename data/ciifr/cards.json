@@ -314,13 +314,13 @@
       "role": "Owner engineering and software acceptance"
     },
     "state": "NOT_STARTED",
-    "now": "Real served-browser/local-backend Discover -> Accept -> Preview -> Apply -> Export plus authorized CII byte audit remains NOT_RUN; final Owner acceptance not granted. Current Windows converter/harness checks do not satisfy this gate. Owner may safely test the unchanged reviewed runnable while independent code-only distribution audit remains pending.",
+    "now": "Owner has testable local v1.1 and BM2 prototypes; BM2 is informational and export disabled, XMLv2 is an unfinished HOLD snapshot. Author Windows backend regressions PASS. Full unmocked engineering Discover-Accept-Preview-Apply-Export with approved correspondence and actual authorized-byte audit remains NOT_RUN. No final Owner acceptance recorded.",
     "next": {
       "actor": "Owner after appropriate artifact check",
       "text": "Use private authorized inputs and approved mapping; inspect actual before/proposed values, stale invalidation and exported allowed-byte boundary. Record PASS/FAIL/NOT_RUN and Owner decision separately."
     },
-    "updatedAt": "2026-10-24T12:59:07Z",
-    "src": "OWNER_PRIVATE_REF:ciifr-r3-engineering-aim-20261024"
+    "updatedAt": "2026-10-24T15:45:44Z",
+    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/157"
   },
   "successor-r3": {
     "order": 2,
@@ -361,16 +361,17 @@
     "label": "Oracle: engineering / evidence",
     "who": {
       "chat": "oracle01",
-      "role": "Oracle standalone / private non-author product review"
+      "role": "Oracle standalone; scoped prototype author and self-assessment disclosed"
     },
-    "state": "IN_PROGRESS",
-    "now": "Owner-appointed Oracle01a16c60 owns aim, engineering briefs, evidence reconciliation and integration planning. Separate v1.1 F05 component PASS, XMLv2 F10 HOLD, node-map archive intake pending. Page records are self-recorded by Oracle; private proof is not public VERIFIED. Common rev1/legacy binding persists; PR472 draft is not an activated cutover.",
+    "state": "SUBMITTED",
+    "now": "Owner-appointed Oracle01a16c60 delivered separate v1.1/BM2 local prototypes and an unfinished XMLv2 HOLD snapshot; draft PR157 preserves all3. Authored wrappers/BM2 fixes are SELF_ASSESSED, not non-author review. Progress draft10 records updates for Owner merge. Canonical PR472 remains DRAFT/unmerged; no shared-write exclusion or control transfer claimed.",
     "next": {
-      "actor": "-",
-      "text": "Maintain one usable next action and preserve frozen P2/P2.1; no canonical write-control transfer claimed."
+      "actor": "Owner",
+      "text": "Review Progress draft10 and prototype draft157; test local v1.1 or BM2; retain XMLv2 HOLD and frozen P2/P2.1."
     },
-    "updatedAt": "2026-10-24T12:59:03Z",
-    "src": "OWNER_PRIVATE_REF:ciifr-r3-coder-routing-20261024"
+    "updatedAt": "2026-10-24T15:45:43Z",
+    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/157",
+    "flags": []
   },
   "xmlv11-f05": {
     "order": 1,
@@ -399,14 +400,22 @@
       "chat": "coder-v2",
       "role": "XMLv2 coder6adc7ee9; reviewed by Oracle01a16c60"
     },
-    "state": "BLOCKED",
+    "state": "NOT_APPLICABLE",
     "now": "Actual3fb1f3e6...4150c ZIP53073bytes/18files/CRC PASS. Windows non-author review verified F07 A25, F08 global COORDS ordinals and F09 real-zero edits; retained15/15 and supplied26/26 PASS, B001-B013 PASS. Independent literal suite24PASS/1FAIL: F10 integer -0 source round-trips r1 but r2 rejects after normalization. Fail-closed compatibility regression, OPEN_P2. B014/native/P2.5 acceptance NOT_RUN; HOLD remains.",
     "next": {
-      "actor": "XMLv2 Coder6adc7ee9",
-      "text": "Use prepared F10 brief: reconcile integer normalization/sign checking; preserve F01-F09. Return a separate hash-identified candidate via Owner to Oracle01a16c60; no send claimed."
+      "actor": "-",
+      "text": ""
     },
-    "updatedAt": "2026-10-24T12:22:43Z",
-    "src": "OWNER_PRIVATE_REF:ciifr-v2-r2-oracle-review-3fb1f3e6-20261024"
+    "updatedAt": "2026-10-24T15:45:43Z",
+    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/157",
+    "closed": {
+      "kind": "superseded",
+      "why": "Historical repair-r2/F10 intake finding retained; later r3 and separate held local snapshot now carry current status. No acceptance inferred.",
+      "at": "2026-10-24T15:45:43Z",
+      "src": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/157",
+      "by": "xmlv2-r3-local"
+    },
+    "flags": []
   },
   "converter-integration": {
     "order": 3,
@@ -418,13 +427,13 @@
       "role": "Separate integration qualification"
     },
     "state": "BLOCKED",
-    "now": "Four frozen reference module hashes and historical archives rechecked unchanged. Full actual destination before/after inventory remains unavailable: v1.1 V11-10 and XMLv2 B014 NOT_RUN. Converter execution on Windows is not CAESAR import, engineering-property equivalence, full served UI workflow or Owner acceptance. These limits do not block authorized read-only node catalogue/map/preview.",
+    "now": "Additive prototypes now exist on draft PR157; existing production/P2/P2.1 paths unchanged and71imported payloads match source ZIPs. This source preservation is not actual destination integration qualification: v1.1 V11-10 and XMLv2 B014 remain NOT_RUN. Actual-file Windows backend checks do not establish served file-driven browser, CAESAR engineering equivalence or final Owner acceptance.",
     "next": {
       "actor": "Owner when integrating",
       "text": "Name the actual destination and frozen baseline before production integration. Preserve P2/P2.1; do not infer checkout qualification from ZIP hashes."
     },
-    "updatedAt": "2026-10-24T12:59:06Z",
-    "src": "OWNER_PRIVATE_REF:ciifr-v11-f05-oracle-review-e7901a79-20261024"
+    "updatedAt": "2026-10-24T15:45:44Z",
+    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/157"
   },
   "nodemap-a": {
     "order": 1,
@@ -435,14 +444,22 @@
       "chat": "coder-nodemap",
       "role": "Node-map coder6adc940c; Owner-reported routing"
     },
-    "state": "BLOCKED",
+    "state": "NOT_APPLICABLE",
     "now": "Coder6adc940c reports23/23 synthetic tests and NM9PASS/7NOT_RUN, EXPORT_DISABLED. Expected ZIP72984bytes, SHA6c0d0b18...8bd94; filename not supplied. No matching local archive found on this update; actual modules not independently reviewed. Real-primary catalogue, repaired-reader integration, actual target correspondence and production export NOT_RUN. Oracle already holds authorized primary CII and corrected v1.1 reader; no source-restaging prerequisite invented.",
     "next": {
-      "actor": "YOU",
-      "text": "Attach existing72984byte checkpoint-A ZIP from Node-map coder6adc940c. Oracle01a16c60 then scopes actual-module and real-primary read-only review; keep export disabled."
+      "actor": "-",
+      "text": ""
     },
-    "updatedAt": "2026-10-24T12:59:06Z",
-    "src": "OWNER_PRIVATE_REF:ciifr-nodemap-checkpoint-a-report-20261024"
+    "updatedAt": "2026-10-24T15:45:43Z",
+    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/157",
+    "closed": {
+      "kind": "superseded",
+      "why": "Earlier72984byte checkpoint-A remains unreceived historically. A different later F05/BM2 candidate was received, inspected, repaired and delivered; old archive is not a prerequisite for current preview.",
+      "at": "2026-10-24T15:45:43Z",
+      "src": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/157",
+      "by": "bm2-local"
+    },
+    "flags": []
   },
   "mapped-transfer": {
     "order": 2,
@@ -458,5 +475,113 @@
       "actor": "Owner after evidence",
       "text": "Review actual read-only slice before authorizing further implementation. Discovery/unique geometry is not engineering approval; preview and apply need separate current-input guards."
     }
+  },
+  "xmlv11-local": {
+    "order": 2,
+    "group": "r3-engine",
+    "milestone": "M8",
+    "label": "XMLv1.1: local converter prototype",
+    "who": {
+      "chat": "oracle01",
+      "role": "Oracle01a16c60 authored wrapper; source coder6adc81d7"
+    },
+    "state": "SUBMITTED",
+    "now": "Local browser converter uses all8unchanged F05 modules. Owner can select CII, inspect hierarchy, reconstruct from XML alone and compare actual bytes/SHA. New-checkout Windows author tests:20HTTP+10encoding+5edit PASS. ZIP36857bytes/22files SHAade0766f...cf082. Engine scoped review remains separate; wrapper is author-exposed. Native CAESAR, full integration inventory and Owner acceptance NOT_RUN.",
+    "next": {
+      "actor": "Owner",
+      "text": "Review PR157 or test the v1.1 launcher; retain separate component/wrapper verdicts."
+    },
+    "flags": [],
+    "refs": [
+      {
+        "k": "pr",
+        "l": "Local prototypes draft157",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/157",
+        "s": "DRAFT; NOT MERGED"
+      }
+    ],
+    "updatedAt": "2026-10-24T15:45:41Z",
+    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/157"
+  },
+  "xmlv2-r3-local": {
+    "order": 3,
+    "group": "r3-engine",
+    "milestone": "M9",
+    "label": "XMLv2: r3 prototype HOLD snapshot",
+    "who": {
+      "chat": "oracle01",
+      "role": "Oracle01a16c60 authored guard/UI; source coder6adc7ee9"
+    },
+    "state": "BLOCKED",
+    "now": "Separate F10-r3-derived converter snapshot, RichInputXMLv2.1. Local engine contains a later DTD-screening guard; inherited README/source-manifest identity claims are stale and explicitly corrected by first-read HOLD note/current package inventory. ZIP34332bytes/19files SHAea69bd39...ff21e. This publication ran syntax/member checks only for v2. Finalization, native/integration qualification and Owner acceptance remain incomplete.",
+    "next": {
+      "actor": "Owner",
+      "text": "Keep HOLD. Test only within existing Owner authority; no automatic finalization, transfer or acceptance."
+    },
+    "flags": [],
+    "refs": [
+      {
+        "k": "pr",
+        "l": "Local prototypes draft157",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/157",
+        "s": "DRAFT; NOT MERGED"
+      }
+    ],
+    "updatedAt": "2026-10-24T15:45:42Z",
+    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/157"
+  },
+  "bm2-local": {
+    "order": 1,
+    "group": "r3-nodemap",
+    "milestone": "M10",
+    "label": "BM2: v1.1 node-map / preview",
+    "who": {
+      "chat": "oracle01",
+      "role": "Oracle01a16c60 authored fixes/UI; source coder6adc940c"
+    },
+    "state": "SUBMITTED",
+    "now": "Uses pinned XMLv1.1 F05, not XMLv2. Actual Source/Target catalogues, NUMBER/NAME/BOTH/EITHER proposals, explicit one-to-one inspection pairs, separate vectors and DX/DY/DZ before/proposed preview. Alias uniqueness and exact scientific formatting fixed in isolated fork. Current Windows author checks35core+46actual-file HTTP PASS. Mapping NOT_ACCEPTED, basis NOT_VERIFIED, Apply/export DISABLED. ZIP69048bytes/30files SHAaa4cc357...0f48.",
+    "next": {
+      "actor": "Owner",
+      "text": "Try Source/Target inspection and preview; return usability observations. No engineering approval or transfer/export inferred."
+    },
+    "flags": [],
+    "refs": [
+      {
+        "k": "pr",
+        "l": "Local prototypes draft157",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/157",
+        "s": "DRAFT; NOT MERGED"
+      }
+    ],
+    "updatedAt": "2026-10-24T15:45:42Z",
+    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/157"
+  },
+  "prototype-pr157": {
+    "order": 4,
+    "group": "r3-engine",
+    "milestone": "M8",
+    "label": "Three local prototypes: draft PR157",
+    "who": {
+      "chat": "oracle01",
+      "role": "Oracle01a16c60 publication author; independent PR review pending"
+    },
+    "state": "SUBMITTED",
+    "now": "Draft PR157 is OPEN, NOT MERGED:78new files,71payloads byte-identical to existing delivered ZIPs, protected by scoped Git attributes across Windows/Unix checkout. Current content head a6748702;116focused local checks PASS, author-exposed. Customer files/private links excluded. No CI checks registered on final observed head. v1.1 and BM2 testing are separate from XMLv2 HOLD, native acceptance and P2.5 readiness.",
+    "next": {
+      "actor": "Owner",
+      "text": "Review PR157 and the Progress data draft10. Publication or local PASS is not Owner engineering/software acceptance."
+    },
+    "flags": [],
+    "refs": [
+      {
+        "k": "pr",
+        "l": "Local prototypes draft157",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/157",
+        "s": "DRAFT; NOT MERGED"
+      }
+    ],
+    "updatedAt": "2026-10-24T15:45:42Z",
+    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/157"
   }
 }
