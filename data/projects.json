@@ -85,6 +85,15 @@
       "replyTo": {
         "kind": "none"
       }
+    },
+    {
+      "key": "sctl",
+      "label": "SCTL",
+      "order": 8,
+      "mode": "standalone",
+      "replyTo": {
+        "kind": "none"
+      }
     }
   ],
   "site": {
