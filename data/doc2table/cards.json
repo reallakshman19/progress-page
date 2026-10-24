@@ -60,16 +60,16 @@
       "role": "Oracle"
     },
     "state": "SUBMITTED",
-    "now": "onboarding sent 24 Oct; awaiting METER, own-words role and test post",
+    "now": "onboarded 24 Oct; METER HIGH; WBS read S1.3 (its last chat work was SCTL-P1, to reconcile); HOLD",
     "next": {
-      "actor": "Oracle O2-Doc to Table",
-      "text": "reply to onboarding; then OTM posts its test post and reads it back"
+      "actor": "OTM",
+      "text": "on HOLD lift: ask O2 for its capture (METER HIGH) and reconcile S1.3 vs SCTL-P1"
     },
     "flags": [
       "paused"
     ],
-    "updatedAt": "2026-10-24T17:48:52Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6387481606"
+    "updatedAt": "2026-10-24T17:50:58Z",
+    "src": "https://github.com/reallakshman19/Word-to-Table/issues/1#issuecomment-6387540765"
   },
   "D2T-G21": {
     "order": 4,
@@ -81,15 +81,15 @@
       "role": "Agent"
     },
     "state": "SUBMITTED",
-    "now": "onboarding sent 24 Oct; awaiting METER, own-words role and test post",
+    "now": "onboarded 24 Oct; METER MID; no clone (DNS), tests yes, push via connector; last: SCTL-P1, Common #473 draft; HOLD",
     "next": {
-      "actor": "Coder G2.1-Doc to Table",
-      "text": "reply to onboarding; then OTM posts its test post and reads it back"
+      "actor": "OTM",
+      "text": "on HOLD lift: take O2's next card to G2.1"
     },
     "flags": [
       "paused"
     ],
-    "updatedAt": "2026-10-24T17:48:52Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6387490337"
+    "updatedAt": "2026-10-24T17:50:58Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/157#issuecomment-6387540511"
   }
 }

@@ -1265,6 +1265,36 @@
       "after": "SUBMITTED",
       "source_at": "2026-10-24T17:48:52Z",
       "rev": "R1"
+    },
+    {
+      "seq": 95,
+      "id": "DOC2TABLE-R-0095",
+      "previous_id": "DOC2TABLE-R-0094",
+      "at": "2026-10-24T17:50:58Z",
+      "kind": "UPDATE",
+      "actor": "OTM",
+      "summary": "onboarded: test post relayed and read back (self-recorded)",
+      "source": "https://github.com/reallakshman19/Word-to-Table/issues/1#issuecomment-6387540765",
+      "card": "D2T-O2",
+      "before": "SUBMITTED",
+      "after": "SUBMITTED",
+      "source_at": "2026-10-24T17:50:58Z",
+      "rev": "R1"
+    },
+    {
+      "seq": 96,
+      "id": "DOC2TABLE-R-0096",
+      "previous_id": "DOC2TABLE-R-0095",
+      "at": "2026-10-24T17:50:59Z",
+      "kind": "UPDATE",
+      "actor": "OTM",
+      "summary": "onboarded: test post relayed and read back (self-recorded)",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/157#issuecomment-6387540511",
+      "card": "D2T-G21",
+      "before": "SUBMITTED",
+      "after": "SUBMITTED",
+      "source_at": "2026-10-24T17:50:58Z",
+      "rev": "R1"
     }
   ]
 }

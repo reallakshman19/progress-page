@@ -2449,6 +2449,36 @@
       "after": "SUBMITTED",
       "source_at": "2026-10-24T17:48:52Z",
       "rev": "R3"
+    },
+    {
+      "seq": 188,
+      "id": "CIIFR-R-0188",
+      "previous_id": "CIIFR-R-0187",
+      "at": "2026-10-24T17:50:59Z",
+      "kind": "UPDATE",
+      "actor": "OTM",
+      "summary": "onboarded: test post relayed and read back (self-recorded)",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/136#issuecomment-6387540057",
+      "card": "CIIFR-O4",
+      "before": "SUBMITTED",
+      "after": "SUBMITTED",
+      "source_at": "2026-10-24T17:50:58Z",
+      "rev": "R3"
+    },
+    {
+      "seq": 189,
+      "id": "CIIFR-R-0189",
+      "previous_id": "CIIFR-R-0188",
+      "at": "2026-10-24T17:50:59Z",
+      "kind": "UPDATE",
+      "actor": "OTM",
+      "summary": "onboarded: test post relayed and read back (self-recorded)",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/158#issuecomment-6387540305",
+      "card": "CIIFR-G41",
+      "before": "SUBMITTED",
+      "after": "SUBMITTED",
+      "source_at": "2026-10-24T17:50:58Z",
+      "rev": "R3"
     }
   ]
 }
