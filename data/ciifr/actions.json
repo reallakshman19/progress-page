@@ -1,1 +1,26 @@
-{}
+{
+  "R3-NODEMAP-ARCHIVE": {
+    "order": 1,
+    "status": "open",
+    "title": "Provide the existing node-map checkpoint-A ZIP",
+    "lead": "Node-map coder6adc940c reports an existing72984byte archive; actual filename is not supplied and Oracle has not received its bytes. Expected SHA-2566c0d0b183de72229c13f48ec83dbbb431ece764c1370376726bafd9b5298bd94. Deliver that unchanged archive privately; no rebuild or duplicate receipt is needed. Next review is read-only; export remains disabled.",
+    "options": [
+      {
+        "key": "deliver",
+        "label": "Provide existing ZIP (suggested)",
+        "suggested": true,
+        "body": "Attach the existing exact archive privately to Oracle01a16c60.",
+        "reply": "R3-NODEMAP-ARCHIVE: existing ZIP provided privately."
+      },
+      {
+        "key": "blocked",
+        "label": "Report access blocker",
+        "suggested": false,
+        "body": "Identify the missing download/access route without claiming delivery.",
+        "reply": "R3-NODEMAP-ARCHIVE: access blocker details follow."
+      }
+    ],
+    "links": [],
+    "milestone": "M10"
+  }
+}
