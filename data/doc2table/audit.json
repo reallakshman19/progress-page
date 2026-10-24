@@ -1295,6 +1295,36 @@
       "after": "SUBMITTED",
       "source_at": "2026-10-24T17:50:58Z",
       "rev": "R1"
+    },
+    {
+      "seq": 97,
+      "id": "DOC2TABLE-R-0097",
+      "previous_id": "DOC2TABLE-R-0096",
+      "at": "2026-10-24T17:53:39Z",
+      "kind": "UPDATE",
+      "actor": "OTM",
+      "summary": "HOLD lifted by Owner; asked for capture + next card",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6387568360",
+      "card": "D2T-O2",
+      "before": "SUBMITTED",
+      "after": "SUBMITTED",
+      "source_at": "2026-10-24T17:53:39Z",
+      "rev": "R1"
+    },
+    {
+      "seq": 98,
+      "id": "DOC2TABLE-R-0098",
+      "previous_id": "DOC2TABLE-R-0097",
+      "at": "2026-10-24T17:53:40Z",
+      "kind": "UPDATE",
+      "actor": "OTM",
+      "summary": "HOLD lifted by Owner",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6387568360",
+      "card": "D2T-G21",
+      "before": "SUBMITTED",
+      "after": "SUBMITTED",
+      "source_at": "2026-10-24T17:53:39Z",
+      "rev": "R1"
     }
   ]
 }

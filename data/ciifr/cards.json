@@ -594,16 +594,14 @@
       "role": "Oracle"
     },
     "state": "SUBMITTED",
-    "now": "onboarded 24 Oct; METER MID; S1 candidate (PR #163 draft), S2 next; HOLD",
+    "now": "HOLD lifted 24 Oct; OTM asks for the next slice card (S2)",
     "next": {
-      "actor": "OTM",
-      "text": "on HOLD lift: ask O4 for the S2 slice card"
+      "actor": "Oracle O4-CIIFR4",
+      "text": "post next slice card on #136; then OTM checks and delivers to G4.1"
     },
-    "flags": [
-      "paused"
-    ],
-    "updatedAt": "2026-10-24T17:50:58Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/136#issuecomment-6387540057"
+    "flags": [],
+    "updatedAt": "2026-10-24T17:53:39Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6387568360"
   },
   "CIIFR-G41": {
     "order": 12,
@@ -615,15 +613,13 @@
       "role": "Agent"
     },
     "state": "SUBMITTED",
-    "now": "onboarded 24 Oct; METER MID; no clone (DNS), tests yes, push via connector; last: PR #163, Common #476 drafts; HOLD",
+    "now": "HOLD lifted; WAITS for O4's next card",
     "next": {
-      "actor": "OTM",
-      "text": "on HOLD lift: take O4's S2 card to G4.1"
+      "actor": "Oracle O4-CIIFR4",
+      "text": "O4 writes the card; then OTM delivers it"
     },
-    "flags": [
-      "paused"
-    ],
-    "updatedAt": "2026-10-24T17:50:58Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/158#issuecomment-6387540305"
+    "flags": [],
+    "updatedAt": "2026-10-24T17:53:39Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6387568360"
   }
 }

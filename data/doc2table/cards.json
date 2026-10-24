@@ -60,16 +60,14 @@
       "role": "Oracle"
     },
     "state": "SUBMITTED",
-    "now": "onboarded 24 Oct; METER HIGH; WBS read S1.3 (its last chat work was SCTL-P1, to reconcile); HOLD",
+    "now": "HOLD lifted 24 Oct; OTM asks for capture (METER HIGH), current-step reconcile, next card",
     "next": {
-      "actor": "OTM",
-      "text": "on HOLD lift: ask O2 for its capture (METER HIGH) and reconcile S1.3 vs SCTL-P1"
+      "actor": "Oracle O2-Doc to Table",
+      "text": "post capture + next slice card on Word-to-Table#1; then OTM checks and delivers to G2.1"
     },
-    "flags": [
-      "paused"
-    ],
-    "updatedAt": "2026-10-24T17:50:58Z",
-    "src": "https://github.com/reallakshman19/Word-to-Table/issues/1#issuecomment-6387540765"
+    "flags": [],
+    "updatedAt": "2026-10-24T17:53:39Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6387568360"
   },
   "D2T-G21": {
     "order": 4,
@@ -81,15 +79,13 @@
       "role": "Agent"
     },
     "state": "SUBMITTED",
-    "now": "onboarded 24 Oct; METER MID; no clone (DNS), tests yes, push via connector; last: SCTL-P1, Common #473 draft; HOLD",
+    "now": "HOLD lifted; WAITS for O2's next card",
     "next": {
-      "actor": "OTM",
-      "text": "on HOLD lift: take O2's next card to G2.1"
+      "actor": "Oracle O2-Doc to Table",
+      "text": "O2 writes the card; then OTM delivers it"
     },
-    "flags": [
-      "paused"
-    ],
-    "updatedAt": "2026-10-24T17:50:58Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/157#issuecomment-6387540511"
+    "flags": [],
+    "updatedAt": "2026-10-24T17:53:39Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6387568360"
   }
 }

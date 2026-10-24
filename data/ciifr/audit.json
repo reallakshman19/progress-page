@@ -2479,6 +2479,36 @@
       "after": "SUBMITTED",
       "source_at": "2026-10-24T17:50:58Z",
       "rev": "R3"
+    },
+    {
+      "seq": 190,
+      "id": "CIIFR-R-0190",
+      "previous_id": "CIIFR-R-0189",
+      "at": "2026-10-24T17:53:40Z",
+      "kind": "UPDATE",
+      "actor": "OTM",
+      "summary": "HOLD lifted by Owner; asked for next card",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6387568360",
+      "card": "CIIFR-O4",
+      "before": "SUBMITTED",
+      "after": "SUBMITTED",
+      "source_at": "2026-10-24T17:53:39Z",
+      "rev": "R3"
+    },
+    {
+      "seq": 191,
+      "id": "CIIFR-R-0191",
+      "previous_id": "CIIFR-R-0190",
+      "at": "2026-10-24T17:53:41Z",
+      "kind": "UPDATE",
+      "actor": "OTM",
+      "summary": "HOLD lifted by Owner",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6387568360",
+      "card": "CIIFR-G41",
+      "before": "SUBMITTED",
+      "after": "SUBMITTED",
+      "source_at": "2026-10-24T17:53:39Z",
+      "rev": "R3"
     }
   ]
 }
