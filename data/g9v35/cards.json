@@ -426,15 +426,13 @@
     "label": "ChatGPT content author (2.3)",
     "who": {},
     "state": "SUBMITTED",
-    "now": "Returned 23:49 (DRAFT, 10 pairs); download OK pending since 00:44",
+    "now": "Returned 23:49 (DRAFT, 10 pairs); files saved locally 06:25",
     "next": {
-      "actor": "Owner",
-      "text": "OK the download of the 2 draft files"
+      "actor": "OTM",
+      "text": "hand files to the 2.4 builder"
     },
-    "flags": [
-      "needs-you"
-    ],
-    "updatedAt": "2026-10-23T22:46:11Z",
+    "flags": [],
+    "updatedAt": "2026-10-24T02:25:54Z",
     "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128#issuecomment-6372752959"
   }
 }
