@@ -1,0 +1,104 @@
+{
+  "schema": 3,
+  "project": {
+    "key": "sctl",
+    "title": "Source Completeness & Traceability Lens",
+    "subtitle": "Standalone Oracle roadmap · SCTL as new independent Word-to-Table application tab",
+    "aim": "100% traceability at source level: reveal original DOCX content that was not captured, partially captured, altered, excluded, unsupported or uncertain. Show omissions directly on authentic source pages. Traceability and disclosure, not conversion repair; never claim 100% capture.",
+    "aimSrc": "OWNER_PRIVATE_REF:sctl-owner-request-20261024",
+    "updatedAt": "2026-10-24T17:31:23.181Z",
+    "updatedBy": "Oracle",
+    "staleAfterMin": 120
+  },
+  "rules": {
+    "coordinator": "Oracle",
+    "quietAfterMin": 30,
+    "idleAfterMin": 15,
+    "owesAfterMin": 15,
+    "waitingAfterMin": 15
+  },
+  "chats": {},
+  "milestones": {
+    "M1": {
+      "order": 1,
+      "name": "P1 — Missing Source Lens",
+      "full": "WBS 1.1: Add a fourth top-level Source Traceability tab inside Word-to-Table prototype/ (beside Tables, CAPS, Word/HTML diff). On authentic R5 evidence visually highlight the missing Notes table at the original source page; click for exact identity, target evidence and uncertainty. No converter repair.",
+      "wbs": "1.1",
+      "bench": "B1",
+      "keeps": "none",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "Native P1 task issue recorded; new application tab not yet built, verified or Owner-tried.",
+      "repo": "reallakshman19/Word-to-Table",
+      "activity": "Scope corrected: new independent app tab; native task issue #6; no integrated candidate"
+    },
+    "M2": {
+      "order": 2,
+      "name": "P2 — Source Census Lens",
+      "full": "WBS 1.2: Extend the accepted Source Traceability tab within Word-to-Table to census all original source pages, inventory tables/paragraphs and show capture/unresolved statuses. Preserve the P1 tab and existing Tables/CAPS/Word/HTML diff behavior.",
+      "wbs": "1.2",
+      "bench": "B2",
+      "keeps": "B1",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "P2 is the connected second card, not yet released.",
+      "repo": "reallakshman19/Word-to-Table"
+    },
+    "M3": {
+      "order": 3,
+      "name": "P3 — Visual Blind-Spot Lens",
+      "full": "WBS 1.3: Independently reveal visible source regions not explained by structural inventory; a removed annotation must trigger visible unknown coverage rather than false 100%. Provisional pending P1/P2 Owner trials. Extend the existing SCTL tab; do not make a separate product.",
+      "wbs": "1.3",
+      "bench": "B3",
+      "keeps": "B1,B2",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "P3 outcome planned; scope may be re-sliced from Owner tests."
+    },
+    "M4": {
+      "order": 4,
+      "name": "P4 — Source Review Lens",
+      "full": "WBS 1.4: Select unknown source regions, classify and record evidence, export/import review decisions bound to input hashes; no conversion repair. Provisional. Extend the existing SCTL tab; preserve converter state.",
+      "wbs": "1.4",
+      "bench": "B4",
+      "keeps": "B1-B3",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "P4 outcome planned; reviewer workflow not implemented."
+    },
+    "M5": {
+      "order": 5,
+      "name": "P5 — Static Evidence Release",
+      "full": "WBS 1.5: Include the preserved SCTL tab in Word-to-Table's existing prototype/ Pages build plus offline equivalent. Test hosted/offline behavior, private-evidence exclusion and independently falsify source identity/omission claims; no separate application deployment.",
+      "wbs": "1.5",
+      "bench": "B5",
+      "keeps": "B1-B4",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "P5 publication not authorized; no release candidate."
+    }
+  },
+  "groups": {
+    "main": {
+      "order": 1,
+      "title": "Prototype roadmap"
+    }
+  },
+  "revisions": [
+    {
+      "id": "R1",
+      "at": "2026-10-24T16:39:13.742Z",
+      "by": "Oracle",
+      "why": "Owner directs a standalone source-first traceability roadmap and P1 builder onboarding; separate from converter repairs.",
+      "ownerWords": "upload this to progress page in roadmap. lets plan for 3. Prototype P1 — Missing Source Lens",
+      "src": "OWNER_PRIVATE_REF:sctl-owner-request-20261024",
+      "status": "superseded",
+      "commit": "fa3d064e1c87534fae89f7f71392cb1fb2c6940f"
+    },
+    {
+      "id": "R2",
+      "at": "2026-10-24T17:31:23.181Z",
+      "by": "Oracle",
+      "why": "Owner clarifies SCTL is a new independent top-level application tab within Word-to-Table; not a separate product repository.",
+      "ownerWords": "you parent repo: https://github.com/reallakshman19/Word-to-Table.git you are working for a new independent tab",
+      "src": "OWNER_PRIVATE_REF:sctl-parent-tab-owner-20261024",
+      "status": "current",
+      "supersedes": "R1"
+    }
+  ]
+}
