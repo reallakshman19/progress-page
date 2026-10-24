@@ -66,15 +66,15 @@
       "chat": "d2t-o2",
       "role": "Oracle"
     },
-    "state": "IN_PROGRESS",
-    "now": "Writing Oracle Continuity §7 succession handover; agent-work link queued for when idle and for O3 start",
+    "state": "SUBMITTED",
+    "now": "§7 handover posted 18:25Z (epoch 2→3 PREPARED, adopts G2.1 SCTL-P1.1). O3 start + cutover by OTM next",
     "next": {
-      "actor": "Oracle O2",
-      "text": "post §7 handover"
+      "actor": "OTM",
+      "text": "start O3 from the §7 handover (HIGH)"
     },
     "flags": [],
-    "updatedAt": "2026-10-24T18:24:12Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6387887727"
+    "updatedAt": "2026-10-24T23:54:50Z",
+    "src": "https://github.com/reallakshman19/Word-to-Table/issues/1#issuecomment-6387907463"
   },
   "D2T-G21": {
     "order": 4,
@@ -85,14 +85,14 @@
       "chat": "d2t-g21",
       "role": "Agent"
     },
-    "state": "IN_PROGRESS",
-    "now": "building SCTL-P1.1 Source Traceability tab since 22:0x; timebox 4 h; first checks ZIP access",
+    "state": "SUBMITTED",
+    "now": "SCTL-P1.1 draft PR #7 130a8aa returned; OTM tests PASS 03:55; private import NOT_RUN: ZIP only in G2.1 sandbox. WAITS for Owner's ZIP download",
     "next": {
-      "actor": "Coder G2.1-Doc to Table",
-      "text": "PROTOTYPE RETURN on #157 with draft PR; then OTM runs it"
+      "actor": "YOU",
+      "text": "bring P1 ZIP (8b5e5c8f…) to Downloads"
     },
     "flags": [],
-    "updatedAt": "2026-10-24T18:04:02Z",
-    "src": "https://github.com/reallakshman19/Word-to-Table/issues/1#issuecomment-6387614053"
+    "updatedAt": "2026-10-24T23:54:49Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/157#issuecomment-6391104127"
   }
 }

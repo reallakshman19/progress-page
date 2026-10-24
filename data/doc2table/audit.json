@@ -1384,6 +1384,34 @@
       "before": "SUBMITTED",
       "after": "IN_PROGRESS",
       "rev": "R1"
+    },
+    {
+      "seq": 103,
+      "id": "DOC2TABLE-R-0103",
+      "previous_id": "DOC2TABLE-R-0102",
+      "at": "2026-10-24T23:54:49Z",
+      "kind": "STATE",
+      "actor": "OTM",
+      "summary": "PR #7 returned; OTM ran tests at 130a8aa PASS; private import NOT_RUN (ZIP custody)",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/157#issuecomment-6391104127",
+      "card": "D2T-G21",
+      "before": "IN_PROGRESS",
+      "after": "SUBMITTED",
+      "rev": "R1"
+    },
+    {
+      "seq": 104,
+      "id": "DOC2TABLE-R-0104",
+      "previous_id": "DOC2TABLE-R-0103",
+      "at": "2026-10-24T23:54:50Z",
+      "kind": "STATE",
+      "actor": "OTM",
+      "summary": "§7 handover posted (2→3 PREPARED); agent-work link sent 03:54",
+      "source": "https://github.com/reallakshman19/Word-to-Table/issues/1#issuecomment-6387907463",
+      "card": "D2T-O2",
+      "before": "IN_PROGRESS",
+      "after": "SUBMITTED",
+      "rev": "R1"
     }
   ]
 }

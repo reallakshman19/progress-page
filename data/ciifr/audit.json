@@ -2553,6 +2553,34 @@
       "before": "SUBMITTED",
       "after": "IN_PROGRESS",
       "rev": "R3"
+    },
+    {
+      "seq": 195,
+      "id": "CIIFR-R-0195",
+      "previous_id": "CIIFR-R-0194",
+      "at": "2026-10-24T23:54:48Z",
+      "kind": "STATE",
+      "actor": "OTM",
+      "summary": "S2 returned at 56c9f20; OTM-TRIED on real GLRD: gate PASS 0 bytes, viewer renders",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/158#issuecomment-6391103956",
+      "card": "CIIFR-G41",
+      "before": "IN_PROGRESS",
+      "after": "SUBMITTED",
+      "rev": "R3"
+    },
+    {
+      "seq": 196,
+      "id": "CIIFR-R-0196",
+      "previous_id": "CIIFR-R-0195",
+      "at": "2026-10-24T23:54:49Z",
+      "kind": "UPDATE",
+      "actor": "OTM",
+      "summary": "S2 result sent for challenge and next card",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6391112459",
+      "card": "CIIFR-O4",
+      "before": "IN_PROGRESS",
+      "after": "IN_PROGRESS",
+      "rev": "R3"
     }
   ]
 }
