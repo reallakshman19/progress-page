@@ -42,18 +42,38 @@
       "s": "MERGED"
     },
     {
-      "t": "Common PR #467: proposed revision 2 PARTIAL coder receipt reconciliation",
-      "u": "https://github.com/reallakshman19/Common/pull/467",
-      "s": "DRAFT"
-    },
-    {
-      "t": "Common PR #468: prepared successor Oracle checkpoint (no activated cutover)",
-      "u": "https://github.com/reallakshman19/Common/pull/468",
-      "s": "DRAFT"
-    },
-    {
       "t": "Progress Page PR #8: Owner-approved public Drive FOLDER URL exception only (not merged)",
       "u": "https://github.com/reallakshman19/progress-page/pull/8",
+      "s": "DRAFT"
+    },
+    {
+      "t": "Common PR467 is OPEN/unmerged (no longer draft). PR472 incorporates its prepared reconciliation; do not merge both without reconciliation.",
+      "u": "https://github.com/reallakshman19/Common/pull/467",
+      "s": "OPEN_UNMERGED"
+    },
+    {
+      "t": "Common PR468 successor-onboarding document MERGED; publication of instructions did not activate canonical succession.",
+      "u": "https://github.com/reallakshman19/Common/pull/468",
+      "s": "MERGED"
+    },
+    {
+      "t": "Common PR469: Complete private-file custody plan; planning document only, no transfer/permission change proven",
+      "u": "https://github.com/reallakshman19/Common/pull/469",
+      "s": "DRAFT"
+    },
+    {
+      "t": "Common PR470: Legacy stable coder checkpoint; preserves unchanged packages",
+      "u": "https://github.com/reallakshman19/Common/pull/470",
+      "s": "MERGED"
+    },
+    {
+      "t": "Common PR471: Proposed checkpoint continuation; not canonical activation",
+      "u": "https://github.com/reallakshman19/Common/pull/471",
+      "s": "DRAFT"
+    },
+    {
+      "t": "Common PR472: Consolidated successor/control proposal; main stillrev1, write exclusion unverified",
+      "u": "https://github.com/reallakshman19/Common/pull/472",
       "s": "DRAFT"
     }
   ],
@@ -63,20 +83,54 @@
       "s": "NEXT"
     },
     {
-      "t": "Delivery B: Owner unmocked Windows Discover -> Accept -> Preview -> Apply -> Export and authorized CII output byte audit; then explicit Owner acceptance and Progress revision update.",
-      "s": "AFTER_A"
+      "t": "Owner native Windows test of appropriately reviewed unchanged runnable can proceed safely in parallel with code-only ZIP audit; record actual authorized export result and separate Owner acceptance.",
+      "s": "PARALLEL_NOT_RUN"
+    },
+    {
+      "t": "Next connected delivery: obtain actual node-map checkpoint-A archive, inspect modules, then exercise real-primary read-only catalogue/map/preview with corrected v1.1 reader. A correct ingestion adapter is needed; enabled production export and full integration acceptance are not prerequisites for safe read-only work.",
+      "s": "NEXT_OWNER_ARCHIVE"
+    },
+    {
+      "t": "After real-input evidence and explicit authorization: guarded existing displacement-cell transfer with current map/input/profile/selection/approval digests, actual before/proposed values, stale invalidation and independent byte allowlist audit. Elemental transfer later needs unique mapped endpoint correspondence and explicit segmentation rules.",
+      "s": "FUTURE_GUARDED_SLICE"
     }
   ],
   "highRoi": [
     {
       "t": "Benchmark R0 (method): one builder chat (G3, 6ada4669) gave the Owner a locally runnable CII branch editor in about 7 h; Owner estimate for the multi-agent route 40+ h and 5 agents",
       "u": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/156"
+    },
+    {
+      "t": "Use the source-backed XMLv1.1 F05 fork for corrected read-only CII ingestion; preserve original CAESARII/PIPINGMODEL/SECTIONS/PIPINGELEMENT hierarchy. Keep independent XMLv2 as a distinct engine/candidate. Reuse valid literal-byte tests and exact archives; no unnecessary rebuild or broad revamp.",
+      "s": "NEXT_READ_ONLY_SLICE"
+    },
+    {
+      "t": "Ground truth: ELEMENTS has53 real fields plus identifying/flag data and15 typed auxiliary pointer slots. Node numbers, auxiliary array indices and material IDs differ. NODENAME aliases come from element endpoints plus its paired name record; storage indices are not node identity.",
+      "s": "SOURCE_GROUNDED"
+    },
+    {
+      "t": "DISPLMNT has2 node slots, each9 vectors x6 DOFs.9999.99 is unspecified; zero is a numeric prescription. Sentinel semantics are field-specific. Initial node slice may eventually transfer existing DX/DY/DZ cells only, one selected vector pair, preserving the full target prescription mask and other bytes.",
+      "s": "BOUNDED_NODAL_SCOPE"
+    },
+    {
+      "t": "Official CAESAR II v14 basic-element reference; use observed qualified layouts and distinguish node numbers, auxiliary pointers and material identities.",
+      "u": "https://docs.hexagonppm.com/r/en-US/CAESAR-II-Users-Guide/Version-14/337040",
+      "s": "GROUNDING_CATALOGUE"
+    },
+    {
+      "t": "Official CAESAR II v14 auxiliary-data reference. Oracle inspected displacement diagram337043.png:2 slots x9 vectors x6 DOFs; format evidence does not prove engineering equivalence.",
+      "u": "https://docs.hexagonppm.com/r/en-US/CAESAR-II-Users-Guide/Version-14/1471418",
+      "s": "GROUNDING_CATALOGUE"
     }
   ],
   "future": [
     {
       "t": "P3 node-naming phase deferred; do not start until Owner explicitly revises scope and authorizes a new task.",
       "s": "DEFERRED"
+    },
+    {
+      "t": "P3 remains deferred. Owner-authorized explicit node correspondence/displacement prototype is a bounded R3 task, not blanket authorization for P3 naming, geometry, segmentation, native engineering acceptance or full elemental transfer.",
+      "s": "P3_DEFERRED"
     }
   ],
   "intent": [
@@ -85,8 +139,24 @@
       "s": "OWNER_DIRECT"
     },
     {
-      "t": "Product intent: private CAESAR II CII <-> RichInputXML tool with guarded preview/apply/export UI. Preserve frozen original P2.1 and authentic model semantics; finish P2.5-B distribution/review/native Windows acceptance. P3 deferred.",
-      "s": "OWNER_SCOPE"
+      "t": "Historical early-R3 focus was guarded legacy P2.5-B distribution and Windows acceptance. Current engineering amendment adds faithful independent XMLv2 foundation, separate incremental v1.1 and explicit node-map prototype; P2/P2.1 remain frozen.",
+      "s": "HISTORY_AMENDED"
+    },
+    {
+      "t": "Current Owner aim: faithful CII <-> RichInputXMLv2 with proper hierarchy and exact unchanged bytes/length/SHA first; then branch -> element -> node correspondence and authorized nodal/elemental transfer. P2/P2.1 frozen; P3 deferred. Existing ciifr R3 remains current.",
+      "s": "CURRENT_OWNER_AIM"
+    },
+    {
+      "t": "Discover or geometrically unique correspondence is not engineering identity approval. Explicit current-input mapping/selection/approval controls changes; preview actual before/proposed values, invalidate stale context, and keep Apply/Export inside authorized byte scope.",
+      "s": "ENGINEERING_AUTHORITY"
+    },
+    {
+      "t": "Owner routing labels: Oracle01a16c60; XMLv1.1 coder6adc81d7; XMLv2 coder6adc7ee9; Node-map coder6adc940c. Short IDs are Owner-supplied routes, not authenticated identities. No coder-chat message or new implementation release is recorded.",
+      "s": "OWNER_REPORTED_ROUTING"
+    },
+    {
+      "t": "Oracle01a16c60 authored briefs/review harnesses, not delivered converter/prototype code. Product reviews are source-scoped non-author checks. This Progress record is self-authored; private evidence is not public VERIFIED, software acceptance or an independent page audit.",
+      "s": "EXPOSURE_AND_LIMITS"
     }
   ],
   "inputs": [
@@ -106,6 +176,54 @@
     {
       "t": "Private Owner Handoffs storage: original customer CII/XML models, frozen baseline and final ZIPs belong in access-controlled project folder; no verified recipient-accessible v0.1.1 code-only ZIP was found in checked Drive scope.",
       "s": "PRIVATE_PENDING"
+    },
+    {
+      "t": "OWNER_PRIVATE_REF:ciifr-xmlv2-primary-20261024. Actual private primary803776bytes; SHA-2565715c23f250d683a6c29ba84c2db9f01aae25788791317b99064c845bc2cdd57.12944 ASCII physical lines, CRLF/final CRLF;22 sections,521 elements; VERSION5/14/1256. Source/model identifiers remain private.",
+      "s": "ORACLE_BYTE_CHECKED"
+    },
+    {
+      "t": "XMLv1.1 F05 current code-only ZIP103672bytes/40files, SHA-256e7901a79fdbd9dd992923303b33fb0d3e2d0d0550826a6ad363ea8a8847150cf. CRC/reported file inventory verified; source-backed four-module correction. OWNER_PRIVATE_REF:ciifr-v11-f05-oracle-review-e7901a79-20261024.",
+      "s": "PRIVATE_COMPONENT_PASS"
+    },
+    {
+      "t": "XMLv1.1 prior reconciled ZIP71847bytes/29files, SHA-256abca2b2875a5d99b09ed43bf189bbdc3f409eafc54757b3bc7baadb91f1e2cd5. Historical F01-F04 closure; F05 was HOLD on those exact bytes. Kept unchanged; do not relabel old candidate as current F05 PASS.",
+      "s": "HISTORICAL_UNCHANGED"
+    },
+    {
+      "t": "XMLv1.1 original generic candidate49325bytes, SHA-256bd950291d1086e833a6d22a1f73f6a9a5b2fd3660dd7ef6a3f03f997986378c0. Historical HOLD: not the source-backed incremental fork. Reconciled/current variants retain original hierarchy.",
+      "s": "HISTORICAL_HOLD"
+    },
+    {
+      "t": "XMLv2 repair-r2 ZIP53073bytes/18files, SHA-2563fb1f3e6538160a8e8aa20b06d9a4f00c712acc20a3896a3860a6ee62dd4150c. CRC PASS; RichInputXMLv2.1 / CII-V14-ASCII-CRLF-B001. OWNER_PRIVATE_REF:ciifr-v2-r2-oracle-review-3fb1f3e6-20261024; F10 OPEN_P2/HOLD.",
+      "s": "PRIVATE_REVIEW_HOLD"
+    },
+    {
+      "t": "XMLv2 repair-r1 ZIP39956bytes/14files, SHA-256f5d2d0e48a44b7c214388fd29ec1e309e920e0cc11f0db3ffb15e181eb55531c; original ZIP28994bytes/11files, SHA-2565cf8512c884fa18ac511ec8ddb775937f90ad18308a2b13b5a80c9e5a9963436. Historical findings retained; both unchanged.",
+      "s": "HISTORICAL_UNCHANGED"
+    },
+    {
+      "t": "Frozen-reference code packet26680bytes, SHA-2561700aec745d4528867d4ed02c8853c89d76ae1987c7c2f78bc1b0ab0f44c4253. Four frozen source member hashes rechecked. Hash-identified, not digitally signed; unchanged archive/member evidence does not complete an actual destination before/after inventory.",
+      "s": "REFERENCE_REHASHED"
+    },
+    {
+      "t": "Node-map checkpoint-A report: expected72984byte ZIP, SHA-2566c0d0b183de72229c13f48ec83dbbb431ece764c1370376726bafd9b5298bd94. Actual filename not supplied; no matching local ZIP at this update.23/23 tests and42 file-hash checks are coder-reported, not independent artifact review.",
+      "s": "REPORTED_BYTES_MISSING"
+    },
+    {
+      "t": "Node-map reported code identity3a9429f0a2f7f0d5cefc48cc12cf88d005b98b40e63e9af50545ba217b584c79; displacement profile identityd6f5b8c29ac568746a442abb8635887ac60dc9b5dbf60a2e1fbeecbf14576336. NM9PASS synthetic/dictionary and7NOT_RUN; actual source not read by coder at checkpoint A.",
+      "s": "CODER_REPORTED_ONLY"
+    },
+    {
+      "t": "OWNER_PRIVATE_REF:ciifr-xmlv2-build-prompt-20261024. Independent XMLv2 brief and B001-B014 contract: exact byte/SHA, hierarchy, XML-only writer, edit causality, lexical/sentinel fidelity and frozen boundaries.",
+      "s": "GROUNDING_CATALOGUE"
+    },
+    {
+      "t": "OWNER_PRIVATE_REF:ciifr-xmlv11-incremental-build-prompt-20261024. Separate high-ROI source-backed four-module brief, V11-01-V11-10 contract and exact frozen reference packet; preserve original hierarchy.",
+      "s": "GROUNDING_CATALOGUE"
+    },
+    {
+      "t": "OWNER_PRIVATE_REF:ciifr-nodemap-disp-build-prompt-20261024. Full brief, NM-01-NM-16 benchmark contract and private source-grounding record: explicit1:1 map, vector/DOF choice, current-input digests, mask preservation and audited cell scope.",
+      "s": "GROUNDING_CATALOGUE"
     }
   ],
   "knownIssues": [
@@ -130,14 +248,34 @@
     {
       "t": "Native Windows served-browser workflow and Owner acceptance NOT_RUN; authentic 32-element transfer PASS applies only to previously scoped mapping.",
       "s": "NOT_RUN"
+    },
+    {
+      "t": "XMLv1.1 current F05 CLOSED in tested scope: primary exact SHA; old alternate VERSION keeps ownf8fe48f10024b3cdf2094689a98ef56992a458334d035a44c6cdfd3d77c57942 SHA; header/label/NODENAME malformed padding rejects with existing destination unchanged.26 retained independent checks PASS; supplied15 accepted/9 rejected variants PASS.",
+      "s": "V11_F01_F05_SCOPED_PASS"
+    },
+    {
+      "t": "XMLv1.1 compatibility: old v1.1 XML without mandatory VERSION pad0/pad1/pad2/padEnd must be regenerated. Marker remains RichInputXML-P1.v1.1. Windows fresh XML-only Python-audit check PASS; Linux chroot/seccomp NOT_RUN by Oracle here; full V11-10 integration and native acceptance NOT_RUN.",
+      "s": "COMPAT_AND_NOT_RUN"
+    },
+    {
+      "t": "Reviewer transparency: added v1.1 edge suite recorded21PASS/1 overly broad test expectation (codepage001256 was assumed supported; profile requires literal1256). Original raw report retained; separate2-case follow-up confirms correct acceptance/rejection. No product/test oracle altered to hide the result.",
+      "s": "REVIEW_METHOD_NOTE"
+    },
+    {
+      "t": "XMLv2 repair-r2 F07(A25), F08(global coordinate ordinals), F09(real signed zero) verified on Windows. Supplied26/26+15/15 PASS; B001-B013 PASS; independent literal24PASS/1FAIL identifies F10: integer -0 source passed exact r1 round-trip but r2 rejects after normalization. Fail-closed regression OPEN_P2/HOLD.",
+      "s": "V2_F10_OPEN_P2"
+    },
+    {
+      "t": "XMLv2 B014 and v1.1 V11-10 actual integration predicates NOT_RUN. No real selected destination before/after baseline is supplied. Native CAESAR import, engineering-property equivalence, full served Windows UI/backend and P2.5 transfer/Owner acceptance remain NOT_RUN; do not credit converter tests as those gates.",
+      "s": "INTEGRATION_NATIVE_NOT_RUN"
+    },
+    {
+      "t": "Fresh Common/main37435267c861d54998fee589e6dc91385bf59bfa remains Cycle rev1 ACTIVE with legacy Oracle binding and stale p25b Progress projection. Existing page is ciifr R3. Issue465 has one PARTIAL local-byte coder receipt; no accepted current receipt/control cutover is inferred. PR472 remains draft/unmerged.",
+      "u": "https://github.com/reallakshman19/Common/blob/37435267c861d54998fee589e6dc91385bf59bfa/oracle-cycles/p25b/CURRENT.json",
+      "s": "CANONICAL_PROJECTION_GAP"
     }
   ],
   "pending": [
-    {
-      "t": "Corrective draft PR and evidence from the A1FR coder",
-      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/153",
-      "s": "waiting"
-    },
     {
       "t": "Coder must place exact unchanged code-only ZIP in authorized private Handoffs and return access/actual hash confirmation or honest blocker.",
       "s": "CODER_NEXT"
@@ -151,8 +289,26 @@
       "s": "OWNER_GATE"
     },
     {
-      "t": "Future Oracle successor UNASSIGNED: checkpoint prepared only; no control epoch, retirement, assignment adoption, or write isolation achieved.",
-      "s": "PREPARED_ONLY"
+      "t": "Historical R2 A1FR repair queue; superseded as current R3 tracking. Preserve earlier PR150/issue153 evidence without crediting it as passing current converters.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/153",
+      "s": "HISTORICAL_R2"
+    },
+    {
+      "t": "Owner appointed Oracle01a16c60 for planning/review. Actual Common binding/control cutover remains pending PR472 and real write-exclusion evidence; no UNASSIGNED claim for current planning.",
+      "u": "https://github.com/reallakshman19/Common/pull/472",
+      "s": "CUTOVER_PENDING"
+    },
+    {
+      "t": "XMLv2 Coder6adc7ee9: F10 brief PREPARED for Owner relay; no send/adoption claimed. Reconcile integer normalization/sign guard, preserve F01-F09 and raw lexemes, add regression, return separate candidate/hash to Oracle01a16c60. No merge or release.",
+      "s": "V2_F10_REPAIR_NEXT"
+    },
+    {
+      "t": "Owner: privately provide existing72984byte Node-map checkpoint-A ZIP from coder6adc940c. Oracle already has primary CII and reviewed v1.1 reader; do not invent source-restaging or export-enablement gates for catalogue/preview.",
+      "s": "OWNER_ARCHIVE_NEEDED"
+    },
+    {
+      "t": "OWNER_PRIVATE_REF:ciifr-v2-f10-repair-brief-20261024. Prepared F10 brief and literal-source falsifier; retain F01-F09. Route: XMLv2 Coder6adc7ee9 via Owner, return to Oracle01a16c60. No delivery/adoption claimed.",
+      "s": "GROUNDING_CATALOGUE"
     }
   ]
 }

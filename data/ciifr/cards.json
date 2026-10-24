@@ -217,19 +217,19 @@
     "flags": []
   },
   "g3": {
-    "order": 7,
+    "order": 10,
     "group": "r3-oracle",
     "milestone": "M7",
-    "label": "CIIFR R3 incumbent Oracle",
+    "label": "Historical Oracle / legacy binding",
     "who": {
       "chat": "g3",
       "role": "Oracle (incumbent; no OTM)"
     },
-    "state": "IN_PROGRESS",
-    "now": "Oracle 6ada4669 coordinates R3: Common Cycle ACTIVE rev1; coder PARTIAL receipt observed; reconciliation PR #467 draft; frozen P2.1 retained; successor not yet appointed.",
+    "state": "NOT_APPLICABLE",
+    "now": "Historical Progress coordinator6ada4669; actual Common CURRENT rev1 still has that binding. Owner has appointed01a16c60 for planning. PR472 is draft/unmerged; predecessor shared-write cessation or exclusion remains unverified. This Progress record does not revoke access or activate control.",
     "next": {
-      "actor": "Owner",
-      "text": "Merge applicable reviewed PRs when approved; sustain existing Cycle assignment; prepare future Oracle with unchanged aim and two connected deliveries."
+      "actor": "-",
+      "text": ""
     },
     "refs": [
       {
@@ -244,9 +244,16 @@
         "s": "DRAFT"
       }
     ],
-    "updatedAt": "2026-10-24T04:31:52Z",
-    "src": "OWNER_PRIVATE_REF:ciifr-r3-owner-intent-20261024",
-    "flags": []
+    "updatedAt": "2026-10-24T12:59:04Z",
+    "src": "OWNER_PRIVATE_REF:ciifr-r3-coder-routing-20261024",
+    "flags": [],
+    "closed": {
+      "kind": "superseded",
+      "why": "Owner-appointed01a16c60 replaces this planning card; actual Common binding/write-control cutover remains pending, not asserted",
+      "at": "2026-10-24T12:59:04Z",
+      "src": "OWNER_PRIVATE_REF:ciifr-r3-coder-routing-20261024",
+      "by": "oracle-current"
+    }
   },
   "coder-p25b": {
     "order": 8,
@@ -299,33 +306,36 @@
     ]
   },
   "windows-r3": {
-    "order": 10,
+    "order": 1,
     "group": "r3-windows",
     "milestone": "M6",
-    "label": "Owner · native Windows acceptance",
+    "label": "Owner: native Windows acceptance",
     "who": {
-      "role": "Owner"
+      "role": "Owner engineering and software acceptance"
     },
     "state": "NOT_STARTED",
-    "now": "Native served-browser and local backend Discover / Accept / Preview / Apply / Export CII plus authorized output byte audit: NOT_RUN; Owner acceptance NOT GRANTED.",
+    "now": "Real served-browser/local-backend Discover -> Accept -> Preview -> Apply -> Export plus authorized CII byte audit remains NOT_RUN; final Owner acceptance not granted. Current Windows converter/harness checks do not satisfy this gate. Owner may safely test the unchanged reviewed runnable while independent code-only distribution audit remains pending.",
     "next": {
-      "actor": "Owner after verified artifact",
-      "text": "Perform native Windows end-to-end using private authorized files; return real test observations, exceptions and explicit acceptance or refusal."
-    }
+      "actor": "Owner after appropriate artifact check",
+      "text": "Use private authorized inputs and approved mapping; inspect actual before/proposed values, stale invalidation and exported allowed-byte boundary. Record PASS/FAIL/NOT_RUN and Owner decision separately."
+    },
+    "updatedAt": "2026-10-24T12:59:07Z",
+    "src": "OWNER_PRIVATE_REF:ciifr-r3-engineering-aim-20261024"
   },
   "successor-r3": {
-    "order": 11,
+    "order": 2,
     "group": "r3-oracle",
     "milestone": "M7",
-    "label": "Future Oracle · preparation only",
+    "label": "Canonical cutover: PR472 pending",
     "who": {
-      "role": "Oracle successor (UNASSIGNED)"
+      "role": "Canonical continuity gate",
+      "chat": "oracle01"
     },
-    "state": "NOT_STARTED",
-    "now": "Successor checkpoint prepared in Common PR #468. No successor ID, generation/epoch cutover, adoption or write exclusion has been authorized or published.",
+    "state": "BLOCKED",
+    "now": "Owner appointment is established for Oracle01a16c60; the old UNASSIGNED preparation text is obsolete. Fresh Common/main37435267 still rev1; PR472 head43c6b1f4 is draft/unmerged. PR467 remains OPEN/unmerged and is incorporated by472; do not merge both blindly. No actual predecessor write exclusion or secure control cutover observed.",
     "next": {
-      "actor": "Owner and incumbent Oracle",
-      "text": "Nominate successor based on demonstrated understanding; read Common agent-work and prepare read-only capability check; activate only via explicit controlled cutover."
+      "actor": "Owner",
+      "text": "Resolve actual shared-write exclusion and current preimage before canonical cutover; this does not block independent engineering review."
     },
     "refs": [
       {
@@ -333,7 +343,120 @@
         "l": "Prepared Oracle R3 onboarding",
         "u": "https://github.com/reallakshman19/Common/pull/468",
         "s": "DRAFT"
+      },
+      {
+        "k": "pr",
+        "l": "Consolidated canonical cutover",
+        "u": "https://github.com/reallakshman19/Common/pull/472",
+        "s": "DRAFT, NOT MERGED"
       }
-    ]
+    ],
+    "updatedAt": "2026-10-24T12:59:04Z",
+    "src": "https://github.com/reallakshman19/Common/pull/472"
+  },
+  "oracle-current": {
+    "order": 1,
+    "group": "r3-oracle",
+    "milestone": "M7",
+    "label": "Oracle: engineering / evidence",
+    "who": {
+      "chat": "oracle01",
+      "role": "Oracle standalone / private non-author product review"
+    },
+    "state": "IN_PROGRESS",
+    "now": "Owner-appointed Oracle01a16c60 owns aim, engineering briefs, evidence reconciliation and integration planning. Separate v1.1 F05 component PASS, XMLv2 F10 HOLD, node-map archive intake pending. Page records are self-recorded by Oracle; private proof is not public VERIFIED. Common rev1/legacy binding persists; PR472 draft is not an activated cutover.",
+    "next": {
+      "actor": "-",
+      "text": "Maintain one usable next action and preserve frozen P2/P2.1; no canonical write-control transfer claimed."
+    },
+    "updatedAt": "2026-10-24T12:59:03Z",
+    "src": "OWNER_PRIVATE_REF:ciifr-r3-coder-routing-20261024"
+  },
+  "xmlv11-f05": {
+    "order": 1,
+    "group": "r3-engine",
+    "milestone": "M8",
+    "label": "XMLv1.1: F05 closed / scoped PASS",
+    "who": {
+      "chat": "coder-v11",
+      "role": "XMLv1.1 coder6adc81d7; reviewed by Oracle01a16c60"
+    },
+    "state": "SUBMITTED",
+    "now": "Actual e7901a79...150cf ZIP103672bytes/40files/CRC PASS. Non-author Windows review: primary exact803776bytes/SHA; old VERSION mutation retains own f8fe48f1...7942 SHA; F01-F05 tested scope PASS;26 retained checks PASS; supplied15 accepted/9 rejected variants PASS. XML-only Python-audit PASS. Private review evidence; NOT public VERIFIED. Old v1.1 XML without4 VERSION gap keys must be regenerated. Linux kernel isolation and full V11-10/native acceptance NOT_RUN here.",
+    "next": {
+      "actor": "-",
+      "text": "Retain exact candidate for scoped read-only ingestion; actual integration/native acceptance is a separate gate."
+    },
+    "updatedAt": "2026-10-24T12:37:40Z",
+    "src": "OWNER_PRIVATE_REF:ciifr-v11-f05-oracle-review-e7901a79-20261024"
+  },
+  "xmlv2-r2": {
+    "order": 2,
+    "group": "r3-engine",
+    "milestone": "M9",
+    "label": "XMLv2: repair-r2 HOLD / F10",
+    "who": {
+      "chat": "coder-v2",
+      "role": "XMLv2 coder6adc7ee9; reviewed by Oracle01a16c60"
+    },
+    "state": "BLOCKED",
+    "now": "Actual3fb1f3e6...4150c ZIP53073bytes/18files/CRC PASS. Windows non-author review verified F07 A25, F08 global COORDS ordinals and F09 real-zero edits; retained15/15 and supplied26/26 PASS, B001-B013 PASS. Independent literal suite24PASS/1FAIL: F10 integer -0 source round-trips r1 but r2 rejects after normalization. Fail-closed compatibility regression, OPEN_P2. B014/native/P2.5 acceptance NOT_RUN; HOLD remains.",
+    "next": {
+      "actor": "XMLv2 Coder6adc7ee9",
+      "text": "Use prepared F10 brief: reconcile integer normalization/sign checking; preserve F01-F09. Return a separate hash-identified candidate via Owner to Oracle01a16c60; no send claimed."
+    },
+    "updatedAt": "2026-10-24T12:22:43Z",
+    "src": "OWNER_PRIVATE_REF:ciifr-v2-r2-oracle-review-3fb1f3e6-20261024"
+  },
+  "converter-integration": {
+    "order": 3,
+    "group": "r3-engine",
+    "milestone": "M8",
+    "label": "Converter integration / native gate",
+    "who": {
+      "chat": "oracle01",
+      "role": "Separate integration qualification"
+    },
+    "state": "BLOCKED",
+    "now": "Four frozen reference module hashes and historical archives rechecked unchanged. Full actual destination before/after inventory remains unavailable: v1.1 V11-10 and XMLv2 B014 NOT_RUN. Converter execution on Windows is not CAESAR import, engineering-property equivalence, full served UI workflow or Owner acceptance. These limits do not block authorized read-only node catalogue/map/preview.",
+    "next": {
+      "actor": "Owner when integrating",
+      "text": "Name the actual destination and frozen baseline before production integration. Preserve P2/P2.1; do not infer checkout qualification from ZIP hashes."
+    },
+    "updatedAt": "2026-10-24T12:59:06Z",
+    "src": "OWNER_PRIVATE_REF:ciifr-v11-f05-oracle-review-e7901a79-20261024"
+  },
+  "nodemap-a": {
+    "order": 1,
+    "group": "r3-nodemap",
+    "milestone": "M10",
+    "label": "Node-map: checkpoint A / bytes missing",
+    "who": {
+      "chat": "coder-nodemap",
+      "role": "Node-map coder6adc940c; Owner-reported routing"
+    },
+    "state": "BLOCKED",
+    "now": "Coder6adc940c reports23/23 synthetic tests and NM9PASS/7NOT_RUN, EXPORT_DISABLED. Expected ZIP72984bytes, SHA6c0d0b18...8bd94; filename not supplied. No matching local archive found on this update; actual modules not independently reviewed. Real-primary catalogue, repaired-reader integration, actual target correspondence and production export NOT_RUN. Oracle already holds authorized primary CII and corrected v1.1 reader; no source-restaging prerequisite invented.",
+    "next": {
+      "actor": "YOU",
+      "text": "Attach existing72984byte checkpoint-A ZIP from Node-map coder6adc940c. Oracle01a16c60 then scopes actual-module and real-primary read-only review; keep export disabled."
+    },
+    "updatedAt": "2026-10-24T12:59:06Z",
+    "src": "OWNER_PRIVATE_REF:ciifr-nodemap-checkpoint-a-report-20261024"
+  },
+  "mapped-transfer": {
+    "order": 2,
+    "group": "r3-nodemap",
+    "milestone": "M11",
+    "label": "P2.5 transfer: authorization boundary",
+    "who": {
+      "role": "Future full P2.5 scope; not a new agent assignment"
+    },
+    "state": "NOT_STARTED",
+    "now": "Full aim: branch mapping -> element mapping -> endpoint/node correspondence -> transfer nodal values and elemental blocks. Separate first nodal slice proposes NUMBER/NAME/BOTH/EITHER then explicit accepted partial one-to-one map; source/target counts and order may differ. Initial existing DX/DY/DZ cell transfer is not released; preserve target prescribed/free mask, rotations, nodes, pointers and all non-allowlisted bytes.",
+    "next": {
+      "actor": "Owner after evidence",
+      "text": "Review actual read-only slice before authorizing further implementation. Discovery/unique geometry is not engineering approval; preview and apply need separate current-input guards."
+    }
   }
 }

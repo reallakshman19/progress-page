@@ -4,11 +4,11 @@
     "key": "ciifr",
     "title": "CII Find & Replace VNext",
     "subtitle": "R3 current: standalone Oracle coordination of P2.5-B handoff, review, Windows acceptance and prepared Oracle succession.",
-    "updatedAt": "2026-10-24T04:34:34Z",
-    "updatedBy": "Oracle",
+    "updatedAt": "2026-10-24T13:01:12Z",
+    "updatedBy": "Oracle 01a16c60",
     "staleAfterMin": 120,
-    "aim": "Build and privately validate CII Find & Replace VNext (CII <-> RichInputXML) with a usable guarded UI. Preserve frozen P2.1, finish P2.5-B code-only custody and independent review, then native Windows Owner acceptance. Track GitHub Cycle handoffs and prepare a successor Oracle; P3 stays deferred.",
-    "aimSrc": "OWNER_PRIVATE_REF:ciifr-r3-owner-intent-20261024"
+    "aim": "Private CII <-> RichInputXMLv2 engine preserving CII hierarchy and exact byte/SHA round-trip, then P2.5 branch -> element -> node mapping and authorized nodal/elemental transfer with audited CII export. Keep P2/P2.1 frozen; XMLv1.1 is a separate incremental fork. Prove real Windows workflow; P3 deferred. Owner retains engineering approval.",
+    "aimSrc": "OWNER_PRIVATE_REF:ciifr-r3-engineering-aim-20261024"
   },
   "rules": {
     "quietAfterMin": 30,
@@ -56,58 +56,106 @@
       "label": "P2.5-B independent reviewer",
       "id8": "6adb484a",
       "engine": "ChatGPT"
+    },
+    "oracle01": {
+      "label": "Oracle standalone",
+      "id8": "01a16c60",
+      "engine": "Codex"
+    },
+    "coder-v11": {
+      "label": "XMLv1.1 coder",
+      "id8": "6adc81d7",
+      "engine": "ChatGPT"
+    },
+    "coder-v2": {
+      "label": "XMLv2 coder",
+      "id8": "6adc7ee9",
+      "engine": "ChatGPT"
+    },
+    "coder-nodemap": {
+      "label": "Node-map coder",
+      "id8": "6adc940c",
+      "engine": "ChatGPT"
     }
   },
   "milestones": {
     "M1": {
-      "order": 1,
-      "name": "Repair",
+      "order": 20,
+      "name": "History: repair",
       "full": "Corrective PR built"
     },
     "M2": {
-      "order": 2,
-      "name": "Review",
+      "order": 21,
+      "name": "History: review",
       "full": "Independent review"
     },
     "M3": {
-      "order": 3,
-      "name": "Merge",
+      "order": 22,
+      "name": "History: merge",
       "full": "Owner merge"
     },
     "M4": {
-      "name": "Code-only",
+      "name": "Legacy code-only custody",
       "full": "Unchanged v0.1.1 code-only ZIP retrieved and byte-verified by an authorized recipient",
-      "order": 4,
+      "order": 10,
       "cap": "CANDIDATE",
       "canDo": "Coder reports a locally checked code-only candidate; recipient retrieval remains blocked",
       "capSrc": "https://github.com/reallakshman19/Common/issues/465#issuecomment-6379577797"
     },
     "M5": {
-      "name": "Independent review",
+      "name": "Legacy package IR",
       "full": "Independently audit exact code-only bytes, 12-of-12 application-file correspondence, protected source boundaries and limitations",
-      "order": 5,
+      "order": 11,
       "cap": "NOT_DEMONSTRATED",
       "canDo": "No completed deliverable for this gate yet"
     },
     "M6": {
-      "name": "Windows acceptance",
-      "full": "Owner completes native unmocked Windows browser/back-end and authorized CII output checks",
-      "order": 6,
+      "name": "Native Windows acceptance",
+      "full": "Owner real browser/backend Discover -> Accept -> Preview -> Apply -> Export plus authorized CII byte audit; NOT_RUN.",
+      "order": 5,
       "cap": "NOT_DEMONSTRATED",
       "canDo": "No completed deliverable for this gate yet"
     },
     "M7": {
-      "name": "Oracle succession",
-      "full": "Prepare source-grounded replacement checkpoint and publish actual epoch cutover only after Owner approval",
-      "order": 7,
+      "name": "Canonical cutover / continuity",
+      "full": "Owner-appointed Oracle01a16c60 plans/reviews; Common still rev1 with old binding. PR472 draft; actual write exclusion/control transfer unverified.",
+      "order": 6,
       "cap": "NOT_DEMONSTRATED",
       "canDo": "No completed deliverable for this gate yet"
+    },
+    "M8": {
+      "name": "XMLv1.1 exact round-trip",
+      "full": "Source-backed incremental fork; F01-F05 closed in reviewed scope; actual integration/native acceptance pending.",
+      "order": 1,
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "Owner-private component PASS: primary and supported variants round-trip exactly. Public capability proof pending; regenerate old XML lacking VERSION gaps."
+    },
+    "M9": {
+      "name": "Independent XMLv2 engine",
+      "full": "Preserve hierarchy and exact accepted bytes with standalone writer; repair-r2 F07-F09 verified, F10 integer -0 intake regression OPEN_P2.",
+      "order": 2,
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "Owner-private primary/A25/COORDS/real-zero probes pass. F10 HOLD remains; no public capability proof. B014 integration inventory NOT_RUN."
+    },
+    "M10": {
+      "name": "Node catalogue / map / preview",
+      "full": "Explicit one-to-one source/target node mapping by number/name with different counts/order; read-only catalogue/preview first.",
+      "order": 3,
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "Coder reports synthetic checkpoint A; actual72984byte archive not found at current local check. Real-primary ingestion and independent review NOT_RUN."
+    },
+    "M11": {
+      "name": "Authorized mapped transfer",
+      "full": "Full P2.5: branch -> element -> endpoint/node correspondence, then authorized nodal values and elemental blocks. Initial node prototype slice is existing DX/DY/DZ only.",
+      "order": 4,
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "No accepted production transfer/export in this new prototype. Read-only work can proceed before export qualification."
     }
   },
   "groups": {
     "review": {
-      "order": 1,
-      "title": "Review of PR #150",
+      "order": 20,
+      "title": "R1/R2 history: PR150 review",
       "chips": [
         {
           "t": "FAIL / HOLD",
@@ -116,8 +164,8 @@
       ]
     },
     "repair": {
-      "order": 2,
-      "title": "Repair task #153",
+      "order": 21,
+      "title": "R1/R2 history: repair task153",
       "chips": [
         {
           "t": "PR #150 draft · HOLD",
@@ -126,20 +174,28 @@
       ]
     },
     "r3-code": {
-      "title": "R3 · Code-only custody",
-      "order": 3
+      "title": "Legacy v0.1.1 custody: still open",
+      "order": 10
     },
     "r3-review": {
-      "title": "R3 · Independent verification",
-      "order": 4
+      "title": "Legacy code-only independent audit",
+      "order": 11
     },
     "r3-windows": {
-      "title": "R3 · Windows / Owner acceptance",
+      "title": "R3: Native workflow / Owner acceptance",
       "order": 5
     },
     "r3-oracle": {
-      "title": "R3 · Oracle successor preparation",
+      "title": "R3: Oracle planning / canonical control",
       "order": 6
+    },
+    "r3-engine": {
+      "title": "R3: CII converter foundations",
+      "order": 1
+    },
+    "r3-nodemap": {
+      "title": "R3: Explicit node mapping prototype",
+      "order": 2
     }
   },
   "revisions": [
