@@ -20,8 +20,12 @@ from pp_check_files import check_actions, check_cards, check_fixtures, check_nud
 from pp_ctx import Ctx
 from pp_ledger_check import check_ledger
 
-SECRETS = ((re.compile(r"(?:drive|docs)\.google\.com\b", re.I), "contains a Google Drive link"),
-           (re.compile(r"(?:1drv\.ms|onedrive\.(?:live\.)?com|docs\.live\.net|sharepoint(?:-df)?\.(?:com|us|de|cn))\b", re.I),
+# Owner-approved folder locators may be linked in explicitly marked
+# grounding fixtures; Drive file / Docs links remain prohibited.
+DRIVE_HOST = re.compile(r"(?:drive|docs)\.google\.com\b", re.I)
+DRIVE_FOLDER = re.compile(r"https://drive\.google\.com/drive/folders/[A-Za-z0-9_-]{20,128}(?:\?usp=drive_link)?")
+DRIVE_APPROVAL = "OWNER_APPROVED_PUBLIC_FOLDER"
+SECRETS = ((re.compile(r"(?:1drv\.ms|onedrive\.(?:live\.)?com|docs\.live\.net|sharepoint(?:-df)?\.(?:com|us|de|cn))\b", re.I),
             "contains a OneDrive or SharePoint link"),
            (re.compile(r"[\w.+-]+@[\w-]+\.[\w.]+"), "contains an email address"),
            (re.compile(r"ghp_\w{20,}|github_pat_\w{20,}|sk-[A-Za-z0-9]{20,}"), "contains what looks like an access token"))
@@ -195,6 +199,32 @@ def _plain(raw):
     return "".join(ch for ch in unicodedata.normalize("NFKC", t) if unicodedata.category(ch) != "Cf")
 
 
+def _approved_folder_urls(document):
+    """The 'u' URL of an explicitly approved fixture may be public."""
+    if not isinstance(document, dict):
+        return []
+    urls = []
+    for items in document.values():
+        if not isinstance(items, list):
+            continue
+        for item in items:
+            if not isinstance(item, dict):
+                continue
+            url = item.get("u")
+            if (item.get("s") == DRIVE_APPROVAL and isinstance(url, str)
+                    and DRIVE_FOLDER.fullmatch(url)):
+                urls.append(url)
+    return urls
+
+
+def _strip_approved_folders(text, urls):
+    for url in urls:
+        # Never permit a URL prefix followed by /file, ?extra or #fragment.
+        pattern = re.escape(url) + r'(?=$|[\s",}\]])'
+        text = re.sub(pattern, "[OWNER_APPROVED_PUBLIC_FOLDER]", text)
+    return text
+
+
 def scan_text(c, root, private):
     for path in sorted(Path(root).rglob("*.json")):
         where = str(path.relative_to(root))
@@ -203,8 +233,20 @@ def scan_text(c, root, private):
         except (OSError, ValueError) as exc:
             c.err(where, f"cannot read JSON ({exc})")
             continue
+        # The folder exception is local to its fixture document; even an
+        # approved URL elsewhere in data remains prohibited.
+        permitted = []
+        if path.name == "fixtures.json" and path.parent != Path(root):
+            try:
+                permitted = _approved_folder_urls(L.read_json(path))
+            except (OSError, ValueError):
+                pass  # normal JSON loader reports malformed data
+        sanitized = [_strip_approved_folders(s, permitted)
+                     for s in (raw, _plain(raw))]
+        if any(DRIVE_HOST.search(s) for s in sanitized):
+            c.err(where, "contains a Google Drive link not approved as a public folder fixture")
         for pattern, why in SECRETS:
-            if any(pattern.search(t) for t in (raw, _plain(raw))):
+            if any(pattern.search(s) for s in sanitized):
                 c.err(where, why)
         if not private and CHAT.search(raw):
             c.err(where, "contains a chat link (public data keeps the 8-character chat id only)")

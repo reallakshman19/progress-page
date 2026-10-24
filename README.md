@@ -42,7 +42,10 @@ data/<project>/nudges.json         Nudge + lines and their status (open, done by
 data/<project>/audit.json          the Timeline: append-only, one entry per change
 ```
 
-No chat link, Drive link, email or token belongs here. Chat ids are the short id only. The checker refuses the rest.
+No chat link, private Drive **file** link, email or token belongs here. Chat ids are short IDs only.
+By explicit Owner authorization, a **publicly discoverable Drive folder locator** may appear only as a grounding
+fixture URL marked `OWNER_APPROVED_PUBLIC_FOLDER`; the checker still refuses other Drive/Docs links. A public
+folder locator does not grant access or verify file bytes. See [Oracle handoff routing and Drive policy](docs/ORACLE_DRIVE_HANDOFF_PROGRESS.md).
 To make chat ids clickable in one browser, open the page once with a private setup link
 (`python tools/pp_links.py links.private.json --page <page url>`); the part after `#` is never sent to a server.
 
