@@ -3,8 +3,8 @@
   "project": {
     "key": "ciifr",
     "title": "CII Find & Replace VNext",
-    "subtitle": "Preview from the OTM board. The CIIFR Oracle owns the real data (standalone mode).",
-    "updatedAt": "2026-10-24T04:31:55Z",
+    "subtitle": "R3 current: standalone Oracle coordination of P2.5-B handoff, review, Windows acceptance and prepared Oracle succession.",
+    "updatedAt": "2026-10-24T04:34:34Z",
     "updatedBy": "Oracle",
     "staleAfterMin": 120,
     "aim": "Build and privately validate CII Find & Replace VNext (CII <-> RichInputXML) with a usable guarded UI. Preserve frozen P2.1, finish P2.5-B code-only custody and independent review, then native Windows Owner acceptance. Track GitHub Cycle handoffs and prepare a successor Oracle; P3 stays deferred.",

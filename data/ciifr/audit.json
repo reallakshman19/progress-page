@@ -970,6 +970,18 @@
       "list": "future",
       "op": "add",
       "rev": "R3"
+    },
+    {
+      "seq": 74,
+      "id": "CIIFR-R-0074",
+      "previous_id": "CIIFR-R-0073",
+      "at": "2026-10-24T04:34:34Z",
+      "kind": "PLAN",
+      "actor": "Oracle",
+      "summary": "Replace stale OTM preview subtitle with Owner-directed standalone R3 scope",
+      "source": "OWNER_PRIVATE_REF:ciifr-r3-owner-intent-20261024",
+      "scope": "subtitle",
+      "rev": "R3"
     }
   ]
 }
