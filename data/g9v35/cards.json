@@ -424,7 +424,9 @@
     "group": "pilot",
     "milestone": "Q0",
     "label": "ChatGPT content author (2.3)",
-    "who": {},
+    "who": {
+      "chat": "content"
+    },
     "state": "SUBMITTED",
     "now": "Returned 23:49 (DRAFT, 10 pairs); O5 checked structure; inputs in builder start brief",
     "next": {
@@ -432,7 +434,7 @@
       "text": ""
     },
     "flags": [],
-    "updatedAt": "2026-10-24T02:41:19Z",
+    "updatedAt": "2026-10-24T02:44:19Z",
     "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128#issuecomment-6372752959"
   }
 }
