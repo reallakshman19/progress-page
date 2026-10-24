@@ -67,14 +67,14 @@
       "role": "Oracle"
     },
     "state": "SUBMITTED",
-    "now": "HOLD lifted 24 Oct; OTM asks for capture (METER HIGH), current-step reconcile, next card",
+    "now": "METER HIGH; capture posted; asked for concept-note addendum (Owner rule)",
     "next": {
       "actor": "Oracle O2-Doc to Table",
-      "text": "post capture + next slice card on Word-to-Table#1; then OTM checks and delivers to G2.1"
+      "text": "post concept-note addendum on Word-to-Table#1; then OTM starts O3 from it"
     },
     "flags": [],
-    "updatedAt": "2026-10-24T17:53:39Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6387568360"
+    "updatedAt": "2026-10-24T18:04:02Z",
+    "src": "https://github.com/reallakshman19/Word-to-Table/issues/1#issuecomment-6387614053"
   },
   "D2T-G21": {
     "order": 4,
@@ -85,14 +85,14 @@
       "chat": "d2t-g21",
       "role": "Agent"
     },
-    "state": "SUBMITTED",
-    "now": "HOLD lifted; WAITS for O2's next card",
+    "state": "IN_PROGRESS",
+    "now": "building SCTL-P1.1 Source Traceability tab since 22:0x; timebox 4 h; first checks ZIP access",
     "next": {
-      "actor": "Oracle O2-Doc to Table",
-      "text": "O2 writes the card; then OTM delivers it"
+      "actor": "Coder G2.1-Doc to Table",
+      "text": "PROTOTYPE RETURN on #157 with draft PR; then OTM runs it"
     },
     "flags": [],
-    "updatedAt": "2026-10-24T17:53:39Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6387568360"
+    "updatedAt": "2026-10-24T18:04:02Z",
+    "src": "https://github.com/reallakshman19/Word-to-Table/issues/1#issuecomment-6387614053"
   }
 }

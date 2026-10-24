@@ -1340,6 +1340,36 @@
       "after": "NOT_APPLICABLE",
       "to": "D2T-O2",
       "rev": "R1"
+    },
+    {
+      "seq": 100,
+      "id": "DOC2TABLE-R-0100",
+      "previous_id": "DOC2TABLE-R-0099",
+      "at": "2026-10-24T18:04:02Z",
+      "kind": "STATE",
+      "actor": "OTM",
+      "summary": "SCTL-P1.1 card (O2) delivered as written",
+      "source": "https://github.com/reallakshman19/Word-to-Table/issues/1#issuecomment-6387614053",
+      "card": "D2T-G21",
+      "before": "SUBMITTED",
+      "after": "IN_PROGRESS",
+      "source_at": "2026-10-24T18:04:02Z",
+      "rev": "R1"
+    },
+    {
+      "seq": 101,
+      "id": "DOC2TABLE-R-0101",
+      "previous_id": "DOC2TABLE-R-0100",
+      "at": "2026-10-24T18:04:02Z",
+      "kind": "UPDATE",
+      "actor": "OTM",
+      "summary": "capture + card posted; asked for concept note + page links",
+      "source": "https://github.com/reallakshman19/Word-to-Table/issues/1#issuecomment-6387614053",
+      "card": "D2T-O2",
+      "before": "SUBMITTED",
+      "after": "SUBMITTED",
+      "source_at": "2026-10-24T18:04:02Z",
+      "rev": "R1"
     }
   ]
 }

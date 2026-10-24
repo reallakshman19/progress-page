@@ -594,14 +594,14 @@
       "role": "Oracle"
     },
     "state": "SUBMITTED",
-    "now": "HOLD lifted 24 Oct; OTM asks for the next slice card (S2)",
+    "now": "S2-VIEW-1 card delivered to G4.1; WAITS for G4.1 return",
     "next": {
-      "actor": "Oracle O4-CIIFR4",
-      "text": "post next slice card on #136; then OTM checks and delivers to G4.1"
+      "actor": "Coder G4.1-CIIFR4",
+      "text": "return S2-VIEW-1; then O4 challenges it"
     },
     "flags": [],
-    "updatedAt": "2026-10-24T17:53:39Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6387568360"
+    "updatedAt": "2026-10-24T18:04:02Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/136#issuecomment-6387609761"
   },
   "CIIFR-G41": {
     "order": 12,
@@ -612,14 +612,14 @@
       "chat": "ciifr-g41",
       "role": "Agent"
     },
-    "state": "SUBMITTED",
-    "now": "HOLD lifted; WAITS for O4's next card",
+    "state": "IN_PROGRESS",
+    "now": "building S2-VIEW-1 offline hierarchy viewer since 22:0x on PR #163 branch; synthetic only",
     "next": {
-      "actor": "Oracle O4-CIIFR4",
-      "text": "O4 writes the card; then OTM delivers it"
+      "actor": "Coder G4.1-CIIFR4",
+      "text": "PROTOTYPE RETURN on #158; then OTM runs it"
     },
     "flags": [],
-    "updatedAt": "2026-10-24T17:53:39Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6387568360"
+    "updatedAt": "2026-10-24T18:04:02Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/136#issuecomment-6387609761"
   }
 }
