@@ -390,17 +390,15 @@
     "who": {
       "role": "Agent"
     },
-    "state": "BLOCKED",
-    "now": "WBS 2.4 builder not launched: waits on the Owner (Codex app, new chat; line on the Owner's clipboard)",
+    "state": "IN_PROGRESS",
+    "now": "WBS 2.4 builder launched by the Owner (Codex app, new chat) 08:1x; reads BUILDER-START.txt",
     "next": {
-      "actor": "YOU",
-      "text": "open a NEW Codex app chat in C:\\CodeC\\Grade9v3.5 and paste the BUILDER-START line; expected: built NLM page, then OTM runs it"
+      "actor": "NLM page builder",
+      "text": "build the NLM page; then OTM runs it in real Chrome and the Owner validates (2.5)"
     },
-    "flags": [
-      "needs-you"
-    ],
-    "updatedAt": "2026-10-24T02:27:00Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128#issuecomment-6378741959"
+    "flags": [],
+    "updatedAt": "2026-10-24T04:12:52Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6379713544"
   },
   "checker": {
     "order": 15,
