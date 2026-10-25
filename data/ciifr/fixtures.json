@@ -158,6 +158,12 @@
       "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173",
       "s": "R1_ISSUED_NOT_SENT",
       "milestone": "M18"
+    },
+    {
+      "t": "Coder 6adddf80 Stage0 #173 source return confirms CIIFR goal/architecture, PR168 candidate and read-only diagnosis. Oracle accepted onboarding content but left Appendix A partial; no implementation authorization.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6396792541",
+      "s": "STAGE0_ACCEPTED",
+      "milestone": "M18"
     }
   ],
   "pullRequests": [
@@ -880,6 +886,12 @@
       "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6395988691",
       "s": "PTR_GAP_CONFIRMED",
       "milestone": "M18"
+    },
+    {
+      "t": "E1 coder capability blocker: git ls-remote DNS failure; no local PR168 checkout, backup tool/patch-ledger setup or native E1 and NodeName regression run. Hosted CI and generic node smoke do not satisfy repository AGENTS takeover.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6396835086",
+      "s": "BLOCKED_CAPABILITY",
+      "milestone": "M18"
     }
   ],
   "pending": [
@@ -1000,6 +1012,12 @@
       "t": "CODER FIRST: E1 R1 task #173 Stage0 is read-only onboarding on Owner full CIIFR goal and actual v14 architecture; must return source/Appendix A/capability evidence before editing same PR168. No coder bound or received.",
       "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6396649610",
       "s": "CODER_ONBOARD_PREPARED",
+      "milestone": "M18"
+    },
+    {
+      "t": "NEXT: coder 6adddf80 recover verifiable native exact-head source workspace, backup/ledger and repository test ability; post CAPABILITY RETURN on #173. No repeated onboarding, no PR168 edits until Oracle checks authority and Appendix A.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6396835086",
+      "s": "CAPABILITY_RECOVERY",
       "milestone": "M18"
     }
   ]

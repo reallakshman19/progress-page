@@ -4762,6 +4762,59 @@
       "list": "pending",
       "op": "add",
       "rev": "R4"
+    },
+    {
+      "seq": 364,
+      "id": "CIIFR-R-0364",
+      "previous_id": "CIIFR-R-0363",
+      "at": "2026-10-25T11:05:25Z",
+      "kind": "UPDATE",
+      "actor": "CIIFR Oracle (Stage0 coder return reconciliation)",
+      "summary": "Reconcile Owner-confirmed coder Stage0 and retain capability hold before E1 R1 implementation.",
+      "source": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6396835086",
+      "card": "wbs4-e1-ptrguard",
+      "before": "NOT_STARTED",
+      "after": "NOT_STARTED",
+      "rev": "R4"
+    },
+    {
+      "seq": 365,
+      "id": "CIIFR-R-0365",
+      "previous_id": "CIIFR-R-0364",
+      "at": "2026-10-25T11:05:25Z",
+      "kind": "FIXTURE",
+      "actor": "CIIFR Oracle (Stage0 coder return reconciliation)",
+      "summary": "Record actual Stage0 readback, repair gate and one next actor.",
+      "source": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6396835086",
+      "list": "issues",
+      "op": "add",
+      "rev": "R4"
+    },
+    {
+      "seq": 366,
+      "id": "CIIFR-R-0366",
+      "previous_id": "CIIFR-R-0365",
+      "at": "2026-10-25T11:05:25Z",
+      "kind": "FIXTURE",
+      "actor": "CIIFR Oracle (Stage0 coder return reconciliation)",
+      "summary": "Record actual Stage0 readback, repair gate and one next actor.",
+      "source": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6396835086",
+      "list": "knownIssues",
+      "op": "add",
+      "rev": "R4"
+    },
+    {
+      "seq": 367,
+      "id": "CIIFR-R-0367",
+      "previous_id": "CIIFR-R-0366",
+      "at": "2026-10-25T11:05:26Z",
+      "kind": "FIXTURE",
+      "actor": "CIIFR Oracle (Stage0 coder return reconciliation)",
+      "summary": "Record actual Stage0 readback, repair gate and one next actor.",
+      "source": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6396835086",
+      "list": "pending",
+      "op": "add",
+      "rev": "R4"
     }
   ]
 }
