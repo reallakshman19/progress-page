@@ -1708,6 +1708,20 @@
       "before": "SUBMITTED",
       "after": "SUBMITTED",
       "rev": "R1"
+    },
+    {
+      "seq": 127,
+      "id": "DOC2TABLE-R-0127",
+      "previous_id": "DOC2TABLE-R-0126",
+      "at": "2026-10-25T04:47:34Z",
+      "kind": "UPDATE",
+      "actor": "OTM",
+      "summary": "O3 ACK received",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6393034678",
+      "card": "D2T-O3",
+      "before": "SUBMITTED",
+      "after": "SUBMITTED",
+      "rev": "R1"
     }
   ]
 }
