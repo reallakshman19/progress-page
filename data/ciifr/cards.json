@@ -748,13 +748,13 @@
     "milestone": "M17",
     "label": "E0 · Owner intent + CII model",
     "who": {
-      "role": "Unassigned WBS slice"
+      "role": "Oracle contribution (SELF_ASSESSED)"
     },
-    "state": "NOT_STARTED",
-    "now": "Owner goal = edit ELEMENTS real engineering attributes and serialized Line Number/branch, plus pointer-resolved RIGID; NOT an unrestricted text replace or silent extension of NodeName. 15-line element record; 53 real slots; node numbers are endpoints, pointer IDs index auxiliary records. Hash-bound private v14 fixture; field units, sentinel meaning, width and alias rules must be source proven.",
+    "state": "SUBMITTED",
+    "now": "Oracle-authored E0 architecture framework delivered as draft PR #168: exact v14 53-real/15-pointer layout, endpoint versus auxiliary identities, field-specific sentinels, private baseline hash-only inventory, nine contrary-case predictions. Source-derived and SELF_ASSESSED; no editor or engineering acceptance.",
     "next": {
-      "actor": "Oracle → qualified read-only analyst",
-      "text": "Reconcile official v14 definitions vs observed 521-element baseline; publish typed slot/sentinel/ownership oracle and predeclared competing-interpretation tests."
+      "actor": "Authorized Oracle / independent field reviewer",
+      "text": "Challenge v14 field meanings/units and Material Number location against an independent source before enabling edits. Review exact PR #168."
     },
     "refs": [
       {
@@ -766,10 +766,15 @@
         "k": "comment",
         "l": "CII v14 architecture",
         "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394203305"
+      },
+      {
+        "k": "pr",
+        "l": "Oracle E0/E1 framework",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/168"
       }
     ],
-    "updatedAt": "2026-10-25T06:07:26Z",
-    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394203305"
+    "updatedAt": "2026-10-25T06:30:47Z",
+    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394395409"
   },
   "wbs4-e1": {
     "order": 41,
@@ -777,13 +782,13 @@
     "milestone": "M18",
     "label": "E1 · Exact CII element catalogue",
     "who": {
-      "role": "Unassigned WBS slice"
+      "role": "Oracle contribution, agent NOT YET ASSIGNED"
     },
-    "state": "NOT_STARTED",
-    "now": "Read-only index of ELEMENTS 53 real values, two label rows, metadata and 15 auxiliary pointer slots, with individual 0-based byte spans and record ordinals. RIGID pointer #2 / NODENAME pointer #12 verified against section cardinalities; FROM and TO node numbers can repeat in different branches. No field meaning inferred from array order alone.",
+    "state": "IN_PROGRESS",
+    "now": "Read-only E1 parser and synthetic fixture contract supplied in draft PR #168. Exact-head CI 40169198664: 6/6 E1 and 19/19 retained NodeName PASS after correcting a false B1 synthetic premise. Private original physically verified separately; native CAESAR reimport and independently sourced field meaning NOT_RUN.",
     "next": {
-      "actor": "Coder under Oracle release",
-      "text": "Return real/synthetic field ledger with field names, widths, units, lexemes, pointer status, 0 vs null and bad-reference witnesses; no modified bytes."
+      "actor": "Authorized Oracle to allocate E1 agent",
+      "text": "Read prepared agent packet, verify active coordinator and sole writer, then assign E1-FIELD-MAP-1 for independent ordinal/unit/sentinel challenges. No private transfer presumed."
     },
     "refs": [
       {
@@ -795,10 +800,15 @@
         "k": "comment",
         "l": "CII v14 architecture",
         "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394203305"
+      },
+      {
+        "k": "pr",
+        "l": "Read-only E1 PR168",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/168"
       }
     ],
-    "updatedAt": "2026-10-25T06:07:26Z",
-    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394203305"
+    "updatedAt": "2026-10-25T06:30:47Z",
+    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394395409"
   },
   "wbs4-e2": {
     "order": 42,

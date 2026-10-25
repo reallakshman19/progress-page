@@ -78,6 +78,24 @@
       "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394203305",
       "s": "ARCHITECTURE_HANDBOOK",
       "milestone": "M17"
+    },
+    {
+      "t": "Oracle E0/E1 architecture, field-ordinal v14 contract, RIGID pointer semantics, physical fixture and negative tests; code is self-assessed, read-only only.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/blob/b09d0ed3b8c62d1be74123d8bc140a350f5180b3/docs/ciifr/WBS4_ORACLE_E0_E1.md",
+      "s": "ORACLE_E0",
+      "milestone": "M17"
+    },
+    {
+      "t": "Read-only v14 element/RIGID catalogue: original lexeme, physical byte span and owners; publicInventory emits aggregate only. No writer/application integration.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/blob/b09d0ed3b8c62d1be74123d8bc140a350f5180b3/tools/ciifr-wbs4/readonly-catalog.mjs",
+      "s": "E1_CANDIDATE",
+      "milestone": "M18"
+    },
+    {
+      "t": "Agent handoff E1-FIELD-MAP-1 prepared but NOT SENT: actual Oracle control, exact head, source map, sole writer, fixture custody and Artifact Relay must be established before activation.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/blob/b09d0ed3b8c62d1be74123d8bc140a350f5180b3/docs/ciifr/WBS4_AGENT_ONBOARD_PACKET_DRAFT.md",
+      "s": "ONBOARD_PREPARED",
+      "milestone": "M18"
     }
   ],
   "issues": [
@@ -373,6 +391,12 @@
       "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394203305",
       "s": "RIGID_FIRST",
       "milestone": "M20"
+    },
+    {
+      "t": "E1 source-layout qualification exact head b09d0ed: GitHub run 40169198664 PASS 6/6 E1 synthetic and 19/19 retained NodeName. Excludes domain units/semantic proof, native CAESAR and TARGET1.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/actions/runs/40169198664",
+      "s": "CI_SCOPED_PASS",
+      "milestone": "M18"
     }
   ],
   "future": [
@@ -637,6 +661,12 @@
       "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394203305",
       "s": "OBSERVED_NOT_ACCEPTED",
       "milestone": "M20"
+    },
+    {
+      "t": "Native private byte-layout proof: SHA256 5715c23f250d683a6c29ba84c2db9f01aae25788791317b99064c845bc2cdd57, 521 elements/27613 reals/7815 pointers, 177 NodeName, 156 RIGID; all nonzero pointers in range. Source bytes remain private.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394395409",
+      "s": "ORACLE_LOCAL",
+      "milestone": "M17"
     }
   ],
   "knownIssues": [
@@ -751,6 +781,12 @@
       "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394203305",
       "s": "SEMANTICS_PENDING",
       "milestone": "M20"
+    },
+    {
+      "t": "Material Number is not a numbered item among published 53 ELEMENTS real slots. Keep its editing unavailable until its own physical source/section field and unit semantics are established.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394395409",
+      "s": "MATERIAL_UNMAPPED",
+      "milestone": "M19"
     }
   ],
   "pending": [
@@ -832,6 +868,12 @@
       "t": "Next task is E0/E1 READ_ONLY inventory, no merge/export: rehash actual private original, reconcile 53 real slot semantic ordinals/pointer #2/#12, and predict NC1–NC8 wrong-case outcomes before code. Report evidence/not-run and independent exposure.",
       "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394203305",
       "s": "E0_RELEASE",
+      "milestone": "M18"
+    },
+    {
+      "t": "E1 agent not onboarded yet: PR #168 and R4 PR #15 are draft; verify effective Oracle authority versus canonical p25b and Geometry writers, independent source proof and private Artifact Relay before dispatch.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/168",
+      "s": "NO_AGENT_YET",
       "milestone": "M18"
     }
   ]
