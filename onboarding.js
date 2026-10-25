@@ -1,6 +1,9 @@
 // Reusable read-only onboarding panel. Uses existing audited cards/fixtures; never grants assignment or approval.
 import { el, link } from './util.js?v=16';
 
+// Common/main is the single normative role-and-mode entry after its companion Common PR merges.
+// This link does not select authority, authenticate recipients or promote readiness.
+export const COMMON_START_HERE = 'https://github.com/reallakshman19/Common/blob/main/skills/agent-work/START_HERE.md';
 const ONB_STAGES = ['Not assigned', 'Sources checked', 'Access verified', 'Ready for bounded task'];
 const ONB_CODES = ['ONB_SOURCES_CHECKED', 'ONB_ACCESS_VERIFIED', 'ONB_READY'];
 const ONB_GUIDE = [
@@ -96,6 +99,7 @@ export function renderOnboarding(root, project) {
   sec.append(now);
   const extra = el('div', 'onb-extra');
   extra.append(onbDetails('Start Here · seven checks', (inner) => {
+    inner.append(el('p', null, link(COMMON_START_HERE, 'Common START HERE · choose role and mode')));
     const ol = el('ol', 'onb-guide');
     ONB_GUIDE.forEach(([name, hint]) => {
       const row = el('li'); row.append(el('b', null, name + ': '), hint); ol.append(row);
