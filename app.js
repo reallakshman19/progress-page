@@ -2,7 +2,7 @@
 import { el, link, tick, ago, whenText } from './util.js?v=16';
 import { renderProgress, wbsPick, wbsSteps } from './progress.js?v=16';
 import { renderLessons } from './lessons.js?v=16';
-import { renderActions, renderFixtures, renderProjectHome, openCount } from './actions.js?v=17';
+import { renderActions, renderFixtures, renderProjectHome, openCount } from './actions.js?v=16';
 import { renderTimeline } from './timeline.js?v=16';
 import { tabsRow, archivedPanel, projectHead, isActive } from './lifecycle.js?v=16';
 import { nudgesOf, openNudge } from './nudge.js?v=16';
