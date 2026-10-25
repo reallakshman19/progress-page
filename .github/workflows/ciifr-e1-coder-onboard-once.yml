@@ -1,0 +1,36 @@
+name: CIIFR E1 coder onboarding-first projection
+on:
+  push:
+    branches: [pp/ciifr-r4-home-onboarding-protocol-20261025]
+    paths: ['.github/workflows/ciifr-e1-coder-onboard-once.yml']
+permissions:
+  contents: write
+jobs:
+  record:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Project real coder onboarding-before-implementation order
+        shell: bash
+        run: |
+          set -euo pipefail
+          python tools/pp_cli.py 'check' '--base' 'origin/main'
+          python tools/pp_cli.py 'card' 'set' '--project' 'ciifr' '--card' 'wbs4-e1-ptrguard' '--state' 'NOT_STARTED' '--now' 'Owner clarified: CODER ONBOARDING FIRST for CIIFR E1 R1. Task #173 begins with read-only understanding of full typed ELEMENTS/Line Number/RIGID Find & Replace goal, immutable TARGET0→safe TARGET1, native CAESAR qualification, CII node-vs-aux pointer architecture and E1→E2/E3 dependencies. Implementer UNBOUND; no Stage0 return and no repair commit.' '--next-actor' 'Owner → qualified E1 coder (Stage 0 only)' '--next-text' 'Send #173 onboarding instruction first. Coder checks exact Home/WBS/source, demonstrates AGENTS Appendix A grounded failure and actual local capability, returns ONBOARDING RETURN without edits. Oracle reconciles before bounded PR168 repair; reviewer #170 stays independent.' '--role' 'Corrective coder, NOT YET ONBOARDED' '--ref' 'comment|Owner-guided coder onboarding|https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6396649610' '--actor' 'CIIFR Oracle (Owner-directed coder-first onboarding)' '--src' 'https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6396649610' '--summary' 'Put coder source/goal alignment before any E1 R1 implementation.'
+          python tools/pp_cli.py 'fixture' 'add' '--project' 'ciifr' '--list' 'pending' '--text' 'CODER FIRST: E1 R1 task #173 Stage0 is read-only onboarding on Owner full CIIFR goal and actual v14 architecture; must return source/Appendix A/capability evidence before editing same PR168. No coder bound or received.' '--url' 'https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6396649610' '--status' 'CODER_ONBOARD_PREPARED' '--milestone' 'M18' '--actor' 'CIIFR Oracle (Owner-directed coder-first onboarding)' '--src' 'https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6396649610' '--summary' 'Track coder-first goal alignment and return expectation, not execution.'
+          python tools/pp_cli.py 'check' '--base' 'origin/main'
+          python tools/pp_cli.py 'triggers'
+      - name: Commit checked CIIFR data only; remove one-shot workflow
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "CIIFR Progress Recorder"
+          git config user.email "ciifr-progress-bot@users.noreply.github.com"
+          git rm -f .github/workflows/ciifr-e1-coder-onboard-once.yml
+          git add data/ciifr/
+          git commit -m "data(ciifr): align E1 coder onboarding with Owner product goals before repair"
+          git push origin HEAD:refs/heads/pp/ciifr-r4-home-onboarding-protocol-20261025
