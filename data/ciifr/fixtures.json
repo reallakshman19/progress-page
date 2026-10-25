@@ -96,6 +96,27 @@
       "u": "https://github.com/reallakshman19/XML_Compare_Utilities/blob/b09d0ed3b8c62d1be74123d8bc140a350f5180b3/docs/ciifr/WBS4_AGENT_ONBOARD_PACKET_DRAFT.md",
       "s": "ONBOARD_PREPARED",
       "milestone": "M18"
+    },
+    {
+      "t": "CIIFR Project Home concept note: Owner user journey, why, working NodeName vs intended typed Element/RIGID editor, 53-real/15-pointer architecture, v14 uncertainties, exact original custody and next 3 WBS tasks.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/blob/3595a7cf350d22a982157d7dffdec2becf6b0f4a/docs/ciifr/WBS4_PROJECT_HOME_CONCEPT.md",
+      "s": "CONCEPT_NOTE",
+      "n": "Oracle authored",
+      "milestone": "M17"
+    },
+    {
+      "t": "Complex CII architecture: element ordinal is file-local; FROM/TO endpoints form shared node graph; pointer #2 RIGID and #12 NODENAME index auxiliary records. Sentinels/units depend on field; independent field-map review pending.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/blob/3595a7cf350d22a982157d7dffdec2becf6b0f4a/docs/ciifr/WBS4_PROJECT_HOME_CONCEPT.md",
+      "s": "ARCHITECTURE_CONCEPT",
+      "n": "Self assessed",
+      "milestone": "M18"
+    },
+    {
+      "t": "Revised E1 OnBoard prompt: issue -> WBS 4.1 -> Project Home -> real Common relay input -> recipient checks -> selected native protocol. Seven observations; Cycle now only under ACTIVE CIIFR Cycle; v3.6 only if selected.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/blob/3595a7cf350d22a982157d7dffdec2becf6b0f4a/docs/ciifr/WBS4_AGENT_ONBOARD_PACKET_DRAFT.md",
+      "s": "ONBOARD_REVISED",
+      "n": "Prepared only",
+      "milestone": "M18"
     }
   ],
   "issues": [
@@ -305,6 +326,13 @@
       "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394203305",
       "s": "E6_HOLD",
       "milestone": "M23"
+    },
+    {
+      "t": "NEXT THREE CONNECTED: (1) E1 independently derive 53-real slot/unit/sentinel source map and pointer #2; (2) E2 implement one verified numeric field proposal after review; (3) E3 bounded RIGID Weight pointer-resolved editor after ownership challenge.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/blob/3595a7cf350d22a982157d7dffdec2becf6b0f4a/docs/ciifr/WBS4_PROJECT_HOME_CONCEPT.md",
+      "s": "NEXT_THREE",
+      "n": "No GO for E2/E3",
+      "milestone": "M18"
     }
   ],
   "highRoi": [
@@ -483,6 +511,13 @@
       "t": "WORKSTREAM INTERFACES: preserve R3 Geometry WBS3 (read-only Method C + XMLv1.1), frozen P2/P2.1, exact-byte XML foundations, historical WBS, current Oracle succession and deferred P3. Do not merge Geometry topology suggestions into RIGID/element edits.",
       "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394203305",
       "s": "BOUNDARY",
+      "milestone": "M17"
+    },
+    {
+      "t": "Revised Common START_HERE is a role/mode router, not a new dispatch authority. Project Home is source-grounded knowledge, Page a projection; no new owner revision needed for a documentation/onboarding change.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6395368222",
+      "s": "PROTOCOL_APPLIED",
+      "n": "R4 unchanged",
       "milestone": "M17"
     }
   ],
@@ -667,6 +702,13 @@
       "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394395409",
       "s": "ORACLE_LOCAL",
       "milestone": "M17"
+    },
+    {
+      "t": "E1 original-model artifact relay NOT_REGISTERED; no assigned recipient has retrieved or rehashed private CII. Source/test code lives at immutable PR #168 commit; register actual task-specific Common relay input before material cross-agent transfer.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6395368222",
+      "s": "RELAY_NOT_REGISTERED",
+      "n": "No bytes passed",
+      "milestone": "M18"
     }
   ],
   "knownIssues": [
@@ -787,6 +829,13 @@
       "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394395409",
       "s": "MATERIAL_UNMAPPED",
       "milestone": "M19"
+    },
+    {
+      "t": "Source-exposure/independence: Oracle authored the E1 code and synthetic expected answers; six passing tests do not qualify v14 units, Material Number or Rigid Type semantics. Agent E1 must derive an independent reference and contrast.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6395368222",
+      "s": "ORACLE_SELF_ASSESSED",
+      "n": "Domain review NOT_RUN",
+      "milestone": "M18"
     }
   ],
   "pending": [
@@ -875,6 +924,20 @@
       "u": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/168",
       "s": "NO_AGENT_YET",
       "milestone": "M18"
+    },
+    {
+      "t": "START_HERE revised onboarding state: PREPARED, NOT SENT, NOT RECEIVED, NOT BYTES_VERIFIED. No CIIFR canonical CURRENT.json; manual/native dispatch is permitted only under actual task authority; Cycle now cannot be issued yet.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6395368222",
+      "s": "ONBOARD_NOT_SENT",
+      "n": "One next actor: Oracle",
+      "milestone": "M18"
+    },
+    {
+      "t": "SOURCE STATE CORRECTION: Progress Page R4 PR #15 and Home PR #16 are MERGED, not draft. XCU Oracle PR #168 remains draft at 3595a7c; live Home browser render and recipient access NOT_RUN.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6395368222",
+      "s": "STATUS_RECONCILED",
+      "n": "Viewer not inspected",
+      "milestone": "M17"
     }
   ]
 }

@@ -751,10 +751,10 @@
       "role": "Oracle contribution (SELF_ASSESSED)"
     },
     "state": "SUBMITTED",
-    "now": "Oracle-authored E0 architecture framework delivered as draft PR #168: exact v14 53-real/15-pointer layout, endpoint versus auxiliary identities, field-specific sentinels, private baseline hash-only inventory, nine contrary-case predictions. Source-derived and SELF_ASSESSED; no editor or engineering acceptance.",
+    "now": "Oracle E0 framework and new Project Home concept are in XCU draft PR #168 at 3595a7c: Owner outcome, original 15-line ELEMENTS/53 real/15 pointer architecture, shared node vs pointer semantics, private hash-only custody, uncertainty and 3 connected tasks. Source author SELF_ASSESSED; not a production feature or engineering approval.",
     "next": {
-      "actor": "Authorized Oracle / independent field reviewer",
-      "text": "Challenge v14 field meanings/units and Material Number location against an independent source before enabling edits. Review exact PR #168."
+      "actor": "Authorized CIIFR Oracle",
+      "text": "Use revised START HERE Map A to verify CIIFR Home and native WBS links, then challenge v14 field meaning independently; keep draft and acceptance distinct."
     },
     "refs": [
       {
@@ -771,10 +771,15 @@
         "k": "pr",
         "l": "Oracle E0/E1 framework",
         "u": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/168"
+      },
+      {
+        "k": "pr",
+        "l": "Current Project Home concept",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/168"
       }
     ],
-    "updatedAt": "2026-10-25T06:30:47Z",
-    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394395409"
+    "updatedAt": "2026-10-25T08:25:29Z",
+    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6395368222"
   },
   "wbs4-e1": {
     "order": 41,
@@ -785,10 +790,10 @@
       "role": "Oracle contribution, agent NOT YET ASSIGNED"
     },
     "state": "IN_PROGRESS",
-    "now": "Read-only E1 parser and synthetic fixture contract supplied in draft PR #168. Exact-head CI 40169198664: 6/6 E1 and 19/19 retained NodeName PASS after correcting a false B1 synthetic premise. Private original physically verified separately; native CAESAR reimport and independently sourced field meaning NOT_RUN.",
+    "now": "E1-FIELD-MAP-1 onboarding packet revised per Common START HERE Maps B/C. XCU PR #168 is draft; source tests 6/6 and retained NodeName 19/19 at b09d0ed, engineering semantics NOT_RUN. No E1 recipient confirmed, Common relay NOT_REGISTERED, no Cycle CURRENT for ciifr. Prepared is not sent, received, verified or native approval.",
     "next": {
-      "actor": "Authorized Oracle to allocate E1 agent",
-      "text": "Read prepared agent packet, verify active coordinator and sole writer, then assign E1-FIELD-MAP-1 for independent ordinal/unit/sentinel challenges. No private transfer presumed."
+      "actor": "Authorized Oracle, then selected E1 specialist",
+      "text": "Issue #167 → WBS4.1 → Home → actual Common task relay/access; select independent unit/ordinal/sentinel falsifier and authorized manual/native route (Cycle only if ACTIVE)."
     },
     "refs": [
       {
@@ -805,10 +810,15 @@
         "k": "pr",
         "l": "Read-only E1 PR168",
         "u": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/168"
+      },
+      {
+        "k": "pr",
+        "l": "Revised E1 agent packet",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/168"
       }
     ],
-    "updatedAt": "2026-10-25T06:30:47Z",
-    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394395409"
+    "updatedAt": "2026-10-25T08:25:29Z",
+    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6395368222"
   },
   "wbs4-e2": {
     "order": 42,
