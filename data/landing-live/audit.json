@@ -241,6 +241,18 @@
       "before": "SUBMITTED",
       "after": "VERIFIED",
       "rev": "R1"
+    },
+    {
+      "seq": 18,
+      "id": "LANDING-LIVE-R-0018",
+      "previous_id": "LANDING-LIVE-R-0017",
+      "at": "2026-10-25T03:44:41Z",
+      "kind": "ARCHIVE",
+      "actor": "OTM",
+      "summary": "Owner 23 Oct 18:14: \"archive, No longer required\"; the page tab was never archived, so it kept raising STALE.",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6366960655",
+      "scope": "project",
+      "rev": "R1"
     }
   ]
 }

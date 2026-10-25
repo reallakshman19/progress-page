@@ -34,7 +34,12 @@
         "template": "owner-reply.yml",
         "target": "OwnerTeammember",
         "site": "https://reallakshman19.github.io/progress-page/"
-      }
+      },
+      "status": "archived",
+      "statusWhy": "Owner 23 Oct 18:14: \"archive, No longer required\"; the page tab was never archived, so it kept raising STALE.",
+      "statusAt": "2026-10-25T03:44:41Z",
+      "statusBy": "OTM",
+      "statusSrc": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6366960655"
     },
     {
       "key": "nudge",
