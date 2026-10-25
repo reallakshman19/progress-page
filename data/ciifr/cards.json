@@ -964,5 +964,27 @@
     ],
     "updatedAt": "2026-10-25T06:07:27Z",
     "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394203305"
+  },
+  "wbs4-e1-specialist": {
+    "order": 41,
+    "group": "wbs4-intake",
+    "milestone": "M18",
+    "label": "E1 · Independent field-map specialist",
+    "who": {
+      "role": "Independent specialist (recipient UNBOUND)"
+    },
+    "state": "NOT_STARTED",
+    "now": "Owner authorized one independent v14 field-mapping specialist. Native source-only issue #170 was published with exact Oracle PR #168 candidate 3595a7c. NO receiver/chat bound, no agent acknowledgement or independent field findings. Public Common source relay PR #479 is DRAFT, not canonical; private model NOT_DELIVERED.",
+    "next": {
+      "actor": "Owner → one new read-only E1 specialist chat",
+      "text": "Paste native issue #170 to recipient; specialist checks GitHub source access, v14 external field semantics, and returns independent falsifier evidence on #170. No Cycle now or writer."
+    },
+    "refs": [
+      {
+        "k": "issue",
+        "l": "Native E1 manual task",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170"
+      }
+    ]
   }
 }

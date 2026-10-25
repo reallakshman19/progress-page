@@ -139,6 +139,13 @@
       "s": "WBS4_SOURCE",
       "n": "Owner private chat, unsigned",
       "milestone": "M17"
+    },
+    {
+      "t": "E1-FIELD-MAP-1 published as native manual-route issue #170: independent read-only CAESAR v14 slot/unit/sentinel/rigid falsification; task not received by any bound chat.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170",
+      "s": "TASK_PUBLISHED",
+      "n": "Recipient unbound",
+      "milestone": "M18"
     }
   ],
   "pullRequests": [
@@ -709,6 +716,13 @@
       "s": "RELAY_NOT_REGISTERED",
       "n": "No bytes passed",
       "milestone": "M18"
+    },
+    {
+      "t": "Common source artifact relay PR #479 has sanitized E1 record pointing to immutable XCU PR #168 files; currently DRAFT/PROPOSED, not merged, received or byte-verified. Owner-held private CII NOT_DELIVERED.",
+      "u": "https://github.com/reallakshman19/Common/pull/479",
+      "s": "RELAY_PROPOSED",
+      "n": "Public code paths only",
+      "milestone": "M18"
     }
   ],
   "knownIssues": [
@@ -938,6 +952,13 @@
       "s": "STATUS_RECONCILED",
       "n": "Viewer not inspected",
       "milestone": "M17"
+    },
+    {
+      "t": "Owner next action: paste native issue #170 to ONE E1 specialist chat and obtain recipient readback; no ACTIVE CIIFR Cycle, no auto send. Public-source read-only work can start without private CII.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6395565914",
+      "s": "DISPATCH_PENDING",
+      "n": "No agent confirmed",
+      "milestone": "M18"
     }
   ]
 }

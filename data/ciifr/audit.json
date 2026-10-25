@@ -4548,6 +4548,59 @@
       "list": "intent",
       "op": "add",
       "rev": "R4"
+    },
+    {
+      "seq": 348,
+      "id": "CIIFR-R-0348",
+      "previous_id": "CIIFR-R-0347",
+      "at": "2026-10-25T08:47:28Z",
+      "kind": "BASELINE",
+      "actor": "CIIFR Oracle (Owner-authorized E1 routing)",
+      "summary": "Record authorized E1 source task, distinct from receiver execution or E1 engineering acceptance.",
+      "source": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6395565914",
+      "card": "wbs4-e1-specialist",
+      "before": null,
+      "after": "NOT_STARTED",
+      "rev": "R4"
+    },
+    {
+      "seq": 349,
+      "id": "CIIFR-R-0349",
+      "previous_id": "CIIFR-R-0348",
+      "at": "2026-10-25T08:47:28Z",
+      "kind": "FIXTURE",
+      "actor": "CIIFR Oracle (Owner-authorized E1 routing)",
+      "summary": "Record E1 native TASK_PUBLISHED and actual access boundary.",
+      "source": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6395565914",
+      "list": "issues",
+      "op": "add",
+      "rev": "R4"
+    },
+    {
+      "seq": 350,
+      "id": "CIIFR-R-0350",
+      "previous_id": "CIIFR-R-0349",
+      "at": "2026-10-25T08:47:29Z",
+      "kind": "FIXTURE",
+      "actor": "CIIFR Oracle (Owner-authorized E1 routing)",
+      "summary": "Record E1 native RELAY_PROPOSED and actual access boundary.",
+      "source": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6395565914",
+      "list": "inputs",
+      "op": "add",
+      "rev": "R4"
+    },
+    {
+      "seq": 351,
+      "id": "CIIFR-R-0351",
+      "previous_id": "CIIFR-R-0350",
+      "at": "2026-10-25T08:47:29Z",
+      "kind": "FIXTURE",
+      "actor": "CIIFR Oracle (Owner-authorized E1 routing)",
+      "summary": "Record E1 native DISPATCH_PENDING and actual access boundary.",
+      "source": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6395565914",
+      "list": "pending",
+      "op": "add",
+      "rev": "R4"
     }
   ]
 }
