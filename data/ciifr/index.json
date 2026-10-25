@@ -4,11 +4,11 @@
     "key": "ciifr",
     "title": "CII Find & Replace VNext",
     "subtitle": "R3 current: standalone Oracle coordination of P2.5-B handoff, review, Windows acceptance and prepared Oracle succession.",
-    "updatedAt": "2026-10-25T05:27:06Z",
-    "updatedBy": "Oracle Standalone · Geometry",
+    "updatedAt": "2026-10-25T06:30:49Z",
+    "updatedBy": "ChatGPT (Oracle E0/E1 contributor)",
     "staleAfterMin": 120,
-    "aim": "CIIFR R3: preserve CII hierarchy and exact byte/SHA RichInputXMLv2 reconstruction, with XMLv1.1 a separate fork; progress branch-to-element-to-node mapping and guarded transfer. New Geometry WBS 3.x: read-only SOURCE/TARGET physical NODE table + synchronized dual SVG for Method C topology/manual OR/AND, with XMLv1.1 evidence. No Geometry Writer/Apply. P2/P2.1 frozen; P3 deferred; Owner approves.",
-    "aimSrc": "OWNER_PRIVATE_REF:ciifr-geometry-owner-option-c-20261025"
+    "aim": "Extend CIIFR NodeName VNext into typed ELEMENTS real-value/Line Number edits plus pointer-resolved RIGID Weight/Type. Preserve original bytes, v14 units/sentinels, node/pointer/branch relations, per-span approvals, new-copy export and native import review. Retain R3 Geometry WBS3 review-only, frozen P2/P2.1 and XML custody; defer structural graph/pointer edits and P3.",
+    "aimSrc": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394203305"
   },
   "rules": {
     "quietAfterMin": 30,
@@ -235,6 +235,90 @@
       "canDo": "Not yet demonstrated: independently verified review exports and regression.",
       "repo": "reallakshman19/XML_Compare_Utilities",
       "activity": "PLANNED, not implemented or accepted"
+    },
+    "M17": {
+      "name": "E0 · Architectural scope / oracle",
+      "full": "Lock the Owner outcome: typed ELEMENTS physical fields (53 real slots + Line Number label) and separate pointer-attached RIGID (aux pointer #2), retaining existing NodeName (ptr #12). Rehash source; enumerate v14 widths, units, sentinel semantics and record ownership; document correct and false interpretations before implementation.",
+      "order": 30,
+      "wbs": "4",
+      "bench": "CIIFR-E0",
+      "keeps": "GEO-G4 / frozen NodeName writer",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "No editor released; prepare complete field model and contrary fixtures.",
+      "repo": "reallakshman19/XML_Compare_Utilities",
+      "activity": "WBS 4.x proposed; no coder assignment or acceptance."
+    },
+    "M18": {
+      "name": "E1 · Physical ELEMENTS / pointer map",
+      "full": "Ground on the 22-section original v14 fixture: 521 ELEMENTS × 15 physical lines with 53 real fields, element/line labels, appearance and 15 auxiliary pointer slots; 177 NODENAME, 156 RIGID. Produce exact field byte positions, typed names and pointer targets; separate node number vs pointer ID, reject bad sections/pointers.",
+      "order": 31,
+      "wbs": "4.1",
+      "bench": "CIIFR-E1",
+      "keeps": "CIIFR-E0 / existing NodeName",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "A read-only per-field catalogue, not inferred field names or write authority.",
+      "repo": "reallakshman19/XML_Compare_Utilities",
+      "activity": "WBS 4.x proposed; no coder assignment or acceptance."
+    },
+    "M19": {
+      "name": "E2 · Engineering numeric replacements",
+      "full": "Select a v14-proven real slot (ΔX/Y/Z, diameter/wall/insulation, pressure/temperature, materials as justified) and an element/branch scope. Numeric find/replace must preserve representation, known units, field-specific zero/9999.99/1E-10 policies, exponent/signed zero, width, rounding and ranges; no whole-file regex or silent normalization.",
+      "order": 32,
+      "wbs": "4.2",
+      "bench": "CIIFR-E2",
+      "keeps": "CIIFR-E1 / original bytes",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "One bounded field group and actual changed-byte check first.",
+      "repo": "reallakshman19/XML_Compare_Utilities",
+      "activity": "WBS 4.x proposed; no coder assignment or acceptance."
+    },
+    "M20": {
+      "name": "E3 · RIGID Weight via pointer #2",
+      "full": "Resolve EACH selected ELEMENTS auxiliary RIGID pointer #2 as a 1-based index in #$ RIGID. 0 means no attached record (not Weight=0). Check bounds, ownership/shared references, record field width and engineering units. Weight first; Rigid Type editing after CAESAR code semantics independently grounded; never invent/reindex pointer records.",
+      "order": 33,
+      "wbs": "4.3",
+      "bench": "CIIFR-E3",
+      "keeps": "CIIFR-E1 / pointer custody",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "One nonzero-pointer weight edit with absent-pointer and shared-pointer negative cases.",
+      "repo": "reallakshman19/XML_Compare_Utilities",
+      "activity": "WBS 4.x proposed; no coder assignment or acceptance."
+    },
+    "M21": {
+      "name": "E4 · Physical Line Number / branch",
+      "full": "Treat the line-number/branch label as a serialized ELEMENTS field with length prefix and exact bytes, not a node identity. Scope by actual label and element. Rewriting line labels requires prefix/width validation and checks for cross-branch shared logical nodes; do not assume segment topology proves node ownership.",
+      "order": 34,
+      "wbs": "4.4",
+      "bench": "CIIFR-E4",
+      "keeps": "CIIFR-E1 / NodeName branch guards",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "Demonstrate precise label edit plus bad-length/shared-node contrast.",
+      "repo": "reallakshman19/XML_Compare_Utilities",
+      "activity": "WBS 4.x proposed; no coder assignment or acceptance."
+    },
+    "M22": {
+      "name": "E5 · Safe TARGET1 writer / engineering acceptance",
+      "full": "Current NodeName writer compares unchanged ELEMENTS structure; do not bypass sameStructure wholesale. New allowlist writer must verify original SHA, approved typed field spans, atomic auxiliary owner/alias closure, all other bytes unchanged, pointer targets/cardinality unchanged, fresh epoch, reparse and final hash. Independent wrong-field/unit challenge + native CAESAR import before semantic PASS.",
+      "order": 35,
+      "wbs": "4.5",
+      "bench": "CIIFR-E5",
+      "keeps": "CIIFR-E2,E3,E4 / unchanged tabs",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "PASS only exact candidate/source/version and executed gates; approvals are not release.",
+      "repo": "reallakshman19/XML_Compare_Utilities",
+      "activity": "WBS 4.x proposed; no coder assignment or acceptance."
+    },
+    "M23": {
+      "name": "E6 · Structural operations deferred",
+      "full": "FROM/TO are graph endpoint node numbers (not pointers); renumbering affects every incident element and name. Pointer creation/reindexing changes indexed auxiliary sections and cardinalities. Both require separate Owner GO, graph-atomic contract and fixtures. P3 remains deferred. Planning does not unlock E6.",
+      "order": 36,
+      "wbs": "4.6",
+      "bench": "CIIFR-E6",
+      "keeps": "CIIFR-E0..E5",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "Explicit HOLD until a new Owner-controlled engineering work packet.",
+      "repo": "reallakshman19/XML_Compare_Utilities",
+      "activity": "WBS 4.x proposed; no coder assignment or acceptance."
     }
   },
   "groups": {
@@ -289,6 +373,21 @@
     "r3-geometry": {
       "title": "Geometry: correspondence workbench WBS 3.1-3.4",
       "order": 12
+    },
+    "wbs4-intake": {
+      "title": "WBS4 E0/E1 · CII architecture + physical oracle",
+      "sub": "Owner intent, ELEMENTS 15-line/53-real layout, named nodes vs indexed auxiliary pointers, field-specific sentinels; exact byte-span fixture and wrong-case contracts.",
+      "order": 30
+    },
+    "wbs4-editors": {
+      "title": "WBS4 E2/E3/E4 · Typed field transactions",
+      "sub": "ELEMENTS numeric slots and physical branch text are edited at element level; RIGID Weight/Type is auxiliary pointer #2 data, never guessed from node number or alias.",
+      "order": 31
+    },
+    "wbs4-verification": {
+      "title": "WBS4 E5/E6 · Writer protection / structural HOLD",
+      "sub": "Only approved field spans in immutable TARGET1; independent pointer/alias/unit/byte falsification and CAESAR import. Endpoint renumber/pointer rebuild remain Owner-held.",
+      "order": 32
     }
   },
   "revisions": [
@@ -320,8 +419,19 @@
       "why": "Owner directs R3 to supersede R2 within the existing CIIFR standalone project; consolidate P2.5-B and prepare Oracle succession",
       "ownerWords": "its same as CIIFR, add a new revision R3 tab, supersede. record owner intent, fixtures all details. need to prepare for an oracle hand off to new oracle, read skills/agent-work",
       "src": "OWNER_PRIVATE_REF:ciifr-r3-owner-intent-20261024",
+      "status": "superseded",
+      "supersedes": "R2",
+      "commit": "78dde97dbf5b"
+    },
+    {
+      "id": "R4",
+      "at": "2026-10-25T05:51:29Z",
+      "by": "ChatGPT (Owner-directed recorder)",
+      "why": "R4 adds ELEMENTS and RIGID field editing WBS 4.x to the existing R3 Geometry and converter programme; R3, P2/P2.1 and P3 limits survive.",
+      "ownerWords": "now I want the find and replace to expand beyond NodeName; main intent are Element block data: Real values FROM, TO, geometry, diameter, thickness, temperature, pressure, material properties, etc.; Line Number / physical branch label; Nodelevel: auxiliary pointers mainly Rigid. Project CIIFR, create new WBS.",
+      "src": "OWNER_PRIVATE_REF:ciifr-elements-rigid-owner-20261025",
       "status": "current",
-      "supersedes": "R2"
+      "supersedes": "R3"
     }
   ]
 }

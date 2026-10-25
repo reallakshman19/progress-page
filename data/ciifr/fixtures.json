@@ -51,6 +51,51 @@
       "u": "https://github.com/reallakshman19/Common/blob/a9491531fb98f6fd14bc486a4cc78ee4680cb1f5/skills/agent-work/oracle-continuity/PROTOCOL.md",
       "s": "PINNED_CONTINUITY",
       "milestone": "M7"
+    },
+    {
+      "t": "Primary VNext source code and native work order #167; PR165 NodeName/scope UI is distinct from WBS4 editing engine.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/165",
+      "s": "NATIVE_SOURCE",
+      "n": "Check current main, not prior draft",
+      "milestone": "M17"
+    },
+    {
+      "t": "Pinned Common Progress Page protocol including pp_cli.py, append-only Timeline, current page validator and project mode.",
+      "u": "https://github.com/reallakshman19/Common/tree/a9491531fb98f6fd14bc486a4cc78ee4680cb1f5/skills/agent-work/progress-page",
+      "s": "PINNED_PROGRESS",
+      "n": "Standalone draft PR, Owner merge",
+      "milestone": "M17"
+    },
+    {
+      "t": "Pinned CONTRIBUTION_HANDOFF: bound every PASS to evidence, surviving-error challenge; self-authored repairs are not independent approval.",
+      "u": "https://github.com/reallakshman19/Common/blob/a9491531fb98f6fd14bc486a4cc78ee4680cb1f5/skills/agent-work/CONTRIBUTION_HANDOFF.md",
+      "s": "PINNED_HANDOFF",
+      "n": "Oracle onboarding & continuation",
+      "milestone": "M17"
+    },
+    {
+      "t": "Authoritative CIIFR WBS4 full CII v14 Owner intent, architecture, per-stage acceptance gates and eight contrary-case tests; required Oracle onboarding reference.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394203305",
+      "s": "ARCHITECTURE_HANDBOOK",
+      "milestone": "M17"
+    },
+    {
+      "t": "Oracle E0/E1 architecture, field-ordinal v14 contract, RIGID pointer semantics, physical fixture and negative tests; code is self-assessed, read-only only.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/blob/b09d0ed3b8c62d1be74123d8bc140a350f5180b3/docs/ciifr/WBS4_ORACLE_E0_E1.md",
+      "s": "ORACLE_E0",
+      "milestone": "M17"
+    },
+    {
+      "t": "Read-only v14 element/RIGID catalogue: original lexeme, physical byte span and owners; publicInventory emits aggregate only. No writer/application integration.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/blob/b09d0ed3b8c62d1be74123d8bc140a350f5180b3/tools/ciifr-wbs4/readonly-catalog.mjs",
+      "s": "E1_CANDIDATE",
+      "milestone": "M18"
+    },
+    {
+      "t": "Agent handoff E1-FIELD-MAP-1 prepared but NOT SENT: actual Oracle control, exact head, source map, sole writer, fixture custody and Artifact Relay must be established before activation.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/blob/b09d0ed3b8c62d1be74123d8bc140a350f5180b3/docs/ciifr/WBS4_AGENT_ONBOARD_PACKET_DRAFT.md",
+      "s": "ONBOARD_PREPARED",
+      "milestone": "M18"
     }
   ],
   "issues": [
@@ -66,6 +111,13 @@
       "t": "Cycle issue #465: public-safe coder/reviewer return inbox; comments do not themselves advance CURRENT.json",
       "u": "https://github.com/reallakshman19/Common/issues/465",
       "s": "OPEN"
+    },
+    {
+      "t": "Issue #167, Owner-direction transcript provenance and WBS 4.0-4.6 native work order.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167",
+      "s": "WBS4_SOURCE",
+      "n": "Owner private chat, unsigned",
+      "milestone": "M17"
     }
   ],
   "pullRequests": [
@@ -168,6 +220,91 @@
       "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/166#issuecomment-6393745466",
       "s": "G4_PLANNED",
       "milestone": "M16"
+    },
+    {
+      "t": "4.0: establish v14 ELEMENTS, auxiliary pointer and sentinel contract; private fixture hash match and independent contrary cases.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167",
+      "s": "E0_PLANNED",
+      "n": "Not an implementation PASS",
+      "milestone": "M17"
+    },
+    {
+      "t": "4.1: read-only 53-field ELEMENTS byte catalogue and 15-pointer inventory with source-anchored field names/widths.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167",
+      "s": "E1_PLANNED",
+      "n": "Not an implementation PASS",
+      "milestone": "M18"
+    },
+    {
+      "t": "4.2: typed diameter/wall/temperature/pressure/material proposals; preserve representable precision and field sentinel semantics.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167",
+      "s": "E2_PLANNED",
+      "n": "Not an implementation PASS",
+      "milestone": "M19"
+    },
+    {
+      "t": "4.3: nonzero pointer #2 -> RIGID Weight, with Type follow-on only after code validation; zero pointer not weight=0.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167",
+      "s": "E3_PLANNED",
+      "n": "Not an implementation PASS",
+      "milestone": "M20"
+    },
+    {
+      "t": "4.4: Line Number/physical branch-label fixed-field proposals without topology inference; FROM/TO renumbering excluded.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167",
+      "s": "E4_PLANNED",
+      "n": "Not an implementation PASS",
+      "milestone": "M21"
+    },
+    {
+      "t": "4.5: hash-bound explicit-review writer, allowed-byte audit, unchanged TARGET0, full native/independent import evidence.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167",
+      "s": "E5_PLANNED",
+      "n": "Not an implementation PASS",
+      "milestone": "M22"
+    },
+    {
+      "t": "4.6: graph-atomic FROM/TO and auxiliary pointer structural rewrites deferred pending separate Owner release.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167",
+      "s": "E6_DEFERRED",
+      "n": "Not an implementation PASS",
+      "milestone": "M23"
+    },
+    {
+      "t": "E0→E1 PRECONDITION: independently establish v14 field definitions, original SHA, actual byte range of each element/auxiliary field, pointer owners, units and sentinel test oracle; no editing released at this stage.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394203305",
+      "s": "E0_E1",
+      "milestone": "M17"
+    },
+    {
+      "t": "E2 FIRST VALUE: bounded typed ELEMENTS numeric editor for verified diameter/wall/temperature/pressure/material fields, one group at a time, with before/after and approved offset diff, precision, units and sentinel negatives.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394203305",
+      "s": "E2_IMPLEMENT",
+      "milestone": "M19"
+    },
+    {
+      "t": "E3 FIRST VALUE: pointer #2→RIGID Weight, with 0-pointer, attached Weight=0, out-of-range pointer, shared ownership tests; RIGID Type deferred until code values confirmed.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394203305",
+      "s": "E3_IMPLEMENT",
+      "milestone": "M20"
+    },
+    {
+      "t": "E4 BRANCH: exact serialized Line Number/branch label replacements, verifying declared text length, width and shared endpoint effects, without inferring new node identity.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394203305",
+      "s": "E4_IMPLEMENT",
+      "milestone": "M21"
+    },
+    {
+      "t": "E5 ACCEPTANCE: per-claim source/element/field/byte review, explicit decision, stale invalidation, allowed-byte writer, immutable original, reparse, exact-head independent falsifiers, native CAESAR import and Owner acceptance as separate gates.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394203305",
+      "s": "E5_ACCEPT",
+      "milestone": "M22"
+    },
+    {
+      "t": "E6 DEFER: FROM/TO graph-atomic renumbering, pointer creation/reindex and section structural rewriting require separate explicit Owner scope and authoritative oracle; no authorization from WBS4 plan.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394203305",
+      "s": "E6_HOLD",
+      "milestone": "M23"
     }
   ],
   "highRoi": [
@@ -228,6 +365,38 @@
       "u": "https://github.com/reallakshman19/Common/blob/a9491531fb98f6fd14bc486a4cc78ee4680cb1f5/skills/agent-work/oracle-continuity/PROTOCOL.md",
       "s": "CONTINUITY_RULE",
       "milestone": "M7"
+    },
+    {
+      "t": "E0/E1 first: prevent accidental confusion of logical node 280, pointer record identity and signed/sentinel real value; costs less than speculative writer changes.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167",
+      "s": "HIGH_PROSPECTIVE",
+      "n": "No measured savings",
+      "milestone": "M17"
+    },
+    {
+      "t": "Rigid Weight first via pointer #2: bounded high-value auxiliary editor; Type codes require separate CAESAR v14 meaning check.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167",
+      "s": "HIGH_PROSPECTIVE",
+      "n": "Zero pointer means absent",
+      "milestone": "M20"
+    },
+    {
+      "t": "Architecture-first E0/E1 prevents expensive wrong-field or wrong-sentinel edits; high prospective ROI, not measured saved time. Use source-backed byte ledger and a contradictory synthetic model before writer work.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394203305",
+      "s": "E0_E1_HIGH",
+      "milestone": "M17"
+    },
+    {
+      "t": "Rigid Weight is bounded practical auxiliary first target because the nonzero pointer→record relationship is testable; enabling type/pointer creation together risks conflating absent record and zero weight.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394203305",
+      "s": "RIGID_FIRST",
+      "milestone": "M20"
+    },
+    {
+      "t": "E1 source-layout qualification exact head b09d0ed: GitHub run 40169198664 PASS 6/6 E1 synthetic and 19/19 retained NodeName. Excludes domain units/semantic proof, native CAESAR and TARGET1.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/actions/runs/40169198664",
+      "s": "CI_SCOPED_PASS",
+      "milestone": "M18"
     }
   ],
   "future": [
@@ -238,6 +407,13 @@
     {
       "t": "P3 remains deferred. Owner-authorized explicit node correspondence/displacement prototype is a bounded R3 task, not blanket authorization for P3 naming, geometry, segmentation, native engineering acceptance or full elemental transfer.",
       "s": "P3_DEFERRED"
+    },
+    {
+      "t": "Graph-atomic FROM/TO renumbering and pointer creation/reindex are deferred WBS4.6; require separate Owner policy and acceptance.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167",
+      "s": "DEFERRED",
+      "n": "Not implemented",
+      "milestone": "M23"
     }
   ],
   "intent": [
@@ -276,6 +452,38 @@
       "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/166#issuecomment-6393745466",
       "s": "ENGINEERING_BOUNDARY",
       "milestone": "M13"
+    },
+    {
+      "t": "Owner directs additive CIIFR WBS 4.x: ELEMENTS real numeric fields and physical Line/Branch label, plus RIGID auxiliary; retain NodeName and separate R3 Geometry read-only work.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167",
+      "s": "OWNER_PRIVATE_CHAT",
+      "n": "Reported private Owner instruction",
+      "milestone": "M17"
+    },
+    {
+      "t": "WBS 4.x is a plan only, not permission to change old Geometry/NodeName writer, P2/P2.1 frozen behaviours or deferred P3/structural node renumbering.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167",
+      "s": "SCOPE_GUARD",
+      "n": "Requires explicit bounded release",
+      "milestone": "M17"
+    },
+    {
+      "t": "OWNER-OUTCOME: Element Data Find & Replace shall edit typed engineering ELEMENTS real values (geometry/diameter/wall/temperature/pressure/material after v14 verification), Line Number/branch label and pointer-resolved RIGID; NodeName remains a distinct capability.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394203305",
+      "s": "OWNER_INTENT",
+      "milestone": "M17"
+    },
+    {
+      "t": "AUTHORIZE BOUNDED CHANGES ONLY: field selection → exact physical element/auxiliary occurrence → source evidence → review/Approve All safeguards → validate → new-copy export; editing does not prove CAESAR engineering equivalence or Owner acceptance.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394203305",
+      "s": "OPERATING_MODEL",
+      "milestone": "M17"
+    },
+    {
+      "t": "WORKSTREAM INTERFACES: preserve R3 Geometry WBS3 (read-only Method C + XMLv1.1), frozen P2/P2.1, exact-byte XML foundations, historical WBS, current Oracle succession and deferred P3. Do not merge Geometry topology suggestions into RIGID/element edits.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394203305",
+      "s": "BOUNDARY",
+      "milestone": "M17"
     }
   ],
   "inputs": [
@@ -379,6 +587,86 @@
       "u": "https://github.com/reallakshman19/XML_Compare_Utilities/blob/main/docs/METHOD_C_ENGINEERING.md",
       "s": "INHERITED_NOT_RUN",
       "milestone": "M13"
+    },
+    {
+      "t": "Private CII v14 primary baseline: 803776 bytes, SHA256 5715c23f250d683a6c29ba84c2db9f01aae25788791317b99064c845bc2cdd57. Original bytes remain private, rehash before trials.",
+      "s": "HASH_ONLY",
+      "n": "No CII bytes or name published",
+      "milestone": "M17"
+    },
+    {
+      "t": "Inventory expectations to recheck: 521 ELEMENTS (7815 data lines, 15/record), 53 real numeric slots/element, 177 NODENAME records, reported 156 RIGID auxiliary records.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167",
+      "s": "EXPECTED_NOT_GATE",
+      "n": "Independent physical check needed",
+      "milestone": "M18"
+    },
+    {
+      "t": "Synthetic positive and negative fixtures: cross-branch node aliases, absent RIGID pointer vs weight=0, bad pointer, sentinel-specific zero/9999.99, numeric overflow and silent rounding.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167",
+      "s": "FIXTURE_TO_BUILD",
+      "n": "No private model in public tests",
+      "milestone": "M18"
+    },
+    {
+      "t": "CII CONTAINER: ASCII neutral-file #$ SECTION markers; VERSION/CONTROL cardinalities and ordered sections determine structural meaning. Preserve original physical offsets, padding, line terminators, numeric lexemes, section order, and SHA before any edit.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394203305",
+      "s": "ARCH_CII_01",
+      "milestone": "M17"
+    },
+    {
+      "t": "ELEMENT LAYER: each observed v14 ELEMENTS record spans 15 physical data lines: 9 carrying 53 real-value slots, followed by element name, physical Line Number/branch, display metadata, and 3 lines of 15 auxiliary pointer slots. Verify actual slot positions, not uniform 13-char assumptions.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394203305",
+      "s": "ARCH_CII_02",
+      "milestone": "M18"
+    },
+    {
+      "t": "NODE LAYER: FROM/TO are integer endpoint nodes; an endpoint may occur on several elements and physical branches. Changing a logical node or its aliases must consider the full incident graph; element ordinal or same branch label does not establish source-target engineering identity.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394203305",
+      "s": "ARCH_CII_03",
+      "milestone": "M18"
+    },
+    {
+      "t": "POINTER LAYER: nonzero ELEMENTS auxiliary pointer references an indexed record in its own section; pointer 0 means no auxiliary record. Check section presence, bounds, index base, pointer-to-owner multiplicity and record type; never use a pointer as a node number.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394203305",
+      "s": "ARCH_CII_04",
+      "milestone": "M18"
+    },
+    {
+      "t": "RIGID LAYER: auxiliary pointer #2 points to #$ RIGID (Rigid Weight/Type), not a node-level field. Pointer=0 means unattached and differs from attached weight=0. Shared/invalid targets require atomicity or HOLD; Rigid Type code definitions must be source-checked.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394203305",
+      "s": "ARCH_CII_05",
+      "milestone": "M20"
+    },
+    {
+      "t": "NODENAME LAYER: ELEMENTS pointer #12 addresses #$ NODENAME record with physical FROM/TO alias slots. A single logical node can have several aliases across B2/B4; complete closure required. Existing VNext normal-node-closure remains protected.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394203305",
+      "s": "ARCH_CII_06",
+      "milestone": "M18"
+    },
+    {
+      "t": "NUMERIC / SENTINEL LAYER: real zero, absent pointer 0, 9999.99, -1, signed zero, near-zero 1E-10, blank labels and scientific/D-exponent text have different field-context meanings. Units/width/range/precision are field-specific; never globally coerce values.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394203305",
+      "s": "ARCH_CII_07",
+      "milestone": "M19"
+    },
+    {
+      "t": "REFERENCE PHYSICAL INVENTORY: original v14 803776 bytes SHA256 5715c23f250d683a6c29ba84c2db9f01aae25788791317b99064c845bc2cdd57; 22 sections, 521 ELEMENTS (7815 lines, 27613 real slots), 177 NODENAME, 156 RIGID. Counts inherited from private read; rehash at runtime.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394203305",
+      "s": "HASH_BOUND",
+      "milestone": "M17"
+    },
+    {
+      "t": "SCOPED ORIGINAL OBSERVATIONS (RECHECK): 177 NODENAME records yielded 354 physical name slots (previously 181 nonblank, 173 blank); 156 elements with nonzero RIGID pointer, 365 absent; type codes 0/2 observed, meaning NOT independently established.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394203305",
+      "s": "OBSERVED_NOT_ACCEPTED",
+      "milestone": "M20"
+    },
+    {
+      "t": "Native private byte-layout proof: SHA256 5715c23f250d683a6c29ba84c2db9f01aae25788791317b99064c845bc2cdd57, 521 elements/27613 reals/7815 pointers, 177 NodeName, 156 RIGID; all nonzero pointers in range. Source bytes remain private.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394395409",
+      "s": "ORACLE_LOCAL",
+      "milestone": "M17"
     }
   ],
   "knownIssues": [
@@ -454,6 +742,51 @@
       "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/166#issuecomment-6393745466",
       "s": "NOT_YET_BUILT",
       "milestone": "M14"
+    },
+    {
+      "t": "Existing Normal/NodeName writer sameStructure guard assumes unchanged ELEMENTS; direct numeric/Line/RIGID changes need a separately bounded writer/reparse policy, not a bypass.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/165",
+      "s": "STRUCTURE_GAP",
+      "n": "No blanket writer relax",
+      "milestone": "M22"
+    },
+    {
+      "t": "SOURCE element ordinal is not correspondence proof if source/target FROM/TO or structure differ; mapping ambiguity must remain unresolved in review.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167",
+      "s": "MODEL_IDENTITY",
+      "n": "No silent transfer mapping",
+      "milestone": "M18"
+    },
+    {
+      "t": "Public planning cannot certify private v14 fixture, native CAESAR import, field meaning, source bytes, unit system, or independent Owner acceptance.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167",
+      "s": "NOT_RUN",
+      "n": "Hold claims to actual scope",
+      "milestone": "M22"
+    },
+    {
+      "t": "WRITER ARCHITECTURE: current VNext physical.js/normal/plan.js edits only NODENAME; sameStructure intentionally rejects changes to ELEMENTS. New writer must be explicit allowed-field/byte-span validator with fresh hash/reparse, not removal of the safety check.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394203305",
+      "s": "WRITER_SEAM",
+      "milestone": "M22"
+    },
+    {
+      "t": "SOURCE PROVENANCE LIMIT: matching element ordinal plus From/To on two input files provides only bounded physical alignment; reordered endpoints, duplicate topology or geometry proximity cannot silently authorize engineering correspondence or transfers.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394203305",
+      "s": "CORRESPONDENCE",
+      "milestone": "M18"
+    },
+    {
+      "t": "RIGID ambiguity: field-specific meaning of the observed type codes, units and weight-zero behavior needs documented CAESAR v14 source and engineering import checks. Pointer count from one fixture is not a general file-schema invariant.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394203305",
+      "s": "SEMANTICS_PENDING",
+      "milestone": "M20"
+    },
+    {
+      "t": "Material Number is not a numbered item among published 53 ELEMENTS real slots. Keep its editing unavailable until its own physical source/section field and unit semantics are established.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394395409",
+      "s": "MATERIAL_UNMAPPED",
+      "milestone": "M19"
     }
   ],
   "pending": [
@@ -510,6 +843,38 @@
       "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/166#issuecomment-6393745466",
       "s": "NEEDS_COORDINATION",
       "milestone": "M12"
+    },
+    {
+      "t": "Oracle to select a single bounded E0/E1 writer and verify access/capabilities/exact head, including ownership of VNext files after PR165 merge.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167",
+      "s": "NEXT_RELEASE_REQUIRED",
+      "n": "No agent assigned by this record",
+      "milestone": "M17"
+    },
+    {
+      "t": "Independent reviewer must challenge sentinel, pointer and changed-byte oracles before engineering PASS; coordinate with Geometry WBS3 without replacing its review-only mandate.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167",
+      "s": "REVIEW_PENDING",
+      "n": "Future task, not completed",
+      "milestone": "M22"
+    },
+    {
+      "t": "Oracle onboarding MUST read the native issue #167 CII v14 Architecture comment, pinned Common progress-page and Contribution/Handoff protocols, exact PR #15 status and VNext main. A prepared handoff does not activate canonical write authority.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394203305",
+      "s": "ORACLE_READ",
+      "milestone": "M17"
+    },
+    {
+      "t": "Next task is E0/E1 READ_ONLY inventory, no merge/export: rehash actual private original, reconcile 53 real slot semantic ordinals/pointer #2/#12, and predict NC1–NC8 wrong-case outcomes before code. Report evidence/not-run and independent exposure.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394203305",
+      "s": "E0_RELEASE",
+      "milestone": "M18"
+    },
+    {
+      "t": "E1 agent not onboarded yet: PR #168 and R4 PR #15 are draft; verify effective Oracle authority versus canonical p25b and Geometry writers, independent source proof and private Artifact Relay before dispatch.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/168",
+      "s": "NO_AGENT_YET",
+      "milestone": "M18"
     }
   ]
 }
