@@ -5069,6 +5069,87 @@
       "list": "pending",
       "op": "add",
       "rev": "R4"
+    },
+    {
+      "seq": 387,
+      "id": "CIIFR-R-0387",
+      "previous_id": "CIIFR-R-0386",
+      "at": "2026-10-25T17:22:03Z",
+      "kind": "STATE",
+      "actor": "CIIFR Oracle · E1 R2 return",
+      "summary": "Record exact R2 repair delivered; independent verification still pending.",
+      "source": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6400698988",
+      "card": "wbs4-e1-ptrguard",
+      "before": "IN_PROGRESS",
+      "after": "SUBMITTED",
+      "rev": "R4"
+    },
+    {
+      "seq": 388,
+      "id": "CIIFR-R-0388",
+      "previous_id": "CIIFR-R-0387",
+      "at": "2026-10-25T17:22:03Z",
+      "kind": "UPDATE",
+      "actor": "CIIFR Oracle · E1 R2 return",
+      "summary": "Link independent F1 F2 rerun with F3 SOURCE HOLD; no reviewer PASS invented.",
+      "source": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6400708556",
+      "card": "wbs4-e1-specialist",
+      "before": "SUBMITTED",
+      "after": "SUBMITTED",
+      "rev": "R4"
+    },
+    {
+      "seq": 389,
+      "id": "CIIFR-R-0389",
+      "previous_id": "CIIFR-R-0388",
+      "at": "2026-10-25T17:22:04Z",
+      "kind": "UPDATE",
+      "actor": "CIIFR Oracle · E1 R2 return",
+      "summary": "Align E1 WBS to source-delivered R2 and outstanding independent field-map verdict.",
+      "source": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6400698988",
+      "card": "wbs4-e1",
+      "before": "IN_PROGRESS",
+      "after": "IN_PROGRESS",
+      "rev": "R4"
+    },
+    {
+      "seq": 390,
+      "id": "CIIFR-R-0390",
+      "previous_id": "CIIFR-R-0389",
+      "at": "2026-10-25T17:22:04Z",
+      "kind": "FIXTURE",
+      "actor": "CIIFR Oracle · E1 R2 return",
+      "summary": "Preserve R2 builder delivery and independent/F3 hold.",
+      "source": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6400698988",
+      "list": "issues",
+      "op": "add",
+      "rev": "R4"
+    },
+    {
+      "seq": 391,
+      "id": "CIIFR-R-0391",
+      "previous_id": "CIIFR-R-0390",
+      "at": "2026-10-25T17:22:05Z",
+      "kind": "FIXTURE",
+      "actor": "CIIFR Oracle · E1 R2 return",
+      "summary": "Preserve R2 builder delivery and independent/F3 hold.",
+      "source": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6400698988",
+      "list": "knownIssues",
+      "op": "add",
+      "rev": "R4"
+    },
+    {
+      "seq": 392,
+      "id": "CIIFR-R-0392",
+      "previous_id": "CIIFR-R-0391",
+      "at": "2026-10-25T17:22:05Z",
+      "kind": "FIXTURE",
+      "actor": "CIIFR Oracle · E1 R2 return",
+      "summary": "Preserve R2 builder delivery and independent/F3 hold.",
+      "source": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6400698988",
+      "list": "pending",
+      "op": "add",
+      "rev": "R4"
     }
   ]
 }

@@ -188,6 +188,12 @@
       "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6400040909",
       "s": "E1_R1_FAIL",
       "milestone": "M18"
+    },
+    {
+      "t": "R2 PR168 exact 2aeaf737, fast-forward 3 files, F1 RESTRANT empty section guarded, F2 REDUCERS two physical rows per record; exact-head CI 40215222466 SUCCESS; native 32/32 builder self-assessed. Independent new-head PASS not yet returned.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6400645653",
+      "s": "R2_DELIVERED",
+      "milestone": "M18"
     }
   ],
   "pullRequests": [
@@ -940,6 +946,12 @@
       "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6400185309",
       "s": "CONTROL_SOURCE_HOLD",
       "milestone": "M18"
+    },
+    {
+      "t": "F3 v14 CONTROL row strictness remains VERSION_BRACKETED_SOURCE_UNRESOLVED; extra fields may be accepted. Nonempty RESTRANT body only presence-validated; native private CII/CAESAR importer, effective semantics and Writer remain HOLD.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6400698988",
+      "s": "F3_SOURCE_HOLD",
+      "milestone": "M18"
     }
   ],
   "pending": [
@@ -1090,6 +1102,12 @@
       "t": "Same E1 coder 6adddf80 instructed R2 minimal same-PR correction #173 6400196426. New head not returned. Reviewer #170 replays F1/F2/F3 and retained pointer negatives only after builder return; engineering release/merge HOLD.",
       "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6400196426",
       "s": "R2_RETURN_PENDING",
+      "milestone": "M18"
+    },
+    {
+      "t": "Independent E1 specialist #170 assigned read-only R2 2aeaf737 negative replay; reviewer chat ID UNBOUND, no Cycle now dispatch. Common Cycle PR496 revised PREPARED_NOT_ACTIVE to prevent stale coder R2 rerun; no E1 Cycle ACTIVE on main.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6400708556",
+      "s": "R2_IR_PENDING",
       "milestone": "M18"
     }
   ]

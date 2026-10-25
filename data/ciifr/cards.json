@@ -787,13 +787,13 @@
     "milestone": "M18",
     "label": "E1 · Exact CII element catalogue",
     "who": {
-      "role": "E1 read-only catalogue · independent FAIL · minimal R2 corrective cycle"
+      "role": "E1 read-only catalogue · R2 SUBMITTED/REVIEW_HOLD"
     },
     "state": "IN_PROGRESS",
-    "now": "E1 source catalogue FIX_REQUIRED after independent specialist FAIL on draft PR168 01d94e1f: missing RESTRANT body and incorrect REDUCERS two-row validation confirmed; CONTROL row strictness source-qualified decision pending. R2 correction routed under #173 to same coder. No E2/E3/TARGET1, private model or CAESAR release.",
+    "now": "E1 catalogue R2 delivered draft PR168 2aeaf737, 3-file fix and exact-head hosted CI PASS; F1/F2 corrections await independent reviewer #170 new-head replay. F3 CONTROL v14 source shape unresolved, unsupported aux semantics and private CII native importer NOT_RUN.",
     "next": {
-      "actor": "Same E1 coder 6adddf80 → independent #170 replay",
-      "text": "Complete narrowly bounded R2 on existing draft PR168; exact-head native regression and independent re-review. Source-qualify v14 CONTROL before strictness claims. E2/E3 and engineering acceptance HOLD."
+      "actor": "Independent E1 reviewer #170, then Oracle",
+      "text": "Bounded independent R2 review F1/F2 + retained negative cases and F3 source; reconcile findings before any E1 acceptance. No E2/E3, Writer/TARGET1 or merge release."
     },
     "refs": [
       {
@@ -825,10 +825,15 @@
         "k": "comment",
         "l": "Independent E1 fail",
         "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6400040909"
+      },
+      {
+        "k": "comment",
+        "l": "Oracle R2 scope review",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6400698988"
       }
     ],
-    "updatedAt": "2026-10-25T16:32:48Z",
-    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6400185309"
+    "updatedAt": "2026-10-25T17:22:04Z",
+    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6400698988"
   },
   "wbs4-e2": {
     "order": 42,
@@ -981,13 +986,13 @@
     "milestone": "M18",
     "label": "E1 · Independent field-map specialist",
     "who": {
-      "role": "Independent E1 specialist · repaired-head FAIL returned · awaiting R2 head"
+      "role": "Independent E1 reviewer UNBOUND chat ID · R2 challenge posted"
     },
     "state": "SUBMITTED",
-    "now": "Independent E1 specialist returned exact-head FAIL #170 6400040909 at PR168 01d94e1f: original BEND/EXPJT/IZUP and RIGID/NodeName cases PASS, but empty RESTRANT and REDUCERS physical layout FAIL, CONTROL strict-row handling PARTIAL/FAIL. No private CAESAR import. Reviewer awaiting Oracle challenge; Oracle now ordered same-coder R2.",
+    "now": "Original R1 FAIL remains historical at PR168 01d94e1f. R2 at 2aeaf737 fixes F1 empty RESTRANT and F2 REDUCERS 2-line cardinality, builder tests 32/32 author-run/CI green. Oracle posted independent exact-head R2 challenge #170 6400708556; no reviewer receipt yet. F3 CONTROL v14 strictness unresolved.",
     "next": {
-      "actor": "Coder R2 correction → same independent E1 specialist",
-      "text": "Preserve exact-head FAIL and independent source-derived expectations. Do not review again until coder returns a new PR168 head; then replay independently the F1/F2 contrary cases, CONTROL version admissibility and retained guards. No reviewer edits."
+      "actor": "Existing independent field-map reviewer #170",
+      "text": "Execute one bounded READ_ONLY R2 exact-head falsification and publish #170 return; distinguish independently verified F1/F2 structural outcomes from unresolved CONTROL source, unsupported auxiliary semantics and native CAESAR NOT_RUN."
     },
     "refs": [
       {
@@ -1014,10 +1019,15 @@
         "k": "comment",
         "l": "Oracle FAIL challenge",
         "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6400185309"
+      },
+      {
+        "k": "comment",
+        "l": "R2 reviewer exact-head challenge",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6400708556"
       }
     ],
-    "updatedAt": "2026-10-25T16:32:47Z",
-    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6400185309"
+    "updatedAt": "2026-10-25T17:22:03Z",
+    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6400708556"
   },
   "wbs4-e1-ptrguard": {
     "order": 42,
@@ -1025,13 +1035,13 @@
     "milestone": "M18",
     "label": "E1 R1 · Auxiliary pointer guard",
     "who": {
-      "role": "Coder 6adddf80 · R1 failed independent review · R2 instructed, no receipt"
+      "role": "Coder 6adddf80 R2 DELIVERED; reviewer independent replay pending"
     },
-    "state": "IN_PROGRESS",
-    "now": "PR168 R1 head 01d94e1f independently FAILED #170 6400040909: empty counted RESTRANT header accepted (F1), valid 2-row REDUCERS rejected while invalid 1-row accepted (F2), surplus CONTROL fields accepted with v14 strictness unresolved (F3). Original BEND/EXPJT/EQUIP pointer corrections PASS. Oracle issued R2 SAME-PR FIX_REQUIRED to coder 6adddf80; no new implementation return.",
+    "state": "SUBMITTED",
+    "now": "R2 published on draft PR168 exact 2aeaf737, 1 fast-forward commit/3 scoped files, Git blobs verified. F1 RESTRANT empty count section rejected; F2 REDUCERS 2-row layout corrected. F3 v14 CONTROL strict row widths UNRESOLVED. Builder native 32/32 SELF_ASSESSED, exact-head CI PASS; independent R2 review NOT_RUN.",
     "next": {
-      "actor": "Coder 6adddf80 · R2 minimal correction on PR168",
-      "text": "Read R2 GO #173 6400196426, verify exact HEAD and local backups/ledger, fix empty RESTRANT body fail-closed and REDUCERS 2-line v14 cardinality, source-dispose CONTROL row strictness F3. Retain BEND/EXPJT/EQUIP and 30 old tests; return new exact head for independent replay."
+      "actor": "Original independent E1 reviewer #170 (chat ID unbound)",
+      "text": "Read R2 #170 exact-head order 6400708556; independently reproduce F1 missing/empty/nonempty, F2 REDUCERS two-vs-one/three and pointer overflow, retained BEND/EXPJT/IZUP, F3 v14 CONTROL source uncertainty. Report bounded independent verdict on #170. E2/E3 and merge HOLD."
     },
     "refs": [
       {
@@ -1108,9 +1118,24 @@
         "k": "comment",
         "l": "Oracle R2 correction GO",
         "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6400196426"
+      },
+      {
+        "k": "comment",
+        "l": "R2 builder exact-head return",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6400645653"
+      },
+      {
+        "k": "comment",
+        "l": "Oracle R2 delivery reconciliation",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6400698988"
+      },
+      {
+        "k": "comment",
+        "l": "R2 independent reviewer task",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6400708556"
       }
     ],
-    "updatedAt": "2026-10-25T16:32:47Z",
-    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6400185309"
+    "updatedAt": "2026-10-25T17:22:03Z",
+    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6400698988"
   }
 }
