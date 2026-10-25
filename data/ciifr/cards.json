@@ -629,10 +629,10 @@
     "label": "G0 · Onboarding and ownership",
     "who": {},
     "state": "NOT_STARTED",
-    "now": "1 Aim: read Issue #166 Option C, maintain original CIIFR R3. 2 Protocol: pinned Common Oracle-standalone + Progress Page + XCU AGENTS. 3 Probe: GitHub, original CII byte access, browser and native tests. 4 READ_ONLY until qualified; coordinate exact-file PR #165. 5 Preserve original SHA, node/element witnesses, unresolved identity; no Writer authority. 6 Return exact head, reproducible demo, PASS/FAIL/NOT_RUN and plausible wrong-case. 7 Independent review before engineering use; Owner accepts/merges.",
+    "now": "G0: [Contribution & Handoff](https://github.com/reallakshman19/Common/blob/a9491531fb98f6fd14bc486a4cc78ee4680cb1f5/skills/agent-work/CONTRIBUTION_HANDOFF.md) requires evidence-bounded PASS, surviving-error challenge and SELF_ASSESSED Oracle edits. [Oracle Continuity](https://github.com/reallakshman19/Common/blob/a9491531fb98f6fd14bc486a4cc78ee4680cb1f5/skills/agent-work/oracle-continuity/PROTOCOL.md) preserves task/artifact identity and actual cutover. Read Issue #166 and XCU AGENTS; verify original CII hashes, input access, PR #165 ownership and Appendix A. Engineering takeover READ_ONLY until qualified. No Geometry Writer. Return exact-head demo, checks, NOT_RUN and next actor.",
     "next": {
       "actor": "Oracle",
-      "text": "Reconcile PR #165 file claims and identify authorized builder; no Cycle now dispatch has been activated."
+      "text": "Reconcile PR #165 and identify authorized G1 builder; no Oracle succession activated."
     },
     "refs": [
       {
@@ -641,7 +641,9 @@
         "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/166#issuecomment-6393745466",
         "s": "PLANNED"
       }
-    ]
+    ],
+    "updatedAt": "2026-10-25T05:27:05Z",
+    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/166#issuecomment-6393745466"
   },
   "geo-g1": {
     "order": 21,
@@ -726,5 +728,18 @@
         "s": "PLANNED"
       }
     ]
+  },
+  "oracle-onboarding": {
+    "order": 19,
+    "group": "r3-oracle",
+    "milestone": "M7",
+    "label": "Oracle · onboarding and continuity",
+    "who": {},
+    "state": "NOT_STARTED",
+    "now": "Oracle start: [Contribution & Handoff](https://github.com/reallakshman19/Common/blob/a9491531fb98f6fd14bc486a4cc78ee4680cb1f5/skills/agent-work/CONTRIBUTION_HANDOFF.md) requires scoped PASS, surviving-error tests and self-assessment disclosure for Oracle-authored work. [Oracle Continuity](https://github.com/reallakshman19/Common/blob/a9491531fb98f6fd14bc486a4cc78ee4680cb1f5/skills/agent-work/oracle-continuity/PROTOCOL.md) preserves task ID, artifact lineage, Oracle epoch, in-flight work, next two slices and explicit successor adoption. A new chat/brief is not activated cutover; PR #472 draft. Owner controls scope, acceptance and merge.",
+    "next": {
+      "actor": "Oracle",
+      "text": "At handover reconcile CURRENT, in-flight writes and old control; do not assert automatic succession."
+    }
   }
 }

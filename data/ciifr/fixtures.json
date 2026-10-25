@@ -39,6 +39,18 @@
       "u": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/157",
       "s": "DRAFT_NOT_MERGED",
       "milestone": "M15"
+    },
+    {
+      "t": "Common Contribution & Handoff (pinned): No PASS beyond evidence; surviving-error challenges; Oracle/reviewer edits are SELF_ASSESSED contributions, not their own independent review. Relevant when Oracle or reviewer repairs a candidate.",
+      "u": "https://github.com/reallakshman19/Common/blob/a9491531fb98f6fd14bc486a4cc78ee4680cb1f5/skills/agent-work/CONTRIBUTION_HANDOFF.md",
+      "s": "PINNED_HANDOFF",
+      "milestone": "M12"
+    },
+    {
+      "t": "Common Oracle Continuity (pinned): stable task and artifact lineage, active Oracle epoch, explicit successor cutover/adoption, unresolved evidence and next two connected build slices. A prepared handover is not activated control.",
+      "u": "https://github.com/reallakshman19/Common/blob/a9491531fb98f6fd14bc486a4cc78ee4680cb1f5/skills/agent-work/oracle-continuity/PROTOCOL.md",
+      "s": "PINNED_CONTINUITY",
+      "milestone": "M7"
     }
   ],
   "issues": [
@@ -204,6 +216,18 @@
       "u": "https://github.com/reallakshman19/Common/blob/a9491531fb98f6fd14bc486a4cc78ee4680cb1f5/skills/agent-work/oracle-standalone/SKILL.md",
       "s": "ONBOARDING_PROPOSAL",
       "milestone": "M12"
+    },
+    {
+      "t": "Oracle onboarding: read pinned Contribution & Handoff before interpreting Oracle-authored repairs or inherited PASS. Disclose self-assessment, upstream fixture exposure and surviving-error risk; seek independent affected-claim review.",
+      "u": "https://github.com/reallakshman19/Common/blob/a9491531fb98f6fd14bc486a4cc78ee4680cb1f5/skills/agent-work/CONTRIBUTION_HANDOFF.md",
+      "s": "EVIDENCE_RULE",
+      "milestone": "M12"
+    },
+    {
+      "t": "Oracle continuity: resume from native issue/PR, immutable candidate SHA and pending returns; retain stable task and next two connected slices. Succession needs actual write exclusion and activated epoch, not a new chat.",
+      "u": "https://github.com/reallakshman19/Common/blob/a9491531fb98f6fd14bc486a4cc78ee4680cb1f5/skills/agent-work/oracle-continuity/PROTOCOL.md",
+      "s": "CONTINUITY_RULE",
+      "milestone": "M7"
     }
   ],
   "future": [

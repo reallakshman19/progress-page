@@ -3080,6 +3080,86 @@
       "list": "pending",
       "op": "add",
       "rev": "R3"
+    },
+    {
+      "seq": 235,
+      "id": "CIIFR-R-0235",
+      "previous_id": "CIIFR-R-0234",
+      "at": "2026-10-25T05:27:04Z",
+      "kind": "FIXTURE",
+      "actor": "Oracle Standalone · Geometry",
+      "summary": "Link pinned PINNED_HANDOFF source in CIIFR Oracle onboarding/continuity for M12.",
+      "source": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/166#issuecomment-6393745466",
+      "list": "repository",
+      "op": "add",
+      "rev": "R3"
+    },
+    {
+      "seq": 236,
+      "id": "CIIFR-R-0236",
+      "previous_id": "CIIFR-R-0235",
+      "at": "2026-10-25T05:27:04Z",
+      "kind": "FIXTURE",
+      "actor": "Oracle Standalone · Geometry",
+      "summary": "Link pinned PINNED_CONTINUITY source in CIIFR Oracle onboarding/continuity for M7.",
+      "source": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/166#issuecomment-6393745466",
+      "list": "repository",
+      "op": "add",
+      "rev": "R3"
+    },
+    {
+      "seq": 237,
+      "id": "CIIFR-R-0237",
+      "previous_id": "CIIFR-R-0236",
+      "at": "2026-10-25T05:27:05Z",
+      "kind": "FIXTURE",
+      "actor": "Oracle Standalone · Geometry",
+      "summary": "Link pinned EVIDENCE_RULE source in CIIFR Oracle onboarding/continuity for M12.",
+      "source": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/166#issuecomment-6393745466",
+      "list": "highRoi",
+      "op": "add",
+      "rev": "R3"
+    },
+    {
+      "seq": 238,
+      "id": "CIIFR-R-0238",
+      "previous_id": "CIIFR-R-0237",
+      "at": "2026-10-25T05:27:05Z",
+      "kind": "FIXTURE",
+      "actor": "Oracle Standalone · Geometry",
+      "summary": "Link pinned CONTINUITY_RULE source in CIIFR Oracle onboarding/continuity for M7.",
+      "source": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/166#issuecomment-6393745466",
+      "list": "highRoi",
+      "op": "add",
+      "rev": "R3"
+    },
+    {
+      "seq": 239,
+      "id": "CIIFR-R-0239",
+      "previous_id": "CIIFR-R-0238",
+      "at": "2026-10-25T05:27:05Z",
+      "kind": "UPDATE",
+      "actor": "Oracle Standalone · Geometry",
+      "summary": "Cross-link Contribution/Handoff and Oracle Continuity in Geometry G0 onboarding.",
+      "source": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/166#issuecomment-6393745466",
+      "card": "geo-g0",
+      "before": "NOT_STARTED",
+      "after": "NOT_STARTED",
+      "rev": "R3"
+    },
+    {
+      "seq": 240,
+      "id": "CIIFR-R-0240",
+      "previous_id": "CIIFR-R-0239",
+      "at": "2026-10-25T05:27:06Z",
+      "kind": "BASELINE",
+      "actor": "Oracle Standalone · Geometry",
+      "summary": "Add compact Oracle onboarding/continuity reading card without activating cutover.",
+      "source": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/166#issuecomment-6393745466",
+      "card": "oracle-onboarding",
+      "before": null,
+      "after": "NOT_STARTED",
+      "rev": "R3"
     }
   ]
 }

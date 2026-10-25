@@ -4,7 +4,7 @@
     "key": "ciifr",
     "title": "CII Find & Replace VNext",
     "subtitle": "R3 current: standalone Oracle coordination of P2.5-B handoff, review, Windows acceptance and prepared Oracle succession.",
-    "updatedAt": "2026-10-25T05:17:45Z",
+    "updatedAt": "2026-10-25T05:27:06Z",
     "updatedBy": "Oracle Standalone · Geometry",
     "staleAfterMin": 120,
     "aim": "CIIFR R3: preserve CII hierarchy and exact byte/SHA RichInputXMLv2 reconstruction, with XMLv1.1 a separate fork; progress branch-to-element-to-node mapping and guarded transfer. New Geometry WBS 3.x: read-only SOURCE/TARGET physical NODE table + synchronized dual SVG for Method C topology/manual OR/AND, with XMLv1.1 evidence. No Geometry Writer/Apply. P2/P2.1 frozen; P3 deferred; Owner approves.",
