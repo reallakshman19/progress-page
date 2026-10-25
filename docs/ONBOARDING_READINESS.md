@@ -18,24 +18,36 @@ The existing G0 card remains the source of truth; this is a more usable view, **
 | Display stage | What the panel requires |
 | --- | --- |
 | **Not assigned** | No bounded recipient with a current recorded chat id, or no scoped source-check record; default fail-closed state |
-| **Sources checked** | Active onboarding card has an existing `who.chat` binding to a project `chats` entry with `id8`; `fixtures.pending` contains `ONB_SOURCES_CHECKED` for this milestone, with `n=id8` and a public GitHub evidence URL |
-| **Access verified** | The above **and** `ONB_ACCESS_VERIFIED`, with the same exact recipient and milestone |
-| **Ready for bounded task** | All above **and** `ONB_READY`, also source-linked, for this recipient and milestone |
+| **Sources checked** | Active onboarding card has an existing `who.chat` binding to a project `chats` entry with `id8`; `fixtures.pending` contains `ONB_SOURCES_CHECKED` for this milestone, with `n=id8`, a GitHub evidence URL **and the current assignment binding token** (plus the exact candidate commit when one is recorded) |
+| **Access verified** | The above **and** `ONB_ACCESS_VERIFIED`, with the same exact recipient, milestone, latest assignment reference and recorded candidate commit |
+| **Ready for bounded task** | All above **and** `ONB_READY`, also bound to this exact recipient, milestone, assignment and recorded candidate |
 
 Stage labels describe **what someone recorded**, not independent verification or a verified principal. An unrelated VERIFIED task, accessible skill links, an unsourced note, a matching NodeName or a different chat's earlier readiness must never advance this panel. The current assignment must still be checked in its native source, and an active Oracle Cycle requires actual `CURRENT.json` activation. The Owner controls engineering approval, merge and release.
 
-**Native CLI write route, not JSON editing:** Once a participant has been legitimately assigned via the project's normal protocol and `card set --chat` with an existing registered chat ID, the Oracle records successful checks through the existing `fixture add` command, for example:
+**Native CLI write route, not JSON editing:** An actual Oracle must first confirm a legitimate assignment in the project's native task/transport. On the current onboarding card, append a **new** GitHub permalink identifying the assignment via `card set --ref "comment|Onboarding assignment|<assignment-url>"`. The latest such ref is treated as current. For each actual source/access/ready probe, add a new `fixtures.pending` entry with a proof token `ONB_ASSIGNMENT=<exact-current-assignment-url>`; if this milestone has a `commit`, also include `ONB_COMMIT=<exact-sha>`. Earlier participants, assignments or candidate commits cannot confer current readiness.
+
+For example (substitute the real registered chat key, immutable GitHub permalinks and original fixture observations):
 
 ```bash
+# First: bind the actual recipient and assignment receipt in the existing card.
+python tools/pp_cli.py card set --project ciifr --card geo-g0 \
+  --chat builder-chat-key \
+  --ref "comment|Onboarding assignment|https://github.com/example/ciifr/issues/166#issuecomment-123" \
+  --actor Oracle --src https://github.com/example/ciifr/issues/166#issuecomment-123 \
+  --summary "Record confirmed G0 builder assignment"
+
+# Only after that recipient has inspected the actual original source:
 python tools/pp_cli.py fixture add --project ciifr --list pending \
-  --text "Sources and exact baseline inspected by assigned participant" \
+  --text "Original source checked ONB_ASSIGNMENT=https://github.com/example/ciifr/issues/166#issuecomment-123" \
   --status ONB_SOURCES_CHECKED --note 6ad12345 --milestone M12 \
-  --url https://github.com/<owner>/<repo>/issues/<n>#issuecomment-<receipt> \
-  --actor "Oracle" --src https://github.com/<owner>/<repo>/issues/<n>#issuecomment-<receipt> \
-  --summary "Participant checked original sources on exact task candidate"
+  --url https://github.com/example/ciifr/issues/166#issuecomment-456 \
+  --actor Oracle --src https://github.com/example/ciifr/issues/166#issuecomment-456 \
+  --summary "Read back exact source and assignment-bound evidence"
 ```
 
-`--note` is the **short display ID of the recipient** from `index.json.chats`, not an authenticated principal or a chat URL. Substitute actual public-safe values. Advance other stages **only** after the corresponding real operation, with new `fixture add` evidence and a real GitHub receipt. Use `fixture remove` with a new Timeline entry to withdraw a stale/incorrect item; if the actual assignment or candidate has changed, re-ground and explicitly re-record relevant checks. This lightweight fixture encoding is a **viewer convention**, not a new ledger/schema. The Timeline captures the actor/source of each add/remove.
+`--note` contains the **short display ID of the recipient** from `index.json.chats`, not an authenticated principal or a chat URL. If the WBS milestone records a commit SHA, the evidence text must additionally carry `ONB_COMMIT=<exact-current-milestone-sha>`. `ONB_ACCESS_VERIFIED` and `ONB_READY` use the same convention but require **separate source-linked actual observations**. These receipt strings are **display-bound assertions**, not cryptographic signatures: a forged/public GitHub link or a self-declared test does not establish real access or independent verification.
+
+If the assignment changes, append a new `Onboarding assignment` ref; if the candidate commit changes, update its milestone via native `plan milestone` and re-run affected probes. The viewer then fails closed on the old receipts, even when the *same* chat ID and WBS are reused. Use `fixture remove` through the CLI to withdraw any incorrect entries. The Timeline records the actor and source of adds/removals. This is a lightweight **viewer convention**, not an independent assignment ledger or a new schema.
 
 ### Engineering-sensitive boundary
 
