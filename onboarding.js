@@ -32,9 +32,19 @@ export function onboardingModel(project) {
   const [cardId, card] = assigned[0];
   const recipient = (index.chats || {})[(card.who || {}).chat] || null;
   const id8 = recipient?.id8 || null;
-  const evidence = (project.fixtures?.pending || []).filter((f) =>
-    f.milestone === card.milestone && f.n === id8 && !!id8 &&
-    /^https:\/\/github\.com\//.test(f.u || ''));
+  // A source/recipient ID alone is replayable after a reassignment or candidate change.
+  // The newest native assignment reference is the explicit current task binding.
+  const assignments = (card.refs || []).filter((r) =>
+    r.l === 'Onboarding assignment' && /^https:\/\/github\.com\//.test(r.u || ''));
+  const assignment = assignments.length ? assignments[assignments.length - 1].u : null;
+  const candidate = (index.milestones || {})[card.milestone]?.commit || null;
+  const evidence = (project.fixtures?.pending || []).filter((f) => {
+    const tokens = String(f.t || '').split(/\s+/);
+    return f.milestone === card.milestone && f.n === id8 && !!id8 && !!assignment &&
+      /^https:\/\/github\.com\//.test(f.u || '') &&
+      tokens.includes('ONB_ASSIGNMENT=' + assignment) &&
+      (!candidate || tokens.includes('ONB_COMMIT=' + candidate));
+  });
   let stage = 0;
   if (id8) {
     for (const code of ONB_CODES) {
@@ -54,9 +64,9 @@ export function onboardingModel(project) {
     .filter(Boolean);
   return {
     stage, stageLabel: ONB_STAGES[stage], cardId, card, groupId, group,
-    recipient: id8, evidence, protocols, nextTwo,
+    recipient: id8, assignment, evidence, protocols, nextTwo,
     revision: ((index.revisions || []).find((r) => r.status === 'current') || {}).id || 'not recorded',
-    candidate: (index.milestones || {})[card.milestone]?.commit || null,
+    candidate,
   };
 }
 
