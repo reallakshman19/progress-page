@@ -621,5 +621,110 @@
     "flags": [],
     "updatedAt": "2026-10-25T04:01:52Z",
     "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/158#issuecomment-6393103222"
+  },
+  "geo-g0": {
+    "order": 20,
+    "group": "r3-geometry-onboarding",
+    "milestone": "M12",
+    "label": "G0 · Onboarding and ownership",
+    "who": {},
+    "state": "NOT_STARTED",
+    "now": "1 Aim: read Issue #166 Option C, maintain original CIIFR R3. 2 Protocol: pinned Common Oracle-standalone + Progress Page + XCU AGENTS. 3 Probe: GitHub, original CII byte access, browser and native tests. 4 READ_ONLY until qualified; coordinate exact-file PR #165. 5 Preserve original SHA, node/element witnesses, unresolved identity; no Writer authority. 6 Return exact head, reproducible demo, PASS/FAIL/NOT_RUN and plausible wrong-case. 7 Independent review before engineering use; Owner accepts/merges.",
+    "next": {
+      "actor": "Oracle",
+      "text": "Reconcile PR #165 file claims and identify authorized builder; no Cycle now dispatch has been activated."
+    },
+    "refs": [
+      {
+        "k": "issue",
+        "l": "Geometry Option C canonical work order",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/166#issuecomment-6393745466",
+        "s": "PLANNED"
+      }
+    ]
+  },
+  "geo-g1": {
+    "order": 21,
+    "group": "r3-geometry",
+    "milestone": "M13",
+    "label": "G1 · Anchor, ledger and dual SVG",
+    "who": {},
+    "state": "NOT_STARTED",
+    "now": "Planned: original CII SOURCE/TARGET selection, experimental anchor registration, Method C candidates, linked row↔two physical SVGs at common mm scale, segment-only explicitly not NODE; no Writer/Apply.",
+    "next": {
+      "actor": "Builder after G0",
+      "text": "Produce Owner-runnable hosted Geometry workbench and exact-head evidence."
+    },
+    "refs": [
+      {
+        "k": "issue",
+        "l": "Geometry Option C canonical work order",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/166#issuecomment-6393745466",
+        "s": "PLANNED"
+      }
+    ]
+  },
+  "geo-g2": {
+    "order": 22,
+    "group": "r3-geometry",
+    "milestone": "M14",
+    "label": "G2 · Smart topology + Boolean",
+    "who": {},
+    "state": "NOT_STARTED",
+    "now": "Planned: independent topology-only candidates without fabricated XYZ residuals; Manual/OR/AND filters retain ambiguous alternatives, target collisions and anchor disagreements.",
+    "next": {
+      "actor": "Builder after G1",
+      "text": "Extend G1 common ledger and demonstrate duplicate-signature/contested-target contrasts."
+    },
+    "refs": [
+      {
+        "k": "issue",
+        "l": "Geometry Option C canonical work order",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/166#issuecomment-6393745466",
+        "s": "PLANNED"
+      }
+    ]
+  },
+  "geo-g3": {
+    "order": 23,
+    "group": "r3-geometry",
+    "milestone": "M15",
+    "label": "G3 · XMLv1.1 field evidence",
+    "who": {},
+    "state": "NOT_STARTED",
+    "now": "Planned: locally import F05 XMLv1.1 plus receipt; cross-check actual original byte SHA, schema, ELEMENT ordinals/endpoints and field witness; reject forged/stale pairing.",
+    "next": {
+      "actor": "Builder after G2",
+      "text": "Show valid and invalid XML evidence on linked correspondence."
+    },
+    "refs": [
+      {
+        "k": "issue",
+        "l": "Geometry Option C canonical work order",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/166#issuecomment-6393745466",
+        "s": "PLANNED"
+      }
+    ]
+  },
+  "geo-g4": {
+    "order": 24,
+    "group": "r3-geometry",
+    "milestone": "M16",
+    "label": "G4 · Exports and IR",
+    "who": {},
+    "state": "NOT_STARTED",
+    "now": "Planned: hash-bound evidence JSON/CSV/SVG, stale-epoch and injection rejection, untouched Normal/Line/Config/Writer regressions, original S1/T and independent exact-head challenge.",
+    "next": {
+      "actor": "Independent reviewer after builder",
+      "text": "Return bounded evidence-based verdict; Owner decision remains separate."
+    },
+    "refs": [
+      {
+        "k": "issue",
+        "l": "Geometry Option C canonical work order",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/166#issuecomment-6393745466",
+        "s": "PLANNED"
+      }
+    ]
   }
 }

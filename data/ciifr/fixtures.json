@@ -27,6 +27,18 @@
       "s": "SELF_ASSESSED",
       "n": "Public report; no acceptance inferred",
       "milestone": "M8"
+    },
+    {
+      "t": "Method C engineering contract: original-byte graphs, rigid registration, physical NODE vs ELEMENT segment-only, SHA-bound export and inherited benchmark.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/blob/main/docs/METHOD_C_ENGINEERING.md",
+      "s": "SOURCE_CONTRACT",
+      "milestone": "M13"
+    },
+    {
+      "t": "XMLv1.1 F05 draft PR #157: separately launched Python loopback converter, typed RichInputXML-P1.v1.1 and exact reconstruction profile; not static Pages backend.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/157",
+      "s": "DRAFT_NOT_MERGED",
+      "milestone": "M15"
     }
   ],
   "issues": [
@@ -114,6 +126,36 @@
     {
       "t": "After real-input evidence and explicit authorization: guarded existing displacement-cell transfer with current map/input/profile/selection/approval digests, actual before/proposed values, stale invalidation and independent byte allowlist audit. Elemental transfer later needs unique mapped endpoint correspondence and explicit segmentation rules.",
       "s": "FUTURE_GUARDED_SLICE"
+    },
+    {
+      "t": "G0 (WBS 3): probe builder/source access, repo Appendix A, independently ground current VNext, settle PR #165 exact-file ownership before shared UI edits; no claim of runnable new feature.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/166#issuecomment-6393745466",
+      "s": "G0_PRECONDITION",
+      "milestone": "M12"
+    },
+    {
+      "t": "G1 (WBS 3.1): one Owner-runnable Geometry view using original CII hashes, manual anchors, registered Method C candidates, linked table and dual SVG at common-mm scale. First real-input trial.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/166#issuecomment-6393745466",
+      "s": "G1_PLANNED",
+      "milestone": "M13"
+    },
+    {
+      "t": "G2 (WBS 3.2): independent topology-only evidence without pose, Boolean OR/AND review, visible duplicate signatures/ambiguities/conflicts, second Owner real-file trial.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/166#issuecomment-6393745466",
+      "s": "G2_PLANNED",
+      "milestone": "M14"
+    },
+    {
+      "t": "G3 (WBS 3.3): local XMLv1.1 file+receipt evidence bridge validating against original CII witnesses; reject mismatch with XML_UNVERIFIED; third Owner real-file trial.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/166#issuecomment-6393745466",
+      "s": "G3_PLANNED",
+      "milestone": "M15"
+    },
+    {
+      "t": "G4 (WBS 3.4): review ledger JSON/CSV/SVG export, stale epoch, adversarial and untouched-tab checks, exact-head independent review, separate Owner merge decision.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/166#issuecomment-6393745466",
+      "s": "G4_PLANNED",
+      "milestone": "M16"
     }
   ],
   "highRoi": [
@@ -156,6 +198,12 @@
       "s": "BOUNDED_FIXES",
       "n": "No writer/runtime switch",
       "milestone": "M10"
+    },
+    {
+      "t": "Geometry onboarding protocol: Aim/Owner decision → current main/PR/fixture checks → participant capability/access probe → READ_ONLY/Appendix A + shared-file authority → G1 demo on original files → evidence+wrong-case return → separate independent review/Owner acceptance.",
+      "u": "https://github.com/reallakshman19/Common/blob/a9491531fb98f6fd14bc486a4cc78ee4680cb1f5/skills/agent-work/oracle-standalone/SKILL.md",
+      "s": "ONBOARDING_PROPOSAL",
+      "milestone": "M12"
     }
   ],
   "future": [
@@ -192,6 +240,18 @@
     {
       "t": "Oracle01a16c60 authored briefs/review harnesses, not delivered converter/prototype code. Product reviews are source-scoped non-author checks. This Progress record is self-authored; private evidence is not public VERIFIED, software acceptance or an independent page audit.",
       "s": "EXPOSURE_AND_LIMITS"
+    },
+    {
+      "t": "Owner chose MCDA Option C: focused VNext Geometry correspondence workbench, not another Find & Replace engine; this is a new WBS within CIIFR R3, no P2/P2.1 unfreeze, no P3 release.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/166#issuecomment-6393745466",
+      "s": "OWNER_SELECTED_C",
+      "milestone": "M12"
+    },
+    {
+      "t": "Review-only physical NODE evidence: topology, manual anchors, OR/AND, two linked SVGs and table; geometrical proximity never qualifies physical identity or enables Writer2 Apply.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/166#issuecomment-6393745466",
+      "s": "ENGINEERING_BOUNDARY",
+      "milestone": "M13"
     }
   ],
   "inputs": [
@@ -283,6 +343,18 @@
       "s": "PRIVATE_INPUTS_OBSERVED",
       "n": "Private filenames and links excluded",
       "milestone": "M10"
+    },
+    {
+      "t": "Inherited Method C S1 original SHA-256 9a9cb14db4c13f5aac41cc74a60e7e528722eb5003d09f07192762ab6bfb1a2b; target T original SHA-256 abfa3ffc9281fe75d4170b2d885d554cb1f120dadedae7c7ab609548b63cc060; verify real bytes at runtime.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/blob/main/docs/METHOD_C_ENGINEERING.md",
+      "s": "INHERITED_EXPECTATION",
+      "milestone": "M13"
+    },
+    {
+      "t": "Inherited Method C S1/T trial: experimental source3910→target875, XYZ 100mm, 41/57 near physical NODEs; source4060 projects onto TARGET segment900→905, not NODE; source4970 about -300.57mm signed Z conflict. NOT newly run.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/blob/main/docs/METHOD_C_ENGINEERING.md",
+      "s": "INHERITED_NOT_RUN",
+      "milestone": "M13"
     }
   ],
   "knownIssues": [
@@ -346,6 +418,18 @@
       "s": "AUTHORITY_UNRESOLVED",
       "n": "Owner engineering approval required",
       "milestone": "M10"
+    },
+    {
+      "t": "PR #165 has active draft edits to docs/cii-fnr-vnext.html and both UI app/CSS mirrors. Do not overwrite or claim G1 integrated until exact-file ownership/stacking is resolved.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/165",
+      "s": "COORDINATION_REQUIRED",
+      "milestone": "M12"
+    },
+    {
+      "t": "Method C candidate engine requires a registration pose and returns coordinate-near suggestions; independent pose-free topology matcher and two distinct synchronized SVG render targets are new work.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/166#issuecomment-6393745466",
+      "s": "NOT_YET_BUILT",
+      "milestone": "M14"
     }
   ],
   "pending": [
@@ -396,6 +480,12 @@
       "s": "OWNER_REVIEW_PENDING",
       "n": "Draft update; not published main",
       "milestone": "M7"
+    },
+    {
+      "t": "Before any G1 implementation: confirm single owner for overlapping PR #165 paths, effective writer and source/target original-byte fixture access. New Oracle Cycle not activated by this Progress plan.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/166#issuecomment-6393745466",
+      "s": "NEEDS_COORDINATION",
+      "milestone": "M12"
     }
   ]
 }

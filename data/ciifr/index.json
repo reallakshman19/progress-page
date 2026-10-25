@@ -4,11 +4,11 @@
     "key": "ciifr",
     "title": "CII Find & Replace VNext",
     "subtitle": "R3 current: standalone Oracle coordination of P2.5-B handoff, review, Windows acceptance and prepared Oracle succession.",
-    "updatedAt": "2026-10-25T04:02:04Z",
-    "updatedBy": "OTM",
+    "updatedAt": "2026-10-25T05:17:45Z",
+    "updatedBy": "Oracle Standalone · Geometry",
     "staleAfterMin": 120,
-    "aim": "Private CII <-> RichInputXMLv2 engine preserving CII hierarchy and exact byte/SHA round-trip, then P2.5 branch -> element -> node mapping and authorized nodal/elemental transfer with audited CII export. Keep P2/P2.1 frozen; XMLv1.1 is a separate incremental fork. Prove real Windows workflow; P3 deferred. Owner retains engineering approval.",
-    "aimSrc": "OWNER_PRIVATE_REF:ciifr-r3-engineering-aim-20261024"
+    "aim": "CIIFR R3: preserve CII hierarchy and exact byte/SHA RichInputXMLv2 reconstruction, with XMLv1.1 a separate fork; progress branch-to-element-to-node mapping and guarded transfer. New Geometry WBS 3.x: read-only SOURCE/TARGET physical NODE table + synchronized dual SVG for Method C topology/manual OR/AND, with XMLv1.1 evidence. No Geometry Writer/Apply. P2/P2.1 frozen; P3 deferred; Owner approves.",
+    "aimSrc": "OWNER_PRIVATE_REF:ciifr-geometry-owner-option-c-20261025"
   },
   "rules": {
     "quietAfterMin": 30,
@@ -175,6 +175,66 @@
       "order": 4,
       "cap": "NOT_DEMONSTRATED",
       "canDo": "No accepted production transfer/export in this new prototype. Read-only work can proceed before export qualification."
+    },
+    "M12": {
+      "name": "Geometry onboarding and seam",
+      "full": "Re-ground source, file ownership relative to PR #165, original fixtures, builder capability and scoped engineering implementation authority; no shared-file edit before coordination.",
+      "order": 12,
+      "wbs": "3",
+      "bench": "GEO-G0",
+      "keeps": "Original CII sha and all existing Normal/Line/Config/Writer behaviour",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "Not yet runnable: builder/PR seam and fixture access unresolved.",
+      "repo": "reallakshman19/XML_Compare_Utilities",
+      "activity": "PLANNED, not implemented or accepted"
+    },
+    "M13": {
+      "name": "Geometry table and dual SVG",
+      "full": "G1: use immutable SOURCE/TARGET CII, manually anchor nodes and display Method C registered candidates with original NODE/ELEMENT witnesses in linked table and two synchronized real-mm-scale SVGs.",
+      "order": 13,
+      "wbs": "3.1",
+      "bench": "GEO-G1",
+      "keeps": "Original CII sha and all existing Normal/Line/Config/Writer behaviour",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "Not yet demonstrated: real-file Geometry dual-SVG workbench.",
+      "repo": "reallakshman19/XML_Compare_Utilities",
+      "activity": "PLANNED, not implemented or accepted"
+    },
+    "M14": {
+      "name": "Topology and OR/AND review",
+      "full": "G2: pose-free topology suggestions with NOT_EVALUATED spatial residuals, Manual/OR/AND filters and no hidden duplicated signatures, ambiguous targets or anchor conflicts.",
+      "order": 14,
+      "wbs": "3.2",
+      "bench": "GEO-G2",
+      "keeps": "Original CII sha and all existing Normal/Line/Config/Writer behaviour",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "Not yet demonstrated: pose-free topology suggestions and Boolean exceptions.",
+      "repo": "reallakshman19/XML_Compare_Utilities",
+      "activity": "PLANNED, not implemented or accepted"
+    },
+    "M15": {
+      "name": "XMLv1.1 evidence bridge",
+      "full": "G3: import locally generated XMLv1.1 F05 and a receipt, verify current original CII/XML schema, SHA and endpoint witnesses, show record/field provenance or XML_UNVERIFIED.",
+      "order": 15,
+      "wbs": "3.3",
+      "bench": "GEO-G3",
+      "keeps": "Original CII sha and all existing Normal/Line/Config/Writer behaviour",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "Not yet demonstrated: XMLv1.1 original-witness evidence inside Geometry.",
+      "repo": "reallakshman19/XML_Compare_Utilities",
+      "activity": "PLANNED, not implemented or accepted"
+    },
+    "M16": {
+      "name": "Evidence export and verification",
+      "full": "G4: immutable hash-bound JSON/CSV/SVG export, stale-epoch invalidation, unaffected Normal/Line/Config/Writer, original benchmark and exact-head independent review.",
+      "order": 16,
+      "wbs": "3.4",
+      "bench": "GEO-G4",
+      "keeps": "Original CII sha and all existing Normal/Line/Config/Writer behaviour",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "Not yet demonstrated: independently verified review exports and regression.",
+      "repo": "reallakshman19/XML_Compare_Utilities",
+      "activity": "PLANNED, not implemented or accepted"
     }
   },
   "groups": {
@@ -221,6 +281,14 @@
     "r3-nodemap": {
       "title": "R3: Explicit node mapping prototype",
       "order": 2
+    },
+    "r3-geometry-onboarding": {
+      "title": "Geometry: onboarding and integration seam",
+      "order": 11
+    },
+    "r3-geometry": {
+      "title": "Geometry: correspondence workbench WBS 3.1-3.4",
+      "order": 12
     }
   },
   "revisions": [
