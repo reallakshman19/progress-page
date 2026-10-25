@@ -1,5 +1,5 @@
 // Reusable read-only onboarding panel. Uses existing audited cards/fixtures; never grants assignment or approval.
-import { el, link } from './util.js?v=15';
+import { el, link } from './util.js?v=16';
 
 const ONB_STAGES = ['Not assigned', 'Sources checked', 'Access verified', 'Ready for bounded task'];
 const ONB_CODES = ['ONB_SOURCES_CHECKED', 'ONB_ACCESS_VERIFIED', 'ONB_READY'];
