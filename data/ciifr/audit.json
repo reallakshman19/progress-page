@@ -4921,6 +4921,73 @@
       "list": "pending",
       "op": "add",
       "rev": "R4"
+    },
+    {
+      "seq": 376,
+      "id": "CIIFR-R-0376",
+      "previous_id": "CIIFR-R-0375",
+      "at": "2026-10-25T15:14:47Z",
+      "kind": "STATE",
+      "actor": "CIIFR Oracle · E1 repair return",
+      "summary": "Reconcile E1 R1 implementation return on exact repaired SHA without promoting it to independent acceptance.",
+      "source": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6399342047",
+      "card": "wbs4-e1-ptrguard",
+      "before": "NOT_STARTED",
+      "after": "SUBMITTED",
+      "rev": "R4"
+    },
+    {
+      "seq": 377,
+      "id": "CIIFR-R-0377",
+      "previous_id": "CIIFR-R-0376",
+      "at": "2026-10-25T15:14:47Z",
+      "kind": "UPDATE",
+      "actor": "CIIFR Oracle · E1 repair return",
+      "summary": "Link same E1 specialist to repaired-head falsification without claiming review completion.",
+      "source": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6399351349",
+      "card": "wbs4-e1-specialist",
+      "before": "SUBMITTED",
+      "after": "SUBMITTED",
+      "rev": "R4"
+    },
+    {
+      "seq": 378,
+      "id": "CIIFR-R-0378",
+      "previous_id": "CIIFR-R-0377",
+      "at": "2026-10-25T15:14:48Z",
+      "kind": "FIXTURE",
+      "actor": "CIIFR Oracle · E1 repair return",
+      "summary": "Preserve exact-head builder return and unresolved independent review negatives.",
+      "source": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6399342047",
+      "list": "issues",
+      "op": "add",
+      "rev": "R4"
+    },
+    {
+      "seq": 379,
+      "id": "CIIFR-R-0379",
+      "previous_id": "CIIFR-R-0378",
+      "at": "2026-10-25T15:14:48Z",
+      "kind": "FIXTURE",
+      "actor": "CIIFR Oracle · E1 repair return",
+      "summary": "Preserve exact-head builder return and unresolved independent review negatives.",
+      "source": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6399342047",
+      "list": "knownIssues",
+      "op": "add",
+      "rev": "R4"
+    },
+    {
+      "seq": 380,
+      "id": "CIIFR-R-0380",
+      "previous_id": "CIIFR-R-0379",
+      "at": "2026-10-25T15:14:49Z",
+      "kind": "FIXTURE",
+      "actor": "CIIFR Oracle · E1 repair return",
+      "summary": "Preserve exact-head builder return and unresolved independent review negatives.",
+      "source": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6399342047",
+      "list": "pending",
+      "op": "add",
+      "rev": "R4"
     }
   ]
 }

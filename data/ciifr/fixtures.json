@@ -176,6 +176,12 @@
       "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6398683938",
       "s": "BOUNDED_R1_GO",
       "milestone": "M18"
+    },
+    {
+      "t": "E1 R1 repair delivered on existing draft PR168 exact 01d94e1f; one commit 3 files, no writer/backups, hosted CI 40204625020 SUCCESS; builder 30/30 local tests SELF_ASSESSED. Independent E1 #170 replay pending.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/168",
+      "s": "R1_DELIVERED",
+      "milestone": "M18"
     }
   ],
   "pullRequests": [
@@ -916,6 +922,12 @@
       "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6398683938",
       "s": "TRACKED_BACKUP_LOG",
       "milestone": "M18"
+    },
+    {
+      "t": "Oracle code inspection flags untested empty RESTRANT body: CONTROL count1/ptr4=1, section header exists but no data lines; unknown-shape handler may accept. Also v14 CONTROL ordinal only version-bracketed from v12/v15. Both require independent challenge.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6399342047",
+      "s": "REVIEW_FALSIFIERS",
+      "milestone": "M18"
     }
   ],
   "pending": [
@@ -1054,6 +1066,12 @@
       "t": "Coder 6adddf80 implements all-15 CONTROL pointer count/missing-target guard only on draft PR168 after local backups and v14 source proof. Independent reviewer #170 remains on HOLD until new exact-head builder return.",
       "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6398683938",
       "s": "BUILDER_RETURN_PENDING",
+      "milestone": "M18"
+    },
+    {
+      "t": "Independent E1 specialist #170 invited for read-only exact-head 01d94e1f replay of BEND/EXPJT/IZUP and empty RESTRANT/CONTROL row contrast. No review return yet; E2/E3/TARGET1 and merge remain HOLD.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6399351349",
+      "s": "REVIEW_RETURN_PENDING",
       "milestone": "M18"
     }
   ]

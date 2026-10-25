@@ -976,13 +976,13 @@
     "milestone": "M18",
     "label": "E1 · Independent field-map specialist",
     "who": {
-      "role": "Independent field-map specialist (identity UNBOUND)"
+      "role": "Independent E1 specialist · re-review instructed, receipt pending"
     },
     "state": "SUBMITTED",
-    "now": "Independent E1 return #170 comment 6395906667 at PR168 3595a7c: 53 field positions and RIGID/NODENAME synthetic cases PASS; NC-A BEND pointer with zero source records was ACCEPTED incorrectly. Material ID is in MISCEL_1, not 53 ELEMENTS real slots. Blank NODENAME conditional. Original private CII/native importer NOT_RUN. Verdict PARTIAL.",
+    "now": "E1 initial specialist return was PARTIAL on old PR168 3595a7c; coder repair delivered as new 01d94e1f with CI SUCCESS, 30/30 builder tests. Oracle has now sent READ-ONLY independent re-review task #170 6399351349 at new head; reviewer has NOT returned yet, version-specific v14 CONTROL evidence still unresolved.",
     "next": {
-      "actor": "Oracle (challenge recorded) → E1 corrective contributor",
-      "text": "Independent return reconciled in Oracle #170 comment 6395988691. Do not promote to engineering PASS. Next qualified contributor repairs all-15 pointer count bound in existing PR168, then distinct exact-head re-review."
+      "actor": "Existing independent E1 specialist (#170)",
+      "text": "Run source-independent exact-head BEND/EXPJT/IZUP and unsupported empty RESTRANT section tests; challenge CONTROL row shape and v14 source provenance. Return falsifiers and bounded verdict on #170, then Oracle reconciles."
     },
     "refs": [
       {
@@ -994,10 +994,15 @@
         "k": "comment",
         "l": "Independent E1 return",
         "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6395906667"
+      },
+      {
+        "k": "comment",
+        "l": "Fresh E1 independent review instruction",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6399351349"
       }
     ],
-    "updatedAt": "2026-10-25T09:34:22Z",
-    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6395988691"
+    "updatedAt": "2026-10-25T15:14:47Z",
+    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6399351349"
   },
   "wbs4-e1-ptrguard": {
     "order": 42,
@@ -1005,13 +1010,13 @@
     "milestone": "M18",
     "label": "E1 R1 · Auxiliary pointer guard",
     "who": {
-      "role": "E1 corrective coder 6adddf80 · qualified for scoped R1 · no start receipt"
+      "role": "Coder 6adddf80 · R1 delivered SELF_ASSESSED · independent review HELD"
     },
-    "state": "NOT_STARTED",
-    "now": "Coder 6adddf80 native full-Git workspace verified PR168 exact 3595a7c; 25/25 E1 and NodeName native tests PASS; five invalid pointer cases reproduced. Oracle 6398683938 lifted workspace block and issued scoped E1 R1 implementation GO. Tracked .backups/log.json must remain local, never staged/committed, with required pre-edit backup and recovery ledger. No new repair commit/return yet.",
+    "state": "SUBMITTED",
+    "now": "Coder 6adddf80 returned bounded E1 pointer-guard implementation on PR168 exact 01d94e1f (one commit, three files). All 15 logical CONTROL pointer ranges now guarded in source; original BEND/EXPJT/EQUIP negatives pass builder tests; native 30/30, exact-head hosted CI SUCCESS. Delivery verified by Oracle; independent semantics/edge-case challenge PENDING.",
     "next": {
-      "actor": "Coder 6adddf80 · bounded E1 R1 implementation",
-      "text": "Read Oracle #173 GO. Recheck exact PR168 head and ownership; preserve local backup log as operational recovery state; source-qualify v14 CONTROL 15 counts; repair catalogue and invented tests only; native regression and no-index ledger; return exact repaired head to #173. No editor, new PR or merge."
+      "actor": "Independent E1 field-map reviewer on #170",
+      "text": "Read Oracle repaired-head review packet #170 6399351349; independently replay NC-A, BEND 3-line/1-index, EXPJT and IZUP/EQUIP contraries; test empty counted RESTRANT and malformed CONTROL slots. Return PASS/PARTIAL/FAIL tied to PR168 01d94e1f. No writer or merge."
     },
     "refs": [
       {
@@ -1063,9 +1068,24 @@
         "k": "comment",
         "l": "Oracle bounded implementation GO",
         "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6398683938"
+      },
+      {
+        "k": "comment",
+        "l": "Builder return 30 of 30",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6399204644"
+      },
+      {
+        "k": "comment",
+        "l": "Oracle exact-head reconciliation",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6399342047"
+      },
+      {
+        "k": "comment",
+        "l": "Independent re-review instruction",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6399351349"
       }
     ],
-    "updatedAt": "2026-10-25T14:12:46Z",
-    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6398683938"
+    "updatedAt": "2026-10-25T15:14:47Z",
+    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6399342047"
   }
 }
