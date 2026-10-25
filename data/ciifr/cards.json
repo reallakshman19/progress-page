@@ -746,154 +746,203 @@
     "order": 40,
     "group": "wbs4-intake",
     "milestone": "M17",
-    "label": "E0 · Field/sentinel authority",
+    "label": "E0 · Owner intent + CII model",
     "who": {
       "role": "Unassigned WBS slice"
     },
     "state": "NOT_STARTED",
-    "now": "Establish v14 field identities, private original hash custody and RIGID source rule; no product edits.",
+    "now": "Owner goal = edit ELEMENTS real engineering attributes and serialized Line Number/branch, plus pointer-resolved RIGID; NOT an unrestricted text replace or silent extension of NodeName. 15-line element record; 53 real slots; node numbers are endpoints, pointer IDs index auxiliary records. Hash-bound private v14 fixture; field units, sentinel meaning, width and alias rules must be source proven.",
     "next": {
-      "actor": "Oracle",
-      "text": "Assign a bounded non-author fixture/schema recheck and publish expected counterexamples."
+      "actor": "Oracle → qualified read-only analyst",
+      "text": "Reconcile official v14 definitions vs observed 521-element baseline; publish typed slot/sentinel/ownership oracle and predeclared competing-interpretation tests."
     },
     "refs": [
       {
         "k": "issue",
         "l": "WBS4 authority",
         "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167"
+      },
+      {
+        "k": "comment",
+        "l": "CII v14 architecture",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394203305"
       }
-    ]
+    ],
+    "updatedAt": "2026-10-25T06:07:26Z",
+    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394203305"
   },
   "wbs4-e1": {
     "order": 41,
     "group": "wbs4-intake",
     "milestone": "M18",
-    "label": "E1 · Physical catalogue",
+    "label": "E1 · Exact CII element catalogue",
     "who": {
       "role": "Unassigned WBS slice"
     },
     "state": "NOT_STARTED",
-    "now": "Plan: byte ranges and field types for 521 ELEMENTS and pointer-addressed auxiliary records; counts not acceptance.",
+    "now": "Read-only index of ELEMENTS 53 real values, two label rows, metadata and 15 auxiliary pointer slots, with individual 0-based byte spans and record ordinals. RIGID pointer #2 / NODENAME pointer #12 verified against section cardinalities; FROM and TO node numbers can repeat in different branches. No field meaning inferred from array order alone.",
     "next": {
-      "actor": "Coder after Oracle release",
-      "text": "Read-only parser plus synthetic negative case; hand back spans and hash evidence."
+      "actor": "Coder under Oracle release",
+      "text": "Return real/synthetic field ledger with field names, widths, units, lexemes, pointer status, 0 vs null and bad-reference witnesses; no modified bytes."
     },
     "refs": [
       {
         "k": "issue",
         "l": "WBS4 authority",
         "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167"
+      },
+      {
+        "k": "comment",
+        "l": "CII v14 architecture",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394203305"
       }
-    ]
+    ],
+    "updatedAt": "2026-10-25T06:07:26Z",
+    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394203305"
   },
   "wbs4-e2": {
     "order": 42,
     "group": "wbs4-editors",
     "milestone": "M19",
-    "label": "E2 · Numeric fields",
+    "label": "E2 · Typed numeric editing",
     "who": {
       "role": "Unassigned WBS slice"
     },
     "state": "NOT_STARTED",
-    "now": "Plan: controlled engineering numeric edits with units, sentinel policy, overflow/rounding rejection and no raw replace.",
+    "now": "Find/Replace only selected v14 engineering field keys in ELEMENTS; geometry, diameter, thickness, operating temperatures/pressures and materials are targets after physical source oracle. Reject bad numeric units, silent precision loss, overflow and field-specific sentinel misinterpretation. FROM/TO graph renumber is NOT part of E2.",
     "next": {
-      "actor": "Oracle / appointed coder",
-      "text": "Release one field group after E1 contract, not all 53 fields at once."
+      "actor": "Oracle / designated coder",
+      "text": "Demonstrate one chosen field subset: approved offset diff only, zero/sentinel contrast and unchanged unrelated fields; retain source hash and unit evidence."
     },
     "refs": [
       {
         "k": "issue",
         "l": "WBS4 authority",
         "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167"
+      },
+      {
+        "k": "comment",
+        "l": "CII v14 architecture",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394203305"
       }
-    ]
+    ],
+    "updatedAt": "2026-10-25T06:07:26Z",
+    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394203305"
   },
   "wbs4-e3": {
     "order": 43,
     "group": "wbs4-editors",
     "milestone": "M20",
-    "label": "E3 · RIGID records",
+    "label": "E3 · RIGID pointer-resolved edit",
     "who": {
       "role": "Unassigned WBS slice"
     },
     "state": "NOT_STARTED",
-    "now": "Plan: resolve nonzero RIGID #2 per element; Weight first, Type second if codes verified; zero pointer remains absent.",
+    "now": "RIGID Weight/Type live in #$ RIGID records attached by ELEMENTS auxiliary pointer #2. Pointer 0 = absent attachment, not Weight 0; nonzero is index, not node ID. Audit shared pointers and type-code meaning before touching any record. First build only safe existing RIGID Weight edits.",
     "next": {
-      "actor": "Oracle / appointed coder",
-      "text": "Demonstrate pointer-matched and zero-pointer contrary cases."
+      "actor": "Oracle / designated coder",
+      "text": "Run attached Weight=0 vs absent-pointer=0 vs bad-index vs shared-owner falsifiers; Rigid Type stays blocked until documented codes."
     },
     "refs": [
       {
         "k": "issue",
         "l": "WBS4 authority",
         "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167"
+      },
+      {
+        "k": "comment",
+        "l": "CII v14 architecture",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394203305"
       }
-    ]
+    ],
+    "updatedAt": "2026-10-25T06:07:27Z",
+    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394203305"
   },
   "wbs4-e4": {
     "order": 44,
     "group": "wbs4-editors",
     "milestone": "M21",
-    "label": "E4 · Physical Line Number",
+    "label": "E4 · Element branch/line field",
     "who": {
       "role": "Unassigned WBS slice"
     },
     "state": "NOT_STARTED",
-    "now": "Plan: exact physical branch-label editing, preserving length/scope and no inferred topology.",
+    "now": "Line Number/branch label is a physical ELEMENTS member with its own length prefix/serialized text. It is a scope filter, not a unique node owner. Shared endpoint aliases in distinct branches require closure for NodeName; label changes must not imply graph correspondence or retarget pointers.",
     "next": {
-      "actor": "Oracle / appointed coder",
-      "text": "Bound label edits and test cross-branch shared-node impact."
+      "actor": "Oracle / designated coder",
+      "text": "Run exact label prefix/byte edit, malformed length, shared-node branch and SOURCE/TARGET drift contrasts; do not rewrite node identifiers."
     },
     "refs": [
       {
         "k": "issue",
         "l": "WBS4 authority",
         "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167"
+      },
+      {
+        "k": "comment",
+        "l": "CII v14 architecture",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394203305"
       }
-    ]
+    ],
+    "updatedAt": "2026-10-25T06:07:27Z",
+    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394203305"
   },
   "wbs4-e5": {
     "order": 45,
     "group": "wbs4-verification",
     "milestone": "M22",
-    "label": "E5 · TARGET1 gates",
+    "label": "E5 · Bounded writer + native checks",
     "who": {
       "role": "Unassigned WBS slice"
     },
     "state": "NOT_STARTED",
-    "now": "Plan: approved byte-span audit, immutable TARGET0, hash-bound copy, full reparse, native CAESAR equivalence and independent review.",
+    "now": "Owner reviews physical element ordinal/field/old/new/source witness/byte offsets and explicitly approves. Writer must preserve every unapproved byte and indexed auxiliary relationships, reject stale hash, conflicts, rounding and partial aliases. Current NodeName sameStructure writer is not automatically valid for ELEMENTS edits.",
     "next": {
-      "actor": "Independent reviewer then Owner",
-      "text": "Review actual diff on exact head and changed-byte/native-import falsifiers."
+      "actor": "Independent reviewer → Owner",
+      "text": "Produce allowed-byte audit + new-copy SHA, domain-specific negative tests and independent CAESAR II import/value checks; keep contributor self-test separate from signoff."
     },
     "refs": [
       {
         "k": "issue",
         "l": "WBS4 authority",
         "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167"
+      },
+      {
+        "k": "comment",
+        "l": "CII v14 architecture",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394203305"
       }
-    ]
+    ],
+    "updatedAt": "2026-10-25T06:07:27Z",
+    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394203305"
   },
   "wbs4-e6": {
     "order": 46,
     "group": "wbs4-verification",
     "milestone": "M23",
-    "label": "E6 · Graph edits deferred",
+    "label": "E6 · Node/pointer structural HOLD",
     "who": {
       "role": "Unassigned WBS slice"
     },
     "state": "NOT_STARTED",
-    "now": "Structural FROM/TO changes, pointer creation/reassignment and renumbering not authorized in E1–E5.",
+    "now": "FROM/TO endpoints are graph identities that may occur on multiple elements/branches. Pointer creation/reindexing changes indexed auxiliary record semantics; neither is a simple field replace. E1–E5 do not authorize node renumbering, new RIGID attachments, Geometry write or deferred P3.",
     "next": {
       "actor": "Owner",
-      "text": "Decide separately if later graph-atomic support is needed."
+      "text": "Release only through a new explicit graph-atomic requirement after engineering acceptance of bounded E2–E5."
     },
     "refs": [
       {
         "k": "issue",
         "l": "WBS4 authority",
         "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167"
+      },
+      {
+        "k": "comment",
+        "l": "CII v14 architecture",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394203305"
       }
-    ]
+    ],
+    "updatedAt": "2026-10-25T06:07:27Z",
+    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394203305"
   }
 }
