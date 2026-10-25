@@ -1,0 +1,48 @@
+name: CIIFR E1 independent review Oracle reconciliation
+on:
+  push:
+    branches: [pp/ciifr-r4-home-onboarding-protocol-20261025]
+    paths: ['.github/workflows/ciifr-e1-oracle-challenge-once.yml']
+permissions:
+  contents: write
+jobs:
+  record:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Project bounded E1 PARTIAL and pointer guard dependency
+        shell: bash
+        run: |
+          set -euo pipefail
+          python tools/pp_cli.py 'check' '--base' 'origin/main'
+          python tools/pp_cli.py 'card' 'set' '--project' 'ciifr' '--card' 'wbs4-e1-specialist' '--state' 'SUBMITTED' '--now' 'Independent E1 return #170 comment 6395906667 at PR168 3595a7c: 53 field positions and RIGID/NODENAME synthetic cases PASS; NC-A BEND pointer with zero source records was ACCEPTED incorrectly. Material ID is in MISCEL_1, not 53 ELEMENTS real slots. Blank NODENAME conditional. Original private CII/native importer NOT_RUN. Verdict PARTIAL.' '--next-actor' 'Oracle (challenge recorded) → E1 corrective contributor' '--next-text' 'Independent return reconciled in Oracle #170 comment 6395988691. Do not promote to engineering PASS. Next qualified contributor repairs all-15 pointer count bound in existing PR168, then distinct exact-head re-review.' '--role' 'Independent field-map specialist (identity UNBOUND)' '--ref' 'comment|Independent E1 return|https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6395906667' '--actor' 'CIIFR Oracle (E1 reviewer reconciliation)' '--src' 'https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6395988691' '--summary' 'Record read-only independent PARTIAL E1 return and bounded defect; no engineering acceptance.'
+          python tools/pp_cli.py 'card' 'set' '--project' 'ciifr' '--card' 'wbs4-e1' '--state' 'IN_PROGRESS' '--now' 'E1 physical field map is source-supported but incomplete: Oracle confirmed NC-A, an invalid non-RIGID/NODENAME auxiliary pointer can be accepted. Specialist returned PARTIAL; E1 FIX_REQUIRED. 53 field ledger confidence bounded, units/sentinels/material source and native CAESAR import NOT_VERIFIED; PR168 unchanged/draft.' '--next-actor' 'E1 read-only parser corrective contributor (not assigned)' '--next-text' 'Use Oracle challenge #170: add CONTROL-declared count bounds for 15 pointer types, BEND 3-line record proof and unsupported-shape UNVALIDATED; keep writer/UI untouched and return same PR168 exact head for independent replay.' '--role' 'Oracle-reviewed E1 candidate, not accepted' '--ref' 'comment|Oracle E1 challenge|https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6395988691' '--actor' 'CIIFR Oracle (E1 reviewer reconciliation)' '--src' 'https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6395988691' '--summary' 'Keep E1 in progress with confirmed pointer-guard repair dependency.'
+          python tools/pp_cli.py 'card' 'set' '--project' 'ciifr' '--card' 'wbs4-e1-ptrguard' '--label' 'E1 R1 · Auxiliary pointer guard' '--group' 'wbs4-intake' '--milestone' 'M18' '--state' 'NOT_STARTED' '--now' 'Oracle accepted reviewer NC-A: BEND #1 pointer9 despite CONTROL BEND count0 was accepted as a complete catalog. Other 13 non-RIGID/NODENAME pointer bounds need source-grounded CONTROL counts; BEND uses three numeric lines per logical record. Repair on draft PR168 only; NO writer, merge or private data.' '--next-actor' 'Qualified E1 read-only contributor (assignment pending)' '--next-text' 'Read challenge #170, confirm PR168 sole writer and AGENTS Appendix A; implement minimal pointer range/missing-section diagnostic plus invented negative tests, then exact-head independent specialist challenge.' '--role' 'Minimal read-only correction, unassigned' '--ref' 'comment|E1 R1 correction contract|https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6395988691' '--order' '42' '--actor' 'CIIFR Oracle (E1 reviewer reconciliation)' '--src' 'https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6395988691' '--summary' 'Add bounded E1 R1 pointer guard card; no agent implementation assignment yet.'
+          python tools/pp_cli.py 'fixture' 'add' '--project' 'ciifr' '--list' 'issues' '--text' 'Independent E1 #170 return comment 6395906667: 53 real field ledger, pointer2/12 synthetic PASS, BEND auxiliary pointer to nonexistent record accepted; verdict PARTIAL. Oracle challenge 6395988691 confirms NC-A; NO E2/E3 GO.' '--url' 'https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6395988691' '--status' 'E1_PARTIAL' '--milestone' 'M18' '--actor' 'CIIFR Oracle (E1 reviewer reconciliation)' '--src' 'https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6395988691' '--summary' 'Reconcile independent E1 review: E1_PARTIAL.'
+          python tools/pp_cli.py 'fixture' 'add' '--project' 'ciifr' '--list' 'knownIssues' '--text' 'Confirmed E1 NC-A: only pointer #2 RIGID and #12 NODENAME are validated; BEND pointer9 with declared BEND count0 was accepted. E1 requires all-15 CONTROL bound checks; BEND has 3 lines per logical record. Other section shapes vary.' '--url' 'https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6395988691' '--status' 'PTR_GAP_CONFIRMED' '--milestone' 'M18' '--actor' 'CIIFR Oracle (E1 reviewer reconciliation)' '--src' 'https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6395988691' '--summary' 'Reconcile independent E1 review: PTR_GAP_CONFIRMED.'
+          python tools/pp_cli.py 'fixture' 'add' '--project' 'ciifr' '--list' 'roadmap' '--text' 'E1 R1 smallest correction on existing draft PR168: validate all 15 declared pointer bounds and missing targets; do not use section raw line count as logical record count. Add BEND valid/missing/out-of-range and other-pointer contradictions, preserve prior NodeName.' '--url' 'https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6395988691' '--status' 'E1_R1_PLANNED' '--milestone' 'M18' '--actor' 'CIIFR Oracle (E1 reviewer reconciliation)' '--src' 'https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6395988691' '--summary' 'Reconcile independent E1 review: E1_R1_PLANNED.'
+          python tools/pp_cli.py 'fixture' 'add' '--project' 'ciifr' '--list' 'pending' '--text' 'E1 R1 contributor not yet assigned; current independent specialist completed read-only report, no repo files changed, true source/domain release remains HELD. Recheck exact PR168 and AGENTS authority before patch; distinct reviewer must replay after repair.' '--url' 'https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6395988691' '--status' 'R1_ASSIGN_PENDING' '--milestone' 'M18' '--actor' 'CIIFR Oracle (E1 reviewer reconciliation)' '--src' 'https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6395988691' '--summary' 'Reconcile independent E1 review: R1_ASSIGN_PENDING.'
+          python tools/pp_cli.py 'fixture' 'add' '--project' 'ciifr' '--list' 'inputs' '--text' 'Reviewer #170 checked public original-code and invented cases; private 803776-byte v14 source/CAESAR native import NOT_RUN by reviewer. Blank NODENAME physical row issue remains conditional until admissibility proof; do not weaken current cardinality.' '--url' 'https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6395906667' '--status' 'REVIEW_LIMITS' '--milestone' 'M18' '--actor' 'CIIFR Oracle (E1 reviewer reconciliation)' '--src' 'https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6395988691' '--summary' 'Reconcile independent E1 review: REVIEW_LIMITS.'
+          python tools/pp_cli.py 'check' '--base' 'origin/main'
+          python tools/pp_cli.py 'triggers'
+      - name: Save failed contract for investigation
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ciifr-e1-oracle-progress-diagnostic
+          path: data/ciifr/
+      - name: Commit checked data only; remove temporary workflow
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "CIIFR Progress Recorder"
+          git config user.email "ciifr-progress-bot@users.noreply.github.com"
+          git rm -f .github/workflows/ciifr-e1-oracle-challenge-once.yml
+          git add data/ciifr/
+          git commit -m "data(ciifr): reconcile E1 reviewer PARTIAL and pointer guard"
+          git push origin HEAD:refs/heads/pp/ciifr-r4-home-onboarding-protocol-20261025
