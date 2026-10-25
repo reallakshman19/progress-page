@@ -1736,6 +1736,34 @@
       "before": "SUBMITTED",
       "after": "SUBMITTED",
       "rev": "R1"
+    },
+    {
+      "seq": 129,
+      "id": "DOC2TABLE-R-0129",
+      "previous_id": "DOC2TABLE-R-0128",
+      "at": "2026-10-25T05:07:56Z",
+      "kind": "UPDATE",
+      "actor": "OTM",
+      "summary": "D1 PASS (non-author)",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/157#issuecomment-6393744224",
+      "card": "D2T-G21",
+      "before": "SUBMITTED",
+      "after": "SUBMITTED",
+      "rev": "R1"
+    },
+    {
+      "seq": 130,
+      "id": "DOC2TABLE-R-0130",
+      "previous_id": "DOC2TABLE-R-0129",
+      "at": "2026-10-25T05:07:57Z",
+      "kind": "STATE",
+      "actor": "OTM",
+      "summary": "D1 return sent for resolution",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/157#issuecomment-6393744224",
+      "card": "D2T-O3",
+      "before": "SUBMITTED",
+      "after": "IN_PROGRESS",
+      "rev": "R1"
     }
   ]
 }
