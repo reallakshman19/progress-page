@@ -104,13 +104,16 @@
       "chat": "d2t-o3",
       "role": "oracle"
     },
-    "state": "IN_PROGRESS",
-    "now": "Boarding as Oracle 3 (epoch 3 PREPARED): writing its read-back on Word-to-Table#1; METER LOW",
+    "state": "SUBMITTED",
+    "now": "READ-BACK posted 05:58 (6392206866): intent ok, adopts G2.1 SCTL-P1.1, D1 non-author check then D2; waits for Owner confirmation",
     "next": {
-      "actor": "Oracle O3",
-      "text": "post READ-BACK; then Owner confirms"
+      "actor": "YOU",
+      "text": "confirm O3 read-back (decision O3-RB)"
     },
-    "updatedAt": "2026-10-25T01:56:04Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6392185779"
+    "updatedAt": "2026-10-25T02:00:03Z",
+    "src": "https://github.com/reallakshman19/Word-to-Table/issues/1#issuecomment-6392206866",
+    "flags": [
+      "needs-you"
+    ]
   }
 }

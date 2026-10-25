@@ -33,5 +33,61 @@
         "u": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6392212069"
       }
     ]
+  },
+  "O3-RB": {
+    "order": 2,
+    "status": "open",
+    "title": "Confirm Oracle 3's intent read-back",
+    "lead": "O3 read back the Doc to Table intent (Word-to-Table#1 6392206866). Your one confirmation lets OTM cut over: O2 retires, O3 runs at epoch 3 and adopts G2.1's SCTL-P1.1. No IR on this project, so your word is the gate.",
+    "options": [
+      {
+        "key": "A",
+        "label": "Confirm (suggested)",
+        "suggested": true,
+        "body": "The read-back matches your intent; OTM records the cutover and routes O3's D1 check.",
+        "reply": "A: confirm O3 read-back"
+      },
+      {
+        "key": "B",
+        "label": "Correct it",
+        "suggested": false,
+        "body": "Say what is wrong; OTM passes it to O3, and the cutover waits.",
+        "reply": "B: correct O3 read-back: <what>"
+      }
+    ],
+    "links": [
+      {
+        "l": "O3 read-back",
+        "u": "https://github.com/reallakshman19/Word-to-Table/issues/1#issuecomment-6392206866"
+      }
+    ]
+  },
+  "PR7-MERGE": {
+    "order": 3,
+    "status": "open",
+    "title": "Merge PR #7 after a non-author PASS?",
+    "lead": "O3 asks: after a fresh non-author check passes at PR #7's exact head with green CI, may OTM merge the fourth tab into main while Microsoft Word page parity stays NOT_VERIFIED (the tab says so)? A merge is not acceptance.",
+    "options": [
+      {
+        "key": "A",
+        "label": "Yes, scoped merge (suggested)",
+        "suggested": true,
+        "body": "Merge only after a non-author PASS and green CI at the exact head; the NOT_VERIFIED label stays in the UI; no Word-fidelity claim.",
+        "reply": "A: yes, scoped merge of PR #7 after non-author PASS"
+      },
+      {
+        "key": "B",
+        "label": "Ask me again then",
+        "suggested": false,
+        "body": "OTM brings the PASS to you before any merge.",
+        "reply": "B: ask me before merging PR #7"
+      }
+    ],
+    "links": [
+      {
+        "l": "O3 question",
+        "u": "https://github.com/reallakshman19/Word-to-Table/issues/1#issuecomment-6392206866"
+      }
+    ]
   }
 }
