@@ -86,14 +86,14 @@
       "role": "Agent"
     },
     "state": "SUBMITTED",
-    "now": "Idle on PR #7 (130a8aa). Oracle O3 active. WAITS: OTM commissions D1 non-author check of 130a8aa.",
+    "now": "PR #7 at 130a8aa IN REVIEW: fresh non-author checker running D1 (commissioned 08:0x).",
     "next": {
       "actor": "OTM",
-      "text": "commission O3's D1 non-author check"
+      "text": "take the D1 verdict to O3"
     },
     "flags": [],
-    "updatedAt": "2026-10-25T03:38:08Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6393034678"
+    "updatedAt": "2026-10-25T04:02:46Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/157"
   },
   "D2T-O3": {
     "order": 5,
@@ -105,13 +105,13 @@
       "role": "oracle"
     },
     "state": "SUBMITTED",
-    "now": "ACTIVE epoch 3 (cutover 07:40). Adopted SCTL-P1.1 (PR #7 130a8aa) and D2 S1.3 (c1022e5); cards D1 then D2 are the horizon.",
+    "now": "ACTIVE epoch 3. Go sent 07:38 (ACK pending). D1 non-author check running; D2 (S1.3 trial) follows.",
     "next": {
       "actor": "OTM",
-      "text": "send O3 its go; commission D1 non-author check"
+      "text": "bring the D1 verdict to O3"
     },
-    "updatedAt": "2026-10-25T03:38:08Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6393034678",
+    "updatedAt": "2026-10-25T04:02:47Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/157",
     "flags": []
   }
 }
