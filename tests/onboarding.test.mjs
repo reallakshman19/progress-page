@@ -3,8 +3,11 @@ import test from 'node:test';
 import { onboardingModel, COMMON_START_HERE } from '../onboarding.js';
 
 const LINK = 'https://github.com/example/project/issues/25#issuecomment-12';
-function fixture(status, note='6ad12345', milestone='M12', url=LINK) {
-  return { t: 'recorded check', s: status, n: note, milestone, u: url };
+const ASSIGN = 'https://github.com/example/project/issues/25#issuecomment-10';
+const NEXT_ASSIGN = 'https://github.com/example/project/issues/25#issuecomment-23';
+function fixture(status, note='6ad12345', milestone='M12', url=LINK, assignment=ASSIGN, commit=null) {
+  return { t: 'recorded check ONB_ASSIGNMENT=' + assignment + (commit ? ' ONB_COMMIT=' + commit : ''),
+    s: status, n: note, milestone, u: url };
 }
 function project() {
   return {
@@ -20,7 +23,8 @@ function project() {
       }
     },
     cards: { 'geo-g0': { state: 'NOT_STARTED', group: 'r3-geometry-onboarding',
-      milestone: 'M12', order: 1, label: 'G0', next: { actor: 'Oracle', text: 'Resolve PR overlap' }, who: {} } },
+      milestone: 'M12', order: 1, label: 'G0', next: { actor: 'Oracle', text: 'Resolve PR overlap' },
+      who: {}, refs: [{ k: 'comment', l: 'Onboarding assignment', u: ASSIGN }] } },
     fixtures: { repository: [], pending: [] }
   };
 }
@@ -95,4 +99,41 @@ test('one Common Start Here navigation link is public guidance, not readiness ev
   const p = project();
   assert.equal(onboardingModel(p).stage, 0);
   assert.equal(onboardingModel(p).protocols.length, 0);
+});
+
+test('a new assignment for the SAME participant invalidates older sourced readiness', () => {
+  const p = project(); p.cards['geo-g0'].who.chat = 'builder';
+  CODES.forEach(code => p.fixtures.pending.push(fixture(code)));
+  assert.equal(onboardingModel(p).stage, 3);
+  p.cards['geo-g0'].refs.push({ k: 'comment', l: 'Onboarding assignment', u: NEXT_ASSIGN });
+  assert.equal(onboardingModel(p).stage, 0, 'old assignment evidence must not count after reassignment');
+  CODES.forEach(code => p.fixtures.pending.push(fixture(code, '6ad12345', 'M12', LINK, NEXT_ASSIGN)));
+  assert.equal(onboardingModel(p).stage, 3);
+});
+
+test('candidate commit changes invalidate all prior readiness even with same participant and assignment', () => {
+  const p = project(); p.cards['geo-g0'].who.chat = 'builder';
+  const sha1 = '1111111111111111111111111111111111111111';
+  const sha2 = '2222222222222222222222222222222222222222';
+  p.index.milestones.M12.commit = sha1;
+  CODES.forEach(code => p.fixtures.pending.push(fixture(code, '6ad12345', 'M12', LINK, ASSIGN, sha1)));
+  assert.equal(onboardingModel(p).stage, 3);
+  p.index.milestones.M12.commit = sha2;
+  assert.equal(onboardingModel(p).stage, 0, 'different candidate never inherits old checks');
+  p.fixtures.pending.push(fixture(CODES[0], '6ad12345', 'M12', LINK, ASSIGN, sha2));
+  assert.equal(onboardingModel(p).stage, 1);
+});
+
+test('missing assignment reference cannot promote a previously assigned recipient', () => {
+  const p = project(); p.cards['geo-g0'].who.chat = 'builder';
+  CODES.forEach(code => p.fixtures.pending.push(fixture(code)));
+  p.cards['geo-g0'].refs = [];
+  assert.equal(onboardingModel(p).stage, 0);
+});
+
+test('same URL text embedded as a substring does not count as binding token', () => {
+  const p = project(); p.cards['geo-g0'].who.chat = 'builder';
+  const bad = fixture(CODES[0]); bad.t = 'not-an-onboarding-proof:' + 'ONB_ASSIGNMENT=' + ASSIGN;
+  p.fixtures.pending = [bad];
+  assert.equal(onboardingModel(p).stage, 0);
 });
