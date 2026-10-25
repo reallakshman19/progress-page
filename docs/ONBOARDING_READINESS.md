@@ -6,7 +6,7 @@
 
 On the **Progress** view, for a project with a live group whose key/title contains `onboard`, the compact panel appears below the WBS strip. It presents a single current onboarding card's next action and public task references. Expand details to see:
 
-- **Start Here:** Owner aim and source, canonical issue/PR and repo instructions, role/assignment, capability/access, protected boundaries, one runnable slice, evidence return. Public pinned Contribution & Handoff and Oracle Continuity links are taken from existing `fixtures.repository`.
+- **Start Here:** A direct [Common START HERE](https://github.com/reallakshman19/Common/blob/main/skills/agent-work/START_HERE.md) role/mode entry link, then the seven checks: Owner aim and source, canonical issue/PR and repo instructions, role/assignment, capability/access, protected boundaries, one runnable slice, evidence return. Supplemental pinned Contribution & Handoff and Oracle Continuity links still come from existing `fixtures.repository`.
 - **Continuity checkpoint:** the recorded plan revision and exact candidate (or explicitly **not recorded**), current task card and next two milestone slices. The actual Oracle epoch/in-flight assignment adoption must still be read from the canonical GitHub records.
 - **Contribution and independence:** author/expectation exposure, source/fixture lineage, no PASS beyond evidence, one surviving-error challenge, self-assessment versus independent reviewer.
 - **Resume-from-GitHub check:** can the successor find one real current candidate, the material surviving wrong case and a single executable next operation from native repo records?
@@ -45,8 +45,13 @@ For CAD/CII/XML takeover, obey repository `AGENTS.md`: start `TAKEOVER_AUTHORITY
 
 It does not generate a new chat, authenticate a recipient, permit a commit, check private input accessibility on its own, enforce exclusive file locks, certify a reviewer or automatically publish handovers. A task can remain blocked despite the panel's highest recorded stage; the actual GitHub task/PR and Owner decisions prevail.
 
+### Cross-repository integration
+
+The Common role/mode router is authored separately in a **Common draft PR**. This UI link deliberately targets **Common/main**; before that PR merges it opens the prior entry guide, and after merge it opens the unified router. Neither project gets an automatic deploy, task activation or new approval process from the link. This is a documentation dependency, not a readiness-stage condition.
+
 ### Normative references
 
+- [Common START HERE (main)](https://github.com/reallakshman19/Common/blob/main/skills/agent-work/START_HERE.md)
 - [Oracle Standalone pinned](https://github.com/reallakshman19/Common/blob/a9491531fb98f6fd14bc486a4cc78ee4680cb1f5/skills/agent-work/oracle-standalone/SKILL.md)
 - [Contribution & Handoff pinned](https://github.com/reallakshman19/Common/blob/a9491531fb98f6fd14bc486a4cc78ee4680cb1f5/skills/agent-work/CONTRIBUTION_HANDOFF.md)
 - [Oracle Continuity pinned](https://github.com/reallakshman19/Common/blob/a9491531fb98f6fd14bc486a4cc78ee4680cb1f5/skills/agent-work/oracle-continuity/PROTOCOL.md)
