@@ -1005,13 +1005,13 @@
     "milestone": "M18",
     "label": "E1 R1 · Auxiliary pointer guard",
     "who": {
-      "role": "E1 R1 corrective contributor, NOT YET BOUND"
+      "role": "Corrective coder, NOT YET ONBOARDED"
     },
     "state": "NOT_STARTED",
-    "now": "Oracle reconciled independent E1 PARTIAL and published native E1-PTR-GUARD-1 task #173. Fix invalid BEND/count and other auxiliary pointer targets on existing draft PR168; no active recipient or implementation return yet. Contributor must pass AGENTS Appendix A and local backup/ledger rules before editing. No product writer or merge.",
+    "now": "Owner clarified: CODER ONBOARDING FIRST for CIIFR E1 R1. Task #173 begins with read-only understanding of full typed ELEMENTS/Line Number/RIGID Find & Replace goal, immutable TARGET0→safe TARGET1, native CAESAR qualification, CII node-vs-aux pointer architecture and E1→E2/E3 dependencies. Implementer UNBOUND; no Stage0 return and no repair commit.",
     "next": {
-      "actor": "Owner routes #173 → qualified E1 corrective contributor",
-      "text": "Send issue #173 to one qualified builder. They verify PR168 exact head, source-field CONTROL map and sole-writer scope, implement minimal read-only tests/fix, then return exact-head evidence for independent reviewer replay."
+      "actor": "Owner → qualified E1 coder (Stage 0 only)",
+      "text": "Send #173 onboarding instruction first. Coder checks exact Home/WBS/source, demonstrates AGENTS Appendix A grounded failure and actual local capability, returns ONBOARDING RETURN without edits. Oracle reconciles before bounded PR168 repair; reviewer #170 stays independent."
     },
     "refs": [
       {
@@ -1023,9 +1023,14 @@
         "k": "issue",
         "l": "E1 R1 repair task",
         "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173"
+      },
+      {
+        "k": "comment",
+        "l": "Owner-guided coder onboarding",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6396649610"
       }
     ],
-    "updatedAt": "2026-10-25T10:35:03Z",
-    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6396558970"
+    "updatedAt": "2026-10-25T10:45:02Z",
+    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6396649610"
   }
 }

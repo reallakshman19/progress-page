@@ -4735,6 +4735,33 @@
       "list": "issues",
       "op": "add",
       "rev": "R4"
+    },
+    {
+      "seq": 362,
+      "id": "CIIFR-R-0362",
+      "previous_id": "CIIFR-R-0361",
+      "at": "2026-10-25T10:45:02Z",
+      "kind": "UPDATE",
+      "actor": "CIIFR Oracle (Owner-directed coder-first onboarding)",
+      "summary": "Put coder source/goal alignment before any E1 R1 implementation.",
+      "source": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6396649610",
+      "card": "wbs4-e1-ptrguard",
+      "before": "NOT_STARTED",
+      "after": "NOT_STARTED",
+      "rev": "R4"
+    },
+    {
+      "seq": 363,
+      "id": "CIIFR-R-0363",
+      "previous_id": "CIIFR-R-0362",
+      "at": "2026-10-25T10:45:02Z",
+      "kind": "FIXTURE",
+      "actor": "CIIFR Oracle (Owner-directed coder-first onboarding)",
+      "summary": "Track coder-first goal alignment and return expectation, not execution.",
+      "source": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6396649610",
+      "list": "pending",
+      "op": "add",
+      "rev": "R4"
     }
   ]
 }

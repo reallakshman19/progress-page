@@ -4,8 +4,8 @@
     "key": "ciifr",
     "title": "CII Find & Replace VNext",
     "subtitle": "R3 current: standalone Oracle coordination of P2.5-B handoff, review, Windows acceptance and prepared Oracle succession.",
-    "updatedAt": "2026-10-25T10:35:03Z",
-    "updatedBy": "CIIFR Oracle (cycle-style native continuation)",
+    "updatedAt": "2026-10-25T10:45:02Z",
+    "updatedBy": "CIIFR Oracle (Owner-directed coder-first onboarding)",
     "staleAfterMin": 120,
     "aim": "Extend CIIFR NodeName VNext into typed ELEMENTS real-value/Line Number edits plus pointer-resolved RIGID Weight/Type. Preserve original bytes, v14 units/sentinels, node/pointer/branch relations, per-span approvals, new-copy export and native import review. Retain R3 Geometry WBS3 review-only, frozen P2/P2.1 and XML custody; defer structural graph/pointer edits and P3.",
     "aimSrc": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394203305"
