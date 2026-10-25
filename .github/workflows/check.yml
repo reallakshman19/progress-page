@@ -35,6 +35,11 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Onboarding readiness contrasts
+        run: node --experimental-default-type=module --test tests/onboarding.test.mjs
       - name: Seeded-defect tests
         env:
           PYTHONDONTWRITEBYTECODE: '1'
