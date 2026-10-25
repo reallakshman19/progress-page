@@ -4,11 +4,11 @@
     "key": "ciifr",
     "title": "CII Find & Replace VNext",
     "subtitle": "R3 current: standalone Oracle coordination of P2.5-B handoff, review, Windows acceptance and prepared Oracle succession.",
-    "updatedAt": "2026-10-25T05:27:06Z",
-    "updatedBy": "Oracle Standalone · Geometry",
+    "updatedAt": "2026-10-25T05:51:44Z",
+    "updatedBy": "ChatGPT (Owner-directed recorder)",
     "staleAfterMin": 120,
-    "aim": "CIIFR R3: preserve CII hierarchy and exact byte/SHA RichInputXMLv2 reconstruction, with XMLv1.1 a separate fork; progress branch-to-element-to-node mapping and guarded transfer. New Geometry WBS 3.x: read-only SOURCE/TARGET physical NODE table + synchronized dual SVG for Method C topology/manual OR/AND, with XMLv1.1 evidence. No Geometry Writer/Apply. P2/P2.1 frozen; P3 deferred; Owner approves.",
-    "aimSrc": "OWNER_PRIVATE_REF:ciifr-geometry-owner-option-c-20261025"
+    "aim": "CIIFR retains P2/P2.1 frozen, XML exact-byte work and R3 Geometry WBS3 REVIEW_ONLY. WBS4 extends NodeName VNext with typed ELEMENTS real values, Line Number/branch label and pointer-resolved RIGID. Require field-specific sentinels, pointer and alias integrity, exact byte spans, approval, immutable TARGET0/new-copy export and independent CAESAR import. FROM/TO renumbering and P3 remain deferred.",
+    "aimSrc": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167"
   },
   "rules": {
     "quietAfterMin": 30,
@@ -235,6 +235,90 @@
       "canDo": "Not yet demonstrated: independently verified review exports and regression.",
       "repo": "reallakshman19/XML_Compare_Utilities",
       "activity": "PLANNED, not implemented or accepted"
+    },
+    "M17": {
+      "name": "E0 · Scope and fixtures",
+      "full": "Separate ELEMENTS numeric slots, Line/Branch label and RIGID pointer #2; reconcile v14 physical layout, current file hashes and sentinel semantics before edits.",
+      "order": 30,
+      "wbs": "4",
+      "bench": "CIIFR-E0",
+      "keeps": "GEO-G4 / frozen NodeName writer",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "Planned only; no accepted production editing capability.",
+      "repo": "reallakshman19/XML_Compare_Utilities",
+      "activity": "WBS 4.x proposed; no coder assignment or acceptance."
+    },
+    "M18": {
+      "name": "E1 · ELEMENTS field catalogue",
+      "full": "Read-only byte-span inventory of 53 real values per 15-line element, text label and 15 pointer slots; classify field types and zero/sentinel meanings.",
+      "order": 31,
+      "wbs": "4.1",
+      "bench": "CIIFR-E1",
+      "keeps": "CIIFR-E0 / existing NodeName",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "Planned only; no accepted production editing capability.",
+      "repo": "reallakshman19/XML_Compare_Utilities",
+      "activity": "WBS 4.x proposed; no coder assignment or acceptance."
+    },
+    "M19": {
+      "name": "E2 · Typed numeric editor",
+      "full": "Propose bounded diameter, wall, temperature, pressure and material numeric replacements with unit/width/rounding/sentinel checks; no raw-text numeric substitution.",
+      "order": 32,
+      "wbs": "4.2",
+      "bench": "CIIFR-E2",
+      "keeps": "CIIFR-E1 / original bytes",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "Planned only; no accepted production editing capability.",
+      "repo": "reallakshman19/XML_Compare_Utilities",
+      "activity": "WBS 4.x proposed; no coder assignment or acceptance."
+    },
+    "M20": {
+      "name": "E3 · RIGID auxiliary editor",
+      "full": "Resolve ELEMENTS RIGID pointer #2 to auxiliary records; weight first, type only after enumerated-code proof; pointer 0 is no record.",
+      "order": 33,
+      "wbs": "4.3",
+      "bench": "CIIFR-E3",
+      "keeps": "CIIFR-E1 / pointer custody",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "Planned only; no accepted production editing capability.",
+      "repo": "reallakshman19/XML_Compare_Utilities",
+      "activity": "WBS 4.x proposed; no coder assignment or acceptance."
+    },
+    "M21": {
+      "name": "E4 · Line / branch editor",
+      "full": "Physically qualified Line Number/branch-label replacement; length-aware fixed fields and cross-branch effects, without guessed topology.",
+      "order": 34,
+      "wbs": "4.4",
+      "bench": "CIIFR-E4",
+      "keeps": "CIIFR-E1 / NodeName branch guards",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "Planned only; no accepted production editing capability.",
+      "repo": "reallakshman19/XML_Compare_Utilities",
+      "activity": "WBS 4.x proposed; no coder assignment or acceptance."
+    },
+    "M22": {
+      "name": "E5 · Writer and qualification",
+      "full": "Explicit per-span approval, full logical-node closure where applicable, stale invalidation, changed-byte audit, new-copy hash, exact-head native tests and CAESAR import review.",
+      "order": 35,
+      "wbs": "4.5",
+      "bench": "CIIFR-E5",
+      "keeps": "CIIFR-E2,E3,E4 / unchanged tabs",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "Planned only; no accepted production editing capability.",
+      "repo": "reallakshman19/XML_Compare_Utilities",
+      "activity": "WBS 4.x proposed; no coder assignment or acceptance."
+    },
+    "M23": {
+      "name": "E6 · Deferred graph edits",
+      "full": "FROM/TO renumbering, auxiliary pointer creation/reindex and other structural changes need a separately authorized graph-atomic contract.",
+      "order": 36,
+      "wbs": "4.6",
+      "bench": "CIIFR-E6",
+      "keeps": "CIIFR-E0..E5",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "Planned only; no accepted production editing capability.",
+      "repo": "reallakshman19/XML_Compare_Utilities",
+      "activity": "WBS 4.x proposed; no coder assignment or acceptance."
     }
   },
   "groups": {
@@ -289,6 +373,21 @@
     "r3-geometry": {
       "title": "Geometry: correspondence workbench WBS 3.1-3.4",
       "order": 12
+    },
+    "wbs4-intake": {
+      "title": "WBS 4.0–4.1 · Schema / fixture provenance",
+      "sub": "Exact physical byte and field-sentinel inventory; read-only until checked.",
+      "order": 30
+    },
+    "wbs4-editors": {
+      "title": "WBS 4.2–4.4 · Element / RIGID / Branch editors",
+      "sub": "Typed proposal engines; writer authority separately gated.",
+      "order": 31
+    },
+    "wbs4-verification": {
+      "title": "WBS 4.5–4.6 · Writer checks and deferred graph",
+      "sub": "Only approved field-byte changes; full import proof needed.",
+      "order": 32
     }
   },
   "revisions": [
@@ -320,8 +419,19 @@
       "why": "Owner directs R3 to supersede R2 within the existing CIIFR standalone project; consolidate P2.5-B and prepare Oracle succession",
       "ownerWords": "its same as CIIFR, add a new revision R3 tab, supersede. record owner intent, fixtures all details. need to prepare for an oracle hand off to new oracle, read skills/agent-work",
       "src": "OWNER_PRIVATE_REF:ciifr-r3-owner-intent-20261024",
+      "status": "superseded",
+      "supersedes": "R2",
+      "commit": "78dde97dbf5b"
+    },
+    {
+      "id": "R4",
+      "at": "2026-10-25T05:51:29Z",
+      "by": "ChatGPT (Owner-directed recorder)",
+      "why": "R4 adds ELEMENTS and RIGID field editing WBS 4.x to the existing R3 Geometry and converter programme; R3, P2/P2.1 and P3 limits survive.",
+      "ownerWords": "now I want the find and replace to expand beyond NodeName; main intent are Element block data: Real values FROM, TO, geometry, diameter, thickness, temperature, pressure, material properties, etc.; Line Number / physical branch label; Nodelevel: auxiliary pointers mainly Rigid. Project CIIFR, create new WBS.",
+      "src": "OWNER_PRIVATE_REF:ciifr-elements-rigid-owner-20261025",
       "status": "current",
-      "supersedes": "R2"
+      "supersedes": "R3"
     }
   ]
 }

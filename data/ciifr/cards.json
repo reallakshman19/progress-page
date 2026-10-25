@@ -741,5 +741,159 @@
       "actor": "Oracle",
       "text": "At handover reconcile CURRENT, in-flight writes and old control; do not assert automatic succession."
     }
+  },
+  "wbs4-e0": {
+    "order": 40,
+    "group": "wbs4-intake",
+    "milestone": "M17",
+    "label": "E0 · Field/sentinel authority",
+    "who": {
+      "role": "Unassigned WBS slice"
+    },
+    "state": "NOT_STARTED",
+    "now": "Establish v14 field identities, private original hash custody and RIGID source rule; no product edits.",
+    "next": {
+      "actor": "Oracle",
+      "text": "Assign a bounded non-author fixture/schema recheck and publish expected counterexamples."
+    },
+    "refs": [
+      {
+        "k": "issue",
+        "l": "WBS4 authority",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167"
+      }
+    ]
+  },
+  "wbs4-e1": {
+    "order": 41,
+    "group": "wbs4-intake",
+    "milestone": "M18",
+    "label": "E1 · Physical catalogue",
+    "who": {
+      "role": "Unassigned WBS slice"
+    },
+    "state": "NOT_STARTED",
+    "now": "Plan: byte ranges and field types for 521 ELEMENTS and pointer-addressed auxiliary records; counts not acceptance.",
+    "next": {
+      "actor": "Coder after Oracle release",
+      "text": "Read-only parser plus synthetic negative case; hand back spans and hash evidence."
+    },
+    "refs": [
+      {
+        "k": "issue",
+        "l": "WBS4 authority",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167"
+      }
+    ]
+  },
+  "wbs4-e2": {
+    "order": 42,
+    "group": "wbs4-editors",
+    "milestone": "M19",
+    "label": "E2 · Numeric fields",
+    "who": {
+      "role": "Unassigned WBS slice"
+    },
+    "state": "NOT_STARTED",
+    "now": "Plan: controlled engineering numeric edits with units, sentinel policy, overflow/rounding rejection and no raw replace.",
+    "next": {
+      "actor": "Oracle / appointed coder",
+      "text": "Release one field group after E1 contract, not all 53 fields at once."
+    },
+    "refs": [
+      {
+        "k": "issue",
+        "l": "WBS4 authority",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167"
+      }
+    ]
+  },
+  "wbs4-e3": {
+    "order": 43,
+    "group": "wbs4-editors",
+    "milestone": "M20",
+    "label": "E3 · RIGID records",
+    "who": {
+      "role": "Unassigned WBS slice"
+    },
+    "state": "NOT_STARTED",
+    "now": "Plan: resolve nonzero RIGID #2 per element; Weight first, Type second if codes verified; zero pointer remains absent.",
+    "next": {
+      "actor": "Oracle / appointed coder",
+      "text": "Demonstrate pointer-matched and zero-pointer contrary cases."
+    },
+    "refs": [
+      {
+        "k": "issue",
+        "l": "WBS4 authority",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167"
+      }
+    ]
+  },
+  "wbs4-e4": {
+    "order": 44,
+    "group": "wbs4-editors",
+    "milestone": "M21",
+    "label": "E4 · Physical Line Number",
+    "who": {
+      "role": "Unassigned WBS slice"
+    },
+    "state": "NOT_STARTED",
+    "now": "Plan: exact physical branch-label editing, preserving length/scope and no inferred topology.",
+    "next": {
+      "actor": "Oracle / appointed coder",
+      "text": "Bound label edits and test cross-branch shared-node impact."
+    },
+    "refs": [
+      {
+        "k": "issue",
+        "l": "WBS4 authority",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167"
+      }
+    ]
+  },
+  "wbs4-e5": {
+    "order": 45,
+    "group": "wbs4-verification",
+    "milestone": "M22",
+    "label": "E5 · TARGET1 gates",
+    "who": {
+      "role": "Unassigned WBS slice"
+    },
+    "state": "NOT_STARTED",
+    "now": "Plan: approved byte-span audit, immutable TARGET0, hash-bound copy, full reparse, native CAESAR equivalence and independent review.",
+    "next": {
+      "actor": "Independent reviewer then Owner",
+      "text": "Review actual diff on exact head and changed-byte/native-import falsifiers."
+    },
+    "refs": [
+      {
+        "k": "issue",
+        "l": "WBS4 authority",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167"
+      }
+    ]
+  },
+  "wbs4-e6": {
+    "order": 46,
+    "group": "wbs4-verification",
+    "milestone": "M23",
+    "label": "E6 · Graph edits deferred",
+    "who": {
+      "role": "Unassigned WBS slice"
+    },
+    "state": "NOT_STARTED",
+    "now": "Structural FROM/TO changes, pointer creation/reassignment and renumbering not authorized in E1–E5.",
+    "next": {
+      "actor": "Owner",
+      "text": "Decide separately if later graph-atomic support is needed."
+    },
+    "refs": [
+      {
+        "k": "issue",
+        "l": "WBS4 authority",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167"
+      }
+    ]
   }
 }
