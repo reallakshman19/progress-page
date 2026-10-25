@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { onboardingModel } from '../onboarding.js';
+import { onboardingModel, COMMON_START_HERE } from '../onboarding.js';
 
 const LINK = 'https://github.com/example/project/issues/25#issuecomment-12';
 function fixture(status, note='6ad12345', milestone='M12', url=LINK) {
@@ -88,4 +88,11 @@ test('prefers pinned Contribution/Handoff and Continuity over moving main links'
   const m=onboardingModel(p);
   assert.equal(m.protocols.length,2);
   assert.equal(m.protocols[0].t,'pinned');
+});
+
+test('one Common Start Here navigation link is public guidance, not readiness evidence', () => {
+  assert.equal(COMMON_START_HERE, 'https://github.com/reallakshman19/Common/blob/main/skills/agent-work/START_HERE.md');
+  const p = project();
+  assert.equal(onboardingModel(p).stage, 0);
+  assert.equal(onboardingModel(p).protocols.length, 0);
 });
