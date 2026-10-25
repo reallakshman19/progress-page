@@ -67,14 +67,14 @@
       "role": "Oracle"
     },
     "state": "SUBMITTED",
-    "now": "§7 handover done; keeps control until O3's read-back is confirmed, then standby",
+    "now": "Handover PREPARED; Owner confirmed O3 read-back 06:05. WAITS: OTM records epoch 2→3 cutover in a turn at HIGH effort (§7.7); O2 keeps control until then.",
     "next": {
-      "actor": "Oracle O3",
-      "text": "O3 read-back; Owner confirms; then cutover"
+      "actor": "OTM",
+      "text": "record the O3 cutover (needs HIGH turn)"
     },
     "flags": [],
-    "updatedAt": "2026-10-25T01:56:04Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6392185779"
+    "updatedAt": "2026-10-25T02:15:25Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6392258070"
   },
   "D2T-G21": {
     "order": 4,

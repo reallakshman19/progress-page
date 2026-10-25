@@ -1568,6 +1568,20 @@
       "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6392279554",
       "action": "PRIV-1",
       "rev": "R1"
+    },
+    {
+      "seq": 117,
+      "id": "DOC2TABLE-R-0117",
+      "previous_id": "DOC2TABLE-R-0116",
+      "at": "2026-10-25T02:15:25Z",
+      "kind": "UPDATE",
+      "actor": "OTM",
+      "summary": "read-back confirmed; cutover waits for an OTM turn at HIGH (§7.7)",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6392258070",
+      "card": "D2T-O2",
+      "before": "SUBMITTED",
+      "after": "SUBMITTED",
+      "rev": "R1"
     }
   ]
 }
