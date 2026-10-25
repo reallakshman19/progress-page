@@ -1412,6 +1412,20 @@
       "before": "IN_PROGRESS",
       "after": "SUBMITTED",
       "rev": "R1"
+    },
+    {
+      "seq": 105,
+      "id": "DOC2TABLE-R-0105",
+      "previous_id": "DOC2TABLE-R-0104",
+      "at": "2026-10-25T01:29:33Z",
+      "kind": "UPDATE",
+      "actor": "OTM",
+      "summary": "D1 private trial OTM-TRIED PASS (24/24 + OTM eyes)",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/157#issuecomment-6391958356",
+      "card": "D2T-G21",
+      "before": "SUBMITTED",
+      "after": "SUBMITTED",
+      "rev": "R1"
     }
   ]
 }
