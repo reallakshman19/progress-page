@@ -86,14 +86,14 @@
       "role": "Agent"
     },
     "state": "SUBMITTED",
-    "now": "PR #7 130a8aa returned; D1 OTM-TRIED PASS. WAITS: O3's D1 non-author check, after the Owner confirms O3's read-back (O3-RB)",
+    "now": "Idle on PR #7 (130a8aa, D1 OTM-TRIED PASS). WAITS: O3 cutover (OTM turn at HIGH, §7.7), then O3's card for the D1 non-author check.",
     "next": {
-      "actor": "Oracle O3",
-      "text": "D1 non-author check of PR #7 once cut over"
+      "actor": "OTM",
+      "text": "record O3 cutover, then deliver O3's D1 card"
     },
     "flags": [],
-    "updatedAt": "2026-10-25T02:02:13Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6392219817"
+    "updatedAt": "2026-10-25T02:22:22Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6392258070"
   },
   "D2T-O3": {
     "order": 5,

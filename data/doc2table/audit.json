@@ -1582,6 +1582,20 @@
       "before": "SUBMITTED",
       "after": "SUBMITTED",
       "rev": "R1"
+    },
+    {
+      "seq": 118,
+      "id": "DOC2TABLE-R-0118",
+      "previous_id": "DOC2TABLE-R-0117",
+      "at": "2026-10-25T02:22:22Z",
+      "kind": "UPDATE",
+      "actor": "OTM",
+      "summary": "idle until O3 cutover, which waits for an OTM turn at HIGH",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6392258070",
+      "card": "D2T-G21",
+      "before": "SUBMITTED",
+      "after": "SUBMITTED",
+      "rev": "R1"
     }
   ]
 }
