@@ -1,0 +1,44 @@
+name: CIIFR E1 hosted checkout handoff reconciliation
+on:
+  push:
+    branches: [pp/ciifr-r4-home-onboarding-protocol-20261025]
+    paths: ['.github/workflows/ciifr-e1-native-workspace-ready-once.yml']
+permissions:
+  contents: write
+jobs:
+  record:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Project read-only source recovery and actual hosted Git checkout
+        shell: bash
+        run: |
+          set -euo pipefail
+          python tools/pp_cli.py 'check' '--base' 'origin/main'
+          python tools/pp_cli.py 'card' 'set' '--project' 'ciifr' '--card' 'wbs4-e1-ptrguard' '--state' 'NOT_STARTED' '--now' 'Coder 6adddf80 returned source-only recovery #173 6397210592: blob identity PASS, 6/6 local E1 PASS, 5 invalid BEND/EXPJT/EQUIP pointers ACCEPTED by unchanged reader; native checkout/NodeName/backup ledger NOT_RUN. Oracle prepared verified full-history public Git checkout artifact via hosted run 40191467503 (53MiB); recipient has NOT received/hashed it. E1 R1 write HELD.' '--next-actor' 'Owner handoff → coder 6adddf80 native checkout qualification' '--next-text' 'Download run 40191467503 artifact ID 12598017481; attach ZIP to coder chat. Coder verifies inner tar SHA, real git HEAD/base/clean tree, native E1 and NodeName tests, backup/ledger capability; returns NATIVE WORKSPACE RETURN on #173 before any code changes.' '--role' 'Coder 6adddf80 · source tests RAN · native workspace receipt pending · WRITE HELD' '--ref' 'comment|Coder capability return|https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6397210592' '--ref' 'comment|Oracle hosted artifact custody|https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6397419458' '--ref' 'artifact|Verified Git checkout artifact run|https://github.com/reallakshman19/progress-page/actions/runs/40191467503' '--actor' 'CIIFR Oracle (coder capability reconciliation and artifact packaging)' '--src' 'https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6397419458' '--summary' 'Reconcile five source-only falsifiers and hosted native Git checkout handoff, without claiming recipient delivery.'
+          python tools/pp_cli.py 'fixture' 'add' '--project' 'ciifr' '--list' 'issues' '--text' 'E1 coder 6adddf80 independently reproduced five invalid BEND/EXPJT/EQUIP auxiliary targets accepted by original reader, while six existing author-coupled E1 cases passed on blob-verified source. Native NodeName not run.' '--url' 'https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6397210592' '--status' 'SOURCE_ONLY_PARTIAL' '--milestone' 'M18' '--actor' 'CIIFR Oracle (coder capability reconciliation and artifact packaging)' '--src' 'https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6397419458' '--summary' 'Project exact-source E1 native workspace handoff and unchanged implementation hold.'
+          python tools/pp_cli.py 'fixture' 'add' '--project' 'ciifr' '--list' 'inputs' '--text' 'Verified public Git checkout artifact 12598017481 at progress-page run 40191467503: full .git, PR168 3595a7c, inner tar SHA256 39351dd0d357723ae4a1120041ca8205e5431f5f753ce480a39b94020dd7411c. Recipient NOT_VERIFIED; expires 2026-11-08.' '--url' 'https://github.com/reallakshman19/progress-page/actions/runs/40191467503' '--status' 'HOSTED_SOURCE_READY' '--milestone' 'M18' '--actor' 'CIIFR Oracle (coder capability reconciliation and artifact packaging)' '--src' 'https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6397419458' '--summary' 'Project exact-source E1 native workspace handoff and unchanged implementation hold.'
+          python tools/pp_cli.py 'fixture' 'add' '--project' 'ciifr' '--list' 'pending' '--text' 'Owner downloads GH Actions artifact 12598017481 and uploads ZIP to coder 6adddf80 chat. Coder must SHA-check and run full native E1+NodeName, backup/ledger setup; no E1 code authorization yet. Common relay PR479 draft only.' '--url' 'https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6397419458' '--status' 'RECEIVER_PENDING' '--milestone' 'M18' '--actor' 'CIIFR Oracle (coder capability reconciliation and artifact packaging)' '--src' 'https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6397419458' '--summary' 'Project exact-source E1 native workspace handoff and unchanged implementation hold.'
+          python tools/pp_cli.py 'check' '--base' 'origin/main'
+          python tools/pp_cli.py 'triggers'
+      - name: Preserve diagnostic data if checked projection fails
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ciifr-native-workspace-cli-diagnostic
+          path: data/ciifr/
+      - name: Save checked CIIFR data and remove temporary workflow
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "CIIFR Progress Recorder"
+          git config user.email "ciifr-progress-bot@users.noreply.github.com"
+          git rm -f .github/workflows/ciifr-e1-native-workspace-ready-once.yml
+          git add data/ciifr/
+          git commit -m "data(ciifr): record native Git artifact ready and coder receipt pending"
+          git push origin HEAD:refs/heads/pp/ciifr-r4-home-onboarding-protocol-20261025
