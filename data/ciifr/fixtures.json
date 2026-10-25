@@ -182,6 +182,12 @@
       "u": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/168",
       "s": "R1_DELIVERED",
       "milestone": "M18"
+    },
+    {
+      "t": "PR168 R1 exact 01d94e1f independently FAILED: empty RESTRANT count1/ptr4=1 wrongly accepted; REDUCERS v14 two physical rows wrongly rejected, one incomplete accepted. Previously fixed BEND/EXPJT/IZUP range guards retain bounded PASS.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6400040909",
+      "s": "E1_R1_FAIL",
+      "milestone": "M18"
     }
   ],
   "pullRequests": [
@@ -928,6 +934,12 @@
       "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6399342047",
       "s": "REVIEW_FALSIFIERS",
       "milestone": "M18"
+    },
+    {
+      "t": "F3 CONTROL: extra numeric fields accepted by parser, but native v14 admissibility of padded CONTROL rows unproven. Oracle R2 demands source decision before any strict-width rule; version-bracketed v12/v15 evidence alone not full v14 signoff.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6400185309",
+      "s": "CONTROL_SOURCE_HOLD",
+      "milestone": "M18"
     }
   ],
   "pending": [
@@ -1072,6 +1084,12 @@
       "t": "Independent E1 specialist #170 invited for read-only exact-head 01d94e1f replay of BEND/EXPJT/IZUP and empty RESTRANT/CONTROL row contrast. No review return yet; E2/E3/TARGET1 and merge remain HOLD.",
       "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6399351349",
       "s": "REVIEW_RETURN_PENDING",
+      "milestone": "M18"
+    },
+    {
+      "t": "Same E1 coder 6adddf80 instructed R2 minimal same-PR correction #173 6400196426. New head not returned. Reviewer #170 replays F1/F2/F3 and retained pointer negatives only after builder return; engineering release/merge HOLD.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6400196426",
+      "s": "R2_RETURN_PENDING",
       "milestone": "M18"
     }
   ]

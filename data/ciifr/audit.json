@@ -4988,6 +4988,87 @@
       "list": "pending",
       "op": "add",
       "rev": "R4"
+    },
+    {
+      "seq": 381,
+      "id": "CIIFR-R-0381",
+      "previous_id": "CIIFR-R-0380",
+      "at": "2026-10-25T16:32:47Z",
+      "kind": "STATE",
+      "actor": "CIIFR Oracle · E1 R2 correction",
+      "summary": "Reconcile independently proven structural failures and bounded R2 correction without accepting failed R1.",
+      "source": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6400185309",
+      "card": "wbs4-e1-ptrguard",
+      "before": "SUBMITTED",
+      "after": "IN_PROGRESS",
+      "rev": "R4"
+    },
+    {
+      "seq": 382,
+      "id": "CIIFR-R-0382",
+      "previous_id": "CIIFR-R-0381",
+      "at": "2026-10-25T16:32:47Z",
+      "kind": "UPDATE",
+      "actor": "CIIFR Oracle · E1 R2 correction",
+      "summary": "Record reviewer FAIL outcome without claiming engineering acceptance.",
+      "source": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6400185309",
+      "card": "wbs4-e1-specialist",
+      "before": "SUBMITTED",
+      "after": "SUBMITTED",
+      "rev": "R4"
+    },
+    {
+      "seq": 383,
+      "id": "CIIFR-R-0383",
+      "previous_id": "CIIFR-R-0382",
+      "at": "2026-10-25T16:32:48Z",
+      "kind": "UPDATE",
+      "actor": "CIIFR Oracle · E1 R2 correction",
+      "summary": "Align WBS E1 acceptance to independent failure and limited R2 repair.",
+      "source": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6400185309",
+      "card": "wbs4-e1",
+      "before": "IN_PROGRESS",
+      "after": "IN_PROGRESS",
+      "rev": "R4"
+    },
+    {
+      "seq": 384,
+      "id": "CIIFR-R-0384",
+      "previous_id": "CIIFR-R-0383",
+      "at": "2026-10-25T16:32:48Z",
+      "kind": "FIXTURE",
+      "actor": "CIIFR Oracle · E1 R2 correction",
+      "summary": "Record source-grounded E1 R1 FAIL and R2 bounded corrective work.",
+      "source": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6400185309",
+      "list": "issues",
+      "op": "add",
+      "rev": "R4"
+    },
+    {
+      "seq": 385,
+      "id": "CIIFR-R-0385",
+      "previous_id": "CIIFR-R-0384",
+      "at": "2026-10-25T16:32:49Z",
+      "kind": "FIXTURE",
+      "actor": "CIIFR Oracle · E1 R2 correction",
+      "summary": "Record source-grounded E1 R1 FAIL and R2 bounded corrective work.",
+      "source": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6400185309",
+      "list": "knownIssues",
+      "op": "add",
+      "rev": "R4"
+    },
+    {
+      "seq": 386,
+      "id": "CIIFR-R-0386",
+      "previous_id": "CIIFR-R-0385",
+      "at": "2026-10-25T16:32:49Z",
+      "kind": "FIXTURE",
+      "actor": "CIIFR Oracle · E1 R2 correction",
+      "summary": "Record source-grounded E1 R1 FAIL and R2 bounded corrective work.",
+      "source": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6400185309",
+      "list": "pending",
+      "op": "add",
+      "rev": "R4"
     }
   ]
 }
