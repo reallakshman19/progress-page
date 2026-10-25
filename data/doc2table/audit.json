@@ -1426,6 +1426,46 @@
       "before": "SUBMITTED",
       "after": "SUBMITTED",
       "rev": "R1"
+    },
+    {
+      "seq": 106,
+      "id": "DOC2TABLE-R-0106",
+      "previous_id": "DOC2TABLE-R-0105",
+      "at": "2026-10-25T01:56:04Z",
+      "kind": "PLAN",
+      "actor": "OTM",
+      "summary": "Oracle 3 chat started from O2's §7 handover (handover authority §13.6)",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6392185779",
+      "scope": "chat:d2t-o3",
+      "rev": "R1"
+    },
+    {
+      "seq": 107,
+      "id": "DOC2TABLE-R-0107",
+      "previous_id": "DOC2TABLE-R-0106",
+      "at": "2026-10-25T01:56:04Z",
+      "kind": "BASELINE",
+      "actor": "OTM",
+      "summary": "new Oracle 3 from O2's handover; agent-work link, continuity and relay rule in its start message",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6392185779",
+      "card": "D2T-O3",
+      "before": null,
+      "after": "IN_PROGRESS",
+      "rev": "R1"
+    },
+    {
+      "seq": 108,
+      "id": "DOC2TABLE-R-0108",
+      "previous_id": "DOC2TABLE-R-0107",
+      "at": "2026-10-25T01:56:04Z",
+      "kind": "UPDATE",
+      "actor": "OTM",
+      "summary": "successor O3 started 25 Oct; O2 holds control until cutover",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6392185779",
+      "card": "D2T-O2",
+      "before": "SUBMITTED",
+      "after": "SUBMITTED",
+      "rev": "R1"
     }
   ]
 }

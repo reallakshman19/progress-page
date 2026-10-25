@@ -67,14 +67,14 @@
       "role": "Oracle"
     },
     "state": "SUBMITTED",
-    "now": "§7 handover posted 18:25Z (epoch 2→3 PREPARED, adopts G2.1 SCTL-P1.1). O3 start + cutover by OTM next",
+    "now": "§7 handover done; keeps control until O3's read-back is confirmed, then standby",
     "next": {
-      "actor": "OTM",
-      "text": "start O3 from the §7 handover (HIGH)"
+      "actor": "Oracle O3",
+      "text": "O3 read-back; Owner confirms; then cutover"
     },
     "flags": [],
-    "updatedAt": "2026-10-24T23:54:50Z",
-    "src": "https://github.com/reallakshman19/Word-to-Table/issues/1#issuecomment-6387907463"
+    "updatedAt": "2026-10-25T01:56:04Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6392185779"
   },
   "D2T-G21": {
     "order": 4,
@@ -94,5 +94,23 @@
     "flags": [],
     "updatedAt": "2026-10-25T01:29:33Z",
     "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/157#issuecomment-6391958356"
+  },
+  "D2T-O3": {
+    "order": 5,
+    "group": "main",
+    "milestone": "M1",
+    "label": "Oracle O3-Doc to Table",
+    "who": {
+      "chat": "d2t-o3",
+      "role": "oracle"
+    },
+    "state": "IN_PROGRESS",
+    "now": "Boarding as Oracle 3 (epoch 3 PREPARED): writing its read-back on Word-to-Table#1; METER LOW",
+    "next": {
+      "actor": "Oracle O3",
+      "text": "post READ-BACK; then Owner confirms"
+    },
+    "updatedAt": "2026-10-25T01:56:04Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6392185779"
   }
 }
