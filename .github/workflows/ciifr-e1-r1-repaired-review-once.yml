@@ -1,0 +1,45 @@
+name: CIIFR E1 repaired-head independent review projection
+on:
+  push:
+    branches: [pp/ciifr-r4-home-onboarding-protocol-20261025]
+    paths: ['.github/workflows/ciifr-e1-r1-repaired-review-once.yml']
+permissions:
+  contents: write
+jobs:
+  record:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Reconcile bounded E1 repaired head and independent challenge
+        shell: bash
+        run: |
+          set -euo pipefail
+          python tools/pp_cli.py 'check' '--base' 'origin/main'
+          python tools/pp_cli.py 'card' 'set' '--project' 'ciifr' '--card' 'wbs4-e1-ptrguard' '--state' 'SUBMITTED' '--now' 'Coder 6adddf80 returned bounded E1 pointer-guard implementation on PR168 exact 01d94e1f (one commit, three files). All 15 logical CONTROL pointer ranges now guarded in source; original BEND/EXPJT/EQUIP negatives pass builder tests; native 30/30, exact-head hosted CI SUCCESS. Delivery verified by Oracle; independent semantics/edge-case challenge PENDING.' '--next-actor' 'Independent E1 field-map reviewer on #170' '--next-text' 'Read Oracle repaired-head review packet #170 6399351349; independently replay NC-A, BEND 3-line/1-index, EXPJT and IZUP/EQUIP contraries; test empty counted RESTRANT and malformed CONTROL slots. Return PASS/PARTIAL/FAIL tied to PR168 01d94e1f. No writer or merge.' '--role' 'Coder 6adddf80 · R1 delivered SELF_ASSESSED · independent review HELD' '--ref' 'comment|Builder return 30 of 30|https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6399204644' '--ref' 'comment|Oracle exact-head reconciliation|https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6399342047' '--ref' 'comment|Independent re-review instruction|https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6399351349' '--actor' 'CIIFR Oracle · E1 repair return' '--src' 'https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6399342047' '--summary' 'Reconcile E1 R1 implementation return on exact repaired SHA without promoting it to independent acceptance.'
+          python tools/pp_cli.py 'card' 'set' '--project' 'ciifr' '--card' 'wbs4-e1-specialist' '--state' 'SUBMITTED' '--now' 'E1 initial specialist return was PARTIAL on old PR168 3595a7c; coder repair delivered as new 01d94e1f with CI SUCCESS, 30/30 builder tests. Oracle has now sent READ-ONLY independent re-review task #170 6399351349 at new head; reviewer has NOT returned yet, version-specific v14 CONTROL evidence still unresolved.' '--next-actor' 'Existing independent E1 specialist (#170)' '--next-text' 'Run source-independent exact-head BEND/EXPJT/IZUP and unsupported empty RESTRANT section tests; challenge CONTROL row shape and v14 source provenance. Return falsifiers and bounded verdict on #170, then Oracle reconciles.' '--role' 'Independent E1 specialist · re-review instructed, receipt pending' '--ref' 'comment|Fresh E1 independent review instruction|https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6399351349' '--actor' 'CIIFR Oracle · E1 repair return' '--src' 'https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6399351349' '--summary' 'Link same E1 specialist to repaired-head falsification without claiming review completion.'
+          python tools/pp_cli.py 'fixture' 'add' '--project' 'ciifr' '--list' 'issues' '--text' 'E1 R1 repair delivered on existing draft PR168 exact 01d94e1f; one commit 3 files, no writer/backups, hosted CI 40204625020 SUCCESS; builder 30/30 local tests SELF_ASSESSED. Independent E1 #170 replay pending.' '--url' 'https://github.com/reallakshman19/XML_Compare_Utilities/pull/168' '--status' 'R1_DELIVERED' '--milestone' 'M18' '--actor' 'CIIFR Oracle · E1 repair return' '--src' 'https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6399342047' '--summary' 'Preserve exact-head builder return and unresolved independent review negatives.'
+          python tools/pp_cli.py 'fixture' 'add' '--project' 'ciifr' '--list' 'knownIssues' '--text' 'Oracle code inspection flags untested empty RESTRANT body: CONTROL count1/ptr4=1, section header exists but no data lines; unknown-shape handler may accept. Also v14 CONTROL ordinal only version-bracketed from v12/v15. Both require independent challenge.' '--url' 'https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6399342047' '--status' 'REVIEW_FALSIFIERS' '--milestone' 'M18' '--actor' 'CIIFR Oracle · E1 repair return' '--src' 'https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6399342047' '--summary' 'Preserve exact-head builder return and unresolved independent review negatives.'
+          python tools/pp_cli.py 'fixture' 'add' '--project' 'ciifr' '--list' 'pending' '--text' 'Independent E1 specialist #170 invited for read-only exact-head 01d94e1f replay of BEND/EXPJT/IZUP and empty RESTRANT/CONTROL row contrast. No review return yet; E2/E3/TARGET1 and merge remain HOLD.' '--url' 'https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6399351349' '--status' 'REVIEW_RETURN_PENDING' '--milestone' 'M18' '--actor' 'CIIFR Oracle · E1 repair return' '--src' 'https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6399342047' '--summary' 'Preserve exact-head builder return and unresolved independent review negatives.'
+          python tools/pp_cli.py 'check' '--base' 'origin/main'
+          python tools/pp_cli.py 'triggers'
+      - name: Preserve data diagnostic on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ciifr-e1-r1-repaired-head-diagnostic
+          path: data/ciifr/
+      - name: Save checked data; remove one-shot workflow
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "CIIFR Progress Recorder"
+          git config user.email "ciifr-progress-bot@users.noreply.github.com"
+          git rm -f .github/workflows/ciifr-e1-r1-repaired-review-once.yml
+          git add data/ciifr/
+          git commit -m "data(ciifr): record E1 repaired head awaiting independent falsifier"
+          git push origin HEAD:refs/heads/pp/ciifr-r4-home-onboarding-protocol-20261025
