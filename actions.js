@@ -95,11 +95,31 @@ export function renderActions(root, project) {
   });
 }
 
+const COMMON_RELAY = 'https://github.com/reallakshman19/Common/tree/main/relay/AGENT_WORK';
+const RELAY_POLICY = 'https://github.com/reallakshman19/Common/blob/main/skills/agent-work/ARTIFACT_RELAY.md';
+
+// Never infer byte delivery from a URL: these are curated fixture references, not verification.
+export function relayInputRecords(fixtures) {
+  const fx = fixtures || {};
+  const items = [...(fx.inputs || []), ...(fx.repository || [])];
+  return items.filter(i => {
+    const status = String(i.s || '') + ' ' + String(i.t || '');
+    const url = String(i.u || '');
+    return /\b(?:ARTIFACT_RELAY|AGENT_INPUT|RELAY_RETURN|PRIVATE_CUSTODY|RELAY_REGISTERED|RECEIVED_CONFIRMED|BYTES_VERIFIED)\b/i.test(status)
+      || /\/relay\/(?:AGENT_WORK\/[^/]+\/[^/]+|[^/]+\/(?:ARTIFACT_REGISTER\.md|receipt\.md|payload\/))/i.test(url);
+  });
+}
+
 const SECTIONS = [['repository', 'Repository'], ['issues', 'Issues'], ['pullRequests', 'Pull requests'], ['roadmap', 'Roadmap'],
   ['highRoi', 'High-ROI ideas'], ['future', 'Future'], ['intent', 'Intent'], ['inputs', 'Inputs'], ['knownIssues', 'Known issues'], ['pending', 'Pending']];
 
 export function renderFixtures(root, fixtures) {
   root.append(el('p', 'lead', 'Read these first. Sources and starting context for any agent or Oracle joining this project.'));
+  root.append(el('p', 'muted', 'Oracle maintains agent input/output fixture references through the audited fixture CLI. Preferred transport: '),
+    link(COMMON_RELAY, 'Common relay/AGENT_WORK'), ' · ', link(RELAY_POLICY, 'relay policy'),
+    '. Google Drive is private/fallback custody; public records never prove a recipient fetched bytes.');
+  homeList(root, 'Oracle↔agent relay inputs and returns', relayInputRecords(fixtures),
+    'No current task-scoped Common relay input/return has been recorded. Oracle must add the real fixture/receipt and delivery state; no file handoff is implied.', true);
   SECTIONS.forEach(([key, title]) => {
     const items = (fixtures || {})[key] || [];
     const s = el('section', 'fx');
@@ -141,7 +161,7 @@ export function projectHomeModel(project) {
     .map(([id, c]) => ({ id, label: c.label || id, milestone: c.milestone || '', next: c.next?.text || '', actor: c.next?.actor || '' }));
   return {
     aim: pj.aim || '', aimSrc: pj.aimSrc || '',
-    concepts, architecture,
+    concepts, architecture, relayInputs: relayInputRecords(fx),
     roadmap: fx.roadmap || [], intent: fx.intent || [],
     sources: [...(fx.repository || []), ...(fx.issues || []), ...(fx.inputs || [])],
     decisions: fx.highRoi || [], blockers: [...(fx.knownIssues || []), ...(fx.pending || [])],
@@ -197,6 +217,12 @@ export function renderProjectHome(root, project) {
       if (item.actor) li.append(' · ' + item.actor);
       if (item.next) li.append(el('span', 'muted', ' — ' + item.next));
     });
+  const relayInfo = el('p', 'muted', 'Oracle↔agent fixture custody: preferred ');
+  relayInfo.append(link(COMMON_RELAY, 'Common relay/AGENT_WORK'), ' · ', link(RELAY_POLICY, 'handoff protocol'),
+    '. Restricted bytes use authorized private Drive fallback, with sanitized relay receipt where possible. A link or producer hash is not receiver verification.');
+  box.append(relayInfo);
+  homeList(box, 'Current agent inputs and artifact returns', m.relayInputs,
+    'No task-scoped Common relay fixture/receipt recorded. Oracle should link the authoritative WBS input, published record, actual recipient observation and output return through existing fixtures.', true);
   homeList(box, 'Original sources and ground fixtures', m.sources, 'No sources recorded.');
   homeList(box, 'Owner decisions and revisions', m.intent, 'No decision/source entries recorded.');
   homeList(box, 'Architecture improvement rationale', m.decisions, 'No rationale entries recorded.');
