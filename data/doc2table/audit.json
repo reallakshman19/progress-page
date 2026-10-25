@@ -1556,6 +1556,18 @@
       "before": "SUBMITTED",
       "after": "SUBMITTED",
       "rev": "R1"
+    },
+    {
+      "seq": 116,
+      "id": "DOC2TABLE-R-0116",
+      "previous_id": "DOC2TABLE-R-0115",
+      "at": "2026-10-25T02:07:32Z",
+      "kind": "ANSWER",
+      "actor": "Owner",
+      "summary": "Owner answered PRIV-1: C: leave public (Owner 25 Oct 06:06). No visibility change, no scrub; no new private bytes go to public GitHub.",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6392279554",
+      "action": "PRIV-1",
+      "rev": "R1"
     }
   ]
 }

@@ -1,7 +1,7 @@
 {
   "PRIV-1": {
     "order": 1,
-    "status": "open",
+    "status": "done",
     "title": "Private Word files are in the public Word-to-Table repo",
     "lead": "R5.docx and 'R5 -Table15.docx' are tracked in the public repo since 9 Oct, and S1.2/S1.3 tests quote Native Word.docx text. Rights and publication are yours.",
     "options": [
@@ -32,7 +32,12 @@
         "l": "Owner ask on CL #1",
         "u": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6392212069"
       }
-    ]
+    ],
+    "answer": {
+      "text": "C: leave public (Owner 25 Oct 06:06). No visibility change, no scrub; no new private bytes go to public GitHub.",
+      "at": "2026-10-25T02:07:32Z",
+      "ref": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6392279554"
+    }
   },
   "O3-RB": {
     "order": 2,

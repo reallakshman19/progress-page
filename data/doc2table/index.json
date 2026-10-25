@@ -4,8 +4,8 @@
     "key": "doc2table",
     "title": "Doc to Table",
     "subtitle": "",
-    "updatedAt": "2026-10-25T02:04:56Z",
-    "updatedBy": "OTM",
+    "updatedAt": "2026-10-25T02:07:32Z",
+    "updatedBy": "Owner",
     "staleAfterMin": 120,
     "aim": "Flexible .doc/.docx tables on GitHub Pages: headers and data picked independently, records combined, blocks joined. Original bytes and source evidence are the ground truth; anything not fully structured stays source-linked and inspectable. No zero-error claim; no required backend; no silent source loss. (Owner confirmed Oracle O1's read-back, 22 Oct.)",
     "aimSrc": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6340863173"
