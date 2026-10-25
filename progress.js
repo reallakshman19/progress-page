@@ -1,7 +1,8 @@
 // Progress view: attention strip, milestone strip, then groups of agent blocks.
-import { el, link, md, age } from './util.js?v=15';
-import { cardTags, fmt, nudgeTag } from './triggers.js?v=15';
-import { nudgeRow } from './nudge.js?v=15';
+import { el, link, md, age } from './util.js?v=16';
+import { cardTags, fmt, nudgeTag } from './triggers.js?v=16';
+import { nudgeRow } from './nudge.js?v=16';
+import { onboardingModel, renderOnboarding } from './onboarding.js?v=16';
 
 const RANK = { NOT_STARTED: 0, UNKNOWN: 1, STALE: 1, IN_PROGRESS: 2, SUBMITTED: 3, VERIFIED: 4 };
 const ICON = { VERIFIED: '✓', SUBMITTED: '↑', IN_PROGRESS: '●', BLOCKED: '!', NOT_STARTED: '○', STALE: '?', UNKNOWN: '?', NOT_APPLICABLE: '–' };
@@ -283,6 +284,8 @@ export function renderProgress(root, project, ctx) {
   if (hidden) root.append(el('p', 'ms-line', hidden + ' closed cards from earlier revisions are not shown; open that revision above to see them.'));
   picked = picks[(project.index.project || {}).key || ''] || null;
   root.append(strip(project.index, cards, ctx));
+  const onb = onboardingModel(project);
+  if (onb && (!picked || picked === onb.card.milestone)) renderOnboarding(root, project);
   const groups = Object.entries(project.index.groups || {}).sort((a, b) => (a[1].order || 0) - (b[1].order || 0));
   const used = new Set();
   groups.forEach(([gk, g]) => {
