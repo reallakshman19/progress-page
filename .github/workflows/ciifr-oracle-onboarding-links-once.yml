@@ -1,0 +1,36 @@
+name: One-shot CIIFR contribution and continuity links
+on:
+  push:
+    branches: ["pp/ciifr-geometry-oracle-20261025"]
+permissions:
+  contents: write
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Apply pinned links using native Progress CLI
+        run: |
+          set -euo pipefail
+          python tools/pp_cli.py 'fixture' 'add' '--project' 'ciifr' '--list' 'repository' '--text' 'Common Contribution & Handoff (pinned): No PASS beyond evidence; surviving-error challenges; Oracle/reviewer edits are SELF_ASSESSED contributions, not their own independent review. Relevant when Oracle or reviewer repairs a candidate.' '--url' 'https://github.com/reallakshman19/Common/blob/a9491531fb98f6fd14bc486a4cc78ee4680cb1f5/skills/agent-work/CONTRIBUTION_HANDOFF.md' '--status' 'PINNED_HANDOFF' '--milestone' 'M12' '--actor' 'Oracle Standalone · Geometry' '--src' 'https://github.com/reallakshman19/XML_Compare_Utilities/issues/166#issuecomment-6393745466' '--summary' 'Link pinned PINNED_HANDOFF source in CIIFR Oracle onboarding/continuity for M12.'
+          python tools/pp_cli.py 'fixture' 'add' '--project' 'ciifr' '--list' 'repository' '--text' 'Common Oracle Continuity (pinned): stable task and artifact lineage, active Oracle epoch, explicit successor cutover/adoption, unresolved evidence and next two connected build slices. A prepared handover is not activated control.' '--url' 'https://github.com/reallakshman19/Common/blob/a9491531fb98f6fd14bc486a4cc78ee4680cb1f5/skills/agent-work/oracle-continuity/PROTOCOL.md' '--status' 'PINNED_CONTINUITY' '--milestone' 'M7' '--actor' 'Oracle Standalone · Geometry' '--src' 'https://github.com/reallakshman19/XML_Compare_Utilities/issues/166#issuecomment-6393745466' '--summary' 'Link pinned PINNED_CONTINUITY source in CIIFR Oracle onboarding/continuity for M7.'
+          python tools/pp_cli.py 'fixture' 'add' '--project' 'ciifr' '--list' 'highRoi' '--text' 'Oracle onboarding: read pinned Contribution & Handoff before interpreting Oracle-authored repairs or inherited PASS. Disclose self-assessment, upstream fixture exposure and surviving-error risk; seek independent affected-claim review.' '--url' 'https://github.com/reallakshman19/Common/blob/a9491531fb98f6fd14bc486a4cc78ee4680cb1f5/skills/agent-work/CONTRIBUTION_HANDOFF.md' '--status' 'EVIDENCE_RULE' '--milestone' 'M12' '--actor' 'Oracle Standalone · Geometry' '--src' 'https://github.com/reallakshman19/XML_Compare_Utilities/issues/166#issuecomment-6393745466' '--summary' 'Link pinned EVIDENCE_RULE source in CIIFR Oracle onboarding/continuity for M12.'
+          python tools/pp_cli.py 'fixture' 'add' '--project' 'ciifr' '--list' 'highRoi' '--text' 'Oracle continuity: resume from native issue/PR, immutable candidate SHA and pending returns; retain stable task and next two connected slices. Succession needs actual write exclusion and activated epoch, not a new chat.' '--url' 'https://github.com/reallakshman19/Common/blob/a9491531fb98f6fd14bc486a4cc78ee4680cb1f5/skills/agent-work/oracle-continuity/PROTOCOL.md' '--status' 'CONTINUITY_RULE' '--milestone' 'M7' '--actor' 'Oracle Standalone · Geometry' '--src' 'https://github.com/reallakshman19/XML_Compare_Utilities/issues/166#issuecomment-6393745466' '--summary' 'Link pinned CONTINUITY_RULE source in CIIFR Oracle onboarding/continuity for M7.'
+          python tools/pp_cli.py 'card' 'set' '--project' 'ciifr' '--card' 'geo-g0' '--label' 'G0 · Onboarding and ownership' '--state' 'NOT_STARTED' '--now' 'G0: [Contribution & Handoff](https://github.com/reallakshman19/Common/blob/a9491531fb98f6fd14bc486a4cc78ee4680cb1f5/skills/agent-work/CONTRIBUTION_HANDOFF.md) requires evidence-bounded PASS, surviving-error challenge and SELF_ASSESSED Oracle edits. [Oracle Continuity](https://github.com/reallakshman19/Common/blob/a9491531fb98f6fd14bc486a4cc78ee4680cb1f5/skills/agent-work/oracle-continuity/PROTOCOL.md) preserves task/artifact identity and actual cutover. Read Issue #166 and XCU AGENTS; verify original CII hashes, input access, PR #165 ownership and Appendix A. Engineering takeover READ_ONLY until qualified. No Geometry Writer. Return exact-head demo, checks, NOT_RUN and next actor.' '--next-actor' 'Oracle' '--next-text' 'Reconcile PR #165 and identify authorized G1 builder; no Oracle succession activated.' '--actor' 'Oracle Standalone · Geometry' '--src' 'https://github.com/reallakshman19/XML_Compare_Utilities/issues/166#issuecomment-6393745466' '--summary' 'Cross-link Contribution/Handoff and Oracle Continuity in Geometry G0 onboarding.'
+          python tools/pp_cli.py 'card' 'set' '--project' 'ciifr' '--card' 'oracle-onboarding' '--label' 'Oracle · onboarding and continuity' '--group' 'r3-oracle' '--milestone' 'M7' '--order' '19' '--state' 'NOT_STARTED' '--now' 'Oracle start: [Contribution & Handoff](https://github.com/reallakshman19/Common/blob/a9491531fb98f6fd14bc486a4cc78ee4680cb1f5/skills/agent-work/CONTRIBUTION_HANDOFF.md) requires scoped PASS, surviving-error tests and self-assessment disclosure for Oracle-authored work. [Oracle Continuity](https://github.com/reallakshman19/Common/blob/a9491531fb98f6fd14bc486a4cc78ee4680cb1f5/skills/agent-work/oracle-continuity/PROTOCOL.md) preserves task ID, artifact lineage, Oracle epoch, in-flight work, next two slices and explicit successor adoption. A new chat/brief is not activated cutover; PR #472 draft. Owner controls scope, acceptance and merge.' '--next-actor' 'Oracle' '--next-text' 'At handover reconcile CURRENT, in-flight writes and old control; do not assert automatic succession.' '--actor' 'Oracle Standalone · Geometry' '--src' 'https://github.com/reallakshman19/XML_Compare_Utilities/issues/166#issuecomment-6393745466' '--summary' 'Add compact Oracle onboarding/continuity reading card without activating cutover.'
+          python tools/pp_cli.py check
+          python tools/pp_cli.py check --base origin/main
+          python tools/pp_cli.py triggers
+          git config user.name 'ciifr-progress-bot'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/ciifr
+          git diff --cached --stat
+          git diff --cached --quiet || git commit -m 'data(ciifr): link pinned contribution and Oracle continuity onboarding'
+          git push origin HEAD:pp/ciifr-geometry-oracle-20261025
