@@ -1,0 +1,46 @@
+name: CIIFR E1 R2 independent verdict accepted scoped
+on:
+  push:
+    branches: [pp/ciifr-r4-home-onboarding-protocol-20261025]
+    paths: ['.github/workflows/ciifr-e1-r2-ir-accepted-once.yml']
+permissions:
+  contents: write
+jobs:
+  record:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Project independently bounded R2 outcome with native CLI
+        shell: bash
+        run: |
+          set -euo pipefail
+          python tools/pp_cli.py 'check' '--base' 'origin/main'
+          python tools/pp_cli.py 'card' 'set' '--project' 'ciifr' '--card' 'wbs4-e1-ptrguard' '--state' 'VERIFIED' '--now' 'R2 pointer-catalogue repair independently reviewed on PR168 exact 2aeaf737: F1 empty RESTRANT/displacement fail-closed PASS; F2 v14 REDUCERS 2-row cardinality plus logical ptr bounds PASS; all 15 pointer guards incl. BEND/EXPJT/IZUP/RIGID/NODENAME PASS. Verified is bounded SYNTHETIC source-catalogue behavior only; F3 CONTROL version14 shape, reducer numeric content and full RESTRANT semantics HOLD.' '--next-actor' 'Oracle · source-authority F3 evidence only (no coder dispatched)' '--next-text' 'R2 transaction closed at bounded scope. Do not rerun coder 6adddf80 or reviewer #170. Preserve draft PR168/unmerged. Advance F3 only on direct v14 CONTROL rule or authorized native importer contrast; then separately scope any minimal repair.' '--role' 'Coder 6adddf80 R2 delivered; independent source-catalogue F1/F2 PASS bounded' '--ref' 'comment|R2 independent exact-head verdict|https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6401186110' '--ref' 'comment|Oracle accepted bounded R2|https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6401405888' '--actor' 'CIIFR Oracle · E1 R2 IR reconciliation' '--src' 'https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6401405888' '--summary' 'Accept the independently falsified R2 structural pointer/catalogue guard scope, not full v14 semantics.'
+          python tools/pp_cli.py 'card' 'set' '--project' 'ciifr' '--card' 'wbs4-e1-specialist' '--state' 'VERIFIED' '--now' 'Reviewer #170 independently replayed exact R2 head 2aeaf737 via separate invented V8 fixtures; F1 empty/missing/whitespace-only PASS; F2 two-row cardinality PASS; all15 ranges and shared RIGID/NodeName PASS. Reviewer NOT_BLINDED, chat/principal UNBOUND, native Node/CAESAR NOT_RUN. F3 CONTROL strict v14 row admissibility unresolved.' '--next-actor' 'Oracle · preserve F3 source HOLD' '--next-text' 'R2 specialist task completed within its tested scope. No duplicate review or new code. For F3 obtain actual v14 CONTROL authoritative format or controlled importer acceptance/rejection before deciding a new review task.' '--role' 'Independent E1 specialist · bounded R2 review accepted, F3 unresolved' '--ref' 'comment|Independent R2 field-map verdict|https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6401186110' '--ref' 'comment|Oracle acceptance and F3 hold|https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6401405888' '--actor' 'CIIFR Oracle · E1 R2 IR reconciliation' '--src' 'https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6401186110' '--summary' 'Mark the independent R2 review completed for F1/F2 and pointer bounds, excluding remaining F3.'
+          python tools/pp_cli.py 'card' 'set' '--project' 'ciifr' '--card' 'wbs4-e1' '--state' 'BLOCKED' '--now' 'E1 R2 bounded catalogue guards ACCEPTED independently on PR168 2aeaf737 (F1 empty RESTRANT, F2 v14 REDUCERS two-row count, all15 pointers). Overall E1 effective-engineering source semantics remain PARTIAL/BLOCKED on v14 CONTROL F3, incomplete reducer token shape and restraint body; original CII/native importer NOT_RUN. Draft PR unmerged; E2/E3 Writer/TARGET1 HOLD.' '--next-actor' 'Oracle / authorized v14 source custodian · evidence dependency (not active agent)' '--next-text' 'Obtain exact v14 CONTROL row-width/trailing-slot rule OR controlled native v14 importer positive/negative source fixture with custody. If unavailable classify F3_SOURCE_BLOCKED; no speculative parser edits or repeated review. Owner determines release gate separately.' '--role' 'E1 overall engineering qualification · F3_SOURCE_HOLD; R2 bounded structural milestone verified' '--ref' 'comment|Oracle E1 R2 bounded acceptance|https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6401405888' '--ref' 'comment|WBS independent outcome|https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6401420458' '--actor' 'CIIFR Oracle · E1 R2 IR reconciliation' '--src' 'https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6401420458' '--summary' 'Record independently bounded structural success while blocking wider engineering source/format acceptance.'
+          python tools/pp_cli.py 'fixture' 'add' '--project' 'ciifr' '--list' 'issues' '--text' 'CIIFR R2 narrow accepted on draft PR168 exact 2aeaf737: independent F1 empty RESTRANT PASS, F2 v14 REDUCERS two-line cardinality PASS, all15 pointer guards PASS; reviewer invented V8 tests, native CAESAR NOT_RUN.' '--url' 'https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6401186110' '--status' 'R2_BOUNDED_ACCEPTED' '--milestone' 'M18' '--actor' 'CIIFR Oracle · E1 R2 IR reconciliation' '--src' 'https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6401405888' '--summary' 'Project actual independent R2 milestone acceptance and remaining F3 source hold.'
+          python tools/pp_cli.py 'fixture' 'add' '--project' 'ciifr' '--list' 'knownIssues' '--text' 'F3 v14 CONTROL strict row-width/trailing numeric fields SOURCE_UNRESOLVED; malformed two nonblank REDUCERS rows still catalogued cardinality-only; nonempty RESTRANT body not shape-validated. Engineering/Writer/merge HOLD.' '--url' 'https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6401405888' '--status' 'F3_SOURCE_HOLD' '--milestone' 'M18' '--actor' 'CIIFR Oracle · E1 R2 IR reconciliation' '--src' 'https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6401405888' '--summary' 'Project actual independent R2 milestone acceptance and remaining F3 source hold.'
+          python tools/pp_cli.py 'fixture' 'add' '--project' 'ciifr' '--list' 'pending' '--text' 'F3 next proof requires direct v14 CONTROL spec or authorized importer valid-vs-extra-field comparison. No coder/reviewer rerun and no ACTIVE E1 Cycle now. If unavailable retain F3_SOURCE_BLOCKED, unrelated work independent.' '--url' 'https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6401405888' '--status' 'F3_SOURCE_DEPENDENCY' '--milestone' 'M18' '--actor' 'CIIFR Oracle · E1 R2 IR reconciliation' '--src' 'https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6401405888' '--summary' 'Project actual independent R2 milestone acceptance and remaining F3 source hold.'
+          python tools/pp_cli.py 'check' '--base' 'origin/main'
+          python tools/pp_cli.py 'triggers'
+      - name: Save diagnostic candidate on checker failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ciifr-e1-r2-ir-acceptance-diagnostic
+          path: data/ciifr/
+      - name: Commit CLI-checked data and self-remove workflow
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "CIIFR Progress Recorder"
+          git config user.email "ciifr-progress-bot@users.noreply.github.com"
+          git rm -f .github/workflows/ciifr-e1-r2-ir-accepted-once.yml
+          git add data/ciifr/
+          git commit -m "data(ciifr): accept bounded E1 R2 IR, retain F3 engineering hold"
+          git push origin HEAD:refs/heads/pp/ciifr-r4-home-onboarding-protocol-20261025
