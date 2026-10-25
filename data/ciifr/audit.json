@@ -4815,6 +4815,59 @@
       "list": "pending",
       "op": "add",
       "rev": "R4"
+    },
+    {
+      "seq": 368,
+      "id": "CIIFR-R-0368",
+      "previous_id": "CIIFR-R-0367",
+      "at": "2026-10-25T12:10:03Z",
+      "kind": "UPDATE",
+      "actor": "CIIFR Oracle · E1 checkout recovery",
+      "summary": "Reconcile five source-only falsifiers and hosted native Git checkout handoff, without claiming recipient delivery.",
+      "source": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6397419458",
+      "card": "wbs4-e1-ptrguard",
+      "before": "NOT_STARTED",
+      "after": "NOT_STARTED",
+      "rev": "R4"
+    },
+    {
+      "seq": 369,
+      "id": "CIIFR-R-0369",
+      "previous_id": "CIIFR-R-0368",
+      "at": "2026-10-25T12:10:04Z",
+      "kind": "FIXTURE",
+      "actor": "CIIFR Oracle · E1 checkout recovery",
+      "summary": "Project exact-source E1 native workspace handoff and unchanged implementation hold.",
+      "source": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6397419458",
+      "list": "issues",
+      "op": "add",
+      "rev": "R4"
+    },
+    {
+      "seq": 370,
+      "id": "CIIFR-R-0370",
+      "previous_id": "CIIFR-R-0369",
+      "at": "2026-10-25T12:10:04Z",
+      "kind": "FIXTURE",
+      "actor": "CIIFR Oracle · E1 checkout recovery",
+      "summary": "Project exact-source E1 native workspace handoff and unchanged implementation hold.",
+      "source": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6397419458",
+      "list": "inputs",
+      "op": "add",
+      "rev": "R4"
+    },
+    {
+      "seq": 371,
+      "id": "CIIFR-R-0371",
+      "previous_id": "CIIFR-R-0370",
+      "at": "2026-10-25T12:10:04Z",
+      "kind": "FIXTURE",
+      "actor": "CIIFR Oracle · E1 checkout recovery",
+      "summary": "Project exact-source E1 native workspace handoff and unchanged implementation hold.",
+      "source": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6397419458",
+      "list": "pending",
+      "op": "add",
+      "rev": "R4"
     }
   ]
 }

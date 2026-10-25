@@ -1005,13 +1005,13 @@
     "milestone": "M18",
     "label": "E1 R1 · Auxiliary pointer guard",
     "who": {
-      "role": "Coder 6adddf80 (Owner-reported) · Stage0 accepted · WRITE HELD"
+      "role": "Coder 6adddf80 · source tests RAN · native workspace receipt pending · WRITE HELD"
     },
     "state": "NOT_STARTED",
-    "now": "Coder 6adddf80 (Owner-reported chat ID) posted Stage0 return #173 6396792541. Oracle ACCEPTED CIIFR product/architecture understanding; AGENTS Appendix A PARTIAL. No local XCU checkout because DNS blocked; backups, patch ledger, native repo tests NOT_RUN. Implementation BLOCKED_CAPABILITY; PR168 still exact 3595a7c draft, no writer changes.",
+    "now": "Coder 6adddf80 returned source-only recovery #173 6397210592: blob identity PASS, 6/6 local E1 PASS, 5 invalid BEND/EXPJT/EQUIP pointers ACCEPTED by unchanged reader; native checkout/NodeName/backup ledger NOT_RUN. Oracle prepared verified full-history public Git checkout artifact via hosted run 40191467503 (53MiB); recipient has NOT received/hashed it. E1 R1 write HELD.",
     "next": {
-      "actor": "Coder 6adddf80: native workspace capability recovery",
-      "text": "Obtain exact-head Git checkout/provenance, verify source, local backup/patch ledger and native E1+NodeName tests, reproduce NC-A in read-only mode and return CAPABILITY RETURN on #173. Oracle rechecks Appendix A before any code mutation."
+      "actor": "Owner handoff → coder 6adddf80 native checkout qualification",
+      "text": "Download run 40191467503 artifact ID 12598017481; attach ZIP to coder chat. Coder verifies inner tar SHA, real git HEAD/base/clean tree, native E1 and NodeName tests, backup/ledger capability; returns NATIVE WORKSPACE RETURN on #173 before any code changes."
     },
     "refs": [
       {
@@ -1038,9 +1038,24 @@
         "k": "comment",
         "l": "Oracle onboarding disposition",
         "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6396835086"
+      },
+      {
+        "k": "comment",
+        "l": "Coder capability return",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6397210592"
+      },
+      {
+        "k": "comment",
+        "l": "Oracle hosted artifact custody",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6397419458"
+      },
+      {
+        "k": "comment",
+        "l": "Verified Git checkout artifact run",
+        "u": "https://github.com/reallakshman19/progress-page/actions/runs/40191467503"
       }
     ],
-    "updatedAt": "2026-10-25T11:05:25Z",
-    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6396835086"
+    "updatedAt": "2026-10-25T12:10:03Z",
+    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6397419458"
   }
 }

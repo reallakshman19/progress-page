@@ -164,6 +164,12 @@
       "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6396792541",
       "s": "STAGE0_ACCEPTED",
       "milestone": "M18"
+    },
+    {
+      "t": "E1 coder 6adddf80 independently reproduced five invalid BEND/EXPJT/EQUIP auxiliary targets accepted by original reader, while six existing author-coupled E1 cases passed on blob-verified source. Native NodeName not run.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6397210592",
+      "s": "SOURCE_ONLY_PARTIAL",
+      "milestone": "M18"
     }
   ],
   "pullRequests": [
@@ -753,6 +759,12 @@
       "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6395906667",
       "s": "REVIEW_LIMITS",
       "milestone": "M18"
+    },
+    {
+      "t": "Verified public Git checkout artifact 12598017481 at progress-page run 40191467503: full .git, PR168 3595a7c, inner tar SHA256 39351dd0d357723ae4a1120041ca8205e5431f5f753ce480a39b94020dd7411c. Recipient NOT_VERIFIED; expires 2026-11-08.",
+      "u": "https://github.com/reallakshman19/progress-page/actions/runs/40191467503",
+      "s": "HOSTED_SOURCE_READY",
+      "milestone": "M18"
     }
   ],
   "knownIssues": [
@@ -1018,6 +1030,12 @@
       "t": "NEXT: coder 6adddf80 recover verifiable native exact-head source workspace, backup/ledger and repository test ability; post CAPABILITY RETURN on #173. No repeated onboarding, no PR168 edits until Oracle checks authority and Appendix A.",
       "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6396835086",
       "s": "CAPABILITY_RECOVERY",
+      "milestone": "M18"
+    },
+    {
+      "t": "Owner downloads GH Actions artifact 12598017481 and uploads ZIP to coder 6adddf80 chat. Coder must SHA-check and run full native E1+NodeName, backup/ledger setup; no E1 code authorization yet. Common relay PR479 draft only.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6397419458",
+      "s": "RECEIVER_PENDING",
       "milestone": "M18"
     }
   ]
