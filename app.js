@@ -2,7 +2,7 @@
 import { el, link, tick, ago, whenText } from './util.js?v=16';
 import { renderProgress, wbsPick, wbsSteps } from './progress.js?v=16';
 import { renderLessons } from './lessons.js?v=16';
-import { renderActions, renderFixtures, openCount } from './actions.js?v=16';
+import { renderActions, renderFixtures, renderProjectHome, openCount } from './actions.js?v=16';
 import { renderTimeline } from './timeline.js?v=16';
 import { tabsRow, archivedPanel, projectHead, isActive } from './lifecycle.js?v=16';
 import { nudgesOf, openNudge } from './nudge.js?v=16';
@@ -307,7 +307,7 @@ function render() {
   const bar = repoBar(view.index, steps.length ? wbsPick(key) : null, state.repo[key]);
   if (bar) root.append(bar);
   const views = el('nav', 'views');
-  [['progress', 'Progress', 0], ['actions', 'My actions', openCount(view.actions)], ['fixtures', 'Grounding fixtures', 0], ['timeline', 'Timeline', 0]].forEach(([id, label, n]) => {
+  [['progress', 'Home / Progress', 0], ['actions', 'My actions', openCount(view.actions)], ['fixtures', 'Grounding fixtures', 0], ['timeline', 'Timeline', 0]].forEach(([id, label, n]) => {
     const a = navLink('#/' + key + '/' + id + (older ? '/' + rev : ''), label, 'view' + (id === v ? ' on' : ''));
     const bd = badge(n);
     if (bd) a.append(bd);
@@ -327,7 +327,7 @@ function render() {
     const step = steps.length ? wbsPick(key) : null;
     if (step) body.append(el('p', 'muted', 'Showing WBS step ' + ((steps.find((x) => x.key === step) || {}).label || step) + ' only; items for the whole project are marked so.'));
     const sv = step ? stepView(view, step) : view;
-    if (v === 'progress') renderProgress(body, view, ctx);
+    if (v === 'progress') { renderProjectHome(body, view); renderProgress(body, view, ctx); }
     else if (v === 'actions') renderActions(body, sv);
     else if (v === 'fixtures') renderFixtures(body, sv.fixtures);
     else if (step) renderTimeline(body, sv);

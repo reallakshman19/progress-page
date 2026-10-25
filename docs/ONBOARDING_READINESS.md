@@ -68,3 +68,33 @@ The Common role/mode router is authored separately in a **Common draft PR**. Thi
 - [Contribution & Handoff pinned](https://github.com/reallakshman19/Common/blob/a9491531fb98f6fd14bc486a4cc78ee4680cb1f5/skills/agent-work/CONTRIBUTION_HANDOFF.md)
 - [Oracle Continuity pinned](https://github.com/reallakshman19/Common/blob/a9491531fb98f6fd14bc486a4cc78ee4680cb1f5/skills/agent-work/oracle-continuity/PROTOCOL.md)
 - [Progress Page protocol pinned](https://github.com/reallakshman19/Common/blob/a9491531fb98f6fd14bc486a4cc78ee4680cb1f5/skills/agent-work/progress-page/SKILL.md)
+
+## Oracle↔agent fixture maintenance — Common relay first
+
+The **preferred transaction record is [Common `relay/`](https://github.com/reallakshman19/Common/tree/main/relay), under an authorized project-specific register or [`relay/AGENT_WORK/`](https://github.com/reallakshman19/Common/tree/main/relay/AGENT_WORK)**. Follow the [ARTIFACT_RELAY contract](https://github.com/reallakshman19/Common/blob/main/skills/agent-work/ARTIFACT_RELAY.md). **Google Drive is fallback/private byte custody**, not a replacement public task ledger: confidential inputs/ZIPs are kept only in Owner-approved private Drive handoffs, with a sanitized, public-safe Common relay receipt wherever feasible.
+
+**Oracle maintains the source ledger for the next agent**, using existing audited `fixtures.inputs`/`fixtures.repository` with an actual WBS milestone (never a new schema). The **Home / Progress** and **Grounding fixtures** views project the entries tagged `AGENT_INPUT`, `ARTIFACT_RELAY`, `RELAY_RETURN`, `PRIVATE_CUSTODY` or with a task-scoped Common relay URL. Directory-only links are navigation and **not** evidence that a particular agent received a file.
+
+Example native CLI *shape only* (replace all placeholders with actual checked source values; do **not** create a sample fixture in live project data):
+
+```bash
+python tools/pp_cli.py fixture add --project PROJECT_KEY --list inputs \
+  --text "WBS: exact required input and purpose" \
+  --url "https://github.com/reallakshman19/Common/blob/EXACT_COMMIT/relay/AGENT_WORK/PROJECT/HANDOFF/receipt.md" \
+  --status RELAY_REGISTERED --note "Receiver bytes NOT_RUN; candidate and custodian in receipt" \
+  --milestone MILESTONE_ID --actor Oracle \
+  --src "https://github.com/OWNER/REPO/issues/NUMBER" \
+  --summary "Record task-scoped agent input relay"
+```
+
+The Oracle separately reads back the real Common relay path, verifies whether any public-safe payload and its commit truly exist, and records **producer bytes reported vs receiver retrieval vs receiver byte verification** accurately. A draft PR = proposed, not delivered. An explicit `RECEIVED_CONFIRMED` means recipient access was observed; only a measured receiver SHA/content check justifies `BYTES_VERIFIED`. A new agent opens the **issue → WBS → Project Home → relay receipt**, retrieves original bytes from the authorized route, and then runs its selected engineering protocol. Its **output and reviewer artifacts return through the same relay contract** under a new exact handoff record; the Oracle reconciles them and projects the return in the existing WBS/fixtures and Timeline.
+
+Protected/private bytes or child-file Drive URLs must never be put on the public Page or Common. A public-safe `PRIVATE_CUSTODY` status can describe pending access, but it **does not** prove delivery. If the actual relay cannot be posted or read, record `BLOCKED`/`LOCAL_ONLY`/`NOT_RUN` and the smallest missing operation. The viewer does not upload, monitor Drive, confirm cryptographic identity, dispatch `Cycle now`, or promote engineering/Owner acceptance.
+
+## Project Home: concept, architecture, roadmap, and source custody
+
+The existing project's **Home / Progress** tab now begins with a read-only **Project Home** section above its WBS work cards. It reads only existing audited `index.project`, `index.milestones`, `cards` and `fixtures` data. It shows the Owner's aim, Concept Note and purpose, architecture/complex concepts, the full roadmap, WBS dependencies, original sources and input fixtures, Owner decisions, open work and blockers.
+
+In standalone Oracle mode, **Oracle prepares and maintains** the Home records; in OTM mode, Oracle supplies its grounded contribution and OTM performs the authorized page write. Add source-linked `CONCEPT_NOTE` / `ARCHITECTURE_CONCEPT` (or clearly labelled `concept note` / `architecture`) entries through the existing `pp_cli.py fixture add` route, with GitHub evidence and audit history, not hardcoded viewer text or a new JSON field. The viewer deliberately says **not recorded** for absent source material. An existing `roadmap` fixture renders verbatim, without an invented new roadmapping database. The project concept note/architecture document is a project artifact and must be authored and versioned by Oracle with appropriate Owner and fixture lineage.
+
+**Navigation contract:** Oracle plans **Project Home → WBS → issue**. A new agent executes **assigned issue → WBS → Project Home**. The Page does not grant assignment/control or verify file bytes; a standalone activated Oracle Cycle still requires `Cycle now` + actual `CURRENT.json` on `main` and a return receipt; selected v3.6 evidence separately remains on its native child issue. The Project Home section is a viewer/readback of existing records, not a new editing surface, approval step or shadow tracker.

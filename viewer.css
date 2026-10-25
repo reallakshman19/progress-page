@@ -237,3 +237,12 @@ details.nd{margin-top:6px;font-size:12px}
 .onb-guide{padding-left:20px;margin:0 0 10px}
 .onb-guide li{margin:4px 0}
 @media(max-width:620px){.onb-stages{grid-template-columns:repeat(2,minmax(0,1fr))}.onb-extra{grid-template-columns:1fr}}
+/* Project Home: source-backed grounding on the normal project overview, without new data schema. */
+.project-home{margin:1rem 0 1.5rem;padding:1rem;border:1px solid var(--bd);border-radius:12px}
+.project-home h3{margin:0 0 .4rem}
+.project-home .home-aim{line-height:1.45;margin:.7rem 0}
+.home-detail{margin:.45rem 0;border:1px solid var(--bd);border-radius:8px;overflow:hidden}
+.home-detail summary{padding:.55rem .75rem;font-weight:600;cursor:pointer;background:var(--card)}
+.home-detail>p{padding:0 .75rem}
+.home-items{padding:.3rem 1rem .55rem 2rem;margin:0}
+.home-items li{line-height:1.45;padding:.12rem 0;overflow-wrap:anywhere}
