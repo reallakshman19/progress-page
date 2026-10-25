@@ -1530,6 +1530,32 @@
       "before": "SUBMITTED",
       "after": "SUBMITTED",
       "rev": "R1"
+    },
+    {
+      "seq": 114,
+      "id": "DOC2TABLE-R-0114",
+      "previous_id": "DOC2TABLE-R-0113",
+      "at": "2026-10-25T02:04:56Z",
+      "kind": "ANSWER",
+      "actor": "OTM",
+      "summary": "Owner answered O3-RB: A: confirm O3 read-back",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6392258070",
+      "action": "O3-RB",
+      "rev": "R1"
+    },
+    {
+      "seq": 115,
+      "id": "DOC2TABLE-R-0115",
+      "previous_id": "DOC2TABLE-R-0114",
+      "at": "2026-10-25T02:04:56Z",
+      "kind": "UPDATE",
+      "actor": "OTM",
+      "summary": "Owner confirmed O3 read-back; cutover waits for a turn at its effort label (§7.7)",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6392258070",
+      "card": "D2T-O3",
+      "before": "SUBMITTED",
+      "after": "SUBMITTED",
+      "rev": "R1"
     }
   ]
 }

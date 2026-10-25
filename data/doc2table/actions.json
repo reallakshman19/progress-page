@@ -36,7 +36,7 @@
   },
   "O3-RB": {
     "order": 2,
-    "status": "open",
+    "status": "done",
     "title": "Confirm Oracle 3's intent read-back",
     "lead": "O3 read back the Doc to Table intent (Word-to-Table#1 6392206866). Your one confirmation lets OTM cut over: O2 retires, O3 runs at epoch 3 and adopts G2.1's SCTL-P1.1. No IR on this project, so your word is the gate.",
     "options": [
@@ -60,7 +60,12 @@
         "l": "O3 read-back",
         "u": "https://github.com/reallakshman19/Word-to-Table/issues/1#issuecomment-6392206866"
       }
-    ]
+    ],
+    "answer": {
+      "text": "A: confirm O3 read-back",
+      "at": "2026-10-25T02:04:56Z",
+      "ref": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6392258070"
+    }
   },
   "PR7-MERGE": {
     "order": 3,
