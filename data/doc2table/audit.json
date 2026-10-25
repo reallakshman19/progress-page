@@ -1610,6 +1610,48 @@
       "before": "SUBMITTED",
       "after": "SUBMITTED",
       "rev": "R1"
+    },
+    {
+      "seq": 120,
+      "id": "DOC2TABLE-R-0120",
+      "previous_id": "DOC2TABLE-R-0119",
+      "at": "2026-10-25T03:38:07Z",
+      "kind": "STATE",
+      "actor": "OTM",
+      "summary": "retired at cutover epoch 2→3",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6393034678",
+      "card": "D2T-O2",
+      "before": "SUBMITTED",
+      "after": "NOT_APPLICABLE",
+      "rev": "R1"
+    },
+    {
+      "seq": 121,
+      "id": "DOC2TABLE-R-0121",
+      "previous_id": "DOC2TABLE-R-0120",
+      "at": "2026-10-25T03:38:08Z",
+      "kind": "UPDATE",
+      "actor": "OTM",
+      "summary": "active at epoch 3",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6393034678",
+      "card": "D2T-O3",
+      "before": "SUBMITTED",
+      "after": "SUBMITTED",
+      "rev": "R1"
+    },
+    {
+      "seq": 122,
+      "id": "DOC2TABLE-R-0122",
+      "previous_id": "DOC2TABLE-R-0121",
+      "at": "2026-10-25T03:38:08Z",
+      "kind": "UPDATE",
+      "actor": "OTM",
+      "summary": "Oracle now O3",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6393034678",
+      "card": "D2T-G21",
+      "before": "SUBMITTED",
+      "after": "SUBMITTED",
+      "rev": "R1"
     }
   ]
 }

@@ -66,15 +66,15 @@
       "chat": "d2t-o2",
       "role": "Oracle"
     },
-    "state": "SUBMITTED",
-    "now": "Handover PREPARED; Owner confirmed O3 read-back 06:05. WAITS: OTM records epoch 2→3 cutover in a turn at HIGH effort (§7.7); O2 keeps control until then.",
+    "state": "NOT_APPLICABLE",
+    "now": "STANDBY: retired at epoch 2→3 cutover 07:40; O3 active.",
     "next": {
       "actor": "OTM",
-      "text": "record the O3 cutover (needs HIGH turn)"
+      "text": "none (standby)"
     },
     "flags": [],
-    "updatedAt": "2026-10-25T02:15:25Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6392258070"
+    "updatedAt": "2026-10-25T03:38:07Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6393034678"
   },
   "D2T-G21": {
     "order": 4,
@@ -86,14 +86,14 @@
       "role": "Agent"
     },
     "state": "SUBMITTED",
-    "now": "Idle on PR #7 (130a8aa, D1 OTM-TRIED PASS). WAITS: O3 cutover (OTM turn at HIGH, §7.7), then O3's card for the D1 non-author check.",
+    "now": "Idle on PR #7 (130a8aa). Oracle O3 active. WAITS: OTM commissions D1 non-author check of 130a8aa.",
     "next": {
       "actor": "OTM",
-      "text": "record O3 cutover, then deliver O3's D1 card"
+      "text": "commission O3's D1 non-author check"
     },
     "flags": [],
-    "updatedAt": "2026-10-25T02:22:22Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6392258070"
+    "updatedAt": "2026-10-25T03:38:08Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6393034678"
   },
   "D2T-O3": {
     "order": 5,
@@ -105,13 +105,13 @@
       "role": "oracle"
     },
     "state": "SUBMITTED",
-    "now": "Read-back confirmed by Owner 06:05. WAITS: OTM records epoch 2→3 cutover in a turn at HIGH effort (§7.7; last turns ran medium/low).",
+    "now": "ACTIVE epoch 3 (cutover 07:40). Adopted SCTL-P1.1 (PR #7 130a8aa) and D2 S1.3 (c1022e5); cards D1 then D2 are the horizon.",
     "next": {
       "actor": "OTM",
-      "text": "record the cutover in a HIGH turn; send O3 its go"
+      "text": "send O3 its go; commission D1 non-author check"
     },
-    "updatedAt": "2026-10-25T02:24:34Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6392258070",
+    "updatedAt": "2026-10-25T03:38:08Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6393034678",
     "flags": []
   }
 }
