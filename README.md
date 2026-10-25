@@ -7,6 +7,12 @@ The data is plain JSON in `data/`. GitHub history is the trace. No build step, n
 Status: reference deployment, prototype v0.1. The portable copy with the full how-to is the Common module
 `skills/agent-work/progress-page` (README, references, tools, tests). Read that README first; this file is the short version.
 
+## Owner-go-ahead merge rule — this repository only
+
+**Owner direction (25 October 2026):** After the Owner gives go-ahead to proceed with a **draft PR targeting `reallakshman19/progress-page`**, that go-ahead **also authorizes merging the same scoped PR without a second Owner approval**. The authorized operator reviews its exact current head and diff, required CI/tests, compatibility with the current base and applicable GitHub branch protections; if satisfied, mark the draft ready, merge it, and read back/report the resulting merge SHA. A failed required check, material scope drift, conflicting engineering/Owner HOLD or unsafe merge is a blocker to address, **not** grounds to bypass GitHub protections or manufacture a PASS.
+
+This repository-specific merge authorization **does not apply to Common or other repositories** and does not itself confer engineering acceptance, independent-review PASS, permission to expose protected artifacts, automatic deployment or background agent execution. These remain under their own selected native rules.
+
 ## Use the tools, do not edit the JSON by hand
 
 ```
