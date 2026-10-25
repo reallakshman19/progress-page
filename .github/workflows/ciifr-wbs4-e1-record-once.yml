@@ -1,0 +1,43 @@
+name: CIIFR E0 E1 Oracle contribution progress record
+on:
+  push:
+    branches: [pp/ciifr-wbs4-element-rigid-20261025]
+    paths: ['.github/workflows/ciifr-wbs4-e1-record-once.yml']
+permissions:
+  contents: write
+jobs:
+  record:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Record observed bounded Oracle contribution in existing CIIFR WBS
+        shell: bash
+        run: |
+          set -euo pipefail
+          python tools/pp_cli.py 'check' '--base' 'origin/main'
+          python tools/pp_cli.py 'card' 'set' '--project' 'ciifr' '--card' 'wbs4-e0' '--state' 'SUBMITTED' '--now' 'Oracle-authored E0 architecture framework delivered as draft PR #168: exact v14 53-real/15-pointer layout, endpoint versus auxiliary identities, field-specific sentinels, private baseline hash-only inventory, nine contrary-case predictions. Source-derived and SELF_ASSESSED; no editor or engineering acceptance.' '--next-actor' 'Authorized Oracle / independent field reviewer' '--next-text' 'Challenge v14 field meanings/units and Material Number location against an independent source before enabling edits. Review exact PR #168.' '--role' 'Oracle contribution (SELF_ASSESSED)' '--ref' 'pr|Oracle E0/E1 framework|https://github.com/reallakshman19/XML_Compare_Utilities/pull/168' '--actor' 'ChatGPT (Oracle E0/E1 contributor)' '--src' 'https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394395409' '--summary' 'Record delivered bounded Oracle E0 source framework, not independent acceptance.'
+          python tools/pp_cli.py 'card' 'set' '--project' 'ciifr' '--card' 'wbs4-e1' '--state' 'IN_PROGRESS' '--now' 'Read-only E1 parser and synthetic fixture contract supplied in draft PR #168. Exact-head CI 40169198664: 6/6 E1 and 19/19 retained NodeName PASS after correcting a false B1 synthetic premise. Private original physically verified separately; native CAESAR reimport and independently sourced field meaning NOT_RUN.' '--next-actor' 'Authorized Oracle to allocate E1 agent' '--next-text' 'Read prepared agent packet, verify active coordinator and sole writer, then assign E1-FIELD-MAP-1 for independent ordinal/unit/sentinel challenges. No private transfer presumed.' '--role' 'Oracle contribution, agent NOT YET ASSIGNED' '--ref' 'pr|Read-only E1 PR168|https://github.com/reallakshman19/XML_Compare_Utilities/pull/168' '--actor' 'ChatGPT (Oracle E0/E1 contributor)' '--src' 'https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394395409' '--summary' 'Record scope-bounded E1 read-only candidate and prepared-but-unsent agent handoff.'
+          python tools/pp_cli.py 'fixture' 'add' '--project' 'ciifr' '--list' 'repository' '--text' 'Oracle E0/E1 architecture, field-ordinal v14 contract, RIGID pointer semantics, physical fixture and negative tests; code is self-assessed, read-only only.' '--url' 'https://github.com/reallakshman19/XML_Compare_Utilities/blob/b09d0ed3b8c62d1be74123d8bc140a350f5180b3/docs/ciifr/WBS4_ORACLE_E0_E1.md' '--status' 'ORACLE_E0' '--milestone' 'M17' '--actor' 'ChatGPT (Oracle E0/E1 contributor)' '--src' 'https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394395409' '--summary' 'Record Oracle E0/E1 ORACLE_E0 evidence.'
+          python tools/pp_cli.py 'fixture' 'add' '--project' 'ciifr' '--list' 'repository' '--text' 'Read-only v14 element/RIGID catalogue: original lexeme, physical byte span and owners; publicInventory emits aggregate only. No writer/application integration.' '--url' 'https://github.com/reallakshman19/XML_Compare_Utilities/blob/b09d0ed3b8c62d1be74123d8bc140a350f5180b3/tools/ciifr-wbs4/readonly-catalog.mjs' '--status' 'E1_CANDIDATE' '--milestone' 'M18' '--actor' 'ChatGPT (Oracle E0/E1 contributor)' '--src' 'https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394395409' '--summary' 'Record Oracle E0/E1 E1_CANDIDATE evidence.'
+          python tools/pp_cli.py 'fixture' 'add' '--project' 'ciifr' '--list' 'repository' '--text' 'Agent handoff E1-FIELD-MAP-1 prepared but NOT SENT: actual Oracle control, exact head, source map, sole writer, fixture custody and Artifact Relay must be established before activation.' '--url' 'https://github.com/reallakshman19/XML_Compare_Utilities/blob/b09d0ed3b8c62d1be74123d8bc140a350f5180b3/docs/ciifr/WBS4_AGENT_ONBOARD_PACKET_DRAFT.md' '--status' 'ONBOARD_PREPARED' '--milestone' 'M18' '--actor' 'ChatGPT (Oracle E0/E1 contributor)' '--src' 'https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394395409' '--summary' 'Record Oracle E0/E1 ONBOARD_PREPARED evidence.'
+          python tools/pp_cli.py 'fixture' 'add' '--project' 'ciifr' '--list' 'inputs' '--text' 'Native private byte-layout proof: SHA256 5715c23f250d683a6c29ba84c2db9f01aae25788791317b99064c845bc2cdd57, 521 elements/27613 reals/7815 pointers, 177 NodeName, 156 RIGID; all nonzero pointers in range. Source bytes remain private.' '--url' 'https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394395409' '--status' 'ORACLE_LOCAL' '--milestone' 'M17' '--actor' 'ChatGPT (Oracle E0/E1 contributor)' '--src' 'https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394395409' '--summary' 'Record Oracle E0/E1 ORACLE_LOCAL evidence.'
+          python tools/pp_cli.py 'fixture' 'add' '--project' 'ciifr' '--list' 'highRoi' '--text' 'E1 source-layout qualification exact head b09d0ed: GitHub run 40169198664 PASS 6/6 E1 synthetic and 19/19 retained NodeName. Excludes domain units/semantic proof, native CAESAR and TARGET1.' '--url' 'https://github.com/reallakshman19/XML_Compare_Utilities/actions/runs/40169198664' '--status' 'CI_SCOPED_PASS' '--milestone' 'M18' '--actor' 'ChatGPT (Oracle E0/E1 contributor)' '--src' 'https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394395409' '--summary' 'Record Oracle E0/E1 CI_SCOPED_PASS evidence.'
+          python tools/pp_cli.py 'fixture' 'add' '--project' 'ciifr' '--list' 'knownIssues' '--text' 'Material Number is not a numbered item among published 53 ELEMENTS real slots. Keep its editing unavailable until its own physical source/section field and unit semantics are established.' '--url' 'https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394395409' '--status' 'MATERIAL_UNMAPPED' '--milestone' 'M19' '--actor' 'ChatGPT (Oracle E0/E1 contributor)' '--src' 'https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394395409' '--summary' 'Record Oracle E0/E1 MATERIAL_UNMAPPED evidence.'
+          python tools/pp_cli.py 'fixture' 'add' '--project' 'ciifr' '--list' 'pending' '--text' 'E1 agent not onboarded yet: PR #168 and R4 PR #15 are draft; verify effective Oracle authority versus canonical p25b and Geometry writers, independent source proof and private Artifact Relay before dispatch.' '--url' 'https://github.com/reallakshman19/XML_Compare_Utilities/pull/168' '--status' 'NO_AGENT_YET' '--milestone' 'M18' '--actor' 'ChatGPT (Oracle E0/E1 contributor)' '--src' 'https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394395409' '--summary' 'Record Oracle E0/E1 NO_AGENT_YET evidence.'
+          python tools/pp_cli.py 'check' '--base' 'origin/main'
+          python tools/pp_cli.py 'triggers'
+      - name: Commit CLI-checked data and discard temporary recorder
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "CIIFR Progress Recorder"
+          git config user.email "ciifr-progress-bot@users.noreply.github.com"
+          git rm -f .github/workflows/ciifr-wbs4-e1-record-once.yml
+          git add data/ciifr/
+          git commit -m "data(ciifr): record Oracle E0/E1 contribution and agent onboarding readiness"
+          git push origin HEAD:refs/heads/pp/ciifr-wbs4-element-rigid-20261025
