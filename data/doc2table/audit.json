@@ -1516,6 +1516,20 @@
       "before": "IN_PROGRESS",
       "after": "SUBMITTED",
       "rev": "R1"
+    },
+    {
+      "seq": 113,
+      "id": "DOC2TABLE-R-0113",
+      "previous_id": "DOC2TABLE-R-0112",
+      "at": "2026-10-25T02:02:13Z",
+      "kind": "UPDATE",
+      "actor": "OTM",
+      "summary": "O3 started and read back; G2.1 waits on O3 (cutover gated by Owner confirmation)",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6392219817",
+      "card": "D2T-G21",
+      "before": "SUBMITTED",
+      "after": "SUBMITTED",
+      "rev": "R1"
     }
   ]
 }
