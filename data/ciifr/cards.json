@@ -787,13 +787,13 @@
     "milestone": "M18",
     "label": "E1 · Exact CII element catalogue",
     "who": {
-      "role": "Oracle contribution, agent NOT YET ASSIGNED"
+      "role": "Oracle-reviewed E1 candidate, not accepted"
     },
     "state": "IN_PROGRESS",
-    "now": "E1-FIELD-MAP-1 onboarding packet revised per Common START HERE Maps B/C. XCU PR #168 is draft; source tests 6/6 and retained NodeName 19/19 at b09d0ed, engineering semantics NOT_RUN. No E1 recipient confirmed, Common relay NOT_REGISTERED, no Cycle CURRENT for ciifr. Prepared is not sent, received, verified or native approval.",
+    "now": "E1 physical field map is source-supported but incomplete: Oracle confirmed NC-A, an invalid non-RIGID/NODENAME auxiliary pointer can be accepted. Specialist returned PARTIAL; E1 FIX_REQUIRED. 53 field ledger confidence bounded, units/sentinels/material source and native CAESAR import NOT_VERIFIED; PR168 unchanged/draft.",
     "next": {
-      "actor": "Authorized Oracle, then selected E1 specialist",
-      "text": "Issue #167 → WBS4.1 → Home → actual Common task relay/access; select independent unit/ordinal/sentinel falsifier and authorized manual/native route (Cycle only if ACTIVE)."
+      "actor": "E1 read-only parser corrective contributor (not assigned)",
+      "text": "Use Oracle challenge #170: add CONTROL-declared count bounds for 15 pointer types, BEND 3-line record proof and unsupported-shape UNVALIDATED; keep writer/UI untouched and return same PR168 exact head for independent replay."
     },
     "refs": [
       {
@@ -815,10 +815,15 @@
         "k": "pr",
         "l": "Revised E1 agent packet",
         "u": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/168"
+      },
+      {
+        "k": "comment",
+        "l": "Oracle E1 challenge",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6395988691"
       }
     ],
-    "updatedAt": "2026-10-25T08:25:29Z",
-    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6395368222"
+    "updatedAt": "2026-10-25T09:34:23Z",
+    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6395988691"
   },
   "wbs4-e2": {
     "order": 42,
@@ -971,19 +976,48 @@
     "milestone": "M18",
     "label": "E1 · Independent field-map specialist",
     "who": {
-      "role": "Independent specialist (recipient UNBOUND)"
+      "role": "Independent field-map specialist (identity UNBOUND)"
     },
-    "state": "NOT_STARTED",
-    "now": "Owner authorized one independent v14 field-mapping specialist. Native source-only issue #170 was published with exact Oracle PR #168 candidate 3595a7c. NO receiver/chat bound, no agent acknowledgement or independent field findings. Public Common source relay PR #479 is DRAFT, not canonical; private model NOT_DELIVERED.",
+    "state": "SUBMITTED",
+    "now": "Independent E1 return #170 comment 6395906667 at PR168 3595a7c: 53 field positions and RIGID/NODENAME synthetic cases PASS; NC-A BEND pointer with zero source records was ACCEPTED incorrectly. Material ID is in MISCEL_1, not 53 ELEMENTS real slots. Blank NODENAME conditional. Original private CII/native importer NOT_RUN. Verdict PARTIAL.",
     "next": {
-      "actor": "Owner → one new read-only E1 specialist chat",
-      "text": "Paste native issue #170 to recipient; specialist checks GitHub source access, v14 external field semantics, and returns independent falsifier evidence on #170. No Cycle now or writer."
+      "actor": "Oracle (challenge recorded) → E1 corrective contributor",
+      "text": "Independent return reconciled in Oracle #170 comment 6395988691. Do not promote to engineering PASS. Next qualified contributor repairs all-15 pointer count bound in existing PR168, then distinct exact-head re-review."
     },
     "refs": [
       {
         "k": "issue",
         "l": "Native E1 manual task",
         "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170"
+      },
+      {
+        "k": "comment",
+        "l": "Independent E1 return",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6395906667"
+      }
+    ],
+    "updatedAt": "2026-10-25T09:34:22Z",
+    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6395988691"
+  },
+  "wbs4-e1-ptrguard": {
+    "order": 42,
+    "group": "wbs4-intake",
+    "milestone": "M18",
+    "label": "E1 R1 · Auxiliary pointer guard",
+    "who": {
+      "role": "Minimal read-only correction, unassigned"
+    },
+    "state": "NOT_STARTED",
+    "now": "Oracle accepted reviewer NC-A: BEND #1 pointer9 despite CONTROL BEND count0 was accepted as a complete catalog. Other 13 non-RIGID/NODENAME pointer bounds need source-grounded CONTROL counts; BEND uses three numeric lines per logical record. Repair on draft PR168 only; NO writer, merge or private data.",
+    "next": {
+      "actor": "Qualified E1 read-only contributor (assignment pending)",
+      "text": "Read challenge #170, confirm PR168 sole writer and AGENTS Appendix A; implement minimal pointer range/missing-section diagnostic plus invented negative tests, then exact-head independent specialist challenge."
+    },
+    "refs": [
+      {
+        "k": "comment",
+        "l": "E1 R1 correction contract",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6395988691"
       }
     ]
   }

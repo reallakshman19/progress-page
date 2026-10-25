@@ -146,6 +146,12 @@
       "s": "TASK_PUBLISHED",
       "n": "Recipient unbound",
       "milestone": "M18"
+    },
+    {
+      "t": "Independent E1 #170 return comment 6395906667: 53 real field ledger, pointer2/12 synthetic PASS, BEND auxiliary pointer to nonexistent record accepted; verdict PARTIAL. Oracle challenge 6395988691 confirms NC-A; NO E2/E3 GO.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6395988691",
+      "s": "E1_PARTIAL",
+      "milestone": "M18"
     }
   ],
   "pullRequests": [
@@ -339,6 +345,12 @@
       "u": "https://github.com/reallakshman19/XML_Compare_Utilities/blob/3595a7cf350d22a982157d7dffdec2becf6b0f4a/docs/ciifr/WBS4_PROJECT_HOME_CONCEPT.md",
       "s": "NEXT_THREE",
       "n": "No GO for E2/E3",
+      "milestone": "M18"
+    },
+    {
+      "t": "E1 R1 smallest correction on existing draft PR168: validate all 15 declared pointer bounds and missing targets; do not use section raw line count as logical record count. Add BEND valid/missing/out-of-range and other-pointer contradictions, preserve prior NodeName.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6395988691",
+      "s": "E1_R1_PLANNED",
       "milestone": "M18"
     }
   ],
@@ -723,6 +735,12 @@
       "s": "RELAY_PROPOSED",
       "n": "Public code paths only",
       "milestone": "M18"
+    },
+    {
+      "t": "Reviewer #170 checked public original-code and invented cases; private 803776-byte v14 source/CAESAR native import NOT_RUN by reviewer. Blank NODENAME physical row issue remains conditional until admissibility proof; do not weaken current cardinality.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6395906667",
+      "s": "REVIEW_LIMITS",
+      "milestone": "M18"
     }
   ],
   "knownIssues": [
@@ -850,6 +868,12 @@
       "s": "ORACLE_SELF_ASSESSED",
       "n": "Domain review NOT_RUN",
       "milestone": "M18"
+    },
+    {
+      "t": "Confirmed E1 NC-A: only pointer #2 RIGID and #12 NODENAME are validated; BEND pointer9 with declared BEND count0 was accepted. E1 requires all-15 CONTROL bound checks; BEND has 3 lines per logical record. Other section shapes vary.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6395988691",
+      "s": "PTR_GAP_CONFIRMED",
+      "milestone": "M18"
     }
   ],
   "pending": [
@@ -958,6 +982,12 @@
       "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6395565914",
       "s": "DISPATCH_PENDING",
       "n": "No agent confirmed",
+      "milestone": "M18"
+    },
+    {
+      "t": "E1 R1 contributor not yet assigned; current independent specialist completed read-only report, no repo files changed, true source/domain release remains HELD. Recheck exact PR168 and AGENTS authority before patch; distinct reviewer must replay after repair.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6395988691",
+      "s": "R1_ASSIGN_PENDING",
       "milestone": "M18"
     }
   ]
