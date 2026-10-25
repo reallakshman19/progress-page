@@ -1466,6 +1466,18 @@
       "before": "SUBMITTED",
       "after": "SUBMITTED",
       "rev": "R1"
+    },
+    {
+      "seq": 109,
+      "id": "DOC2TABLE-R-0109",
+      "previous_id": "DOC2TABLE-R-0108",
+      "at": "2026-10-25T01:59:22Z",
+      "kind": "ACTION",
+      "actor": "OTM",
+      "summary": "Decision for the Owner: Private Word files are in the public Word-to-Table repo",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6392212069",
+      "action": "PRIV-1",
+      "rev": "R1"
     }
   ]
 }

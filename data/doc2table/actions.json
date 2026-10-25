@@ -1,1 +1,37 @@
-{}
+{
+  "PRIV-1": {
+    "order": 1,
+    "status": "open",
+    "title": "Private Word files are in the public Word-to-Table repo",
+    "lead": "R5.docx and 'R5 -Table15.docx' are tracked in the public repo since 9 Oct, and S1.2/S1.3 tests quote Native Word.docx text. Rights and publication are yours.",
+    "options": [
+      {
+        "key": "A",
+        "label": "Make the repo private (suggested)",
+        "suggested": true,
+        "body": "You switch Word-to-Table to private in GitHub Settings (OTM may not change settings). Nothing is public from then on; later scrubbing can follow calmly.",
+        "reply": "A: make Word-to-Table private"
+      },
+      {
+        "key": "B",
+        "label": "Scrub, then rewrite history",
+        "suggested": false,
+        "body": "Remove the files and literals, then rewrite or delete public branches and history; force pushes are your call.",
+        "reply": "B: scrub and rewrite history"
+      },
+      {
+        "key": "C",
+        "label": "Leave as is",
+        "suggested": false,
+        "body": "The files stay public; recorded as your override in CL #1.",
+        "reply": "C: leave public"
+      }
+    ],
+    "links": [
+      {
+        "l": "Owner ask on CL #1",
+        "u": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6392212069"
+      }
+    ]
+  }
+}
