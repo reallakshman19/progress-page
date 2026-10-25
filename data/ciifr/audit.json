@@ -2623,6 +2623,20 @@
       "before": "IN_PROGRESS",
       "after": "IN_PROGRESS",
       "rev": "R3"
+    },
+    {
+      "seq": 200,
+      "id": "CIIFR-R-0200",
+      "previous_id": "CIIFR-R-0199",
+      "at": "2026-10-25T03:33:54Z",
+      "kind": "STATE",
+      "actor": "OTM",
+      "summary": "S2-TRACE-1 returned",
+      "source": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/163",
+      "card": "CIIFR-G41",
+      "before": "IN_PROGRESS",
+      "after": "SUBMITTED",
+      "rev": "R3"
     }
   ]
 }
