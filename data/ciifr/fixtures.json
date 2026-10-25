@@ -170,6 +170,12 @@
       "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6397210592",
       "s": "SOURCE_ONLY_PARTIAL",
       "milestone": "M18"
+    },
+    {
+      "t": "E1 coder 6adddf80 native checkout #173 6398286471: full Git provenance, 25/25 local regressions, five invalid pointers reproduced; Oracle Appendix A scoped 93/100 and same-PR R1 implementation GO 6398683938. No writer/editor release.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6398683938",
+      "s": "BOUNDED_R1_GO",
+      "milestone": "M18"
     }
   ],
   "pullRequests": [
@@ -904,6 +910,12 @@
       "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6396835086",
       "s": "BLOCKED_CAPABILITY",
       "milestone": "M18"
+    },
+    {
+      "t": "Repo hygiene: tracked .backups/log.json is modified by mandatory backup save despite .gitignore. Oracle instructs local-only preservation, no staging/commit/manual reset, backup IDs and patch ledger retained; separate cleanup outside E1.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6398683938",
+      "s": "TRACKED_BACKUP_LOG",
+      "milestone": "M18"
     }
   ],
   "pending": [
@@ -1036,6 +1048,12 @@
       "t": "Owner downloads GH Actions artifact 12598017481 and uploads ZIP to coder 6adddf80 chat. Coder must SHA-check and run full native E1+NodeName, backup/ledger setup; no E1 code authorization yet. Common relay PR479 draft only.",
       "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6397419458",
       "s": "RECEIVER_PENDING",
+      "milestone": "M18"
+    },
+    {
+      "t": "Coder 6adddf80 implements all-15 CONTROL pointer count/missing-target guard only on draft PR168 after local backups and v14 source proof. Independent reviewer #170 remains on HOLD until new exact-head builder return.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6398683938",
+      "s": "BUILDER_RETURN_PENDING",
       "milestone": "M18"
     }
   ]

@@ -4868,6 +4868,59 @@
       "list": "pending",
       "op": "add",
       "rev": "R4"
+    },
+    {
+      "seq": 372,
+      "id": "CIIFR-R-0372",
+      "previous_id": "CIIFR-R-0371",
+      "at": "2026-10-25T14:12:46Z",
+      "kind": "UPDATE",
+      "actor": "CIIFR Oracle · E1 scoped GO",
+      "summary": "Lift native workspace hold for E1 R1 only, retain NOT_STARTED until actual builder work.",
+      "source": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6398683938",
+      "card": "wbs4-e1-ptrguard",
+      "before": "NOT_STARTED",
+      "after": "NOT_STARTED",
+      "rev": "R4"
+    },
+    {
+      "seq": 373,
+      "id": "CIIFR-R-0373",
+      "previous_id": "CIIFR-R-0372",
+      "at": "2026-10-25T14:12:46Z",
+      "kind": "FIXTURE",
+      "actor": "CIIFR Oracle · E1 scoped GO",
+      "summary": "Reconcile native workspace verified and scoped E1 coding GO.",
+      "source": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6398683938",
+      "list": "issues",
+      "op": "add",
+      "rev": "R4"
+    },
+    {
+      "seq": 374,
+      "id": "CIIFR-R-0374",
+      "previous_id": "CIIFR-R-0373",
+      "at": "2026-10-25T14:12:47Z",
+      "kind": "FIXTURE",
+      "actor": "CIIFR Oracle · E1 scoped GO",
+      "summary": "Reconcile native workspace verified and scoped E1 coding GO.",
+      "source": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6398683938",
+      "list": "knownIssues",
+      "op": "add",
+      "rev": "R4"
+    },
+    {
+      "seq": 375,
+      "id": "CIIFR-R-0375",
+      "previous_id": "CIIFR-R-0374",
+      "at": "2026-10-25T14:12:47Z",
+      "kind": "FIXTURE",
+      "actor": "CIIFR Oracle · E1 scoped GO",
+      "summary": "Reconcile native workspace verified and scoped E1 coding GO.",
+      "source": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6398683938",
+      "list": "pending",
+      "op": "add",
+      "rev": "R4"
     }
   ]
 }

@@ -1005,13 +1005,13 @@
     "milestone": "M18",
     "label": "E1 R1 · Auxiliary pointer guard",
     "who": {
-      "role": "Coder 6adddf80 · source tests RAN · native workspace receipt pending · WRITE HELD"
+      "role": "E1 corrective coder 6adddf80 · qualified for scoped R1 · no start receipt"
     },
     "state": "NOT_STARTED",
-    "now": "Coder 6adddf80 returned source-only recovery #173 6397210592: blob identity PASS, 6/6 local E1 PASS, 5 invalid BEND/EXPJT/EQUIP pointers ACCEPTED by unchanged reader; native checkout/NodeName/backup ledger NOT_RUN. Oracle prepared verified full-history public Git checkout artifact via hosted run 40191467503 (53MiB); recipient has NOT received/hashed it. E1 R1 write HELD.",
+    "now": "Coder 6adddf80 native full-Git workspace verified PR168 exact 3595a7c; 25/25 E1 and NodeName native tests PASS; five invalid pointer cases reproduced. Oracle 6398683938 lifted workspace block and issued scoped E1 R1 implementation GO. Tracked .backups/log.json must remain local, never staged/committed, with required pre-edit backup and recovery ledger. No new repair commit/return yet.",
     "next": {
-      "actor": "Owner handoff → coder 6adddf80 native checkout qualification",
-      "text": "Download run 40191467503 artifact ID 12598017481; attach ZIP to coder chat. Coder verifies inner tar SHA, real git HEAD/base/clean tree, native E1 and NodeName tests, backup/ledger capability; returns NATIVE WORKSPACE RETURN on #173 before any code changes."
+      "actor": "Coder 6adddf80 · bounded E1 R1 implementation",
+      "text": "Read Oracle #173 GO. Recheck exact PR168 head and ownership; preserve local backup log as operational recovery state; source-qualify v14 CONTROL 15 counts; repair catalogue and invented tests only; native regression and no-index ledger; return exact repaired head to #173. No editor, new PR or merge."
     },
     "refs": [
       {
@@ -1053,9 +1053,19 @@
         "k": "comment",
         "l": "Verified Git checkout artifact run",
         "u": "https://github.com/reallakshman19/progress-page/actions/runs/40191467503"
+      },
+      {
+        "k": "comment",
+        "l": "Native workspace proof",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6398286471"
+      },
+      {
+        "k": "comment",
+        "l": "Oracle bounded implementation GO",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6398683938"
       }
     ],
-    "updatedAt": "2026-10-25T12:10:03Z",
-    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6397419458"
+    "updatedAt": "2026-10-25T14:12:46Z",
+    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6398683938"
   }
 }
