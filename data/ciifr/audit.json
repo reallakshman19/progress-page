@@ -2665,6 +2665,46 @@
       "before": "SUBMITTED",
       "after": "IN_PROGRESS",
       "rev": "R3"
+    },
+    {
+      "seq": 203,
+      "id": "CIIFR-R-0203",
+      "previous_id": "CIIFR-R-0202",
+      "at": "2026-10-25T04:01:51Z",
+      "kind": "ACTION",
+      "actor": "OTM",
+      "summary": "Decision for the Owner: Who runs the CAESAR engineering review of S2-TRACE-1?",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/158#issuecomment-6393103222",
+      "action": "CIIFR-REV",
+      "rev": "R3"
+    },
+    {
+      "seq": 204,
+      "id": "CIIFR-R-0204",
+      "previous_id": "CIIFR-R-0203",
+      "at": "2026-10-25T04:01:52Z",
+      "kind": "UPDATE",
+      "actor": "OTM",
+      "summary": "O4 scoped PASS; G4.1 WAIT",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/158#issuecomment-6393103222",
+      "card": "CIIFR-G41",
+      "before": "SUBMITTED",
+      "after": "SUBMITTED",
+      "rev": "R3"
+    },
+    {
+      "seq": 205,
+      "id": "CIIFR-R-0205",
+      "previous_id": "CIIFR-R-0204",
+      "at": "2026-10-25T04:01:52Z",
+      "kind": "STATE",
+      "actor": "OTM",
+      "summary": "challenge posted",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/158#issuecomment-6393103222",
+      "card": "CIIFR-O4",
+      "before": "IN_PROGRESS",
+      "after": "SUBMITTED",
+      "rev": "R3"
     }
   ]
 }

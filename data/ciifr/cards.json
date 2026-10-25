@@ -593,15 +593,15 @@
       "chat": "ciifr-o4",
       "role": "Oracle"
     },
-    "state": "IN_PROGRESS",
-    "now": "METER MID. Challenging G4.1 S2-TRACE-1 at 9da244e + OTM-TRIED (sent 07:43, move OTM-CIIFR-O4-TRACE-2510).",
+    "state": "SUBMITTED",
+    "now": "METER MID. Posted S2-TRACE-1 scoped PASS + next card for a distinct CAESAR engineering reviewer (08:46 CL #158).",
     "next": {
-      "actor": "Oracle O4",
-      "text": "post challenge and next card on CL #158"
+      "actor": "YOU",
+      "text": "name the engineering reviewer (CIIFR-REV)"
     },
     "flags": [],
-    "updatedAt": "2026-10-25T03:43:42Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/158#issuecomment-6393070161"
+    "updatedAt": "2026-10-25T04:01:52Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/158#issuecomment-6393103222"
   },
   "CIIFR-G41": {
     "order": 12,
@@ -613,13 +613,13 @@
       "role": "Agent"
     },
     "state": "SUBMITTED",
-    "now": "S2-TRACE-1 at 9da244e: OTM-TRIED 07:42 (GLRD gate PASS, 0 bytes; 67,938 slots match source). IN REVIEW: O4 challenge (sent 07:43).",
+    "now": "S2-TRACE-1 BUILT + OTM-TRIED at 9da244e; O4 scoped PASS (no engineering acceptance). WAITS (O4: no repair, no new card) until the CAESAR engineering review returns.",
     "next": {
-      "actor": "Oracle O4",
-      "text": "challenge S2-TRACE-1; write next card"
+      "actor": "YOU",
+      "text": "decide CIIFR-REV: who runs the engineering review"
     },
     "flags": [],
-    "updatedAt": "2026-10-25T03:43:34Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/158#issuecomment-6393070161"
+    "updatedAt": "2026-10-25T04:01:52Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/158#issuecomment-6393103222"
   }
 }

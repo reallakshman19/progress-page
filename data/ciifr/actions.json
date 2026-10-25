@@ -22,5 +22,40 @@
     ],
     "links": [],
     "milestone": "M10"
+  },
+  "CIIFR-REV": {
+    "order": 2,
+    "status": "open",
+    "title": "Who runs the CAESAR engineering review of S2-TRACE-1?",
+    "lead": "O4 gave S2-TRACE-1 a scoped PASS as a read-only source-address prototype and wants a distinct piping/CAESAR II v14-competent non-author reviewer next (10-12 precommitted cases, private files stay on your workstation, 2-4 h). OTM navigation does not count as engineering review.",
+    "options": [
+      {
+        "key": "A",
+        "label": "You or an engineer you name (suggested)",
+        "suggested": true,
+        "body": "A person with CAESAR II v14 runs O4's card on your workstation; OTM prepares the case sheet and keeps files local.",
+        "reply": "A: I'll do it / <name> will do it"
+      },
+      {
+        "key": "B",
+        "label": "Fresh AI reviewer, spec-only",
+        "suggested": false,
+        "body": "OTM commissions a fresh non-author AI checker that grounds expectations in the raw CII and a CAESAR II v14 neutral-file reference you supply; native CAESAR observations stay NOT_OBSERVABLE, so this is weaker than A.",
+        "reply": "B: AI reviewer with this reference: <file>"
+      },
+      {
+        "key": "C",
+        "label": "Wait",
+        "suggested": false,
+        "body": "Leave S2-TRACE-1 at BUILT + OTM-TRIED; G4.1 stays idle.",
+        "reply": "C: wait"
+      }
+    ],
+    "links": [
+      {
+        "l": "O4 card",
+        "u": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/158#issuecomment-6393103222"
+      }
+    ]
   }
 }
