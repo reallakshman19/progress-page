@@ -1,0 +1,44 @@
+name: CIIFR E1 R1 implementation GO progress projection
+on:
+  push:
+    branches: [pp/ciifr-r4-home-onboarding-protocol-20261025]
+    paths: ['.github/workflows/ciifr-e1-r1-go-once.yml']
+permissions:
+  contents: write
+jobs:
+  record:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Project verified native checkout and bounded E1 repair GO
+        shell: bash
+        run: |
+          set -euo pipefail
+          python tools/pp_cli.py 'check' '--base' 'origin/main'
+          python tools/pp_cli.py 'card' 'set' '--project' 'ciifr' '--card' 'wbs4-e1-ptrguard' '--state' 'NOT_STARTED' '--now' 'Coder 6adddf80 native full-Git workspace verified PR168 exact 3595a7c; 25/25 E1 and NodeName native tests PASS; five invalid pointer cases reproduced. Oracle 6398683938 lifted workspace block and issued scoped E1 R1 implementation GO. Tracked .backups/log.json must remain local, never staged/committed, with required pre-edit backup and recovery ledger. No new repair commit/return yet.' '--next-actor' 'Coder 6adddf80 · bounded E1 R1 implementation' '--next-text' 'Read Oracle #173 GO. Recheck exact PR168 head and ownership; preserve local backup log as operational recovery state; source-qualify v14 CONTROL 15 counts; repair catalogue and invented tests only; native regression and no-index ledger; return exact repaired head to #173. No editor, new PR or merge.' '--role' 'E1 corrective coder 6adddf80 · qualified for scoped R1 · no start receipt' '--ref' 'comment|Native workspace proof|https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6398286471' '--ref' 'comment|Oracle bounded implementation GO|https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6398683938' '--actor' 'CIIFR Oracle · E1 scoped GO' '--src' 'https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6398683938' '--summary' 'Lift native workspace hold for E1 R1 only, retain NOT_STARTED until actual builder work.'
+          python tools/pp_cli.py 'fixture' 'add' '--project' 'ciifr' '--list' 'issues' '--text' 'E1 coder 6adddf80 native checkout #173 6398286471: full Git provenance, 25/25 local regressions, five invalid pointers reproduced; Oracle Appendix A scoped 93/100 and same-PR R1 implementation GO 6398683938. No writer/editor release.' '--url' 'https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6398683938' '--status' 'BOUNDED_R1_GO' '--milestone' 'M18' '--actor' 'CIIFR Oracle · E1 scoped GO' '--src' 'https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6398683938' '--summary' 'Reconcile native workspace verified and scoped E1 coding GO.'
+          python tools/pp_cli.py 'fixture' 'add' '--project' 'ciifr' '--list' 'knownIssues' '--text' 'Repo hygiene: tracked .backups/log.json is modified by mandatory backup save despite .gitignore. Oracle instructs local-only preservation, no staging/commit/manual reset, backup IDs and patch ledger retained; separate cleanup outside E1.' '--url' 'https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6398683938' '--status' 'TRACKED_BACKUP_LOG' '--milestone' 'M18' '--actor' 'CIIFR Oracle · E1 scoped GO' '--src' 'https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6398683938' '--summary' 'Reconcile native workspace verified and scoped E1 coding GO.'
+          python tools/pp_cli.py 'fixture' 'add' '--project' 'ciifr' '--list' 'pending' '--text' 'Coder 6adddf80 implements all-15 CONTROL pointer count/missing-target guard only on draft PR168 after local backups and v14 source proof. Independent reviewer #170 remains on HOLD until new exact-head builder return.' '--url' 'https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6398683938' '--status' 'BUILDER_RETURN_PENDING' '--milestone' 'M18' '--actor' 'CIIFR Oracle · E1 scoped GO' '--src' 'https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6398683938' '--summary' 'Reconcile native workspace verified and scoped E1 coding GO.'
+          python tools/pp_cli.py 'check' '--base' 'origin/main'
+          python tools/pp_cli.py 'triggers'
+      - name: Save diagnostic candidate on contract failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ciifr-e1-r1-go-contract-diagnostic
+          path: data/ciifr/
+      - name: Commit checked CIIFR data and remove one-shot workflow
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "CIIFR Progress Recorder"
+          git config user.email "ciifr-progress-bot@users.noreply.github.com"
+          git rm -f .github/workflows/ciifr-e1-r1-go-once.yml
+          git add data/ciifr/
+          git commit -m "data(ciifr): document verified E1 native checkout and scoped pointer repair GO"
+          git push origin HEAD:refs/heads/pp/ciifr-r4-home-onboarding-protocol-20261025
