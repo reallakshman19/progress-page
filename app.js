@@ -1,6 +1,6 @@
 // Shell: loads the JSON, draws the project tabs and the views, refreshes every two minutes.
 import { el, link, tick, ago, whenText } from './util.js?v=15';
-import { renderProgress, wbsPick, wbsSteps } from './progress.js?v=15';
+import { renderProgress, wbsPick, wbsSteps } from './progress.js?v=16';
 import { renderLessons } from './lessons.js?v=15';
 import { renderActions, renderFixtures, openCount } from './actions.js?v=15';
 import { renderTimeline } from './timeline.js?v=15';
