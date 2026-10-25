@@ -86,13 +86,13 @@
       "role": "Agent"
     },
     "state": "SUBMITTED",
-    "now": "PR #7 at 130a8aa IN REVIEW: fresh non-author checker running D1 (commissioned 08:02).",
+    "now": "PR #7 at 130a8aa IN REVIEW. WAITS: D1 non-author checker (commissioned 08:02; cut by the usage limit, resumed after it).",
     "next": {
-      "actor": "OTM",
-      "text": "take the D1 verdict to O3"
+      "actor": "D1 checker",
+      "text": "return the D1 verdict; then OTM takes it to O3"
     },
     "flags": [],
-    "updatedAt": "2026-10-25T04:03:42Z",
+    "updatedAt": "2026-10-25T04:48:15Z",
     "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/157#issuecomment-6393229074"
   },
   "D2T-O3": {
