@@ -1005,20 +1005,27 @@
     "milestone": "M18",
     "label": "E1 R1 · Auxiliary pointer guard",
     "who": {
-      "role": "Minimal read-only correction, unassigned"
+      "role": "E1 R1 corrective contributor, NOT YET BOUND"
     },
     "state": "NOT_STARTED",
-    "now": "Oracle accepted reviewer NC-A: BEND #1 pointer9 despite CONTROL BEND count0 was accepted as a complete catalog. Other 13 non-RIGID/NODENAME pointer bounds need source-grounded CONTROL counts; BEND uses three numeric lines per logical record. Repair on draft PR168 only; NO writer, merge or private data.",
+    "now": "Oracle reconciled independent E1 PARTIAL and published native E1-PTR-GUARD-1 task #173. Fix invalid BEND/count and other auxiliary pointer targets on existing draft PR168; no active recipient or implementation return yet. Contributor must pass AGENTS Appendix A and local backup/ledger rules before editing. No product writer or merge.",
     "next": {
-      "actor": "Qualified E1 read-only contributor (assignment pending)",
-      "text": "Read challenge #170, confirm PR168 sole writer and AGENTS Appendix A; implement minimal pointer range/missing-section diagnostic plus invented negative tests, then exact-head independent specialist challenge."
+      "actor": "Owner routes #173 → qualified E1 corrective contributor",
+      "text": "Send issue #173 to one qualified builder. They verify PR168 exact head, source-field CONTROL map and sole-writer scope, implement minimal read-only tests/fix, then return exact-head evidence for independent reviewer replay."
     },
     "refs": [
       {
         "k": "comment",
         "l": "E1 R1 correction contract",
         "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6395988691"
+      },
+      {
+        "k": "issue",
+        "l": "E1 R1 repair task",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173"
       }
-    ]
+    ],
+    "updatedAt": "2026-10-25T10:35:03Z",
+    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6396558970"
   }
 }

@@ -152,6 +152,12 @@
       "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6395988691",
       "s": "E1_PARTIAL",
       "milestone": "M18"
+    },
+    {
+      "t": "E1-PTR-GUARD-1 corrective task #173 published. Same draft PR168, preserve reviewer #170 independence; qualified coder unbound, no receipt/implementation. Repo AGENTS Appendix A and local safety ledger required before patch.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173",
+      "s": "R1_ISSUED_NOT_SENT",
+      "milestone": "M18"
     }
   ],
   "pullRequests": [

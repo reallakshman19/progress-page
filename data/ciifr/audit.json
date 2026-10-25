@@ -4708,6 +4708,33 @@
       "list": "inputs",
       "op": "add",
       "rev": "R4"
+    },
+    {
+      "seq": 360,
+      "id": "CIIFR-R-0360",
+      "previous_id": "CIIFR-R-0359",
+      "at": "2026-10-25T10:35:03Z",
+      "kind": "UPDATE",
+      "actor": "CIIFR Oracle (cycle-style native continuation)",
+      "summary": "Link separate E1 R1 native task without promoting pending work to started.",
+      "source": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6396558970",
+      "card": "wbs4-e1-ptrguard",
+      "before": "NOT_STARTED",
+      "after": "NOT_STARTED",
+      "rev": "R4"
+    },
+    {
+      "seq": 361,
+      "id": "CIIFR-R-0361",
+      "previous_id": "CIIFR-R-0360",
+      "at": "2026-10-25T10:35:03Z",
+      "kind": "FIXTURE",
+      "actor": "CIIFR Oracle (cycle-style native continuation)",
+      "summary": "Record source-linked E1 corrective task, not execution.",
+      "source": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6396558970",
+      "list": "issues",
+      "op": "add",
+      "rev": "R4"
     }
   ]
 }
