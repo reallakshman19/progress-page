@@ -194,6 +194,12 @@
       "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6400645653",
       "s": "R2_DELIVERED",
       "milestone": "M18"
+    },
+    {
+      "t": "CIIFR R2 narrow accepted on draft PR168 exact 2aeaf737: independent F1 empty RESTRANT PASS, F2 v14 REDUCERS two-line cardinality PASS, all15 pointer guards PASS; reviewer invented V8 tests, native CAESAR NOT_RUN.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6401186110",
+      "s": "R2_BOUNDED_ACCEPTED",
+      "milestone": "M18"
     }
   ],
   "pullRequests": [
@@ -952,6 +958,12 @@
       "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6400698988",
       "s": "F3_SOURCE_HOLD",
       "milestone": "M18"
+    },
+    {
+      "t": "F3 v14 CONTROL strict row-width/trailing numeric fields SOURCE_UNRESOLVED; malformed two nonblank REDUCERS rows still catalogued cardinality-only; nonempty RESTRANT body not shape-validated. Engineering/Writer/merge HOLD.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6401405888",
+      "s": "F3_SOURCE_HOLD",
+      "milestone": "M18"
     }
   ],
   "pending": [
@@ -1108,6 +1120,12 @@
       "t": "Independent E1 specialist #170 assigned read-only R2 2aeaf737 negative replay; reviewer chat ID UNBOUND, no Cycle now dispatch. Common Cycle PR496 revised PREPARED_NOT_ACTIVE to prevent stale coder R2 rerun; no E1 Cycle ACTIVE on main.",
       "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6400708556",
       "s": "R2_IR_PENDING",
+      "milestone": "M18"
+    },
+    {
+      "t": "F3 next proof requires direct v14 CONTROL spec or authorized importer valid-vs-extra-field comparison. No coder/reviewer rerun and no ACTIVE E1 Cycle now. If unavailable retain F3_SOURCE_BLOCKED, unrelated work independent.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6401405888",
+      "s": "F3_SOURCE_DEPENDENCY",
       "milestone": "M18"
     }
   ]

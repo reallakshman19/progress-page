@@ -5150,6 +5150,87 @@
       "list": "pending",
       "op": "add",
       "rev": "R4"
+    },
+    {
+      "seq": 393,
+      "id": "CIIFR-R-0393",
+      "previous_id": "CIIFR-R-0392",
+      "at": "2026-10-25T18:25:16Z",
+      "kind": "STATE",
+      "actor": "CIIFR Oracle · E1 R2 IR reconciliation",
+      "summary": "Accept the independently falsified R2 structural pointer/catalogue guard scope, not full v14 semantics.",
+      "source": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6401405888",
+      "card": "wbs4-e1-ptrguard",
+      "before": "SUBMITTED",
+      "after": "VERIFIED",
+      "rev": "R4"
+    },
+    {
+      "seq": 394,
+      "id": "CIIFR-R-0394",
+      "previous_id": "CIIFR-R-0393",
+      "at": "2026-10-25T18:25:17Z",
+      "kind": "STATE",
+      "actor": "CIIFR Oracle · E1 R2 IR reconciliation",
+      "summary": "Mark the independent R2 review completed for F1/F2 and pointer bounds, excluding remaining F3.",
+      "source": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6401186110",
+      "card": "wbs4-e1-specialist",
+      "before": "SUBMITTED",
+      "after": "VERIFIED",
+      "rev": "R4"
+    },
+    {
+      "seq": 395,
+      "id": "CIIFR-R-0395",
+      "previous_id": "CIIFR-R-0394",
+      "at": "2026-10-25T18:25:17Z",
+      "kind": "STATE",
+      "actor": "CIIFR Oracle · E1 R2 IR reconciliation",
+      "summary": "Record independently bounded structural success while blocking wider engineering source/format acceptance.",
+      "source": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6401420458",
+      "card": "wbs4-e1",
+      "before": "IN_PROGRESS",
+      "after": "BLOCKED",
+      "rev": "R4"
+    },
+    {
+      "seq": 396,
+      "id": "CIIFR-R-0396",
+      "previous_id": "CIIFR-R-0395",
+      "at": "2026-10-25T18:25:17Z",
+      "kind": "FIXTURE",
+      "actor": "CIIFR Oracle · E1 R2 IR reconciliation",
+      "summary": "Project actual independent R2 milestone acceptance and remaining F3 source hold.",
+      "source": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6401405888",
+      "list": "issues",
+      "op": "add",
+      "rev": "R4"
+    },
+    {
+      "seq": 397,
+      "id": "CIIFR-R-0397",
+      "previous_id": "CIIFR-R-0396",
+      "at": "2026-10-25T18:25:18Z",
+      "kind": "FIXTURE",
+      "actor": "CIIFR Oracle · E1 R2 IR reconciliation",
+      "summary": "Project actual independent R2 milestone acceptance and remaining F3 source hold.",
+      "source": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6401405888",
+      "list": "knownIssues",
+      "op": "add",
+      "rev": "R4"
+    },
+    {
+      "seq": 398,
+      "id": "CIIFR-R-0398",
+      "previous_id": "CIIFR-R-0397",
+      "at": "2026-10-25T18:25:18Z",
+      "kind": "FIXTURE",
+      "actor": "CIIFR Oracle · E1 R2 IR reconciliation",
+      "summary": "Project actual independent R2 milestone acceptance and remaining F3 source hold.",
+      "source": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6401405888",
+      "list": "pending",
+      "op": "add",
+      "rev": "R4"
     }
   ]
 }
