@@ -1,14 +1,14 @@
 // Shell: loads the JSON, draws the project tabs and the views, refreshes every two minutes.
-import { el, link, tick, ago, whenText } from './util.js?v=15';
+import { el, link, tick, ago, whenText } from './util.js?v=16';
 import { renderProgress, wbsPick, wbsSteps } from './progress.js?v=16';
-import { renderLessons } from './lessons.js?v=15';
-import { renderActions, renderFixtures, openCount } from './actions.js?v=15';
-import { renderTimeline } from './timeline.js?v=15';
-import { tabsRow, archivedPanel, projectHead, isActive } from './lifecycle.js?v=15';
-import { nudgesOf, openNudge } from './nudge.js?v=15';
-import { addProjectDialog, addRevisionDialog } from './briefs.js?v=15';
-import { loadLinks, takeLinksFromHash, linksPanel } from './links.js?v=15';
-import { rulesOf, holdOf, summary, needsAttention } from './triggers.js?v=15';
+import { renderLessons } from './lessons.js?v=16';
+import { renderActions, renderFixtures, openCount } from './actions.js?v=16';
+import { renderTimeline } from './timeline.js?v=16';
+import { tabsRow, archivedPanel, projectHead, isActive } from './lifecycle.js?v=16';
+import { nudgesOf, openNudge } from './nudge.js?v=16';
+import { addProjectDialog, addRevisionDialog } from './briefs.js?v=16';
+import { loadLinks, takeLinksFromHash, linksPanel } from './links.js?v=16';
+import { rulesOf, holdOf, summary, needsAttention } from './triggers.js?v=16';
 
 const LIVE_DATA = 'https://reallakshman19.github.io/progress-page/data/';
 const q = new URLSearchParams(location.search);
