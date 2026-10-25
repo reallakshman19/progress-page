@@ -105,12 +105,12 @@
       "role": "oracle"
     },
     "state": "SUBMITTED",
-    "now": "Read-back confirmed by the Owner 06:04; cutover record (epoch 3) next, in a HIGH turn",
+    "now": "Read-back confirmed by Owner 06:05. WAITS: OTM records epoch 2→3 cutover in a turn at HIGH effort (§7.7; last turns ran medium/low).",
     "next": {
       "actor": "OTM",
-      "text": "record the epoch 2→3 cutover; send O3 its go and chat id"
+      "text": "record the cutover in a HIGH turn; send O3 its go"
     },
-    "updatedAt": "2026-10-25T02:04:56Z",
+    "updatedAt": "2026-10-25T02:24:34Z",
     "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6392258070",
     "flags": []
   }
