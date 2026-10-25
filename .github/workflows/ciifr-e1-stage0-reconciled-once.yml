@@ -1,0 +1,38 @@
+name: CIIFR E1 coder Stage0 return reconciliation
+on:
+  push:
+    branches: [pp/ciifr-r4-home-onboarding-protocol-20261025]
+    paths: ['.github/workflows/ciifr-e1-stage0-reconciled-once.yml']
+permissions:
+  contents: write
+jobs:
+  record:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Reconcile actual coder Stage0 via checked CLI
+        shell: bash
+        run: |
+          set -euo pipefail
+          python tools/pp_cli.py 'check' '--base' 'origin/main'
+          python tools/pp_cli.py 'card' 'set' '--project' 'ciifr' '--card' 'wbs4-e1-ptrguard' '--state' 'NOT_STARTED' '--now' 'Coder 6adddf80 (Owner-reported chat ID) posted Stage0 return #173 6396792541. Oracle ACCEPTED CIIFR product/architecture understanding; AGENTS Appendix A PARTIAL. No local XCU checkout because DNS blocked; backups, patch ledger, native repo tests NOT_RUN. Implementation BLOCKED_CAPABILITY; PR168 still exact 3595a7c draft, no writer changes.' '--next-actor' 'Coder 6adddf80: native workspace capability recovery' '--next-text' 'Obtain exact-head Git checkout/provenance, verify source, local backup/patch ledger and native E1+NodeName tests, reproduce NC-A in read-only mode and return CAPABILITY RETURN on #173. Oracle rechecks Appendix A before any code mutation.' '--role' 'Coder 6adddf80 (Owner-reported) · Stage0 accepted · WRITE HELD' '--ref' 'comment|Coder Stage0 return|https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6396792541' '--ref' 'comment|Oracle onboarding disposition|https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6396835086' '--actor' 'CIIFR Oracle (Stage0 coder return reconciliation)' '--src' 'https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6396835086' '--summary' 'Reconcile Owner-confirmed coder Stage0 and retain capability hold before E1 R1 implementation.'
+          python tools/pp_cli.py 'fixture' 'add' '--project' 'ciifr' '--list' 'issues' '--text' 'Coder 6adddf80 Stage0 #173 source return confirms CIIFR goal/architecture, PR168 candidate and read-only diagnosis. Oracle accepted onboarding content but left Appendix A partial; no implementation authorization.' '--url' 'https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6396792541' '--status' 'STAGE0_ACCEPTED' '--milestone' 'M18' '--actor' 'CIIFR Oracle (Stage0 coder return reconciliation)' '--src' 'https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6396835086' '--summary' 'Record actual Stage0 readback, repair gate and one next actor.'
+          python tools/pp_cli.py 'fixture' 'add' '--project' 'ciifr' '--list' 'knownIssues' '--text' 'E1 coder capability blocker: git ls-remote DNS failure; no local PR168 checkout, backup tool/patch-ledger setup or native E1 and NodeName regression run. Hosted CI and generic node smoke do not satisfy repository AGENTS takeover.' '--url' 'https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6396835086' '--status' 'BLOCKED_CAPABILITY' '--milestone' 'M18' '--actor' 'CIIFR Oracle (Stage0 coder return reconciliation)' '--src' 'https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6396835086' '--summary' 'Record actual Stage0 readback, repair gate and one next actor.'
+          python tools/pp_cli.py 'fixture' 'add' '--project' 'ciifr' '--list' 'pending' '--text' 'NEXT: coder 6adddf80 recover verifiable native exact-head source workspace, backup/ledger and repository test ability; post CAPABILITY RETURN on #173. No repeated onboarding, no PR168 edits until Oracle checks authority and Appendix A.' '--url' 'https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6396835086' '--status' 'CAPABILITY_RECOVERY' '--milestone' 'M18' '--actor' 'CIIFR Oracle (Stage0 coder return reconciliation)' '--src' 'https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6396835086' '--summary' 'Record actual Stage0 readback, repair gate and one next actor.'
+          python tools/pp_cli.py 'check' '--base' 'origin/main'
+          python tools/pp_cli.py 'triggers'
+      - name: Commit checked data and remove temporary recorder
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "CIIFR Progress Recorder"
+          git config user.email "ciifr-progress-bot@users.noreply.github.com"
+          git rm -f .github/workflows/ciifr-e1-stage0-reconciled-once.yml
+          git add data/ciifr/
+          git commit -m "data(ciifr): accept E1 coder Stage0 while retaining capability hold"
+          git push origin HEAD:refs/heads/pp/ciifr-r4-home-onboarding-protocol-20261025
