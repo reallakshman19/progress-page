@@ -2637,6 +2637,34 @@
       "before": "IN_PROGRESS",
       "after": "SUBMITTED",
       "rev": "R3"
+    },
+    {
+      "seq": 201,
+      "id": "CIIFR-R-0201",
+      "previous_id": "CIIFR-R-0200",
+      "at": "2026-10-25T03:43:34Z",
+      "kind": "UPDATE",
+      "actor": "OTM",
+      "summary": "OTM-TRIED on GLRD; at O4 for challenge",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/158#issuecomment-6393070161",
+      "card": "CIIFR-G41",
+      "before": "SUBMITTED",
+      "after": "SUBMITTED",
+      "rev": "R3"
+    },
+    {
+      "seq": 202,
+      "id": "CIIFR-R-0202",
+      "previous_id": "CIIFR-R-0201",
+      "at": "2026-10-25T03:43:42Z",
+      "kind": "STATE",
+      "actor": "OTM",
+      "summary": "S2-TRACE-1 return sent for challenge",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/158#issuecomment-6393070161",
+      "card": "CIIFR-O4",
+      "before": "SUBMITTED",
+      "after": "IN_PROGRESS",
+      "rev": "R3"
     }
   ]
 }
