@@ -4,7 +4,7 @@ import { renderProgress, wbsPick, wbsGroups, wbsFamily, wbsRevisionScope, wbsRou
 import { renderLessons } from './lessons.js?v=20';
 import { renderActions, renderFixtures, renderProjectHome, openCount } from './actions.js?v=20';
 import { renderTimeline } from './timeline.js?v=20';
-import { tabsRow, archivedPanel, projectHead, revisionRow, isActive } from './lifecycle.js?v=20';
+import { tabsRow, archivedPanel, projectHead, revisionRow, isActive, HOME_VIEWS, HOME_SUBTABS, PRIMARY_TABS, primaryTabActive } from './lifecycle.js?v=20';
 import { nudgesOf, openNudge } from './nudge.js?v=20';
 import { addProjectDialog, addRevisionDialog } from './briefs.js?v=20';
 import { loadLinks, takeLinksFromHash, linksPanel } from './links.js?v=20';
@@ -17,7 +17,6 @@ const isWeb = location.protocol === 'http:' || location.protocol === 'https:';
 const BASE = new URL((q.get('data') || (isWeb ? 'data' : LIVE_DATA)).replace(/\/?$/, '/'), isWeb ? location.href : LIVE_DATA);
 const FILES = ['index', 'cards', 'actions', 'fixtures', 'nudges', 'audit'];
 const OPTIONAL = { nudges: { schema: 3, nudges: {} }, audit: { events: [] } };
-const HOME_VIEWS = ['home', 'home-roadmap', 'home-sources', 'home-risks'];
 const VIEWS = ['progress', ...HOME_VIEWS, 'actions', 'fixtures', 'timeline'];
 const snapshot = () => window.__PP_SNAPSHOT__ || null;
 const withTimeout = (p, ms) => Promise.race([p, new Promise((_, rej) => setTimeout(() => rej(new Error('timeout')), ms))]);
@@ -341,9 +340,12 @@ function render() {
   const bar = HOME_VIEWS.includes(v) ? null : repoBar(view.index, groups.length ? step : null, older ? null : state.repo[key]);
   if (bar) root.append(bar);
   const views = el('nav', 'views');
-  [['home', 'Project Home', 0], ['progress', 'Progress / WBS', 0], ['actions', 'My actions', openCount(view.actions)], ['fixtures', 'Grounding fixtures', 0], ['timeline', 'Timeline', 0]].forEach(([id, label, n]) => {
-    const on = id === 'home' ? HOME_VIEWS.includes(v) : id === v;
-    const a = navLink('#/' + key + '/' + id + navSuffix, label, 'view' + (on ? ' on' : ''));
+  PRIMARY_TABS.forEach(([id, label]) => {
+    const n = id === 'actions' ? openCount(view.actions) : 0;
+    const on = primaryTabActive(id, v);
+    // Entering Project Home starts at the project-wide view, not an invisible WBS-filtered one.
+    const targetSuffix = id === 'home' ? (older ? '/' + encodeURIComponent(rev) : '') : navSuffix;
+    const a = navLink('#/' + key + '/' + id + targetSuffix, label, 'view' + (on ? ' on' : ''));
     if (on) a.setAttribute('aria-current', 'page');
     const bd = badge(n);
     if (bd) a.append(bd);
@@ -353,7 +355,7 @@ function render() {
   if (HOME_VIEWS.includes(v)) {
     const homeNav = el('nav', 'views home-subtabs');
     homeNav.setAttribute('aria-label', 'Project Home sections');
-    [['home', 'Overview'], ['home-roadmap', 'Roadmap'], ['home-sources', 'Sources'], ['home-risks', 'Risks & handoffs']].forEach(([id, label]) => {
+    HOME_SUBTABS.forEach(([id, label]) => {
       const a = navLink('#/' + key + '/' + id + navSuffix, label, 'view' + (id === v ? ' on' : ''));
       if (id === v) a.setAttribute('aria-current', 'page');
       homeNav.append(a);
@@ -373,11 +375,18 @@ function render() {
     ctx.wbsScope = wbsScope;
     ctx.navigateWbs = (nextFamily, nextStep) =>
       go(wbsRoute(key, v, nextFamily ? (rev || cur?.id) : (older ? rev : null), nextFamily, nextStep));
-    const shownStep = HOME_VIEWS.includes(v) ? null : step;
+    const shownStep = v.startsWith('home') ? null : step;
     if (shownStep) body.append(el('p', 'muted', 'Showing ' + ((family?.steps.find(x => x.key === shownStep))?.label || shownStep) + ' only; whole-project records remain marked.'));
     else if (family && !HOME_VIEWS.includes(v)) body.append(el('p', 'muted', 'Showing ' + family.label + ' only (' + family.steps.length + ' steps); whole-project records remain marked.'));
+    if (family && (v === 'fixtures' || v === 'timeline')) {
+      const info = el('p', 'muted');
+      info.append('Showing ' + (shownStep ? (family.steps.find(x => x.key === shownStep)?.label || shownStep) : family.label)
+        + ' evidence only. ');
+      info.append(navLink('#/' + key + '/' + v + (older ? '/' + encodeURIComponent(rev) : ''), 'Show entire project', ''));
+      body.append(info);
+    }
     const sv = shownStep ? stepView(view, [shownStep]) : family ? stepView(view, family.steps.map(x => x.key)) : view;
-    if (HOME_VIEWS.includes(v)) renderProjectHome(body, view, v);
+    if (v.startsWith('home')) renderProjectHome(body, view, v);
     else if (v === 'progress') renderProgress(body, view, ctx);
     else if (v === 'actions') renderActions(body, sv);
     else if (v === 'fixtures') renderFixtures(body, sv.fixtures);
