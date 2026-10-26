@@ -1,6 +1,7 @@
 // My actions (decision cards) and Grounding fixtures.
-import { el, link, md, age, copyText } from './util.js?v=21';
-import { issueUrl, pageUrl } from './reply.js?v=21';
+import { el, link, md, age, copyText } from './util.js?v=22';
+import { issueUrl, pageUrl } from './reply.js?v=22';
+import { oracleContinuityModel } from './oracle-continuity.js?v=22';
 
 export const openCount = (actions) => Object.values(actions || {}).filter((a) => a.status === 'open').length;
 
@@ -243,6 +244,8 @@ export function renderProjectHome(root, project, mode = 'home') {
       ['Roadmap', m.roadmap.length + ' plan entries', 'home-roadmap', 'Delivery sequence and numbered WBS'],
       ['Architecture', m.architecture.length + ' source records', 'home-sources', 'Engineering concepts and original references'],
       ['Work and risks', m.currentTasks.length + ' current tasks', 'home-risks', 'Open issues, actors and handoff custody'],
+      ['Oracle continuity', oracleContinuityModel(project).cards.length + ' source-linked records', 'oracle-continuity', 'Oracle onboarding and handover checkpoints'],
+      ['My actions', openCount(project.actions) + ' open decisions', 'actions', 'Owner decisions and replies'],
       ['Execution status', m.milestones.length + ' milestones', 'progress', 'Actual agent results and evidence'],
     ];
     destinations.forEach(([title, count, dest, detail]) => {

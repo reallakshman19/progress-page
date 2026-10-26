@@ -1,8 +1,8 @@
 // Progress view: attention strip, milestone strip, then groups of agent blocks.
-import { el, link, md, age } from './util.js?v=21';
-import { cardTags, fmt, nudgeTag } from './triggers.js?v=21';
-import { nudgeRow } from './nudge.js?v=21';
-import { onboardingModel, renderOnboarding } from './onboarding.js?v=21';
+import { el, link, md, age } from './util.js?v=22';
+import { cardTags, fmt, nudgeTag } from './triggers.js?v=22';
+import { nudgeRow } from './nudge.js?v=22';
+import { onboardingModel, renderOnboarding } from './onboarding.js?v=22';
 
 const RANK = { NOT_STARTED: 0, UNKNOWN: 1, STALE: 1, IN_PROGRESS: 2, SUBMITTED: 3, VERIFIED: 4 };
 const ICON = { VERIFIED: '✓', SUBMITTED: '↑', IN_PROGRESS: '●', BLOCKED: '!', NOT_STARTED: '○', STALE: '?', UNKNOWN: '?', NOT_APPLICABLE: '–' };
@@ -385,15 +385,15 @@ export function renderProgress(root, project, ctx) {
   const allowed = family ? new Set(family.steps.map(s => s.key)) : null;
   picked = picks[key] || null;
   root.append(strip(project.index, cards, ctx, family));
-  const onb = onboardingModel(project);
+  // Oracle onboarding is presented in Project Home / Oracle continuity, not as
+  // a special G0 coding-agent readiness panel. Preserve the original WBS card evidence.
   const groups = Object.entries(project.index.groups || {}).sort((a, b) => (a[1].order || 0) - (b[1].order || 0));
   const used = new Set();
   groups.forEach(([gk, g]) => {
     const mine = cards.filter((c) => c.group === gk).sort((a, b) => (Number(!!a.closed) - Number(!!b.closed)) || ((a.order || 0) - (b.order || 0)));
     if (!mine.length) return;
     mine.forEach((c) => used.add(c.id));
-    root.append(onb && gk === onb.groupId && mine.some(c => c.id === onb.cardId)
-      ? onboardingWbsGroup(project, g, mine, ctx, onb) : groupBlock(g, mine, ctx));
+    root.append(groupBlock(g, mine, ctx));
   });
   const rest = cards.filter((c) => !used.has(c.id));
   if (rest.length) root.append(groupBlock({ title: 'Other' }, rest, ctx));

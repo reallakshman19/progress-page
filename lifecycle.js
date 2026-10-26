@@ -1,18 +1,19 @@
 // Project tabs with "+", the Archived list, the project header and the revision row.
-import { el, link, whenText, isHttps, copyText } from './util.js?v=21';
+import { el, link, whenText, isHttps, copyText } from './util.js?v=22';
 
 const COMMON = 'https://github.com/reallakshman19/Common/tree/main/skills/agent-work/';
 const MODULES = ['task-decomposer', 'nudge-designer', 'independent-review', 'gatekeeper', 'local-handover', 'progress-page'];
 const WORD = { archived: 'Archived', superseded: 'Superseded', cancelled: 'Cancelled' };
   
 // Presentation-only nesting; these remain the same independently addressable routes.
-export const HOME_VIEWS = Object.freeze(['home','home-roadmap','home-sources','home-risks','fixtures','timeline']);
+export const HOME_VIEWS = Object.freeze(['home','home-roadmap','home-sources','home-risks','oracle-continuity','actions','fixtures','timeline']);
 export const HOME_SUBTABS = Object.freeze([
   ['home','Overview'], ['home-roadmap','Roadmap'], ['home-sources','Sources'],
-  ['home-risks','Risks & handoffs'], ['fixtures','Grounding fixtures'], ['timeline','Timeline'],
+  ['home-risks','Risks & handoffs'], ['oracle-continuity','Oracle continuity'],
+  ['actions','My actions'], ['fixtures','Grounding fixtures'], ['timeline','Timeline'],
 ]);
-export const PRIMARY_TABS = Object.freeze([['home','Project Home'],['progress','Progress / WBS'],['actions','My actions']]);
-export const primaryTabActive = (id, view) => id === 'home' ? HOME_VIEWS.includes(view) : id === view;
+export const PRIMARY_TABS = Object.freeze([['home','Project Home'],['progress','Progress / WBS']]);
+export const primaryTabActive = (id, view) => id === 'home' ? HOME_VIEWS.includes(view) : id === 'progress' && view === 'progress';
 
 
 export const isActive = (p) => (p.status || 'active') === 'active';
