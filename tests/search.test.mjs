@@ -39,7 +39,7 @@ test('WBS 3 and 3.1 match only their owned work; free text searches descriptions
 });
 test('deep links preserve project, WBS and historical revision rather than leaking current R2',()=>{
   const card=searchProgress(index,'PR 185').find(x=>x.type==='Agent');
-  assert.equal(card.url,'#/a/progress/current/wbs%3A3/M1');
+  assert.equal(card.url,'#/a/progress/R2/wbs%3A3/M1');
   const event=searchProgress(index,'issue 170').find(x=>x.type==='Timeline');
   assert.equal(event.revision,'R1');
   assert.match(event.url,/^#\/a\/timeline\/R1/);
