@@ -1,14 +1,14 @@
 // Shell: loads the JSON, draws the project tabs and the views, refreshes every two minutes.
-import { el, link, tick, ago, whenText } from './util.js?v=16';
-import { renderProgress, wbsPick, wbsSteps } from './progress.js?v=16';
-import { renderLessons } from './lessons.js?v=16';
-import { renderActions, renderFixtures, renderProjectHome, openCount } from './actions.js?v=16';
-import { renderTimeline } from './timeline.js?v=16';
-import { tabsRow, archivedPanel, projectHead, isActive } from './lifecycle.js?v=16';
-import { nudgesOf, openNudge } from './nudge.js?v=16';
-import { addProjectDialog, addRevisionDialog } from './briefs.js?v=16';
-import { loadLinks, takeLinksFromHash, linksPanel } from './links.js?v=16';
-import { rulesOf, holdOf, summary, needsAttention } from './triggers.js?v=16';
+import { el, link, tick, ago, whenText } from './util.js?v=17';
+import { renderProgress, wbsPick, wbsSteps } from './progress.js?v=17';
+import { renderLessons } from './lessons.js?v=17';
+import { renderActions, renderFixtures, renderProjectHome, openCount } from './actions.js?v=17';
+import { renderTimeline } from './timeline.js?v=17';
+import { tabsRow, archivedPanel, projectHead, isActive } from './lifecycle.js?v=17';
+import { nudgesOf, openNudge } from './nudge.js?v=17';
+import { addProjectDialog, addRevisionDialog } from './briefs.js?v=17';
+import { loadLinks, takeLinksFromHash, linksPanel } from './links.js?v=17';
+import { rulesOf, holdOf, summary, needsAttention } from './triggers.js?v=17';
 
 const LIVE_DATA = 'https://reallakshman19.github.io/progress-page/data/';
 const q = new URLSearchParams(location.search);
@@ -17,7 +17,8 @@ const isWeb = location.protocol === 'http:' || location.protocol === 'https:';
 const BASE = new URL((q.get('data') || (isWeb ? 'data' : LIVE_DATA)).replace(/\/?$/, '/'), isWeb ? location.href : LIVE_DATA);
 const FILES = ['index', 'cards', 'actions', 'fixtures', 'nudges', 'audit'];
 const OPTIONAL = { nudges: { schema: 3, nudges: {} }, audit: { events: [] } };
-const VIEWS = ['progress', 'actions', 'fixtures', 'timeline'];
+const HOME_VIEWS = ['home', 'home-roadmap', 'home-sources', 'home-risks'];
+const VIEWS = ['progress', ...HOME_VIEWS, 'actions', 'fixtures', 'timeline'];
 const snapshot = () => window.__PP_SNAPSHOT__ || null;
 const withTimeout = (p, ms) => Promise.race([p, new Promise((_, rej) => setTimeout(() => rej(new Error('timeout')), ms))]);
 
@@ -290,10 +291,11 @@ function render() {
     return;
   }
   root.append(projectHead(p, c));
-  // Project > revision > WBS step > page: the WBS row narrows the pages below it to one step.
+  // Home keeps source navigation separate from the operational WBS selector.
+  // Project > revision > WBS step > page: the WBS row narrows operational pages only.
   const steps = wbsSteps(view.index);
   if (wbsPick(key) && !((view.index || {}).milestones || {})[wbsPick(key)]) wbsPick(key, null);
-  if (steps.length) {
+  if (steps.length && !HOME_VIEWS.includes(v)) {
     const row = el('nav', 'wbs-row');
     row.append(el('span', 'h-label', 'WBS'));
     [{ key: null, label: 'All steps' }].concat(steps).forEach((x) => {
@@ -304,16 +306,28 @@ function render() {
     });
     root.append(row);
   }
-  const bar = repoBar(view.index, steps.length ? wbsPick(key) : null, state.repo[key]);
+  const bar = HOME_VIEWS.includes(v) ? null : repoBar(view.index, steps.length ? wbsPick(key) : null, state.repo[key]);
   if (bar) root.append(bar);
   const views = el('nav', 'views');
-  [['progress', 'Home / Progress', 0], ['actions', 'My actions', openCount(view.actions)], ['fixtures', 'Grounding fixtures', 0], ['timeline', 'Timeline', 0]].forEach(([id, label, n]) => {
-    const a = navLink('#/' + key + '/' + id + (older ? '/' + rev : ''), label, 'view' + (id === v ? ' on' : ''));
+  [['home', 'Project Home', 0], ['progress', 'Progress / WBS', 0], ['actions', 'My actions', openCount(view.actions)], ['fixtures', 'Grounding fixtures', 0], ['timeline', 'Timeline', 0]].forEach(([id, label, n]) => {
+    const on = id === 'home' ? HOME_VIEWS.includes(v) : id === v;
+    const a = navLink('#/' + key + '/' + id + (older ? '/' + rev : ''), label, 'view' + (on ? ' on' : ''));
+    if (on) a.setAttribute('aria-current', 'page');
     const bd = badge(n);
     if (bd) a.append(bd);
     views.append(a);
   });
   root.append(views);
+  if (HOME_VIEWS.includes(v)) {
+    const homeNav = el('nav', 'views home-subtabs');
+    homeNav.setAttribute('aria-label', 'Project Home sections');
+    [['home', 'Overview'], ['home-roadmap', 'Roadmap'], ['home-sources', 'Sources'], ['home-risks', 'Risks & handoffs']].forEach(([id, label]) => {
+      const a = navLink('#/' + key + '/' + id + (older ? '/' + rev : ''), label, 'view' + (id === v ? ' on' : ''));
+      if (id === v) a.setAttribute('aria-current', 'page');
+      homeNav.append(a);
+    });
+    root.append(homeNav);
+  }
   const body = el('div', 'body');
   if (older && (!rv || rv.status !== 'ready')) {
     body.append(el('p', 'muted', rv && rv.status === 'error' ? 'This revision cannot be shown here.' : 'Loading...'));
@@ -324,10 +338,11 @@ function render() {
       nudge: { openList: (id) => nudgesOf(view, id).filter((n) => n.status === 'open'), list: (id) => nudgesOf(view, id), open: (card) => openNudge(view, card, rules.coordinator) },
     };
     ctx.rerender = render;
-    const step = steps.length ? wbsPick(key) : null;
+    const step = HOME_VIEWS.includes(v) ? null : (steps.length ? wbsPick(key) : null);
     if (step) body.append(el('p', 'muted', 'Showing WBS step ' + ((steps.find((x) => x.key === step) || {}).label || step) + ' only; items for the whole project are marked so.'));
     const sv = step ? stepView(view, step) : view;
-    if (v === 'progress') { renderProjectHome(body, view); renderProgress(body, view, ctx); }
+    if (HOME_VIEWS.includes(v)) renderProjectHome(body, view, v);
+    else if (v === 'progress') renderProgress(body, view, ctx);
     else if (v === 'actions') renderActions(body, sv);
     else if (v === 'fixtures') renderFixtures(body, sv.fixtures);
     else if (step) renderTimeline(body, sv);

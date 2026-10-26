@@ -37,6 +37,8 @@ jobs:
           node-version: '20'
       - name: Onboarding readiness contrasts
         run: node --experimental-default-type=module --test tests/onboarding.test.mjs
+      - name: Project Home navigation and source-retention tests
+        run: node --experimental-default-type=module --test tests/project-home.test.mjs
       - name: Seeded-defect tests
         env:
           PYTHONDONTWRITEBYTECODE: '1'

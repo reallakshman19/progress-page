@@ -1,6 +1,6 @@
 // My actions (decision cards) and Grounding fixtures.
-import { el, link, md, age, copyText } from './util.js?v=16';
-import { issueUrl, pageUrl } from './reply.js?v=16';
+import { el, link, md, age, copyText } from './util.js?v=17';
+import { issueUrl, pageUrl } from './reply.js?v=17';
 
 export const openCount = (actions) => Object.values(actions || {}).filter((a) => a.status === 'open').length;
 
@@ -151,7 +151,7 @@ export function projectHomeModel(project) {
   const refs = [...(fx.repository || []), ...(fx.intent || []), ...(fx.highRoi || [])];
   const matches = (item, re) => re.test([(item.t || ''), (item.s || ''), (item.n || ''), (item.u || '')].join(' '));
   const concepts = refs.filter(item => matches(item, /concept[ -]?note|project concept|concept brief|concept overview|CONCEPT_NOTE/i));
-  const architecture = refs.filter(item => matches(item,
+  const architecture = refs.filter(item => !concepts.includes(item) && matches(item,
     /architectur|complex concept|data model|source model|system model|engineering contract|physical model|topolog|ARCHITECTURE_CONCEPT|COMPLEX_CONCEPT/i));
   const milestones = Object.entries(project?.index?.milestones || {}).sort((a, b) =>
     (a[1].order || 0) - (b[1].order || 0)).map(([id, m]) => ({ id, text: (m.wbs ? 'WBS ' + m.wbs + ' · ' : '') + (m.name || id), detail: m.full || '' }));
@@ -187,45 +187,102 @@ function homeList(root, heading, items, empty, open = false, draw = null) {
       }
       ul.append(li);
     });
+    if (items.length > 12) {
+      const input = el('input', 'home-filter');
+      input.type = 'search';
+      input.placeholder = 'Find in ' + heading.toLowerCase() + '…';
+      input.setAttribute('aria-label', 'Filter ' + heading);
+      const count = el('p', 'home-filter-count muted', 'Showing all ' + items.length + ' records');
+      input.addEventListener('input', () => {
+        const term = input.value.trim().toLocaleLowerCase();
+        let visible = 0;
+        ul.querySelectorAll('li').forEach(li => {
+          li.hidden = !li.textContent.toLocaleLowerCase().includes(term);
+          if (!li.hidden) visible++;
+        });
+        count.textContent = 'Showing ' + visible + ' of ' + items.length + ' records';
+      });
+      detail.append(input, count);
+    }
     detail.append(ul);
   }
   root.append(detail);
 }
 
-export function renderProjectHome(root, project) {
+// Stable grouping derived only from the existing roadmap labels; no new task status or acceptance is inferred.
+export function projectRoadmapGroups(items = []) {
+  const groups = [
+    { title: 'Geometry · WBS 3', entries: [] },
+    { title: 'Element · WBS 4', entries: [] },
+    { title: 'Programme, integration and history', entries: [] },
+  ];
+  items.forEach(item => {
+    const tag = String(item.s || '').toUpperCase();
+    const group = /^(?:G[0-4](?:_|$)|WBS3_)/.test(tag) ? 0
+      : /^(?:E[0-6](?:_|$)|WBS4_|NEXT_THREE$)/.test(tag) ? 1 : 2;
+    groups[group].entries.push(item);
+  });
+  return groups;
+}
+
+export function renderProjectHome(root, project, mode = 'home') {
   const m = projectHomeModel(project);
+  const key = project?.index?.project?.key || '';
   const box = el('section', 'project-home');
-  box.append(el('h3', null, 'Project Home · Owner concept, architecture and roadmap'));
-  box.append(el('p', 'muted', 'Source-linked project grounding curated by the Oracle. Existing GitHub records remain authoritative; this display grants no task, review or merge permission.'));
-  if (m.aim) {
-    const aim = el('p', 'home-aim');
-    aim.append(el('b', null, 'Owner aim: '), m.aim + ' ');
-    if (/^https:\/\//.test(m.aimSrc)) aim.append(link(m.aimSrc, 'Owner source'));
-    box.append(aim);
-  } else box.append(el('p', 'muted', 'Owner aim not recorded in this project.'));
-  homeList(box, 'Concept note and purpose', m.concepts,
-    'Not recorded: Oracle should add a source-linked project concept note to existing Grounding Fixtures.', true);
-  homeList(box, 'Architecture and complex concepts', m.architecture,
-    'Not recorded: Oracle should link source-grounded architecture and difficult concept explanations.', true);
-  homeList(box, 'Roadmap and delivery sequence', m.roadmap,
-    'No source-grounded roadmap recorded yet.', true);
-  homeList(box, 'WBS and dependency context', m.milestones, 'No WBS milestones recorded.', false,
-    (li, item) => { li.append(el('b', null, item.text)); if (item.detail) li.append(el('span', 'muted', ' — ' + item.detail)); });
-  homeList(box, 'Current WBS tasks and next actions', m.currentTasks, 'No open work recorded.', false,
-    (li, item) => {
-      li.append(el('b', null, item.label), ' · ' + (item.milestone || 'project'));
-      if (item.actor) li.append(' · ' + item.actor);
-      if (item.next) li.append(el('span', 'muted', ' — ' + item.next));
+  const names = { home: 'Project Home', 'home-roadmap': 'Roadmap and WBS',
+    'home-sources': 'Architecture and sources', 'home-risks': 'Work, risks and handoffs' };
+  box.append(el('h3', null, names[mode] || names.home));
+  box.append(el('p', 'muted home-note',
+    'Read-only, source-linked project context. Original GitHub records govern; this page grants no task, review, Writer or merge authority.'));
+
+  if (mode === 'home') {
+    if (!m.aim) box.append(el('p', 'muted', 'Owner aim not recorded in this project.'));
+    // projectHead already displays the Owner aim and source; do not repeat the long text here.
+    const nav = el('div', 'home-tiles');
+    const destinations = [
+      ['Roadmap', m.roadmap.length + ' plan entries', 'home-roadmap', 'Delivery sequence and numbered WBS'],
+      ['Architecture', m.architecture.length + ' source records', 'home-sources', 'Engineering concepts and original references'],
+      ['Work and risks', m.currentTasks.length + ' current tasks', 'home-risks', 'Open issues, actors and handoff custody'],
+      ['Execution status', m.milestones.length + ' milestones', 'progress', 'Actual agent results and evidence'],
+    ];
+    destinations.forEach(([title, count, dest, detail]) => {
+      const a = el('a', 'home-tile');
+      a.href = '#/' + encodeURIComponent(key) + '/' + dest;
+      a.append(el('strong', null, title), el('span', 'home-tile-count', count), el('span', 'home-tile-desc', detail));
+      nav.append(a);
     });
-  const relayInfo = el('p', 'muted', 'Oracle↔agent fixture custody: preferred ');
-  relayInfo.append(link(COMMON_RELAY, 'Common relay/AGENT_WORK'), ' · ', link(RELAY_POLICY, 'handoff protocol'),
-    '. Restricted bytes use authorized private Drive fallback, with sanitized relay receipt where possible. A link or producer hash is not receiver verification.');
-  box.append(relayInfo);
-  homeList(box, 'Current agent inputs and artifact returns', m.relayInputs,
-    'No task-scoped Common relay fixture/receipt recorded. Oracle should link the authoritative WBS input, published record, actual recipient observation and output return through existing fixtures.', true);
-  homeList(box, 'Original sources and ground fixtures', m.sources, 'No sources recorded.');
-  homeList(box, 'Owner decisions and revisions', m.intent, 'No decision/source entries recorded.');
-  homeList(box, 'Architecture improvement rationale', m.decisions, 'No rationale entries recorded.');
-  homeList(box, 'Known issues, blockers and pending work', m.blockers, 'No issues/pending entries recorded.');
+    box.append(nav);
+    homeList(box, 'Concept note and purpose', m.concepts,
+      'No source-grounded concept recorded yet; link an existing project note in Grounding Fixtures.', m.concepts.length > 0 && m.concepts.length <= 3);
+    box.append(el('p', 'home-tip muted',
+      'Plans are not verified deliverables. Use Execution status for current PASS / HOLD / NOT_RUN evidence and actors.'));
+  } else if (mode === 'home-roadmap') {
+    box.append(el('p', 'home-note', 'Planned sequence only. Open a WBS group to read its source entries; check Progress for actual execution and release qualification.'));
+    projectRoadmapGroups(m.roadmap).forEach(g => {
+      if (g.entries.length) homeList(box, g.title, g.entries, 'No entries in this workstream.');
+    });
+    homeList(box, 'Numbered WBS and milestone definitions', m.milestones, 'No WBS milestones recorded.', false,
+      (li, item) => { li.append(el('b', null, item.text)); if (item.detail) li.append(el('span', 'muted', ' — ' + item.detail)); });
+  } else if (mode === 'home-sources') {
+    homeList(box, 'Architecture and complex concepts', m.architecture,
+      'No source-grounded architecture records yet.');
+    homeList(box, 'Original sources and ground fixtures', m.sources, 'No sources recorded.');
+    homeList(box, 'Owner decisions and revisions', m.intent, 'No decision/source entries recorded.');
+    homeList(box, 'Architecture improvement rationale', m.decisions, 'No rationale entries recorded.');
+  } else if (mode === 'home-risks') {
+    homeList(box, 'Current WBS tasks and next actions', m.currentTasks, 'No open work recorded.', false,
+      (li, item) => {
+        li.append(el('b', null, item.label), ' · ' + (item.milestone || 'project'));
+        if (item.actor) li.append(' · ' + item.actor);
+        if (item.next) li.append(el('span', 'muted', ' — ' + item.next));
+      });
+    homeList(box, 'Known issues, blockers and pending work', m.blockers, 'No issues/pending entries recorded.');
+    const relayInfo = el('p', 'home-note muted', 'Oracle↔agent custody: preferred ');
+    relayInfo.append(link(COMMON_RELAY, 'Common relay/AGENT_WORK'), ' · ', link(RELAY_POLICY, 'handoff protocol'),
+      '. A producer hash or public link alone does not verify recipient bytes.');
+    box.append(relayInfo);
+    homeList(box, 'Current agent inputs and artifact returns', m.relayInputs,
+      'No task-scoped Common relay fixture/receipt is recorded. This does not imply delivery.', false);
+  }
   root.append(box);
 }

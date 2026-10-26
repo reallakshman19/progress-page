@@ -246,3 +246,16 @@ details.nd{margin-top:6px;font-size:12px}
 .home-detail>p{padding:0 .75rem}
 .home-items{padding:.3rem 1rem .55rem 2rem;margin:0}
 .home-items li{line-height:1.45;padding:.12rem 0;overflow-wrap:anywhere}
+
+/* Project Home has its own compact pages, not a 200+ item expanded source wall. */
+.home-subtabs{margin-top:-4px;border-bottom:1px solid var(--bd)}
+.home-subtabs .view{font-size:13px;padding:7px 12px}
+.project-home .home-note,.project-home .home-tip{font-size:12px;line-height:1.5}
+.home-tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin:12px 0 16px}
+.home-tile{display:flex;flex-direction:column;gap:5px;padding:12px;border:1px solid var(--bd);border-radius:10px;background:var(--card);color:var(--fg);text-decoration:none;min-width:0}
+.home-tile:hover,.home-tile:focus-visible{border-color:var(--acc);outline:1px solid var(--acc)}
+.home-tile-count{color:var(--acc);font-size:12px;font-weight:600}
+.home-tile-desc{color:var(--mut);font-size:12px;line-height:1.4}
+.home-filter{margin:10px 12px 0;width:calc(100% - 24px);padding:8px 10px;border:1px solid var(--bd);border-radius:6px;background:var(--bg);color:var(--fg);font:inherit;font-size:13px}
+.home-filter-count{margin:5px 12px!important;padding:0!important;font-size:11px}
+.home-items li[hidden]{display:none}
