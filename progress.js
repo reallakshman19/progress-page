@@ -154,11 +154,12 @@ function strip(index, cards, ctx, family = null) {
     ev.forEach(([key, m], i) => { if (i) p.append(' · '); p.append(link(m.capSrc, m.wbs ? 'WBS ' + m.wbs : key)); });
     wrap.append(p);
   }
-  const live = cards.filter((c) => c.state !== 'NOT_APPLICABLE');
+  const scopedCards = allowed ? cards.filter(c => allowed.has(c.milestone)) : cards;
+  const live = scopedCards.filter((c) => c.state !== 'NOT_APPLICABLE');
   const n = {};
   live.forEach((c) => { n[c.state] = (n[c.state] || 0) + 1; });
   const parts = COUNT_ORDER.filter(([s]) => n[s]).map(([s, label]) => n[s] + ' ' + label);
-  const closed = cards.length - live.length;
+  const closed = scopedCards.length - live.length;
   wrap.append(el('p', 'ms-line', (parts.join(' · ') || 'no cards') + ' of ' + live.length + ' cards' + (closed ? ' (' + closed + ' superseded or cancelled not counted)' : '')
     + '. A card count on a partial list, not a delivery percentage.'));
   return wrap;
@@ -290,6 +291,7 @@ function groupBlock(g, mine, ctx) {
 // Attention strip: the trigger counts for this project. Clicking a count jumps to the first matching block.
 function attention(sum, rules) {
   const wrap = el('div', 'attn');
+  wrap.append(el('span', 'muted', 'Project-wide attention:'));
   const coord = (rules || {}).coordinator || 'OTM';
   [['needsYou', 'needs-you', 'Needs you', 'd'], ['owes', 'owes', coord + ' owes', 'w'], ['nudges', 'nudge', 'Nudges for ' + coord, 'w'],
     ['quiet', 'quiet', 'Quiet agents', 'w'], ['waiting', 'waiting', 'Waiting on others', 'w']]
@@ -299,7 +301,7 @@ function attention(sum, rules) {
       b.type = 'button';
       if (n) {
         b.addEventListener('click', () => {
-          const t = document.querySelector('.card[data-trig~="' + k + '"]');
+          const t = document.querySelector('.card[data-trig~="' + k + '"]:not([hidden])');
           if (!t) return;
           t.scrollIntoView({ block: 'center', behavior: 'smooth' });
           t.classList.add('flash');
