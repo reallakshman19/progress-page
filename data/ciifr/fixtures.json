@@ -296,6 +296,12 @@
       "u": "https://github.com/reallakshman19/Common/pull/511",
       "s": "PENDING_ORACLE_PR511",
       "milestone": "M12"
+    },
+    {
+      "t": "Draft PR185 G1 3D opt-in viewer stacked on PR183/181: fixed async session ownership at head 3787acdf, scoped non-author native F1 PASS; served WebGL/GPU and Owner acceptance pending; unmerged.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/185",
+      "s": "G1_PR185_F1_SCOPED",
+      "milestone": "M13"
     }
   ],
   "roadmap": [
@@ -951,6 +957,35 @@
       "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/177#issuecomment-6401698353",
       "s": "G2_REAL_AMBIGUITY",
       "milestone": "M14"
+    },
+    {
+      "t": "SUPERSEDED past-state claim (pending/ORACLE_CYCLE_SEPARATION): Geometry Cycle is ACTIVE rev4 (G1 returned), Element Cycle PREPARED_NOT_ACTIVE rev0; Common PR511/PR507 are drafts; successor knowledge transfer does not change control epoch or authorization.",
+      "u": "https://github.com/reallakshman19/Common/pull/511",
+      "s": "HISTORICAL_SUPERSEDED",
+      "milestone": "M7"
+    },
+    {
+      "t": "SUPERSEDED past-state claim (pending/NEEDS_COORDINATION): Before any G1 implementation: confirm single owner for overlapping PR #165 paths, effective writer and source/target original-byte fixture access. New Oracle Cycle not activated by this Progress plan.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/166#issuecomment-6393745466",
+      "s": "HISTORICAL_SUPERSEDED",
+      "milestone": "M12"
+    },
+    {
+      "t": "SUPERSEDED past-state claim (knownIssues/NOT_YET_BUILT): Method C candidate engine requires a registration pose and returns coordinate-near suggestions; independent pose-free topology matcher and two distinct synchronized SVG render targets are new work.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/166#issuecomment-6393745466",
+      "s": "HISTORICAL_SUPERSEDED",
+      "milestone": "M14"
+    },
+    {
+      "t": "Canonical Geometry Cycle ACTIVE rev12; exact draft PR185 head 3787acdf with scoped F1 non-author native PASS; complete browser/WebGL/Owner original-pair trial NOT_RUN. G2/G3/G4 not released.",
+      "u": "https://github.com/reallakshman19/Common/blob/main/oracle-cycles/ciifr/CURRENT.json",
+      "s": "GEO_CYCLE_R12",
+      "milestone": "M13"
+    },
+    {
+      "t": "Separate Element Cycle ACTIVE rev3 (not rev0/rev1); independent WBS4 source/config gate, no Writer/TARGET1 or Geometry control transfer.",
+      "u": "https://github.com/reallakshman19/Common/blob/main/oracle-cycles/ciifr-element/CURRENT.json",
+      "s": "ELEMENT_CYCLE_R3"
     }
   ],
   "knownIssues": [
@@ -1020,12 +1055,6 @@
       "u": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/165",
       "s": "COORDINATION_REQUIRED",
       "milestone": "M12"
-    },
-    {
-      "t": "Method C candidate engine requires a registration pose and returns coordinate-near suggestions; independent pose-free topology matcher and two distinct synchronized SVG render targets are new work.",
-      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/166#issuecomment-6393745466",
-      "s": "NOT_YET_BUILT",
-      "milestone": "M14"
     },
     {
       "t": "Existing Normal/NodeName writer sameStructure guard assumes unchanged ELEMENTS; direct numeric/Line/RIGID changes need a separately bounded writer/reparse policy, not a bypass.",
@@ -1196,12 +1225,6 @@
       "milestone": "M7"
     },
     {
-      "t": "Before any G1 implementation: confirm single owner for overlapping PR #165 paths, effective writer and source/target original-byte fixture access. New Oracle Cycle not activated by this Progress plan.",
-      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/166#issuecomment-6393745466",
-      "s": "NEEDS_COORDINATION",
-      "milestone": "M12"
-    },
-    {
       "t": "Oracle to select a single bounded E0/E1 writer and verify access/capabilities/exact head, including ownership of VNext files after PR165 merge.",
       "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167",
       "s": "NEXT_RELEASE_REQUIRED",
@@ -1339,10 +1362,16 @@
       "milestone": "M19"
     },
     {
-      "t": "Geometry Cycle is ACTIVE rev4 (G1 returned), Element Cycle PREPARED_NOT_ACTIVE rev0; Common PR511/PR507 are drafts; successor knowledge transfer does not change control epoch or authorization.",
-      "u": "https://github.com/reallakshman19/Common/pull/511",
-      "s": "ORACLE_CYCLE_SEPARATION",
-      "milestone": "M7"
+      "t": "G1 rev12 PRIORITY: complete PR185 original file journey + hosted XML profile parity separately; overlay/split, linked SVG/3D picks, stale callbacks and downloads. Last automation stalled selecting fixtures; INCONCLUSIVE, not product FAIL.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/186#issuecomment-6415117812",
+      "s": "G1_BROWSER_REV12_PENDING",
+      "milestone": "M13"
+    },
+    {
+      "t": "Geometry integration ownership: reconcile dual-SVG PR174 with XML/scene/viewer stacked PR181/183/185, including original-CII vs public same-S1 XML profiles, before product merge/acceptance.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/185",
+      "s": "G1_STACK_CONVERGENCE",
+      "milestone": "M13"
     }
   ]
 }

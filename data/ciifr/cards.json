@@ -629,10 +629,10 @@
     "label": "G0 · Onboarding and ownership",
     "who": {},
     "state": "SUBMITTED",
-    "now": "G0 source/role intake now has exact G1 draft PR174 and PR181 artifacts; source and original parser observations reported. Original served-browser B1-B4, new-head independent reviewer and Owner acceptance still NOT_RUN.",
+    "now": "Geometry Cycle ACTIVE rev12: G0 source/assignment and PR stack routes documented. Routing is established; browser, independent full-path and Owner acceptance are not.",
     "next": {
-      "actor": "Independent G1 reviewer",
-      "text": "Replay original S1/T in a real browser at exact G1 head; no Writer or engineering release."
+      "actor": "Geometry Oracle / browser executor",
+      "text": "Retain exact PR185/PR183/PR181/PR174 heads and ownership; execute the outstanding G1 trial, not duplicate onboarding."
     },
     "refs": [
       {
@@ -640,10 +640,15 @@
         "l": "Geometry Option C canonical work order",
         "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/166#issuecomment-6393745466",
         "s": "PLANNED"
+      },
+      {
+        "k": "comment",
+        "l": "Current native evidence",
+        "u": "https://github.com/reallakshman19/Common/blob/main/oracle-cycles/ciifr/CURRENT.json"
       }
     ],
-    "updatedAt": "2026-10-26T04:43:20Z",
-    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/175#issuecomment-6401364122"
+    "updatedAt": "2026-10-26T12:21:49Z",
+    "src": "https://github.com/reallakshman19/Common/blob/main/oracle-cycles/ciifr/CURRENT.json"
   },
   "geo-g1": {
     "order": 21,
@@ -652,10 +657,10 @@
     "label": "G1 · Anchor, ledger and dual SVG",
     "who": {},
     "state": "SUBMITTED",
-    "now": "G1 published draft PR174 (Method C/dual SVG) and PR181 (XML geometry preview). Author native tests and original source parse exist. Served Windows/browser original pair B1-B4, signed-Z display, inherited Normal and independent review remain NOT_RUN.",
+    "now": "G1 draft PR174 dual SVG + PR181 XML adapter + PR183 scene + PR185 opt-in 3D. F1 async ownership repaired; separate non-author exact-head native PASS at 3787acdf. Hosted shell opened, but real XML/3D/WebGL and Owner trial NOT_RUN.",
     "next": {
-      "actor": "Independent browser reviewer",
-      "text": "Run exact original S1/T on G1 candidates, compare table/SVG/GUI, 4060 segment-only, 4970 Z, Normal and stale-data negatives."
+      "actor": "Capable browser executor / Geometry Oracle",
+      "text": "On PR185 exact 3787acdf load XML pair, anchors/Method C, SVG and 3D overlay/split, picks, stale cases, downloads; separately test true original S1/T."
     },
     "refs": [
       {
@@ -663,10 +668,15 @@
         "l": "Geometry Option C canonical work order",
         "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/166#issuecomment-6393745466",
         "s": "PLANNED"
+      },
+      {
+        "k": "comment",
+        "l": "Current native evidence",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/186#issuecomment-6412690110"
       }
     ],
-    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/175#issuecomment-6401687179",
-    "updatedAt": "2026-10-26T04:43:20Z"
+    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/186#issuecomment-6415117812",
+    "updatedAt": "2026-10-26T12:21:49Z"
   },
   "geo-g2": {
     "order": 22,
@@ -675,10 +685,10 @@
     "label": "G2 · Smart topology + Boolean",
     "who": {},
     "state": "SUBMITTED",
-    "now": "G2 draft PR182 source-only pose-free topology/Boolean JSON CLI: author tests 7/7 PASS. Manual/Topology/OR/AND, alternative matches and conflicts preserved. Actual PR181 S1/T input, independent verification and UI integration NOT_RUN.",
+    "now": "G2 PR182 pose-free source CLI exists; 7/7 author tests PASS only. Original S1/T signature: 3910 has three TARGET alternatives, 3940/3970 have 319 each. Real PR181 graph run and non-author falsification NOT_RUN.",
     "next": {
-      "actor": "G2 non-author reviewer",
-      "text": "Challenge PR182 against real PR181 graph output, S1/T ambiguous signatures, target collisions, hash guards; no implicit node-map acceptance."
+      "actor": "Separate read-only G2 reviewer",
+      "text": "Challenge PR182 on real PR181 graphs: keep alternatives, target collisions, Manual/Topology/OR/AND exclusions and hash-epoch guards; do not auto-map."
     },
     "refs": [
       {
@@ -686,10 +696,15 @@
         "l": "Geometry Option C canonical work order",
         "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/166#issuecomment-6393745466",
         "s": "PLANNED"
+      },
+      {
+        "k": "comment",
+        "l": "Current native evidence",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/177#issuecomment-6401698353"
       }
     ],
     "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/177#issuecomment-6407926621",
-    "updatedAt": "2026-10-26T04:43:20Z"
+    "updatedAt": "2026-10-26T12:21:49Z"
   },
   "geo-g3": {
     "order": 23,
@@ -698,10 +713,10 @@
     "label": "G3 · XMLv1.1 field evidence",
     "who": {},
     "state": "NOT_STARTED",
-    "now": "Planned: locally import F05 XMLv1.1 plus receipt; cross-check actual original byte SHA, schema, ELEMENT ordinals/endpoints and field witness; reject forged/stale pairing.",
+    "now": "G3 original-CII-bound XMLv1.1 F05 receipt/field witness bridge not delivered; G1 XML parsing/preview must not be mistaken for this engineering provenance gate.",
     "next": {
-      "actor": "Builder after G2",
-      "text": "Show valid and invalid XML evidence on linked correspondence."
+      "actor": "Geometry Oracle after qualified G2",
+      "text": "Design original-file SHA, source endpoint and field witness comparisons with XML_UNVERIFIED negatives; do not certify correspondence."
     },
     "refs": [
       {
@@ -709,8 +724,15 @@
         "l": "Geometry Option C canonical work order",
         "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/166#issuecomment-6393745466",
         "s": "PLANNED"
+      },
+      {
+        "k": "comment",
+        "l": "Current native evidence",
+        "u": "https://github.com/reallakshman19/Common/blob/main/oracle-cycles/ciifr/CURRENT.json"
       }
-    ]
+    ],
+    "updatedAt": "2026-10-26T12:21:50Z",
+    "src": "https://github.com/reallakshman19/Common/blob/main/oracle-cycles/ciifr/CURRENT.json"
   },
   "geo-g4": {
     "order": 24,
@@ -719,10 +741,10 @@
     "label": "G4 · Exports and IR",
     "who": {},
     "state": "NOT_STARTED",
-    "now": "Planned: hash-bound evidence JSON/CSV/SVG, stale-epoch and injection rejection, untouched Normal/Line/Config/Writer regressions, original S1/T and independent exact-head challenge.",
+    "now": "G4 integrated qualification NOT_STARTED. G1 prototype JSON/CSV/SVG export features exist, but full source-bound stale/byte-regression/independent browser and Owner acceptance remain NOT_RUN.",
     "next": {
-      "actor": "Independent reviewer after builder",
-      "text": "Return bounded evidence-based verdict; Owner decision remains separate."
+      "actor": "Geometry Oracle after G1/G2 gates",
+      "text": "Revisit export identity and protected regressions only after actual G1 WebGL and G2 real-graph review; no merge implied."
     },
     "refs": [
       {
@@ -730,8 +752,15 @@
         "l": "Geometry Option C canonical work order",
         "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/166#issuecomment-6393745466",
         "s": "PLANNED"
+      },
+      {
+        "k": "comment",
+        "l": "Current native evidence",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/186#issuecomment-6415117812"
       }
-    ]
+    ],
+    "updatedAt": "2026-10-26T12:21:50Z",
+    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/186#issuecomment-6415117812"
   },
   "oracle-onboarding": {
     "order": 19,

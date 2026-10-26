@@ -4,8 +4,8 @@
     "key": "ciifr",
     "title": "CII Find & Replace VNext",
     "subtitle": "R4 current: Geometry WBS3 read-only G1/G2; Element WBS4 source/config qualification; VNext integration held pending independent evidence.",
-    "updatedAt": "2026-10-26T05:21:53Z",
-    "updatedBy": "CIIFR Progress recorder",
+    "updatedAt": "2026-10-26T12:21:51Z",
+    "updatedBy": "CIIFR WBS3 Progress recorder",
     "staleAfterMin": 120,
     "aim": "Extend CIIFR NodeName VNext into typed ELEMENTS real-value/Line Number edits plus pointer-resolved RIGID Weight/Type. Preserve original bytes, v14 units/sentinels, node/pointer/branch relations, per-span approvals, new-copy export and native import review. Retain R3 Geometry WBS3 review-only, frozen P2/P2.1 and XML custody; defer structural graph/pointer edits and P3.",
     "aimSrc": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394203305"
@@ -183,10 +183,11 @@
       "wbs": "3",
       "bench": "GEO-G0",
       "keeps": "Original CII sha and all existing Normal/Line/Config/Writer behaviour",
-      "cap": "NOT_DEMONSTRATED",
-      "canDo": "Not yet runnable: builder/PR seam and fixture access unresolved.",
+      "cap": "CANDIDATE",
+      "canDo": "G0 source and bounded stacked-PR routing documented, not acceptance.",
       "repo": "reallakshman19/XML_Compare_Utilities",
-      "activity": "PLANNED, not implemented or accepted"
+      "activity": "ROUTING DOCUMENTED · Geometry Cycle ACTIVE rev12; draft G1 stack exists; authority and Owner trial still separate.",
+      "capSrc": "https://github.com/reallakshman19/Common/blob/main/oracle-cycles/ciifr/CURRENT.json"
     },
     "M13": {
       "name": "Geometry table and dual SVG",
@@ -195,10 +196,11 @@
       "wbs": "3.1",
       "bench": "GEO-G1",
       "keeps": "Original CII sha and all existing Normal/Line/Config/Writer behaviour",
-      "cap": "NOT_DEMONSTRATED",
-      "canDo": "Not yet demonstrated: real-file Geometry dual-SVG workbench.",
+      "cap": "CANDIDATE",
+      "canDo": "Opt-in hosted G1 viewer loads its shell; functional original-pair and WebGL acceptance pending.",
       "repo": "reallakshman19/XML_Compare_Utilities",
-      "activity": "PLANNED, not implemented or accepted"
+      "activity": "DRAFT CODE DELIVERED · PR174/181/183/185; F1 scoped non-author native PASS; served WebGL/Owner trial NOT_RUN.",
+      "capSrc": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/186#issuecomment-6412690110"
     },
     "M14": {
       "name": "Topology and OR/AND review",
@@ -207,10 +209,11 @@
       "wbs": "3.2",
       "bench": "GEO-G2",
       "keeps": "Original CII sha and all existing Normal/Line/Config/Writer behaviour",
-      "cap": "NOT_DEMONSTRATED",
-      "canDo": "Not yet demonstrated: pose-free topology suggestions and Boolean exceptions.",
+      "cap": "CANDIDATE",
+      "canDo": "Pose-free G2 CLI candidate exists; no independently qualified node correspondence.",
       "repo": "reallakshman19/XML_Compare_Utilities",
-      "activity": "PLANNED, not implemented or accepted"
+      "activity": "SOURCE PROTOTYPE SUBMITTED · PR182 author 7/7; real PR181 S1/T and non-author falsification NOT_RUN.",
+      "capSrc": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/177#issuecomment-6407926621"
     },
     "M15": {
       "name": "XMLv1.1 evidence bridge",
@@ -220,9 +223,10 @@
       "bench": "GEO-G3",
       "keeps": "Original CII sha and all existing Normal/Line/Config/Writer behaviour",
       "cap": "NOT_DEMONSTRATED",
-      "canDo": "Not yet demonstrated: XMLv1.1 original-witness evidence inside Geometry.",
+      "canDo": "No qualified original-bound XMLv1.1 evidence bridge.",
       "repo": "reallakshman19/XML_Compare_Utilities",
-      "activity": "PLANNED, not implemented or accepted"
+      "activity": "NOT_STARTED AS QUALIFIED G3 · G1 XML preview is not original-CII F05 receipt provenance.",
+      "capSrc": "https://github.com/reallakshman19/Common/blob/main/oracle-cycles/ciifr/CURRENT.json"
     },
     "M16": {
       "name": "Evidence export and verification",
@@ -232,9 +236,10 @@
       "bench": "GEO-G4",
       "keeps": "Original CII sha and all existing Normal/Line/Config/Writer behaviour",
       "cap": "NOT_DEMONSTRATED",
-      "canDo": "Not yet demonstrated: independently verified review exports and regression.",
+      "canDo": "No accepted integrated G4 exports/invalidations or independent release.",
       "repo": "reallakshman19/XML_Compare_Utilities",
-      "activity": "PLANNED, not implemented or accepted"
+      "activity": "NOT QUALIFIED · G1 prototype JSON/CSV/SVG downloads exist; integrated G4/Owner export checks NOT_RUN.",
+      "capSrc": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/186#issuecomment-6415117812"
     },
     "M17": {
       "name": "E0 · Architectural scope / oracle",
