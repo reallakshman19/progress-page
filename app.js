@@ -389,7 +389,7 @@ function render() {
     go(href);
     if (v === 'start') window.scrollTo(0, 0);
   };
-  if (groups.length && !HOME_VIEWS.includes(v)) {
+  if (groups.length && !HOME_VIEWS.includes(v) && v !== 'start') {
     const families = el('nav', 'wbs-family-nav');
     families.setAttribute('aria-label', 'WBS families');
     [{ key: null, label: 'All WBS' }, ...groups].forEach(g => {
