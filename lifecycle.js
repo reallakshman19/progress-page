@@ -12,8 +12,8 @@ export const HOME_SUBTABS = Object.freeze([
   ['home-risks','Risks & handoffs'], ['oracle-continuity','Oracle continuity'],
   ['actions','My actions'], ['fixtures','Grounding fixtures'], ['timeline','Timeline'],
 ]);
-export const PRIMARY_TABS = Object.freeze([['home','Project Home'],['progress','Progress / WBS']]);
-export const primaryTabActive = (id, view) => id === 'home' ? HOME_VIEWS.includes(view) : id === 'progress' && view === 'progress';
+export const PRIMARY_TABS = Object.freeze([['start','Agent Start'],['home','Project Home'],['progress','Progress / WBS']]);
+export const primaryTabActive = (id, view) => id === 'home' ? HOME_VIEWS.includes(view) : id === view;
 
 
 export const isActive = (p) => (p.status || 'active') === 'active';
@@ -22,7 +22,7 @@ export const isActive = (p) => (p.status || 'active') === 'active';
 export function tabsRow(c) {
   const nav = el('nav', 'tabs');
   c.active.forEach((p) => {
-    const a = c.nav('#/' + p.key + '/progress', p.label, 'tab' + (p.key === c.key ? ' on' : ''));
+    const a = c.nav('#/' + p.key + '/start', p.label, 'tab' + (p.key === c.key ? ' on' : ''));
     c.decorate(a, p);
     nav.append(a);
   });
