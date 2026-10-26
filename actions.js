@@ -1,6 +1,6 @@
 // My actions (decision cards) and Grounding fixtures.
-import { el, link, md, age, copyText } from './util.js?v=18';
-import { issueUrl, pageUrl } from './reply.js?v=18';
+import { el, link, md, age, copyText } from './util.js?v=19';
+import { issueUrl, pageUrl } from './reply.js?v=19';
 
 export const openCount = (actions) => Object.values(actions || {}).filter((a) => a.status === 'open').length;
 
