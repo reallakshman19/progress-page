@@ -55,20 +55,21 @@ def propose(data,project,source,actor,card_id=None,expected_head=None,fetch=gith
     else:
         selected=None
         issues.append("CARD_SELECTION_REQUIRED: select an existing native-evidence owner with --card; no task inferred")
+    if current["kind"]=="commit": issues.append("COMMIT_CARD_REF_UNSUPPORTED: a commit is not an issue/comment/PR reference kind; use an appropriate native PR or issue")
     if selected and any(r.get("u")==source for r in cards[selected].get("refs",[])):
         issues.append("REF_ALREADY_PRESENT: this card already contains the evidence URL")
     source_kind="pr" if current["kind"]=="pull" else "comment" if current["kind"]=="issue-comment" else "issue" if current["kind"]=="issue" else "commit"
     record_tag=(("head "+fingerprint["observedHead"][:12]) if fingerprint.get("observedHead") else
                 ("edited "+fingerprint.get("updatedAt","unknown")))
-    ref_label=_sanitize(current.get("title") or (source_kind+" native source"),65)
-    summary="Source observation only: "+_sanitize(ref_label,95)+"; no claim status/actor/authorization changed"
+    ref_label=_sanitize(current.get("title") or (source_kind+" native source"),60)
+    summary="Source observed: "+_sanitize(ref_label,80)+"; no claim status, actor or approval changed"
     # Deliberately do not ingest untrusted issue/PR body as a Page verdict.
     manifest=None
     if not issues:
         manifest={"project":project,"actor":actor.strip(),"source":source,
             "proposalVersion":1,"sourceObservation":fingerprint,
             "changes":[{"command":"card set","args":{"card":selected,"summary":summary,
-                "ref":source_kind+"|"+ref_label+"|"+source+"|observed "+record_tag+"; not independently verified"}}]}
+                "ref":source_kind+"|"+ref_label+"|"+source+"|observed "+record_tag+"; not verified"}}]}
     return {"project":project,"source":source,"observed":current,
         "matchingCards":matching,"selectedCard":selected,
         "selectedCardExistingState":cards[selected].get("state") if selected else None,
