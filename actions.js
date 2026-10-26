@@ -151,7 +151,7 @@ export function projectHomeModel(project) {
   const refs = [...(fx.repository || []), ...(fx.intent || []), ...(fx.highRoi || [])];
   const matches = (item, re) => re.test([(item.t || ''), (item.s || ''), (item.n || ''), (item.u || '')].join(' '));
   const concepts = refs.filter(item => matches(item, /concept[ -]?note|project concept|concept brief|concept overview|CONCEPT_NOTE/i));
-  const architecture = refs.filter(item => matches(item,
+  const architecture = refs.filter(item => !concepts.includes(item) && matches(item,
     /architectur|complex concept|data model|source model|system model|engineering contract|physical model|topolog|ARCHITECTURE_CONCEPT|COMPLEX_CONCEPT/i));
   const milestones = Object.entries(project?.index?.milestones || {}).sort((a, b) =>
     (a[1].order || 0) - (b[1].order || 0)).map(([id, m]) => ({ id, text: (m.wbs ? 'WBS ' + m.wbs + ' · ' : '') + (m.name || id), detail: m.full || '' }));
