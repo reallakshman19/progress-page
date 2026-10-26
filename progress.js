@@ -8,6 +8,8 @@ const RANK = { NOT_STARTED: 0, UNKNOWN: 1, STALE: 1, IN_PROGRESS: 2, SUBMITTED: 
 const ICON = { VERIFIED: '✓', SUBMITTED: '↑', IN_PROGRESS: '●', BLOCKED: '!', NOT_STARTED: '○', STALE: '?', UNKNOWN: '?', NOT_APPLICABLE: '–' };
 const KIND = { VERIFIED: 'done', IN_PROGRESS: 'working', SUBMITTED: 'waiting', BLOCKED: 'hold', NOT_STARTED: 'idle', STALE: 'gap', UNKNOWN: 'gap', NOT_APPLICABLE: 'done' };
 const COUNT_ORDER = [['VERIFIED', 'verified'], ['SUBMITTED', 'submitted'], ['IN_PROGRESS', 'in progress'], ['BLOCKED', 'blocked'], ['NOT_STARTED', 'not started']];
+// Owner-facing WBS family copy only; does not alter milestones, routes or project identity.
+const PROJECT_WBS_NAMES = Object.freeze({ ciifr: Object.freeze({ '4': 'WBS4- CIIFR-Element' }) });
 
 // A milestone is BLOCKED if any of its cards is; VERIFIED only when every card is. Otherwise it takes the weakest
 // state among the cards that have started, and is NOT_STARTED when none has. Superseded and cancelled cards do not count.
@@ -63,7 +65,8 @@ export function wbsGroups(index) {
     const number = String(m.wbs || '');
     const match = /^(\d+)(?:\.\d+)*$/.exec(number);
     const id = match ? 'wbs:' + match[1] : 'other';
-    if (!groups.has(id)) groups.set(id, { key:id, label:match ? 'WBS ' + match[1] : 'Other milestones', steps:[] });
+    const label = match ? (PROJECT_WBS_NAMES[index.project?.key]?.[match[1]] || 'WBS ' + match[1]) : 'Other milestones';
+    if (!groups.has(id)) groups.set(id, { key:id, label, steps:[] });
     groups.get(id).steps.push({ key, wbs:match ? number : null, name:m.name || key, label:'', order:m.order || 0 });
   }
   for (const group of groups.values()) {
