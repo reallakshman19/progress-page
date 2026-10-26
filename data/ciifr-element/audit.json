@@ -390,6 +390,18 @@
       "list": "pending",
       "op": "add",
       "rev": "R1"
+    },
+    {
+      "seq": 30,
+      "id": "CIIFR-ELEMENT-R-0030",
+      "previous_id": "CIIFR-ELEMENT-R-0029",
+      "at": "2026-10-26T10:42:53Z",
+      "kind": "ARCHIVE",
+      "actor": "ChatGPT (Owner-directed recorder)",
+      "summary": "Owner requested removal of the CIIFR-ELEMENT page",
+      "source": "OWNER_PRIVATE_REF:ciifr-element-remove-20261026",
+      "scope": "project",
+      "rev": "R1"
     }
   ]
 }

@@ -98,7 +98,12 @@
       "mode": "standalone",
       "replyTo": {
         "kind": "none"
-      }
+      },
+      "status": "archived",
+      "statusWhy": "Owner requested removal of the CIIFR-ELEMENT page",
+      "statusAt": "2026-10-26T10:42:53Z",
+      "statusBy": "ChatGPT (Owner-directed recorder)",
+      "statusSrc": "OWNER_PRIVATE_REF:ciifr-element-remove-20261026"
     }
   ],
   "site": {
