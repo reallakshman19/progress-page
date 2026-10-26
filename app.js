@@ -460,7 +460,7 @@ function render() {
     else if (v === 'progress') renderProgress(body, view, ctx);
     else if (v === 'actions') renderActions(body, sv);
     else if (v === 'oracle-continuity') renderOracleContinuity(body, view);
-    else if (v === 'fixtures') renderFixtures(body, sv.fixtures);
+    else if (v === 'fixtures') renderFixtures(body, sv.fixtures, key);
     else if (shownStep || family) renderTimeline(body, sv);
     else renderTimeline(body, view);
   }

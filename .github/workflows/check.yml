@@ -39,6 +39,8 @@ jobs:
         run: node --experimental-default-type=module --test tests/onboarding.test.mjs
       - name: Project Home navigation and source-retention tests
         run: node --experimental-default-type=module --test tests/project-home.test.mjs
+      - name: CIIFR ROI classification, no-mutation and contrary tests
+        run: node --experimental-default-type=module --test tests/roi.test.mjs
       - name: WBS family navigation regressions
         run: node --experimental-default-type=module --test tests/wbs-subtabs.test.mjs
       - name: Historical revision and WBS routing regressions
