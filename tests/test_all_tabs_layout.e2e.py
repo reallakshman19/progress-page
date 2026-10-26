@@ -103,6 +103,39 @@ def main():
                                 "mainWidth":round(g["main"]["width"]), "wbsCards":len(g["cards"])}
                     run_case(str(width)+"px "+route,run_one)
             context.close()
+        # Explicitly exercise the archived-history-independent Lessons reading paths.
+        ctx=browser.new_context(viewport={"width":1440,"height":900},device_scale_factor=1)
+        page=ctx.new_page()
+        for route in ("learned/progress","learned/L01","learned/L02"):
+            def lesson():
+                page.goto(BASE.rstrip("/")+"/#/"+route,wait_until="domcontentloaded",timeout=60000)
+                page.locator(".ll-page").wait_for(timeout=30000)
+                g=geometry(page)
+                check(g["documentWidth"]<=1443,route+" overflow")
+                check(g["main"]["right"]<=1443,route+" outside viewport")
+                return {"documentWidth":g["documentWidth"],"readingPage":True}
+            run_case("1440px "+route,lesson)
+        ctx.close()
+        # Owner screenshot was in dark mode; confirm contrast layout at the same PC
+        # viewport and a phone, without relying only on the light browser default.
+        for width,height in ((1440,900),(390,844)):
+            dark=browser.new_context(viewport={"width":width,"height":height},
+                        is_mobile=width==390,has_touch=width==390,color_scheme="dark")
+            page=dark.new_page()
+            for route in ("doc2table/progress","doc2table/home","ciifr/actions","ciifr/fixtures"):
+                def dark_view():
+                    load(page,route)
+                    g=geometry(page)
+                    check(g["documentWidth"]<=width+3,"dark overflow on "+route+" at "+str(width))
+                    check(page.evaluate("matchMedia('(prefers-color-scheme:dark)').matches"),
+                          "dark theme not active")
+                    if width==1440 and route=="doc2table/progress":
+                        picture(page,"doc2table-progress-pc-dark")
+                    if width==390 and route=="doc2table/progress":
+                        picture(page,"doc2table-progress-mobile-dark")
+                    return {"dark":True,"documentWidth":g["documentWidth"]}
+                run_case("Dark "+str(width)+"px "+route,dark_view)
+            dark.close()
         run_case("No uncaught browser JavaScript errors",lambda:check(not errors,"; ".join(errors[:5])))
         report={"checked":"PR-local (not published site)","site":BASE,
                 "pass":sum(x["status"]=="PASS" for x in CASES),

@@ -115,3 +115,9 @@ Before apply, the batch tool re-fetches the proposal's native source to reject s
 
 ## Desktop Agent Start
 At >=1100px, WBS workstreams are three equal-width choices, milestone options form a two-column grid, and scoped actions appear in a wider primary panel with source identity, Owner wording and rules in a separate sidebar. Mobile retains a linear task-first reading order. This changes presentation, not stored WBS data.
+
+## Shared desktop layout across all projects (v28)
+
+The full site—not only Agent Start—uses a wider responsive desktop shell. On Progress / WBS, Project Home, Actions, Fixtures, Timeline and other project sections, the primary view selector appears before scoped WBS filters; the project Owner aim, methods and optional private-chat setup remain accessible through disclosures instead of occupying the first screen on every view. Project Home still shows the full original Owner aim. The WBS family grid uses four consistent desktop columns, three tablet columns, and one mobile column; agent cards, decisions and fixtures wrap long source text rather than forcing page overflow. Historical revision routes, evidence references, mobile/desktop navigation and read-only governance remain unchanged.
+
+To check all affected view types against PR code before merging, run the `All project tabs desktop layout` workflow: it tests Doc to Table, CIIFR, G9 and the Lessons reading views at PC/tablet/phone sizes, including dark mode screenshot evidence. It is a rendering regression, not an Owner or engineering acceptance test.
