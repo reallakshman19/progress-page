@@ -42,7 +42,7 @@ jobs:
       - name: CIIFR ROI classification, no-mutation and contrary tests
         run: node --experimental-default-type=module --test tests/roi.test.mjs
       - name: Original CIIFR ROI source hash manifest
-        run: node tools/ciifr_roi_inventory.mjs
+        run: node --experimental-default-type=module tools/ciifr_roi_inventory.mjs
       - name: WBS family navigation regressions
         run: node --experimental-default-type=module --test tests/wbs-subtabs.test.mjs
       - name: Historical revision and WBS routing regressions
