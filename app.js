@@ -1,17 +1,17 @@
 // Shell: loads the JSON, draws the project tabs and the views, refreshes every two minutes.
-import { el, link, tick, ago, whenText } from './util.js?v=24';
-import { buildSearchIndex, searchProgress } from './search.js?v=24';
-import { renderOracleContinuity } from './oracle-continuity.js?v=24';
-import { renderProgress, wbsPick, wbsGroups, wbsFamily, wbsRevisionScope, wbsRoute } from './progress.js?v=24';
-import { renderAgentStart } from './agent-start.js?v=24';
-import { renderLessons } from './lessons.js?v=24';
-import { renderActions, renderFixtures, renderProjectHome, openCount } from './actions.js?v=24';
-import { renderTimeline } from './timeline.js?v=24';
-import { tabsRow, archivedPanel, projectHead, revisionRow, isActive, HOME_VIEWS, HOME_SUBTABS, PRIMARY_TABS, primaryTabActive } from './lifecycle.js?v=24';
-import { nudgesOf, openNudge } from './nudge.js?v=24';
-import { addProjectDialog, addRevisionDialog } from './briefs.js?v=24';
-import { loadLinks, takeLinksFromHash, linksPanel } from './links.js?v=24';
-import { rulesOf, holdOf, summary, needsAttention } from './triggers.js?v=24';
+import { el, link, tick, ago, whenText } from './util.js?v=25';
+import { buildSearchIndex, searchProgress } from './search.js?v=25';
+import { renderOracleContinuity } from './oracle-continuity.js?v=25';
+import { renderProgress, wbsPick, wbsGroups, wbsFamily, wbsRevisionScope, wbsRoute } from './progress.js?v=25';
+import { renderAgentStart } from './agent-start.js?v=25';
+import { renderLessons } from './lessons.js?v=25';
+import { renderActions, renderFixtures, renderProjectHome, openCount } from './actions.js?v=25';
+import { renderTimeline } from './timeline.js?v=25';
+import { tabsRow, archivedPanel, projectHead, revisionRow, isActive, HOME_VIEWS, HOME_SUBTABS, PRIMARY_TABS, primaryTabActive } from './lifecycle.js?v=25';
+import { nudgesOf, openNudge } from './nudge.js?v=25';
+import { addProjectDialog, addRevisionDialog } from './briefs.js?v=25';
+import { loadLinks, takeLinksFromHash, linksPanel } from './links.js?v=25';
+import { rulesOf, holdOf, summary, needsAttention } from './triggers.js?v=25';
 
 const LIVE_DATA = 'https://reallakshman19.github.io/progress-page/data/';
 const q = new URLSearchParams(location.search);
