@@ -1,0 +1,162 @@
+{
+  "wbs4-e0": {
+    "order": 1,
+    "group": "main",
+    "milestone": "M1",
+    "label": "E0 · Owner intent + CII model",
+    "who": {
+      "role": "Oracle contribution (SELF_ASSESSED)"
+    },
+    "state": "SUBMITTED",
+    "now": "Inherited source record; no new execution or acceptance. E0 architecture remains on draft PR168. R2 receipt verified original CII identity and physical ELEMENTS/RIGID fields (353 elements and 38 rigids). These are source-layout results, not effective engineering interpretation, native import or Writer qualification.",
+    "next": {
+      "actor": "Element source reviewer",
+      "text": "Carry verified physical fields into bounded read-only interpretation; preserve distinct 521-element benchmark."
+    },
+    "updatedAt": "2026-10-26T05:20:36Z",
+    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/178#issuecomment-6402061761"
+  },
+  "wbs4-e1": {
+    "order": 2,
+    "group": "main",
+    "milestone": "M2",
+    "label": "E1 · Exact CII element catalogue",
+    "who": {
+      "role": "E1 overall engineering qualification · F3_SOURCE_HOLD; R2 bounded structural milestone verified"
+    },
+    "state": "BLOCKED",
+    "now": "Inherited source record; no new execution or acceptance. E1 exact PR168 R2 pointer/auxiliary F1/F2 PASS is limited to independently invented read-only cases. V14 CONTROL F3 trailing field rule and full auxiliary syntax HOLD. R2 original physical data PASS; R4 effective job configuration, material edition, units and static-case/FDM remain unverified. No editor/Writer/TARGET1.",
+    "next": {
+      "actor": "Original CAESAR job custodian and V14 source reviewer",
+      "text": "Provide source-matched active job settings/cases and V14 CONTROL F3 authority. Do not repeat completed synthetic pointer tests."
+    },
+    "updatedAt": "2026-10-26T05:20:36Z",
+    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/178#issuecomment-6407707652"
+  },
+  "wbs4-e2": {
+    "order": 3,
+    "group": "editors",
+    "milestone": "M3",
+    "label": "E2 · Typed numeric editing",
+    "who": {
+      "role": "Unassigned WBS slice"
+    },
+    "state": "NOT_STARTED",
+    "now": "Inherited source record; no new execution or acceptance. Find/Replace only selected v14 engineering field keys in ELEMENTS; geometry, diameter, thickness, operating temperatures/pressures and materials are targets after physical source oracle. Reject bad numeric units, silent precision loss, overflow and field-specific sentinel misinterpretation. FROM/TO graph renumber is NOT part of E2.",
+    "next": {
+      "actor": "Oracle / designated coder",
+      "text": "Demonstrate one chosen field subset: approved offset diff only, zero/sentinel contrast and unchanged unrelated fields; retain source hash and unit evidence."
+    }
+  },
+  "wbs4-e3": {
+    "order": 4,
+    "group": "editors",
+    "milestone": "M4",
+    "label": "E3 · RIGID pointer-resolved edit",
+    "who": {
+      "role": "Unassigned WBS slice"
+    },
+    "state": "NOT_STARTED",
+    "now": "Inherited source record; no new execution or acceptance. RIGID Weight/Type live in #$ RIGID records attached by ELEMENTS auxiliary pointer #2. Pointer 0 = absent attachment, not Weight 0; nonzero is index, not node ID. Audit shared pointers and type-code meaning before touching any record. First build only safe existing RIGID Weight edits.",
+    "next": {
+      "actor": "Oracle / designated coder",
+      "text": "Run attached Weight=0 vs absent-pointer=0 vs bad-index vs shared-owner falsifiers; Rigid Type stays blocked until documented codes."
+    }
+  },
+  "wbs4-e4": {
+    "order": 5,
+    "group": "editors",
+    "milestone": "M5",
+    "label": "E4 · Element branch/line field",
+    "who": {
+      "role": "Unassigned WBS slice"
+    },
+    "state": "NOT_STARTED",
+    "now": "Inherited source record; no new execution or acceptance. Line Number/branch label is a physical ELEMENTS member with its own length prefix/serialized text. It is a scope filter, not a unique node owner. Shared endpoint aliases in distinct branches require closure for NodeName; label changes must not imply graph correspondence or retarget pointers.",
+    "next": {
+      "actor": "Oracle / designated coder",
+      "text": "Run exact label prefix/byte edit, malformed length, shared-node branch and SOURCE/TARGET drift contrasts; do not rewrite node identifiers."
+    }
+  },
+  "wbs4-e5": {
+    "order": 6,
+    "group": "verification",
+    "milestone": "M6",
+    "label": "E5 · Bounded writer + native checks",
+    "who": {
+      "role": "Unassigned WBS slice"
+    },
+    "state": "NOT_STARTED",
+    "now": "Inherited source record; no new execution or acceptance. Owner reviews physical element ordinal/field/old/new/source witness/byte offsets and explicitly approves. Writer must preserve every unapproved byte and indexed auxiliary relationships, reject stale hash, conflicts, rounding and partial aliases. Current NodeName sameStructure writer is not automatically valid for ELEMENTS edits.",
+    "next": {
+      "actor": "Independent reviewer → Owner",
+      "text": "Produce allowed-byte audit + new-copy SHA, domain-specific negative tests and independent CAESAR II import/value checks; keep contributor self-test separate from signoff."
+    }
+  },
+  "wbs4-e6": {
+    "order": 7,
+    "group": "verification",
+    "milestone": "M7",
+    "label": "E6 · Node/pointer structural HOLD",
+    "who": {
+      "role": "Unassigned WBS slice"
+    },
+    "state": "NOT_STARTED",
+    "now": "Inherited source record; no new execution or acceptance. FROM/TO endpoints are graph identities that may occur on multiple elements/branches. Pointer creation/reindexing changes indexed auxiliary record semantics; neither is a simple field replace. E1–E5 do not authorize node renumbering, new RIGID attachments, Geometry write or deferred P3.",
+    "next": {
+      "actor": "Owner",
+      "text": "Release only through a new explicit graph-atomic requirement after engineering acceptance of bounded E2–E5."
+    }
+  },
+  "wbs4-e1-specialist": {
+    "order": 8,
+    "group": "main",
+    "milestone": "M2",
+    "label": "E1 · Independent field-map specialist",
+    "who": {
+      "role": "Independent E1 specialist · bounded R2 review accepted, F3 unresolved"
+    },
+    "state": "VERIFIED",
+    "now": "Inherited source record; no new execution or acceptance. Reviewer #170 independently replayed exact R2 head 2aeaf737 via separate invented V8 fixtures; F1 empty/missing/whitespace-only PASS; F2 two-row cardinality PASS; all15 ranges and shared RIGID/NodeName PASS. Reviewer NOT_BLINDED, chat/principal UNBOUND, native Node/CAESAR NOT_RUN. F3 CONTROL strict v14 row admissibility unresolved.",
+    "next": {
+      "actor": "Oracle · preserve F3 source HOLD",
+      "text": "R2 specialist task completed within its tested scope. No duplicate review or new code. For F3 obtain actual v14 CONTROL authoritative format or controlled importer acceptance/rejection before deciding a new review task."
+    },
+    "updatedAt": "2026-10-25T18:25:17Z",
+    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6401186110"
+  },
+  "wbs4-e1-ptrguard": {
+    "order": 9,
+    "group": "main",
+    "milestone": "M2",
+    "label": "E1 R1 · Auxiliary pointer guard",
+    "who": {
+      "role": "Coder 6adddf80 R2 delivered; independent source-catalogue F1/F2 PASS bounded"
+    },
+    "state": "VERIFIED",
+    "now": "Inherited source record; no new execution or acceptance. R2 pointer-catalogue repair independently reviewed on PR168 exact 2aeaf737: F1 empty RESTRANT/displacement fail-closed PASS; F2 v14 REDUCERS 2-row cardinality plus logical ptr bounds PASS; all 15 pointer guards incl. BEND/EXPJT/IZUP/RIGID/NODENAME PASS. Verified is bounded SYNTHETIC source-catalogue behavior only; F3 CONTROL version14 shape, reducer numeric content and full RESTRANT semantics HOLD.",
+    "next": {
+      "actor": "Oracle · source-authority F3 evidence only (no coder dispatched)",
+      "text": "R2 transaction closed at bounded scope. Do not rerun coder 6adddf80 or reviewer #170. Preserve draft PR168/unmerged. Advance F3 only on direct v14 CONTROL rule or authorized native importer contrast; then separately scope any minimal repair."
+    },
+    "updatedAt": "2026-10-25T18:25:16Z",
+    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6401405888"
+  },
+  "wbs4-r4-config": {
+    "order": 10,
+    "group": "main",
+    "milestone": "M2",
+    "label": "R4 · Original CAESAR job context",
+    "who": {
+      "role": "Unassigned original-job evidence holder"
+    },
+    "state": "BLOCKED",
+    "now": "Inherited source record; no new execution or acceptance. R4 configuration ZIP receipt and internal units filename are verified as candidate evidence. Original CII embedded unit conversions and ambient differ. Which configuration, units, material database and actual static basic-case FDM were active for the original job remains unknown; effective-property transfer and Writer are HOLD.",
+    "next": {
+      "actor": "Owner-authorized native CAESAR job custodian",
+      "text": "Supply one identity-bound, private read-only observation of actual active configuration, units profile, material database and static basic-case/FDM; if unavailable report exact missing provenance."
+    },
+    "updatedAt": "2026-10-26T05:21:53Z",
+    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/178#issuecomment-6407707652"
+  }
+}
