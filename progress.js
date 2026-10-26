@@ -385,15 +385,15 @@ export function renderProgress(root, project, ctx) {
   const allowed = family ? new Set(family.steps.map(s => s.key)) : null;
   picked = picks[key] || null;
   root.append(strip(project.index, cards, ctx, family));
-  const onb = onboardingModel(project);
+  // Oracle onboarding is presented in Project Home / Oracle continuity, not as
+  // a special G0 coding-agent readiness panel. Preserve the original WBS card evidence.
   const groups = Object.entries(project.index.groups || {}).sort((a, b) => (a[1].order || 0) - (b[1].order || 0));
   const used = new Set();
   groups.forEach(([gk, g]) => {
     const mine = cards.filter((c) => c.group === gk).sort((a, b) => (Number(!!a.closed) - Number(!!b.closed)) || ((a.order || 0) - (b.order || 0)));
     if (!mine.length) return;
     mine.forEach((c) => used.add(c.id));
-    root.append(onb && gk === onb.groupId && mine.some(c => c.id === onb.cardId)
-      ? onboardingWbsGroup(project, g, mine, ctx, onb) : groupBlock(g, mine, ctx));
+    root.append(groupBlock(g, mine, ctx));
   });
   const rest = cards.filter((c) => !used.has(c.id));
   if (rest.length) root.append(groupBlock({ title: 'Other' }, rest, ctx));
