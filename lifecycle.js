@@ -99,7 +99,8 @@ export function projectHead(p, c) {
     b.append(' Nothing is deleted; the history stays readable.');
     box.append(b);
   }
-  box.append(revisionRow(p, c));
+  // Navigation always lists today's R1…Rn, but historical content comes from the selected snapshot.
+  box.append(revisionRow(c.revisionListProject || p, c));
   if (c.revBanner) box.append(c.revBanner);
   if (pj.subtitle) box.append(el('p', 'muted', pj.subtitle));
   if (pj.aim) {
@@ -119,6 +120,6 @@ export function projectHead(p, c) {
   MODULES.forEach((n, i) => { if (i) m.append(' · '); m.append(link(COMMON + n, n)); });
   box.append(m);
   if (c.paths) box.append(localPaths(c.paths));
-  box.append(c.statusLine(p));
+  box.append(c.snapshotNotice || c.statusLine(p));
   return box;
 }
