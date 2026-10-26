@@ -36,6 +36,35 @@ export function wbsPick(project, key) {
   return picks[project] || null;
 }
 
+// WBS families are a VIEW over unchanged milestone keys, not new tasks or states.
+const families = {};
+export function wbsFamily(project, value) {
+  if (value !== undefined) families[project] = value;
+  return families[project] || null;
+}
+export function wbsGroups(index) {
+  const entries = Object.entries((index || {}).milestones || {}).sort((a,b) => (a[1].order || 0) - (b[1].order || 0));
+  if (!entries.some(([,m]) => /^\d+(?:\.\d+)*$/.test(String(m.wbs || '')))) return [];
+  const groups = new Map();
+  for (const [key,m] of entries) {
+    const number = String(m.wbs || '');
+    const match = /^(\d+)(?:\.\d+)*$/.exec(number);
+    const id = match ? 'wbs:' + match[1] : 'other';
+    if (!groups.has(id)) groups.set(id, { key:id, label:match ? 'WBS ' + match[1] : 'Other milestones', steps:[] });
+    groups.get(id).steps.push({ key, wbs:match ? number : null, name:m.name || key, label:'', order:m.order || 0 });
+  }
+  for (const group of groups.values()) {
+    const major = group.key.slice(4);
+    const hasZero = group.steps.some(s => s.wbs === major + '.0');
+    group.steps.forEach(step => {
+      const display = !step.wbs ? step.key : step.wbs === major ? (hasZero ? major + ' · Overview' : major + '.0') : step.wbs;
+      step.short = step.wbs ? display : step.key;
+      step.label = (step.wbs ? 'WBS ' : '') + display + ' · ' + step.name;
+    });
+  }
+  return [...groups.values()].sort((a,b) => a.key === 'other' ? 1 : b.key === 'other' ? -1 : Number(a.key.slice(4)) - Number(b.key.slice(4)));
+}
+
 // The steps for the page's WBS row: every milestone in order, labelled with its WBS number when it has one.
 export function wbsSteps(index) {
   const list = Object.entries((index || {}).milestones || {}).sort((a, b) => (a[1].order || 0) - (b[1].order || 0));
@@ -43,33 +72,53 @@ export function wbsSteps(index) {
   return list.map(([key, m]) => ({ key, label: (m.wbs ? 'WBS ' + m.wbs : key) + ' · ' + m.name }));
 }
 
-function applyPick(root) {
+function applyPick(root, allowed = null) {
   root.querySelectorAll('.ms[data-ms]').forEach((b) => b.classList.toggle('on', b.dataset.ms === picked));
   root.querySelectorAll('.ms-all').forEach((b) => b.classList.toggle('on', !picked));
-  root.querySelectorAll('.card').forEach((c) => { c.hidden = !!picked && c.dataset.ms !== picked; });
-  root.querySelectorAll('.grp').forEach((g) => { g.hidden = !!picked && !g.querySelector('.card:not([hidden])'); });
+  root.querySelectorAll('.card').forEach((c) => { c.hidden = !!picked ? c.dataset.ms !== picked : !!allowed && !allowed.has(c.dataset.ms); });
+  root.querySelectorAll('.grp').forEach((g) => { g.hidden = (!!picked || !!allowed) && !g.querySelector('.card:not([hidden])'); });
   root.querySelectorAll('.flow .arrow').forEach((a) => {
-    const prev = a.previousElementSibling;
-    const next = a.nextElementSibling;
-    a.hidden = !!picked && (!prev || prev.hidden || !next || next.hidden);
+    const prev = a.previousElementSibling, next = a.nextElementSibling;
+    a.hidden = (!!picked || !!allowed) && (!prev || prev.hidden || !next || next.hidden);
   });
 }
 
-function strip(index, cards, ctx) {
+function strip(index, cards, ctx, family = null) {
   const wrap = el('div', 'ms-wrap');
   const pk = (index.project || {}).key || '';
   const keep = () => { picks[pk] = picked; };
   const redraw = () => (ctx && ctx.rerender ? ctx.rerender() : applyPick(wrap.parentNode));
-  const list = Object.entries(index.milestones || {}).sort((a, b) => (a[1].order || 0) - (b[1].order || 0));
+  const groups = wbsGroups(index);
+  if (groups.length && !family) {
+    const summary = el('div', 'wbs-overview');
+    summary.append(el('h3', null, 'WBS families'));
+    const row = el('div', 'wbs-family-cards');
+    groups.forEach(g => {
+      const mine = cards.filter(c => g.steps.some(s => s.key === c.milestone) && c.state !== 'NOT_APPLICABLE');
+      const button = el('button', 'wbs-family-card');
+      button.type = 'button';
+      button.append(el('strong', null, g.label), el('span', null, g.steps.length + ' milestones'),
+        el('span', 'muted', mine.length + ' active agent blocks · select to inspect'));
+      button.addEventListener('click', () => { wbsFamily((index.project || {}).key || '', g.key); wbsPick((index.project || {}).key || '', null); ctx.rerender(); });
+      row.append(button);
+    });
+    summary.append(row);
+    return summary;
+  }
+  const allowed = family ? new Set(family.steps.map(s => s.key)) : null;
+  const list = Object.entries(index.milestones || {}).filter(([k]) => !allowed || allowed.has(k))
+    .sort((a, b) => (a[1].order || 0) - (b[1].order || 0));
   const wbs = list.some(([, m]) => m.wbs);
   const hd = el('div', 'h-label', wbs ? 'Work breakdown (WBS)' : 'Milestones');
   wrap.append(hd);
   const row = el('div', 'ms-row');
-  const all = el('button', 'ms-all', 'All');
-  all.type = 'button';
-  all.title = 'Show the agent blocks of every step';
-  all.addEventListener('click', () => { picked = null; keep(); redraw(); });
-  row.append(all);
+  if (!family) {
+    const all = el('button', 'ms-all', 'All');
+    all.type = 'button';
+    all.title = 'Show the agent blocks of every step';
+    all.addEventListener('click', () => { picked = null; keep(); redraw(); });
+    row.append(all);
+  }
   list.forEach(([key, m], i) => {
     const mine = cards.filter((c) => c.milestone === key);
     const live = mine.filter((c) => c.state !== 'NOT_APPLICABLE');
@@ -80,7 +129,8 @@ function strip(index, cards, ctx) {
     box.dataset.ms = key;
     box.title = (m.full || m.name) + ' (click to show only this step’s agent blocks)';
     const top = el('div', 'ms-top');
-    top.append(el('span', 'ms-ic', ICON[state] || '○'), el('span', 'ms-key', m.wbs ? 'WBS ' + m.wbs : key));
+    const step = family?.steps.find(s => s.key === key);
+    top.append(el('span', 'ms-ic', ICON[state] || '○'), el('span', 'ms-key', step ? (step.wbs ? 'WBS ' : '') + step.short : m.wbs ? 'WBS ' + m.wbs : key));
     if (m.wbs) top.append(el('span', 'ms-id', key));
     box.append(top, el('div', 'ms-name', m.name));
     if (m.cap) {
@@ -282,10 +332,13 @@ export function renderProgress(root, project, ctx) {
   ctx.cards = project.cards;
   if (ctx.sum) root.append(attention(ctx.sum, ctx.rules));
   if (hidden) root.append(el('p', 'ms-line', hidden + ' closed cards from earlier revisions are not shown; open that revision above to see them.'));
-  picked = picks[(project.index.project || {}).key || ''] || null;
-  root.append(strip(project.index, cards, ctx));
+  const key = (project.index.project || {}).key || '';
+  const family = wbsGroups(project.index).find(g => g.key === wbsFamily(key)) || null;
+  const allowed = family ? new Set(family.steps.map(s => s.key)) : null;
+  picked = picks[key] || null;
+  root.append(strip(project.index, cards, ctx, family));
   const onb = onboardingModel(project);
-  if (onb && (!picked || picked === onb.card.milestone)) renderOnboarding(root, project);
+  if (onb && (!picked || picked === onb.card.milestone) && (!allowed || allowed.has(onb.card.milestone))) renderOnboarding(root, project);
   const groups = Object.entries(project.index.groups || {}).sort((a, b) => (a[1].order || 0) - (b[1].order || 0));
   const used = new Set();
   groups.forEach(([gk, g]) => {
@@ -298,5 +351,5 @@ export function renderProgress(root, project, ctx) {
   if (rest.length) root.append(groupBlock({ title: 'Other' }, rest, ctx));
   picked = picks[(project.index.project || {}).key || ''] || null;
   if (picked && !(project.index.milestones || {})[picked]) picked = picks[(project.index.project || {}).key || ''] = null;
-  applyPick(root);
+  applyPick(root, allowed);
 }
