@@ -313,7 +313,10 @@ function render() {
   }
   if (state.panel) root.append(linksPanel(() => { state.links = mergedLinks(); state.panel = false; render(); }));
   if (!Object.keys(state.links).length && route().v !== 'start') {
-    root.append(el('p', 'hintbar', 'Chat ids are not clickable in this browser yet. Open your private setup link once, or paste your links under "My links".'));
+    const setup = el('details', 'chat-setup');
+    setup.append(el('summary', null, 'Optional · connect private chat shortcuts'));
+    setup.append(el('p', null, 'Chat ids are not clickable in this browser yet. Open your private setup link once, or paste your links under "My links".'));
+    root.append(setup);
   }
   const { key, v, rev, family: routedFamily, step: routedStep } = route();
   const p = state.data[key];
@@ -427,7 +430,11 @@ function render() {
     if (bd) a.append(bd);
     views.append(a);
   });
-  root.append(views);
+  // Context order: project -> primary view -> WBS filters -> content.
+  // Do not bury the view tabs beneath WBS and repo-state controls.
+  const firstContext = root.querySelector('.wbs-family-nav') || bar;
+  if (firstContext) root.insertBefore(views, firstContext);
+  else root.append(views);
   if (HOME_VIEWS.includes(v)) {
     const homeNav = el('nav', 'views home-subtabs');
     homeNav.setAttribute('aria-label', 'Project Home sections');
