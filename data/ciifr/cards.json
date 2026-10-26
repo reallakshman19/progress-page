@@ -1173,5 +1173,29 @@
     ],
     "updatedAt": "2026-10-25T18:25:16Z",
     "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6401405888"
+  },
+  "wbs4-r4-config": {
+    "order": 47,
+    "group": "wbs4-intake",
+    "milestone": "M18",
+    "label": "R4 · Original CAESAR job context",
+    "who": {
+      "role": "Unassigned original-job evidence holder"
+    },
+    "state": "BLOCKED",
+    "now": "R4 configuration ZIP receipt and internal units filename are verified as candidate evidence. Original CII embedded unit conversions and ambient differ. Which configuration, units, material database and actual static basic-case FDM were active for the original job remains unknown; effective-property transfer and Writer are HOLD.",
+    "next": {
+      "actor": "Owner-authorized native CAESAR job custodian",
+      "text": "Supply one identity-bound, private read-only observation of actual active configuration, units profile, material database and static basic-case/FDM; if unavailable report exact missing provenance."
+    },
+    "updatedAt": "2026-10-26T05:21:53Z",
+    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/178#issuecomment-6407707652",
+    "refs": [
+      {
+        "k": "comment",
+        "l": "R4 Oracle assessment",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/178#issuecomment-6407707652"
+      }
+    ]
   }
 }

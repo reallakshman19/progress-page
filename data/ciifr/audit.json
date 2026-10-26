@@ -5783,6 +5783,32 @@
       "summary": "Reconcile oracle-onboarding to latest native evidence",
       "source": "https://github.com/reallakshman19/Common/pull/511",
       "rev": "R4"
+    },
+    {
+      "seq": 441,
+      "id": "CIIFR-R-0441",
+      "previous_id": "CIIFR-R-0440",
+      "at": "2026-10-26T05:21:53Z",
+      "kind": "BASELINE",
+      "card": "wbs4-r4-config",
+      "before": null,
+      "after": "BLOCKED",
+      "actor": "CIIFR Progress recorder",
+      "summary": "Add R4 job-provenance dependency under existing WBS4 E1",
+      "source": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/178#issuecomment-6407707652",
+      "rev": "R4"
+    },
+    {
+      "seq": 442,
+      "id": "CIIFR-R-0442",
+      "previous_id": "CIIFR-R-0441",
+      "at": "2026-10-26T05:21:53Z",
+      "kind": "PLAN",
+      "scope": "project:subtitle",
+      "actor": "CIIFR Progress recorder",
+      "summary": "Replace stale R3-current header with R4 workstream status",
+      "source": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/178#issuecomment-6407707652",
+      "rev": "R4"
     }
   ]
 }
