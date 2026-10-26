@@ -1,5 +1,5 @@
 // A small modal dialog: title, body, footer. Escape, the Close button and a click outside close it.
-import { el } from './util.js?v=16';
+import { el } from './util.js?v=17';
 
 export function dialog(title, cls) {
   const ov = el('div', 'ov');
