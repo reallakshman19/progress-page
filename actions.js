@@ -1,8 +1,8 @@
 // My actions (decision cards) and Grounding fixtures.
-import { ciifrRoiModel } from './roi.js?v=22';
-import { el, link, md, age, copyText } from './util.js?v=22';
-import { issueUrl, pageUrl } from './reply.js?v=22';
-import { oracleContinuityModel } from './oracle-continuity.js?v=22';
+import { ciifrRoiModel } from './roi.js?v=23';
+import { el, link, md, age, copyText } from './util.js?v=23';
+import { issueUrl, pageUrl } from './reply.js?v=23';
+import { oracleContinuityModel } from './oracle-continuity.js?v=23';
 
 export const openCount = (actions) => Object.values(actions || {}).filter((a) => a.status === 'open').length;
 
