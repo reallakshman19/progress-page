@@ -117,6 +117,36 @@
       "s": "ONBOARD_REVISED",
       "n": "Prepared only",
       "milestone": "M18"
+    },
+    {
+      "t": "V14 neutral-file specification: separate fixed-column CONTROL, ELEMENTS, AUX_DATA, MISCEL_1 and UNITS sections; section record cards are not generic whitespace-separated fields.",
+      "u": "https://docs.hexagonppm.com/r/en-US/CAESAR-II-Users-Guide/Version-14/337037",
+      "s": "V14_CII_SPEC",
+      "milestone": "M17"
+    },
+    {
+      "t": "Element Oracle four-part concept, architecture, falsifier and handover in Common PR507 are a DRAFT knowledge packet; original byte/source receipts newer than its old static claims take precedence; not Oracle cutover.",
+      "u": "https://github.com/reallakshman19/Common/pull/507",
+      "s": "ELEMENT_CONTINUITY",
+      "milestone": "M17"
+    },
+    {
+      "t": "Common PR511 is the proposed pending WBS3/WBS4/VNext ROI, source-first Oracle onboarding and public-safe G2 relay; remains draft and does not assign an ACTIVE worker or change Oracle control.",
+      "u": "https://github.com/reallakshman19/Common/pull/511",
+      "s": "GEO_PENDING_FRAMEWORK",
+      "milestone": "M12"
+    },
+    {
+      "t": "XCU PR182 is isolated WBS3.2 pose-free topology/Boolean JSON CLI, 7/7 author-made local tests, original S1/T PR181-export integration and independent review NOT_RUN.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/182",
+      "s": "G2_SOURCE_CODE",
+      "milestone": "M14"
+    },
+    {
+      "t": "XCU PR181 is isolated G1 XML geometry preview and graph-export source candidate, with author-native tests but real served browser/Windows G2 integration NOT_RUN.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/181",
+      "s": "G1_XML_GRAPH_INPUT",
+      "milestone": "M13"
     }
   ],
   "issues": [
@@ -254,6 +284,18 @@
       "s": "DRAFT_NOT_MERGED",
       "n": "Public code; private inputs excluded",
       "milestone": "M8"
+    },
+    {
+      "t": "XCU PR182 source-only pose-free G2 CLI; 7/7 author tests PASS, true PR181 S1/T and independent/browser NOT_RUN, draft/unmerged.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/182",
+      "s": "G2_PROTO_PR182",
+      "milestone": "M14"
+    },
+    {
+      "t": "Common PR511 high-ROI/pending WBS register and candidate Oracle onboarding, draft/unmerged; no engineer dispatch/Oracle control transfer.",
+      "u": "https://github.com/reallakshman19/Common/pull/511",
+      "s": "PENDING_ORACLE_PR511",
+      "milestone": "M12"
     }
   ],
   "roadmap": [
@@ -400,6 +442,24 @@
       "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6395988691",
       "s": "E1_R1_PLANNED",
       "milestone": "M18"
+    },
+    {
+      "t": "G1 served-browser original S1/T B1-B4 independent qualification; G2 PR182 source challenge on real PR181 graphs and role-preserving Manual/Topology/OR/AND conflicts; then separate UI integration, G3 provenance and G4 export tests.",
+      "u": "https://github.com/reallakshman19/Common/pull/511",
+      "s": "WBS3_EXECUTION_CHAIN",
+      "milestone": "M14"
+    },
+    {
+      "t": "R4 original-job active CAESAR.cfg/units/material edition/static basic cases/FDM evidence + E1 CONTROL F3 exact authority; then only READ-ONLY property preview for qualified fields. E2-E6 engineering writer/TARGET1 not released.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/178#issuecomment-6407707652",
+      "s": "WBS4_EXECUTION_CHAIN",
+      "milestone": "M18"
+    },
+    {
+      "t": "Later VNext joins qualified Geometry and Element engines without replacing old tile until browser/byte/GPU-scalability regression, independent review, Owner acceptance and explicit release decision.",
+      "u": "https://github.com/reallakshman19/Common/pull/511",
+      "s": "VNEXT_ACCEPTANCE",
+      "milestone": "M11"
     }
   ],
   "highRoi": [
@@ -492,6 +552,18 @@
       "u": "https://github.com/reallakshman19/XML_Compare_Utilities/actions/runs/40169198664",
       "s": "CI_SCOPED_PASS",
       "milestone": "M18"
+    },
+    {
+      "t": "Reuse G2 pure topology/Boolean ledger without GPU or shared viewer changes; tests 7/7 are author-exposed, no claimed measured ROI or independent engineering PASS.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/177#issuecomment-6407926621",
+      "s": "G2_DISJOINT_CORE",
+      "milestone": "M14"
+    },
+    {
+      "t": "Reuse established G1 SVG and Three/WebGL floating-origin/scheduling for large graphics; trial real browser performance/parity before speculative renderer rewrite.",
+      "u": "https://github.com/reallakshman19/Common/pull/511",
+      "s": "EXISTING_G1_RENDERER_REUSE",
+      "milestone": "M13"
     }
   ],
   "future": [
@@ -586,6 +658,18 @@
       "s": "PROTOCOL_APPLIED",
       "n": "R4 unchanged",
       "milestone": "M17"
+    },
+    {
+      "t": "Preserve one CIIFR project: Geometry WBS3.0-3.4 read-only node/element matching, SVG/GPU and provenance; additive Element WBS4.0-4.6 typed property review. Proposed WBS5 fork superseded; Writer never implicit.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/179",
+      "s": "TWO_EXISTING_WORKSTREAMS",
+      "milestone": "M12"
+    },
+    {
+      "t": "VNext combines only independently accepted engines, retains legacy P2/P2.1, original byte/name-editor behavior and existing Tab3; browser/native Owner release after qualification only.",
+      "u": "https://github.com/reallakshman19/Common/pull/511",
+      "s": "VNEXT_RELEASE_BOUNDARY",
+      "milestone": "M7"
     }
   ],
   "inputs": [
@@ -795,6 +879,78 @@
       "u": "https://github.com/reallakshman19/progress-page/actions/runs/40191467503",
       "s": "HOSTED_SOURCE_READY",
       "milestone": "M18"
+    },
+    {
+      "t": "ELEMENT is physical 15-card occurrence; FROM and TO are logical shared NODE identifiers; DX/DY/DZ are directed displacements, not absolute points. Shared or duplicate endpoints do not establish unique SOURCE/TARGET occurrence identity.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394203305",
+      "s": "NODE_ELEMENT_IDENTITY",
+      "milestone": "M18"
+    },
+    {
+      "t": "ELEMENTS 15 physical rows, 53 real numeric slots plus 15 typed auxiliary pointer slots. Numeric/pointer cards use defined 13-character fields; adjacency of negative values makes whitespace splitting unsafe.",
+      "u": "https://github.com/reallakshman19/Common/pull/507",
+      "s": "ELEMENT_FIXED_LAYOUT",
+      "milestone": "M18"
+    },
+    {
+      "t": "RIGID pointer #2 and NODENAME pointer #12 index typed one-based auxiliary records, not NODE labels. Pointer 0 absent; nonzero valid ordinal resolves record. Associated RIGID with weight 0 is not an absent attachment.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/178#issuecomment-6402061761",
+      "s": "POINTER_VS_NODE",
+      "milestone": "M18"
+    },
+    {
+      "t": "Node renumbering later must cover ELEMENT FROM/TO, NODENAME paired endpoint labels and nozzle/hanger/auxiliary node references; shared nodes require graph-atomic updates. This is E6 deferred source architecture, not Writer permission.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167",
+      "s": "NODE_REFERENCE_REGISTRY",
+      "milestone": "M23"
+    },
+    {
+      "t": "CONTROL supplies element/nozzle/hanger/node-name/reducer/flange and auxiliary counts plus vertical-axis option; R2 CONTROL has four integer records. F3 V14 extra/trailing-slot admissibility remains unverified by native source/importer.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6401405888",
+      "s": "CONTROL_COUNTS_F3",
+      "milestone": "M18"
+    },
+    {
+      "t": "MISCEL_1 begins with RRMAT material-ID values in ELEMENT occurrence order, six packed per row; material integer is selected identifier, not immutable effective expansion-property dataset.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/178#issuecomment-6406533457",
+      "s": "MISCEL_RRMAT",
+      "milestone": "M18"
+    },
+    {
+      "t": "After RRMAT, count-controlled MISCEL_1 VFLEX/nozzle and hanger blocks can contain engineering dimensions/loads and *node-number references*; these are not typed ELEMENT auxiliary record pointers. R2 has no such counted records.",
+      "u": "https://docs.hexagonppm.com/r/en-US/CAESAR-II-Users-Guide/Version-14/337059",
+      "s": "MISCEL_NOZZLE_HANGER",
+      "milestone": "M18"
+    },
+    {
+      "t": "MISCEL_1 ends in model execution-option records, including model ambient input and North arrow. R2 353 elements require 59 RRMAT rows plus 4 execution rows; original ambient differs from R4 candidate NEW-JOB default.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/178#issuecomment-6407053321",
+      "s": "MISCEL_EXEC_AMBIENT",
+      "milestone": "M18"
+    },
+    {
+      "t": "R2 embedded UNITS holds 22 conversion factors and 24 labels, source-specific; raw ambient/material-ID/units physical reads PASS, but case-effective interpretation and actual material database still need independent proof.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/178#issuecomment-6406533457",
+      "s": "UNITS_STORED",
+      "milestone": "M18"
+    },
+    {
+      "t": "R2 recipient verified original 353 ELEMENT, 38 RIGID, 315 absent/38 valid pointer associations and SHA/CRC integrity; distinct from separate WBS4 private 521-element benchmark. No native CAESAR importer replay.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/178#issuecomment-6402061761",
+      "s": "R2_CII_RECEIPT",
+      "milestone": "M18"
+    },
+    {
+      "t": "CAESAR.cfg is an external configuration file (Alpha, new-job defaults, database/units references), not CII CONTROL or MISCEL_1. Candidate references TRS.FIL, but is not proven active for R2 original; source units and ambient differ.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/178#issuecomment-6407053321",
+      "s": "R4_CONFIG_VS_MISC",
+      "milestone": "M18"
+    },
+    {
+      "t": "Actual S1/T G2 source witness: SOURCE 3910 degree/length signature yields three TARGET alternatives; 3940/3970 local signatures have hundreds. Ambiguity persists without pose and cannot justify auto-assignment.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/177#issuecomment-6401698353",
+      "s": "G2_REAL_AMBIGUITY",
+      "milestone": "M14"
     }
   ],
   "knownIssues": [
@@ -964,6 +1120,30 @@
       "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6401405888",
       "s": "F3_SOURCE_HOLD",
       "milestone": "M18"
+    },
+    {
+      "t": "R4 candidate binary unit conversions materially differ from original embedded UNITS. Same filename reference is not actual active-job selection. Binary float32 parse exploratory and not vendor/native .FIL qualified; do not silently convert SOURCE.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/178#issuecomment-6407053321",
+      "s": "R4_SOURCE_UNIT_MISMATCH",
+      "milestone": "M18"
+    },
+    {
+      "t": "Temperature/strain interpretation depends on job Alpha tolerance, ambient and expansion material; Pressure on selected units/cases; Fluid Density on case-specific FDM. Original stored field PASS is not effective engineering PASS.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/178#issuecomment-6407707652",
+      "s": "FIELD_EFFECTIVE_CONFIG",
+      "milestone": "M18"
+    },
+    {
+      "t": "V14 RIGID Weight and Type are distinct fields; old 2019-oriented converter serializes Weight without demonstrated V14 Type round-trip. No original weight-zero RIGID witness and native unit-selector/importer test NOT_RUN.",
+      "u": "https://github.com/reallakshman19/Common/pull/507",
+      "s": "RIGID_TYPE_NATIVE_HOLD",
+      "milestone": "M20"
+    },
+    {
+      "t": "G2 degree/incident-length/neighbour-degree signatures are pose-free candidate evidence only. Keep all alternatives, target collisions, AND exclusions and segment-only witness; spatial residual NOT_EVALUATED, writerEligible=false.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/177#issuecomment-6407926621",
+      "s": "G2_SIGNATURE_FALSE_PASS",
+      "milestone": "M14"
     }
   ],
   "pending": [
@@ -1127,6 +1307,42 @@
       "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6401405888",
       "s": "F3_SOURCE_DEPENDENCY",
       "milestone": "M18"
+    },
+    {
+      "t": "Original S1/T served-browser and PR181 reader/GPU UI qualifications pending; CLI/HTTP/author tests do not qualify owner-scale functionality.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/181",
+      "s": "G1_BROWSER_HOLD",
+      "milestone": "M13"
+    },
+    {
+      "t": "Independent reviewer must challenge PR182 exact source against PR181 real graph export and S1/T duplicate signature/target collision/hash-epoch cases; prepare G2 UI assignment only after bounded verdict.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/177#issuecomment-6407926621",
+      "s": "G2_REAL_INPUT_REVIEW",
+      "milestone": "M14"
+    },
+    {
+      "t": "Owner CAESAR custodian must provide one private identity-bound actual job configuration resolution, units profile, material DB/UMD edition and basic static case/FDM observation. Do not request another original CII.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/178#issuecomment-6407707652",
+      "s": "NATIVE_JOB_PROVENANCE",
+      "milestone": "M18"
+    },
+    {
+      "t": "Find authoritative V14 CONTROL extra/trailing-slot admissibility or native accepted/rejected contrast; retain F1/F2 bounded R2 PASS and avoid repeat synthetic testing.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6401405888",
+      "s": "E1_CONTROL_F3",
+      "milestone": "M18"
+    },
+    {
+      "t": "Field-specific semantic qualification and source/target correspondence precede a separate read-only before/proposed property evidence preview; no physical mutator, pointer creation, TARGET1 or Writer.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167",
+      "s": "READONLY_ELEMENT_PREVIEW",
+      "milestone": "M19"
+    },
+    {
+      "t": "Geometry Cycle is ACTIVE rev4 (G1 returned), Element Cycle PREPARED_NOT_ACTIVE rev0; Common PR511/PR507 are drafts; successor knowledge transfer does not change control epoch or authorization.",
+      "u": "https://github.com/reallakshman19/Common/pull/511",
+      "s": "ORACLE_CYCLE_SEPARATION",
+      "milestone": "M7"
     }
   ]
 }
