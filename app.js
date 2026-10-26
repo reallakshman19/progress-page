@@ -1,5 +1,7 @@
 // Shell: loads the JSON, draws the project tabs and the views, refreshes every two minutes.
 import { el, link, tick, ago, whenText } from './util.js?v=21';
+import { buildSearchIndex, searchProgress } from './search.js?v=22';
+import { renderOracleContinuity } from './oracle-continuity.js?v=22';
 import { renderProgress, wbsPick, wbsGroups, wbsFamily, wbsRevisionScope, wbsRoute } from './progress.js?v=21';
 import { renderLessons } from './lessons.js?v=21';
 import { renderActions, renderFixtures, renderProjectHome, openCount } from './actions.js?v=21';
@@ -39,7 +41,7 @@ function mergedLinks() {
   return Object.assign({}, window.__PP_LINKS__ || {}, loadLinks());
 }
 
-const state = { projects: [], data: {}, site: {}, links: mergedLinks(), error: null, panel: false, offline: false, archivedOpen: false, rev: null, paths: null, repo: {} };
+const state = { projects: [], data: {}, site: {}, links: mergedLinks(), error: null, panel: false, offline: false, archivedOpen: false, rev: null, paths: null, repo: {}, searchOpen: false, searchQuery: '', searchIndex: [] };
 
 // The local hub server (127.0.0.1) serves each project's private coding and reference folders; the website never has them.
 async function loadPaths() {
@@ -105,6 +107,7 @@ async function refresh() {
     state.projects = r.projects;
     state.data = r.data;
     state.site = r.site;
+    state.searchIndex = buildSearchIndex(r.projects, r.data);
     state.offline = false;
     state.error = null;
   } catch (e) {
@@ -121,6 +124,7 @@ async function start() {
       state.projects = r.projects;
       state.data = r.data;
       state.site = r.site;
+      state.searchIndex = buildSearchIndex(r.projects, r.data);
       state.offline = true;
       render();
     } catch (e) { /* no usable snapshot */ }
@@ -221,12 +225,75 @@ function revBanner(p, id, rv) {
   return b;
 }
 
+// Search updates only its result list while the Owner types; no page rerender or navigation.
+function globalSearchPanel() {
+  const panel = el('section', 'global-search');
+  panel.setAttribute('aria-label', 'Search all projects');
+  const prompt = el('label', 'global-search-label', 'Search all projects · PR, issue, WBS or description');
+  const input = el('input', 'global-search-input');
+  input.type = 'search';
+  input.placeholder = 'e.g. PR 185, issue 170, WBS 3.1, topology';
+  input.value = state.searchQuery;
+  input.setAttribute('aria-label', 'Search progress records across projects');
+  const results = el('div', 'global-search-results');
+  const draw = () => {
+    results.replaceChildren();
+    const term = state.searchQuery.trim();
+    if (!term) {
+      results.append(el('p', 'muted', 'Search across project tasks, evidence, decisions, milestones and Timeline.'));
+      return;
+    }
+    const found = searchProgress(state.searchIndex, term);
+    results.append(el('p', 'muted', found.length
+      ? 'Showing the top ' + found.length + ' matching records'
+      : 'No published record matches. This does not search unrecorded GitHub work.'));
+    found.forEach(row => {
+      const item = el('div', 'global-search-result');
+      const a = el('a', 'global-search-target', row.title);
+      a.href = row.url;
+      a.addEventListener('click', (e) => {
+        if (e.button || e.metaKey || e.ctrlKey || e.altKey || e.shiftKey) return;
+        e.preventDefault();
+        state.searchOpen = false;
+        state.searchQuery = '';
+        go(a.href);
+        if (row.type === 'Agent') {
+          const cardId = row.key.slice((row.projectKey + ':Agent:').length);
+          const target = [...document.querySelectorAll('[data-card]')].find(n => n.dataset.card === cardId);
+          if (target) target.scrollIntoView({block:'nearest'});
+        }
+      });
+      const meta = el('span', 'global-search-meta',
+        row.project + ' · ' + row.type + (row.wbs ? ' · WBS ' + row.wbs : '')
+        + (row.revision ? ' · ' + row.revision : ''));
+      item.append(a, meta);
+      if (row.detail) item.append(el('span','global-search-description',row.detail.slice(0,200)));
+      if (row.source && /^https:\/\/github\.com\//.test(row.source))
+        item.append(link(row.source, 'source', 'global-search-source'));
+      results.append(item);
+    });
+  };
+  input.addEventListener('input', () => {state.searchQuery = input.value; draw();});
+  input.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      state.searchOpen = false; state.searchQuery = ''; panel.remove();
+    }
+  });
+  prompt.append(input); panel.append(prompt, results); draw();
+  return panel;
+}
+
 function render() {
   const root = document.getElementById('root');
   root.replaceChildren();
   const head = el('header', 'top');
   head.append(el('h1', null, 'Progress page'));
   const tools = el('div', 'tools');
+  const searchButton = el('button', 'btn small', 'Search all');
+  searchButton.type = 'button';
+  searchButton.setAttribute('aria-expanded', String(state.searchOpen));
+  searchButton.addEventListener('click', () => { state.searchOpen = !state.searchOpen; render(); if (state.searchOpen) document.querySelector('.global-search-input')?.focus(); });
+  tools.append(searchButton);
   if (window.__PP_LOCAL__) tools.append(link(site().page || 'https://reallakshman19.github.io/progress-page/', 'Live page', 'btn small'));
   const links = el('button', 'btn small', 'My links');
   links.type = 'button';
@@ -234,6 +301,7 @@ function render() {
   tools.append(links);
   head.append(tools);
   root.append(head);
+  if (state.searchOpen) root.append(globalSearchPanel());
   if (state.error && !state.projects.length) {
     root.append(el('p', 'err', 'Could not read the data: ' + state.error));
     return;
@@ -356,7 +424,10 @@ function render() {
     const homeNav = el('nav', 'views home-subtabs');
     homeNav.setAttribute('aria-label', 'Project Home sections');
     HOME_SUBTABS.forEach(([id, label]) => {
-      const a = navLink('#/' + key + '/' + id + navSuffix, label, 'view' + (id === v ? ' on' : ''));
+      // Home subtabs start project-wide; legacy WBS-scoped deep links remain readable.
+      const homeSuffix = older ? '/' + encodeURIComponent(rev) : '';
+      const a = navLink('#/' + key + '/' + id + homeSuffix, label, 'view' + (id === v ? ' on' : ''));
+      if (id === 'actions') { const n = openCount(view.actions); if (n) a.append(badge(n)); }
       if (id === v) a.setAttribute('aria-current', 'page');
       homeNav.append(a);
     });
@@ -389,6 +460,7 @@ function render() {
     if (v.startsWith('home')) renderProjectHome(body, view, v);
     else if (v === 'progress') renderProgress(body, view, ctx);
     else if (v === 'actions') renderActions(body, sv);
+    else if (v === 'oracle-continuity') renderOracleContinuity(body, view);
     else if (v === 'fixtures') renderFixtures(body, sv.fixtures);
     else if (shownStep || family) renderTimeline(body, sv);
     else renderTimeline(body, view);
