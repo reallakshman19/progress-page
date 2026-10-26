@@ -2,11 +2,11 @@
 import { el, link, tick, ago, whenText } from './util.js?v=21';
 import { buildSearchIndex, searchProgress } from './search.js?v=22';
 import { renderOracleContinuity } from './oracle-continuity.js?v=22';
-import { renderProgress, wbsPick, wbsGroups, wbsFamily, wbsRevisionScope, wbsRoute } from './progress.js?v=21';
+import { renderProgress, wbsPick, wbsGroups, wbsFamily, wbsRevisionScope, wbsRoute } from './progress.js?v=22';
 import { renderLessons } from './lessons.js?v=21';
-import { renderActions, renderFixtures, renderProjectHome, openCount } from './actions.js?v=21';
+import { renderActions, renderFixtures, renderProjectHome, openCount } from './actions.js?v=22';
 import { renderTimeline } from './timeline.js?v=21';
-import { tabsRow, archivedPanel, projectHead, revisionRow, isActive, HOME_VIEWS, HOME_SUBTABS, PRIMARY_TABS, primaryTabActive } from './lifecycle.js?v=21';
+import { tabsRow, archivedPanel, projectHead, revisionRow, isActive, HOME_VIEWS, HOME_SUBTABS, PRIMARY_TABS, primaryTabActive } from './lifecycle.js?v=22';
 import { nudgesOf, openNudge } from './nudge.js?v=21';
 import { addProjectDialog, addRevisionDialog } from './briefs.js?v=21';
 import { loadLinks, takeLinksFromHash, linksPanel } from './links.js?v=21';
@@ -33,7 +33,6 @@ function go(href) {
   hash = href;
   try { history.pushState(null, '', href); } catch (e) { /* preview frame: the in-memory route is enough */ }
   render();
-  window.scrollTo(0, 0);
 }
 
 // Links embedded in a private local build come first; the ones saved in this browser override them.
@@ -495,7 +494,7 @@ window.addEventListener('error', (e) => showError(e.message));
 window.addEventListener('unhandledrejection', (e) => showError(String((e.reason && e.reason.message) || e.reason)));
 
 // Back and forward, or an edited address: follow the address (after go() the two already agree).
-const follow = () => { if (hash === location.hash) return; hash = location.hash; render(); window.scrollTo(0, 0); };
+const follow = () => { if (hash === location.hash) return; hash = location.hash; render(); };
 window.addEventListener('hashchange', follow);
 window.addEventListener('popstate', follow);
 setInterval(() => tick(document), 30000);
