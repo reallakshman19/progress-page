@@ -83,3 +83,11 @@ test('WBS-filtered projection retains original identity and excludes the other W
   assert.ok(!r.high.some(x=>['e0-e1','rigid-weight','effective-job-provenance'].includes(x.id)));
   assert.deepEqual(r.medium.map(x=>x.id),['g2-topology','g1-renderer']);
 });
+
+test('historical revision keeps its original ten-list view without current ROI projections', () => {
+  const p={index:{project:{key:'ciifr'}},fixtures,cards:{}};
+  const historical=projectHomeModel(p,true);
+  assert.equal(historical.roi,null);
+  assert.equal(historical.decisions.length,18);
+  assert.equal(ciifrRoiModel('ciifr-element',fixtures),null);
+});

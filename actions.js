@@ -185,10 +185,10 @@ export function renderFixtures(root, fixtures, projectKey = '', originals = fixt
 // Project Home is a read-only projection of existing audited project/fixture records.
 // The Oracle is responsible for source-grounded concept/architecture/roadmap content;
 // the viewer must never invent source documents, approval or engineering authority.
-export function projectHomeModel(project) {
+export function projectHomeModel(project, historical = false) {
   const pj = project?.index?.project || {};
   const fx = project?.fixtures || {};
-  const roi = ciifrRoiModel(pj.key, fx);
+  const roi = historical ? null : ciifrRoiModel(pj.key, fx);
   const refs = [...(fx.repository || []), ...(fx.intent || []), ...(fx.highRoi || [])];
   const matches = (item, re) => re.test([(item.t || ''), (item.s || ''), (item.n || ''), (item.u || '')].join(' '));
   const concepts = refs.filter(item => matches(item, /concept[ -]?note|project concept|concept brief|concept overview|CONCEPT_NOTE/i));
@@ -266,8 +266,8 @@ export function projectRoadmapGroups(items = []) {
   return groups;
 }
 
-export function renderProjectHome(root, project, mode = 'home') {
-  const m = projectHomeModel(project);
+export function renderProjectHome(root, project, mode = 'home', historical = false) {
+  const m = projectHomeModel(project, historical);
   const key = project?.index?.project?.key || '';
   const box = el('section', 'project-home');
   const names = { home: 'Project Home', 'home-roadmap': 'Roadmap and WBS',

@@ -456,11 +456,11 @@ function render() {
       body.append(info);
     }
     const sv = shownStep ? stepView(view, [shownStep]) : family ? stepView(view, family.steps.map(x => x.key)) : view;
-    if (v.startsWith('home')) renderProjectHome(body, view, v);
+    if (v.startsWith('home')) renderProjectHome(body, view, v, !!older);
     else if (v === 'progress') renderProgress(body, view, ctx);
     else if (v === 'actions') renderActions(body, sv);
     else if (v === 'oracle-continuity') renderOracleContinuity(body, view);
-    else if (v === 'fixtures') renderFixtures(body, sv.fixtures, key, view.fixtures);
+    else if (v === 'fixtures') renderFixtures(body, sv.fixtures, older ? '' : key, view.fixtures);
     else if (shownStep || family) renderTimeline(body, sv);
     else renderTimeline(body, view);
   }
