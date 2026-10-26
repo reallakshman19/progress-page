@@ -1,0 +1,35 @@
+name: One-shot CIIFR WBS3 audited reconciliation
+on:
+  push:
+    branches: [pp/ciifr-wbs3-reconcile-20261026]
+    paths:
+      - 'tools/ciifr_wbs3_reconcile.py'
+      - '.github/workflows/ciifr-wbs3-reconcile.yml'
+permissions:
+  contents: write
+jobs:
+  reconcile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check exact base and run audited CLI writes
+        run: python tools/ciifr_wbs3_reconcile.py
+      - name: Check resulting audit and history explicitly
+        run: |
+          python tools/pp_cli.py check
+          python tools/pp_cli.py check --base origin/main
+      - name: Commit ONLY audited CIIFR fixture/cards/index/audit changes on branch
+        run: |
+          git config user.name "CIIFR Progress recorder (Actions)"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/ciifr/cards.json data/ciifr/index.json data/ciifr/fixtures.json data/ciifr/audit.json
+          git diff --cached --check
+          git diff --cached --quiet && { echo "No audited changes"; exit 1; }
+          git commit -m "data(ciifr): reconcile WBS3 Geometry rev12 through audited CLI [skip ci]"
+          git push origin "HEAD:pp/ciifr-wbs3-reconcile-20261026"
