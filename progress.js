@@ -1,8 +1,8 @@
 // Progress view: attention strip, milestone strip, then groups of agent blocks.
-import { el, link, md, age } from './util.js?v=19';
-import { cardTags, fmt, nudgeTag } from './triggers.js?v=19';
-import { nudgeRow } from './nudge.js?v=19';
-import { onboardingModel, renderOnboarding } from './onboarding.js?v=19';
+import { el, link, md, age } from './util.js?v=20';
+import { cardTags, fmt, nudgeTag } from './triggers.js?v=20';
+import { nudgeRow } from './nudge.js?v=20';
+import { onboardingModel, renderOnboarding } from './onboarding.js?v=20';
 
 const RANK = { NOT_STARTED: 0, UNKNOWN: 1, STALE: 1, IN_PROGRESS: 2, SUBMITTED: 3, VERIFIED: 4 };
 const ICON = { VERIFIED: '✓', SUBMITTED: '↑', IN_PROGRESS: '●', BLOCKED: '!', NOT_STARTED: '○', STALE: '?', UNKNOWN: '?', NOT_APPLICABLE: '–' };
@@ -38,6 +38,7 @@ export function wbsPick(project, key) {
 
 // WBS families are a VIEW over unchanged milestone keys, not new tasks or states.
 const families = {};
+const onboardingExpanded = new Set();
 export function wbsFamily(project, value) {
   if (value !== undefined) families[project] = value;
   return families[project] || null;
@@ -285,12 +286,14 @@ function arrowBetween(a, b) {
   return null;
 }
 
-function groupBlock(g, mine, ctx) {
-  const sec = el('section', 'grp');
-  const h = el('div', 'grp-h');
-  h.append(el('span', 'grp-t', g.title));
-  (g.chips || []).forEach((c) => h.append(el('span', 'chip ' + (c.c || 'n'), c.t)));
-  sec.append(h);
+function groupBlock(g, mine, ctx, embedded = false) {
+  const sec = el(embedded ? 'div' : 'section', embedded ? 'onb-group-content' : 'grp');
+  if (!embedded) {
+    const h = el('div', 'grp-h');
+    h.append(el('span', 'grp-t', g.title));
+    (g.chips || []).forEach((c) => h.append(el('span', 'chip ' + (c.c || 'n'), c.t)));
+    sec.append(h);
+  }
   if (g.sub) sec.append(el('p', 'grp-s', g.sub));
   const flow = el('div', 'flow');
   mine.forEach((c, i) => {
@@ -301,6 +304,30 @@ function groupBlock(g, mine, ctx) {
   });
   sec.append(flow);
   return sec;
+}
+
+// The original G0 card and readiness evidence share a single WBS-owned disclosure.
+// A revision-scoped expansion state survives normal refreshes, but never crosses revisions.
+export function onboardingWbsGroup(project, group, mine, ctx, model) {
+  const step = wbsGroups(project.index).flatMap(g => g.steps).find(s => s.key === model.card.milestone);
+  const raw = (group.title || 'Onboarding').replace(/^[^:]+:\s*/, '');
+  const title = raw.charAt(0).toUpperCase() + raw.slice(1);
+  const scope = (ctx.wbsScope || (project.index.project || {}).key || '') + ':' + model.card.milestone;
+  const wrapper = el('details', 'grp onb-accordion');
+  wrapper.dataset.onboarding = model.card.milestone;
+  wrapper.open = onboardingExpanded.has(scope);
+  const summary = el('summary', 'onb-summary');
+  summary.append(el('span', 'grp-t', (step ? step.short + ' · ' : '') + title),
+    el('span', 'onb-phase', model.stageLabel),
+    el('span', 'pill st-' + model.card.state, model.card.state));
+  wrapper.append(summary);
+  wrapper.addEventListener('toggle', () => {
+    if (wrapper.open) onboardingExpanded.add(scope);
+    else onboardingExpanded.delete(scope);
+  });
+  renderOnboarding(wrapper, project, { embedded: true, model });
+  wrapper.append(groupBlock(group, mine, ctx, true));
+  return wrapper;
 }
 
 // Attention strip: the trigger counts for this project. Clicking a count jumps to the first matching block.
@@ -317,6 +344,10 @@ function attention(sum, rules) {
       if (n) {
         b.addEventListener('click', () => {
           const t = document.querySelector('.card[data-trig~="' + k + '"]:not([hidden])');
+          if (t) {
+            const disclosure = t.closest('details.onb-accordion');
+            if (disclosure) disclosure.open = true;
+          }
           if (!t) return;
           t.scrollIntoView({ block: 'center', behavior: 'smooth' });
           t.classList.add('flash');
@@ -355,14 +386,14 @@ export function renderProgress(root, project, ctx) {
   picked = picks[key] || null;
   root.append(strip(project.index, cards, ctx, family));
   const onb = onboardingModel(project);
-  if (onb && (!picked || picked === onb.card.milestone) && (!allowed || allowed.has(onb.card.milestone))) renderOnboarding(root, project);
   const groups = Object.entries(project.index.groups || {}).sort((a, b) => (a[1].order || 0) - (b[1].order || 0));
   const used = new Set();
   groups.forEach(([gk, g]) => {
     const mine = cards.filter((c) => c.group === gk).sort((a, b) => (Number(!!a.closed) - Number(!!b.closed)) || ((a.order || 0) - (b.order || 0)));
     if (!mine.length) return;
     mine.forEach((c) => used.add(c.id));
-    root.append(groupBlock(g, mine, ctx));
+    root.append(onb && gk === onb.groupId && mine.some(c => c.id === onb.cardId)
+      ? onboardingWbsGroup(project, g, mine, ctx, onb) : groupBlock(g, mine, ctx));
   });
   const rest = cards.filter((c) => !used.has(c.id));
   if (rest.length) root.append(groupBlock({ title: 'Other' }, rest, ctx));

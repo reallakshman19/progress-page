@@ -273,3 +273,14 @@ details.nd{margin-top:6px;font-size:12px}
 .wbs-family-card strong{font-size:15px}.wbs-family-card span{font-size:12px}
 .wbs-family-card:hover,.wbs-family-card:focus-visible{border-color:var(--acc);outline:1px solid var(--acc)}
 @media(max-width:620px){.wbs-family-tab{padding:7px 10px}.wbs-children{scroll-snap-type:x proximity}.wbs-child-tab{scroll-snap-align:start}}
+
+/* G0 onboarding is one compact WBS step; task and readiness evidence expand together. */
+.onb-accordion{border:1px solid var(--bd);border-radius:10px;background:var(--card);padding:0;overflow:hidden}
+.onb-summary{display:flex;flex-wrap:wrap;align-items:center;gap:8px;cursor:pointer;padding:12px 14px;list-style-position:inside}
+.onb-summary:hover,.onb-summary:focus-visible{background:var(--accbg);outline-offset:-2px}
+.onb-summary .grp-t{flex:1 1 240px}
+.onb-accordion[open]>.onb-summary{border-bottom:1px solid var(--bd)}
+.onb-accordion .onb-panel{border:0;border-radius:0;margin:0;padding:12px 14px 4px;background:transparent}
+.onb-group-content{padding:0 14px 14px}
+.onb-group-content .flow{margin-top:8px}
+.onb-accordion:not([open]) .onb-group-content{display:none}

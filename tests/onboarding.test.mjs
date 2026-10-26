@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { onboardingModel, COMMON_START_HERE } from '../onboarding.js';
+import { onboardingWbsGroup } from '../progress.js';
 
 const LINK = 'https://github.com/example/project/issues/25#issuecomment-12';
 const ASSIGN = 'https://github.com/example/project/issues/25#issuecomment-10';
@@ -136,4 +137,59 @@ test('same URL text embedded as a substring does not count as binding token', ()
   const bad = fixture(CODES[0]); bad.t = 'not-an-onboarding-proof:' + 'ONB_ASSIGNMENT=' + ASSIGN;
   p.fixtures.pending = [bad];
   assert.equal(onboardingModel(p).stage, 0);
+});
+
+function fakeOnboardingDom() {
+  const make = tag => ({
+    tag, className:'', dataset:{}, children:[], events:{}, open:false,
+    get childNodes() { return this.children; },
+    set textContent(v) { this._text=String(v); this.children=[]; },
+    get textContent() { return (this._text || '') + this.children.map(c=>typeof c==='string'?c:c.textContent||'').join(''); },
+    append(...children) { this.children.push(...children); },
+    setAttribute(key,value) { (this.attributes ||= {})[key]=String(value); },
+    addEventListener(type,callback) { this.events[type]=callback; },
+  });
+  const old=globalThis.document;
+  globalThis.document={createElement:make,createDocumentFragment:()=>make('fragment')};
+  return { make, restore:()=>{ globalThis.document=old; } };
+}
+function walkNodes(root,predicate,found=[]) {
+  if (root && typeof root === 'object') {
+    if (predicate(root)) found.push(root);
+    (root.children||[]).forEach(child=>walkNodes(child,predicate,found));
+  }
+  return found;
+}
+test('G0 is one closed-by-default WBS 3.0 disclosure with original task and readiness evidence', () => {
+  const fake=fakeOnboardingDom();
+  try {
+    const p=project();
+    p.index.groups['r3-geometry-onboarding'].title='Geometry: onboarding and integration seam';
+    const model=onboardingModel(p);
+    const card={...model.card,id:model.cardId};
+    const ctx={wbsScope:'ciifr@R4',chats:{},links:{},rules:{}};
+    const disclosure=onboardingWbsGroup(p,model.group,[card],ctx,model);
+    assert.equal(disclosure.tag,'details');
+    assert.equal(disclosure.open,false,'initial view is collapsed');
+    assert.match(disclosure.children[0].textContent,/3\.0 · Onboarding and integration seam/);
+    assert.match(disclosure.children[0].textContent,/Not assigned/);
+    assert.equal(disclosure.dataset.onboarding,'M12');
+    assert.equal(walkNodes(disclosure,n=>n.tag==='article'&&n.dataset.card==='geo-g0').length,1);
+    assert.equal(walkNodes(disclosure,n=>n.className==='onb-now').length,0,
+      'WBS card is not duplicated by a second task summary');
+    assert.equal(walkNodes(disclosure,n=>n.className?.includes('onb-panel')).length,1);
+  } finally { fake.restore(); }
+});
+test('expansion survives same-revision refresh and never leaks from R4 into frozen R3', () => {
+  const fake=fakeOnboardingDom();
+  try {
+    const p=project(), m=onboardingModel(p), group=m.group, context=rev=>({wbsScope:'ciifr@'+rev});
+    const first=onboardingWbsGroup(p,group,[],context('R4'),m);
+    assert.equal(first.open,false);
+    first.open=true;first.events.toggle();
+    assert.equal(onboardingWbsGroup(p,group,[],context('R4'),m).open,true);
+    assert.equal(onboardingWbsGroup(p,group,[],context('R3'),m).open,false);
+    first.open=false;first.events.toggle();
+    assert.equal(onboardingWbsGroup(p,group,[],context('R4'),m).open,false);
+  } finally { fake.restore(); }
 });
