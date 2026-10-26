@@ -6082,6 +6082,54 @@
       "list": "pending",
       "op": "add",
       "rev": "R4"
+    },
+    {
+      "seq": 464,
+      "id": "CIIFR-R-0464",
+      "previous_id": "CIIFR-R-0463",
+      "at": "2026-10-26T13:19:55Z",
+      "kind": "PLAN",
+      "actor": "CIIFR Progress Page WBS5 recorder",
+      "summary": "Classify existing M8 under WBS 5 CIIFR-MAP per Issue #33; no engineering state or authority change",
+      "source": "https://github.com/reallakshman19/progress-page/issues/33",
+      "scope": "milestone:M8",
+      "rev": "R4"
+    },
+    {
+      "seq": 465,
+      "id": "CIIFR-R-0465",
+      "previous_id": "CIIFR-R-0464",
+      "at": "2026-10-26T13:19:55Z",
+      "kind": "PLAN",
+      "actor": "CIIFR Progress Page WBS5 recorder",
+      "summary": "Classify existing M9 under WBS 5 CIIFR-MAP per Issue #33; no engineering state or authority change",
+      "source": "https://github.com/reallakshman19/progress-page/issues/33",
+      "scope": "milestone:M9",
+      "rev": "R4"
+    },
+    {
+      "seq": 466,
+      "id": "CIIFR-R-0466",
+      "previous_id": "CIIFR-R-0465",
+      "at": "2026-10-26T13:19:56Z",
+      "kind": "PLAN",
+      "actor": "CIIFR Progress Page WBS5 recorder",
+      "summary": "Classify existing M10 under WBS 5 CIIFR-MAP per Issue #33; no engineering state or authority change",
+      "source": "https://github.com/reallakshman19/progress-page/issues/33",
+      "scope": "milestone:M10",
+      "rev": "R4"
+    },
+    {
+      "seq": 467,
+      "id": "CIIFR-R-0467",
+      "previous_id": "CIIFR-R-0466",
+      "at": "2026-10-26T13:19:56Z",
+      "kind": "PLAN",
+      "actor": "CIIFR Progress Page WBS5 recorder",
+      "summary": "Classify existing M11 under WBS 5 CIIFR-MAP per Issue #33; no engineering state or authority change",
+      "source": "https://github.com/reallakshman19/progress-page/issues/33",
+      "scope": "milestone:M11",
+      "rev": "R4"
     }
   ]
 }
