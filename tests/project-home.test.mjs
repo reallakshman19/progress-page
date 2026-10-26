@@ -108,7 +108,7 @@ test('Home overview never expands the roadmap, and Sources collapses large searc
     p.fixtures.repository.push(...Array.from({length:14},(_,i)=>({t:'Fixture '+i,s:'SOURCE'})));
     const overview=fakeElement('main');
     renderProjectHome(overview,p,'home');
-    assert.equal(all(overview,n=>n.tag==='a'&&n.className==='home-tile').length,4);
+    assert.equal(all(overview,n=>n.tag==='a'&&n.className==='home-tile').length,6);
     assert.equal(all(overview,n=>n.tag==='details').length,1,'only the short concept disclosure appears');
     const roadmap=fakeElement('main');
     renderProjectHome(roadmap,p,'home-roadmap');
@@ -127,11 +127,11 @@ test('Home overview never expands the roadmap, and Sources collapses large searc
   } finally {globalThis.document=prior;}
 });
 
-test('Fixtures and Timeline are Project Home subtabs, not top-level project navigation', () => {
+test('Owner actions, Oracle continuity, Fixtures and Timeline are Project Home subtabs', () => {
   const primary = PRIMARY_TABS.map(([route]) => route);
   const home = HOME_SUBTABS.map(([route]) => route);
-  assert.deepEqual(primary, ['home', 'progress', 'actions']);
-  assert.deepEqual(home, ['home','home-roadmap','home-sources','home-risks','fixtures','timeline']);
+  assert.deepEqual(primary, ['home', 'progress']);
+  assert.deepEqual(home, ['home','home-roadmap','home-sources','home-risks','oracle-continuity','actions','fixtures','timeline']);
   assert.deepEqual(HOME_VIEWS, home);
   assert.equal(new Set(home).size, home.length, 'no duplicate Home destinations');
   for (const v of home) {
@@ -140,7 +140,7 @@ test('Fixtures and Timeline are Project Home subtabs, not top-level project navi
     assert.equal(primaryTabActive('actions',v),false);
   }
   assert.equal(primaryTabActive('progress','progress'),true);
-  assert.equal(primaryTabActive('actions','actions'),true);
-  assert.equal(primaryTabActive('home','actions'),false);
-  assert.equal(primary.includes('fixtures')||primary.includes('timeline'),false);
+  assert.equal(primaryTabActive('actions','actions'),false);
+  assert.equal(primaryTabActive('home','actions'),true);
+  assert.equal(primary.includes('actions')||primary.includes('fixtures')||primary.includes('timeline'),false);
 });
