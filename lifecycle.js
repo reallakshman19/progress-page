@@ -13,7 +13,7 @@ export const HOME_SUBTABS = Object.freeze([
   ['actions','My actions'], ['fixtures','Grounding fixtures'], ['timeline','Timeline'],
 ]);
 export const PRIMARY_TABS = Object.freeze([['start','Agent Start'],['home','Project Home'],['progress','Progress / WBS']]);
-export const primaryTabActive = (id, view) => id === 'home' ? HOME_VIEWS.includes(view) : id === view;
+export const primaryTabActive = (id, view) => id === 'home' ? HOME_VIEWS.includes(view) : id === 'start' ? view === 'start' : id === 'progress' && view === 'progress';
 
 
 export const isActive = (p) => (p.status || 'active') === 'active';
