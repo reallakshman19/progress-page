@@ -6,8 +6,8 @@
     "subtitle": "WBS 4.0–4.6 · inherited evidence; engineering qualification and writer HOLD",
     "aim": "Expand CII Find & Replace into typed ELEMENTS values, physical Line Number labels and pointer-resolved RIGID edits. Preserve immutable originals, units, approved byte spans and existing NodeName protections; qualify engineering semantics before new-copy export.",
     "aimSrc": "OWNER_PRIVATE_REF:ciifr-element-new-wbs-20261026",
-    "updatedAt": "2026-10-26T09:55:11Z",
-    "updatedBy": "ChatGPT (Owner-directed WBS recorder)",
+    "updatedAt": "2026-10-26T10:42:53Z",
+    "updatedBy": "ChatGPT (Owner-directed recorder)",
     "staleAfterMin": 120
   },
   "rules": {
