@@ -33,6 +33,7 @@ and leaves every file as it was if the check fails. Nothing is deleted: supersed
 - **Project Home**: compact Overview, Roadmap, Sources and Risks & handoffs pages; long source lists start collapsed and can be searched. Original fixtures and native issues remain authoritative; roadmap entries are plans, not engineering PASS.
 - **Progress / WBS**: first select a numbered WBS family (1 / 2 / 3 / …), then its 3.0 / 3.1 / … subtabs; unnumbered M-series milestones remain under **Other milestones**. All WBS is a compact family overview, not a 23-item navigation strip. The selection filters relevant agents, actions, fixtures and timeline; native milestone IDs and evidence stay unchanged. Attention counts remain project-wide. Existing `#/project/progress` URLs continue to open operational progress; `#/project/home[-roadmap|-sources|-risks]` opens the relevant Home section.
   Superseded and cancelled blocks stay, greyed, with the reason. **Nudge +** on each block queues instructions for the coordinator (OTM or the Oracle), not for the agent.
+  Historical revision links use that revision's immutable GitHub snapshot for the Owner aim, WBS families/children, milestones, cards and sources; never fill a missing R1/R2/R3 snapshot from current R4. WBS selections are revision-scoped, shareable links such as `#/ciifr/progress/R3/wbs%3A3/M13`; Back/Forward restores the exact selection.
 - **My actions**, **Grounding fixtures**, **Timeline** (newest first, each entry with its GitHub source).
 
 ## Data (public-safe only)
