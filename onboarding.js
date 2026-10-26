@@ -79,15 +79,15 @@ function onbDetails(label, build) {
   return box;
 }
 
-export function renderOnboarding(root, project) {
-  const m = onboardingModel(project);
+export function renderOnboarding(root, project, { embedded = false, model = null } = {}) {
+  const m = model || onboardingModel(project);
   if (!m) return;
-  const sec = el('section', 'onb-panel');
+  const sec = el('section', 'onb-panel' + (embedded ? ' onb-embedded' : ''));
   sec.setAttribute('aria-label', 'Oracle and agent onboarding');
   const head = el('div', 'onb-head');
   head.append(el('h3', null, 'Onboarding · ' + m.group.title),
     el('span', 'onb-phase', m.stageLabel));
-  sec.append(head);
+  if (!embedded) sec.append(head);
   const stages = el('ol', 'onb-stages');
   ONB_STAGES.forEach((name, i) => {
     const step = el('li', 'onb-stage' + (i === m.stage ? ' current' : i < m.stage ? ' completed' : ''), name);
@@ -106,7 +106,7 @@ export function renderOnboarding(root, project) {
   for (const ref of (m.card.refs || []).filter((r) => r.u).slice(0, 2)) {
     now.append(link(ref.u, ref.l || 'Task source', 'onb-reference'));
   }
-  sec.append(now);
+  if (!embedded) sec.append(now);
   const extra = el('div', 'onb-extra');
   extra.append(onbDetails('Start Here · seven checks', (inner) => {
     inner.append(el('p', null, link(COMMON_START_HERE, 'Common START HERE · choose role and mode')));
