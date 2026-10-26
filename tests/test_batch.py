@@ -9,7 +9,7 @@ from helpers import copy_valid, load, save, SRC
 class Batch(unittest.TestCase):
     def manifest(self,root,source=SRC):
         obj={"project":"demo","actor":"Batch reviewer","source":source,
-             "changes":[{"command":"plan milestone","args":{"id":"M1","wbs":"7.0","summary":"Evidence-backed classification"}},
+             "changes":[{"command":"plan milestone","args":{"id":"M1","wbs":"7","summary":"Evidence-backed classification"}},
                         {"command":"plan milestone","args":{"id":"M2","wbs":"7.1","summary":"Evidence-backed classification 2"}}]}
         path=Path(root).parent/"batch.json";path.write_text(json.dumps(obj));return path
     def test_dry_run_never_writes_and_apply_is_audited(self):
@@ -26,7 +26,7 @@ class Batch(unittest.TestCase):
         applied=B.run(data,path,apply=True)
         self.assertTrue(applied["applied"]);self.assertEqual(len(applied["newEventIds"]),2)
         self.assertEqual(len(load(audit)["events"]),len(prev)+2)
-        self.assertEqual(load(index)["milestones"]["M1"]["wbs"],"7.0")
+        self.assertEqual(load(index)["milestones"]["M1"]["wbs"],"7")
         with self.assertRaisesRegex(ValueError,"already recorded"): B.run(data,path)
     def test_invalid_operation_does_not_change_live_data(self):
         data=copy_valid();audit=Path(data)/"demo"/"audit.json";before=audit.read_bytes()
