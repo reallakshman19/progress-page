@@ -137,7 +137,7 @@ def main():
             check("WBS 4" in txt,"Element WBS4 context missing")
             check("Authority and evidence rules" in txt,"No authority boundary disclosure")
             check(len(source_urls(page))>=1,"WBS4 native source missing")
-            return {"taskCards":page.locator(".agent-start-task").count(),"sources":len(source_urls(page))}
+            return {"taskCards":page.locator(".agent-start-item").count(),"sources":len(source_urls(page))}
         case("Open WBS 4 Element directly without carrying stale G1 context",step3)
         def step4():
             txt=load(page,"ciifr/start/R4/wbs%3A5/M11")
@@ -146,7 +146,7 @@ def main():
             check("NOT_DEMONSTRATED" in txt,"Transfer HOLD capability absent")
             check("Authority and evidence rules" in txt,"No authority boundary for transfer")
             check(page.locator(".agent-start-rules summary").count()==1,"No release restriction disclosure")
-            return {"taskCards":page.locator(".agent-start-task").count(),"sources":len(source_urls(page))}
+            return {"taskCards":page.locator(".agent-start-item").count(),"sources":len(source_urls(page))}
         case("Open WBS 5.3 M11 HOLD without false transfer authorization",step4)
         def step5():
             load(page,"ciifr/start")
@@ -193,7 +193,7 @@ def main():
             capture(mpage,"08-wbs3-agent-start-mobile")
             width=viewport(mpage)
             check(width["scroll"]<=width["width"]+3,"Horizontal page overflow at 390px: "+str(width))
-            check(mpage.get_by_role("button",name="Copy source-backed handoff").is_visible(),"Copy action inaccessible on mobile")
+            check(mpage.get_by_role("button",name="Copy scoped handoff").is_visible(),"Copy action inaccessible on mobile")
             check("Authority and evidence rules" in txt,"Mobile hides authority rules")
             return {"viewport":width,"taskCards":mpage.locator(".agent-start-item").count()}
         case("Mobile 390px layout, source visibility and no horizontal overflow",step7)
@@ -209,7 +209,7 @@ def main():
                     "candidateIdentity":"NOT_RECORDED","privateChatSetupHidden":True}
         case("Mobile first screen contains the actionable task and explicit missing-candidate warning",step7b)
         def step8():
-            mpage.get_by_role("button",name="Copy source-backed handoff").click()
+            mpage.get_by_role("button",name="Copy scoped handoff").click()
             mpage.wait_for_timeout(200)
             copied=mpage.evaluate("navigator.clipboard.readText()")
             check("BOUNDARY:" in copied,"Mobile clipboard omits authority boundary")
