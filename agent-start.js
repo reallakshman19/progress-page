@@ -101,14 +101,20 @@ export function renderAgentStart(root, project, opts = {}) {
     section.append(el('p','agent-start-intro',
       'Select the WBS of the task you were given. This page does not assign work or rank unfinished items.'));
     const choices=el('div','agent-start-choices');
-    for(const g of m.choices){
+    for(const g of m.choices.filter(g=>g.key!=='other')){
       const box=el('article','agent-start-choice');
       const main=nav(g.label,g.key,null,'agent-start-choice-link');
       box.append(main,el('p','muted',g.count+' WBS steps · '+g.workCount+' recorded work items'));
-      if(g.key==='other')box.append(el('p','muted','Legacy and non-WBS milestones · not a suggested next task'));
       choices.append(box);
     }
     section.append(choices);
+    const other=m.choices.find(g=>g.key==='other');
+    if(other){
+      const p=el('p','agent-start-other');
+      p.append(nav('Other / legacy milestones',other.key,null),
+        el('span','muted',' · '+other.count+' milestones, not a recommended next task'));
+      section.append(p);
+    }
     if(!m.choices.length)section.append(el('p','muted',
       'No WBS workstreams are recorded. Use Project Home and the authoritative GitHub task; do not invent an assignment.'));
   } else {
@@ -146,8 +152,11 @@ export function renderAgentStart(root, project, opts = {}) {
       'Recorded candidate '+m.focused.commit+' · recheck exact current head at source' :
       'Candidate identity NOT_RECORDED here · verify the exact native PR head before claiming PASS'));
     if(valid(m.focused.capSrc))gate.append(link(m.focused.capSrc,'Open milestone evidence','agent-start-source'));
-    section.append(gate);
-    section.append(el('h4',null,m.work.length+' recorded work item'+(m.work.length===1?'':'s')+' · not priority ranked'));
+    const single=m.work.length===1;
+    if(single)section.append(el('p','agent-start-single-cap','Recorded capability · '+cap(m.focused)));
+    if(!single)section.append(gate);
+    section.append(el('h4',null,single ? 'Recorded next action · not an assignment' :
+      m.work.length+' recorded work items · not priority ranked'));
     for(const w of m.work){
       const row=el('article','agent-start-item');
       const h=el('div','agent-start-task-title');
@@ -169,6 +178,7 @@ export function renderAgentStart(root, project, opts = {}) {
       }
       section.append(row);
     }
+    if(single)section.append(gate);
     if(!m.work.length)section.append(el('p','muted',
       'No current work items are recorded for this step. An independent GitHub task is needed before acting.'));
     const sources=el('details','agent-start-sources');
