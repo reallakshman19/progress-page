@@ -58,7 +58,7 @@ test('family and step choices remain independent between projects, and can be cl
 test('published CIIFR R4 gives Geometry 3.x, Element 4.x and accessible legacy milestones', () => {
   const ciifr=JSON.parse(readFileSync(new URL('../data/ciifr/index.json', import.meta.url),'utf8'));
   const groups=wbsGroups(ciifr);
-  assert.deepEqual(groups.map(g=>g.key),['wbs:3','wbs:4','other']);
+  assert.deepEqual(groups.map(g=>g.key),['wbs:3','wbs:4','wbs:5','other']);
   assert.equal(groups[0].label,'WBS 3','Geometry stays unchanged');
   assert.equal(groups[1].label,'WBS4- CIIFR-Element');
   assert.equal(wbsGroups({project:{key:'unrelated'},milestones:ciifr.milestones})[1].label,'WBS 4');
