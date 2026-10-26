@@ -15,7 +15,7 @@ const short = (value, limit = 195) => {
   const end = Math.max(piece.lastIndexOf(' '), limit - 35);
   return piece.slice(0, end).trimEnd() + '…';
 };
-const route = (key, rev, group, step) => '#/' + encodeURIComponent(key) + '/start/' + encodeURIComponent(rev) +
+const agentStartHref = (key, rev, group, step) => '#/' + encodeURIComponent(key) + '/start/' + encodeURIComponent(rev) +
   (group ? '/' + encodeURIComponent(group) + (step ? '/' + encodeURIComponent(step) : '') : '');
 const milestoneCards = (cards, id) => Object.entries(cards || {}).filter(([,c]) => live(c) && c.milestone === id);
 
@@ -90,7 +90,7 @@ export function renderAgentStart(root, project, opts = {}) {
   const section=el('section','agent-start');
   section.setAttribute('data-agent-start-mode',m.mode);
   const nav = (text,group,step,cls) => {
-    const url=route(opts.projectKey || m.projectKey,m.revision,group,step);
+    const url=agentStartHref(opts.projectKey || m.projectKey,m.revision,group,step);
     if(opts.nav) return opts.nav(url,text,cls || 'agent-start-route');
     const a=el('a',cls || 'agent-start-route',text);a.href=url;return a;
   };
