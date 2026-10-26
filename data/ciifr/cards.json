@@ -628,11 +628,11 @@
     "milestone": "M12",
     "label": "G0 · Onboarding and ownership",
     "who": {},
-    "state": "NOT_STARTED",
-    "now": "G0: [Contribution & Handoff](https://github.com/reallakshman19/Common/blob/a9491531fb98f6fd14bc486a4cc78ee4680cb1f5/skills/agent-work/CONTRIBUTION_HANDOFF.md) requires evidence-bounded PASS, surviving-error challenge and SELF_ASSESSED Oracle edits. [Oracle Continuity](https://github.com/reallakshman19/Common/blob/a9491531fb98f6fd14bc486a4cc78ee4680cb1f5/skills/agent-work/oracle-continuity/PROTOCOL.md) preserves task/artifact identity and actual cutover. Read Issue #166 and XCU AGENTS; verify original CII hashes, input access, PR #165 ownership and Appendix A. Engineering takeover READ_ONLY until qualified. No Geometry Writer. Return exact-head demo, checks, NOT_RUN and next actor.",
+    "state": "SUBMITTED",
+    "now": "G0 source/role intake now has exact G1 draft PR174 and PR181 artifacts; source and original parser observations reported. Original served-browser B1-B4, new-head independent reviewer and Owner acceptance still NOT_RUN.",
     "next": {
-      "actor": "Oracle",
-      "text": "Reconcile PR #165 and identify authorized G1 builder; no Oracle succession activated."
+      "actor": "Independent G1 reviewer",
+      "text": "Replay original S1/T in a real browser at exact G1 head; no Writer or engineering release."
     },
     "refs": [
       {
@@ -642,8 +642,8 @@
         "s": "PLANNED"
       }
     ],
-    "updatedAt": "2026-10-25T05:27:05Z",
-    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/166#issuecomment-6393745466"
+    "updatedAt": "2026-10-26T04:43:20Z",
+    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/175#issuecomment-6401364122"
   },
   "geo-g1": {
     "order": 21,
@@ -651,11 +651,11 @@
     "milestone": "M13",
     "label": "G1 · Anchor, ledger and dual SVG",
     "who": {},
-    "state": "NOT_STARTED",
-    "now": "Planned: original CII SOURCE/TARGET selection, experimental anchor registration, Method C candidates, linked row↔two physical SVGs at common mm scale, segment-only explicitly not NODE; no Writer/Apply.",
+    "state": "SUBMITTED",
+    "now": "G1 published draft PR174 (Method C/dual SVG) and PR181 (XML geometry preview). Author native tests and original source parse exist. Served Windows/browser original pair B1-B4, signed-Z display, inherited Normal and independent review remain NOT_RUN.",
     "next": {
-      "actor": "Builder after G0",
-      "text": "Produce Owner-runnable hosted Geometry workbench and exact-head evidence."
+      "actor": "Independent browser reviewer",
+      "text": "Run exact original S1/T on G1 candidates, compare table/SVG/GUI, 4060 segment-only, 4970 Z, Normal and stale-data negatives."
     },
     "refs": [
       {
@@ -664,7 +664,9 @@
         "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/166#issuecomment-6393745466",
         "s": "PLANNED"
       }
-    ]
+    ],
+    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/175#issuecomment-6401687179",
+    "updatedAt": "2026-10-26T04:43:20Z"
   },
   "geo-g2": {
     "order": 22,
@@ -672,11 +674,11 @@
     "milestone": "M14",
     "label": "G2 · Smart topology + Boolean",
     "who": {},
-    "state": "NOT_STARTED",
-    "now": "Planned: independent topology-only candidates without fabricated XYZ residuals; Manual/OR/AND filters retain ambiguous alternatives, target collisions and anchor disagreements.",
+    "state": "SUBMITTED",
+    "now": "G2 draft PR182 source-only pose-free topology/Boolean JSON CLI: author tests 7/7 PASS. Manual/Topology/OR/AND, alternative matches and conflicts preserved. Actual PR181 S1/T input, independent verification and UI integration NOT_RUN.",
     "next": {
-      "actor": "Builder after G1",
-      "text": "Extend G1 common ledger and demonstrate duplicate-signature/contested-target contrasts."
+      "actor": "G2 non-author reviewer",
+      "text": "Challenge PR182 against real PR181 graph output, S1/T ambiguous signatures, target collisions, hash guards; no implicit node-map acceptance."
     },
     "refs": [
       {
@@ -685,7 +687,9 @@
         "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/166#issuecomment-6393745466",
         "s": "PLANNED"
       }
-    ]
+    ],
+    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/177#issuecomment-6407926621",
+    "updatedAt": "2026-10-26T04:43:20Z"
   },
   "geo-g3": {
     "order": 23,
