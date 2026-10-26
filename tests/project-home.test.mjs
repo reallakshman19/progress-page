@@ -130,7 +130,7 @@ test('Home overview never expands the roadmap, and Sources collapses large searc
 test('Owner actions, Oracle continuity, Fixtures and Timeline are Project Home subtabs', () => {
   const primary = PRIMARY_TABS.map(([route]) => route);
   const home = HOME_SUBTABS.map(([route]) => route);
-  assert.deepEqual(primary, ['home', 'progress']);
+  assert.deepEqual(primary, ['start', 'home', 'progress']);
   assert.deepEqual(home, ['home','home-roadmap','home-sources','home-risks','oracle-continuity','actions','fixtures','timeline']);
   assert.deepEqual(HOME_VIEWS, home);
   assert.equal(new Set(home).size, home.length, 'no duplicate Home destinations');
@@ -139,6 +139,8 @@ test('Owner actions, Oracle continuity, Fixtures and Timeline are Project Home s
     assert.equal(primaryTabActive('progress',v),false);
     assert.equal(primaryTabActive('actions',v),false);
   }
+  assert.equal(primaryTabActive('start','start'),true);
+  assert.equal(primaryTabActive('start','progress'),false);
   assert.equal(primaryTabActive('progress','progress'),true);
   assert.equal(primaryTabActive('actions','actions'),false);
   assert.equal(primaryTabActive('home','actions'),true);

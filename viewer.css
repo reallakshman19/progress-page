@@ -297,3 +297,17 @@ details.nd{margin-top:6px;font-size:12px}
 .global-search-meta,.global-search-description,.global-search-source{font-size:12px;color:var(--mut);overflow-wrap:anywhere}
 .oracle-continuity .oracle-handover{margin:10px 0}
 .oracle-continuity .onb-detail-body{overflow-wrap:anywhere}
+
+
+/* Lightweight task launchpad: only existing audited sources, no duplicate workflow state. */
+.agent-start{max-width:880px;display:grid;gap:10px;margin:8px 0 24px}
+.agent-start-head,.agent-start-task-title,.agent-start-links{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.agent-start-head{justify-content:space-between}
+.agent-start-intro,.agent-start-boundary{font-size:13px;color:var(--mut)}
+.agent-start-aim{font-size:14px;margin:4px 0}
+.agent-start-boundary{border-left:3px solid var(--wn);padding:9px 12px;background:var(--card);border-radius:4px}
+.agent-start-task,.agent-start-cap,.agent-start-sources{border:1px solid var(--bd);padding:12px 14px;border-radius:9px;background:var(--card)}
+.agent-start-task p,.agent-start-cap p,.agent-start-sources p{margin:6px 0}
+.agent-start-source{font-size:12px}
+.agent-start-sources details summary{cursor:pointer}
+@media(max-width:620px){.agent-start-task,.agent-start-cap,.agent-start-sources{padding:11px}}

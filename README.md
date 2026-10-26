@@ -19,10 +19,22 @@ This repository-specific merge authorization **does not apply to Common or other
 python tools/pp_cli.py --help          # project / revision / plan / card / action / fixture / nudge / check / triggers / local / links
 python tools/pp_cli.py check           # must print OK
 python tools/pp_cli.py triggers        # what the Owner and the coordinator owe right now
+python tools/pp_cli.py reconcile --project ciifr --source https://github.com/reallakshman19/XML_Compare_Utilities/pull/185 --json  # read-only source checkpoint; use --expected-head SHA for drift warning
 ```
 
 Every write needs `--actor` (who), `--src` (a public GitHub link, or `OWNER_PRIVATE_REF:<id>`) and a reason. It writes one Timeline entry, runs the checker,
 and leaves every file as it was if the check fails. Nothing is deleted: supersede, cancel, archive or withdraw. Use plain `python` (not `python -I`).
+
+## Evidence-first, reviewable batch updates (coordinator only)
+
+For one native source supporting several related changes, prepare a reviewed public-safe JSON manifest:
+
+```json
+{"project":"ciifr","actor":"Oracle","source":"https://github.com/OWNER/REPO/issues/33",
+ "changes":[{"command":"plan milestone","args":{"id":"M8","wbs":"5","summary":"Classify XMLv1.1 under WBS 5"}}]}
+```
+
+Dry-run first: `python tools/pp_batch.py update.json --data data`. It stages the native CLI commands in a temporary copy, checks every operation, validates append-only events and prints changed paths/event IDs without touching `data/`. After reviewing the actual source and diff, `python tools/pp_batch.py update.json --data data --apply --base origin/main` swaps the checked data directory and runs the history comparison, rolling back on failure. Then commit through your normal authorization/PR workflow. The script does **not** read the source's engineering meaning, infer status, grant approval or merge. A source already recorded is refused by default.
 
 ## What the page shows
 
@@ -30,6 +42,7 @@ and leaves every file as it was if the check fails. Nothing is deleted: supersed
 - **Aim** first (Owner, 22 Oct 2026, Lesson 1): every active tab shows the Owner's aim under its title, with its source; the checker refuses an active project without one (`project add --aim`, `project aim`). Under it, **How we work** links the Common agent-work modules.
 - **Who writes what:** the coordinator writes agent blocks, decisions and revisions; the project's **Oracle sets the milestones** (`plan milestone`; placing a block with `card set --milestone` alone keeps the block's evidence time and source); **anybody may add grounding fixtures** under their own name; an Oracle may push its own project's data.
 - **Revisions** row: R1, R2 ... A revision is added only when an Owner decision changes direction. Older ones open read-only from GitHub history.
+- **Agent Start**: task-specific read-only context at `#/ciifr/start/R4/wbs%3A3/M13` (example). It shows the recorded task, candidate, exact source links, next action and explicit qualification gaps without granting assignment, independent PASS or Owner acceptance. Agent evidence still belongs in its native issue/PR; no duplicate status submission.
 - **Project Home**: compact Overview, Roadmap, Sources and Risks & handoffs pages; long source lists start collapsed and can be searched. Original fixtures and native issues remain authoritative; roadmap entries are plans, not engineering PASS.
 - **Progress / WBS**: first select a numbered WBS family (1 / 2 / 3 / …), then its 3.0 / 3.1 / … subtabs; unnumbered M-series milestones remain under **Other milestones**. All WBS is a compact family overview, not a 23-item navigation strip. The selection filters relevant agents, actions, fixtures and timeline; native milestone IDs and evidence stay unchanged. Attention counts remain project-wide. Existing `#/project/progress` URLs continue to open operational progress; `#/project/home[-roadmap|-sources|-risks]` opens the relevant Home section. G0 onboarding is shown once as a collapsed WBS 3.0 disclosure; expanding it reveals evidence and the original task card without a duplicate global panel.
   Superseded and cancelled blocks stay, greyed, with the reason. **Nudge +** on each block queues instructions for the coordinator (OTM or the Oracle), not for the agent.
