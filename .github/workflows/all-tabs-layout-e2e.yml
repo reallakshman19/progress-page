@@ -26,12 +26,12 @@ jobs:
         run: |
           python -m pip install 'playwright==1.55.0'
           python -m playwright install chromium
-      - name: Test PR code across 3 projects, 9 views and 4 screen widths
+      - name: Test PUBLISHED v28 site across 3 projects, 9 views and 4 screen widths
         run: |
           python -m http.server 8765 --bind 127.0.0.1 > /tmp/layout-server.log 2>&1 &
           python tests/test_all_tabs_layout.e2e.py
         env:
-          PROGRESS_PAGE_URL: http://127.0.0.1:8765/
+          PROGRESS_PAGE_URL: https://reallakshman19.github.io/progress-page/
           PP_LAYOUT_OUTPUT: layout-output
       - name: Upload desktop/mobile comparisons and failures
         if: always()
