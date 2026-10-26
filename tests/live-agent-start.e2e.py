@@ -129,7 +129,7 @@ def main():
             capture(page,"06-wbs3-onboarding-real-route")
             if accordion.count():
                 check(not accordion.first.evaluate("(e)=>e.open"),"Onboarding expanded without user request")
-                accordion.first.locator("summary").click()
+                accordion.first.locator("summary.onb-summary").click()
                 check(accordion.first.evaluate("(e)=>e.open"),"Onboarding disclosure did not expand")
                 check(accordion.first.locator(".onb-panel").count()==1,"Expected one embedded onboarding panel")
                 check(accordion.first.locator(".card").count()>=1,"Original onboarding card missing")
