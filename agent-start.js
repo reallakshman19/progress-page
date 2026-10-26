@@ -65,7 +65,7 @@ export function renderAgentStart(root, project, opts = {}) {
   const head=el('div','agent-start-head');
   head.append(el('h3',null,'Agent Start · '+m.scope),el('span','pill',m.revision));
   panel.append(head);
-  panel.append(el('p','agent-start-intro','Read-only starting context from the published project record. Confirm current authority and exact candidate in the linked native GitHub records.'));
+  panel.append(el('p','agent-start-intro','Source-backed task orientation. Verify the current candidate and permissions in the original GitHub records.'));
   const note=el('p','agent-start-boundary','Authority boundary: this view does not assign a participant, independently verify a claim, or grant Owner acceptance, Writer/TARGET1 transfer, merge or release. An obsolete Page claim yields to its canonical source.');
   panel.append(note);
   panel.append(el('h3',null,opts.step?'Task in this step':'Next recorded tasks'));
