@@ -1,6 +1,6 @@
 // Oracle-specific continuity presentation. Only source-recorded Oracle transitions appear.
 // Engineering G0/coder onboarding stays in WBS evidence and is never promoted to Oracle readiness.
-import { el, link } from './util.js?v=26';
+import { el, link } from './util.js?v=27';
 
 export const CONTINUITY_PROTOCOL =
   'https://github.com/reallakshman19/Common/tree/main/skills/agent-work/oracle-continuity';
