@@ -34,7 +34,7 @@ export function buildSearchIndex(projects, data) {
   for (const entry of projects || []) {
     const raw = data?.[entry.key]; if (!raw?.index) continue;
     const rev = (raw.index.revisions || []).find(r => r.status === 'current')?.id || null;
-    const p = { ...raw, currentRevision: rev };
+    const p = { ...raw, key: entry.key, currentRevision: rev };
     const add = (type, id, title, detail, milestone, revision, view, inputs = []) => {
       const wbs = wbsFor(p, milestone);
       const evidence = inputs.flatMap(x => [String(x || ''), ...urls(x)]);
@@ -65,7 +65,9 @@ export function buildSearchIndex(projects, data) {
         f.t, [f.s,f.n,section].join(' '), f.milestone, rev, 'fixtures', refs(f)));
     for (const e of raw.audit?.events || []) {
       const relatedCard = raw.cards?.[e.card || e.target];
-      const milestone = /^milestone:/.test(e.scope || '') ? e.scope.slice(10) : relatedCard?.milestone;
+      // An older revision event cannot inherit the card's present-day WBS owner.
+      const milestone = /^milestone:/.test(e.scope || '') ? e.scope.slice(10)
+        : e.rev && e.rev !== rev ? null : relatedCard?.milestone;
       add('Timeline', e.id || String(e.seq), e.summary || e.kind, [e.actor,e.kind,e.card,e.scope].join(' '),
         milestone, e.rev || rev, 'timeline', [e.source]);
     }
