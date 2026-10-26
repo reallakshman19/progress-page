@@ -71,3 +71,23 @@ test('historical header shows source snapshot, but revision navigation lists all
     assert.ok(links.includes('#/ciifr/progress/R1'));
   } finally {globalThis.document=old;}
 });
+
+test('current WBS5 navigation uses R4 deep links without changing historical Other routes', () => {
+  const prior = {project:{key:'ciifr'}, milestones:{M8:{order:1,name:'XMLv1.1 exact round-trip'},
+    M9:{order:2,name:'XMLv2'},M10:{order:3,name:'Node map'},M11:{order:4,name:'Transfer'},
+    M12:{order:12,wbs:'3',name:'Geometry'}}};
+  const present = structuredClone(prior);
+  Object.assign(present.milestones.M8,{wbs:'5'});
+  Object.assign(present.milestones.M9,{wbs:'5.1'});
+  Object.assign(present.milestones.M10,{wbs:'5.2'});
+  Object.assign(present.milestones.M11,{wbs:'5.3'});
+  assert.deepEqual(wbsGroups(prior).map(g=>g.key),['wbs:3','other']);
+  assert.deepEqual(wbsGroups(prior)[1].steps.map(s=>s.key),['M8','M9','M10','M11']);
+  assert.deepEqual(wbsGroups(present).map(g=>g.key),['wbs:3','wbs:5']);
+  assert.deepEqual(wbsGroups(present)[1].steps.map(s=>s.key),['M8','M9','M10','M11']);
+  assert.deepEqual(wbsGroups(prior).map(g=>g.key),['wbs:3','other'],'historical snapshot was not mutated');
+  assert.equal(wbsRoute('ciifr','progress','R4','wbs:5','M8'),'#/ciifr/progress/R4/wbs%3A5/M8');
+  assert.equal(wbsRoute('ciifr','progress','R3','other','M8'),'#/ciifr/progress/R3/other/M8');
+  assert.equal(wbsRoute('ciifr','progress','R4','wbs:3','M13'),'#/ciifr/progress/R4/wbs%3A3/M13');
+  assert.equal(wbsRoute('ciifr','progress','R4','wbs:4','M18'),'#/ciifr/progress/R4/wbs%3A4/M18');
+});

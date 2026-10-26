@@ -67,3 +67,29 @@ test('published CIIFR R4 gives Geometry 3.x, Element 4.x and accessible legacy m
   assert.equal(groups.reduce((n,g)=>n+g.steps.length,0),Object.keys(ciifr.milestones).length);
   assert.deepEqual(groups[0].steps.map(s=>s.short),['3.0','3.1','3.2','3.3','3.4']);
 });
+
+test('CIIFR R4 WBS 5 CIIFR-MAP groups only M8–M11; seven others stay separate', () => {
+  const ciifr=JSON.parse(readFileSync(new URL('../data/ciifr/index.json',import.meta.url),'utf8'));
+  const cards=JSON.parse(readFileSync(new URL('../data/ciifr/cards.json',import.meta.url),'utf8'));
+  const initial=JSON.stringify({index:ciifr,cards});
+  const groups=wbsGroups(ciifr);
+  assert.deepEqual(groups.map(g=>g.key),['wbs:3','wbs:4','wbs:5','other']);
+  assert.deepEqual(groups.map(g=>g.label),['WBS 3','WBS4- CIIFR-Element','WBS 5 CIIFR-MAP','Other milestones']);
+  assert.deepEqual(groups.map(g=>g.steps.map(s=>s.key)),[
+    ['M12','M13','M14','M15','M16'],
+    ['M17','M18','M19','M20','M21','M22','M23'],
+    ['M8','M9','M10','M11'],
+    ['M6','M7','M4','M5','M1','M2','M3']
+  ]);
+  assert.deepEqual(groups[2].steps.map(s=>s.short),['5.0','5.1','5.2','5.3']);
+  assert.deepEqual(groups[2].steps.map(s=>s.wbs),['5','5.1','5.2','5.3']);
+  assert.equal(groups[2].steps.find(s=>s.key==='M11').name,'Authorized mapped transfer');
+  assert.equal(ciifr.milestones.M11.cap,'NOT_DEMONSTRATED');
+  const ids=groups.flatMap(g=>g.steps.map(s=>s.key));
+  assert.equal(new Set(ids).size,ids.length,'no duplicate milestone IDs');
+  assert.deepEqual([...ids].sort(),Object.keys(ciifr.milestones).sort(),'no milestone lost');
+  for (const [id,c] of Object.entries(cards)) if (c.milestone)
+    assert.ok(ciifr.milestones[c.milestone],id+' keeps an existing milestone');
+  assert.deepEqual(wbsGroups({project:{key:'another-project'},milestones:ciifr.milestones})[2].label,'WBS 5');
+  assert.equal(JSON.stringify({index:ciifr,cards}),initial,'rendering never mutates published evidence');
+});
