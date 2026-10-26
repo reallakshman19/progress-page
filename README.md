@@ -77,3 +77,9 @@ A file built with `--links` holds private chat links: keep it on your machine, n
 ```
 python -B -m unittest discover -s tests -v
 ```
+
+### CIIFR ROI hygiene (Issue #31)
+
+The CIIFR **High ROI · prospective** and **Medium ROI · conditional** views on Project Home → Architecture and sources and on Grounding fixtures are a **read-only projection** of existing ten-list fixtures, not a new schema, milestone or audited data mutation. The original 18 `highRoi` records remain intact and discoverable under **Original High-ROI source inventory**, including source links, indices, historical receipts, vendor references and governance rules. Four prospective High and four conditional Medium opportunity groups are backed by audited `highRoi`, `roadmap`, `pending` or `knownIssues` records, and conceptual E0/E1 and RIGID duplicates appear only once in the current-priority views.
+
+The classifier in `roi.js` validates original list position, status and opening text, **fails closed** for moved/changed/new records, and shows a visible classification warning rather than promoting unknown evidence. A later data-model migration to `mediumRoi` would require a separate ten-list-contract revision and audited `pp_cli.py fixture` operations, with full reviewer approval. Nothing here confers Writer, TARGET1, E2–E6 or native CAESAR acceptance authority, replaces WBS3/WBS4 milestones, or asserts measured savings. Source classifications use impact, likelihood, effort, dependencies and native evidence; engineering controls remain separate. Generate exact original-text SHA-256 inventory for review with `node tools/ciifr_roi_inventory.mjs`.

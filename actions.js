@@ -1,4 +1,5 @@
 // My actions (decision cards) and Grounding fixtures.
+import { ciifrRoiModel } from './roi.js?v=22';
 import { el, link, md, age, copyText } from './util.js?v=22';
 import { issueUrl, pageUrl } from './reply.js?v=22';
 import { oracleContinuityModel } from './oracle-continuity.js?v=22';
@@ -114,14 +115,52 @@ export function relayInputRecords(fixtures) {
 const SECTIONS = [['repository', 'Repository'], ['issues', 'Issues'], ['pullRequests', 'Pull requests'], ['roadmap', 'Roadmap'],
   ['highRoi', 'High-ROI ideas'], ['future', 'Future'], ['intent', 'Intent'], ['inputs', 'Inputs'], ['knownIssues', 'Known issues'], ['pending', 'Pending']];
 
-export function renderFixtures(root, fixtures) {
+function drawRoi(li, item) {
+  li.append(el('strong', null, item.title));
+  li.append(el('p', 'muted', 'Prospective only · Impact: ' + item.impact +
+    ' · Likelihood: ' + item.likelihood + ' · Effort: ' + item.effort));
+  li.append(el('p', 'muted', 'Dependencies/HOLDs: ' + item.dependency));
+  const sources = el('ul', 'roi-sources');
+  item.sources.forEach(r => {
+    const entry = el('li');
+    const label = r.from + (r.item.s ? ' · ' + r.item.s : '');
+    entry.append(r.item.u ? link(r.item.u, label) : el('span', null, label));
+    entry.append(' — ' + r.item.t);
+    sources.append(entry);
+  });
+  li.append(sources);
+}
+
+function drawRoiOrigin(li, r) {
+  li.append(el('b', null, r.from + ' · ' + r.category + ' · ' + r.reason), ' — ');
+  li.append(r.item.u ? link(r.item.u, r.item.t) : r.item.t);
+  if (r.item.s) li.append(' ', el('span', 'chip n', r.item.s));
+}
+
+function renderRoiProjection(root, roi) {
+  root.append(el('p', 'home-note muted',
+    'CIIFR ROI is a read-only classification of audited source records. High and Medium mean prospective priority, not measured savings or release approval. Original list (' + roi.rawCount + ' rows) remains unchanged in Git history and Timeline.'));
+  homeList(root, 'High ROI · prospective opportunities', roi.high,
+    'No qualified prospective High-ROI candidates found.', true, drawRoi);
+  homeList(root, 'Medium ROI · conditional opportunities', roi.medium,
+    'No qualified prospective Medium-ROI candidates found.', true, drawRoi);
+  homeList(root, 'Original High-ROI source inventory · historical/reference/governance/prospective', roi.inventory,
+    'No original records.', false, drawRoiOrigin);
+  if (roi.unclassified.length)
+    root.append(el('p', 'err', roi.unclassified.length + ' original High-ROI source rows changed or were added; they are NOT auto-promoted. Reclassify before publishing priorities.'));
+}
+
+export function renderFixtures(root, fixtures, projectKey = '', originals = fixtures) {
   root.append(el('p', 'lead', 'Read these first. Sources and starting context for any agent or Oracle joining this project.'));
   root.append(el('p', 'muted', 'Oracle maintains agent input/output fixture references through the audited fixture CLI. Preferred transport: '),
     link(COMMON_RELAY, 'Common relay/AGENT_WORK'), ' · ', link(RELAY_POLICY, 'relay policy'),
     '. Google Drive is private/fallback custody; public records never prove a recipient fetched bytes.');
   homeList(root, 'Oracle↔agent relay inputs and returns', relayInputRecords(fixtures),
     'No current task-scoped Common relay input/return has been recorded. Oracle must add the real fixture/receipt and delivery state; no file handoff is implied.', true);
+  const roi = ciifrRoiModel(projectKey, fixtures, originals);
+  if (roi) renderRoiProjection(root, roi);
   SECTIONS.forEach(([key, title]) => {
+    if (roi && key === 'highRoi') return; // Original sources appear in the audited provenance detail above.
     const items = (fixtures || {})[key] || [];
     const s = el('section', 'fx');
     s.append(el('h3', null, title));
@@ -146,9 +185,10 @@ export function renderFixtures(root, fixtures) {
 // Project Home is a read-only projection of existing audited project/fixture records.
 // The Oracle is responsible for source-grounded concept/architecture/roadmap content;
 // the viewer must never invent source documents, approval or engineering authority.
-export function projectHomeModel(project) {
+export function projectHomeModel(project, historical = false) {
   const pj = project?.index?.project || {};
   const fx = project?.fixtures || {};
+  const roi = historical ? null : ciifrRoiModel(pj.key, fx);
   const refs = [...(fx.repository || []), ...(fx.intent || []), ...(fx.highRoi || [])];
   const matches = (item, re) => re.test([(item.t || ''), (item.s || ''), (item.n || ''), (item.u || '')].join(' '));
   const concepts = refs.filter(item => matches(item, /concept[ -]?note|project concept|concept brief|concept overview|CONCEPT_NOTE/i));
@@ -165,7 +205,7 @@ export function projectHomeModel(project) {
     concepts, architecture, relayInputs: relayInputRecords(fx),
     roadmap: fx.roadmap || [], intent: fx.intent || [],
     sources: [...(fx.repository || []), ...(fx.issues || []), ...(fx.inputs || [])],
-    decisions: fx.highRoi || [], blockers: [...(fx.knownIssues || []), ...(fx.pending || [])],
+    roi, decisions: roi ? roi.high : (fx.highRoi || []), blockers: [...(fx.knownIssues || []), ...(fx.pending || [])],
     milestones, currentTasks,
   };
 }
@@ -226,8 +266,8 @@ export function projectRoadmapGroups(items = []) {
   return groups;
 }
 
-export function renderProjectHome(root, project, mode = 'home') {
-  const m = projectHomeModel(project);
+export function renderProjectHome(root, project, mode = 'home', historical = false) {
+  const m = projectHomeModel(project, historical);
   const key = project?.index?.project?.key || '';
   const box = el('section', 'project-home');
   const names = { home: 'Project Home', 'home-roadmap': 'Roadmap and WBS',
@@ -271,7 +311,8 @@ export function renderProjectHome(root, project, mode = 'home') {
       'No source-grounded architecture records yet.');
     homeList(box, 'Original sources and ground fixtures', m.sources, 'No sources recorded.');
     homeList(box, 'Owner decisions and revisions', m.intent, 'No decision/source entries recorded.');
-    homeList(box, 'Architecture improvement rationale', m.decisions, 'No rationale entries recorded.');
+    if (m.roi) renderRoiProjection(box, m.roi);
+    else homeList(box, 'Architecture improvement rationale', m.decisions, 'No rationale entries recorded.');
   } else if (mode === 'home-risks') {
     homeList(box, 'Current WBS tasks and next actions', m.currentTasks, 'No open work recorded.', false,
       (li, item) => {
