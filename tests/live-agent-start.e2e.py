@@ -257,3 +257,5 @@ def main():
     if report["failed"]:raise SystemExit(1)
 
 if __name__=="__main__":main()
+
+# Deployed v27 acceptance receipt: GitHub Pages after PR #41 merge.
