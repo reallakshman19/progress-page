@@ -66,7 +66,7 @@ def main():
             check(any("github.com" in u for u in urls),"No authoritative GitHub source links")
             check(all(u.startswith("https://github.com/") for u in urls),"Non-native URL in starting sources")
             check(not js_errors,"JavaScript uncaught errors: "+str(js_errors))
-            check("v=23" in (page.locator('script[type="module"]').get_attribute("src") or ""),"Unexpected deployed JS version")
+            check("v=25" in (page.locator('script[type="module"]').get_attribute("src") or ""),"Unexpected deployed JS version")
             return {"sourceCount":len(urls),"sourceSamples":urls[:5],"viewport":viewport(page),
                     "taskCards":page.locator(".agent-start-task").count()}
         case("Open WBS 3.1 G1 Agent Start directly from a clean browser",step1)
