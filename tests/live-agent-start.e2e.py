@@ -248,3 +248,5 @@ def main():
     if report["failed"]:raise SystemExit(1)
 
 if __name__=="__main__":main()
+
+# QA revalidation of deployed v26 scope-first Agent Start; no application change.
