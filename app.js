@@ -2,7 +2,7 @@
 import { el, link, tick, ago, whenText } from './util.js?v=22';
 import { buildSearchIndex, searchProgress } from './search.js?v=22';
 import { renderOracleContinuity } from './oracle-continuity.js?v=22';
-import { renderProgress, wbsPick, wbsGroups, wbsFamily, wbsRevisionScope, wbsRoute } from './progress.js?v=23';
+import { renderProgress, wbsPick, wbsGroups, wbsFamily, wbsRevisionScope, wbsRoute } from './progress.js?v=22';
 import { renderLessons } from './lessons.js?v=22';
 import { renderActions, renderFixtures, renderProjectHome, openCount } from './actions.js?v=22';
 import { renderTimeline } from './timeline.js?v=22';
