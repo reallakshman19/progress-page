@@ -150,14 +150,14 @@ function renderRoiProjection(root, roi) {
     root.append(el('p', 'err', roi.unclassified.length + ' original High-ROI source rows changed or were added; they are NOT auto-promoted. Reclassify before publishing priorities.'));
 }
 
-export function renderFixtures(root, fixtures, projectKey = '') {
+export function renderFixtures(root, fixtures, projectKey = '', originals = fixtures) {
   root.append(el('p', 'lead', 'Read these first. Sources and starting context for any agent or Oracle joining this project.'));
   root.append(el('p', 'muted', 'Oracle maintains agent input/output fixture references through the audited fixture CLI. Preferred transport: '),
     link(COMMON_RELAY, 'Common relay/AGENT_WORK'), ' · ', link(RELAY_POLICY, 'relay policy'),
     '. Google Drive is private/fallback custody; public records never prove a recipient fetched bytes.');
   homeList(root, 'Oracle↔agent relay inputs and returns', relayInputRecords(fixtures),
     'No current task-scoped Common relay input/return has been recorded. Oracle must add the real fixture/receipt and delivery state; no file handoff is implied.', true);
-  const roi = ciifrRoiModel(projectKey, fixtures);
+  const roi = ciifrRoiModel(projectKey, fixtures, originals);
   if (roi) renderRoiProjection(root, roi);
   SECTIONS.forEach(([key, title]) => {
     if (roi && key === 'highRoi') return; // Original sources appear in the audited provenance detail above.

@@ -101,18 +101,21 @@ function sourceList(fixtures, list, status) {
 }
 
 // Never rewrite, mutate, delete or assign an acceptance status to the audited originals.
-export function ciifrRoiModel(projectKey, fixtures = {}) {
+export function ciifrRoiModel(projectKey, fixtures = {}, originals = fixtures) {
   if (projectKey !== 'ciifr') return null;
-  const original = fixtures.highRoi || [];
+  const original = originals.highRoi || [];
+  // WBS-scoped lists can reindex and clone originals. Match exact original text against the
+  // displayed subset while retaining the original whole-project source position.
+  const included = fixtures === originals ? null : new Set((fixtures.highRoi || []).map(x => x.t));
   const inventory = original.map((item, index) => {
     const rule = ORIGINAL[index];
     const matching = rule && (item.s || '') === rule[0] && item.t?.startsWith(rule[1]);
     return { item, index, from: 'highRoi[' + index + ']',
       category: matching ? rule[2] : 'unclassified',
       reason: matching ? rule[3] : 'Unrecognized or changed source: needs explicit new classification' };
-  });
+  }).filter(r => !included || included.has(r.item.t));
   const candidates = RULES.map(rule => {
-    const sources = rule.indexes.map(index => inventory[index])
+    const sources = rule.indexes.map(index => inventory.find(r => r.index === index))
       .filter(r => r?.category === 'prospective')
       .map(r => ({ item: r.item, from: r.from }));
     for (const [list, status] of rule.anchors) sources.push(...sourceList(fixtures, list, status));
@@ -125,6 +128,6 @@ export function ciifrRoiModel(projectKey, fixtures = {}) {
     inventory,
     unclassified: inventory.filter(r => r.category === 'unclassified'),
     // Original source rows remain accessible even when removed from the current-priority projection.
-    rawCount: original.length,
+    rawCount: inventory.length,
   };
 }

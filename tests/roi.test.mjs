@@ -72,3 +72,14 @@ test('non-CIIFR projects and unmodified Project Home contract remain unaffected'
   assert.equal(home.decisions.length,4);
   assert.equal(projectHomeModel({index:{project:{key:'other'}},fixtures,cards:{}}).roi,null);
 });
+
+test('WBS-filtered projection retains original identity and excludes the other WBS opportunities', () => {
+  const scoped = Object.fromEntries(Object.entries(fixtures).map(([key, list]) =>
+    [key, list.filter(item => !item.milestone || ['M12','M13','M14'].includes(item.milestone))
+      .map(item => item.milestone ? item : {...item,wholeProject:true})]));
+  const r = ciifrRoiModel('ciifr', scoped, fixtures);
+  assert.deepEqual(r.inventory.map(x=>x.index), [0,1,2,3,4,5,8,9,10,16,17]);
+  assert.equal(r.unclassified.length,0);
+  assert.ok(!r.high.some(x=>['e0-e1','rigid-weight','effective-job-provenance'].includes(x.id)));
+  assert.deepEqual(r.medium.map(x=>x.id),['g2-topology','g1-renderer']);
+});
