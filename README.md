@@ -19,6 +19,7 @@ This repository-specific merge authorization **does not apply to Common or other
 python tools/pp_cli.py --help          # project / revision / plan / card / action / fixture / nudge / check / triggers / local / links
 python tools/pp_cli.py check           # must print OK
 python tools/pp_cli.py triggers        # what the Owner and the coordinator owe right now
+python tools/pp_cli.py reconcile --project ciifr --source https://github.com/reallakshman19/XML_Compare_Utilities/pull/185 --json  # read-only source checkpoint; use --expected-head SHA for drift warning
 ```
 
 Every write needs `--actor` (who), `--src` (a public GitHub link, or `OWNER_PRIVATE_REF:<id>`) and a reason. It writes one Timeline entry, runs the checker,

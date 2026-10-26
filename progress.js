@@ -391,12 +391,13 @@ export function renderProgress(root, project, ctx) {
   // Oracle onboarding is presented in Project Home / Oracle continuity, not as
   // a special G0 coding-agent readiness panel. Preserve the original WBS card evidence.
   const groups = Object.entries(project.index.groups || {}).sort((a, b) => (a[1].order || 0) - (b[1].order || 0));
+  const onb = onboardingModel(project);
   const used = new Set();
   groups.forEach(([gk, g]) => {
     const mine = cards.filter((c) => c.group === gk).sort((a, b) => (Number(!!a.closed) - Number(!!b.closed)) || ((a.order || 0) - (b.order || 0)));
     if (!mine.length) return;
     mine.forEach((c) => used.add(c.id));
-    root.append(groupBlock(g, mine, ctx));
+    root.append(onb && onb.groupId === gk ? onboardingWbsGroup(project, g, mine, ctx, onb) : groupBlock(g, mine, ctx));
   });
   const rest = cards.filter((c) => !used.has(c.id));
   if (rest.length) root.append(groupBlock({ title: 'Other' }, rest, ctx));

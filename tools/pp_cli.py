@@ -14,6 +14,7 @@ Run from the repository root:  python tools/pp_cli.py [--data data] <command> ..
   action add|answer                                         decisions for the Owner ('My actions')
   fixture add|remove                                        grounding fixtures
   nudge add|done|withdraw                                   instructions queued for the coordinator ('Nudge +')
+  reconcile --project KEY --source GITHUB_URL [--expected-head SHA] [--card ID]  source facts and drift triggers (read-only)
   inputs --actor WHO                                        the Owner's replies and nudges that arrived as GitHub issues, with the command that records each
   check [--private] [--base REF]    triggers [--json]    local OUT [--links F] [--prerender BROWSER]    links FILE
   bootstrap DIR --repo OWNER/NAME --page URL                copy the page and these tools into a new repository
@@ -159,6 +160,12 @@ def build():
         p.add_argument("--id", required=True, help="nudge id, for example N1")
         p.add_argument("--by", required=True, help="who incorporated it (done) or took it back (withdraw)")
 
+    p = top.add_parser("reconcile")
+    p.add_argument("--project", required=True)
+    p.add_argument("--source", required=True)
+    p.add_argument("--expected-head")
+    p.add_argument("--card")
+    p.add_argument("--json", action="store_true")
     p = top.add_parser("inputs")
     p.add_argument("--actor", required=True, help="who will record the inputs (printed into the commands)")
     p.add_argument("--since", help="ignore issues created before this UTC time (default: when the Timeline began)")
@@ -221,6 +228,9 @@ def run(a):
         return C.nudge_add(d, a.project, a.card, a.text, a.by, a.actor, a.src, a.at)
     if c == "nudge":
         return C.nudge_close(d, a.project, a.id, s, a.by, a.actor, a.src)
+    if c == "reconcile":
+        import pp_reconcile
+        return sys.exit(pp_reconcile.run(d, a.project, a.source, a.expected_head, a.card, a.json))
     if c == "inputs":
         import pp_inputs
         return pp_inputs.list_inputs(d, a.actor, a.since, a.json)
