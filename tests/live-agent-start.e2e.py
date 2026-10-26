@@ -5,6 +5,7 @@ No human/Owner acceptance is inferred by a green automated run.
 """
 import json
 import os
+import shutil
 import re
 import time
 import traceback
@@ -49,7 +50,8 @@ def main():
                 "Desktop and mobile emulation check browser layout, not a physical device.",
                 "GitHub source links are displayed by the Page, but engineering claims require independent verification of their scope."]}
     with sync_playwright() as p:
-        browser=p.chromium.launch(headless=True,args=["--no-sandbox"])
+        system_chrome = shutil.which("google-chrome") or shutil.which("chromium") or shutil.which("chromium-browser")
+        browser=p.chromium.launch(headless=True,executable_path=system_chrome,args=["--no-sandbox","--disable-dev-shm-usage"])
         desktop=browser.new_context(viewport={"width":1440,"height":900},device_scale_factor=1,
                     permissions=["clipboard-read","clipboard-write"])
         page=desktop.new_page()
