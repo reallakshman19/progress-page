@@ -59,7 +59,7 @@ def main():
             txt=load(page,"ciifr/start/R4/wbs%3A3/M13")
             capture(page,"01-wbs3-agent-start-desktop")
             check("Geometry" in txt or "WBS 3.1" in txt,"G1 title/scope missing")
-            check("Owner outcome:" in txt,"Owner outcome not exposed")
+            check("Owner aim" in txt,"Owner aim disclosure not exposed")
             check("Authority boundary:" in txt,"authority warning missing")
             check("CANDIDATE" in txt or "not demonstrated" in txt.lower(),"candidate boundary missing")
             urls=source_urls(page)
@@ -80,12 +80,28 @@ def main():
             check("WBS 3.1" in copied,"Incorrect WBS scope in handoff")
             check("verify original GitHub records" in copied,"Native-source warning missing")
             check("BOUNDARY:" in copied,"Authority boundary absent from copied handoff")
+            check("Exact candidate SHA: NOT_RECORDED" in copied,"Missing explicit candidate identity warning")
             check("Sources (open and verify):" in copied,"No source section")
             check("Next:" in copied,"No next action in copied handoff")
             capture(page,"02-wbs3-copy-handoff")
             (OUT/"handoff-wbs3.txt").write_text(copied,encoding="utf-8")
             return {"chars":len(copied),"nativeSources":copied.count("https://github.com/"),"copyButtonText":button.inner_text()}
         case("Copy and independently read the handoff from the system clipboard",step2)
+        def step2b():
+            load(page,"ciifr/start/R4/wbs%3A3/M13")
+            a=page.locator(".agent-start-sources a[href]").first
+            check(a.count()==1,"No starting-source link")
+            target=a.get_attribute("href")
+            with page.expect_popup(timeout=15000) as opened:
+                a.click()
+            popup=opened.value
+            popup.wait_for_load_state("domcontentloaded",timeout=30000)
+            check(popup.url.startswith("https://github.com/"),"Native evidence does not open GitHub")
+            check(popup.url.split("#")[0]==target.split("#")[0],"Link opened a different original source")
+            url=popup.url
+            popup.close()
+            return {"opened":url,"source":target}
+        case("Click a native source from the live webpage and verify its destination",step2b)
         def step3():
             txt=load(page,"ciifr/start/R4/wbs%3A4/M20")
             capture(page,"03-wbs4-agent-start-desktop")
@@ -149,6 +165,17 @@ def main():
             check("Authority boundary:" in txt,"Mobile hides authority boundary")
             return {"viewport":width,"taskCards":mpage.locator(".agent-start-task").count()}
         case("Mobile 390px layout, source visibility and no horizontal overflow",step7)
+        def step7b():
+            action=mpage.locator(".agent-start-task").first.bounding_box()
+            check(bool(action),"No task card for G1")
+            check(action["y"] < 750,"Action begins outside first 844px viewport: "+str(action))
+            check(mpage.locator(".hintbar").count()==0,"Nonessential private chat setup obscures Agent Start")
+            check(mpage.locator(".agent-start-aim summary").count()==1,"Original Owner aim is not independently expandable")
+            check("Exact candidate SHA: NOT RECORDED" in mpage.locator(".agent-start-cap").inner_text(),
+                  "Missing exact candidate must be explicitly UNKNOWN")
+            return {"taskTopPx":round(action["y"]),"viewportHeightPx":844,
+                    "candidateIdentity":"NOT_RECORDED","privateChatSetupHidden":True}
+        case("Mobile first screen contains the actionable task and explicit missing-candidate warning",step7b)
         def step8():
             mpage.get_by_role("button",name="Copy source-backed handoff").click()
             mpage.wait_for_timeout(200)
@@ -166,11 +193,13 @@ def main():
             text=page.locator(".agent-start").inner_text()
             links=source_urls(page)
             check("Next:" in text or "Next recorded tasks" in text,"Incoming agent cannot locate next action")
-            check("Owner outcome:" in text,"Incoming agent cannot locate desired outcome")
+            check("Owner aim" in text,"Incoming agent cannot locate Owner aim disclosure")
             check(len(links)>=1,"Incoming agent has no source to open")
             check("Authority boundary:" in text,"Incoming agent has no prohibited-actions warning")
-            missing_exact_sha=("Candidate commit in the record" not in text and "Candidate commit" not in text)
-            return {"structuralColdStart":"enough displayed categories for orientation","exactCandidateSHAVisible":not missing_exact_sha,
+            candidate_unrecorded=("Exact candidate SHA: NOT RECORDED" in text)
+            check(candidate_unrecorded,"Unbound exact candidate must be explicitly identified")
+            return {"structuralColdStart":"enough displayed categories for orientation","exactCandidateSHAVisible":not candidate_unrecorded,
+                    "candidateDisclosure":"NOT_RECORDED",
                     "note":"No human comprehension/time measurement; candidate identity not inferred."}
         case("Synthetic cold-agent read from one deep link, without previous chat",step9)
         report["checks"]=cases
