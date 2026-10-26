@@ -1,0 +1,44 @@
+name: Agent Start PR preview browser
+on:
+  pull_request:
+    paths:
+      - 'agent-start.js'
+      - 'app.js'
+      - 'progress.js'
+      - 'viewer.css'
+      - 'index.html'
+      - 'tests/live-agent-start.e2e.py'
+      - '.github/workflows/agent-start-preview.yml'
+  push:
+    branches: ['ux/agent-start-task-first-*']
+permissions:
+  contents: read
+jobs:
+  preview-browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install browser test dependencies
+        run: |
+          python -m pip install 'playwright==1.55.0'
+          python -m playwright install chromium
+      - name: Run Chromium against this exact PR head (local static server)
+        run: |
+          python -m http.server 8765 --bind 127.0.0.1 > /tmp/agent-start-preview.log 2>&1 &
+          python tests/live-agent-start.e2e.py
+        env:
+          PROGRESS_PAGE_URL: http://127.0.0.1:8765/
+          PP_E2E_OUTPUT: e2e-output
+      - name: Preserve evidence even on failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: agent-start-pr-preview-evidence
+          path: e2e-output/
+          retention-days: 14
