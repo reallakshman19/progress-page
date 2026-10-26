@@ -59,6 +59,9 @@ test('published CIIFR R4 gives Geometry 3.x, Element 4.x and accessible legacy m
   const ciifr=JSON.parse(readFileSync(new URL('../data/ciifr/index.json', import.meta.url),'utf8'));
   const groups=wbsGroups(ciifr);
   assert.deepEqual(groups.map(g=>g.key),['wbs:3','wbs:4','other']);
+  assert.equal(groups[0].label,'WBS 3','Geometry stays unchanged');
+  assert.equal(groups[1].label,'WBS4- CIIFR-Element');
+  assert.equal(wbsGroups({project:{key:'unrelated'},milestones:ciifr.milestones})[1].label,'WBS 4');
   assert.deepEqual(groups[0].steps.map(s=>s.key),['M12','M13','M14','M15','M16']);
   assert.deepEqual(groups[1].steps.map(s=>s.key),['M17','M18','M19','M20','M21','M22','M23']);
   assert.equal(groups.reduce((n,g)=>n+g.steps.length,0),Object.keys(ciifr.milestones).length);
