@@ -1,17 +1,17 @@
 // Shell: loads the JSON, draws the project tabs and the views, refreshes every two minutes.
-import { el, link, tick, ago, whenText } from './util.js?v=25';
-import { buildSearchIndex, searchProgress } from './search.js?v=25';
-import { renderOracleContinuity } from './oracle-continuity.js?v=25';
-import { renderProgress, wbsPick, wbsGroups, wbsFamily, wbsRevisionScope, wbsRoute } from './progress.js?v=25';
-import { renderAgentStart } from './agent-start.js?v=25';
-import { renderLessons } from './lessons.js?v=25';
-import { renderActions, renderFixtures, renderProjectHome, openCount } from './actions.js?v=25';
-import { renderTimeline } from './timeline.js?v=25';
-import { tabsRow, archivedPanel, projectHead, revisionRow, isActive, HOME_VIEWS, HOME_SUBTABS, PRIMARY_TABS, primaryTabActive } from './lifecycle.js?v=25';
-import { nudgesOf, openNudge } from './nudge.js?v=25';
-import { addProjectDialog, addRevisionDialog } from './briefs.js?v=25';
-import { loadLinks, takeLinksFromHash, linksPanel } from './links.js?v=25';
-import { rulesOf, holdOf, summary, needsAttention } from './triggers.js?v=25';
+import { el, link, tick, ago, whenText } from './util.js?v=26';
+import { buildSearchIndex, searchProgress } from './search.js?v=26';
+import { renderOracleContinuity } from './oracle-continuity.js?v=26';
+import { renderProgress, wbsPick, wbsGroups, wbsFamily, wbsRevisionScope, wbsRoute } from './progress.js?v=26';
+import { renderAgentStart } from './agent-start.js?v=26';
+import { renderLessons } from './lessons.js?v=26';
+import { renderActions, renderFixtures, renderProjectHome, openCount } from './actions.js?v=26';
+import { renderTimeline } from './timeline.js?v=26';
+import { tabsRow, archivedPanel, projectHead, revisionRow, isActive, HOME_VIEWS, HOME_SUBTABS, PRIMARY_TABS, primaryTabActive } from './lifecycle.js?v=26';
+import { nudgesOf, openNudge } from './nudge.js?v=26';
+import { addProjectDialog, addRevisionDialog } from './briefs.js?v=26';
+import { loadLinks, takeLinksFromHash, linksPanel } from './links.js?v=26';
+import { rulesOf, holdOf, summary, needsAttention } from './triggers.js?v=26';
 
 const LIVE_DATA = 'https://reallakshman19.github.io/progress-page/data/';
 const q = new URLSearchParams(location.search);
@@ -389,7 +389,7 @@ function render() {
     go(href);
     if (v === 'start') window.scrollTo(0, 0);
   };
-  if (groups.length && !HOME_VIEWS.includes(v)) {
+  if (groups.length && !HOME_VIEWS.includes(v) && v !== 'start') {
     const families = el('nav', 'wbs-family-nav');
     families.setAttribute('aria-label', 'WBS families');
     [{ key: null, label: 'All WBS' }, ...groups].forEach(g => {

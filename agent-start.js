@@ -1,112 +1,203 @@
-// Read-only, source-backed launchpad for agents. Native issues/Cycles remain authoritative.
-import { el, link, copyText } from './util.js?v=25';
+// Agent Start: choose an explicit scope before showing tasks. Never infer assignment or verdict.
+import { el, link, copyText } from './util.js?v=26';
+import { wbsGroups } from './progress.js?v=26';
 
 const valid = u => /^https:\/\/github\.com\/[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+\//.test(String(u || ''));
-const active = c => !c.closed && c.state !== 'NOT_APPLICABLE';
-const required = m => String(m?.cap || 'NOT_DEMONSTRATED');
+const live = c => !!c && !c.closed && c.state !== 'NOT_APPLICABLE';
+const cap = m => String(m?.cap || 'NOT_DEMONSTRATED');
 const distinct = list => [...new Map(list.filter(x => valid(x.url)).map(x => [x.url, x])).values()];
+const actor = value => /^(?:|[-–—]|none|unassigned|unknown)$/i.test(String(value || '').trim()) ?
+  'Not recorded / unassigned' : String(value).trim();
+const short = (value, limit = 195) => {
+  const text = String(value || '').trim();
+  if (text.length <= limit) return text;
+  const piece = text.slice(0, limit);
+  const end = Math.max(piece.lastIndexOf(' '), limit - 35);
+  return piece.slice(0, end).trimEnd() + '…';
+};
+const agentStartHref = (key, rev, group, step) => '#/' + encodeURIComponent(key) + '/start/' + encodeURIComponent(rev) +
+  (group ? '/' + encodeURIComponent(group) + (step ? '/' + encodeURIComponent(step) : '') : '');
+const milestoneCards = (cards, id) => Object.entries(cards || {}).filter(([,c]) => live(c) && c.milestone === id);
 
 export function agentStartModel(project, { family = null, step = null, revision = null } = {}) {
-  const idx = project?.index || {}, raw = idx.milestones || {};
-  const milestones = Object.entries(raw).sort((a,b) => (a[1].order || 0)-(b[1].order || 0));
-  const familyKeys = family?.steps?.map(s => s.key) || null;
-  const scoped = milestones.filter(([id]) => (!familyKeys || familyKeys.includes(id)) && (!step || id === step));
-  const cards = Object.entries(project?.cards || {}).filter(([,c]) => active(c));
-  const candidates = scoped.flatMap(([id,m]) => cards.filter(([,c]) => c.milestone === id)
-    .map(([cardId,c]) => ({ id: cardId, card: c, milestoneId:id, milestone:m })));
-  const incomplete = candidates.filter(c => c.card.state !== 'VERIFIED');
-  const selected = step ? candidates : incomplete.length ? incomplete : candidates;
-  const work = selected.slice(0,3).map(({id,card,milestoneId,milestone}) => ({
-    id, milestoneId, name: milestone.name || milestoneId, wbs: milestone.wbs || '',
-    label: card.label || id, state:card.state || 'UNKNOWN', next:card.next?.text || '',
-    nextActor:card.next?.actor || '', status: card.now || '', source:card.src || '',
-    refs: (card.refs || []).filter(r => valid(r.u)), capability:required(milestone),
-    canDo:milestone.canDo || '', activity:milestone.activity || '',
+  const idx = project?.index || {}, milestones = idx.milestones || {};
+  const groups = wbsGroups(idx);
+  const mode = step && milestones[step] && family?.steps?.some(s => s.key === step) ? 'step' :
+    family && groups.some(g => g.key === family.key) ? 'family' : 'choose';
+  const selectedFamily = mode === 'choose' ? null : groups.find(g => g.key === family.key);
+  const selectedMilestone = mode === 'step' ? {id: step, ...milestones[step]} : null;
+  const cards = project?.cards || {};
+  const groupChoices = groups.map(g => ({
+    key:g.key, label:g.label, count:g.steps.length, workCount:g.steps.reduce((n,s)=>n+milestoneCards(cards,s.key).length,0)
   }));
-  const focused = step && raw[step] ? {id:step, ...raw[step]} : null;
-  const focusRefs = focused ? [
-    {name:'Recorded capability evidence',url:focused.capSrc},
-    ...(focused.repo && focused.commit ? [{name:'Recorded candidate commit',url:'https://github.com/'+focused.repo+'/commit/'+focused.commit}] : [])
-  ] : [];
-  const cardRefs = work.flatMap(x => [
-    {name:x.label+' · latest recorded source',url:x.source},
-    ...x.refs.map(r => ({name:r.l || r.k || 'Task reference',url:r.u}))
-  ]);
-  const sources = distinct([...focusRefs,...cardRefs,{name:'Owner aim source',url:idx.project?.aimSrc}]);
+  const steps = selectedFamily ? selectedFamily.steps.map(s => {
+    const m = milestones[s.key] || {};
+    const items = milestoneCards(cards,s.key);
+    return {id:s.key,wbs:s.wbs,name:m.name || s.name || s.key,label:s.label,
+      capability:cap(m),items:items.length,blocked:items.filter(([,c])=>c.state==='BLOCKED').length};
+  }) : [];
+  const work = selectedMilestone ? milestoneCards(cards,step).map(([id,c])=>({
+    id,label:c.label || id,state:c.state || 'UNKNOWN',
+    next:c.next?.text || '',nextActor:actor(c.next?.actor),
+    status:c.now || '',source:c.src || '',
+    refs:(c.refs || []).filter(r => valid(r.u)),who:c.who?.role || '',updatedAt:c.updatedAt || '',
+    publicSource:valid(c.src) ? c.src : (c.refs || []).find(r => valid(r.u))?.u || null
+  })) : [];
+  const sources = mode === 'step' ? distinct([
+    {name:'Milestone evidence',url:selectedMilestone.capSrc},
+    ...(selectedMilestone.repo && selectedMilestone.commit ?
+      [{name:'Recorded candidate commit',url:'https://github.com/'+selectedMilestone.repo+'/commit/'+selectedMilestone.commit}] : []),
+    ...work.flatMap(w=>[{name:w.label+' · recorded evidence',url:w.source},
+      ...w.refs.map(r=>({name:r.l || r.k || 'Reference',url:r.u}))])
+  ]) : [];
   const rev = revision || (idx.revisions || []).find(r=>r.status==='current')?.id || 'unrecorded';
-  const summary = focused ? (focused.wbs ? 'WBS '+focused.wbs+' · ' : '')+(focused.name || step) :
-    family ? family.label : 'Project-wide task selection';
-  return { revision:rev, scope:summary, focused, work, sources,
-    aim:idx.project?.aim || 'Owner aim not recorded', title:idx.project?.title || idx.project?.key || 'Project',
-    projectKey:idx.project?.key || '', selectedCount: candidates.length,
-    hiddenCount:Math.max(0,selected.length-work.length) };
+  return {
+    mode, revision:rev, family:selectedFamily, focused:selectedMilestone, work, sources, steps,
+    choices:groupChoices, totalItems:groupChoices.reduce((n,g)=>n+g.workCount,0),
+    title:idx.project?.title || idx.project?.key || 'Project',
+    projectKey:idx.project?.key || '', aim:idx.project?.aim || 'Owner aim not recorded',
+    aimSrc:valid(idx.project?.aimSrc) ? idx.project.aimSrc : null,
+    scope:mode==='step' ? 'WBS '+(selectedMilestone.wbs || step)+' · '+(selectedMilestone.name || step) :
+      mode==='family' ? selectedFamily.label : 'Choose a workstream'
+  };
 }
 
 export function agentStartText(m) {
-  const lines = ['AGENT START (read-only orientation; verify original GitHub records)',
-    'Project: '+m.title, 'Revision: '+m.revision, 'Scope: '+m.scope, 'Owner aim: '+m.aim];
-  if (m.focused) {
-    lines.push('Recorded capability: '+required(m.focused));
-    if (m.focused.canDo) lines.push('Recorded user capability: '+m.focused.canDo);
-    if (m.focused.activity) lines.push('Recorded activity: '+m.focused.activity);
-    lines.push('Exact candidate SHA: '+(m.focused.commit ? m.focused.commit+' (recorded; verify current native PR head)' : 'NOT_RECORDED in the Page; verify the current native PR head before claiming exact-candidate PASS.'));
+  const lines=['AGENT START (read-only; verify native evidence before action)',
+    'Project: '+m.title,'Revision: '+m.revision,'Scope: '+m.scope,
+    'Owner aim: '+m.aim];
+  if(m.mode !== 'step') {
+    lines.push('No specific task or actor selected; select a WBS workstream and step before acting.');
+    return lines.join('\n');
   }
-  for(const w of m.work) lines.push('TASK '+w.id+' ['+w.state+'] '+w.label+
-    '\n  Next: '+(w.next || 'Not recorded')+'; next actor label: '+(w.nextActor || 'unknown')+
-    '\n  Recorded status: '+(w.status || 'Not recorded'));
-  lines.push('Sources (open and verify):',...m.sources.map(x => '- '+x.name+': '+x.url));
+  lines.push('Recorded capability: '+cap(m.focused));
+  if(m.focused?.canDo) lines.push('Recorded user capability: '+m.focused.canDo);
+  if(m.focused?.activity) lines.push('Recorded activity: '+m.focused.activity);
+  lines.push('Exact candidate SHA: '+(m.focused?.commit ?
+    m.focused.commit+' (recorded; verify current native PR head)' :
+    'NOT_RECORDED in the Page; verify the current native PR head before claiming exact-candidate PASS.'));
+  for(const w of m.work) lines.push('WORK ITEM '+w.id+' ['+w.state+'] '+w.label+
+    '\n  Recorded next action: '+(w.next || 'NOT_RECORDED')+
+    '\n  Next actor: '+w.nextActor+' (not an acknowledged assignment)'+
+    '\n  Recorded status/evidence scope: '+(w.status || 'NOT_RECORDED'));
+  lines.push('Sources (open and verify):',...m.sources.map(x=>'- '+x.name+': '+x.url));
   lines.push('BOUNDARY: A next-actor label is not an acknowledged assignment. A recorded capability is not independent test, original-file/browser acceptance, Writer/TARGET1 permission, or Owner authorization. Canonical native records override a stale projection.');
   return lines.join('\n');
 }
 
 export function renderAgentStart(root, project, opts = {}) {
-  const m = agentStartModel(project, opts);
-  const panel = el('section','agent-start');
-  const head=el('div','agent-start-head');
-  head.append(el('h3',null,'Agent Start · '+m.scope),el('span','pill',m.revision));
-  panel.append(head);
-  panel.append(el('p','agent-start-intro','Source-backed task orientation. Verify the current candidate and permissions in the original GitHub records.'));
-  const note=el('p','agent-start-boundary','Authority boundary: this view does not assign a participant, independently verify a claim, or grant Owner acceptance, Writer/TARGET1 transfer, merge or release. An obsolete Page claim yields to its canonical source.');
-  panel.append(note);
-  panel.append(el('h3',null,opts.step?'Task in this step':'Next recorded tasks'));
-  if(!m.work.length)panel.append(el('p','muted','No live agent task is recorded in this scope. Open the canonical issue before acting; do not infer a new assignment.'));
-  m.work.forEach(w=>{
-    const box=el('article','agent-start-task');
-    const label=el('div','agent-start-task-title');
-    label.append(el('b',null,w.label),el('span','pill',w.state),el('span','muted',w.milestoneId+(w.wbs?' · WBS '+w.wbs:'')));
-    box.append(label);
-    if(w.status)box.append(el('p',null,'Recorded status: '+w.status));
-    box.append(el('p',null,'Next: '+(w.next||'No executable next action recorded')+' · Actor label: '+(w.nextActor||'not recorded')));
-    const linkrow=el('div','agent-start-links');
-    const local=opts.nav&&opts.projectKey ? opts.nav('#/'+encodeURIComponent(opts.projectKey)+'/start/'+encodeURIComponent(m.revision)+
-       '/'+encodeURIComponent((w.wbs?'wbs:'+/^\d+/.exec(w.wbs)[0]:'other'))+'/'+encodeURIComponent(w.milestoneId),'Focus this step','agent-start-source') : null;
-    if(local)linkrow.append(local);
-    if(valid(w.source))linkrow.append(link(w.source,'Native source','agent-start-source'));
-    if(linkrow.childNodes.length)box.append(linkrow);
-    panel.append(box);
-  });
-  if(m.hiddenCount)panel.append(el('p','muted',m.hiddenCount+' more in this scope. Narrow to a WBS step to inspect it; no tasks were deleted.'));
-  if(m.focused) {
-    const capability=el('div','agent-start-cap');
-    capability.append(el('b',null,'Recorded capability: '+required(m.focused)));
-    if(m.focused.canDo)capability.append(el('p',null,m.focused.canDo));
-    if(m.focused.activity)capability.append(el('p','muted','Recorded activity: '+m.focused.activity));
-    capability.append(el('p','agent-start-candidate',m.focused.commit ?
-      'Recorded candidate SHA (verify current PR head): '+m.focused.commit :
-      'Exact candidate SHA: NOT RECORDED in this Page. Open the native PR and verify its current head before relying on exact-candidate checks.'));
-    panel.append(capability);
+  const m=agentStartModel(project,opts);
+  const section=el('section','agent-start');
+  section.setAttribute('data-agent-start-mode',m.mode);
+  const nav = (text,group,step,cls) => {
+    const url=agentStartHref(opts.projectKey || m.projectKey,m.revision,group,step);
+    if(opts.nav) return opts.nav(url,text,cls || 'agent-start-route');
+    const a=el('a',cls || 'agent-start-route',text);a.href=url;return a;
+  };
+  const heading=el('div','agent-start-head');
+  heading.append(el('h3',null,'Agent Start · '+m.scope),el('span','pill',m.revision));
+  section.append(heading);
+  if(m.mode === 'choose') {
+    section.append(el('p','agent-start-intro',
+      'Select the WBS of the task you were given. This page does not assign work or rank unfinished items.'));
+    const choices=el('div','agent-start-choices');
+    for(const g of m.choices.filter(g=>g.key!=='other')){
+      const box=el('article','agent-start-choice');
+      const main=nav(g.label,g.key,null,'agent-start-choice-link');
+      box.append(main,el('p','muted',g.count+' WBS steps · '+g.workCount+' recorded work items'));
+      choices.append(box);
+    }
+    section.append(choices);
+    const other=m.choices.find(g=>g.key==='other');
+    if(other){
+      const p=el('p','agent-start-other');
+      p.append(nav('Other / legacy milestones',other.key,null),
+        el('span','muted',' · '+other.count+' milestones, not a recommended next task'));
+      section.append(p);
+    }
+    if(!m.choices.length)section.append(el('p','muted',
+      'No WBS workstreams are recorded. Use Project Home and the authoritative GitHub task; do not invent an assignment.'));
+  } else {
+    const breadcrumbs=el('nav','agent-start-breadcrumb');
+    breadcrumbs.setAttribute('aria-label','Agent Start scope');
+    breadcrumbs.append(nav('All workstreams',null,null));
+    breadcrumbs.append(el('span','muted',' / '));
+    if(m.mode==='family')breadcrumbs.append(el('b',null,m.family.label));
+    else {
+      breadcrumbs.append(nav(m.family.label,m.family.key,null));
+      breadcrumbs.append(el('span','muted',' / '),el('b',null,m.focused.wbs || m.focused.id));
+    }
+    section.append(breadcrumbs);
   }
+  if(m.mode === 'family') {
+    section.append(el('p','agent-start-intro',
+      'Choose the step from your native task. Capability labels describe recorded evidence, not a new PASS or assignment.'));
+    const steps=el('div','agent-start-steps');
+    for(const s of m.steps){
+      const row=el('article','agent-start-step');
+      const h=el('div','agent-start-step-heading');
+      h.append(nav(s.label,m.family.key,s.id,'agent-start-step-link'),
+        el('span','pill',s.capability));
+      row.append(h,el('p','muted',s.items+' work item'+(s.items===1?'':'s')+
+        (s.blocked ? ' · '+s.blocked+' BLOCKED record'+(s.blocked===1?'':'s') : '')));
+      steps.append(row);
+    }
+    section.append(steps);
+  }
+  if(m.mode === 'step') {
+    const gate=el('section','agent-start-gate');
+    gate.append(el('p','agent-start-gate-status','Recorded capability · '+cap(m.focused)));
+    if(m.focused.canDo)gate.append(el('p',null,m.focused.canDo));
+    gate.append(el('p','agent-start-candidate',m.focused.commit ?
+      'Recorded candidate '+m.focused.commit+' · recheck exact current head at source' :
+      'Candidate identity NOT_RECORDED here · verify the exact native PR head before claiming PASS'));
+    if(valid(m.focused.capSrc))gate.append(link(m.focused.capSrc,'Open milestone evidence','agent-start-source'));
+    const single=m.work.length===1;
+    if(single)section.append(el('p','agent-start-single-cap','Recorded capability · '+cap(m.focused)));
+    if(!single)section.append(gate);
+    section.append(el('h4',null,single ? 'Recorded next action · not an assignment' :
+      m.work.length+' recorded work items · not priority ranked'));
+    for(const w of m.work){
+      const row=el('article','agent-start-item');
+      const h=el('div','agent-start-task-title');
+      h.append(el('strong',null,w.label),el('span','pill',w.state));
+      row.append(h);
+      row.append(el('p','agent-start-next','Recorded next: '+(w.next?short(w.next):'No next action recorded')));
+      row.append(el('p','agent-start-actor','Actor: '+w.nextActor));
+      const links=el('div','agent-start-links');
+      if(w.publicSource)links.append(link(w.publicSource,'Open original GitHub record','agent-start-source'));
+      else links.append(el('span','muted','Public task source not recorded'));
+      row.append(links);
+      if(w.status || w.next || w.refs.length) {
+        const detail=el('details','agent-start-detail');
+        detail.append(el('summary',null,'Full recorded evidence and limitations'));
+        if(w.next)detail.append(el('p',null,'Full next-action text: '+w.next));
+        if(w.status)detail.append(el('p',null,'Recorded status: '+w.status));
+        for(const r of w.refs)detail.append(link(r.u,r.l || r.k || 'Reference','agent-start-source'));
+        row.append(detail);
+      }
+      section.append(row);
+    }
+    if(single)section.append(gate);
+    if(!m.work.length)section.append(el('p','muted',
+      'No current work items are recorded for this step. An independent GitHub task is needed before acting.'));
+    const sources=el('details','agent-start-sources');
+    sources.append(el('summary',null,'All recorded evidence links ('+m.sources.length+')'));
+    if(!m.sources.length)sources.append(el('p','muted','No public sources recorded; verify the native task.'));
+    m.sources.forEach(s=>{const p=el('p');p.append(link(s.url,s.name));sources.append(p);});
+    section.append(sources);
+    const copy=el('button','btn pri','Copy scoped handoff');
+    copy.type='button';copy.addEventListener('click',()=>copyText(agentStartText(m),copy));
+    section.append(copy);
+  }
+  const rules=el('details','agent-start-rules');
+  rules.append(el('summary',null,'Authority and evidence rules'));
+  rules.append(el('p',null,'Read-only projection. No assignment, independent PASS, Owner acceptance, Writer/TARGET1 transfer, merge or release permission is granted here. Verify exact candidate and current Cycle in canonical GitHub sources.'));
+  section.append(rules);
   const aim=el('details','agent-start-aim');
-  aim.append(el('summary',null,'Owner aim · expand original wording'));
+  aim.append(el('summary',null,'Owner outcome · original wording'));
   aim.append(el('p',null,m.aim));
-  panel.append(aim);
-  const src=el('div','agent-start-sources');src.append(el('h3',null,'Starting sources · '+m.sources.length));
-  m.sources.slice(0,5).forEach(x=>{const p=el('p');p.append(link(x.url,x.name));src.append(p);});
-  if(m.sources.length>5){const details=el('details');details.append(el('summary',null,'Show '+(m.sources.length-5)+' more sources'));m.sources.slice(5).forEach(x=>{const p=el('p');p.append(link(x.url,x.name));details.append(p);});src.append(details);}
-  if(!m.sources.length)src.append(el('p','muted','No public GitHub source recorded for this selection. Verify the canonical task independently.'));
-  panel.append(src);
-  const copy=el('button','btn pri','Copy source-backed handoff');copy.type='button';
-  copy.addEventListener('click',()=>copyText(agentStartText(m),copy));
-  panel.append(copy);
-  root.append(panel);
+  if(m.aimSrc)aim.append(link(m.aimSrc,'Owner aim source','agent-start-source'));
+  section.append(aim);
+  root.append(section);
 }

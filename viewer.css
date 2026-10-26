@@ -321,3 +321,34 @@ details.nd{margin-top:6px;font-size:12px}
 .agent-start-aim p{margin:8px 0 2px;line-height:1.5}
 .agent-start-candidate{font-size:12px;font-weight:600;overflow-wrap:anywhere}
 @media(max-width:620px){.agent-start{gap:8px}.agent-start-intro{margin:2px 0}.agent-start-revisions .rev-row{flex-wrap:wrap}}
+
+
+/* Scoped Agent Start: explicit scope selection, then concise source-backed work items. */
+.agent-start-choices{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:12px}
+.agent-start-choice,.agent-start-step,.agent-start-gate,.agent-start-item{background:var(--card);border:1px solid var(--bd);border-radius:9px;padding:13px 15px}
+.agent-start-choice{min-height:92px}
+.agent-start-choice-link,.agent-start-step-link{font-weight:700;font-size:15px;color:var(--acc);text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
+.agent-start-choice p,.agent-start-step p,.agent-start-gate p,.agent-start-item p{margin:7px 0;line-height:1.5}
+.agent-start-breadcrumb{display:flex;gap:7px;align-items:center;flex-wrap:wrap;font-size:13px;margin:0 0 5px}
+.agent-start-steps{display:grid;gap:9px}
+.agent-start-step-heading{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:7px}
+.agent-start-step .pill{max-width:100%;overflow-wrap:anywhere}
+.agent-start-gate{border-left:4px solid var(--acc)}
+.agent-start-gate-status{font-weight:750}
+.agent-start-item{display:grid;gap:5px}
+.agent-start-task-title{justify-content:space-between;align-items:baseline}
+.agent-start-next{font-weight:550;overflow-wrap:anywhere}
+.agent-start-actor{color:var(--mut);font-size:13px}
+.agent-start-detail summary,.agent-start-rules summary,.agent-start-sources summary{cursor:pointer;font-size:13px;color:var(--mut)}
+.agent-start-detail{border-top:1px solid var(--bd);padding-top:8px;margin-top:5px}
+.agent-start-detail p{font-size:12px;line-height:1.55;overflow-wrap:anywhere;white-space:pre-wrap}
+.agent-start-detail .agent-start-source{display:block;margin:7px 0}
+.agent-start-rules{border-left:3px solid var(--wn);padding:9px 12px;background:var(--card);border-radius:5px}
+.agent-start-rules p{margin:8px 0;font-size:13px}
+.agent-start-sources{font-size:13px}
+.agent-start-sources p{overflow-wrap:anywhere}
+@media(max-width:620px){.agent-start-choices{grid-template-columns:1fr}.agent-start-choice,.agent-start-step,.agent-start-gate,.agent-start-item{padding:12px}.agent-start-head h3{font-size:17px}}
+
+.agent-start-other{margin:0;font-size:13px;color:var(--mut)}
+.agent-start-other a{font-weight:600}
+.agent-start-single-cap{font-size:12px;letter-spacing:.01em;font-weight:700;color:var(--mut);margin:2px 0}
