@@ -1,8 +1,8 @@
 // Progress view: attention strip, milestone strip, then groups of agent blocks.
-import { el, link, md, age } from './util.js?v=18';
-import { cardTags, fmt, nudgeTag } from './triggers.js?v=18';
-import { nudgeRow } from './nudge.js?v=18';
-import { onboardingModel, renderOnboarding } from './onboarding.js?v=18';
+import { el, link, md, age } from './util.js?v=19';
+import { cardTags, fmt, nudgeTag } from './triggers.js?v=19';
+import { nudgeRow } from './nudge.js?v=19';
+import { onboardingModel, renderOnboarding } from './onboarding.js?v=19';
 
 const RANK = { NOT_STARTED: 0, UNKNOWN: 1, STALE: 1, IN_PROGRESS: 2, SUBMITTED: 3, VERIFIED: 4 };
 const ICON = { VERIFIED: '✓', SUBMITTED: '↑', IN_PROGRESS: '●', BLOCKED: '!', NOT_STARTED: '○', STALE: '?', UNKNOWN: '?', NOT_APPLICABLE: '–' };
@@ -41,6 +41,18 @@ const families = {};
 export function wbsFamily(project, value) {
   if (value !== undefined) families[project] = value;
   return families[project] || null;
+}
+
+// A WBS pick belongs to one immutable revision snapshot, never just the live project.
+export function wbsRevisionScope(project, revision) {
+  return project + '@' + (revision || 'current');
+}
+// Shareable family/child links; historic revisions and browser history retain the same scope.
+export function wbsRoute(project, view, revision, family = null, step = null) {
+  const base = '#/' + encodeURIComponent(project) + '/' + encodeURIComponent(view);
+  if (!family) return base + (revision ? '/' + encodeURIComponent(revision) : '');
+  return base + '/' + encodeURIComponent(revision || 'current') + '/' + encodeURIComponent(family)
+    + (step ? '/' + encodeURIComponent(step) : '');
 }
 export function wbsGroups(index) {
   const entries = Object.entries((index || {}).milestones || {}).sort((a,b) => (a[1].order || 0) - (b[1].order || 0));
@@ -85,9 +97,12 @@ function applyPick(root, allowed = null) {
 
 function strip(index, cards, ctx, family = null) {
   const wrap = el('div', 'ms-wrap');
-  const pk = (index.project || {}).key || '';
-  const keep = () => { picks[pk] = picked; };
+  const pk = ctx.wbsScope || (index.project || {}).key || '';
   const redraw = () => (ctx && ctx.rerender ? ctx.rerender() : applyPick(wrap.parentNode));
+  const select = (family, step) => {
+    if (ctx?.navigateWbs) return ctx.navigateWbs(family, step);
+    wbsFamily(pk, family); wbsPick(pk, step); picked = step; redraw();
+  };
   const groups = wbsGroups(index);
   if (groups.length && !family) {
     const summary = el('div', 'wbs-overview');
@@ -99,7 +114,7 @@ function strip(index, cards, ctx, family = null) {
       button.type = 'button';
       button.append(el('strong', null, g.label), el('span', null, g.steps.length + ' milestones'),
         el('span', 'muted', mine.length + ' active agent blocks · select to inspect'));
-      button.addEventListener('click', () => { wbsFamily((index.project || {}).key || '', g.key); wbsPick((index.project || {}).key || '', null); ctx.rerender(); });
+      button.addEventListener('click', () => select(g.key, null));
       row.append(button);
     });
     summary.append(row);
@@ -116,7 +131,7 @@ function strip(index, cards, ctx, family = null) {
     const all = el('button', 'ms-all', 'All');
     all.type = 'button';
     all.title = 'Show the agent blocks of every step';
-    all.addEventListener('click', () => { picked = null; keep(); redraw(); });
+    all.addEventListener('click', () => select(null, null));
     row.append(all);
   }
   list.forEach(([key, m], i) => {
@@ -141,7 +156,7 @@ function strip(index, cards, ctx, family = null) {
     }
     if (m.bench || m.keeps) box.append(el('div', 'ms-bench', [m.bench, m.keeps ? 'keeps ' + m.keeps : ''].filter(Boolean).join(' · ')));
     box.append(el('div', 'ms-count', live.filter((c) => c.state === 'VERIFIED').length + ' of ' + live.length + ' agent blocks verified'));
-    const pick = () => { picked = picked === key ? null : key; keep(); redraw(); };
+    const pick = () => select(family?.key || null, picked === key ? null : key);
     box.addEventListener('click', (e) => { if (!e.target.closest('a')) pick(); });
     box.addEventListener('keydown', (e) => { if (e.target === box && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); pick(); } });
     row.append(box);
@@ -334,7 +349,7 @@ export function renderProgress(root, project, ctx) {
   ctx.cards = project.cards;
   if (ctx.sum) root.append(attention(ctx.sum, ctx.rules));
   if (hidden) root.append(el('p', 'ms-line', hidden + ' closed cards from earlier revisions are not shown; open that revision above to see them.'));
-  const key = (project.index.project || {}).key || '';
+  const key = ctx.wbsScope || (project.index.project || {}).key || '';
   const family = wbsGroups(project.index).find(g => g.key === wbsFamily(key)) || null;
   const allowed = family ? new Set(family.steps.map(s => s.key)) : null;
   picked = picks[key] || null;
@@ -351,7 +366,7 @@ export function renderProgress(root, project, ctx) {
   });
   const rest = cards.filter((c) => !used.has(c.id));
   if (rest.length) root.append(groupBlock({ title: 'Other' }, rest, ctx));
-  picked = picks[(project.index.project || {}).key || ''] || null;
-  if (picked && !(project.index.milestones || {})[picked]) picked = picks[(project.index.project || {}).key || ''] = null;
+  picked = picks[key] || null;
+  if (picked && !(project.index.milestones || {})[picked]) picked = picks[key] = null;
   applyPick(root, allowed);
 }

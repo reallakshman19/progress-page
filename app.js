@@ -1,14 +1,14 @@
 // Shell: loads the JSON, draws the project tabs and the views, refreshes every two minutes.
-import { el, link, tick, ago, whenText } from './util.js?v=18';
-import { renderProgress, wbsPick, wbsGroups, wbsFamily } from './progress.js?v=18';
-import { renderLessons } from './lessons.js?v=18';
-import { renderActions, renderFixtures, renderProjectHome, openCount } from './actions.js?v=18';
-import { renderTimeline } from './timeline.js?v=18';
-import { tabsRow, archivedPanel, projectHead, isActive } from './lifecycle.js?v=18';
-import { nudgesOf, openNudge } from './nudge.js?v=18';
-import { addProjectDialog, addRevisionDialog } from './briefs.js?v=18';
-import { loadLinks, takeLinksFromHash, linksPanel } from './links.js?v=18';
-import { rulesOf, holdOf, summary, needsAttention } from './triggers.js?v=18';
+import { el, link, tick, ago, whenText } from './util.js?v=19';
+import { renderProgress, wbsPick, wbsGroups, wbsFamily, wbsRevisionScope, wbsRoute } from './progress.js?v=19';
+import { renderLessons } from './lessons.js?v=19';
+import { renderActions, renderFixtures, renderProjectHome, openCount } from './actions.js?v=19';
+import { renderTimeline } from './timeline.js?v=19';
+import { tabsRow, archivedPanel, projectHead, revisionRow, isActive } from './lifecycle.js?v=19';
+import { nudgesOf, openNudge } from './nudge.js?v=19';
+import { addProjectDialog, addRevisionDialog } from './briefs.js?v=19';
+import { loadLinks, takeLinksFromHash, linksPanel } from './links.js?v=19';
+import { rulesOf, holdOf, summary, needsAttention } from './triggers.js?v=19';
 
 const LIVE_DATA = 'https://reallakshman19.github.io/progress-page/data/';
 const q = new URLSearchParams(location.search);
@@ -136,12 +136,13 @@ function site() {
 }
 
 function route() {
-  const [, pk, view, rev] = (hash || '').split('/');
+  const [, pk, view, rev, family, step] = (hash || '').split('/');
+  const safe = (v) => { try { return v ? decodeURIComponent(v) : null; } catch { return null; } };
   const active = state.projects.filter(isActive);
   const key = state.data[pk] ? pk : (active[0] || state.projects[0] || {}).key;
   const lessonIds = (state.data.learned?.lessons?.items || []).map(item => item.id);
   const choices = key === 'learned' ? ['progress', ...lessonIds] : VIEWS;
-  return { key, v: choices.includes(view) ? view : 'progress', rev: rev || null };
+  return { key, v: choices.includes(view) ? view : 'progress', rev: safe(rev), family: safe(family), step: safe(step) };
 }
 
 // An older revision is opened read-only from the git commit it was last current in.
@@ -247,7 +248,7 @@ function render() {
   if (!Object.keys(state.links).length) {
     root.append(el('p', 'hintbar', 'Chat ids are not clickable in this browser yet. Open your private setup link once, or paste your links under "My links".'));
   }
-  const { key, v, rev } = route();
+  const { key, v, rev, family: routedFamily, step: routedStep } = route();
   const p = state.data[key];
   if (!p) { root.append(el('p', 'err', 'No project data.')); return; }
   const active = state.projects.filter(isActive).map((x) => state.data[x.key]);
@@ -268,10 +269,22 @@ function render() {
     toggleArchived: () => { state.archivedOpen = !state.archivedOpen; render(); },
     statusLine,
     paths: (state.paths || {})[key] || null,
+    revisionListProject: p,
+    snapshotNotice: older && rv?.status === 'ready' ?
+      el('p', 'muted', 'Historical snapshot ' + rev + ' at ' + (((p.index.revisions || []).find(r => r.id === rev) || {}).commit || '?')
+        + '. Read-only evidence from this revision; not current execution status.') : null,
     revBanner: older ? revBanner(p, rev, rv) : null,
   };
   root.append(tabsRow(c));
   if (state.archivedOpen) root.append(archivedPanel(c));
+  // Never show R4 aim/WBS/cards while the requested R1/R2/R3 snapshot is loading or unavailable.
+  if (older && (!rv || rv.status !== 'ready')) {
+    const header = el('div', 'ptitle');
+    header.append(el('h2', null, p.index.project?.title || p.label), revisionRow(p, c), revBanner(p, rev, rv));
+    root.append(header, el('p', 'banner', rv?.status === 'error'
+      ? 'Historical source unavailable; no current data substituted.' : 'Loading historical revision without showing current project data.'));
+    return;
+  }
   if (key === 'learned') {
     // Lessons is a top-level tab with its own visible second row of subtabs.
     // Sections inside L01/L02 remain vertical full-page documents, not horizontal sections.
@@ -290,20 +303,25 @@ function render() {
     root.append(page);
     return;
   }
-  root.append(projectHead(p, c));
+  root.append(projectHead(view, c));
   // A two-level selector: WBS family (3/4/Other), then only that family's numbered steps.
   const groups = wbsGroups(view.index);
-  if (wbsFamily(key) && !groups.some(g => g.key === wbsFamily(key))) wbsFamily(key, null);
-  const family = groups.find(g => g.key === wbsFamily(key)) || null;
-  if (wbsPick(key) && (!family || !family.steps.some(s => s.key === wbsPick(key)))) wbsPick(key, null);
+  const wbsScope = wbsRevisionScope(key, rev || cur?.id);
+  const family = groups.find(g => g.key === routedFamily) || null;
+  const step = family?.steps.some(s => s.key === routedStep) ? routedStep : null;
+  wbsFamily(wbsScope, family?.key || null);
+  wbsPick(wbsScope, step);
+  const navSuffix = family ? '/' + encodeURIComponent(rev || cur?.id || 'current') + '/'
+    + encodeURIComponent(family.key) + (step ? '/' + encodeURIComponent(step) : '')
+    : older ? '/' + encodeURIComponent(rev) : '';
   if (groups.length && !HOME_VIEWS.includes(v)) {
     const families = el('nav', 'wbs-family-nav');
     families.setAttribute('aria-label', 'WBS families');
     [{ key: null, label: 'All WBS' }, ...groups].forEach(g => {
-      const b = el('button', 'wbs-family-tab' + (wbsFamily(key) === g.key ? ' on' : ''), g.label);
+      const b = el('button', 'wbs-family-tab' + (family?.key === g.key ? ' on' : ''), g.label);
       b.type = 'button';
-      b.setAttribute('aria-pressed', String(wbsFamily(key) === g.key));
-      b.addEventListener('click', () => { wbsFamily(key, g.key); wbsPick(key, null); render(); });
+      b.setAttribute('aria-pressed', String((family?.key || null) === g.key));
+      b.addEventListener('click', () => go(wbsRoute(key, v, g.key ? (rev || cur?.id) : (older ? rev : null), g.key, null)));
       families.append(b);
     });
     root.append(families);
@@ -311,21 +329,21 @@ function render() {
       const children = el('nav', 'wbs-children');
       children.setAttribute('aria-label', family.label + ' steps');
       [{ key: null, short: 'All ' + family.label + ' steps', name: 'All steps' }, ...family.steps].forEach(x => {
-        const b = el('button', 'wbs-child-tab' + (wbsPick(key) === x.key ? ' on' : ''), x.short);
+        const b = el('button', 'wbs-child-tab' + (step === x.key ? ' on' : ''), x.short);
         b.type = 'button'; b.title = x.name;
-        b.setAttribute('aria-pressed', String(wbsPick(key) === x.key));
-        b.addEventListener('click', () => { wbsPick(key, x.key); render(); });
+        b.setAttribute('aria-pressed', String(step === x.key));
+        b.addEventListener('click', () => go(wbsRoute(key, v, rev || cur?.id, family.key, x.key)));
         children.append(b);
       });
       root.append(children);
     }
   }
-  const bar = HOME_VIEWS.includes(v) ? null : repoBar(view.index, groups.length ? wbsPick(key) : null, state.repo[key]);
+  const bar = HOME_VIEWS.includes(v) ? null : repoBar(view.index, groups.length ? step : null, older ? null : state.repo[key]);
   if (bar) root.append(bar);
   const views = el('nav', 'views');
   [['home', 'Project Home', 0], ['progress', 'Progress / WBS', 0], ['actions', 'My actions', openCount(view.actions)], ['fixtures', 'Grounding fixtures', 0], ['timeline', 'Timeline', 0]].forEach(([id, label, n]) => {
     const on = id === 'home' ? HOME_VIEWS.includes(v) : id === v;
-    const a = navLink('#/' + key + '/' + id + (older ? '/' + rev : ''), label, 'view' + (on ? ' on' : ''));
+    const a = navLink('#/' + key + '/' + id + navSuffix, label, 'view' + (on ? ' on' : ''));
     if (on) a.setAttribute('aria-current', 'page');
     const bd = badge(n);
     if (bd) a.append(bd);
@@ -336,7 +354,7 @@ function render() {
     const homeNav = el('nav', 'views home-subtabs');
     homeNav.setAttribute('aria-label', 'Project Home sections');
     [['home', 'Overview'], ['home-roadmap', 'Roadmap'], ['home-sources', 'Sources'], ['home-risks', 'Risks & handoffs']].forEach(([id, label]) => {
-      const a = navLink('#/' + key + '/' + id + (older ? '/' + rev : ''), label, 'view' + (id === v ? ' on' : ''));
+      const a = navLink('#/' + key + '/' + id + navSuffix, label, 'view' + (id === v ? ' on' : ''));
       if (id === v) a.setAttribute('aria-current', 'page');
       homeNav.append(a);
     });
@@ -352,15 +370,18 @@ function render() {
       nudge: { openList: (id) => nudgesOf(view, id).filter((n) => n.status === 'open'), list: (id) => nudgesOf(view, id), open: (card) => openNudge(view, card, rules.coordinator) },
     };
     ctx.rerender = render;
-    const step = HOME_VIEWS.includes(v) ? null : (groups.length ? wbsPick(key) : null);
-    if (step) body.append(el('p', 'muted', 'Showing ' + ((family?.steps.find(x => x.key === step))?.label || step) + ' only; whole-project records remain marked.'));
+    ctx.wbsScope = wbsScope;
+    ctx.navigateWbs = (nextFamily, nextStep) =>
+      go(wbsRoute(key, v, nextFamily ? (rev || cur?.id) : (older ? rev : null), nextFamily, nextStep));
+    const shownStep = HOME_VIEWS.includes(v) ? null : step;
+    if (shownStep) body.append(el('p', 'muted', 'Showing ' + ((family?.steps.find(x => x.key === shownStep))?.label || shownStep) + ' only; whole-project records remain marked.'));
     else if (family && !HOME_VIEWS.includes(v)) body.append(el('p', 'muted', 'Showing ' + family.label + ' only (' + family.steps.length + ' steps); whole-project records remain marked.'));
-    const sv = step ? stepView(view, [step]) : family ? stepView(view, family.steps.map(x => x.key)) : view;
+    const sv = shownStep ? stepView(view, [shownStep]) : family ? stepView(view, family.steps.map(x => x.key)) : view;
     if (HOME_VIEWS.includes(v)) renderProjectHome(body, view, v);
     else if (v === 'progress') renderProgress(body, view, ctx);
     else if (v === 'actions') renderActions(body, sv);
     else if (v === 'fixtures') renderFixtures(body, sv.fixtures);
-    else if (step || family) renderTimeline(body, sv);
+    else if (shownStep || family) renderTimeline(body, sv);
     else renderTimeline(body, view);
   }
   root.append(body);
