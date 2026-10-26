@@ -1,0 +1,71 @@
+name: Deploy Progress Page
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+    paths: ['.github/workflows/deploy-pages.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: progress-page-production
+  cancel-in-progress: false
+
+jobs:
+  validate-and-package:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact commit
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Verify public data contract
+        run: python tools/pp_check.py data
+      - name: Verify JavaScript page contracts
+        run: node --experimental-default-type=module --test tests/onboarding.test.mjs tests/project-home.test.mjs tests/wbs-subtabs.test.mjs
+      - name: Run Python regression suite
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: python -B -m unittest discover -s tests
+      - name: Package public static site
+        if: github.event_name != 'pull_request'
+        run: |
+          mkdir -p _site
+          cp index.html *.js viewer.css _site/
+          cp -R data _site/data
+          touch _site/.nojekyll
+      - name: Set up GitHub Pages
+        if: github.event_name != 'pull_request'
+        uses: actions/configure-pages@v5
+      - name: Upload public Pages artifact
+        if: github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+
+  deploy:
+    if: github.event_name != 'pull_request'
+    needs: validate-and-package
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy merged main to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
