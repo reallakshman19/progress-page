@@ -4,8 +4,8 @@
     "key": "ciifr",
     "title": "CII Find & Replace VNext",
     "subtitle": "R4 current: Geometry WBS3 read-only G1/G2; Element WBS4 source/config qualification; VNext integration held pending independent evidence.",
-    "updatedAt": "2026-10-26T12:21:51Z",
-    "updatedBy": "CIIFR WBS3 Progress recorder",
+    "updatedAt": "2026-10-26T13:19:56Z",
+    "updatedBy": "CIIFR Progress Page WBS5 recorder",
     "staleAfterMin": 120,
     "aim": "Extend CIIFR NodeName VNext into typed ELEMENTS real-value/Line Number edits plus pointer-resolved RIGID Weight/Type. Preserve original bytes, v14 units/sentinels, node/pointer/branch relations, per-span approvals, new-copy export and native import review. Retain R3 Geometry WBS3 review-only, frozen P2/P2.1 and XML custody; defer structural graph/pointer edits and P3.",
     "aimSrc": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394203305"
@@ -143,7 +143,8 @@
       "repo": "reallakshman19/XML_Compare_Utilities",
       "branch": "codex/ciifr-r3-prototypes-01a16c60",
       "commit": "a67487023bcafc13d68b62dbfc9bb74c61b3c64c",
-      "activity": "Draft PR157; separate qualification boundaries; no merge"
+      "activity": "Draft PR157; separate qualification boundaries; no merge",
+      "wbs": "5"
     },
     "M9": {
       "name": "Independent XMLv2 engine",
@@ -155,7 +156,8 @@
       "repo": "reallakshman19/XML_Compare_Utilities",
       "branch": "codex/ciifr-r3-prototypes-01a16c60",
       "commit": "a67487023bcafc13d68b62dbfc9bb74c61b3c64c",
-      "activity": "Draft PR157; separate qualification boundaries; no merge"
+      "activity": "Draft PR157; separate qualification boundaries; no merge",
+      "wbs": "5.1"
     },
     "M10": {
       "name": "Node catalogue / map / preview",
@@ -167,14 +169,16 @@
       "repo": "reallakshman19/XML_Compare_Utilities",
       "branch": "codex/ciifr-r3-prototypes-01a16c60",
       "commit": "a67487023bcafc13d68b62dbfc9bb74c61b3c64c",
-      "activity": "Draft PR157; separate qualification boundaries; no merge"
+      "activity": "Draft PR157; separate qualification boundaries; no merge",
+      "wbs": "5.2"
     },
     "M11": {
       "name": "Authorized mapped transfer",
       "full": "Full P2.5: branch -> element -> endpoint/node correspondence, then authorized nodal values and elemental blocks. Initial node prototype slice is existing DX/DY/DZ only.",
       "order": 4,
       "cap": "NOT_DEMONSTRATED",
-      "canDo": "No accepted production transfer/export in this new prototype. Read-only work can proceed before export qualification."
+      "canDo": "No accepted production transfer/export in this new prototype. Read-only work can proceed before export qualification.",
+      "wbs": "5.3"
     },
     "M12": {
       "name": "Geometry onboarding and seam",

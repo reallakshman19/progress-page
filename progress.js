@@ -9,7 +9,7 @@ const ICON = { VERIFIED: '✓', SUBMITTED: '↑', IN_PROGRESS: '●', BLOCKED: '
 const KIND = { VERIFIED: 'done', IN_PROGRESS: 'working', SUBMITTED: 'waiting', BLOCKED: 'hold', NOT_STARTED: 'idle', STALE: 'gap', UNKNOWN: 'gap', NOT_APPLICABLE: 'done' };
 const COUNT_ORDER = [['VERIFIED', 'verified'], ['SUBMITTED', 'submitted'], ['IN_PROGRESS', 'in progress'], ['BLOCKED', 'blocked'], ['NOT_STARTED', 'not started']];
 // Owner-facing WBS family copy only; does not alter milestones, routes or project identity.
-const PROJECT_WBS_NAMES = Object.freeze({ ciifr: Object.freeze({ '4': 'WBS4- CIIFR-Element' }) });
+const PROJECT_WBS_NAMES = Object.freeze({ ciifr: Object.freeze({ '4': 'WBS4- CIIFR-Element', '5': 'WBS 5 CIIFR-MAP' }) });
 
 // A milestone is BLOCKED if any of its cards is; VERIFIED only when every card is. Otherwise it takes the weakest
 // state among the cards that have started, and is NOT_STARTED when none has. Superseded and cancelled cards do not count.
