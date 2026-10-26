@@ -259,3 +259,17 @@ details.nd{margin-top:6px;font-size:12px}
 .home-filter{margin:10px 12px 0;width:calc(100% - 24px);padding:8px 10px;border:1px solid var(--bd);border-radius:6px;background:var(--bg);color:var(--fg);font:inherit;font-size:13px}
 .home-filter-count{margin:5px 12px!important;padding:0!important;font-size:11px}
 .home-items li[hidden]{display:none}
+
+/* WBS: compact family tabs with only the selected family's child milestones. */
+.wbs-family-nav{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0 6px;align-items:center}
+.wbs-family-tab{font:inherit;font-weight:600;font-size:13px;cursor:pointer;border:1px solid var(--bd);border-radius:8px;padding:7px 13px;background:var(--card);color:var(--fg)}
+.wbs-family-tab.on{background:var(--accbg);color:var(--acc);border-color:var(--acc)}
+.wbs-children{display:flex;gap:5px;overflow-x:auto;max-width:100%;padding:6px 1px 9px;margin-bottom:8px;scrollbar-width:thin}
+.wbs-child-tab{flex:0 0 auto;font:inherit;font-size:12px;cursor:pointer;border:1px solid var(--bd);border-radius:6px;padding:5px 10px;background:var(--card);color:var(--fg)}
+.wbs-child-tab.on{background:var(--accbg);color:var(--acc);border-color:var(--acc);font-weight:700}
+.wbs-overview h3{margin:14px 0 8px}
+.wbs-family-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:10px}
+.wbs-family-card{display:flex;flex-direction:column;align-items:flex-start;gap:3px;text-align:left;font:inherit;cursor:pointer;padding:13px;border:1px solid var(--bd);border-radius:10px;background:var(--card);color:var(--fg)}
+.wbs-family-card strong{font-size:15px}.wbs-family-card span{font-size:12px}
+.wbs-family-card:hover,.wbs-family-card:focus-visible{border-color:var(--acc);outline:1px solid var(--acc)}
+@media(max-width:620px){.wbs-family-tab{padding:7px 10px}.wbs-children{scroll-snap-type:x proximity}.wbs-child-tab{scroll-snap-align:start}}
