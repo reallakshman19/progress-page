@@ -25,6 +25,17 @@ python tools/pp_cli.py reconcile --project ciifr --source https://github.com/rea
 Every write needs `--actor` (who), `--src` (a public GitHub link, or `OWNER_PRIVATE_REF:<id>`) and a reason. It writes one Timeline entry, runs the checker,
 and leaves every file as it was if the check fails. Nothing is deleted: supersede, cancel, archive or withdraw. Use plain `python` (not `python -I`).
 
+## Evidence-first, reviewable batch updates (coordinator only)
+
+For one native source supporting several related changes, prepare a reviewed public-safe JSON manifest:
+
+```json
+{"project":"ciifr","actor":"Oracle","source":"https://github.com/OWNER/REPO/issues/33",
+ "changes":[{"command":"plan milestone","args":{"id":"M8","wbs":"5","summary":"Classify XMLv1.1 under WBS 5"}}]}
+```
+
+Dry-run first: `python tools/pp_batch.py update.json --data data`. It stages the native CLI commands in a temporary copy, checks every operation, validates append-only events and prints changed paths/event IDs without touching `data/`. After reviewing the actual source and diff, `python tools/pp_batch.py update.json --data data --apply --base origin/main` swaps the checked data directory and runs the history comparison, rolling back on failure. Then commit through your normal authorization/PR workflow. The script does **not** read the source's engineering meaning, infer status, grant approval or merge. A source already recorded is refused by default.
+
 ## What the page shows
 
 - Project tabs, `+` to add a project (a copy-paste brief for another agent), **Archived (n)** for closed projects.
