@@ -83,6 +83,8 @@ def main():
             check(page.locator(".agent-start-choice-link").filter(has_text="WBS 5").count()==1,
                 "Mapping choice missing")
             check("25 more" not in txt,"Hidden backlog leak")
+            check(page.locator(".agent-start-choice").count()==3,"Exactly three active WBS families should be primary")
+            check(page.locator(".agent-start-other a").count()==1,"Legacy milestones should remain reachable but secondary")
             capture(page,"00-workstream-chooser")
             return {"choices":page.locator(".agent-start-choice").count(),"arbitrarilySelectedTasks":0}
         case("Unscoped Agent Start chooses workstream rather than dumping backlog",choose_workstream)

@@ -348,3 +348,7 @@ details.nd{margin-top:6px;font-size:12px}
 .agent-start-sources{font-size:13px}
 .agent-start-sources p{overflow-wrap:anywhere}
 @media(max-width:620px){.agent-start-choices{grid-template-columns:1fr}.agent-start-choice,.agent-start-step,.agent-start-gate,.agent-start-item{padding:12px}.agent-start-head h3{font-size:17px}}
+
+.agent-start-other{margin:0;font-size:13px;color:var(--mut)}
+.agent-start-other a{font-weight:600}
+.agent-start-single-cap{font-size:12px;letter-spacing:.01em;font-weight:700;color:var(--mut);margin:2px 0}

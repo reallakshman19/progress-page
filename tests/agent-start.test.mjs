@@ -18,6 +18,7 @@ test('project-wide entry is a chooser, never an arbitrary task list',()=>{
   assert.ok(m.choices.find(c=>c.key==='wbs:3'));
   assert.ok(m.choices.find(c=>c.key==='wbs:4'));
   assert.ok(m.choices.find(c=>c.key==='wbs:5'));
+  assert.equal(m.choices.find(c=>c.key==='other').count,7,'legacy history must remain accessible');
   assert.match(agentStartText(m),/No specific task or actor selected/);
   assert.doesNotMatch(agentStartText(m),/XMLv1.1: F05 closed/);
   assert.equal(JSON.stringify(p),original);
