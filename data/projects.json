@@ -90,15 +90,6 @@
       "replyTo": {
         "kind": "none"
       }
-    },
-    {
-      "key": "ciifr-element",
-      "label": "CIIFR-ELEMENT",
-      "order": 8,
-      "mode": "standalone",
-      "replyTo": {
-        "kind": "none"
-      }
     }
   ],
   "site": {
