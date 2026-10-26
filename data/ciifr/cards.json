@@ -739,12 +739,14 @@
     "milestone": "M7",
     "label": "Oracle · onboarding and continuity",
     "who": {},
-    "state": "NOT_STARTED",
-    "now": "Oracle start: [Contribution & Handoff](https://github.com/reallakshman19/Common/blob/a9491531fb98f6fd14bc486a4cc78ee4680cb1f5/skills/agent-work/CONTRIBUTION_HANDOFF.md) requires scoped PASS, surviving-error tests and self-assessment disclosure for Oracle-authored work. [Oracle Continuity](https://github.com/reallakshman19/Common/blob/a9491531fb98f6fd14bc486a4cc78ee4680cb1f5/skills/agent-work/oracle-continuity/PROTOCOL.md) preserves task ID, artifact lineage, Oracle epoch, in-flight work, next two slices and explicit successor adoption. A new chat/brief is not activated cutover; PR #472 draft. Owner controls scope, acceptance and merge.",
+    "state": "IN_PROGRESS",
+    "now": "Read-only successor onboarding and ROI framework are published as draft Common PR511; separate Element knowledge packet is draft PR507. G2 contributor PR182 provides only author-tested source code. Candidate may review G2 source, but no successor is activated, writer isolated or control epoch transferred; Geometry Cycle rev4 ACTIVE, Element Cycle rev0 PREPARED_NOT_ACTIVE.",
     "next": {
-      "actor": "Oracle",
-      "text": "At handover reconcile CURRENT, in-flight writes and old control; do not assert automatic succession."
-    }
+      "actor": "Owner-selected read-only successor candidate",
+      "text": "Challenge G2 PR182 against real PR181 S1/T graph and return bounded verdict. Owner separately decides any future control cutover."
+    },
+    "src": "https://github.com/reallakshman19/Common/pull/511",
+    "updatedAt": "2026-10-26T05:20:36Z"
   },
   "wbs4-e0": {
     "order": 40,
@@ -755,10 +757,10 @@
       "role": "Oracle contribution (SELF_ASSESSED)"
     },
     "state": "SUBMITTED",
-    "now": "Oracle E0 framework and new Project Home concept are in XCU draft PR #168 at 3595a7c: Owner outcome, original 15-line ELEMENTS/53 real/15 pointer architecture, shared node vs pointer semantics, private hash-only custody, uncertainty and 3 connected tasks. Source author SELF_ASSESSED; not a production feature or engineering approval.",
+    "now": "E0 architecture remains on draft PR168. R2 receipt verified original CII identity and physical ELEMENTS/RIGID fields (353 elements and 38 rigids). These are source-layout results, not effective engineering interpretation, native import or Writer qualification.",
     "next": {
-      "actor": "Authorized CIIFR Oracle",
-      "text": "Use revised START HERE Map A to verify CIIFR Home and native WBS links, then challenge v14 field meaning independently; keep draft and acceptance distinct."
+      "actor": "Element source reviewer",
+      "text": "Carry verified physical fields into bounded read-only interpretation; preserve distinct 521-element benchmark."
     },
     "refs": [
       {
@@ -782,8 +784,8 @@
         "u": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/168"
       }
     ],
-    "updatedAt": "2026-10-25T08:25:29Z",
-    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6395368222"
+    "updatedAt": "2026-10-26T05:20:36Z",
+    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/178#issuecomment-6402061761"
   },
   "wbs4-e1": {
     "order": 41,
@@ -794,10 +796,10 @@
       "role": "E1 overall engineering qualification · F3_SOURCE_HOLD; R2 bounded structural milestone verified"
     },
     "state": "BLOCKED",
-    "now": "E1 R2 bounded catalogue guards ACCEPTED independently on PR168 2aeaf737 (F1 empty RESTRANT, F2 v14 REDUCERS two-row count, all15 pointers). Overall E1 effective-engineering source semantics remain PARTIAL/BLOCKED on v14 CONTROL F3, incomplete reducer token shape and restraint body; original CII/native importer NOT_RUN. Draft PR unmerged; E2/E3 Writer/TARGET1 HOLD.",
+    "now": "E1 exact PR168 R2 pointer/auxiliary F1/F2 PASS is limited to independently invented read-only cases. V14 CONTROL F3 trailing field rule and full auxiliary syntax HOLD. R2 original physical data PASS; R4 effective job configuration, material edition, units and static-case/FDM remain unverified. No editor/Writer/TARGET1.",
     "next": {
-      "actor": "Oracle / authorized v14 source custodian · evidence dependency (not active agent)",
-      "text": "Obtain exact v14 CONTROL row-width/trailing-slot rule OR controlled native v14 importer positive/negative source fixture with custody. If unavailable classify F3_SOURCE_BLOCKED; no speculative parser edits or repeated review. Owner determines release gate separately."
+      "actor": "Original CAESAR job custodian and V14 source reviewer",
+      "text": "Provide source-matched active job settings/cases and V14 CONTROL F3 authority. Do not repeat completed synthetic pointer tests."
     },
     "refs": [
       {
@@ -846,8 +848,8 @@
         "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6401420458"
       }
     ],
-    "updatedAt": "2026-10-25T18:25:17Z",
-    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6401420458"
+    "updatedAt": "2026-10-26T05:20:36Z",
+    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/178#issuecomment-6407707652"
   },
   "wbs4-e2": {
     "order": 42,
