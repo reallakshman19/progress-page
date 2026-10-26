@@ -372,3 +372,57 @@ details.nd{margin-top:6px;font-size:12px}
   .agent-start-next{font-size:15px}
 }
 @media(max-width:1099px){.agent-start-workspace{display:flex;flex-direction:column}.agent-start-primary,.agent-start-aside{width:100%}}
+
+/* Responsive site-wide PC layout. Keep Agent Start's tested layout specialized. */
+:root{--page-wide:1520px;--readable:88ch}
+main{width:100%;min-width:0}
+.body,.ptitle,.grp,.flow,.card,.panel,.wbs-overview,.home-page,.tl{min-width:0}
+.ptitle .aim,.ptitle .project-method{max-width:var(--readable);overflow-wrap:anywhere}
+.ptitle .project-brief{font-size:13px;border:1px solid var(--bd);background:var(--card);border-radius:8px;padding:8px 12px;max-width:940px}
+.project-brief>summary{cursor:pointer;font-weight:600;color:var(--mut)}
+.project-brief .aim{margin:10px 0;font-size:13px;line-height:1.55}
+.project-brief .project-method{margin:7px 0}
+.chat-setup{font-size:12px;color:var(--mut);margin:0 0 10px;max-width:100%;overflow-wrap:anywhere}
+.chat-setup>summary{cursor:pointer;color:var(--mut)}
+.chat-setup p{margin:6px 0 0;padding:8px 12px;border-left:2px solid var(--bd)}
+.tabs,.views{max-width:100%;min-width:0}
+.wbs-family-cards{grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));align-items:stretch}
+.wbs-family-card{min-width:0}
+.wbs-family-card span{overflow-wrap:anywhere}
+.flow .card{min-width:0;overflow-wrap:anywhere}
+@media(min-width:1100px){
+  main{max-width:var(--page-wide);padding:24px clamp(22px,2.5vw,46px) 64px}
+  .ptitle{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:16px;row-gap:6px;align-items:center;margin:8px 0 12px}
+  .ptitle>h2{grid-column:1;grid-row:1;font-size:22px;min-width:0}
+  .ptitle>.rev-row{grid-column:2;grid-row:1;justify-self:end;margin:0}
+  .ptitle>:not(h2):not(.rev-row){grid-column:1 / -1}
+  .wbs-family-cards{grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+  .wbs-family-card{min-height:112px;padding:16px 18px}
+  .wbs-family-card strong{font-size:17px}
+  .flow{gap:12px}
+  .flow .card{flex:1 1 320px;max-width:460px;padding:14px 16px}
+  .home-tiles{grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+  .tabs{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:thin}
+  .views{margin:12px 0 14px}
+  .view{font-size:14px}
+}
+@media(min-width:720px) and (max-width:1099px){
+  main{max-width:100%;padding:18px 22px 46px}
+  .wbs-family-cards{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .flow .card{max-width:none}
+}
+@media(max-width:719px){
+  main{max-width:100%;padding:14px 12px 36px}
+  .wbs-family-cards{grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr))}
+  .tabs{overflow-x:auto;flex-wrap:nowrap}
+  .tab{white-space:nowrap}
+  .ptitle .project-brief{padding:8px}
+  .flow .card{max-width:none}
+}
+
+/* Structured decisions and fixture inventories must wrap on narrow screens. */
+.dc,.fx,.op,.tb,.fx li,.fx a,.dc a,.dc p{min-width:0;max-width:100%;overflow-wrap:anywhere}
+.tb{table-layout:fixed}
+.tb th,.tb td{overflow-wrap:anywhere;word-break:break-word}
+.op{grid-template-columns:96px minmax(0,1fr)}
+@media(max-width:620px){.op{grid-template-columns:minmax(0,1fr)}}

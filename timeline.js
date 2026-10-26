@@ -1,5 +1,5 @@
 // Timeline view: every recorded update of the project, newest first. The tools write one entry per change (who, what, why, source).
-import { el, link, whenText } from './util.js?v=27';
+import { el, link, whenText } from './util.js?v=28';
 
 const KIND_CLASS = { REVISION: 's', ANSWER: 's', RESTORE: 's', SUPERSEDE: 'w', CANCEL: 'w', ARCHIVE: 'w', TRANSFER: 'w', STATE: 'a', NUDGE: 'a', ACTION: 'a' };
 const FIRST = 60;

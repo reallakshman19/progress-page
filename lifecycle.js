@@ -1,5 +1,5 @@
 // Project tabs with "+", the Archived list, the project header and the revision row.
-import { el, link, whenText, isHttps, copyText } from './util.js?v=27';
+import { el, link, whenText, isHttps, copyText } from './util.js?v=28';
 
 const COMMON = 'https://github.com/reallakshman19/Common/tree/main/skills/agent-work/';
 const MODULES = ['task-decomposer', 'nudge-designer', 'independent-review', 'gatekeeper', 'local-handover', 'progress-page'];
@@ -123,26 +123,30 @@ export function projectHead(p, c) {
     box.append(c.snapshotNotice || c.statusLine(p));
     return box;
   }
-  // Navigation always lists today's R1…Rn, but historical content comes from the selected snapshot.
+  // Historical revisions are visible everywhere. Non-overview views use a compact
+  // expandable project brief so active work isn't buried by repeated long Owner text.
   box.append(revisionRow(c.revisionListProject || p, c));
   if (c.revBanner) box.append(c.revBanner);
-  if (pj.subtitle) box.append(el('p', 'muted', pj.subtitle));
+  const fullBrief = c.view === 'home';
+  const brief = fullBrief ? box : el('details', 'project-brief');
+  if (!fullBrief) brief.append(el('summary', null, 'Owner aim · project method'));
+  if (pj.subtitle) brief.append(el('p','muted',pj.subtitle));
   if (pj.aim) {
     const a = el('p', 'aim');
     a.append(el('b', null, 'Aim: '), pj.aim + ' ');
     if (isHttps(pj.aimSrc)) a.append(link(pj.aimSrc, 'source'));
-    box.append(a);
-  } else if (isActive(p)) box.append(el("div", "banner", "No aim written yet. The Owner's aim comes first: pp_cli.py project aim."));
-  // Lesson links are presentation-only; the Lessons ledger remains untouched.
+    brief.append(a);
+  } else if (isActive(p)) brief.append(el('div', 'banner', 'No aim written yet. The Owner\'s aim comes first: pp_cli.py project aim.'));
   if (p.key === 'lessons') {
     const lesson = el('p', 'muted');
     lesson.append(el('b', null, 'Lesson 2: '), link('https://github.com/reallakshman19/progress-page/blob/main/docs/lessons/lesson-02-outcome-led-oracle.md', 'Read Outcome-led Oracle (text file)'));
-    box.append(lesson);
+    brief.append(lesson);
   }
-  const m = el('p', 'muted');
-  m.append('How we work: ');
-  MODULES.forEach((n, i) => { if (i) m.append(' · '); m.append(link(COMMON + n, n)); });
-  box.append(m);
+  const methods = el('p', 'muted project-method');
+  methods.append('How we work: ');
+  MODULES.forEach((n, i) => { if (i) methods.append(' · '); methods.append(link(COMMON + n, n)); });
+  brief.append(methods);
+  if (!fullBrief) box.append(brief);
   if (c.paths) box.append(localPaths(c.paths));
   box.append(c.snapshotNotice || c.statusLine(p));
   return box;
