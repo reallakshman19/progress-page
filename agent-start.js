@@ -1,5 +1,5 @@
 // Read-only, source-backed launchpad for agents. Native issues/Cycles remain authoritative.
-import { el, link, copyText } from './util.js?v=22';
+import { el, link, copyText } from './util.js?v=23';
 
 const valid = u => /^https:\/\/github\.com\/[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+\//.test(String(u || ''));
 const active = c => !c.closed && c.state !== 'NOT_APPLICABLE';
