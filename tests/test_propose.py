@@ -59,7 +59,11 @@ class Proposal(unittest.TestCase):
         self.assertEqual(len(load(Path(self.data)/"demo"/"audit.json")["events"]),len(audit_before["events"])+1)
     def test_existing_event_and_drift_fail_closed(self):
         from helpers import SRC
-        p=P.propose(self.data,"demo",SRC,"Oracle",card_id="a1",fetch=lambda _:{"title":"Source","state":"open","updated_at":"2026-10-26T17:00:00Z"})
+        def existing(url):
+            if url.endswith("/issues/1"): return {"title":"Source","state":"open"}
+            if url.endswith("/issues/comments/100"): return {"html_url":SRC,"updated_at":"2026-10-26T17:00:00Z"}
+            raise ValueError(url)
+        p=P.propose(self.data,"demo",SRC,"Oracle",card_id="a1",fetch=existing)
         self.assertIsNone(p["proposal"])
         self.assertTrue(any("ALREADY_RECORDED" in x for x in p["blockers"]))
         p2=P.propose(self.data,"demo",SOURCE,"Oracle",card_id="a1",expected_head=CHANGED,fetch=fake)

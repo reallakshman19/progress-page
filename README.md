@@ -100,3 +100,18 @@ The classifier in `roi.js` validates original list position, status and opening 
 ## Live-browser acceptance (deployed page, not a PR preview)
 
 The on-demand `Agent Start live browser acceptance` workflow uses headless Chromium to exercise the **published GitHub Pages URL** with anonymous desktop and 390×844 mobile contexts. It verifies exact deployed viewer version against the checked-out `index.html`, task-before-fold, no horizontal overflow, source popup destination, source-backed copy handoff, WBS 3/4/5 HOLD, WBS browser navigation and Back, G0 onboarding disclosure, and explicit NOT_RECORDED candidate identity. Results include screenshots, the copied handoff and machine-readable `report.json` as a 14-day workflow artifact. It is *not* a human comprehension trial, an independent engineering PASS, or Owner acceptance. Trigger manually after a successful Pages deployment, or run on the dedicated QA branch; **do not treat a green live-main run as validation of unmerged PR code**.
+
+## Source observation -> reviewed Page update (no duplicate report)
+
+Use the original GitHub URL **once**. The proposal generator observes a PR/issue/comment, binds its exact head or revision timestamp, and prepares only one **reference-only** `card set` change; it never interprets claim meaning or changes a card's state, actor, next action, capability, engineering PASS, or Owner acceptance. A unique native URL match can select an existing card; ambiguous/unmatched sources require explicit `--card`. Existing recorded evidence and PR-head drift fail closed.
+
+```sh
+python tools/pp_cli.py propose --project ciifr --source https://github.com/OWNER/REPO/pull/185 --actor Oracle --card geo-g1 --output proposal.json
+python tools/pp_batch.py proposal.json --data data           # dry run and review proposed diff/audit
+python tools/pp_batch.py proposal.json --data data --apply --base origin/main
+```
+
+Before apply, the batch tool re-fetches the proposal's native source to reject stale PR heads or edited issues/comments. The operator still verifies meaning, scope, the exact head and permission, reviews the dry run and publishes only via an authorized GitHub PR. No background monitoring or automatic approval is implied.
+
+## Desktop Agent Start
+At >=1100px, WBS workstreams are three equal-width choices, milestone options form a two-column grid, and scoped actions appear in a wider primary panel with source identity, Owner wording and rules in a separate sidebar. Mobile retains a linear task-first reading order. This changes presentation, not stored WBS data.
