@@ -1,17 +1,17 @@
 // Shell: loads the JSON, draws the project tabs and the views, refreshes every two minutes.
-import { el, link, tick, ago, whenText } from './util.js?v=23';
-import { buildSearchIndex, searchProgress } from './search.js?v=23';
-import { renderOracleContinuity } from './oracle-continuity.js?v=23';
-import { renderProgress, wbsPick, wbsGroups, wbsFamily, wbsRevisionScope, wbsRoute } from './progress.js?v=23';
-import { renderAgentStart } from './agent-start.js?v=23';
-import { renderLessons } from './lessons.js?v=23';
-import { renderActions, renderFixtures, renderProjectHome, openCount } from './actions.js?v=23';
-import { renderTimeline } from './timeline.js?v=23';
-import { tabsRow, archivedPanel, projectHead, revisionRow, isActive, HOME_VIEWS, HOME_SUBTABS, PRIMARY_TABS, primaryTabActive } from './lifecycle.js?v=23';
-import { nudgesOf, openNudge } from './nudge.js?v=23';
-import { addProjectDialog, addRevisionDialog } from './briefs.js?v=23';
-import { loadLinks, takeLinksFromHash, linksPanel } from './links.js?v=23';
-import { rulesOf, holdOf, summary, needsAttention } from './triggers.js?v=23';
+import { el, link, tick, ago, whenText } from './util.js?v=24';
+import { buildSearchIndex, searchProgress } from './search.js?v=24';
+import { renderOracleContinuity } from './oracle-continuity.js?v=24';
+import { renderProgress, wbsPick, wbsGroups, wbsFamily, wbsRevisionScope, wbsRoute } from './progress.js?v=24';
+import { renderAgentStart } from './agent-start.js?v=24';
+import { renderLessons } from './lessons.js?v=24';
+import { renderActions, renderFixtures, renderProjectHome, openCount } from './actions.js?v=24';
+import { renderTimeline } from './timeline.js?v=24';
+import { tabsRow, archivedPanel, projectHead, revisionRow, isActive, HOME_VIEWS, HOME_SUBTABS, PRIMARY_TABS, primaryTabActive } from './lifecycle.js?v=24';
+import { nudgesOf, openNudge } from './nudge.js?v=24';
+import { addProjectDialog, addRevisionDialog } from './briefs.js?v=24';
+import { loadLinks, takeLinksFromHash, linksPanel } from './links.js?v=24';
+import { rulesOf, holdOf, summary, needsAttention } from './triggers.js?v=24';
 
 const LIVE_DATA = 'https://reallakshman19.github.io/progress-page/data/';
 const q = new URLSearchParams(location.search);
@@ -312,7 +312,7 @@ function render() {
     root.append(el('p', 'banner', 'Setup link read: ' + setupLink.count + ' chat links saved in this browser.'));
   }
   if (state.panel) root.append(linksPanel(() => { state.links = mergedLinks(); state.panel = false; render(); }));
-  if (!Object.keys(state.links).length) {
+  if (!Object.keys(state.links).length && route().v !== 'start') {
     root.append(el('p', 'hintbar', 'Chat ids are not clickable in this browser yet. Open your private setup link once, or paste your links under "My links".'));
   }
   const { key, v, rev, family: routedFamily, step: routedStep } = route();
@@ -405,7 +405,7 @@ function render() {
       root.append(children);
     }
   }
-  const bar = HOME_VIEWS.includes(v) ? null : repoBar(view.index, groups.length ? step : null, older ? null : state.repo[key]);
+  const bar = HOME_VIEWS.includes(v) || v === 'start' ? null : repoBar(view.index, groups.length ? step : null, older ? null : state.repo[key]);
   if (bar) root.append(bar);
   const views = el('nav', 'views');
   PRIMARY_TABS.forEach(([id, label]) => {

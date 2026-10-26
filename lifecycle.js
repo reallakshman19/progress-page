@@ -1,5 +1,5 @@
 // Project tabs with "+", the Archived list, the project header and the revision row.
-import { el, link, whenText, isHttps, copyText } from './util.js?v=23';
+import { el, link, whenText, isHttps, copyText } from './util.js?v=24';
 
 const COMMON = 'https://github.com/reallakshman19/Common/tree/main/skills/agent-work/';
 const MODULES = ['task-decomposer', 'nudge-designer', 'independent-review', 'gatekeeper', 'local-handover', 'progress-page'];
@@ -109,6 +109,19 @@ export function projectHead(p, c) {
     if (isHttps(p.statusSrc)) b.append(link(p.statusSrc, 'source'));
     b.append(' Nothing is deleted; the history stays readable.');
     box.append(b);
+  }
+  // The task launchpad must not bury the executable next action under duplicated
+  // project aim, history and workflow material. They remain on Project Home.
+  if (c.view === 'start') {
+    const revisions = c.revisionListProject || p;
+    const current = (revisions.index.revisions || []).find(r => r.status === 'current');
+    const history = el('details','agent-start-revisions');
+    history.append(el('summary','muted','Revision ' + (c.rev || current?.id || 'unknown') + ' · plan history'));
+    history.append(revisionRow(revisions,c));
+    box.append(history);
+    if(c.revBanner) box.append(c.revBanner);
+    box.append(c.snapshotNotice || c.statusLine(p));
+    return box;
   }
   // Navigation always lists today's R1…Rn, but historical content comes from the selected snapshot.
   box.append(revisionRow(c.revisionListProject || p, c));

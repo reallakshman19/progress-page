@@ -1,5 +1,5 @@
 // Read-only Lessons Learned library; the detailed case studies scroll vertically.
-import { el, link } from './util.js?v=23';
+import { el, link } from './util.js?v=24';
 
 function llHeading(parent, level, content) { const e = el(level, null, content); parent.append(e); return e; }
 function llParagraph(parent, content, klass) { parent.append(el('p', klass, content)); }

@@ -1,5 +1,5 @@
 // Read-only, source-backed launchpad for agents. Native issues/Cycles remain authoritative.
-import { el, link, copyText } from './util.js?v=23';
+import { el, link, copyText } from './util.js?v=24';
 
 const valid = u => /^https:\/\/github\.com\/[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+\//.test(String(u || ''));
 const active = c => !c.closed && c.state !== 'NOT_APPLICABLE';
@@ -49,7 +49,7 @@ export function agentStartText(m) {
     lines.push('Recorded capability: '+required(m.focused));
     if (m.focused.canDo) lines.push('Recorded user capability: '+m.focused.canDo);
     if (m.focused.activity) lines.push('Recorded activity: '+m.focused.activity);
-    if (m.focused.commit) lines.push('Recorded candidate commit (not live-verified): '+m.focused.commit);
+    lines.push('Exact candidate SHA: '+(m.focused.commit ? m.focused.commit+' (recorded; verify current native PR head)' : 'NOT_RECORDED in the Page; verify the current native PR head before claiming exact-candidate PASS.'));
   }
   for(const w of m.work) lines.push('TASK '+w.id+' ['+w.state+'] '+w.label+
     '\n  Next: '+(w.next || 'Not recorded')+'; next actor label: '+(w.nextActor || 'unknown')+
@@ -66,17 +66,6 @@ export function renderAgentStart(root, project, opts = {}) {
   head.append(el('h3',null,'Agent Start · '+m.scope),el('span','pill',m.revision));
   panel.append(head);
   panel.append(el('p','agent-start-intro','Read-only starting context from the published project record. Confirm current authority and exact candidate in the linked native GitHub records.'));
-  const aim=el('p','agent-start-aim');
-  aim.append(el('b',null,'Owner outcome: '),m.aim);
-  panel.append(aim);
-  if(m.focused) {
-    const capability=el('div','agent-start-cap');
-    capability.append(el('b',null,'Recorded capability: '+required(m.focused)));
-    if(m.focused.canDo)capability.append(el('p',null,m.focused.canDo));
-    if(m.focused.activity)capability.append(el('p','muted','Recorded activity: '+m.focused.activity));
-    if(m.focused.commit)capability.append(el('p','muted','Candidate commit in the record (not checked against GitHub now): '+m.focused.commit));
-    panel.append(capability);
-  }
   const note=el('p','agent-start-boundary','Authority boundary: this view does not assign a participant, independently verify a claim, or grant Owner acceptance, Writer/TARGET1 transfer, merge or release. An obsolete Page claim yields to its canonical source.');
   panel.append(note);
   panel.append(el('h3',null,opts.step?'Task in this step':'Next recorded tasks'));
@@ -97,6 +86,20 @@ export function renderAgentStart(root, project, opts = {}) {
     panel.append(box);
   });
   if(m.hiddenCount)panel.append(el('p','muted',m.hiddenCount+' more in this scope. Narrow to a WBS step to inspect it; no tasks were deleted.'));
+  if(m.focused) {
+    const capability=el('div','agent-start-cap');
+    capability.append(el('b',null,'Recorded capability: '+required(m.focused)));
+    if(m.focused.canDo)capability.append(el('p',null,m.focused.canDo));
+    if(m.focused.activity)capability.append(el('p','muted','Recorded activity: '+m.focused.activity));
+    capability.append(el('p','agent-start-candidate',m.focused.commit ?
+      'Recorded candidate SHA (verify current PR head): '+m.focused.commit :
+      'Exact candidate SHA: NOT RECORDED in this Page. Open the native PR and verify its current head before relying on exact-candidate checks.'));
+    panel.append(capability);
+  }
+  const aim=el('details','agent-start-aim');
+  aim.append(el('summary',null,'Owner aim · expand original wording'));
+  aim.append(el('p',null,m.aim));
+  panel.append(aim);
   const src=el('div','agent-start-sources');src.append(el('h3',null,'Starting sources · '+m.sources.length));
   m.sources.slice(0,5).forEach(x=>{const p=el('p');p.append(link(x.url,x.name));src.append(p);});
   if(m.sources.length>5){const details=el('details');details.append(el('summary',null,'Show '+(m.sources.length-5)+' more sources'));m.sources.slice(5).forEach(x=>{const p=el('p');p.append(link(x.url,x.name));details.append(p);});src.append(details);}

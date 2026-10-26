@@ -311,3 +311,13 @@ details.nd{margin-top:6px;font-size:12px}
 .agent-start-source{font-size:12px}
 .agent-start-sources details summary{cursor:pointer}
 @media(max-width:620px){.agent-start-task,.agent-start-cap,.agent-start-sources{padding:11px}}
+
+/* Keep the actionable Agent Start task on the first mobile screen. */
+.agent-start-revisions{font-size:12px;margin:4px 0}
+.agent-start-revisions>summary{cursor:pointer;color:var(--mut)}
+.agent-start-revisions .rev-row{margin-top:6px}
+.agent-start-aim{border:1px solid var(--bd);border-radius:7px;padding:9px 12px;background:var(--card);font-size:13px}
+.agent-start-aim summary{cursor:pointer;font-weight:600}
+.agent-start-aim p{margin:8px 0 2px;line-height:1.5}
+.agent-start-candidate{font-size:12px;font-weight:600;overflow-wrap:anywhere}
+@media(max-width:620px){.agent-start{gap:8px}.agent-start-intro{margin:2px 0}.agent-start-revisions .rev-row{flex-wrap:wrap}}
