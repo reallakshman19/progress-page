@@ -1,17 +1,17 @@
 // Shell: loads the JSON, draws the project tabs and the views, refreshes every two minutes.
-import { el, link, tick, ago, whenText } from './util.js?v=24';
-import { buildSearchIndex, searchProgress } from './search.js?v=24';
-import { renderOracleContinuity } from './oracle-continuity.js?v=24';
-import { renderProgress, wbsPick, wbsGroups, wbsFamily, wbsRevisionScope, wbsRoute } from './progress.js?v=24';
-import { renderAgentStart } from './agent-start.js?v=24';
-import { renderLessons } from './lessons.js?v=24';
-import { renderActions, renderFixtures, renderProjectHome, openCount } from './actions.js?v=24';
-import { renderTimeline } from './timeline.js?v=24';
-import { tabsRow, archivedPanel, projectHead, revisionRow, isActive, HOME_VIEWS, HOME_SUBTABS, PRIMARY_TABS, primaryTabActive } from './lifecycle.js?v=24';
-import { nudgesOf, openNudge } from './nudge.js?v=24';
-import { addProjectDialog, addRevisionDialog } from './briefs.js?v=24';
-import { loadLinks, takeLinksFromHash, linksPanel } from './links.js?v=24';
-import { rulesOf, holdOf, summary, needsAttention } from './triggers.js?v=24';
+import { el, link, tick, ago, whenText } from './util.js?v=25';
+import { buildSearchIndex, searchProgress } from './search.js?v=25';
+import { renderOracleContinuity } from './oracle-continuity.js?v=25';
+import { renderProgress, wbsPick, wbsGroups, wbsFamily, wbsRevisionScope, wbsRoute } from './progress.js?v=25';
+import { renderAgentStart } from './agent-start.js?v=25';
+import { renderLessons } from './lessons.js?v=25';
+import { renderActions, renderFixtures, renderProjectHome, openCount } from './actions.js?v=25';
+import { renderTimeline } from './timeline.js?v=25';
+import { tabsRow, archivedPanel, projectHead, revisionRow, isActive, HOME_VIEWS, HOME_SUBTABS, PRIMARY_TABS, primaryTabActive } from './lifecycle.js?v=25';
+import { nudgesOf, openNudge } from './nudge.js?v=25';
+import { addProjectDialog, addRevisionDialog } from './briefs.js?v=25';
+import { loadLinks, takeLinksFromHash, linksPanel } from './links.js?v=25';
+import { rulesOf, holdOf, summary, needsAttention } from './triggers.js?v=25';
 
 const LIVE_DATA = 'https://reallakshman19.github.io/progress-page/data/';
 const q = new URLSearchParams(location.search);
@@ -381,6 +381,14 @@ function render() {
   const navSuffix = family ? '/' + encodeURIComponent(rev || cur?.id || 'current') + '/'
     + encodeURIComponent(family.key) + (step ? '/' + encodeURIComponent(step) : '')
     : older ? '/' + encodeURIComponent(rev) : '';
+  // Agent Start puts the task before secondary WBS navigation on small screens.
+  // The same WBS controls remain available below the briefing, with original routes.
+  const deferredWbsNav = [];
+  const appendWbsNav = (node) => v === 'start' ? deferredWbsNav.push(node) : root.append(node);
+  const selectWbs = (href) => {
+    go(href);
+    if (v === 'start') window.scrollTo(0, 0);
+  };
   if (groups.length && !HOME_VIEWS.includes(v)) {
     const families = el('nav', 'wbs-family-nav');
     families.setAttribute('aria-label', 'WBS families');
@@ -388,10 +396,10 @@ function render() {
       const b = el('button', 'wbs-family-tab' + (family?.key === g.key ? ' on' : ''), g.label);
       b.type = 'button';
       b.setAttribute('aria-pressed', String((family?.key || null) === g.key));
-      b.addEventListener('click', () => go(wbsRoute(key, v, g.key ? (rev || cur?.id) : (older ? rev : null), g.key, null)));
+      b.addEventListener('click', () => selectWbs(wbsRoute(key, v, g.key ? (rev || cur?.id) : (older ? rev : null), g.key, null)));
       families.append(b);
     });
-    root.append(families);
+    appendWbsNav(families);
     if (family) {
       const children = el('nav', 'wbs-children');
       children.setAttribute('aria-label', family.label + ' steps');
@@ -399,10 +407,10 @@ function render() {
         const b = el('button', 'wbs-child-tab' + (step === x.key ? ' on' : ''), x.short);
         b.type = 'button'; b.title = x.name;
         b.setAttribute('aria-pressed', String(step === x.key));
-        b.addEventListener('click', () => go(wbsRoute(key, v, rev || cur?.id, family.key, x.key)));
+        b.addEventListener('click', () => selectWbs(wbsRoute(key, v, rev || cur?.id, family.key, x.key)));
         children.append(b);
       });
-      root.append(children);
+      appendWbsNav(children);
     }
   }
   const bar = HOME_VIEWS.includes(v) || v === 'start' ? null : repoBar(view.index, groups.length ? step : null, older ? null : state.repo[key]);
@@ -447,8 +455,8 @@ function render() {
     ctx.navigateWbs = (nextFamily, nextStep) =>
       go(wbsRoute(key, v, nextFamily ? (rev || cur?.id) : (older ? rev : null), nextFamily, nextStep));
     const shownStep = v.startsWith('home') ? null : step;
-    if (shownStep) body.append(el('p', 'muted', 'Showing ' + ((family?.steps.find(x => x.key === shownStep))?.label || shownStep) + ' only; whole-project records remain marked.'));
-    else if (family && !HOME_VIEWS.includes(v)) body.append(el('p', 'muted', 'Showing ' + family.label + ' only (' + family.steps.length + ' steps); whole-project records remain marked.'));
+    if (shownStep && v !== 'start') body.append(el('p', 'muted', 'Showing ' + ((family?.steps.find(x => x.key === shownStep))?.label || shownStep) + ' only; whole-project records remain marked.'));
+    else if (family && v !== 'start' && !HOME_VIEWS.includes(v)) body.append(el('p', 'muted', 'Showing ' + family.label + ' only (' + family.steps.length + ' steps); whole-project records remain marked.'));
     if (family && (v === 'fixtures' || v === 'timeline')) {
       const info = el('p', 'muted');
       info.append('Showing ' + (shownStep ? (family.steps.find(x => x.key === shownStep)?.label || shownStep) : family.label)
@@ -467,6 +475,7 @@ function render() {
     else renderTimeline(body, view);
   }
   root.append(body);
+  if (v === 'start') root.append(...deferredWbsNav);
   root.append(el('p', 'foot muted', 'Read-only page. It re-reads the JSON files every two minutes. "Updated X ago" is the time of the latest recorded event behind each block.'));
   tick(root);
 }
