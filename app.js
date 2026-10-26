@@ -1,6 +1,6 @@
 // Shell: loads the JSON, draws the project tabs and the views, refreshes every two minutes.
 import { el, link, tick, ago, whenText } from './util.js?v=17';
-import { renderProgress, wbsPick, wbsSteps } from './progress.js?v=17';
+import { renderProgress, wbsPick, wbsGroups, wbsFamily } from './progress.js?v=17';
 import { renderLessons } from './lessons.js?v=17';
 import { renderActions, renderFixtures, renderProjectHome, openCount } from './actions.js?v=17';
 import { renderTimeline } from './timeline.js?v=17';
@@ -291,22 +291,36 @@ function render() {
     return;
   }
   root.append(projectHead(p, c));
-  // Home keeps source navigation separate from the operational WBS selector.
-  // Project > revision > WBS step > page: the WBS row narrows operational pages only.
-  const steps = wbsSteps(view.index);
-  if (wbsPick(key) && !((view.index || {}).milestones || {})[wbsPick(key)]) wbsPick(key, null);
-  if (steps.length && !HOME_VIEWS.includes(v)) {
-    const row = el('nav', 'wbs-row');
-    row.append(el('span', 'h-label', 'WBS'));
-    [{ key: null, label: 'All steps' }].concat(steps).forEach((x) => {
-      const b = el('button', 'wbs-tab' + (wbsPick(key) === x.key ? ' on' : ''), x.label);
+  // A two-level selector: WBS family (3/4/Other), then only that family's numbered steps.
+  const groups = wbsGroups(view.index);
+  if (wbsFamily(key) && !groups.some(g => g.key === wbsFamily(key))) wbsFamily(key, null);
+  const family = groups.find(g => g.key === wbsFamily(key)) || null;
+  if (wbsPick(key) && (!family || !family.steps.some(s => s.key === wbsPick(key)))) wbsPick(key, null);
+  if (groups.length && !HOME_VIEWS.includes(v)) {
+    const families = el('nav', 'wbs-family-nav');
+    families.setAttribute('aria-label', 'WBS families');
+    [{ key: null, label: 'All WBS' }, ...groups].forEach(g => {
+      const b = el('button', 'wbs-family-tab' + (wbsFamily(key) === g.key ? ' on' : ''), g.label);
       b.type = 'button';
-      b.addEventListener('click', () => { wbsPick(key, x.key); render(); });
-      row.append(b);
+      b.setAttribute('aria-pressed', String(wbsFamily(key) === g.key));
+      b.addEventListener('click', () => { wbsFamily(key, g.key); wbsPick(key, null); render(); });
+      families.append(b);
     });
-    root.append(row);
+    root.append(families);
+    if (family) {
+      const children = el('nav', 'wbs-children');
+      children.setAttribute('aria-label', family.label + ' steps');
+      [{ key: null, short: 'All ' + family.label + ' steps', name: 'All steps' }, ...family.steps].forEach(x => {
+        const b = el('button', 'wbs-child-tab' + (wbsPick(key) === x.key ? ' on' : ''), x.short);
+        b.type = 'button'; b.title = x.name;
+        b.setAttribute('aria-pressed', String(wbsPick(key) === x.key));
+        b.addEventListener('click', () => { wbsPick(key, x.key); render(); });
+        children.append(b);
+      });
+      root.append(children);
+    }
   }
-  const bar = HOME_VIEWS.includes(v) ? null : repoBar(view.index, steps.length ? wbsPick(key) : null, state.repo[key]);
+  const bar = HOME_VIEWS.includes(v) ? null : repoBar(view.index, groups.length ? wbsPick(key) : null, state.repo[key]);
   if (bar) root.append(bar);
   const views = el('nav', 'views');
   [['home', 'Project Home', 0], ['progress', 'Progress / WBS', 0], ['actions', 'My actions', openCount(view.actions)], ['fixtures', 'Grounding fixtures', 0], ['timeline', 'Timeline', 0]].forEach(([id, label, n]) => {
@@ -338,9 +352,10 @@ function render() {
       nudge: { openList: (id) => nudgesOf(view, id).filter((n) => n.status === 'open'), list: (id) => nudgesOf(view, id), open: (card) => openNudge(view, card, rules.coordinator) },
     };
     ctx.rerender = render;
-    const step = HOME_VIEWS.includes(v) ? null : (steps.length ? wbsPick(key) : null);
-    if (step) body.append(el('p', 'muted', 'Showing WBS step ' + ((steps.find((x) => x.key === step) || {}).label || step) + ' only; items for the whole project are marked so.'));
-    const sv = step ? stepView(view, step) : view;
+    const step = HOME_VIEWS.includes(v) ? null : (groups.length ? wbsPick(key) : null);
+    if (step) body.append(el('p', 'muted', 'Showing ' + ((family?.steps.find(x => x.key === step))?.label || step) + ' only; whole-project records remain marked.'));
+    else if (family) body.append(el('p', 'muted', 'Showing ' + family.label + ' only (' + family.steps.length + ' steps); whole-project records remain marked.'));
+    const sv = step ? stepView(view, [step]) : family ? stepView(view, family.steps.map(x => x.key)) : view;
     if (HOME_VIEWS.includes(v)) renderProjectHome(body, view, v);
     else if (v === 'progress') renderProgress(body, view, ctx);
     else if (v === 'actions') renderActions(body, sv);
@@ -355,15 +370,17 @@ function render() {
 
 // The project as seen from one WBS step: its decisions and fixtures (plus whole-project ones, marked), and the
 // Timeline entries of its agent blocks, of its own decisions and of the step itself.
-function stepView(view, step) {
-  const mine = new Set(Object.entries(view.cards || {}).filter(([, c]) => c.milestone === step).map(([id]) => id));
-  const acts = Object.fromEntries(Object.entries(view.actions || {}).filter(([, a]) => !a.milestone || a.milestone === step)
+function stepView(view, steps) {
+  const selected = new Set(steps);
+  const mine = new Set(Object.entries(view.cards || {}).filter(([, c]) => selected.has(c.milestone)).map(([id]) => id));
+  const acts = Object.fromEntries(Object.entries(view.actions || {}).filter(([, a]) => !a.milestone || selected.has(a.milestone))
     .map(([id, a]) => [id, a.milestone ? a : Object.assign({}, a, { wholeProject: true })]));
   const fixtures = Object.fromEntries(Object.entries(view.fixtures || {}).map(([k, items]) => [k, (items || [])
-    .filter((i) => !i.milestone || i.milestone === step).map((i) => (i.milestone ? i : Object.assign({}, i, { wholeProject: true })))]));
+    .filter((i) => !i.milestone || selected.has(i.milestone)).map((i) => (i.milestone ? i : Object.assign({}, i, { wholeProject: true })))]));
   const audit = view.audit || {};
   const events = (audit.events || []).filter((e) => (e.card && mine.has(e.card)) || (e.target && mine.has(e.target))
-    || (e.action && (view.actions || {})[e.action] && (view.actions || {})[e.action].milestone === step) || e.scope === 'milestone:' + step);
+    || (e.action && (view.actions || {})[e.action] && selected.has((view.actions || {})[e.action].milestone))
+    || (e.scope && [...selected].some(k => e.scope === 'milestone:' + k)));
   return Object.assign({}, view, { actions: acts, fixtures, audit: Object.assign({}, audit, { events }) });
 }
 
