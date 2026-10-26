@@ -1,5 +1,5 @@
 // Reusable read-only onboarding panel. Uses existing audited cards/fixtures; never grants assignment or approval.
-import { el, link } from './util.js?v=24';
+import { el, link } from './util.js?v=25';
 
 // Common/main is the single normative role-and-mode entry after its companion Common PR merges.
 // This link does not select authority, authenticate recipients or promote readiness.
