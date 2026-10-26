@@ -41,6 +41,8 @@ jobs:
         run: node --experimental-default-type=module --test tests/project-home.test.mjs
       - name: WBS family navigation regressions
         run: node --experimental-default-type=module --test tests/wbs-subtabs.test.mjs
+      - name: Historical revision and WBS routing regressions
+        run: node --experimental-default-type=module --test tests/revision-wbs.test.mjs
       - name: Seeded-defect tests
         env:
           PYTHONDONTWRITEBYTECODE: '1'
