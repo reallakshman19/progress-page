@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { projectHomeModel, relayInputRecords, projectRoadmapGroups, renderProjectHome } from '../actions.js';
+import { HOME_VIEWS, HOME_SUBTABS, PRIMARY_TABS, primaryTabActive } from '../lifecycle.js';
 
 const source = { t: 'Project concept note: Owner use and source model', u: 'https://github.com/example/repo/blob/abc/docs/concept.md', s: 'CONCEPT_NOTE' };
 const architecture = { t: 'Method C engineering contract and topology', u: 'https://github.com/example/repo/blob/abc/docs/architecture.md', s: 'ARCHITECTURE_CONCEPT' };
@@ -124,4 +125,22 @@ test('Home overview never expands the roadmap, and Sources collapses large searc
     assert.equal(entries.filter(n=>!n.hidden).length,1);
     assert.match(entries.find(n=>!n.hidden).textContent,/Fixture 13/);
   } finally {globalThis.document=prior;}
+});
+
+test('Fixtures and Timeline are Project Home subtabs, not top-level project navigation', () => {
+  const primary = PRIMARY_TABS.map(([route]) => route);
+  const home = HOME_SUBTABS.map(([route]) => route);
+  assert.deepEqual(primary, ['home', 'progress', 'actions']);
+  assert.deepEqual(home, ['home','home-roadmap','home-sources','home-risks','fixtures','timeline']);
+  assert.deepEqual(HOME_VIEWS, home);
+  assert.equal(new Set(home).size, home.length, 'no duplicate Home destinations');
+  for (const v of home) {
+    assert.equal(primaryTabActive('home',v),true);
+    assert.equal(primaryTabActive('progress',v),false);
+    assert.equal(primaryTabActive('actions',v),false);
+  }
+  assert.equal(primaryTabActive('progress','progress'),true);
+  assert.equal(primaryTabActive('actions','actions'),true);
+  assert.equal(primaryTabActive('home','actions'),false);
+  assert.equal(primary.includes('fixtures')||primary.includes('timeline'),false);
 });
