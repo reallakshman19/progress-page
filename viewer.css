@@ -419,3 +419,10 @@ main{width:100%;min-width:0}
   .ptitle .project-brief{padding:8px}
   .flow .card{max-width:none}
 }
+
+/* Structured decisions and fixture inventories must wrap on narrow screens. */
+.dc,.fx,.op,.tb,.fx li,.fx a,.dc a,.dc p{min-width:0;max-width:100%;overflow-wrap:anywhere}
+.tb{table-layout:fixed}
+.tb th,.tb td{overflow-wrap:anywhere;word-break:break-word}
+.op{grid-template-columns:96px minmax(0,1fr)}
+@media(max-width:620px){.op{grid-template-columns:minmax(0,1fr)}}

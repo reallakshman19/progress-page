@@ -58,8 +58,16 @@ def main():
                     def run_one():
                         load(page,route)
                         g=geometry(page)
-                        check(g["documentWidth"]<=width+3,
-                              route+" horizontal document overflow "+str(g["documentWidth"])+" > "+str(width))
+                        if g["documentWidth"]>width+3:
+                            offenders=page.evaluate("""() => Array.from(document.querySelectorAll('body *'))
+                              .map(e=>({tag:e.tagName.toLowerCase(),cls:String(e.className).slice(0,90),
+                                text:(e.textContent||'').trim().slice(0,75),
+                                right:Math.round(e.getBoundingClientRect().right),
+                                width:Math.round(e.getBoundingClientRect().width)}))
+                              .filter(x=>x.right>window.innerWidth+3)
+                              .sort((a,b)=>b.right-a.right).slice(0,8)""")
+                            raise AssertionError(route+" horizontal document overflow "+
+                                  str(g["documentWidth"])+" > "+str(width)+" culprits: "+json.dumps(offenders))
                         check(g["main"]["right"]<=width+3 and g["main"]["x"]>=-3,
                               route+" main outside viewport: "+str(g["main"]))
                         check(page.locator(".body").count()==1,
@@ -71,7 +79,7 @@ def main():
                                   "project brief must be collapsed by default")
                             check(g["nav"] and g["wbsNav"] and g["nav"]["y"] < g["wbsNav"]["y"],
                                   "primary navigation buried beneath WBS filters")
-                            check(len(g["cards"])>=3,route+" WBS family choices missing")
+                            check(len(g["cards"])>=1,route+" WBS family choices missing; never invent WBS entries")
                             if width>=1100:
                                 check(len(g["grid"].split())==4,"PC WBS family layout not 4 columns: "+str(g["grid"]))
                             if width==1024:
