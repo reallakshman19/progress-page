@@ -310,7 +310,7 @@ function groupBlock(g, mine, ctx, embedded = false) {
 // A revision-scoped expansion state survives normal refreshes, but never crosses revisions.
 export function onboardingWbsGroup(project, group, mine, ctx, model) {
   const step = wbsGroups(project.index).flatMap(g => g.steps).find(s => s.key === model.card.milestone);
-  const raw = (group.title || 'Onboarding').replace(/^[^:]+:\\s*/, '');
+  const raw = (group.title || 'Onboarding').replace(/^[^:]+:\s*/, '');
   const title = raw.charAt(0).toUpperCase() + raw.slice(1);
   const scope = (ctx.wbsScope || (project.index.project || {}).key || '') + ':' + model.card.milestone;
   const wrapper = el('details', 'grp onb-accordion');
