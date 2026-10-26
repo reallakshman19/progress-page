@@ -15,7 +15,7 @@ import sys
 import tempfile
 from pathlib import Path
 
-from pp_reconcile import source_target
+from pp_reconcile import source_target, observe
 
 ALLOWED = {
     ("plan","milestone"), ("plan","group"), ("plan","chat"),
@@ -54,9 +54,39 @@ def commands(manifest):
         if cmd in (("card","set"),("plan","milestone"),("plan","group"),("plan","chat"),("fixture","add")) and "summary" not in args:
             raise ValueError("every batch operation needs a distinct evidence-scoped summary")
         out.append([*cmd,"--project",manifest["project"],"--actor",manifest["actor"],"--src",manifest["source"],*flags])
+    # Auto-proposed manifests can only append one evidence reference. They cannot
+    # edit state, claim, actor, milestone, activity, or an Owner gate.
+    if manifest.get("proposalVersion") is not None:
+        if manifest["proposalVersion"] != 1: raise ValueError("unsupported proposal version")
+        fp=manifest.get("sourceObservation")
+        if not isinstance(fp,dict) or fp.get("kind") not in ("pull","issue","issue-comment"):
+            raise ValueError("proposal needs a native source identity")
+        identity = "observedHead" if fp["kind"]=="pull" else "updatedAt"
+        if not isinstance(fp.get(identity),str) or not fp[identity]:
+            raise ValueError("proposal missing source fingerprint")
+        if len(changes)!=1 or changes[0].get("command")!="card set":
+            raise ValueError("automated proposals may only add one card source reference")
+        props=changes[0]["args"]
+        if set(props)!={"card","summary","ref"} or not isinstance(props["ref"],str):
+            raise ValueError("proposal may only append an original native-source reference")
+        if props["ref"].split("|")[2:3]!=[manifest["source"]]:
+            raise ValueError("proposal reference must cite the exact observed source")
     return out
 
-def run(data, manifest_path, apply=False, base=None):
+def source_fresh(manifest, reader=observe):
+    """On apply, fail closed if the source has drifted since proposal generation."""
+    if manifest.get("proposalVersion") is None:return
+    fp=manifest["sourceObservation"]
+    current=reader(manifest["source"])
+    if current.get("kind")!=fp["kind"]:
+        raise ValueError("source identity changed: kind differs")
+    key="observedHead" if fp["kind"]=="pull" else "updatedAt"
+    if current.get(key)!=fp[key]:
+        raise ValueError("source identity drifted after proposal; regenerate and review before apply")
+    if fp["kind"]=="issue-comment" and current.get("commentId")!=fp.get("commentId"):
+        raise ValueError("issue comment identity changed")
+
+def run(data, manifest_path, apply=False, base=None, observe_source=observe):
     target=Path(data).resolve()
     if not target.is_dir(): raise ValueError("data directory does not exist")
     original=files(target)
@@ -87,6 +117,7 @@ def run(data, manifest_path, apply=False, base=None):
             "applied":False,"checked":True,"baseChecked":False}
         if not apply:return report
         if files(target)!=original:raise ValueError("data changed during staging; nothing published")
+        source_fresh(manifest, observe_source)
         backup=Path(temp)/"backup"
         target.rename(backup)
         try:

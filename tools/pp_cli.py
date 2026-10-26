@@ -15,6 +15,7 @@ Run from the repository root:  python tools/pp_cli.py [--data data] <command> ..
   fixture add|remove                                        grounding fixtures
   nudge add|done|withdraw                                   instructions queued for the coordinator ('Nudge +')
   reconcile --project KEY --source GITHUB_URL [--expected-head SHA] [--card ID]  source facts and drift triggers (read-only)
+  propose --project KEY --source GITHUB_URL --actor NAME [--card ID] [--expected-head SHA] [--output proposal.json]  reviewable source reference proposal (no data write)
   inputs --actor WHO                                        the Owner's replies and nudges that arrived as GitHub issues, with the command that records each
   check [--private] [--base REF]    triggers [--json]    local OUT [--links F] [--prerender BROWSER]    links FILE
   bootstrap DIR --repo OWNER/NAME --page URL                copy the page and these tools into a new repository
@@ -166,6 +167,13 @@ def build():
     p.add_argument("--expected-head")
     p.add_argument("--card")
     p.add_argument("--json", action="store_true")
+    p = top.add_parser("propose")
+    p.add_argument("--project", required=True)
+    p.add_argument("--source", required=True)
+    p.add_argument("--actor", required=True)
+    p.add_argument("--card", help="existing card ID; required if source is unmatched or ambiguous")
+    p.add_argument("--expected-head", help="expected PR candidate head SHA, if pinned")
+    p.add_argument("--output", help="write reviewed pp_batch manifest to NEW file; never touches Page data")
     p = top.add_parser("inputs")
     p.add_argument("--actor", required=True, help="who will record the inputs (printed into the commands)")
     p.add_argument("--since", help="ignore issues created before this UTC time (default: when the Timeline began)")
@@ -231,6 +239,9 @@ def run(a):
     if c == "reconcile":
         import pp_reconcile
         return sys.exit(pp_reconcile.run(d, a.project, a.source, a.expected_head, a.card, a.json))
+    if c == "propose":
+        import pp_propose
+        return sys.exit(pp_propose.run(d, a.project, a.source, a.actor, a.card, a.expected_head, a.output))
     if c == "inputs":
         import pp_inputs
         return pp_inputs.list_inputs(d, a.actor, a.since, a.json)

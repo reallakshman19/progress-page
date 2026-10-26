@@ -68,6 +68,11 @@ def main():
             check(all(u.startswith("https://github.com/") for u in urls),"Non-native URL in starting sources")
             check(not js_errors,"JavaScript uncaught errors: "+str(js_errors))
             check("v="+EXPECTED_VIEWER_VERSION in (page.locator('script[type="module"]').get_attribute("src") or ""),"Deployed viewer is not the checked-out source version")
+            main_box=page.locator(".agent-start-primary").bounding_box()
+            aside_box=page.locator(".agent-start-aside").bounding_box()
+            check(main_box and aside_box and aside_box["x"]>main_box["x"]+main_box["width"]-1,
+                  "Desktop action and evidence panels are not side-by-side")
+            check(main_box["width"]>500,"Desktop action column remains phone-width")
             return {"sourceCount":len(urls),"sourceSamples":urls[:5],"viewport":viewport(page),
                     "taskCards":page.locator(".agent-start-item").count()}
         def choose_workstream():
@@ -193,6 +198,10 @@ def main():
         def step7():
             txt=load(mpage,"ciifr/start/R4/wbs%3A3/M13")
             capture(mpage,"08-wbs3-agent-start-mobile")
+            mb=mpage.locator(".agent-start-primary").bounding_box()
+            sb=mpage.locator(".agent-start-aside").bounding_box()
+            check(mb and sb and sb["y"] >= mb["y"]+mb["height"]-1,
+                  "Mobile evidence sidebar must stack after primary task")
             width=viewport(mpage)
             check(width["scroll"]<=width["width"]+3,"Horizontal page overflow at 390px: "+str(width))
             check(mpage.get_by_role("button",name="Copy scoped handoff").is_visible(),"Copy action inaccessible on mobile")

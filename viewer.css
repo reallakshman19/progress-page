@@ -352,3 +352,23 @@ details.nd{margin-top:6px;font-size:12px}
 .agent-start-other{margin:0;font-size:13px;color:var(--mut)}
 .agent-start-other a{font-weight:600}
 .agent-start-single-cap{font-size:12px;letter-spacing:.01em;font-weight:700;color:var(--mut);margin:2px 0}
+
+/* Desktop is a work surface, not a phone-sized single column. Other routes remain unchanged. */
+.agent-start-workspace{display:grid;grid-template-columns:minmax(0,1fr);gap:14px;align-items:start}
+.agent-start-primary,.agent-start-aside{display:grid;gap:12px;align-content:start;min-width:0}
+.agent-start-primary .btn.pri{justify-self:start;padding:9px 15px;font-size:13px}
+.agent-start-aside details{min-width:0;overflow-wrap:anywhere}
+@media(min-width:1100px){
+  main:has(.agent-start){max-width:1480px;padding:24px clamp(20px,3vw,46px) 64px}
+  .agent-start{max-width:none;gap:15px}
+  .agent-start-choices{grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+  .agent-start-choice{min-height:138px;display:grid;align-content:center;padding:20px 24px}
+  .agent-start-choice-link{font-size:17px}
+  .agent-start-steps{grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+  .agent-start-step{min-height:106px;padding:16px 18px}
+  .agent-start-workspace{grid-template-columns:minmax(0,1fr) minmax(290px,350px);gap:20px}
+  .agent-start-aside{position:sticky;top:20px}
+  .agent-start-item{padding:18px 20px;gap:7px}
+  .agent-start-next{font-size:15px}
+}
+@media(max-width:1099px){.agent-start-workspace{display:flex;flex-direction:column}.agent-start-primary,.agent-start-aside{width:100%}}

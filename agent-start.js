@@ -1,6 +1,6 @@
 // Agent Start: choose an explicit scope before showing tasks. Never infer assignment or verdict.
-import { el, link, copyText } from './util.js?v=26';
-import { wbsGroups } from './progress.js?v=26';
+import { el, link, copyText } from './util.js?v=27';
+import { wbsGroups } from './progress.js?v=27';
 
 const valid = u => /^https:\/\/github\.com\/[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+\//.test(String(u || ''));
 const live = c => !!c && !c.closed && c.state !== 'NOT_APPLICABLE';
@@ -144,6 +144,10 @@ export function renderAgentStart(root, project, opts = {}) {
     }
     section.append(steps);
   }
+  const workspace=m.mode === 'step' ? el('div','agent-start-workspace') : null;
+  const mainCol=m.mode === 'step' ? el('section','agent-start-primary') : section;
+  const sideCol=m.mode === 'step' ? el('aside','agent-start-aside') : section;
+  if(workspace){ workspace.append(mainCol,sideCol); section.append(workspace); }
   if(m.mode === 'step') {
     const gate=el('section','agent-start-gate');
     gate.append(el('p','agent-start-gate-status','Recorded capability · '+cap(m.focused)));
@@ -153,9 +157,9 @@ export function renderAgentStart(root, project, opts = {}) {
       'Candidate identity NOT_RECORDED here · verify the exact native PR head before claiming PASS'));
     if(valid(m.focused.capSrc))gate.append(link(m.focused.capSrc,'Open milestone evidence','agent-start-source'));
     const single=m.work.length===1;
-    if(single)section.append(el('p','agent-start-single-cap','Recorded capability · '+cap(m.focused)));
-    if(!single)section.append(gate);
-    section.append(el('h4',null,single ? 'Recorded next action · not an assignment' :
+    if(single)mainCol.append(el('p','agent-start-single-cap','Recorded capability · '+cap(m.focused)));
+    if(!single)sideCol.append(gate);
+    mainCol.append(el('h4',null,single ? 'Recorded next action · not an assignment' :
       m.work.length+' recorded work items · not priority ranked'));
     for(const w of m.work){
       const row=el('article','agent-start-item');
@@ -176,28 +180,28 @@ export function renderAgentStart(root, project, opts = {}) {
         for(const r of w.refs)detail.append(link(r.u,r.l || r.k || 'Reference','agent-start-source'));
         row.append(detail);
       }
-      section.append(row);
+      mainCol.append(row);
     }
-    if(single)section.append(gate);
-    if(!m.work.length)section.append(el('p','muted',
+    if(single)sideCol.append(gate);
+    if(!m.work.length)mainCol.append(el('p','muted',
       'No current work items are recorded for this step. An independent GitHub task is needed before acting.'));
     const sources=el('details','agent-start-sources');
     sources.append(el('summary',null,'All recorded evidence links ('+m.sources.length+')'));
     if(!m.sources.length)sources.append(el('p','muted','No public sources recorded; verify the native task.'));
     m.sources.forEach(s=>{const p=el('p');p.append(link(s.url,s.name));sources.append(p);});
-    section.append(sources);
+    sideCol.append(sources);
     const copy=el('button','btn pri','Copy scoped handoff');
     copy.type='button';copy.addEventListener('click',()=>copyText(agentStartText(m),copy));
-    section.append(copy);
+    mainCol.append(copy);
   }
   const rules=el('details','agent-start-rules');
   rules.append(el('summary',null,'Authority and evidence rules'));
   rules.append(el('p',null,'Read-only projection. No assignment, independent PASS, Owner acceptance, Writer/TARGET1 transfer, merge or release permission is granted here. Verify exact candidate and current Cycle in canonical GitHub sources.'));
-  section.append(rules);
+  sideCol.append(rules);
   const aim=el('details','agent-start-aim');
   aim.append(el('summary',null,'Owner outcome · original wording'));
   aim.append(el('p',null,m.aim));
   if(m.aimSrc)aim.append(link(m.aimSrc,'Owner aim source','agent-start-source'));
-  section.append(aim);
+  sideCol.append(aim);
   root.append(section);
 }
