@@ -354,13 +354,13 @@ function render() {
     ctx.rerender = render;
     const step = HOME_VIEWS.includes(v) ? null : (groups.length ? wbsPick(key) : null);
     if (step) body.append(el('p', 'muted', 'Showing ' + ((family?.steps.find(x => x.key === step))?.label || step) + ' only; whole-project records remain marked.'));
-    else if (family) body.append(el('p', 'muted', 'Showing ' + family.label + ' only (' + family.steps.length + ' steps); whole-project records remain marked.'));
+    else if (family && !HOME_VIEWS.includes(v)) body.append(el('p', 'muted', 'Showing ' + family.label + ' only (' + family.steps.length + ' steps); whole-project records remain marked.'));
     const sv = step ? stepView(view, [step]) : family ? stepView(view, family.steps.map(x => x.key)) : view;
     if (HOME_VIEWS.includes(v)) renderProjectHome(body, view, v);
     else if (v === 'progress') renderProgress(body, view, ctx);
     else if (v === 'actions') renderActions(body, sv);
     else if (v === 'fixtures') renderFixtures(body, sv.fixtures);
-    else if (step) renderTimeline(body, sv);
+    else if (step || family) renderTimeline(body, sv);
     else renderTimeline(body, view);
   }
   root.append(body);
