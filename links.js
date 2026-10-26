@@ -1,5 +1,5 @@
 // Chat links: kept in this browser only, never in the repository.
-import { el, isHttps } from './util.js?v=17';
+import { el, isHttps } from './util.js?v=18';
 
 export function loadLinks() {
   try { return JSON.parse(localStorage.getItem('pp-links') || '{}'); } catch (e) { return {}; }
