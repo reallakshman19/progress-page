@@ -628,11 +628,11 @@
     "milestone": "M12",
     "label": "G0 · Onboarding and ownership",
     "who": {},
-    "state": "NOT_STARTED",
-    "now": "G0: [Contribution & Handoff](https://github.com/reallakshman19/Common/blob/a9491531fb98f6fd14bc486a4cc78ee4680cb1f5/skills/agent-work/CONTRIBUTION_HANDOFF.md) requires evidence-bounded PASS, surviving-error challenge and SELF_ASSESSED Oracle edits. [Oracle Continuity](https://github.com/reallakshman19/Common/blob/a9491531fb98f6fd14bc486a4cc78ee4680cb1f5/skills/agent-work/oracle-continuity/PROTOCOL.md) preserves task/artifact identity and actual cutover. Read Issue #166 and XCU AGENTS; verify original CII hashes, input access, PR #165 ownership and Appendix A. Engineering takeover READ_ONLY until qualified. No Geometry Writer. Return exact-head demo, checks, NOT_RUN and next actor.",
+    "state": "SUBMITTED",
+    "now": "G0 source/role intake now has exact G1 draft PR174 and PR181 artifacts; source and original parser observations reported. Original served-browser B1-B4, new-head independent reviewer and Owner acceptance still NOT_RUN.",
     "next": {
-      "actor": "Oracle",
-      "text": "Reconcile PR #165 and identify authorized G1 builder; no Oracle succession activated."
+      "actor": "Independent G1 reviewer",
+      "text": "Replay original S1/T in a real browser at exact G1 head; no Writer or engineering release."
     },
     "refs": [
       {
@@ -642,8 +642,8 @@
         "s": "PLANNED"
       }
     ],
-    "updatedAt": "2026-10-25T05:27:05Z",
-    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/166#issuecomment-6393745466"
+    "updatedAt": "2026-10-26T04:43:20Z",
+    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/175#issuecomment-6401364122"
   },
   "geo-g1": {
     "order": 21,
@@ -651,11 +651,11 @@
     "milestone": "M13",
     "label": "G1 · Anchor, ledger and dual SVG",
     "who": {},
-    "state": "NOT_STARTED",
-    "now": "Planned: original CII SOURCE/TARGET selection, experimental anchor registration, Method C candidates, linked row↔two physical SVGs at common mm scale, segment-only explicitly not NODE; no Writer/Apply.",
+    "state": "SUBMITTED",
+    "now": "G1 published draft PR174 (Method C/dual SVG) and PR181 (XML geometry preview). Author native tests and original source parse exist. Served Windows/browser original pair B1-B4, signed-Z display, inherited Normal and independent review remain NOT_RUN.",
     "next": {
-      "actor": "Builder after G0",
-      "text": "Produce Owner-runnable hosted Geometry workbench and exact-head evidence."
+      "actor": "Independent browser reviewer",
+      "text": "Run exact original S1/T on G1 candidates, compare table/SVG/GUI, 4060 segment-only, 4970 Z, Normal and stale-data negatives."
     },
     "refs": [
       {
@@ -664,7 +664,9 @@
         "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/166#issuecomment-6393745466",
         "s": "PLANNED"
       }
-    ]
+    ],
+    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/175#issuecomment-6401687179",
+    "updatedAt": "2026-10-26T04:43:20Z"
   },
   "geo-g2": {
     "order": 22,
@@ -672,11 +674,11 @@
     "milestone": "M14",
     "label": "G2 · Smart topology + Boolean",
     "who": {},
-    "state": "NOT_STARTED",
-    "now": "Planned: independent topology-only candidates without fabricated XYZ residuals; Manual/OR/AND filters retain ambiguous alternatives, target collisions and anchor disagreements.",
+    "state": "SUBMITTED",
+    "now": "G2 draft PR182 source-only pose-free topology/Boolean JSON CLI: author tests 7/7 PASS. Manual/Topology/OR/AND, alternative matches and conflicts preserved. Actual PR181 S1/T input, independent verification and UI integration NOT_RUN.",
     "next": {
-      "actor": "Builder after G1",
-      "text": "Extend G1 common ledger and demonstrate duplicate-signature/contested-target contrasts."
+      "actor": "G2 non-author reviewer",
+      "text": "Challenge PR182 against real PR181 graph output, S1/T ambiguous signatures, target collisions, hash guards; no implicit node-map acceptance."
     },
     "refs": [
       {
@@ -685,7 +687,9 @@
         "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/166#issuecomment-6393745466",
         "s": "PLANNED"
       }
-    ]
+    ],
+    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/177#issuecomment-6407926621",
+    "updatedAt": "2026-10-26T04:43:20Z"
   },
   "geo-g3": {
     "order": 23,
@@ -735,12 +739,14 @@
     "milestone": "M7",
     "label": "Oracle · onboarding and continuity",
     "who": {},
-    "state": "NOT_STARTED",
-    "now": "Oracle start: [Contribution & Handoff](https://github.com/reallakshman19/Common/blob/a9491531fb98f6fd14bc486a4cc78ee4680cb1f5/skills/agent-work/CONTRIBUTION_HANDOFF.md) requires scoped PASS, surviving-error tests and self-assessment disclosure for Oracle-authored work. [Oracle Continuity](https://github.com/reallakshman19/Common/blob/a9491531fb98f6fd14bc486a4cc78ee4680cb1f5/skills/agent-work/oracle-continuity/PROTOCOL.md) preserves task ID, artifact lineage, Oracle epoch, in-flight work, next two slices and explicit successor adoption. A new chat/brief is not activated cutover; PR #472 draft. Owner controls scope, acceptance and merge.",
+    "state": "IN_PROGRESS",
+    "now": "Read-only successor onboarding and ROI framework are published as draft Common PR511; separate Element knowledge packet is draft PR507. G2 contributor PR182 provides only author-tested source code. Candidate may review G2 source, but no successor is activated, writer isolated or control epoch transferred; Geometry Cycle rev4 ACTIVE, Element Cycle rev0 PREPARED_NOT_ACTIVE.",
     "next": {
-      "actor": "Oracle",
-      "text": "At handover reconcile CURRENT, in-flight writes and old control; do not assert automatic succession."
-    }
+      "actor": "Owner-selected read-only successor candidate",
+      "text": "Challenge G2 PR182 against real PR181 S1/T graph and return bounded verdict. Owner separately decides any future control cutover."
+    },
+    "src": "https://github.com/reallakshman19/Common/pull/511",
+    "updatedAt": "2026-10-26T05:20:36Z"
   },
   "wbs4-e0": {
     "order": 40,
@@ -751,10 +757,10 @@
       "role": "Oracle contribution (SELF_ASSESSED)"
     },
     "state": "SUBMITTED",
-    "now": "Oracle-authored E0 architecture framework delivered as draft PR #168: exact v14 53-real/15-pointer layout, endpoint versus auxiliary identities, field-specific sentinels, private baseline hash-only inventory, nine contrary-case predictions. Source-derived and SELF_ASSESSED; no editor or engineering acceptance.",
+    "now": "E0 architecture remains on draft PR168. R2 receipt verified original CII identity and physical ELEMENTS/RIGID fields (353 elements and 38 rigids). These are source-layout results, not effective engineering interpretation, native import or Writer qualification.",
     "next": {
-      "actor": "Authorized Oracle / independent field reviewer",
-      "text": "Challenge v14 field meanings/units and Material Number location against an independent source before enabling edits. Review exact PR #168."
+      "actor": "Element source reviewer",
+      "text": "Carry verified physical fields into bounded read-only interpretation; preserve distinct 521-element benchmark."
     },
     "refs": [
       {
@@ -771,10 +777,15 @@
         "k": "pr",
         "l": "Oracle E0/E1 framework",
         "u": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/168"
+      },
+      {
+        "k": "pr",
+        "l": "Current Project Home concept",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/168"
       }
     ],
-    "updatedAt": "2026-10-25T06:30:47Z",
-    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394395409"
+    "updatedAt": "2026-10-26T05:20:36Z",
+    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/178#issuecomment-6402061761"
   },
   "wbs4-e1": {
     "order": 41,
@@ -782,13 +793,13 @@
     "milestone": "M18",
     "label": "E1 · Exact CII element catalogue",
     "who": {
-      "role": "Oracle contribution, agent NOT YET ASSIGNED"
+      "role": "E1 overall engineering qualification · F3_SOURCE_HOLD; R2 bounded structural milestone verified"
     },
-    "state": "IN_PROGRESS",
-    "now": "Read-only E1 parser and synthetic fixture contract supplied in draft PR #168. Exact-head CI 40169198664: 6/6 E1 and 19/19 retained NodeName PASS after correcting a false B1 synthetic premise. Private original physically verified separately; native CAESAR reimport and independently sourced field meaning NOT_RUN.",
+    "state": "BLOCKED",
+    "now": "E1 exact PR168 R2 pointer/auxiliary F1/F2 PASS is limited to independently invented read-only cases. V14 CONTROL F3 trailing field rule and full auxiliary syntax HOLD. R2 original physical data PASS; R4 effective job configuration, material edition, units and static-case/FDM remain unverified. No editor/Writer/TARGET1.",
     "next": {
-      "actor": "Authorized Oracle to allocate E1 agent",
-      "text": "Read prepared agent packet, verify active coordinator and sole writer, then assign E1-FIELD-MAP-1 for independent ordinal/unit/sentinel challenges. No private transfer presumed."
+      "actor": "Original CAESAR job custodian and V14 source reviewer",
+      "text": "Provide source-matched active job settings/cases and V14 CONTROL F3 authority. Do not repeat completed synthetic pointer tests."
     },
     "refs": [
       {
@@ -805,10 +816,40 @@
         "k": "pr",
         "l": "Read-only E1 PR168",
         "u": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/168"
+      },
+      {
+        "k": "pr",
+        "l": "Revised E1 agent packet",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/168"
+      },
+      {
+        "k": "comment",
+        "l": "Oracle E1 challenge",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6395988691"
+      },
+      {
+        "k": "comment",
+        "l": "Independent E1 fail",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6400040909"
+      },
+      {
+        "k": "comment",
+        "l": "Oracle R2 scope review",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6400698988"
+      },
+      {
+        "k": "comment",
+        "l": "Oracle E1 R2 bounded acceptance",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6401405888"
+      },
+      {
+        "k": "comment",
+        "l": "WBS independent outcome",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6401420458"
       }
     ],
-    "updatedAt": "2026-10-25T06:30:47Z",
-    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394395409"
+    "updatedAt": "2026-10-26T05:20:36Z",
+    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/178#issuecomment-6407707652"
   },
   "wbs4-e2": {
     "order": 42,
@@ -954,5 +995,207 @@
     ],
     "updatedAt": "2026-10-25T06:07:27Z",
     "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394203305"
+  },
+  "wbs4-e1-specialist": {
+    "order": 41,
+    "group": "wbs4-intake",
+    "milestone": "M18",
+    "label": "E1 · Independent field-map specialist",
+    "who": {
+      "role": "Independent E1 specialist · bounded R2 review accepted, F3 unresolved"
+    },
+    "state": "VERIFIED",
+    "now": "Reviewer #170 independently replayed exact R2 head 2aeaf737 via separate invented V8 fixtures; F1 empty/missing/whitespace-only PASS; F2 two-row cardinality PASS; all15 ranges and shared RIGID/NodeName PASS. Reviewer NOT_BLINDED, chat/principal UNBOUND, native Node/CAESAR NOT_RUN. F3 CONTROL strict v14 row admissibility unresolved.",
+    "next": {
+      "actor": "Oracle · preserve F3 source HOLD",
+      "text": "R2 specialist task completed within its tested scope. No duplicate review or new code. For F3 obtain actual v14 CONTROL authoritative format or controlled importer acceptance/rejection before deciding a new review task."
+    },
+    "refs": [
+      {
+        "k": "issue",
+        "l": "Native E1 manual task",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170"
+      },
+      {
+        "k": "comment",
+        "l": "Independent E1 return",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6395906667"
+      },
+      {
+        "k": "comment",
+        "l": "Fresh E1 independent review instruction",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6399351349"
+      },
+      {
+        "k": "comment",
+        "l": "E1 repaired-head independent FAIL",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6400040909"
+      },
+      {
+        "k": "comment",
+        "l": "Oracle FAIL challenge",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6400185309"
+      },
+      {
+        "k": "comment",
+        "l": "R2 reviewer exact-head challenge",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6400708556"
+      },
+      {
+        "k": "comment",
+        "l": "Independent R2 field-map verdict",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6401186110"
+      },
+      {
+        "k": "comment",
+        "l": "Oracle acceptance and F3 hold",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6401405888"
+      }
+    ],
+    "updatedAt": "2026-10-25T18:25:17Z",
+    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6401186110"
+  },
+  "wbs4-e1-ptrguard": {
+    "order": 42,
+    "group": "wbs4-intake",
+    "milestone": "M18",
+    "label": "E1 R1 · Auxiliary pointer guard",
+    "who": {
+      "role": "Coder 6adddf80 R2 delivered; independent source-catalogue F1/F2 PASS bounded"
+    },
+    "state": "VERIFIED",
+    "now": "R2 pointer-catalogue repair independently reviewed on PR168 exact 2aeaf737: F1 empty RESTRANT/displacement fail-closed PASS; F2 v14 REDUCERS 2-row cardinality plus logical ptr bounds PASS; all 15 pointer guards incl. BEND/EXPJT/IZUP/RIGID/NODENAME PASS. Verified is bounded SYNTHETIC source-catalogue behavior only; F3 CONTROL version14 shape, reducer numeric content and full RESTRANT semantics HOLD.",
+    "next": {
+      "actor": "Oracle · source-authority F3 evidence only (no coder dispatched)",
+      "text": "R2 transaction closed at bounded scope. Do not rerun coder 6adddf80 or reviewer #170. Preserve draft PR168/unmerged. Advance F3 only on direct v14 CONTROL rule or authorized native importer contrast; then separately scope any minimal repair."
+    },
+    "refs": [
+      {
+        "k": "comment",
+        "l": "E1 R1 correction contract",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6395988691"
+      },
+      {
+        "k": "issue",
+        "l": "E1 R1 repair task",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173"
+      },
+      {
+        "k": "comment",
+        "l": "Owner-guided coder onboarding",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6396649610"
+      },
+      {
+        "k": "comment",
+        "l": "Coder Stage0 return",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6396792541"
+      },
+      {
+        "k": "comment",
+        "l": "Oracle onboarding disposition",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6396835086"
+      },
+      {
+        "k": "comment",
+        "l": "Coder capability return",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6397210592"
+      },
+      {
+        "k": "comment",
+        "l": "Oracle hosted artifact custody",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6397419458"
+      },
+      {
+        "k": "comment",
+        "l": "Verified Git checkout artifact run",
+        "u": "https://github.com/reallakshman19/progress-page/actions/runs/40191467503"
+      },
+      {
+        "k": "comment",
+        "l": "Native workspace proof",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6398286471"
+      },
+      {
+        "k": "comment",
+        "l": "Oracle bounded implementation GO",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6398683938"
+      },
+      {
+        "k": "comment",
+        "l": "Builder return 30 of 30",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6399204644"
+      },
+      {
+        "k": "comment",
+        "l": "Oracle exact-head reconciliation",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6399342047"
+      },
+      {
+        "k": "comment",
+        "l": "Independent re-review instruction",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6399351349"
+      },
+      {
+        "k": "comment",
+        "l": "Independent E1 R1 FAIL",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6400040909"
+      },
+      {
+        "k": "comment",
+        "l": "Oracle R2 correction GO",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6400196426"
+      },
+      {
+        "k": "comment",
+        "l": "R2 builder exact-head return",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6400645653"
+      },
+      {
+        "k": "comment",
+        "l": "Oracle R2 delivery reconciliation",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6400698988"
+      },
+      {
+        "k": "comment",
+        "l": "R2 independent reviewer task",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6400708556"
+      },
+      {
+        "k": "comment",
+        "l": "R2 independent exact-head verdict",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6401186110"
+      },
+      {
+        "k": "comment",
+        "l": "Oracle accepted bounded R2",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6401405888"
+      }
+    ],
+    "updatedAt": "2026-10-25T18:25:16Z",
+    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6401405888"
+  },
+  "wbs4-r4-config": {
+    "order": 47,
+    "group": "wbs4-intake",
+    "milestone": "M18",
+    "label": "R4 · Original CAESAR job context",
+    "who": {
+      "role": "Unassigned original-job evidence holder"
+    },
+    "state": "BLOCKED",
+    "now": "R4 configuration ZIP receipt and internal units filename are verified as candidate evidence. Original CII embedded unit conversions and ambient differ. Which configuration, units, material database and actual static basic-case FDM were active for the original job remains unknown; effective-property transfer and Writer are HOLD.",
+    "next": {
+      "actor": "Owner-authorized native CAESAR job custodian",
+      "text": "Supply one identity-bound, private read-only observation of actual active configuration, units profile, material database and static basic-case/FDM; if unavailable report exact missing provenance."
+    },
+    "updatedAt": "2026-10-26T05:21:53Z",
+    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/178#issuecomment-6407707652",
+    "refs": [
+      {
+        "k": "comment",
+        "l": "R4 Oracle assessment",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/178#issuecomment-6407707652"
+      }
+    ]
   }
 }

@@ -96,6 +96,57 @@
       "u": "https://github.com/reallakshman19/XML_Compare_Utilities/blob/b09d0ed3b8c62d1be74123d8bc140a350f5180b3/docs/ciifr/WBS4_AGENT_ONBOARD_PACKET_DRAFT.md",
       "s": "ONBOARD_PREPARED",
       "milestone": "M18"
+    },
+    {
+      "t": "CIIFR Project Home concept note: Owner user journey, why, working NodeName vs intended typed Element/RIGID editor, 53-real/15-pointer architecture, v14 uncertainties, exact original custody and next 3 WBS tasks.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/blob/3595a7cf350d22a982157d7dffdec2becf6b0f4a/docs/ciifr/WBS4_PROJECT_HOME_CONCEPT.md",
+      "s": "CONCEPT_NOTE",
+      "n": "Oracle authored",
+      "milestone": "M17"
+    },
+    {
+      "t": "Complex CII architecture: element ordinal is file-local; FROM/TO endpoints form shared node graph; pointer #2 RIGID and #12 NODENAME index auxiliary records. Sentinels/units depend on field; independent field-map review pending.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/blob/3595a7cf350d22a982157d7dffdec2becf6b0f4a/docs/ciifr/WBS4_PROJECT_HOME_CONCEPT.md",
+      "s": "ARCHITECTURE_CONCEPT",
+      "n": "Self assessed",
+      "milestone": "M18"
+    },
+    {
+      "t": "Revised E1 OnBoard prompt: issue -> WBS 4.1 -> Project Home -> real Common relay input -> recipient checks -> selected native protocol. Seven observations; Cycle now only under ACTIVE CIIFR Cycle; v3.6 only if selected.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/blob/3595a7cf350d22a982157d7dffdec2becf6b0f4a/docs/ciifr/WBS4_AGENT_ONBOARD_PACKET_DRAFT.md",
+      "s": "ONBOARD_REVISED",
+      "n": "Prepared only",
+      "milestone": "M18"
+    },
+    {
+      "t": "V14 neutral-file specification: separate fixed-column CONTROL, ELEMENTS, AUX_DATA, MISCEL_1 and UNITS sections; section record cards are not generic whitespace-separated fields.",
+      "u": "https://docs.hexagonppm.com/r/en-US/CAESAR-II-Users-Guide/Version-14/337037",
+      "s": "V14_CII_SPEC",
+      "milestone": "M17"
+    },
+    {
+      "t": "Element Oracle four-part concept, architecture, falsifier and handover in Common PR507 are a DRAFT knowledge packet; original byte/source receipts newer than its old static claims take precedence; not Oracle cutover.",
+      "u": "https://github.com/reallakshman19/Common/pull/507",
+      "s": "ELEMENT_CONTINUITY",
+      "milestone": "M17"
+    },
+    {
+      "t": "Common PR511 is the proposed pending WBS3/WBS4/VNext ROI, source-first Oracle onboarding and public-safe G2 relay; remains draft and does not assign an ACTIVE worker or change Oracle control.",
+      "u": "https://github.com/reallakshman19/Common/pull/511",
+      "s": "GEO_PENDING_FRAMEWORK",
+      "milestone": "M12"
+    },
+    {
+      "t": "XCU PR182 is isolated WBS3.2 pose-free topology/Boolean JSON CLI, 7/7 author-made local tests, original S1/T PR181-export integration and independent review NOT_RUN.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/182",
+      "s": "G2_SOURCE_CODE",
+      "milestone": "M14"
+    },
+    {
+      "t": "XCU PR181 is isolated G1 XML geometry preview and graph-export source candidate, with author-native tests but real served browser/Windows G2 integration NOT_RUN.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/181",
+      "s": "G1_XML_GRAPH_INPUT",
+      "milestone": "M13"
     }
   ],
   "issues": [
@@ -118,6 +169,67 @@
       "s": "WBS4_SOURCE",
       "n": "Owner private chat, unsigned",
       "milestone": "M17"
+    },
+    {
+      "t": "E1-FIELD-MAP-1 published as native manual-route issue #170: independent read-only CAESAR v14 slot/unit/sentinel/rigid falsification; task not received by any bound chat.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170",
+      "s": "TASK_PUBLISHED",
+      "n": "Recipient unbound",
+      "milestone": "M18"
+    },
+    {
+      "t": "Independent E1 #170 return comment 6395906667: 53 real field ledger, pointer2/12 synthetic PASS, BEND auxiliary pointer to nonexistent record accepted; verdict PARTIAL. Oracle challenge 6395988691 confirms NC-A; NO E2/E3 GO.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6395988691",
+      "s": "E1_PARTIAL",
+      "milestone": "M18"
+    },
+    {
+      "t": "E1-PTR-GUARD-1 corrective task #173 published. Same draft PR168, preserve reviewer #170 independence; qualified coder unbound, no receipt/implementation. Repo AGENTS Appendix A and local safety ledger required before patch.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173",
+      "s": "R1_ISSUED_NOT_SENT",
+      "milestone": "M18"
+    },
+    {
+      "t": "Coder 6adddf80 Stage0 #173 source return confirms CIIFR goal/architecture, PR168 candidate and read-only diagnosis. Oracle accepted onboarding content but left Appendix A partial; no implementation authorization.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6396792541",
+      "s": "STAGE0_ACCEPTED",
+      "milestone": "M18"
+    },
+    {
+      "t": "E1 coder 6adddf80 independently reproduced five invalid BEND/EXPJT/EQUIP auxiliary targets accepted by original reader, while six existing author-coupled E1 cases passed on blob-verified source. Native NodeName not run.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6397210592",
+      "s": "SOURCE_ONLY_PARTIAL",
+      "milestone": "M18"
+    },
+    {
+      "t": "E1 coder 6adddf80 native checkout #173 6398286471: full Git provenance, 25/25 local regressions, five invalid pointers reproduced; Oracle Appendix A scoped 93/100 and same-PR R1 implementation GO 6398683938. No writer/editor release.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6398683938",
+      "s": "BOUNDED_R1_GO",
+      "milestone": "M18"
+    },
+    {
+      "t": "E1 R1 repair delivered on existing draft PR168 exact 01d94e1f; one commit 3 files, no writer/backups, hosted CI 40204625020 SUCCESS; builder 30/30 local tests SELF_ASSESSED. Independent E1 #170 replay pending.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/168",
+      "s": "R1_DELIVERED",
+      "milestone": "M18"
+    },
+    {
+      "t": "PR168 R1 exact 01d94e1f independently FAILED: empty RESTRANT count1/ptr4=1 wrongly accepted; REDUCERS v14 two physical rows wrongly rejected, one incomplete accepted. Previously fixed BEND/EXPJT/IZUP range guards retain bounded PASS.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6400040909",
+      "s": "E1_R1_FAIL",
+      "milestone": "M18"
+    },
+    {
+      "t": "R2 PR168 exact 2aeaf737, fast-forward 3 files, F1 RESTRANT empty section guarded, F2 REDUCERS two physical rows per record; exact-head CI 40215222466 SUCCESS; native 32/32 builder self-assessed. Independent new-head PASS not yet returned.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6400645653",
+      "s": "R2_DELIVERED",
+      "milestone": "M18"
+    },
+    {
+      "t": "CIIFR R2 narrow accepted on draft PR168 exact 2aeaf737: independent F1 empty RESTRANT PASS, F2 v14 REDUCERS two-line cardinality PASS, all15 pointer guards PASS; reviewer invented V8 tests, native CAESAR NOT_RUN.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6401186110",
+      "s": "R2_BOUNDED_ACCEPTED",
+      "milestone": "M18"
     }
   ],
   "pullRequests": [
@@ -172,6 +284,18 @@
       "s": "DRAFT_NOT_MERGED",
       "n": "Public code; private inputs excluded",
       "milestone": "M8"
+    },
+    {
+      "t": "XCU PR182 source-only pose-free G2 CLI; 7/7 author tests PASS, true PR181 S1/T and independent/browser NOT_RUN, draft/unmerged.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/182",
+      "s": "G2_PROTO_PR182",
+      "milestone": "M14"
+    },
+    {
+      "t": "Common PR511 high-ROI/pending WBS register and candidate Oracle onboarding, draft/unmerged; no engineer dispatch/Oracle control transfer.",
+      "u": "https://github.com/reallakshman19/Common/pull/511",
+      "s": "PENDING_ORACLE_PR511",
+      "milestone": "M12"
     }
   ],
   "roadmap": [
@@ -305,6 +429,37 @@
       "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394203305",
       "s": "E6_HOLD",
       "milestone": "M23"
+    },
+    {
+      "t": "NEXT THREE CONNECTED: (1) E1 independently derive 53-real slot/unit/sentinel source map and pointer #2; (2) E2 implement one verified numeric field proposal after review; (3) E3 bounded RIGID Weight pointer-resolved editor after ownership challenge.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/blob/3595a7cf350d22a982157d7dffdec2becf6b0f4a/docs/ciifr/WBS4_PROJECT_HOME_CONCEPT.md",
+      "s": "NEXT_THREE",
+      "n": "No GO for E2/E3",
+      "milestone": "M18"
+    },
+    {
+      "t": "E1 R1 smallest correction on existing draft PR168: validate all 15 declared pointer bounds and missing targets; do not use section raw line count as logical record count. Add BEND valid/missing/out-of-range and other-pointer contradictions, preserve prior NodeName.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6395988691",
+      "s": "E1_R1_PLANNED",
+      "milestone": "M18"
+    },
+    {
+      "t": "G1 served-browser original S1/T B1-B4 independent qualification; G2 PR182 source challenge on real PR181 graphs and role-preserving Manual/Topology/OR/AND conflicts; then separate UI integration, G3 provenance and G4 export tests.",
+      "u": "https://github.com/reallakshman19/Common/pull/511",
+      "s": "WBS3_EXECUTION_CHAIN",
+      "milestone": "M14"
+    },
+    {
+      "t": "R4 original-job active CAESAR.cfg/units/material edition/static basic cases/FDM evidence + E1 CONTROL F3 exact authority; then only READ-ONLY property preview for qualified fields. E2-E6 engineering writer/TARGET1 not released.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/178#issuecomment-6407707652",
+      "s": "WBS4_EXECUTION_CHAIN",
+      "milestone": "M18"
+    },
+    {
+      "t": "Later VNext joins qualified Geometry and Element engines without replacing old tile until browser/byte/GPU-scalability regression, independent review, Owner acceptance and explicit release decision.",
+      "u": "https://github.com/reallakshman19/Common/pull/511",
+      "s": "VNEXT_ACCEPTANCE",
+      "milestone": "M11"
     }
   ],
   "highRoi": [
@@ -397,6 +552,18 @@
       "u": "https://github.com/reallakshman19/XML_Compare_Utilities/actions/runs/40169198664",
       "s": "CI_SCOPED_PASS",
       "milestone": "M18"
+    },
+    {
+      "t": "Reuse G2 pure topology/Boolean ledger without GPU or shared viewer changes; tests 7/7 are author-exposed, no claimed measured ROI or independent engineering PASS.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/177#issuecomment-6407926621",
+      "s": "G2_DISJOINT_CORE",
+      "milestone": "M14"
+    },
+    {
+      "t": "Reuse established G1 SVG and Three/WebGL floating-origin/scheduling for large graphics; trial real browser performance/parity before speculative renderer rewrite.",
+      "u": "https://github.com/reallakshman19/Common/pull/511",
+      "s": "EXISTING_G1_RENDERER_REUSE",
+      "milestone": "M13"
     }
   ],
   "future": [
@@ -484,6 +651,25 @@
       "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394203305",
       "s": "BOUNDARY",
       "milestone": "M17"
+    },
+    {
+      "t": "Revised Common START_HERE is a role/mode router, not a new dispatch authority. Project Home is source-grounded knowledge, Page a projection; no new owner revision needed for a documentation/onboarding change.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6395368222",
+      "s": "PROTOCOL_APPLIED",
+      "n": "R4 unchanged",
+      "milestone": "M17"
+    },
+    {
+      "t": "Preserve one CIIFR project: Geometry WBS3.0-3.4 read-only node/element matching, SVG/GPU and provenance; additive Element WBS4.0-4.6 typed property review. Proposed WBS5 fork superseded; Writer never implicit.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/179",
+      "s": "TWO_EXISTING_WORKSTREAMS",
+      "milestone": "M12"
+    },
+    {
+      "t": "VNext combines only independently accepted engines, retains legacy P2/P2.1, original byte/name-editor behavior and existing Tab3; browser/native Owner release after qualification only.",
+      "u": "https://github.com/reallakshman19/Common/pull/511",
+      "s": "VNEXT_RELEASE_BOUNDARY",
+      "milestone": "M7"
     }
   ],
   "inputs": [
@@ -667,6 +853,104 @@
       "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394395409",
       "s": "ORACLE_LOCAL",
       "milestone": "M17"
+    },
+    {
+      "t": "E1 original-model artifact relay NOT_REGISTERED; no assigned recipient has retrieved or rehashed private CII. Source/test code lives at immutable PR #168 commit; register actual task-specific Common relay input before material cross-agent transfer.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6395368222",
+      "s": "RELAY_NOT_REGISTERED",
+      "n": "No bytes passed",
+      "milestone": "M18"
+    },
+    {
+      "t": "Common source artifact relay PR #479 has sanitized E1 record pointing to immutable XCU PR #168 files; currently DRAFT/PROPOSED, not merged, received or byte-verified. Owner-held private CII NOT_DELIVERED.",
+      "u": "https://github.com/reallakshman19/Common/pull/479",
+      "s": "RELAY_PROPOSED",
+      "n": "Public code paths only",
+      "milestone": "M18"
+    },
+    {
+      "t": "Reviewer #170 checked public original-code and invented cases; private 803776-byte v14 source/CAESAR native import NOT_RUN by reviewer. Blank NODENAME physical row issue remains conditional until admissibility proof; do not weaken current cardinality.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6395906667",
+      "s": "REVIEW_LIMITS",
+      "milestone": "M18"
+    },
+    {
+      "t": "Verified public Git checkout artifact 12598017481 at progress-page run 40191467503: full .git, PR168 3595a7c, inner tar SHA256 39351dd0d357723ae4a1120041ca8205e5431f5f753ce480a39b94020dd7411c. Recipient NOT_VERIFIED; expires 2026-11-08.",
+      "u": "https://github.com/reallakshman19/progress-page/actions/runs/40191467503",
+      "s": "HOSTED_SOURCE_READY",
+      "milestone": "M18"
+    },
+    {
+      "t": "ELEMENT is physical 15-card occurrence; FROM and TO are logical shared NODE identifiers; DX/DY/DZ are directed displacements, not absolute points. Shared or duplicate endpoints do not establish unique SOURCE/TARGET occurrence identity.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394203305",
+      "s": "NODE_ELEMENT_IDENTITY",
+      "milestone": "M18"
+    },
+    {
+      "t": "ELEMENTS 15 physical rows, 53 real numeric slots plus 15 typed auxiliary pointer slots. Numeric/pointer cards use defined 13-character fields; adjacency of negative values makes whitespace splitting unsafe.",
+      "u": "https://github.com/reallakshman19/Common/pull/507",
+      "s": "ELEMENT_FIXED_LAYOUT",
+      "milestone": "M18"
+    },
+    {
+      "t": "RIGID pointer #2 and NODENAME pointer #12 index typed one-based auxiliary records, not NODE labels. Pointer 0 absent; nonzero valid ordinal resolves record. Associated RIGID with weight 0 is not an absent attachment.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/178#issuecomment-6402061761",
+      "s": "POINTER_VS_NODE",
+      "milestone": "M18"
+    },
+    {
+      "t": "Node renumbering later must cover ELEMENT FROM/TO, NODENAME paired endpoint labels and nozzle/hanger/auxiliary node references; shared nodes require graph-atomic updates. This is E6 deferred source architecture, not Writer permission.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167",
+      "s": "NODE_REFERENCE_REGISTRY",
+      "milestone": "M23"
+    },
+    {
+      "t": "CONTROL supplies element/nozzle/hanger/node-name/reducer/flange and auxiliary counts plus vertical-axis option; R2 CONTROL has four integer records. F3 V14 extra/trailing-slot admissibility remains unverified by native source/importer.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6401405888",
+      "s": "CONTROL_COUNTS_F3",
+      "milestone": "M18"
+    },
+    {
+      "t": "MISCEL_1 begins with RRMAT material-ID values in ELEMENT occurrence order, six packed per row; material integer is selected identifier, not immutable effective expansion-property dataset.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/178#issuecomment-6406533457",
+      "s": "MISCEL_RRMAT",
+      "milestone": "M18"
+    },
+    {
+      "t": "After RRMAT, count-controlled MISCEL_1 VFLEX/nozzle and hanger blocks can contain engineering dimensions/loads and *node-number references*; these are not typed ELEMENT auxiliary record pointers. R2 has no such counted records.",
+      "u": "https://docs.hexagonppm.com/r/en-US/CAESAR-II-Users-Guide/Version-14/337059",
+      "s": "MISCEL_NOZZLE_HANGER",
+      "milestone": "M18"
+    },
+    {
+      "t": "MISCEL_1 ends in model execution-option records, including model ambient input and North arrow. R2 353 elements require 59 RRMAT rows plus 4 execution rows; original ambient differs from R4 candidate NEW-JOB default.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/178#issuecomment-6407053321",
+      "s": "MISCEL_EXEC_AMBIENT",
+      "milestone": "M18"
+    },
+    {
+      "t": "R2 embedded UNITS holds 22 conversion factors and 24 labels, source-specific; raw ambient/material-ID/units physical reads PASS, but case-effective interpretation and actual material database still need independent proof.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/178#issuecomment-6406533457",
+      "s": "UNITS_STORED",
+      "milestone": "M18"
+    },
+    {
+      "t": "R2 recipient verified original 353 ELEMENT, 38 RIGID, 315 absent/38 valid pointer associations and SHA/CRC integrity; distinct from separate WBS4 private 521-element benchmark. No native CAESAR importer replay.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/178#issuecomment-6402061761",
+      "s": "R2_CII_RECEIPT",
+      "milestone": "M18"
+    },
+    {
+      "t": "CAESAR.cfg is an external configuration file (Alpha, new-job defaults, database/units references), not CII CONTROL or MISCEL_1. Candidate references TRS.FIL, but is not proven active for R2 original; source units and ambient differ.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/178#issuecomment-6407053321",
+      "s": "R4_CONFIG_VS_MISC",
+      "milestone": "M18"
+    },
+    {
+      "t": "Actual S1/T G2 source witness: SOURCE 3910 degree/length signature yields three TARGET alternatives; 3940/3970 local signatures have hundreds. Ambiguity persists without pose and cannot justify auto-assignment.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/177#issuecomment-6401698353",
+      "s": "G2_REAL_AMBIGUITY",
+      "milestone": "M14"
     }
   ],
   "knownIssues": [
@@ -787,6 +1071,79 @@
       "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394395409",
       "s": "MATERIAL_UNMAPPED",
       "milestone": "M19"
+    },
+    {
+      "t": "Source-exposure/independence: Oracle authored the E1 code and synthetic expected answers; six passing tests do not qualify v14 units, Material Number or Rigid Type semantics. Agent E1 must derive an independent reference and contrast.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6395368222",
+      "s": "ORACLE_SELF_ASSESSED",
+      "n": "Domain review NOT_RUN",
+      "milestone": "M18"
+    },
+    {
+      "t": "Confirmed E1 NC-A: only pointer #2 RIGID and #12 NODENAME are validated; BEND pointer9 with declared BEND count0 was accepted. E1 requires all-15 CONTROL bound checks; BEND has 3 lines per logical record. Other section shapes vary.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6395988691",
+      "s": "PTR_GAP_CONFIRMED",
+      "milestone": "M18"
+    },
+    {
+      "t": "E1 coder capability blocker: git ls-remote DNS failure; no local PR168 checkout, backup tool/patch-ledger setup or native E1 and NodeName regression run. Hosted CI and generic node smoke do not satisfy repository AGENTS takeover.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6396835086",
+      "s": "BLOCKED_CAPABILITY",
+      "milestone": "M18"
+    },
+    {
+      "t": "Repo hygiene: tracked .backups/log.json is modified by mandatory backup save despite .gitignore. Oracle instructs local-only preservation, no staging/commit/manual reset, backup IDs and patch ledger retained; separate cleanup outside E1.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6398683938",
+      "s": "TRACKED_BACKUP_LOG",
+      "milestone": "M18"
+    },
+    {
+      "t": "Oracle code inspection flags untested empty RESTRANT body: CONTROL count1/ptr4=1, section header exists but no data lines; unknown-shape handler may accept. Also v14 CONTROL ordinal only version-bracketed from v12/v15. Both require independent challenge.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6399342047",
+      "s": "REVIEW_FALSIFIERS",
+      "milestone": "M18"
+    },
+    {
+      "t": "F3 CONTROL: extra numeric fields accepted by parser, but native v14 admissibility of padded CONTROL rows unproven. Oracle R2 demands source decision before any strict-width rule; version-bracketed v12/v15 evidence alone not full v14 signoff.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6400185309",
+      "s": "CONTROL_SOURCE_HOLD",
+      "milestone": "M18"
+    },
+    {
+      "t": "F3 v14 CONTROL row strictness remains VERSION_BRACKETED_SOURCE_UNRESOLVED; extra fields may be accepted. Nonempty RESTRANT body only presence-validated; native private CII/CAESAR importer, effective semantics and Writer remain HOLD.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6400698988",
+      "s": "F3_SOURCE_HOLD",
+      "milestone": "M18"
+    },
+    {
+      "t": "F3 v14 CONTROL strict row-width/trailing numeric fields SOURCE_UNRESOLVED; malformed two nonblank REDUCERS rows still catalogued cardinality-only; nonempty RESTRANT body not shape-validated. Engineering/Writer/merge HOLD.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6401405888",
+      "s": "F3_SOURCE_HOLD",
+      "milestone": "M18"
+    },
+    {
+      "t": "R4 candidate binary unit conversions materially differ from original embedded UNITS. Same filename reference is not actual active-job selection. Binary float32 parse exploratory and not vendor/native .FIL qualified; do not silently convert SOURCE.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/178#issuecomment-6407053321",
+      "s": "R4_SOURCE_UNIT_MISMATCH",
+      "milestone": "M18"
+    },
+    {
+      "t": "Temperature/strain interpretation depends on job Alpha tolerance, ambient and expansion material; Pressure on selected units/cases; Fluid Density on case-specific FDM. Original stored field PASS is not effective engineering PASS.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/178#issuecomment-6407707652",
+      "s": "FIELD_EFFECTIVE_CONFIG",
+      "milestone": "M18"
+    },
+    {
+      "t": "V14 RIGID Weight and Type are distinct fields; old 2019-oriented converter serializes Weight without demonstrated V14 Type round-trip. No original weight-zero RIGID witness and native unit-selector/importer test NOT_RUN.",
+      "u": "https://github.com/reallakshman19/Common/pull/507",
+      "s": "RIGID_TYPE_NATIVE_HOLD",
+      "milestone": "M20"
+    },
+    {
+      "t": "G2 degree/incident-length/neighbour-degree signatures are pose-free candidate evidence only. Keep all alternatives, target collisions, AND exclusions and segment-only witness; spatial residual NOT_EVALUATED, writerEligible=false.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/177#issuecomment-6407926621",
+      "s": "G2_SIGNATURE_FALSE_PASS",
+      "milestone": "M14"
     }
   ],
   "pending": [
@@ -875,6 +1232,117 @@
       "u": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/168",
       "s": "NO_AGENT_YET",
       "milestone": "M18"
+    },
+    {
+      "t": "START_HERE revised onboarding state: PREPARED, NOT SENT, NOT RECEIVED, NOT BYTES_VERIFIED. No CIIFR canonical CURRENT.json; manual/native dispatch is permitted only under actual task authority; Cycle now cannot be issued yet.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6395368222",
+      "s": "ONBOARD_NOT_SENT",
+      "n": "One next actor: Oracle",
+      "milestone": "M18"
+    },
+    {
+      "t": "SOURCE STATE CORRECTION: Progress Page R4 PR #15 and Home PR #16 are MERGED, not draft. XCU Oracle PR #168 remains draft at 3595a7c; live Home browser render and recipient access NOT_RUN.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6395368222",
+      "s": "STATUS_RECONCILED",
+      "n": "Viewer not inspected",
+      "milestone": "M17"
+    },
+    {
+      "t": "Owner next action: paste native issue #170 to ONE E1 specialist chat and obtain recipient readback; no ACTIVE CIIFR Cycle, no auto send. Public-source read-only work can start without private CII.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6395565914",
+      "s": "DISPATCH_PENDING",
+      "n": "No agent confirmed",
+      "milestone": "M18"
+    },
+    {
+      "t": "E1 R1 contributor not yet assigned; current independent specialist completed read-only report, no repo files changed, true source/domain release remains HELD. Recheck exact PR168 and AGENTS authority before patch; distinct reviewer must replay after repair.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6395988691",
+      "s": "R1_ASSIGN_PENDING",
+      "milestone": "M18"
+    },
+    {
+      "t": "CODER FIRST: E1 R1 task #173 Stage0 is read-only onboarding on Owner full CIIFR goal and actual v14 architecture; must return source/Appendix A/capability evidence before editing same PR168. No coder bound or received.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6396649610",
+      "s": "CODER_ONBOARD_PREPARED",
+      "milestone": "M18"
+    },
+    {
+      "t": "NEXT: coder 6adddf80 recover verifiable native exact-head source workspace, backup/ledger and repository test ability; post CAPABILITY RETURN on #173. No repeated onboarding, no PR168 edits until Oracle checks authority and Appendix A.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6396835086",
+      "s": "CAPABILITY_RECOVERY",
+      "milestone": "M18"
+    },
+    {
+      "t": "Owner downloads GH Actions artifact 12598017481 and uploads ZIP to coder 6adddf80 chat. Coder must SHA-check and run full native E1+NodeName, backup/ledger setup; no E1 code authorization yet. Common relay PR479 draft only.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6397419458",
+      "s": "RECEIVER_PENDING",
+      "milestone": "M18"
+    },
+    {
+      "t": "Coder 6adddf80 implements all-15 CONTROL pointer count/missing-target guard only on draft PR168 after local backups and v14 source proof. Independent reviewer #170 remains on HOLD until new exact-head builder return.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6398683938",
+      "s": "BUILDER_RETURN_PENDING",
+      "milestone": "M18"
+    },
+    {
+      "t": "Independent E1 specialist #170 invited for read-only exact-head 01d94e1f replay of BEND/EXPJT/IZUP and empty RESTRANT/CONTROL row contrast. No review return yet; E2/E3/TARGET1 and merge remain HOLD.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6399351349",
+      "s": "REVIEW_RETURN_PENDING",
+      "milestone": "M18"
+    },
+    {
+      "t": "Same E1 coder 6adddf80 instructed R2 minimal same-PR correction #173 6400196426. New head not returned. Reviewer #170 replays F1/F2/F3 and retained pointer negatives only after builder return; engineering release/merge HOLD.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/173#issuecomment-6400196426",
+      "s": "R2_RETURN_PENDING",
+      "milestone": "M18"
+    },
+    {
+      "t": "Independent E1 specialist #170 assigned read-only R2 2aeaf737 negative replay; reviewer chat ID UNBOUND, no Cycle now dispatch. Common Cycle PR496 revised PREPARED_NOT_ACTIVE to prevent stale coder R2 rerun; no E1 Cycle ACTIVE on main.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6400708556",
+      "s": "R2_IR_PENDING",
+      "milestone": "M18"
+    },
+    {
+      "t": "F3 next proof requires direct v14 CONTROL spec or authorized importer valid-vs-extra-field comparison. No coder/reviewer rerun and no ACTIVE E1 Cycle now. If unavailable retain F3_SOURCE_BLOCKED, unrelated work independent.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6401405888",
+      "s": "F3_SOURCE_DEPENDENCY",
+      "milestone": "M18"
+    },
+    {
+      "t": "Original S1/T served-browser and PR181 reader/GPU UI qualifications pending; CLI/HTTP/author tests do not qualify owner-scale functionality.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/181",
+      "s": "G1_BROWSER_HOLD",
+      "milestone": "M13"
+    },
+    {
+      "t": "Independent reviewer must challenge PR182 exact source against PR181 real graph export and S1/T duplicate signature/target collision/hash-epoch cases; prepare G2 UI assignment only after bounded verdict.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/177#issuecomment-6407926621",
+      "s": "G2_REAL_INPUT_REVIEW",
+      "milestone": "M14"
+    },
+    {
+      "t": "Owner CAESAR custodian must provide one private identity-bound actual job configuration resolution, units profile, material DB/UMD edition and basic static case/FDM observation. Do not request another original CII.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/178#issuecomment-6407707652",
+      "s": "NATIVE_JOB_PROVENANCE",
+      "milestone": "M18"
+    },
+    {
+      "t": "Find authoritative V14 CONTROL extra/trailing-slot admissibility or native accepted/rejected contrast; retain F1/F2 bounded R2 PASS and avoid repeat synthetic testing.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/170#issuecomment-6401405888",
+      "s": "E1_CONTROL_F3",
+      "milestone": "M18"
+    },
+    {
+      "t": "Field-specific semantic qualification and source/target correspondence precede a separate read-only before/proposed property evidence preview; no physical mutator, pointer creation, TARGET1 or Writer.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167",
+      "s": "READONLY_ELEMENT_PREVIEW",
+      "milestone": "M19"
+    },
+    {
+      "t": "Geometry Cycle is ACTIVE rev4 (G1 returned), Element Cycle PREPARED_NOT_ACTIVE rev0; Common PR511/PR507 are drafts; successor knowledge transfer does not change control epoch or authorization.",
+      "u": "https://github.com/reallakshman19/Common/pull/511",
+      "s": "ORACLE_CYCLE_SEPARATION",
+      "milestone": "M7"
     }
   ]
 }
