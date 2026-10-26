@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
+import { readFileSync } from 'node:fs';
 import { wbsGroups, wbsFamily, wbsPick } from '../progress.js';
 
 const milestones = {
@@ -52,4 +53,14 @@ test('family and step choices remain independent between projects, and can be cl
   wbsFamily('demo-a',null);wbsPick('demo-a',null);
   assert.equal(wbsFamily('demo-a'),null);assert.equal(wbsPick('demo-a'),null);
   assert.equal(wbsPick('demo-b'),'M8');
+});
+
+test('published CIIFR R4 gives Geometry 3.x, Element 4.x and accessible legacy milestones', () => {
+  const ciifr=JSON.parse(readFileSync(new URL('../data/ciifr/index.json', import.meta.url),'utf8'));
+  const groups=wbsGroups(ciifr);
+  assert.deepEqual(groups.map(g=>g.key),['wbs:3','wbs:4','other']);
+  assert.deepEqual(groups[0].steps.map(s=>s.key),['M12','M13','M14','M15','M16']);
+  assert.deepEqual(groups[1].steps.map(s=>s.key),['M17','M18','M19','M20','M21','M22','M23']);
+  assert.equal(groups.reduce((n,g)=>n+g.steps.length,0),Object.keys(ciifr.milestones).length);
+  assert.deepEqual(groups[0].steps.map(s=>s.short),['3.0','3.1','3.2','3.3','3.4']);
 });
