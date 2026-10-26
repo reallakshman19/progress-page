@@ -12,7 +12,7 @@ from pathlib import Path
 from playwright.sync_api import sync_playwright
 
 BASE = os.environ.get("PROGRESS_PAGE_URL","https://reallakshman19.github.io/progress-page/")
-EXPECTED_VIEWER_VERSION = re.search(r'app\\.js\\?v=(\\d+)', (Path(__file__).resolve().parents[1]/"index.html").read_text(encoding="utf-8")).group(1)
+EXPECTED_VIEWER_VERSION = re.search(r'app\.js\?v=(\d+)', (Path(__file__).resolve().parents[1]/"index.html").read_text(encoding="utf-8")).group(1)
 OUT = Path(os.environ.get("PP_E2E_OUTPUT","e2e-output"))
 OUT.mkdir(parents=True,exist_ok=True)
 cases=[]
