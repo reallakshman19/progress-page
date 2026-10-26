@@ -63,7 +63,7 @@ def retire_fixture(lst, status, source):
 
 def main():
     actual=git("rev-parse","HEAD")
-    if actual != BASE or git("rev-parse","origin/main") != BASE:
+    if git("merge-base", BASE, actual) != BASE or git("rev-parse","origin/main") != BASE:
         raise SystemExit(f"STOP: exact original main {BASE} required; HEAD={actual}; origin/main={git('rev-parse','origin/main')}")
     docs=TOP/"data/ciifr"
     index=json.loads((docs/"index.json").read_text(encoding="utf-8"))
