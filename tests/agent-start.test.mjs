@@ -22,6 +22,7 @@ test('WBS 3.1 scope preserves milestone/candidate identity and boundary',()=>{
   assert.ok(m.sources.some(x=>/issues\/186/.test(x.url)), 'recorded native review source remains accessible');
   const brief=agentStartText(m);
   assert.match(brief,/BOUNDARY/);
+  assert.match(brief,/Exact candidate SHA: NOT_RECORDED/,'no SHA may be invented from a PR number or abbreviated note');
   assert.match(brief,/not an acknowledged assignment/);
   assert.doesNotMatch(brief,/RELEASED:/);
   assert.equal(JSON.stringify(p),original);
@@ -31,6 +32,7 @@ test('WBS 5 maps M11 HOLD correctly, never implying authorized transfer',()=>{
   const m=agentStartModel(p,{family,step:'M11',revision:'R4'});
   assert.equal(m.focused.cap,'NOT_DEMONSTRATED');
   assert.match(agentStartText(m),/NOT_DEMONSTRATED/);
+  assert.match(agentStartText(m),/Exact candidate SHA: NOT_RECORDED/);
   assert.match(agentStartText(m),/Writer\/TARGET1 permission/);
   assert.equal(JSON.stringify(p),original);
 });

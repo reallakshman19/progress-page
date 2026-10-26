@@ -312,7 +312,7 @@ function render() {
     root.append(el('p', 'banner', 'Setup link read: ' + setupLink.count + ' chat links saved in this browser.'));
   }
   if (state.panel) root.append(linksPanel(() => { state.links = mergedLinks(); state.panel = false; render(); }));
-  if (!Object.keys(state.links).length) {
+  if (!Object.keys(state.links).length && route().v !== 'start') {
     root.append(el('p', 'hintbar', 'Chat ids are not clickable in this browser yet. Open your private setup link once, or paste your links under "My links".'));
   }
   const { key, v, rev, family: routedFamily, step: routedStep } = route();
@@ -405,7 +405,7 @@ function render() {
       root.append(children);
     }
   }
-  const bar = HOME_VIEWS.includes(v) ? null : repoBar(view.index, groups.length ? step : null, older ? null : state.repo[key]);
+  const bar = HOME_VIEWS.includes(v) || v === 'start' ? null : repoBar(view.index, groups.length ? step : null, older ? null : state.repo[key]);
   if (bar) root.append(bar);
   const views = el('nav', 'views');
   PRIMARY_TABS.forEach(([id, label]) => {
