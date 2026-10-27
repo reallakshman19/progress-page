@@ -2367,6 +2367,34 @@
       "before": "SUBMITTED",
       "after": "SUBMITTED",
       "rev": "R3"
+    },
+    {
+      "seq": 174,
+      "id": "G9V35-R-0174",
+      "previous_id": "G9V35-R-0173",
+      "at": "2026-10-27T23:25:05Z",
+      "kind": "STATE",
+      "actor": "OTM",
+      "summary": "S4R repairs sent",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/159#issuecomment-6456075340",
+      "card": "p1-wpe",
+      "before": "SUBMITTED",
+      "after": "IN_PROGRESS",
+      "rev": "R3"
+    },
+    {
+      "seq": 175,
+      "id": "G9V35-R-0175",
+      "previous_id": "G9V35-R-0174",
+      "at": "2026-10-27T23:25:06Z",
+      "kind": "UPDATE",
+      "actor": "OTM",
+      "summary": "S4 check PASS_WITH_NOTE; repairs out",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/159#issuecomment-6456075340",
+      "card": "oracle-otm",
+      "before": "IN_PROGRESS",
+      "after": "IN_PROGRESS",
+      "rev": "R3"
     }
   ]
 }
