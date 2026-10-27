@@ -254,6 +254,11 @@
       "t": "OWNER (27 Oct 18:3x): \"think again, child assessment is optional, default mode will be D3/D4, all questions(D3/D4)- core 2,1A,1B\". Default: every D3/D4 question gets Core2, Core1A, Core1B; child assessment (P1, Smart2 learner layer) optional. Restates 23 Oct fixtures; replaces the P1-first order of PR309 and continuity plan §1.",
       "u": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6444936509",
       "n": "Replaces P1-first order (PR309)"
+    },
+    {
+      "t": "OWNER (27 Oct 18:4x), on the D3/D4 default plan (bank, Smart Labelling 1 with D3/D4 selection, Core2, Core1A/1B, compile; assessment optional; prove one slice first): \"proceed, we have to pilot on topic:\\\"work power and energy\\\" in physics\".",
+      "u": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6445075933",
+      "n": "Pilot topic for D3/D4 plan"
     }
   ],
   "inputs": [

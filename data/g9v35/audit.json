@@ -1978,6 +1978,19 @@
       "list": "intent",
       "op": "add",
       "rev": "R3"
+    },
+    {
+      "seq": 146,
+      "id": "G9V35-R-0146",
+      "previous_id": "G9V35-R-0145",
+      "at": "2026-10-27T14:47:26Z",
+      "kind": "FIXTURE",
+      "actor": "OTM",
+      "summary": "Owner go: WPE is the pilot topic for the D3/D4 default plan",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6445075933",
+      "list": "intent",
+      "op": "add",
+      "rev": "R3"
     }
   ]
 }
