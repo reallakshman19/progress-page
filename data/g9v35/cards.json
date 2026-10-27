@@ -372,17 +372,15 @@
       "role": "Oracle",
       "chat": "oracle5"
     },
-    "state": "SUBMITTED",
-    "now": "27 Oct to 10:36: WPE JEE Main intake (10 candidates) + harvester review; draft PR #310 c44f8e0e; its local implementer brief PREPARED, NOT ISSUED; NLM B3/B4 cards written, unbuilt. Two Oracles now touch WPE.",
+    "state": "NOT_APPLICABLE",
+    "now": "STANDBY: Owner named OTM as G9v3.5 Oracle (27 Oct); PR #310 kept as input",
     "next": {
-      "actor": "YOU",
-      "text": "decide which Oracle leads the WPE pilot (6ae0484d or O5); the other goes to standby"
+      "actor": "OTM",
+      "text": "none (standby)"
     },
-    "flags": [
-      "needs-you"
-    ],
-    "updatedAt": "2026-10-27T14:50:18Z",
-    "src": "https://github.com/reallakshman19/Grade9v3.5/pull/310"
+    "flags": [],
+    "updatedAt": "2026-10-27T18:31:13Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6450379061"
   },
   "builder": {
     "order": 14,
@@ -444,11 +442,11 @@
       "chat": "oracle6ae",
       "role": "Oracle"
     },
-    "state": "IN_PROGRESS",
-    "now": "Owner-appointed standalone Oracle. Continuity plan and successor prompt in draft Common PR #546 at 1a450b3e (self-assessed). Successor UNASSIGNED; no cutover.",
+    "state": "NOT_APPLICABLE",
+    "now": "STANDBY: Owner named OTM as G9v3.5 Oracle (27 Oct); WPE note not sent",
     "next": {
-      "actor": "Oracle 6ae0484d",
-      "text": "keep #313 as the bounded academic review and bind an eligible reviewer and route; #312 runs alongside"
+      "actor": "OTM",
+      "text": "none (standby)"
     },
     "refs": [
       {
@@ -462,8 +460,8 @@
         "u": "https://github.com/reallakshman19/Grade9v3.5/issues/313"
       }
     ],
-    "updatedAt": "2026-10-27T13:55:35Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6443730169"
+    "updatedAt": "2026-10-27T18:31:14Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6450379061"
   },
   "wpe-c1": {
     "order": 18,
@@ -476,8 +474,8 @@
     "state": "SUBMITTED",
     "now": "G9-WPE-RESEARCH-01 C1 return received with holds; candidate Common PR #547 at d38d6d21; chat id UNKNOWN; academic acceptance held",
     "next": {
-      "actor": "Oracle 6ae0484d",
-      "text": "route the return to the #313 academic review; no rework assigned"
+      "actor": "OTM",
+      "text": "Oracle OTM decides under the WPE pilot plan"
     },
     "refs": [
       {
@@ -491,8 +489,8 @@
         "u": "https://github.com/reallakshman19/Common/pull/547"
       }
     ],
-    "updatedAt": "2026-10-27T13:55:35Z",
-    "src": "https://github.com/reallakshman19/Common/blob/1a450b3e3e58fc0851578f512c8b0857e55c404e/relay/AGENT_WORK/Grade9v3.5/oracle-continuity-20261027-6ae0484d/ORACLE_CONTINUITY.md"
+    "updatedAt": "2026-10-27T18:31:23Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6450379061"
   },
   "math-c1": {
     "order": 19,
@@ -505,8 +503,8 @@
     "state": "NOT_STARTED",
     "now": "G9-MATH-CONTRACT-01 C1 prepared; dispatch NOT_SENT; recipient UNKNOWN; R2 partial (no selected question)",
     "next": {
-      "actor": "Oracle 6ae0484d",
-      "text": "identify the actual researcher and route, then dispatch #312"
+      "actor": "OTM",
+      "text": "Oracle OTM decides under the WPE pilot plan"
     },
     "refs": [
       {
@@ -514,7 +512,9 @@
         "l": "#312 Math contract",
         "u": "https://github.com/reallakshman19/Grade9v3.5/issues/312"
       }
-    ]
+    ],
+    "updatedAt": "2026-10-27T18:31:24Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6450379061"
   },
   "wpe-ir1": {
     "order": 20,
@@ -527,8 +527,8 @@
     "state": "NOT_STARTED",
     "now": "G9-WPE-C1-IR1 prepared, not dispatched; reviewer UNKNOWN, must be a non-author; 004 QRT band (D4 vs D3) not adopted",
     "next": {
-      "actor": "Oracle 6ae0484d",
-      "text": "bind an eligible non-author reviewer and route; send #313 with PR #547 at d38d6d21"
+      "actor": "OTM",
+      "text": "Oracle OTM decides under the WPE pilot plan"
     },
     "refs": [
       {
@@ -536,6 +536,28 @@
         "l": "#313 academic review",
         "u": "https://github.com/reallakshman19/Grade9v3.5/issues/313"
       }
-    ]
+    ],
+    "updatedAt": "2026-10-27T18:31:24Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6450379061"
+  },
+  "oracle-otm": {
+    "order": 21,
+    "group": "pilot",
+    "milestone": "Q0",
+    "label": "Oracle (OTM)",
+    "who": {
+      "role": "Oracle"
+    },
+    "state": "IN_PROGRESS",
+    "now": "WPE pilot plan written; HOLD in force, nothing sent",
+    "next": {
+      "actor": "YOU",
+      "text": "say lift hold to start the WPE pilot plan"
+    },
+    "flags": [
+      "needs-you"
+    ],
+    "updatedAt": "2026-10-27T18:31:22Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6450379061"
   }
 }
