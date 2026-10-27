@@ -549,14 +549,14 @@
       "role": "Oracle"
     },
     "state": "IN_PROGRESS",
-    "now": "S2 sent to P1-WPE-G9v35 (22:44); reading its chat every 10 min",
+    "now": "S3: fresh checker verifying 5 NSEP originals against IAPT papers",
     "next": {
-      "actor": "P1-WPE-G9v35",
-      "text": "WAITS: writer's S2 return"
+      "actor": "fresh checker",
+      "text": "return S3 verdicts"
     },
     "flags": [],
-    "updatedAt": "2026-10-27T18:44:13Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/159"
+    "updatedAt": "2026-10-27T19:04:08Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/159#issuecomment-6451046071"
   },
   "p1-wpe": {
     "order": 22,
@@ -567,13 +567,13 @@
       "chat": "6ae0f0d5",
       "role": "Agent"
     },
-    "state": "IN_PROGRESS",
-    "now": "S2 interim 22:55: 5 NSEP items (2019/2024/2025, code 61) located; validating; no evidence block yet",
+    "state": "SUBMITTED",
+    "now": "S2 returned 23:0x: 5 NSEP items + JSON 01f1c193; relayed to #159",
     "next": {
-      "actor": "P1-WPE-G9v35",
-      "text": "return S2 TASK EVIDENCE"
+      "actor": "fresh checker",
+      "text": "S3 check of the 5 originals"
     },
-    "updatedAt": "2026-10-27T18:55:25Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/159"
+    "updatedAt": "2026-10-27T19:04:07Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/159#issuecomment-6451046071"
   }
 }

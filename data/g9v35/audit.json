@@ -2227,6 +2227,34 @@
       "before": "IN_PROGRESS",
       "after": "IN_PROGRESS",
       "rev": "R3"
+    },
+    {
+      "seq": 164,
+      "id": "G9V35-R-0164",
+      "previous_id": "G9V35-R-0163",
+      "at": "2026-10-27T19:04:07Z",
+      "kind": "STATE",
+      "actor": "OTM",
+      "summary": "S2 TASK EVIDENCE returned and relayed",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/159#issuecomment-6451046071",
+      "card": "p1-wpe",
+      "before": "IN_PROGRESS",
+      "after": "SUBMITTED",
+      "rev": "R3"
+    },
+    {
+      "seq": 165,
+      "id": "G9V35-R-0165",
+      "previous_id": "G9V35-R-0164",
+      "at": "2026-10-27T19:04:08Z",
+      "kind": "UPDATE",
+      "actor": "OTM",
+      "summary": "S3 check started",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/159#issuecomment-6451046071",
+      "card": "oracle-otm",
+      "before": "IN_PROGRESS",
+      "after": "IN_PROGRESS",
+      "rev": "R3"
     }
   ]
 }
