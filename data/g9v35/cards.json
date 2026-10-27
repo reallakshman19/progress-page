@@ -549,13 +549,13 @@
       "role": "Oracle"
     },
     "state": "IN_PROGRESS",
-    "now": "S0: choosing WPE pilot slice (since 22:33)",
+    "now": "S0: slice WEP-07 (010,018,019,020,021); fresh checker on targets + provenance",
     "next": {
-      "actor": "OTM",
-      "text": "post the slice card on #311"
+      "actor": "fresh checker",
+      "text": "return S0 targets and provenance verdicts"
     },
     "flags": [],
-    "updatedAt": "2026-10-27T18:33:35Z",
+    "updatedAt": "2026-10-27T18:34:21Z",
     "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6450425092"
   }
 }
