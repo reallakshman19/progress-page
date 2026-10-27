@@ -118,7 +118,7 @@ export function agentStartTaskText(m) {
   const refs=distinct([{name:'Recorded task',url:w.source},...w.refs.map(r=>({name:r.l || r.k || 'Reference',url:r.u}))]);
   lines.push(...refs.map(r=>'- '+r.name+': '+r.url));
   lines.push('BOUNDARY: Evidence, HOLDs, contrary results and UNKNOWNs remain operative. Verify native assignment, exact candidate, current head and authority. Copying does not send or change status.');
-  return lines.join('\\n');
+  return lines.join('\n');
 }
 
 export function renderAgentStart(root, project, opts = {}) {
