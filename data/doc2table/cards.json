@@ -88,12 +88,12 @@
     "state": "SUBMITTED",
     "now": "PR #7 at 130a8aa: D1 PASS AS SCOPED, CI green, draft. Owner chose PR7-MERGE C: merge waits for the D2 Native Word trial.",
     "next": {
-      "actor": "OTM",
-      "text": "run D2 Native Word trial; then O3 challenges it and the Owner re-decides PR7-MERGE"
+      "actor": "Doc to Table OTM",
+      "text": "run the D2 Native Word trial on S1.3 c1022e5 and return it to O3"
     },
     "flags": [],
-    "updatedAt": "2026-10-27T14:04:14Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6444001112"
+    "updatedAt": "2026-10-27T14:24:14Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6444537624"
   },
   "D2T-O3": {
     "order": 5,
@@ -107,11 +107,11 @@
     "state": "SUBMITTED",
     "now": "Posted 25 Oct 09:11: D1 PASS AS SCOPED (not acceptance); PR #7 ready for the Owner's PR7-MERGE as is; README privacy sentence false repo-wide; launcher binds all interfaces (hardening gap). Card D2T-LAUNCH-GUARD-1 queued, not sent.",
     "next": {
-      "actor": "OTM",
-      "text": "run the D2 Native Word trial on S1.3 c1022e5 and return its outcome to O3"
+      "actor": "Doc to Table OTM",
+      "text": "run the D2 Native Word trial on S1.3 c1022e5 and return it to O3"
     },
-    "updatedAt": "2026-10-25T05:11:33Z",
-    "src": "https://github.com/reallakshman19/Word-to-Table/issues/1#issuecomment-6393784239",
+    "updatedAt": "2026-10-27T14:24:14Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6444537624",
     "flags": []
   }
 }

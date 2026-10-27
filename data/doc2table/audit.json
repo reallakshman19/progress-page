@@ -1820,6 +1820,34 @@
       "before": "SUBMITTED",
       "after": "SUBMITTED",
       "rev": "R1"
+    },
+    {
+      "seq": 135,
+      "id": "DOC2TABLE-R-0135",
+      "previous_id": "DOC2TABLE-R-0134",
+      "at": "2026-10-27T14:24:14Z",
+      "kind": "UPDATE",
+      "actor": "OTM",
+      "summary": "D2 trial handed to the Doc to Table OTM session (Owner: this session only for G9v3.5)",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6444537624",
+      "card": "D2T-O3",
+      "before": "SUBMITTED",
+      "after": "SUBMITTED",
+      "rev": "R1"
+    },
+    {
+      "seq": 136,
+      "id": "DOC2TABLE-R-0136",
+      "previous_id": "DOC2TABLE-R-0135",
+      "at": "2026-10-27T14:24:14Z",
+      "kind": "UPDATE",
+      "actor": "OTM",
+      "summary": "D2 trial handed to the Doc to Table OTM session (Owner: this session only for G9v3.5)",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6444537624",
+      "card": "D2T-G21",
+      "before": "SUBMITTED",
+      "after": "SUBMITTED",
+      "rev": "R1"
     }
   ]
 }
