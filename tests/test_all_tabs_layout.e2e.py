@@ -73,7 +73,13 @@ def main():
                               route+" main outside viewport: "+str(g["main"]))
                         check(page.locator(".body").count()==1,
                               route+" content body missing")
+                        if view=="home":
+                            check(page.locator(".checkpoint").count()==1,"Home must show its source-backed project checkpoint")
+                            check("UNMAPPED" in page.locator(".checkpoint").inner_text(),
+                                  "No implicit Cycle binding permitted")
                         if view=="progress":
+                            check(page.locator(".checkpoint-disclosure").count()==1,
+                                  "WBS must offer evidence checkpoint without moving primary navigation")
                             check(page.locator(".ptitle .project-brief").count()==1,
                                   "non-home Owner brief should be collapsible")
                             check(not page.locator(".ptitle .project-brief").evaluate("(x)=>x.open"),
