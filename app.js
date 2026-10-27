@@ -1,9 +1,9 @@
 // Shell: loads the JSON, draws the project tabs and the views, refreshes every two minutes.
 import { el, link, tick, ago, whenText } from './util.js?v=28';
 import { buildSearchIndex, searchProgress } from './search.js?v=28';
-import { renderOracleContinuity } from './oracle-continuity.js?v=28';
-import { renderProgress, wbsPick, wbsGroups, wbsFamily, wbsRevisionScope, wbsRoute } from './progress.js?v=28';
-import { renderAgentStart } from './agent-start.js?v=28';
+import { renderOracleContinuity } from './oracle-continuity.js?v=29';
+import { renderProgress, wbsPick, wbsGroups, wbsFamily, wbsRevisionScope, wbsRoute } from './progress.js?v=29';
+import { renderAgentStart } from './agent-start.js?v=29';
 import { renderLessons } from './lessons.js?v=28';
 import { renderActions, renderFixtures, renderProjectHome, openCount } from './actions.js?v=28';
 import { renderTimeline } from './timeline.js?v=28';
