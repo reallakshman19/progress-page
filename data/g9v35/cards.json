@@ -549,14 +549,14 @@
       "role": "Oracle"
     },
     "state": "IN_PROGRESS",
-    "now": "S4 pair PASS_WITH_NOTE; S4R repairs with writer; Core2 waits for papers",
+    "now": "S4R pair 4f30041d back; recheck and Core2 need downloads",
     "next": {
       "actor": "YOU",
-      "text": "download the 2024 and 2025 IAPT papers for Core2 crops"
+      "text": "download wep07-core1ab-4f30041d.json + 2024/2025 IAPT papers"
     },
     "flags": [],
-    "updatedAt": "2026-10-27T23:25:06Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/159#issuecomment-6456075340"
+    "updatedAt": "2026-10-27T23:36:11Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/159"
   },
   "p1-wpe": {
     "order": 22,
@@ -567,14 +567,14 @@
       "chat": "6ae0f0d5",
       "role": "Agent"
     },
-    "state": "IN_PROGRESS",
-    "now": "S4R since 03:2x: 7 repairs to the Core1A/1B pair",
+    "state": "SUBMITTED",
+    "now": "S4R returned 03:3x: pair 4f30041d, repairs 1-7 DONE (claimed)",
     "next": {
-      "actor": "P1-WPE-G9v35",
-      "text": "return S4R TASK EVIDENCE"
+      "actor": "fresh checker",
+      "text": "WAITS: Owner download of 4f30041d, then recheck"
     },
-    "updatedAt": "2026-10-27T23:25:05Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/159#issuecomment-6456075340",
+    "updatedAt": "2026-10-27T23:36:11Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/159",
     "flags": []
   }
 }

@@ -2395,6 +2395,34 @@
       "before": "IN_PROGRESS",
       "after": "IN_PROGRESS",
       "rev": "R3"
+    },
+    {
+      "seq": 176,
+      "id": "G9V35-R-0176",
+      "previous_id": "G9V35-R-0175",
+      "at": "2026-10-27T23:36:11Z",
+      "kind": "STATE",
+      "actor": "OTM",
+      "summary": "S4R returned",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/159",
+      "card": "p1-wpe",
+      "before": "IN_PROGRESS",
+      "after": "SUBMITTED",
+      "rev": "R3"
+    },
+    {
+      "seq": 177,
+      "id": "G9V35-R-0177",
+      "previous_id": "G9V35-R-0176",
+      "at": "2026-10-27T23:36:11Z",
+      "kind": "UPDATE",
+      "actor": "OTM",
+      "summary": "S4R back; needs file",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/159",
+      "card": "oracle-otm",
+      "before": "IN_PROGRESS",
+      "after": "IN_PROGRESS",
+      "rev": "R3"
     }
   ]
 }
