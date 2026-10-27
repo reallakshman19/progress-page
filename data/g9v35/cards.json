@@ -549,15 +549,13 @@
       "role": "Oracle"
     },
     "state": "IN_PROGRESS",
-    "now": "WPE pilot plan written; HOLD in force, nothing sent",
+    "now": "S0: choosing WPE pilot slice (since 22:33)",
     "next": {
-      "actor": "YOU",
-      "text": "say lift hold to start the WPE pilot plan"
+      "actor": "OTM",
+      "text": "post the slice card on #311"
     },
-    "flags": [
-      "needs-you"
-    ],
-    "updatedAt": "2026-10-27T18:31:22Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6450379061"
+    "flags": [],
+    "updatedAt": "2026-10-27T18:33:35Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6450425092"
   }
 }
