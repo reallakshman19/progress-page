@@ -271,6 +271,9 @@ details.nd{margin-top:6px;font-size:12px}
 .wbs-family-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:10px}
 .wbs-family-card{display:flex;flex-direction:column;align-items:flex-start;gap:3px;text-align:left;font:inherit;cursor:pointer;padding:13px;border:1px solid var(--bd);border-radius:10px;background:var(--card);color:var(--fg)}
 .wbs-family-card strong{font-size:15px}.wbs-family-card span{font-size:12px}
+.wbs-family-card .wbs-family-title{font-size:14px;font-weight:600;line-height:1.35}
+.wbs-family-card .wbs-family-description{color:var(--mut);line-height:1.45;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:4;overflow:hidden;overflow-wrap:anywhere}
+.wbs-family-card .wbs-family-meta{margin-top:auto;padding-top:8px;color:var(--mut);font-size:11px;line-height:1.45}
 .wbs-family-card:hover,.wbs-family-card:focus-visible{border-color:var(--acc);outline:1px solid var(--acc)}
 @media(max-width:620px){.wbs-family-tab{padding:7px 10px}.wbs-children{scroll-snap-type:x proximity}.wbs-child-tab{scroll-snap-align:start}}
 
