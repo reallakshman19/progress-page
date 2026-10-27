@@ -43,7 +43,7 @@ export function agentStartModel(project, { family = null, step = null, revision 
     next:c.next?.text || '',nextActor:actor(c.next?.actor),
     status:c.now || '',source:c.src || '',
     refs:(c.refs || []).filter(r => valid(r.u)),who:c.who?.role || '',updatedAt:c.updatedAt || '',
-    recipient:(idx.chats || {})[c.who?.chat]?.label || (idx.chats || {})[c.who?.chat]?.id8 || null,
+    recipient:[(idx.chats || {})[c.who?.chat]?.label, (idx.chats || {})[c.who?.chat]?.id8].filter(Boolean).join(' · ') || null,
     publicSource:valid(c.src) ? c.src : (c.refs || []).find(r => valid(r.u))?.u || null
   })) : [];
   const sources = mode === 'step' ? distinct([
@@ -110,6 +110,9 @@ export function agentStartTaskText(m) {
     'One recorded next action: '+(w.next || 'NOT_RECORDED'),
     'Return criteria: NOT_RECORDED separately; consult the original native task.',
     'Full recorded status / surviving limitations: '+(w.status || 'NOT_RECORDED'),
+    'Recorded milestone capability: '+cap(m.focused),
+    'Milestone capability scope: '+(m.focused?.canDo || 'NOT_RECORDED'),
+    'Milestone qualification source: '+(valid(m.focused?.capSrc) ? m.focused.capSrc : 'NOT_RECORDED'),
     'Task-level tested candidate / generation: NOT_RECORDED as structured Page fields; check the native record.',
     'Milestone candidate (not automatically the task candidate): '+(m.focused?.commit || 'NOT_RECORDED'),
     'Native task evidence: '+(w.publicSource || 'NOT_RECORDED'),

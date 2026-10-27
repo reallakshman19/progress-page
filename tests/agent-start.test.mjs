@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { readFileSync } from 'node:fs';
+import { runInNewContext } from 'node:vm';
 import { agentStartModel, agentStartText, agentStartTaskText, agentStartHref } from '../agent-start.js';
 import { wbsGroups } from '../progress.js';
 import { PRIMARY_TABS } from '../lifecycle.js';
@@ -104,5 +105,49 @@ test('exact card URLs are stable and backward compatible',()=>{
     '#/ciifr/start/R4/wbs%3A4/M18/card%2F1');
   assert.equal(agentStartHref('ciifr','R4','wbs:4','M18'),
     '#/ciifr/start/R4/wbs%3A4/M18');
+});
+
+test('exact task routes reject unknown projects and malformed identities without fallback',()=>{
+  const app=readFileSync(new URL('../app.js',import.meta.url),'utf8');
+  const routeSource=app.slice(app.indexOf('function route()'),app.indexOf('// An older revision'));
+  const state={projects:[{key:'ciifr'}],data:{ciifr:p}};
+  const resolve=hash=>runInNewContext(routeSource+'\nroute();',{
+    hash,state,VIEWS:['start','progress'],isActive:()=>true
+  });
+  const prefix='#/ciifr/start/R4/wbs%3A4/M18/';
+  for(const hash of ['#/typo-project/start/R4/wbs%3A4/M18/wbs4-e1',
+    '#/__proto__/start/R4/wbs%3A4/M18/wbs4-e1',prefix+'%ZZ',prefix+'wbs4-e1/extra',prefix]) {
+    const route=resolve(hash);
+    assert.equal(route.key,null,hash);
+    assert.match(route.routeError,/No (?:project or )?task was substituted/);
+  }
+  const valid=resolve(prefix+'wbs4-e1');
+  assert.equal(valid.key,'ciifr');assert.equal(valid.cardId,'wbs4-e1');assert.equal(valid.routeError,null);
+  const legacy=resolve('#/ciifr/start/R4/wbs%3A4/M18');
+  assert.equal(legacy.key,'ciifr');assert.equal(legacy.routeError,false);
+});
+
+test('selected task retains known recipient ID alongside its display label',()=>{
+  const fixture=structuredClone(p);
+  fixture.index.chats.test={label:'Reviewer',id8:'12345678'};
+  fixture.cards['wbs4-e1'].who={role:'reviewer',chat:'test'};
+  const family=wbsGroups(fixture.index).find(g=>g.key==='wbs:4');
+  const m=agentStartModel(fixture,{family,step:'M18',revision:'R4',cardId:'wbs4-e1'});
+  assert.equal(m.selected.recipient,'Reviewer · 12345678');
+  assert.match(agentStartTaskText(m),/Recorded task recipient: Reviewer · 12345678/);
+});
+
+test('a verified task packet retains its parent milestone qualification limits and source',()=>{
+  const fixture=structuredClone(p);
+  Object.assign(fixture.index.milestones.M18,{cap:'NOT_DEMONSTRATED',
+    canDo:'Read-only synthetic checks only; Writer remains HOLD.',
+    capSrc:'https://github.com/owner/repo/issues/99#issuecomment-123'});
+  fixture.cards['wbs4-e1'].state='VERIFIED';
+  const family=wbsGroups(fixture.index).find(g=>g.key==='wbs:4');
+  const text=agentStartTaskText(agentStartModel(fixture,{family,step:'M18',revision:'R4',cardId:'wbs4-e1'}));
+  assert.match(text,/Recorded milestone capability: NOT_DEMONSTRATED/);
+  assert.match(text,/Writer remains HOLD/);
+  assert.ok(text.includes(fixture.index.milestones.M18.capSrc));
+  assert.ok(!text.includes('Task ID: wbs4-e1-specialist'));
 });
 

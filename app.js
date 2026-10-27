@@ -139,13 +139,20 @@ function site() {
 }
 
 function route() {
-  const [, pk, view, rev, family, step, cardId] = (hash || '').split('/');
+  const parts = (hash || '').split('/');
+  const [, pk, view, rev, family, step, cardId] = parts;
   const safe = (v) => { try { return v ? decodeURIComponent(v) : null; } catch { return null; } };
+  const knownProject = Object.hasOwn(state.data, pk);
+  const exactTask = view === 'start' && cardId !== undefined;
+  const routeError = exactTask && (!knownProject
+    ? 'Requested project ' + pk + ' is not recorded. No project or task was substituted.'
+    : parts.length !== 7 || !safe(rev) || !safe(family) || !safe(step) || !safe(cardId)
+      ? 'Requested task route is malformed (task ' + (cardId || 'empty ID') + '). No task was substituted.' : null);
   const active = state.projects.filter(isActive);
-  const key = state.data[pk] ? pk : (active[0] || state.projects[0] || {}).key;
+  const key = routeError ? null : knownProject ? pk : (active[0] || state.projects[0] || {}).key;
   const lessonIds = (state.data.learned?.lessons?.items || []).map(item => item.id);
   const choices = key === 'learned' ? ['progress', ...lessonIds] : VIEWS;
-  return { key, v: choices.includes(view) ? view : 'progress', rev: safe(rev), family: safe(family), step: safe(step), cardId: safe(cardId) };
+  return { key, v: choices.includes(view) ? view : 'progress', rev: safe(rev), family: safe(family), step: safe(step), cardId: safe(cardId), routeError };
 }
 
 // An older revision is opened read-only from the git commit it was last current in.
@@ -318,7 +325,13 @@ function render() {
     setup.append(el('p', null, 'Chat ids are not clickable in this browser yet. Open your private setup link once, or paste your links under "My links".'));
     root.append(setup);
   }
-  const { key, v, rev, family: routedFamily, step: routedStep, cardId: routedCard } = route();
+  const { key, v, rev, family: routedFamily, step: routedStep, cardId: routedCard, routeError } = route();
+  if (routeError) {
+    const error = el('p', 'banner agent-start-selection-error', routeError);
+    error.setAttribute('role', 'alert');
+    root.append(error);
+    return;
+  }
   const p = state.data[key];
   if (!p) { root.append(el('p', 'err', 'No project data.')); return; }
   const active = state.projects.filter(isActive).map((x) => state.data[x.key]);
