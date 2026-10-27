@@ -81,9 +81,6 @@ class Monitor(unittest.TestCase):
             self.scan(self.fetch(HEAD0))
         self.assertFalse(self.cache.exists())
 
-if __name__=="__main__":
-    unittest.main()
-
     def test_workflow_is_read_only_single_scope_and_restores_exact_baseline_path(self):
         wf=(Path(__file__).resolve().parents[1]/".github/workflows/native-source-watch.yml").read_text()
         self.assertIn("contents: read",wf)
@@ -97,3 +94,6 @@ if __name__=="__main__":
         self.assertIn("--baseline .pp-watch/ciifr-baseline.json",wf)
         self.assertIn("--cache .pp-watch/ciifr-baseline.json",wf)
         self.assertNotIn("pp_batch",wf)
+
+if __name__=="__main__":
+    unittest.main()
