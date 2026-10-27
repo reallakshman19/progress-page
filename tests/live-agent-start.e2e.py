@@ -63,6 +63,18 @@ def main():
             check("Owner outcome" in txt,"Owner outcome disclosure not exposed")
             check("Authority and evidence rules" in txt,"authority rules disclosure missing")
             check("CANDIDATE" in txt or "not demonstrated" in txt.lower(),"candidate boundary missing")
+            # Cold-start acceptance: exact scope, recorded evidence and permission
+            # boundary must be discoverable without an Oracle-written summary.
+            check(page.locator(".checkpoint-disclosure").count()==1,
+                  "WBS-scoped Agent Start needs a source-backed checkpoint")
+            page.locator(".checkpoint-disclosure > summary").click()
+            panel=page.locator(".checkpoint-disclosure .checkpoint")
+            check("New-agent source checklist" in panel.inner_text(),
+                  "New agent lacks a source/return checklist")
+            check("OUT_OF_SCOPE" in panel.inner_text() or "UNMAPPED" in panel.inner_text(),
+                  "Unbound Cycle may not impersonate a task assignment")
+            check("NOT an assignment" in panel.inner_text() or "do not transfer" in panel.inner_text().lower(),
+                  "Checkpoint must preserve the native permission boundary")
             urls=source_urls(page)
             check(any("github.com" in u for u in urls),"No authoritative GitHub source links")
             check(all(u.startswith("https://github.com/") for u in urls),"Non-native URL in starting sources")

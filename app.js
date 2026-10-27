@@ -1,18 +1,18 @@
 // Shell: loads the JSON, draws the project tabs and the views, refreshes every two minutes.
-import { el, link, tick, ago, whenText } from './util.js?v=32';
-import { buildSearchIndex, searchProgress } from './search.js?v=32';
-import { cycleSource, checkpointModel, renderCheckpoint } from './checkpoint.js?v=32';
-import { renderOracleContinuity } from './oracle-continuity.js?v=32';
-import { renderProgress, wbsPick, wbsGroups, wbsFamily, wbsRevisionScope, wbsRoute } from './progress.js?v=32';
-import { renderAgentStart } from './agent-start.js?v=32';
-import { renderLessons } from './lessons.js?v=32';
-import { renderActions, renderFixtures, renderProjectHome, openCount } from './actions.js?v=32';
-import { renderTimeline } from './timeline.js?v=32';
-import { tabsRow, archivedPanel, projectHead, revisionRow, isActive, HOME_VIEWS, HOME_SUBTABS, CONTINUITY_VIEWS, CONTINUITY_SUBTABS, PRIMARY_TABS, primaryTabActive } from './lifecycle.js?v=32';
-import { nudgesOf, openNudge } from './nudge.js?v=32';
-import { addProjectDialog, addRevisionDialog } from './briefs.js?v=32';
-import { loadLinks, takeLinksFromHash, linksPanel } from './links.js?v=32';
-import { rulesOf, holdOf, summary, needsAttention } from './triggers.js?v=32';
+import { el, link, tick, ago, whenText } from './util.js?v=33';
+import { buildSearchIndex, searchProgress } from './search.js?v=33';
+import { cycleSource, checkpointModel, renderCheckpoint } from './checkpoint.js?v=33';
+import { renderOracleContinuity } from './oracle-continuity.js?v=33';
+import { renderProgress, wbsPick, wbsGroups, wbsFamily, wbsRevisionScope, wbsRoute } from './progress.js?v=33';
+import { renderAgentStart } from './agent-start.js?v=33';
+import { renderLessons } from './lessons.js?v=33';
+import { renderActions, renderFixtures, renderProjectHome, openCount } from './actions.js?v=33';
+import { renderTimeline } from './timeline.js?v=33';
+import { tabsRow, archivedPanel, projectHead, revisionRow, isActive, HOME_VIEWS, HOME_SUBTABS, CONTINUITY_VIEWS, CONTINUITY_SUBTABS, PRIMARY_TABS, primaryTabActive } from './lifecycle.js?v=33';
+import { nudgesOf, openNudge } from './nudge.js?v=33';
+import { addProjectDialog, addRevisionDialog } from './briefs.js?v=33';
+import { loadLinks, takeLinksFromHash, linksPanel } from './links.js?v=33';
+import { rulesOf, holdOf, summary, needsAttention } from './triggers.js?v=33';
 
 const LIVE_DATA = 'https://reallakshman19.github.io/progress-page/data/';
 const q = new URLSearchParams(location.search);

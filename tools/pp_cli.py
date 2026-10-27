@@ -16,6 +16,7 @@ Run from the repository root:  python tools/pp_cli.py [--data data] <command> ..
   nudge add|done|withdraw                                   instructions queued for the coordinator ('Nudge +')
   reconcile --project KEY --source GITHUB_URL [--expected-head SHA] [--card ID]  source facts and drift triggers (read-only)
   propose --project KEY --source GITHUB_URL --actor NAME [--card ID] [--expected-head SHA] [--output proposal.json]  reviewable source reference proposal (no data write)
+  watch --project KEY [--baseline prior.json] [--limit 25]   read-only native source delta scan (no Page/event writes)
   inputs --actor WHO                                        the Owner's replies and nudges that arrived as GitHub issues, with the command that records each
   check [--private] [--base REF]    triggers [--json]    local OUT [--links F] [--prerender BROWSER]    links FILE
   bootstrap DIR --repo OWNER/NAME --page URL                copy the page and these tools into a new repository
@@ -167,6 +168,10 @@ def build():
     p.add_argument("--expected-head")
     p.add_argument("--card")
     p.add_argument("--json", action="store_true")
+    p = top.add_parser("watch")
+    p.add_argument("--project", required=True)
+    p.add_argument("--baseline", help="prior scan JSON for material-delta comparison; not Page project data")
+    p.add_argument("--limit", type=int, default=25, help="max distinct recorded native source URLs to examine (1..100)")
     p = top.add_parser("propose")
     p.add_argument("--project", required=True)
     p.add_argument("--source", required=True)
@@ -239,6 +244,9 @@ def run(a):
     if c == "reconcile":
         import pp_reconcile
         return sys.exit(pp_reconcile.run(d, a.project, a.source, a.expected_head, a.card, a.json))
+    if c == "watch":
+        import pp_watch
+        return sys.exit(pp_watch.run(d, a.project, a.limit, a.baseline))
     if c == "propose":
         import pp_propose
         return sys.exit(pp_propose.run(d, a.project, a.source, a.actor, a.card, a.expected_head, a.output))
