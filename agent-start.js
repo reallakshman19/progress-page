@@ -133,6 +133,12 @@ export function renderAgentStart(root, project, opts = {}) {
   const heading=el('div','agent-start-head');
   heading.append(el('h3',null,'Agent Start · '+m.scope),el('span','pill',m.revision));
   section.append(heading);
+  if(m.selectionError && m.mode !== 'step') {
+    const err=el('p','banner agent-start-selection-error',
+      'Requested task '+m.requestedCardId+' cannot be resolved in this scope. No alternative task was selected. Check the source link and WBS path.');
+    err.setAttribute('role','alert');
+    section.append(err);
+  }
   if(m.mode === 'choose') {
     section.append(el('p','agent-start-intro',
       'Select the WBS of the task you were given. This page does not assign work or rank unfinished items.'));
@@ -235,9 +241,8 @@ export function renderAgentStart(root, project, opts = {}) {
       const taskLink=nav(m.selected?.id===w.id ? 'Selected task link' : 'Select this task',m.family.key,m.focused.id,
         'agent-start-task-link',w.id);
       taskLink.setAttribute('aria-label','Open task '+w.id+' · '+w.label);
-      row.append(taskLink);
+      row.append(h,taskLink);
       if(m.selected?.id===w.id)row.className+=' agent-start-selected';
-      row.append(h);
       row.append(el('p','agent-start-next','Recorded next: '+(w.next?short(w.next):'No next action recorded')));
       row.append(el('p','agent-start-actor','Actor: '+w.nextActor));
       const links=el('div','agent-start-links');
