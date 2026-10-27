@@ -124,7 +124,7 @@ def main():
                   "Selected task export loses identity or limitations")
             check("WORK ITEM " not in packet,"A single task export contains milestone bodies")
             check("not an acknowledged assignment" in packet,"Assignment incorrectly implied")
-            check(page.locator(".agent-start-packet-preview").first.inner_text()==packet,
+            check(page.locator(".agent-start-packet-preview").first.text_content()==packet,
                   "Preview and clipboard bytes differ")
             check("agent-start-selected" in selected,"Task selection not visible")
             capture(page,"00b-selected-m18-task")
