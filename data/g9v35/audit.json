@@ -1991,6 +1991,48 @@
       "list": "intent",
       "op": "add",
       "rev": "R3"
+    },
+    {
+      "seq": 147,
+      "id": "G9V35-R-0147",
+      "previous_id": "G9V35-R-0146",
+      "at": "2026-10-27T14:50:16Z",
+      "kind": "STATE",
+      "actor": "OTM",
+      "summary": "Correction: NLM B2 page was built and accepted (O5 WBS-PROTOTYPES, 25 Oct); earlier 'no return found' was stale",
+      "source": "OWNER_PRIVATE_REF:G9O5-10-WBS-PROTOTYPES",
+      "card": "builder",
+      "before": "UNKNOWN",
+      "after": "VERIFIED",
+      "rev": "R3"
+    },
+    {
+      "seq": 148,
+      "id": "G9V35-R-0148",
+      "previous_id": "G9V35-R-0147",
+      "at": "2026-10-27T14:50:17Z",
+      "kind": "STATE",
+      "actor": "OTM",
+      "summary": "Correction: the 2.3 pack is inside the accepted B2 page",
+      "source": "OWNER_PRIVATE_REF:G9O5-10-WBS-PROTOTYPES",
+      "card": "content",
+      "before": "SUBMITTED",
+      "after": "VERIFIED",
+      "rev": "R3"
+    },
+    {
+      "seq": 149,
+      "id": "G9V35-R-0149",
+      "previous_id": "G9V35-R-0148",
+      "at": "2026-10-27T14:50:18Z",
+      "kind": "STATE",
+      "actor": "OTM",
+      "summary": "O5 found active on 27 Oct: WPE intake pilot and draft PR #310",
+      "source": "https://github.com/reallakshman19/Grade9v3.5/pull/310",
+      "card": "oracle5",
+      "before": "UNKNOWN",
+      "after": "SUBMITTED",
+      "rev": "R3"
     }
   ]
 }

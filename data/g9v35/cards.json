@@ -372,15 +372,17 @@
       "role": "Oracle",
       "chat": "oracle5"
     },
-    "state": "UNKNOWN",
-    "now": "NLM history kept (WBS 1 QRT-P1 DONE/B1; 2.1-2.3). Current g9v35 routing is Oracle 6ae0484d (Owner 27 Oct). O5's present activity UNKNOWN; not retired.",
+    "state": "SUBMITTED",
+    "now": "27 Oct to 10:36: WPE JEE Main intake (10 candidates) + harvester review; draft PR #310 c44f8e0e; its local implementer brief PREPARED, NOT ISSUED; NLM B3/B4 cards written, unbuilt. Two Oracles now touch WPE.",
     "next": {
-      "actor": "Oracle 6ae0484d",
-      "text": "reconcile O5's open NLM items before any new write overlaps them"
+      "actor": "YOU",
+      "text": "decide which Oracle leads the WPE pilot (6ae0484d or O5); the other goes to standby"
     },
-    "flags": [],
-    "updatedAt": "2026-10-27T13:55:35Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6443730169"
+    "flags": [
+      "needs-you"
+    ],
+    "updatedAt": "2026-10-27T14:50:18Z",
+    "src": "https://github.com/reallakshman19/Grade9v3.5/pull/310"
   },
   "builder": {
     "order": 14,
@@ -390,15 +392,15 @@
     "who": {
       "role": "Agent"
     },
-    "state": "UNKNOWN",
-    "now": "WBS 2.4 NLM page: Owner launch recorded 24 Oct; chat id UNKNOWN; no compiled-page return found in #128; not stopped or cancelled. WPE is now the first Physics priority.",
+    "state": "VERIFIED",
+    "now": "NLM B2 page (WBS 2.4-2.5) built; Owner accepted it for prototype trial use ('all cores seen, ok'); frozen at standalone/study/nlm-core1ab/index.html sha256 1f943b62. Corrects the 27 Oct 'no return found' entry.",
     "next": {
       "actor": "Oracle 6ae0484d",
-      "text": "check 2.4's actual side effects and give it an explicit disposition"
+      "text": "reuse B2 as the donor page for the WPE pilot; build beside it, never change it"
     },
     "flags": [],
-    "updatedAt": "2026-10-27T13:55:35Z",
-    "src": "https://github.com/reallakshman19/Common/blob/1a450b3e3e58fc0851578f512c8b0857e55c404e/relay/AGENT_WORK/Grade9v3.5/oracle-continuity-20261027-6ae0484d/ORACLE_CONTINUITY.md"
+    "updatedAt": "2026-10-27T14:50:16Z",
+    "src": "OWNER_PRIVATE_REF:G9O5-10-WBS-PROTOTYPES"
   },
   "checker": {
     "order": 15,
@@ -423,15 +425,15 @@
     "who": {
       "chat": "content"
     },
-    "state": "SUBMITTED",
-    "now": "Historical NLM WBS 2.3: DRAFT 10 Core1A/1B pairs; O5 structural PASS; 4 D4 UNCERTAIN; not WPE evidence or academic approval",
+    "state": "VERIFIED",
+    "now": "NLM 2.3 pack (10 Core1A/1B pairs, 14 shared concepts) is inside the accepted B2 page; its 4 D4 ratings stay UNCERTAIN (academic claims per tile).",
     "next": {
-      "actor": "Oracle 6ae0484d",
-      "text": "dispose of the NLM 2.3 pack together with 2.4"
+      "actor": "-",
+      "text": "none; donor content for the WPE pilot"
     },
     "flags": [],
-    "updatedAt": "2026-10-27T13:55:35Z",
-    "src": "https://github.com/reallakshman19/Common/blob/1a450b3e3e58fc0851578f512c8b0857e55c404e/relay/AGENT_WORK/Grade9v3.5/oracle-continuity-20261027-6ae0484d/ORACLE_CONTINUITY.md"
+    "updatedAt": "2026-10-27T14:50:17Z",
+    "src": "OWNER_PRIVATE_REF:G9O5-10-WBS-PROTOTYPES"
   },
   "oracle6ae": {
     "order": 17,
