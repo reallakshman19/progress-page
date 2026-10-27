@@ -549,13 +549,15 @@
       "role": "Oracle"
     },
     "state": "IN_PROGRESS",
-    "now": "S0: slice WEP-07 (010,018,019,020,021); fresh checker on targets + provenance",
+    "now": "S0 BLOCKED: 5 WEP-07 items not confirmed NSEP originals; Core2 blocked",
     "next": {
-      "actor": "fresh checker",
-      "text": "return S0 targets and provenance verdicts"
+      "actor": "YOU",
+      "text": "choose the Core2 source for WEP-07"
     },
-    "flags": [],
-    "updatedAt": "2026-10-27T18:34:21Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6450425092"
+    "flags": [
+      "needs-you"
+    ],
+    "updatedAt": "2026-10-27T18:37:11Z",
+    "src": "https://github.com/reallakshman19/Grade9v3.5/issues/311#issuecomment-6450502781"
   }
 }
