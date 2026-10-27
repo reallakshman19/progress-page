@@ -1,0 +1,58 @@
+name: Native source watch (read-only CIIFR pilot)
+on:
+  schedule:
+    - cron: '17 5 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: native-source-watch-ciifr
+  cancel-in-progress: false
+
+jobs:
+  observe:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Restore latest ephemeral complete observation
+        uses: actions/cache/restore@v4
+        with:
+          path: .pp-watch/ciifr-baseline.json
+          key: pp-ciifr-native-observation-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            pp-ciifr-native-observation-
+      - name: Scan only linked, public native sources
+        id: watch
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          python -B tools/pp_watch_job.py \
+            --data data \
+            --project ciifr \
+            --limit 100 \
+            --baseline .pp-watch/ciifr-baseline.json \
+            --report .pp-watch/ciifr-report.json \
+            --cache .pp-watch/ciifr-baseline.json
+      - name: Save only a complete next ephemeral observation
+        if: steps.watch.outputs.complete == 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: .pp-watch/ciifr-baseline.json
+          key: pp-ciifr-native-observation-${{ github.run_id }}-${{ github.run_attempt }}
+      - name: Retain change or health report only when needed
+        if: steps.watch.outputs.needs_review == 'true' || steps.watch.outputs.health_unknown == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: ciifr-native-source-review
+          path: .pp-watch/ciifr-report.json
+          retention-days: 7
+          if-no-files-found: error
