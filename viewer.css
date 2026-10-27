@@ -442,6 +442,24 @@ main{width:100%;min-width:0}
 @media(max-width:620px){.op{grid-template-columns:minmax(0,1fr)}}
 
 
+/* Source-projected Project/WBS checkpoints: compact by default except Home.
+   Never style a missing or stale canonical Cycle as a validated assignment. */
+.checkpoint,.checkpoint-disclosure{min-width:0;max-width:100%;overflow-wrap:anywhere}
+.checkpoint{border:1px solid var(--bd);border-radius:10px;background:var(--card);padding:14px 16px;margin:0 0 16px}
+.checkpoint-heading{display:flex;gap:8px;align-items:baseline;flex-wrap:wrap;justify-content:space-between}
+.checkpoint-heading h3{font-size:16px}
+.checkpoint-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.checkpoint-fact{min-width:0;margin-top:10px}
+.checkpoint-fact p{margin:4px 0 5px;overflow-wrap:anywhere}
+.checkpoint-label{font-size:11px;letter-spacing:.03em;font-weight:700;text-transform:uppercase;color:var(--mut)}
+.checkpoint-fact a,.checkpoint-evidence a{font-size:12px}
+.checkpoint-cycle-state{font-weight:600;font-size:12px}
+.checkpoint-evidence{margin:3px 0}
+.checkpoint-footer{font-size:11px;margin:12px 0 0}
+.checkpoint-disclosure{margin:0 0 14px;border:1px solid var(--bd);border-radius:9px}
+.checkpoint-disclosure>summary{cursor:pointer;padding:9px 13px;font-weight:600;background:var(--card)}
+.checkpoint-disclosure>.checkpoint{border:0;margin:0;background:var(--bg)}
+@media(max-width:719px){.checkpoint-grid{grid-template-columns:minmax(0,1fr)}}
 /* Task identity is explicit; related milestone records remain accessible. */
 .agent-start-brief{border:1px solid var(--acc);border-radius:9px;background:var(--card);padding:14px;margin:12px 0 18px}
 .agent-start-brief h4{margin:0 0 8px}

@@ -1,17 +1,18 @@
 // Shell: loads the JSON, draws the project tabs and the views, refreshes every two minutes.
-import { el, link, tick, ago, whenText } from './util.js?v=31';
-import { buildSearchIndex, searchProgress } from './search.js?v=31';
-import { renderOracleContinuity } from './oracle-continuity.js?v=31';
-import { renderProgress, wbsPick, wbsGroups, wbsFamily, wbsRevisionScope, wbsRoute } from './progress.js?v=31';
-import { renderAgentStart } from './agent-start.js?v=31';
-import { renderLessons } from './lessons.js?v=31';
-import { renderActions, renderFixtures, renderProjectHome, openCount } from './actions.js?v=31';
-import { renderTimeline } from './timeline.js?v=31';
-import { tabsRow, archivedPanel, projectHead, revisionRow, isActive, HOME_VIEWS, HOME_SUBTABS, CONTINUITY_VIEWS, CONTINUITY_SUBTABS, PRIMARY_TABS, primaryTabActive } from './lifecycle.js?v=31';
-import { nudgesOf, openNudge } from './nudge.js?v=31';
-import { addProjectDialog, addRevisionDialog } from './briefs.js?v=31';
-import { loadLinks, takeLinksFromHash, linksPanel } from './links.js?v=31';
-import { rulesOf, holdOf, summary, needsAttention } from './triggers.js?v=31';
+import { el, link, tick, ago, whenText } from './util.js?v=32';
+import { buildSearchIndex, searchProgress } from './search.js?v=32';
+import { cycleSource, checkpointModel, renderCheckpoint } from './checkpoint.js?v=32';
+import { renderOracleContinuity } from './oracle-continuity.js?v=32';
+import { renderProgress, wbsPick, wbsGroups, wbsFamily, wbsRevisionScope, wbsRoute } from './progress.js?v=32';
+import { renderAgentStart } from './agent-start.js?v=32';
+import { renderLessons } from './lessons.js?v=32';
+import { renderActions, renderFixtures, renderProjectHome, openCount } from './actions.js?v=32';
+import { renderTimeline } from './timeline.js?v=32';
+import { tabsRow, archivedPanel, projectHead, revisionRow, isActive, HOME_VIEWS, HOME_SUBTABS, CONTINUITY_VIEWS, CONTINUITY_SUBTABS, PRIMARY_TABS, primaryTabActive } from './lifecycle.js?v=32';
+import { nudgesOf, openNudge } from './nudge.js?v=32';
+import { addProjectDialog, addRevisionDialog } from './briefs.js?v=32';
+import { loadLinks, takeLinksFromHash, linksPanel } from './links.js?v=32';
+import { rulesOf, holdOf, summary, needsAttention } from './triggers.js?v=32';
 
 const LIVE_DATA = 'https://reallakshman19.github.io/progress-page/data/';
 const q = new URLSearchParams(location.search);
@@ -41,7 +42,8 @@ function mergedLinks() {
   return Object.assign({}, window.__PP_LINKS__ || {}, loadLinks());
 }
 
-const state = { projects: [], data: {}, site: {}, links: mergedLinks(), error: null, panel: false, offline: false, archivedOpen: false, rev: null, paths: null, repo: {}, searchOpen: false, searchQuery: '', searchIndex: [] };
+const state = { projects: [], data: {}, site: {}, links: mergedLinks(), error: null, panel: false, offline: false, archivedOpen: false, rev: null, paths: null, repo: {}, searchOpen: false, searchQuery: '', searchIndex: [],
+  pageFetch: { status:'unknown', observedAt:null }, cycles: {} };
 
 // The local hub server (127.0.0.1) serves each project's private coding and reference folders; the website never has them.
 async function loadPaths() {
@@ -101,6 +103,26 @@ async function loadAll(getter) {
   return { projects, data, site: pj.site || {} };
 }
 
+// The Cycle is read ONLY when the project's own existing public metadata
+// explicitly selects a scoped Common source. There is no key-name inference.
+async function loadCycles(projects) {
+  const next = {};
+  await Promise.all(projects.map(async p => {
+    const source=cycleSource(p.cycle,p.key);
+    if (!source) return;
+    next[p.key]={status:'loading',observedAt:null,record:null};
+    try {
+      const response=await withTimeout(fetch(source,{cache:'no-store'}),6500);
+      if(!response.ok)throw Error('HTTP '+response.status);
+      const record=await withTimeout(response.json(),3000);
+      next[p.key]={status:'ok',observedAt:new Date().toISOString(),record};
+    } catch(error) {
+      next[p.key]={status:'error',observedAt:new Date().toISOString(),record:null,
+        error:String(error.message||error)};
+    }
+  }));
+  state.cycles=next;
+}
 async function refresh() {
   try {
     const r = await withTimeout(loadAll(get), 12000);
@@ -110,8 +132,12 @@ async function refresh() {
     state.searchIndex = buildSearchIndex(r.projects, r.data);
     state.offline = false;
     state.error = null;
+    state.pageFetch={status:'ok',observedAt:new Date().toISOString()};
+    await loadCycles(r.projects);
   } catch (e) {
+    // Retained data is not fresh evidence; never advertise 'live' after failure.
     state.error = String(e.message || e);
+    state.pageFetch={status:'error',observedAt:new Date().toISOString(),error:state.error};
   }
 }
 
@@ -126,6 +152,7 @@ async function start() {
       state.site = r.site;
       state.searchIndex = buildSearchIndex(r.projects, r.data);
       state.offline = true;
+      state.pageFetch={status:'offline',observedAt:s.builtAt||null};
       render();
     } catch (e) { /* no usable snapshot */ }
   }
@@ -205,6 +232,11 @@ function sumOf(p) {
 function statusLine(p) {
   const pr = p.index.project || {};
   const line = el('div', 'live');
+  if(state.pageFetch.status==='error') {
+    line.className='live stale';
+    line.append('Page source fetch FAILED · retained previously loaded data · last check '+whenText(state.pageFetch.observedAt));
+    return line;
+  }
   if (state.offline) {
     line.className = 'live stale';
     line.append('Offline copy from ' + whenText((snapshot() || {}).builtAt) + '. Open it online to read the live data.');
@@ -464,6 +496,19 @@ function render() {
     root.append(subnav);
   }
   const body = el('div', 'body');
+  const checkOptions = { family, step, historical:!!older,
+    binding:p.cycle||null,cycle:state.cycles[key]?.record||null,
+    cycleCheck:state.cycles[key]||null,pageFetch:state.pageFetch };
+  const showCheckpoint = (expanded=false) => {
+    const model=checkpointModel(view,checkOptions);
+    if(expanded) renderCheckpoint(body,model,{projectKey:key});
+    else {
+      const d=el('details','checkpoint-disclosure');
+      d.append(el('summary',null,'Evidence checkpoint · '+model.scope+' · '+model.revision));
+      renderCheckpoint(d,model,{projectKey:key,isWbs:!!family||!!step});
+      body.append(d);
+    }
+  };
   if (older && (!rv || rv.status !== 'ready')) {
     body.append(el('p', 'muted', rv && rv.status === 'error' ? 'This revision cannot be shown here.' : 'Loading...'));
   } else {
@@ -487,6 +532,8 @@ function render() {
       body.append(info);
     }
     const sv = shownStep ? stepView(view, [shownStep]) : family ? stepView(view, family.steps.map(x => x.key)) : view;
+    if(v==='home') showCheckpoint(true);
+    else if(v==='progress' || v==='continuity') showCheckpoint(false);
     if (v === 'continuity') {
       const central = el('section', 'continuity-central');
       central.append(el('h3', null, 'Continuity / Onboard Central'),
@@ -506,7 +553,10 @@ function render() {
       body.append(central);
     } else if (v.startsWith('home')) renderProjectHome(body, view, v, !!older);
     else if (v === 'progress') renderProgress(body, view, ctx);
-    else if (v === 'start') renderAgentStart(body, view, { family, step, cardId: routedCard, revision: rev || cur?.id, nav: navLink, projectKey: key, readOnly: ctx.readOnly });
+    else if (v === 'start') {
+      renderAgentStart(body, view, { family, step, cardId: routedCard, revision: rev || cur?.id, nav: navLink, projectKey: key, readOnly: ctx.readOnly });
+      if(family || step) showCheckpoint(false); // The scoped native task stays first.
+    }
     else if (v === 'actions') renderActions(body, sv);
     else if (v === 'oracle-continuity') renderOracleContinuity(body, view);
     else if (v === 'fixtures') renderFixtures(body, sv.fixtures, older ? '' : key, view.fixtures);
