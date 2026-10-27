@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { projectHomeModel, relayInputRecords, projectRoadmapGroups, renderProjectHome } from '../actions.js';
-import { HOME_VIEWS, HOME_SUBTABS, PRIMARY_TABS, primaryTabActive } from '../lifecycle.js';
+import { HOME_VIEWS, HOME_SUBTABS, CONTINUITY_VIEWS, CONTINUITY_SUBTABS, PRIMARY_TABS, primaryTabActive } from '../lifecycle.js';
 
 const source = { t: 'Project concept note: Owner use and source model', u: 'https://github.com/example/repo/blob/abc/docs/concept.md', s: 'CONCEPT_NOTE' };
 const architecture = { t: 'Method C engineering contract and topology', u: 'https://github.com/example/repo/blob/abc/docs/architecture.md', s: 'ARCHITECTURE_CONCEPT' };
@@ -127,22 +127,26 @@ test('Home overview never expands the roadmap, and Sources collapses large searc
   } finally {globalThis.document=prior;}
 });
 
-test('Owner actions, Oracle continuity, Fixtures and Timeline are Project Home subtabs', () => {
+test('primary navigation prioritizes Project Home, WBS and a continuity central with stable native routes', () => {
   const primary = PRIMARY_TABS.map(([route]) => route);
   const home = HOME_SUBTABS.map(([route]) => route);
-  assert.deepEqual(primary, ['start', 'home', 'progress']);
-  assert.deepEqual(home, ['home','home-roadmap','home-sources','home-risks','oracle-continuity','actions','fixtures','timeline']);
+  const continuity = CONTINUITY_SUBTABS.map(([route]) => route);
+  assert.deepEqual(primary, ['home', 'progress', 'continuity']);
+  assert.deepEqual(home, ['home','home-roadmap','home-sources','actions','timeline']);
+  assert.deepEqual(continuity, ['continuity','start','oracle-continuity','home-risks','fixtures']);
   assert.deepEqual(HOME_VIEWS, home);
-  assert.equal(new Set(home).size, home.length, 'no duplicate Home destinations');
+  assert.deepEqual(CONTINUITY_VIEWS, continuity);
+  assert.equal(new Set([...home,...continuity]).size,home.length+continuity.length);
   for (const v of home) {
     assert.equal(primaryTabActive('home',v),true);
-    assert.equal(primaryTabActive('progress',v),false);
-    assert.equal(primaryTabActive('actions',v),false);
+    assert.equal(primaryTabActive('continuity',v),false);
   }
-  assert.equal(primaryTabActive('start','start'),true);
-  assert.equal(primaryTabActive('start','progress'),false);
+  for (const v of continuity) {
+    assert.equal(primaryTabActive('continuity',v),true,'legacy route '+v);
+    assert.equal(primaryTabActive('home',v),false);
+  }
   assert.equal(primaryTabActive('progress','progress'),true);
+  assert.equal(primaryTabActive('progress','start'),false);
+  assert.equal(primaryTabActive('continuity','progress'),false);
   assert.equal(primaryTabActive('actions','actions'),false);
-  assert.equal(primaryTabActive('home','actions'),true);
-  assert.equal(primary.includes('actions')||primary.includes('fixtures')||primary.includes('timeline'),false);
 });

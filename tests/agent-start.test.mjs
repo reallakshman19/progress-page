@@ -75,9 +75,21 @@ test('empty and historical contexts never fabricate tasks or sources',()=>{
   assert.match(agentStartText(m),/verify native evidence/);
   assert.equal(m.revision,'R1');
 });
-test('Agent Start remains a primary read-only view',()=>{
-  assert.ok(PRIMARY_TABS.some(([id,name])=>id==='start'&&name==='Agent Start'));
+test('Agent Start stays source-backed in Continuity Central, without becoming a new assignment',()=>{
+  assert.ok(!PRIMARY_TABS.some(([id])=>id==='start'));
+  assert.ok(PRIMARY_TABS.some(([id])=>id==='continuity'));
   assert.equal(JSON.stringify(p),original);
+});
+test('Doc to Table workstream chooser carries existing seven recorded descriptions',()=>{
+  const doc=JSON.parse(readFileSync(new URL('../data/doc2table/index.json',import.meta.url),'utf8'));
+  const model=agentStartModel({index:doc,cards:{}});
+  assert.equal(model.choices.length,7);
+  for(const g of model.choices){
+    const originalMilestone=Object.values(doc.milestones).find(m=>m.wbs===g.key.slice(4));
+    assert.equal(g.title,originalMilestone.name);
+    assert.equal(g.description,originalMilestone.full);
+    assert.ok(g.description.length>20);
+  }
 });
 
 

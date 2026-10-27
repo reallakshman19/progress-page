@@ -52,7 +52,7 @@ def main():
             page=context.new_page()
             page.on("pageerror",lambda error:errors.append(str(error)))
             for project in ("doc2table","ciifr","g9v35"):
-                for view in ("progress","home","home-roadmap","home-sources","home-risks","actions","fixtures","timeline","start"):
+                for view in ("progress","home","home-roadmap","home-sources","home-risks","actions","fixtures","timeline","start","continuity","oracle-continuity"):
                     route=project+"/"+view
                     if view=="start":route=project+"/start"
                     def run_one():
@@ -86,6 +86,21 @@ def main():
                                 check(len(g["grid"].split())==3,"tablet WBS grid not 3 columns")
                             if width==390:
                                 check(len(g["grid"].split())==1,"phone WBS grid not one column")
+                        if view=="continuity":
+                            check(page.locator("nav.continuity-subtabs a").count()==5,
+                                  "Continuity central must show its five local destinations")
+                            check(page.locator(".continuity-central .home-tile").count()==4,
+                                  "Continuity landing must link all four legacy sections")
+                        if view in ("start","oracle-continuity","home-risks","fixtures"):
+                            check(page.locator("nav.continuity-subtabs").count()==1,
+                                  "Legacy continuity route must live under new Central tab")
+                            check(page.locator("nav.views:not(.continuity-subtabs):not(.home-subtabs):not(.lesson-subtabs) a.on").count()==1,
+                                  "Exactly one primary view must be active")
+                        if view=="start" and project=="doc2table":
+                            check(page.locator(".agent-start-choice-description").count()==7,
+                                  "Doc to Table Agent Start must expose seven source-recorded WBS purposes")
+                            check("Source hashes" in page.locator(".agent-start-choices").inner_text(),
+                                  "WBS 1 recorded description not visible")
                         if view=="home":
                             check(page.locator(".ptitle .project-brief").count()==0,
                                   "project overview Owner aim should remain visible")

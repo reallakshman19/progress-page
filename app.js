@@ -1,17 +1,17 @@
 // Shell: loads the JSON, draws the project tabs and the views, refreshes every two minutes.
-import { el, link, tick, ago, whenText } from './util.js?v=29';
-import { buildSearchIndex, searchProgress } from './search.js?v=29';
-import { renderOracleContinuity } from './oracle-continuity.js?v=29';
-import { renderProgress, wbsPick, wbsGroups, wbsFamily, wbsRevisionScope, wbsRoute } from './progress.js?v=29';
-import { renderAgentStart } from './agent-start.js?v=29';
-import { renderLessons } from './lessons.js?v=29';
-import { renderActions, renderFixtures, renderProjectHome, openCount } from './actions.js?v=29';
-import { renderTimeline } from './timeline.js?v=29';
-import { tabsRow, archivedPanel, projectHead, revisionRow, isActive, HOME_VIEWS, HOME_SUBTABS, PRIMARY_TABS, primaryTabActive } from './lifecycle.js?v=29';
-import { nudgesOf, openNudge } from './nudge.js?v=29';
-import { addProjectDialog, addRevisionDialog } from './briefs.js?v=29';
-import { loadLinks, takeLinksFromHash, linksPanel } from './links.js?v=29';
-import { rulesOf, holdOf, summary, needsAttention } from './triggers.js?v=29';
+import { el, link, tick, ago, whenText } from './util.js?v=30';
+import { buildSearchIndex, searchProgress } from './search.js?v=30';
+import { renderOracleContinuity } from './oracle-continuity.js?v=30';
+import { renderProgress, wbsPick, wbsGroups, wbsFamily, wbsRevisionScope, wbsRoute } from './progress.js?v=30';
+import { renderAgentStart } from './agent-start.js?v=30';
+import { renderLessons } from './lessons.js?v=30';
+import { renderActions, renderFixtures, renderProjectHome, openCount } from './actions.js?v=30';
+import { renderTimeline } from './timeline.js?v=30';
+import { tabsRow, archivedPanel, projectHead, revisionRow, isActive, HOME_VIEWS, HOME_SUBTABS, CONTINUITY_VIEWS, CONTINUITY_SUBTABS, PRIMARY_TABS, primaryTabActive } from './lifecycle.js?v=30';
+import { nudgesOf, openNudge } from './nudge.js?v=30';
+import { addProjectDialog, addRevisionDialog } from './briefs.js?v=30';
+import { loadLinks, takeLinksFromHash, linksPanel } from './links.js?v=30';
+import { rulesOf, holdOf, summary, needsAttention } from './triggers.js?v=30';
 
 const LIVE_DATA = 'https://reallakshman19.github.io/progress-page/data/';
 const q = new URLSearchParams(location.search);
@@ -20,7 +20,7 @@ const isWeb = location.protocol === 'http:' || location.protocol === 'https:';
 const BASE = new URL((q.get('data') || (isWeb ? 'data' : LIVE_DATA)).replace(/\/?$/, '/'), isWeb ? location.href : LIVE_DATA);
 const FILES = ['index', 'cards', 'actions', 'fixtures', 'nudges', 'audit'];
 const OPTIONAL = { nudges: { schema: 3, nudges: {} }, audit: { events: [] } };
-const VIEWS = ['start', 'progress', ...HOME_VIEWS, 'actions', 'fixtures', 'timeline'];
+const VIEWS = ['progress', ...HOME_VIEWS, ...CONTINUITY_VIEWS];
 const snapshot = () => window.__PP_SNAPSHOT__ || null;
 const withTimeout = (p, ms) => Promise.race([p, new Promise((_, rej) => setTimeout(() => rej(new Error('timeout')), ms))]);
 
@@ -405,7 +405,7 @@ function render() {
     go(href);
     if (v === 'start') window.scrollTo(0, 0);
   };
-  if (groups.length && !HOME_VIEWS.includes(v) && v !== 'start') {
+  if (groups.length && !HOME_VIEWS.includes(v) && !CONTINUITY_VIEWS.includes(v)) {
     const families = el('nav', 'wbs-family-nav');
     families.setAttribute('aria-label', 'WBS families');
     [{ key: null, label: 'All WBS' }, ...groups].forEach(g => {
@@ -429,15 +429,14 @@ function render() {
       appendWbsNav(children);
     }
   }
-  const bar = HOME_VIEWS.includes(v) || v === 'start' ? null : repoBar(view.index, groups.length ? step : null, older ? null : state.repo[key]);
+  const bar = HOME_VIEWS.includes(v) || CONTINUITY_VIEWS.includes(v) ? null : repoBar(view.index, groups.length ? step : null, older ? null : state.repo[key]);
   if (bar) root.append(bar);
   const views = el('nav', 'views');
   PRIMARY_TABS.forEach(([id, label]) => {
     const n = id === 'actions' ? openCount(view.actions) : 0;
     const on = primaryTabActive(id, v);
     // Entering Project Home starts at the project-wide view, not an invisible WBS-filtered one.
-    const targetSuffix = id === 'home' ? (older ? '/' + encodeURIComponent(rev) : '') :
-      id === 'start' && v === 'start' && step && routedCard ? navSuffix + '/' + encodeURIComponent(routedCard) : navSuffix;
+    const targetSuffix = id === 'home' || id === 'continuity' ? (older ? '/' + encodeURIComponent(rev) : '') : navSuffix;
     const a = navLink('#/' + key + '/' + id + targetSuffix, label, 'view' + (on ? ' on' : ''));
     if (on) a.setAttribute('aria-current', 'page');
     const bd = badge(n);
@@ -449,18 +448,20 @@ function render() {
   const firstContext = root.querySelector('.wbs-family-nav') || bar;
   if (firstContext) root.insertBefore(views, firstContext);
   else root.append(views);
-  if (HOME_VIEWS.includes(v)) {
-    const homeNav = el('nav', 'views home-subtabs');
-    homeNav.setAttribute('aria-label', 'Project Home sections');
-    HOME_SUBTABS.forEach(([id, label]) => {
-      // Home subtabs start project-wide; legacy WBS-scoped deep links remain readable.
-      const homeSuffix = older ? '/' + encodeURIComponent(rev) : '';
-      const a = navLink('#/' + key + '/' + id + homeSuffix, label, 'view' + (id === v ? ' on' : ''));
+  if (HOME_VIEWS.includes(v) || CONTINUITY_VIEWS.includes(v)) {
+    const inContinuity = CONTINUITY_VIEWS.includes(v);
+    const subtabs = inContinuity ? CONTINUITY_SUBTABS : HOME_SUBTABS;
+    const subnav = el('nav', 'views ' + (inContinuity ? 'continuity-subtabs' : 'home-subtabs'));
+    subnav.setAttribute('aria-label', inContinuity ? 'Continuity and onboarding sections' : 'Project Home sections');
+    subtabs.forEach(([id, label]) => {
+      // Original route identities remain stable, including revision-specific task links.
+      const suffix = older ? '/' + encodeURIComponent(rev) : '';
+      const a = navLink('#/' + key + '/' + id + suffix, label, 'view' + (id === v ? ' on' : ''));
       if (id === 'actions') { const n = openCount(view.actions); if (n) a.append(badge(n)); }
       if (id === v) a.setAttribute('aria-current', 'page');
-      homeNav.append(a);
+      subnav.append(a);
     });
-    root.append(homeNav);
+    root.append(subnav);
   }
   const body = el('div', 'body');
   if (older && (!rv || rv.status !== 'ready')) {
@@ -486,7 +487,24 @@ function render() {
       body.append(info);
     }
     const sv = shownStep ? stepView(view, [shownStep]) : family ? stepView(view, family.steps.map(x => x.key)) : view;
-    if (v.startsWith('home')) renderProjectHome(body, view, v, !!older);
+    if (v === 'continuity') {
+      const central = el('section', 'continuity-central');
+      central.append(el('h3', null, 'Continuity / Onboard Central'),
+        el('p', 'muted', 'Source-backed task onboarding, Oracle continuity, risks, and input custody. These records do not create an assignment or demand another agent report.'));
+      const choices = el('div', 'home-tiles');
+      [
+        ['start','Agent Start','Select the exact WBS and task; copy scoped evidence'],
+        ['oracle-continuity','Oracle continuity','Review recorded succession and unresolved control'],
+        ['home-risks','Risks & handoffs','See work, blockers, decisions and custody'],
+        ['fixtures','Grounding fixtures','Inspect source and artifact references without assuming delivery'],
+      ].forEach(([id,label,detail]) => {
+        const card = navLink('#/' + key + '/' + id + (older ? '/' + encodeURIComponent(rev) : ''), label, 'home-tile');
+        card.append(el('span', 'home-tile-desc', detail));
+        choices.append(card);
+      });
+      central.append(choices);
+      body.append(central);
+    } else if (v.startsWith('home')) renderProjectHome(body, view, v, !!older);
     else if (v === 'progress') renderProgress(body, view, ctx);
     else if (v === 'start') renderAgentStart(body, view, { family, step, cardId: routedCard, revision: rev || cur?.id, nav: navLink, projectKey: key, readOnly: ctx.readOnly });
     else if (v === 'actions') renderActions(body, sv);

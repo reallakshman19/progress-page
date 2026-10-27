@@ -1,8 +1,8 @@
 // Nudge +: instructions queued for the coordinator (OTM, or the Oracle in standalone mode) to fold into its next message to an agent.
 // The agent does not read this list. The coordinator marks a line Done, with its source, once the line is in a nudge that was sent.
-import { el, link, whenText, copyText } from './util.js?v=29';
-import { dialog } from './popup.js?v=29';
-import { issueUrl, pageUrl } from './reply.js?v=29';
+import { el, link, whenText, copyText } from './util.js?v=30';
+import { dialog } from './popup.js?v=30';
+import { issueUrl, pageUrl } from './reply.js?v=30';
 
 const DRAFTS = 'pp-nudge-drafts';
 let draftMemory = {};
