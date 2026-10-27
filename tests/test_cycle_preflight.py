@@ -33,7 +33,7 @@ class Preflight(unittest.TestCase):
                "next":{"status":"AWAIT_OWNER","recipient_role":"owner","pull_request":PR,"source":SHA}}
         ob={"WBS":{"url":ISSUE,"data":{"kind":"issue"}},
             "TASK":{"url":TASK,"data":{"kind":"issue"}},
-            "CANDIDATE":{"url":PR,"data":{"kind":"pull","observedHead":SHA}}}
+            "CANDIDATE":{"url":PR,"data":{"kind":"pull","observedHead":SHA,"state":"open","merged":False}}}
         return data,cycle,ob
     def test_ready_requires_explicit_page_wbs_source_and_live_candidate(self):
         data,c,o=self.fixture()
@@ -59,6 +59,14 @@ class Preflight(unittest.TestCase):
             if variant=="head":o["CANDIDATE"]["data"]["observedHead"]="b"*40
             r=P.evaluate(P.page_scope(data,"demo","5" if variant=="wbs" else "3"),c,"cycle-demo",o)
             self.assertEqual(r["result"],"SCOPE_MISMATCH",variant)
+    def test_merge_decision_checkpoint_cannot_survive_native_pr_merge(self):
+        data,c,o=self.fixture()
+        c["next"]["status"]="AWAIT_OWNER_MERGE_DECISION"
+        o["CANDIDATE"]["data"].update(state="closed",merged=True)
+        r=P.evaluate(P.page_scope(data,"demo","3"),c,"cycle-demo",o)
+        self.assertEqual(r["result"],"INSUFFICIENT_EVIDENCE")
+        self.assertIn("CYCLE_MERGE_DECISION_OUTDATED_BY_NATIVE_MERGE",r["gaps"])
+        self.assertFalse(r["bindingActivated"])
     def test_cycle_main_and_content_pinned_to_one_sha(self):
         raw=json.dumps({"schema":"oracle-cycle-current/v1"}).encode()
         blob=hashlib.sha1(("blob "+str(len(raw))+"\0").encode()+raw).hexdigest()

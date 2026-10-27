@@ -157,6 +157,10 @@ def evaluate(page,cycle,canonical,cycleKey,observations=None):
             if label=="CANDIDATE":
                 if data.get("observedHead")!=nextsrc:violation("CANDIDATE_HEAD_DRIFT")
                 else:verified.append("CURRENT_NATIVE_CANDIDATE_HEAD_MATCH")
+                if not isinstance(data.get("merged"),bool) or data.get("state") not in ("open","closed"):
+                    missing("CANDIDATE_NATIVE_MERGE_STATE_UNVERIFIED")
+                elif data["merged"] and "MERGE_DECISION" in str(nextrec.get("status") or ""):
+                    missing("CYCLE_MERGE_DECISION_OUTDATED_BY_NATIVE_MERGE")
             else:verified.append("CURRENT_NATIVE_"+label+"_RETRIEVED")
     result="SCOPE_MISMATCH" if problems else "INSUFFICIENT_EVIDENCE" if gaps else "READY_FOR_REVIEW"
     return {"schema":SCHEMA,"result":result,"pageProject":page["project"],
