@@ -1,6 +1,7 @@
 :root{--bg:#ffffff;--fg:#1f2328;--mut:#656d76;--bd:#d0d7de;--card:#f6f8fa;--acc:#0969da;--accbg:#ddf4ff;--ok:#1a7f37;--okbg:#dafbe1;--wn:#9a6700;--wnbg:#fff8c5;--er:#cf222e;--erbg:#ffebe9;--gr:#6e7781}
 @media (prefers-color-scheme:dark){:root{--bg:#0d1117;--fg:#e6edf3;--mut:#8b949e;--bd:#30363d;--card:#161b22;--acc:#58a6ff;--accbg:#10243d;--ok:#3fb950;--okbg:#12261a;--wn:#d29922;--wnbg:#2d2208;--er:#f85149;--erbg:#3a1315;--gr:#8b949e}}
 *{box-sizing:border-box}
+html{scrollbar-gutter:stable}
 body{margin:0;background:var(--bg);color:var(--fg);font:14px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
 main{max-width:1120px;margin:0 auto;padding:20px 16px 48px}
 a{color:var(--acc)}
@@ -249,6 +250,7 @@ details.nd{margin-top:6px;font-size:12px}
 
 /* Project Home has its own compact pages, not a 200+ item expanded source wall. */
 .home-subtabs,.continuity-subtabs{margin-top:-4px;border-bottom:1px solid var(--bd)}
+.home-owner-aim{max-width:88ch;overflow-wrap:anywhere;margin:12px 0 18px;line-height:1.55}
 .home-subtabs .view,.continuity-subtabs .view{font-size:13px;padding:7px 12px}
 .continuity-central .home-tiles{margin-top:16px}
 .project-home .home-note,.project-home .home-tip{font-size:12px;line-height:1.5}
@@ -366,7 +368,7 @@ details.nd{margin-top:6px;font-size:12px}
 .agent-start-primary .btn.pri{justify-self:start;padding:9px 15px;font-size:13px}
 .agent-start-aside details{min-width:0;overflow-wrap:anywhere}
 @media(min-width:1100px){
-  main:has(.agent-start){max-width:1480px;padding:24px clamp(20px,3vw,46px) 64px}
+  /* Main uses the same desktop shell as every other project view. */
   .agent-start{max-width:none;gap:15px}
   .agent-start-choices{grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
   .agent-start-choice{min-height:138px;display:grid;align-content:center;padding:20px 24px}
@@ -393,6 +395,8 @@ main{width:100%;min-width:0}
 .chat-setup>summary{cursor:pointer;color:var(--mut)}
 .chat-setup p{margin:6px 0 0;padding:8px 12px;border-left:2px solid var(--bd)}
 .tabs,.views{max-width:100%;min-width:0}
+.views{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:thin}
+.views .view{flex:0 0 auto;white-space:nowrap}
 .wbs-family-cards{grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));align-items:stretch}
 .wbs-family-card{min-width:0}
 .wbs-family-card span{overflow-wrap:anywhere}
@@ -412,6 +416,9 @@ main{width:100%;min-width:0}
   .tabs{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:thin}
   .views{margin:12px 0 14px}
   .view{font-size:14px}
+}
+@media(min-width:1100px) and (max-width:1279px){
+  .wbs-family-cards{grid-template-columns:repeat(3,minmax(0,1fr))}
 }
 @media(min-width:720px) and (max-width:1099px){
   main{max-width:100%;padding:18px 22px 46px}

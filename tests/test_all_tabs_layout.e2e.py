@@ -46,7 +46,8 @@ def main():
     with sync_playwright() as p:
         browser=p.chromium.launch(headless=True,args=["--no-sandbox","--disable-dev-shm-usage"])
         errors=[]
-        for width,height in ((1920,1080),(1440,900),(1024,768),(390,844)):
+        for width,height in ((1920,1080),(1440,900),(1118,840),(1024,768),(390,844)):
+            baseline_shell = {}
             context=browser.new_context(viewport={"width":width,"height":height},
                                         is_mobile=width==390,has_touch=width==390,device_scale_factor=1)
             page=context.new_page()
@@ -80,10 +81,10 @@ def main():
                             check(g["nav"] and g["wbsNav"] and g["nav"]["y"] < g["wbsNav"]["y"],
                                   "primary navigation buried beneath WBS filters")
                             check(len(g["cards"])>=1,route+" WBS family choices missing; never invent WBS entries")
-                            if width>=1100:
-                                check(len(g["grid"].split())==4,"PC WBS family layout not 4 columns: "+str(g["grid"]))
-                            if width==1024:
-                                check(len(g["grid"].split())==3,"tablet WBS grid not 3 columns")
+                            if width>=1280:
+                                check(len(g["grid"].split())==4,"wide PC WBS family layout not 4 columns: "+str(g["grid"]))
+                            if width in (1024,1118):
+                                check(len(g["grid"].split())==3,"tablet / narrow desktop WBS grid not 3 columns")
                             if width==390:
                                 check(len(g["grid"].split())==1,"phone WBS grid not one column")
                         if view=="continuity":
@@ -102,12 +103,23 @@ def main():
                             check("Source hashes" in page.locator(".agent-start-choices").inner_text(),
                                   "WBS 1 recorded description not visible")
                         if view=="home":
-                            check(page.locator(".ptitle .project-brief").count()==0,
-                                  "project overview Owner aim should remain visible")
-                            check(page.locator(".ptitle .aim").count()==1,"Owner aim missing on Project Home")
-                        if view.startswith("home-") or view in ("fixtures","timeline","actions"):
                             check(page.locator(".ptitle .project-brief").count()==1,
-                                  "secondary view not compact")
+                                  "Home overview must use the same compact header as every other route")
+                            check(page.locator(".project-home .home-owner-aim").count()==1,
+                                  "Full Owner aim must remain visible inside Project Home")
+                        if view != "progress":
+                            check(page.locator(".ptitle .project-brief").count()==1,
+                                  "all project views must share one compact Owner-aim disclosure")
+                            check(not page.locator(".ptitle .project-brief").evaluate("(x)=>x.open"),
+                                  "project header must not expand unexpectedly by route")
+                        if project=="doc2table":
+                            check(g["nav"] is not None,route+" primary nav missing")
+                            shell = (round(g["main"]["x"]), round(g["main"]["width"]), round(g["nav"]["y"]))
+                            if view == "progress": baseline_shell[project] = shell
+                            else: check(shell == baseline_shell.get(project),
+                                  route+" shell shifted from WBS: "+str(shell)+" vs "+str(baseline_shell.get(project)))
+                        if width==1118 and view=="progress":
+                            check(len(g["grid"].split())==3,"narrow desktop WBS must have three columns")
                         if width==1440 and project=="doc2table" and view in ("progress","home","home-roadmap","fixtures","timeline"):
                             picture(page,"doc2table-"+view+"-pc")
                         if width==390 and project=="doc2table" and view in ("progress","home","actions"):
