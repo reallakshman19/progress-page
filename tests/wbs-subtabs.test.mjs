@@ -93,3 +93,30 @@ test('CIIFR R4 WBS 5 CIIFR-MAP groups only M8–M11; seven others stay separate'
   assert.deepEqual(wbsGroups({project:{key:'another-project'},milestones:ciifr.milestones})[2].label,'WBS 5');
   assert.equal(JSON.stringify({index:ciifr,cards}),initial,'rendering never mutates published evidence');
 });
+
+test('WBS tiles describe Doc to Table workstreams and do not invent unsupported parent purpose', () => {
+  const data=JSON.parse(readFileSync(new URL('../data/doc2table/index.json',import.meta.url),'utf8'));
+  const before=JSON.stringify(data);
+  const groups=wbsGroups(data);
+  assert.deepEqual(groups.map(g=>g.label),['WBS 1','WBS 2','WBS 3','WBS 4','WBS 5','WBS 6','WBS 7']);
+  for (const group of groups) {
+    const step=group.steps[0];
+    assert.equal(group.title,data.milestones[step.key].name);
+    assert.equal(group.description,data.milestones[step.key].full);
+  }
+  assert.equal(JSON.stringify(data),before,'no data mutation or extra status ledger');
+  const other={project:{key:'demo'},milestones:{
+    a:{wbs:'1.1',name:'Alpha'}, b:{wbs:'1.2',name:'Beta'},
+    c:{wbs:'2',name:'Source purpose',full:'Original description'},
+    d:{wbs:'3',name:'Undescribed'}, e:{name:'Legacy A'}, f:{name:'Legacy B'}
+  }};
+  const found=wbsGroups(other);
+  assert.equal(found[0].title,'');
+  assert.equal(found[0].description,'Includes: Alpha · Beta');
+  assert.equal(found[1].title,'Source purpose');
+  assert.equal(found[1].description,'Original description');
+  assert.equal(found[2].description,'Detailed description not recorded.');
+  assert.equal(found[3].title,'');
+  assert.equal(found[3].description,'Includes: Legacy A · Legacy B');
+  assert.equal(wbsGroups({project:{key:'unrelated'},milestones:other.milestones})[1].description,'Original description');
+});

@@ -42,6 +42,8 @@ The optional `#/PROJECT/start/REV/wbs%3AN/Mn/CARD_ID` route selects exactly one 
 
 ## What the page shows
 
+- **WBS family tiles** show the family name and source-recorded milestone description for all projects, including Doc to Table WBS 1–7. If the parent WBS record is missing, tiles list existing child milestone names instead of inventing an objective. No new agent reports, data fields or Page updates are required.
+
 - Project tabs, `+` to add a project (a copy-paste brief for another agent), **Archived (n)** for closed projects.
 - **Aim** first (Owner, 22 Oct 2026, Lesson 1): every active tab shows the Owner's aim under its title, with its source; the checker refuses an active project without one (`project add --aim`, `project aim`). Under it, **How we work** links the Common agent-work modules.
 - **Who writes what:** the coordinator writes agent blocks, decisions and revisions; the project's **Oracle sets the milestones** (`plan milestone`; placing a block with `card set --milestone` alone keeps the block's evidence time and source); **anybody may add grounding fixtures** under their own name; an Oracle may push its own project's data.
