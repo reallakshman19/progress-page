@@ -549,15 +549,31 @@
       "role": "Oracle"
     },
     "state": "IN_PROGRESS",
-    "now": "S0 BLOCKED: 5 WEP-07 items not confirmed NSEP originals; Core2 blocked",
+    "now": "S2 sent to P1-WPE-G9v35 (22:44); reading its chat every 10 min",
     "next": {
-      "actor": "YOU",
-      "text": "choose the Core2 source for WEP-07"
+      "actor": "P1-WPE-G9v35",
+      "text": "WAITS: writer's S2 return"
     },
-    "flags": [
-      "needs-you"
-    ],
-    "updatedAt": "2026-10-27T18:37:11Z",
-    "src": "https://github.com/reallakshman19/Grade9v3.5/issues/311#issuecomment-6450502781"
+    "flags": [],
+    "updatedAt": "2026-10-27T18:44:13Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/159"
+  },
+  "p1-wpe": {
+    "order": 22,
+    "group": "pilot",
+    "milestone": "Q0",
+    "label": "P1-WPE-G9v35 ChatGPT writer",
+    "who": {
+      "chat": "6ae0f0d5",
+      "role": "Agent"
+    },
+    "state": "IN_PROGRESS",
+    "now": "S2 since 22:44: find 3-5 real WEP-07 originals + Smart Labelling 1",
+    "next": {
+      "actor": "P1-WPE-G9v35",
+      "text": "return S2 TASK EVIDENCE"
+    },
+    "updatedAt": "2026-10-27T18:44:11Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/159"
   }
 }
