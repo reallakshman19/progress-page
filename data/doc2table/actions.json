@@ -74,7 +74,7 @@
   },
   "PR7-MERGE": {
     "order": 3,
-    "status": "open",
+    "status": "done",
     "title": "Merge PR #7 after a non-author PASS?",
     "lead": "O3 asks: after a fresh non-author check passes at PR #7's exact head with green CI, may OTM merge the fourth tab into main while Microsoft Word page parity stays NOT_VERIFIED (the tab says so)? A merge is not acceptance.",
     "options": [
@@ -98,6 +98,11 @@
         "l": "O3 question",
         "u": "https://github.com/reallakshman19/Word-to-Table/issues/1#issuecomment-6392206866"
       }
-    ]
+    ],
+    "answer": {
+      "text": "PR7-MERGE C: wait for the D2 Native Word trial first.",
+      "at": "2026-10-27T14:04:13Z",
+      "ref": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6444001112"
+    }
   }
 }

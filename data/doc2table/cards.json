@@ -86,16 +86,14 @@
       "role": "Agent"
     },
     "state": "SUBMITTED",
-    "now": "PR #7 at 130a8aa: D1 PASS AS SCOPED, CI green, still draft. O3: ready for PR7-MERGE as is, with disclosures. Next card D2T-LAUNCH-GUARD-1 queued until after D2 and PR7-MERGE.",
+    "now": "PR #7 at 130a8aa: D1 PASS AS SCOPED, CI green, draft. Owner chose PR7-MERGE C: merge waits for the D2 Native Word trial.",
     "next": {
-      "actor": "YOU",
-      "text": "decide PR7-MERGE at exact head 130a8aa"
+      "actor": "OTM",
+      "text": "run D2 Native Word trial; then O3 challenges it and the Owner re-decides PR7-MERGE"
     },
-    "flags": [
-      "needs-you"
-    ],
-    "updatedAt": "2026-10-25T05:11:33Z",
-    "src": "https://github.com/reallakshman19/Word-to-Table/issues/1#issuecomment-6393784239"
+    "flags": [],
+    "updatedAt": "2026-10-27T14:04:14Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6444001112"
   },
   "D2T-O3": {
     "order": 5,
