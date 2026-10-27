@@ -1,5 +1,5 @@
 // Agent Start: choose an explicit scope before showing tasks. Never infer assignment or verdict.
-import { el, link, copyText } from './util.js?v=28';
+import { el, link, copyText } from './util.js?v=29';
 import { wbsGroups } from './progress.js?v=29';
 import { onboardingModel, renderOnboarding } from './onboarding.js?v=29';
 
