@@ -34,7 +34,7 @@ function element(tag){return {tag,className:'',children:[],open:false,
   append(...x){this.children.push(...x);},setAttribute(n,v){(this.attr||={})[n]=v;},
   addEventListener(){}};}
 function walk(node,out=[]){if(node&&typeof node==='object'){out.push(node);(node.children||[]).forEach(x=>walk(x,out));}return out;}
-test('CIIFR 3.0 seam is collapsed under Oracle continuity, never auto-authorized',()=>{
+test('Oracle continuity does not invent CIIFR 3.0 WBS or auto-authorize',()=>{
   const old=globalThis.document;
   globalThis.document={createElement:element};
   try {
@@ -43,7 +43,9 @@ test('CIIFR 3.0 seam is collapsed under Oracle continuity, never auto-authorized
     const handovers=nodes.filter(n=>n.tag==='details'&&n.className==='home-detail oracle-handover');
     assert.equal(handovers.length,1);
     assert.equal(handovers[0].open,false);
-    assert.match(handovers[0].textContent,/3\.0 · Onboarding and integration seam/);
+    assert.match(handovers[0].textContent,/Whole-project continuity/);
+    assert.doesNotMatch(handovers[0].textContent,/3\.0 · Onboarding and integration seam/);
+    assert.match(root.textContent,/control epoch and write-exclusion proof: UNKNOWN/);
     assert.match(handovers[0].textContent,/Control transfer not established/);
     assert.doesNotMatch(handovers[0].textContent,/G0 · Onboarding/);
     assert.match(root.textContent,/not coder onboarding/i);

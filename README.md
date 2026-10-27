@@ -36,6 +36,10 @@ For one native source supporting several related changes, prepare a reviewed pub
 
 Dry-run first: `python tools/pp_batch.py update.json --data data`. It stages the native CLI commands in a temporary copy, checks every operation, validates append-only events and prints changed paths/event IDs without touching `data/`. After reviewing the actual source and diff, `python tools/pp_batch.py update.json --data data --apply --base origin/main` swaps the checked data directory and runs the history comparison, rolling back on failure. Then commit through your normal authorization/PR workflow. The script does **not** read the source's engineering meaning, infer status, grant approval or merge. A source already recorded is refused by default.
 
+## Task-scoped Agent Start (v29 draft)
+
+The optional `#/PROJECT/start/REV/wbs%3AN/Mn/CARD_ID` route selects exactly one source-recorded card inside the milestone. A wrong, closed or mismatched ID produces a visible unresolved request, never another card. **Copy this task** exports the selected card and its full recorded status, next action, source links, unknowns and authorization boundary; **Copy milestone evidence** remains the explicitly broader multi-item export. Neither action sends a task, acknowledges an assignment or grants authority. Legacy workstream and milestone links are retained.
+
 ## What the page shows
 
 - Project tabs, `+` to add a project (a copy-paste brief for another agent), **Archived (n)** for closed projects.

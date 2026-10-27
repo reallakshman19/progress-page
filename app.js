@@ -1,17 +1,17 @@
 // Shell: loads the JSON, draws the project tabs and the views, refreshes every two minutes.
-import { el, link, tick, ago, whenText } from './util.js?v=28';
-import { buildSearchIndex, searchProgress } from './search.js?v=28';
-import { renderOracleContinuity } from './oracle-continuity.js?v=28';
-import { renderProgress, wbsPick, wbsGroups, wbsFamily, wbsRevisionScope, wbsRoute } from './progress.js?v=28';
-import { renderAgentStart } from './agent-start.js?v=28';
-import { renderLessons } from './lessons.js?v=28';
-import { renderActions, renderFixtures, renderProjectHome, openCount } from './actions.js?v=28';
-import { renderTimeline } from './timeline.js?v=28';
-import { tabsRow, archivedPanel, projectHead, revisionRow, isActive, HOME_VIEWS, HOME_SUBTABS, PRIMARY_TABS, primaryTabActive } from './lifecycle.js?v=28';
-import { nudgesOf, openNudge } from './nudge.js?v=28';
-import { addProjectDialog, addRevisionDialog } from './briefs.js?v=28';
-import { loadLinks, takeLinksFromHash, linksPanel } from './links.js?v=28';
-import { rulesOf, holdOf, summary, needsAttention } from './triggers.js?v=28';
+import { el, link, tick, ago, whenText } from './util.js?v=29';
+import { buildSearchIndex, searchProgress } from './search.js?v=29';
+import { renderOracleContinuity } from './oracle-continuity.js?v=29';
+import { renderProgress, wbsPick, wbsGroups, wbsFamily, wbsRevisionScope, wbsRoute } from './progress.js?v=29';
+import { renderAgentStart } from './agent-start.js?v=29';
+import { renderLessons } from './lessons.js?v=29';
+import { renderActions, renderFixtures, renderProjectHome, openCount } from './actions.js?v=29';
+import { renderTimeline } from './timeline.js?v=29';
+import { tabsRow, archivedPanel, projectHead, revisionRow, isActive, HOME_VIEWS, HOME_SUBTABS, PRIMARY_TABS, primaryTabActive } from './lifecycle.js?v=29';
+import { nudgesOf, openNudge } from './nudge.js?v=29';
+import { addProjectDialog, addRevisionDialog } from './briefs.js?v=29';
+import { loadLinks, takeLinksFromHash, linksPanel } from './links.js?v=29';
+import { rulesOf, holdOf, summary, needsAttention } from './triggers.js?v=29';
 
 const LIVE_DATA = 'https://reallakshman19.github.io/progress-page/data/';
 const q = new URLSearchParams(location.search);
@@ -139,13 +139,20 @@ function site() {
 }
 
 function route() {
-  const [, pk, view, rev, family, step] = (hash || '').split('/');
+  const parts = (hash || '').split('/');
+  const [, pk, view, rev, family, step, cardId] = parts;
   const safe = (v) => { try { return v ? decodeURIComponent(v) : null; } catch { return null; } };
+  const knownProject = Object.hasOwn(state.data, pk);
+  const exactTask = view === 'start' && cardId !== undefined;
+  const routeError = exactTask && (!knownProject
+    ? 'Requested project ' + pk + ' is not recorded. No project or task was substituted.'
+    : parts.length !== 7 || !safe(rev) || !safe(family) || !safe(step) || !safe(cardId)
+      ? 'Requested task route is malformed (task ' + (cardId || 'empty ID') + '). No task was substituted.' : null);
   const active = state.projects.filter(isActive);
-  const key = state.data[pk] ? pk : (active[0] || state.projects[0] || {}).key;
+  const key = routeError ? null : knownProject ? pk : (active[0] || state.projects[0] || {}).key;
   const lessonIds = (state.data.learned?.lessons?.items || []).map(item => item.id);
   const choices = key === 'learned' ? ['progress', ...lessonIds] : VIEWS;
-  return { key, v: choices.includes(view) ? view : 'progress', rev: safe(rev), family: safe(family), step: safe(step) };
+  return { key, v: choices.includes(view) ? view : 'progress', rev: safe(rev), family: safe(family), step: safe(step), cardId: safe(cardId), routeError };
 }
 
 // An older revision is opened read-only from the git commit it was last current in.
@@ -318,7 +325,13 @@ function render() {
     setup.append(el('p', null, 'Chat ids are not clickable in this browser yet. Open your private setup link once, or paste your links under "My links".'));
     root.append(setup);
   }
-  const { key, v, rev, family: routedFamily, step: routedStep } = route();
+  const { key, v, rev, family: routedFamily, step: routedStep, cardId: routedCard, routeError } = route();
+  if (routeError) {
+    const error = el('p', 'banner agent-start-selection-error', routeError);
+    error.setAttribute('role', 'alert');
+    root.append(error);
+    return;
+  }
   const p = state.data[key];
   if (!p) { root.append(el('p', 'err', 'No project data.')); return; }
   const active = state.projects.filter(isActive).map((x) => state.data[x.key]);
@@ -423,7 +436,8 @@ function render() {
     const n = id === 'actions' ? openCount(view.actions) : 0;
     const on = primaryTabActive(id, v);
     // Entering Project Home starts at the project-wide view, not an invisible WBS-filtered one.
-    const targetSuffix = id === 'home' ? (older ? '/' + encodeURIComponent(rev) : '') : navSuffix;
+    const targetSuffix = id === 'home' ? (older ? '/' + encodeURIComponent(rev) : '') :
+      id === 'start' && v === 'start' && step && routedCard ? navSuffix + '/' + encodeURIComponent(routedCard) : navSuffix;
     const a = navLink('#/' + key + '/' + id + targetSuffix, label, 'view' + (on ? ' on' : ''));
     if (on) a.setAttribute('aria-current', 'page');
     const bd = badge(n);
@@ -474,7 +488,7 @@ function render() {
     const sv = shownStep ? stepView(view, [shownStep]) : family ? stepView(view, family.steps.map(x => x.key)) : view;
     if (v.startsWith('home')) renderProjectHome(body, view, v, !!older);
     else if (v === 'progress') renderProgress(body, view, ctx);
-    else if (v === 'start') renderAgentStart(body, view, { family, step, revision: rev || cur?.id, nav: navLink, projectKey: key, readOnly: ctx.readOnly });
+    else if (v === 'start') renderAgentStart(body, view, { family, step, cardId: routedCard, revision: rev || cur?.id, nav: navLink, projectKey: key, readOnly: ctx.readOnly });
     else if (v === 'actions') renderActions(body, sv);
     else if (v === 'oracle-continuity') renderOracleContinuity(body, view);
     else if (v === 'fixtures') renderFixtures(body, sv.fixtures, older ? '' : key, view.fixtures);

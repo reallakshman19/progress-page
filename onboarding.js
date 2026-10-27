@@ -1,5 +1,5 @@
 // Reusable read-only onboarding panel. Uses existing audited cards/fixtures; never grants assignment or approval.
-import { el, link } from './util.js?v=28';
+import { el, link } from './util.js?v=29';
 
 // Common/main is the single normative role-and-mode entry after its companion Common PR merges.
 // This link does not select authority, authenticate recipients or promote readiness.
@@ -18,15 +18,17 @@ const ONB_GUIDE = [
 
 // Progress Page doesn't own a second assignment ledger. Stages beyond zero require *recorded*,
 // participant-bound GitHub evidence in the existing native fixture + audit workflow.
-export function onboardingModel(project) {
+export function onboardingModel(project, { cardId: requestedCardId = null } = {}) {
   const index = project?.index || {};
   const groups = Object.entries(index.groups || {})
     .filter(([id, g]) => /onboard/i.test(id) || /onboard/i.test(g.title || ''))
     .sort((a, b) => (a[1].order || 0) - (b[1].order || 0));
   if (!groups.length) return null;
-  const [groupId, group] = groups[0];
+  const [groupId, group] = requestedCardId
+    ? groups.find(([id]) => project.cards?.[requestedCardId]?.group === id) || [] : groups[0];
+  if (!group) return null;
   const assigned = Object.entries(project.cards || {})
-    .filter(([, c]) => c.group === groupId && !c.closed && c.state !== 'NOT_APPLICABLE')
+    .filter(([id, c]) => (!requestedCardId || requestedCardId === id) && c.group === groupId && !c.closed && c.state !== 'NOT_APPLICABLE')
     .sort((a, b) => (a[1].order || 0) - (b[1].order || 0));
   if (!assigned.length) return null;
   const [cardId, card] = assigned[0];
@@ -124,7 +126,7 @@ export function renderOnboarding(root, project, { embedded = false, model = null
     if (m.nextTwo.length) {
       const list = el('ol');
       m.nextTwo.forEach((step) => list.append(el('li', null, step.label + ' · ' + (step.cap || 'not demonstrated'))));
-      inner.append(el('b', null, 'Next two connected slices'), list);
+      inner.append(el('b', null, 'Following in plan order (no dependency established)'), list);
     }
   }));
   extra.append(onbDetails('Contribution and independence', (inner) => {

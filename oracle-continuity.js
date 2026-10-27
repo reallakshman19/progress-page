@@ -1,6 +1,6 @@
 // Oracle-specific continuity presentation. Only source-recorded Oracle transitions appear.
 // Engineering G0/coder onboarding stays in WBS evidence and is never promoted to Oracle readiness.
-import { el, link } from './util.js?v=28';
+import { el, link } from './util.js?v=29';
 
 export const CONTINUITY_PROTOCOL =
   'https://github.com/reallakshman19/Common/tree/main/skills/agent-work/oracle-continuity';
@@ -52,18 +52,29 @@ export function renderOracleContinuity(root, project) {
     panel.append(el('p','banner',
       'No Oracle-specific onboarding or handover card is recorded. Do not infer an active successor from a generic task or G0 coder card.'));
   }
+  if(model.cards.length) {
+    panel.append(el('p','muted','Recorded continuity entries below are independent evidence records. Active successor, control epoch and write-exclusion proof: UNKNOWN without a canonical current source.')); 
+    const overview=el('ul','oracle-continuity-overview');
+    for(const c of model.cards) {
+      const item=el('li');
+      item.append(el('strong',null,c.label || c.id),
+        ' · '+(c.state || 'UNKNOWN')+' · next '+(c.next?.actor || 'UNKNOWN')+
+        ' · observed '+(c.updatedAt || 'UNKNOWN')+' · source ');
+      evidence(item,c.src,'original record');
+      overview.append(item);
+    }
+    panel.append(overview);
+  }
   model.cards.forEach(c => {
     const details = el('details','home-detail oracle-handover');
     const wbs = project?.index?.milestones?.[c.milestone]?.wbs;
-    // CIIFR's original Geometry 3.0 is an engineering WBS record; display its seam
-    // as a contextual reference, not as a replacement for canonical Oracle authority.
-    const heading = (project?.index?.project?.key === 'ciifr'
-      ? '3.0 · Onboarding and integration seam · ' : 'Oracle onboarding and handover · ')
-      + (c.label || c.id);
+    const heading = (wbs ? 'WBS '+wbs+' · ' : 'Whole-project continuity · ') + (c.label || c.id);
     details.append(el('summary',null,heading));
     const inner=el('div','onb-detail-body');
     inner.append(el('p',null,'Recorded state: '+(c.state||'UNKNOWN')+
-      ' · Plan revision: '+(model.revision||'unrecorded')+
+      ' · Project revision now: '+(model.revision||'unrecorded')+
+      ' · Record observed under revision: UNKNOWN'+
+      ' · Record observed at: '+(c.updatedAt || 'UNKNOWN')+
       (wbs ? ' · Source task WBS '+wbs : '')+
       ' · Task ID: '+c.id));
     if(c.now)inner.append(el('p',null,c.now));

@@ -98,16 +98,45 @@ def main():
             check(page.locator(".agent-start-item").count()==6,
                 "M8 must show all six recorded items without silent first-three clipping")
             check("Not recorded / unassigned" in txt,"Unassigned actor must not appear as dash")
-            check(page.locator(".agent-start-detail").count()==6,
+            check(page.locator(".agent-start-item .agent-start-detail").count()==6,
                 "Full evidence must remain available in disclosures")
-            check(page.locator(".agent-start-detail[open]").count()==0,
+            check(page.locator(".agent-start-item .agent-start-detail[open]").count()==0,
                 "Raw audit prose should be collapsed initially")
             capture(page,"00a-wbs5-m8-scoped")
             return {"scopedRecords":6,"fullyRetainedEvidence":True}
         case("M8 displays scoped action summaries without silently hiding records",focused_m8)
+        def one_exact_task():
+            load(page,"ciifr/start/R4/wbs%3A4/M18")
+            links=page.locator(".agent-start-item .agent-start-task-link")
+            check(links.count()>=2,"M18 needs two independently selectable cards")
+            first=links.nth(0).get_attribute("href")
+            second=links.nth(1).get_attribute("href")
+            check(first!=second and "/M18/" in first,"Task URLs must be distinct under one milestone")
+            page.goto(BASE.rstrip("/")+"/"+first,wait_until="domcontentloaded",timeout=65000)
+            page.locator(".agent-start-brief").wait_for(timeout=30000)
+            check(page.locator(".agent-start-brief").count()==1,"Selected task brief missing")
+            check(page.locator(".agent-start-item").count()>=2,"Related milestone records lost")
+            button=page.get_by_role("button",name="Copy this task")
+            button.click()
+            packet=page.evaluate("navigator.clipboard.readText()")
+            selected=page.locator(".agent-start-selected").get_attribute("class")
+            check("Task ID:" in packet and "Full recorded status / surviving limitations:" in packet,
+                  "Selected task export loses identity or limitations")
+            check("WORK ITEM " not in packet,"A single task export contains milestone bodies")
+            check("not an acknowledged assignment" in packet,"Assignment incorrectly implied")
+            check(page.locator(".agent-start-packet-preview").first.text_content()==packet,
+                  "Preview and clipboard bytes differ")
+            check("agent-start-selected" in selected,"Task selection not visible")
+            capture(page,"00b-selected-m18-task")
+            page.goto(BASE.rstrip("/")+"/#/ciifr/start/R4/wbs%3A4/M18/not-a-task",wait_until="domcontentloaded",timeout=65000)
+            page.locator(".agent-start-selection-error").wait_for(timeout=30000)
+            check(page.get_by_role("button",name="Copy this task").count()==0,
+                  "Invalid task silently selected a different assignment")
+            return {"twoDistinctLinks":True,"taskPacketCharacters":len(packet),"invalidTaskFailsClosed":True}
+        case("Selected task copies only its own evidence and invalid cards fail visibly",one_exact_task)
         case("Open WBS 3.1 G1 Agent Start directly from a clean browser",step1)
         def step2():
-            button=page.get_by_role("button",name="Copy scoped handoff")
+            button=page.get_by_role("button",name="Copy milestone evidence")
             check(button.count()==1,"Copy handoff button not unique")
             button.click()
             page.wait_for_timeout(250)
@@ -204,7 +233,7 @@ def main():
                   "Mobile evidence sidebar must stack after primary task")
             width=viewport(mpage)
             check(width["scroll"]<=width["width"]+3,"Horizontal page overflow at 390px: "+str(width))
-            check(mpage.get_by_role("button",name="Copy scoped handoff").is_visible(),"Copy action inaccessible on mobile")
+            check(mpage.get_by_role("button",name="Copy milestone evidence").is_visible(),"Copy action inaccessible on mobile")
             check("Authority and evidence rules" in txt,"Mobile hides authority rules")
             return {"viewport":width,"taskCards":mpage.locator(".agent-start-item").count()}
         case("Mobile 390px layout, source visibility and no horizontal overflow",step7)
@@ -220,7 +249,7 @@ def main():
                     "candidateIdentity":"NOT_RECORDED","privateChatSetupHidden":True}
         case("Mobile first screen contains the actionable task and explicit missing-candidate warning",step7b)
         def step8():
-            mpage.get_by_role("button",name="Copy scoped handoff").click()
+            mpage.get_by_role("button",name="Copy milestone evidence").click()
             mpage.wait_for_timeout(200)
             copied=mpage.evaluate("navigator.clipboard.readText()")
             check("BOUNDARY:" in copied,"Mobile clipboard omits authority boundary")
