@@ -549,14 +549,14 @@
       "role": "Oracle"
     },
     "state": "IN_PROGRESS",
-    "now": "S3: fresh checker verifying 5 NSEP originals against IAPT papers",
+    "now": "S3 PASS (01,02), PASS_WITH_NOTE (03,04,05); slice 01-04; S4 with writer",
     "next": {
-      "actor": "fresh checker",
-      "text": "return S3 verdicts"
+      "actor": "P1-WPE-G9v35",
+      "text": "WAITS: writer's S4 return"
     },
     "flags": [],
-    "updatedAt": "2026-10-27T19:04:08Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/159#issuecomment-6451046071"
+    "updatedAt": "2026-10-27T19:10:06Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/159#issuecomment-6451147791"
   },
   "p1-wpe": {
     "order": 22,
@@ -567,13 +567,13 @@
       "chat": "6ae0f0d5",
       "role": "Agent"
     },
-    "state": "SUBMITTED",
-    "now": "S2 returned 23:0x: 5 NSEP items + JSON 01f1c193; relayed to #159",
+    "state": "IN_PROGRESS",
+    "now": "S4 since 23:12: one Core1A/1B pair for WEP-07 (slice 01-04)",
     "next": {
-      "actor": "fresh checker",
-      "text": "S3 check of the 5 originals"
+      "actor": "P1-WPE-G9v35",
+      "text": "return S4 TASK EVIDENCE"
     },
-    "updatedAt": "2026-10-27T19:04:07Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/159#issuecomment-6451046071"
+    "updatedAt": "2026-10-27T19:10:05Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/159#issuecomment-6451147791"
   }
 }
