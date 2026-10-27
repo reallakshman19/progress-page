@@ -110,6 +110,8 @@ def evaluate(page,cycle,cycleKey,observations=None):
         violation("PAGE_PROJECT_ARCHIVED")
     if not page["milestones"] or not page["hasParent"]:
         violation("WBS_PARENT_NOT_UNIQUELY_RECORDED")
+    if not page["rootRepos"] or not page["recordedCards"]:
+        missing("WBS_NATIVE_REPOSITORY_OR_ACTIVE_CARD_UNRECORDED")
     if cycle.get("activation")!="ACTIVE":
         missing("CYCLE_NOT_ACTIVE")
     boundary=cycle.get("source_boundary") or {}
@@ -125,7 +127,7 @@ def evaluate(page,cycle,cycleKey,observations=None):
         if page["rootRepos"] and not any(ancestor.startswith("https://github.com/"+repo+"/")
                                           for repo in page["rootRepos"]):
             violation("NATIVE_WBS_REPOSITORY_CONFLICT")
-    if projection.get("publication_status") in ("PROGRESS_UPDATE_PENDING","NOT_CREATED",None):
+    if projection.get("publication_status")!="PUBLISHED":
         missing("PAGE_PROJECTION_NOT_PUBLISHED_CURRENT")
     if projection.get("published_revision")!=page["revision"] or not page["revision"]:
         missing("PAGE_REVISION_NOT_MATCHING_PUBLISHED_CYCLE")

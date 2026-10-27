@@ -51,6 +51,11 @@ class Preflight(unittest.TestCase):
             r=P.evaluate(P.page_scope(data,"demo","3"),c,"cycle-demo",o)
             self.assertEqual(r["result"],"INSUFFICIENT_EVIDENCE",k)
             self.assertFalse(r["eligibleForReviewedBinding"])
+    def test_unknown_publication_state_does_not_authorize_a_binding(self):
+        data,c,o=self.fixture(publication="UNCONFIRMED")
+        result=P.evaluate(P.page_scope(data,"demo","3"),c,"cycle-demo",o)
+        self.assertEqual(result["result"],"INSUFFICIENT_EVIDENCE")
+        self.assertIn("PAGE_PROJECTION_NOT_PUBLISHED_CURRENT",result["gaps"])
     def test_proven_scope_conflicts_do_not_degrade_into_soft_unknown(self):
         for variant in ("project","wbs","archive","head","repo"):
             data,c,o=self.fixture(archive=variant=="archive")
