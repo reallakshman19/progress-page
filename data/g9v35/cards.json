@@ -549,14 +549,14 @@
       "role": "Oracle"
     },
     "state": "IN_PROGRESS",
-    "now": "S4 back; S5 compile and pair check need the files on disk",
+    "now": "JSON zip in (01f1c193, def19622 match); S4 pair check running",
     "next": {
       "actor": "YOU",
-      "text": "download the files from the writer chat and IAPT"
+      "text": "download the 2024 and 2025 IAPT papers for Core2 crops"
     },
     "flags": [],
-    "updatedAt": "2026-10-27T19:21:24Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/159"
+    "updatedAt": "2026-10-27T19:29:18Z",
+    "src": "OWNER_PRIVATE_REF:owner-download-WEP07-JSON-files-2026-10-27"
   },
   "p1-wpe": {
     "order": 22,
@@ -571,9 +571,9 @@
     "now": "S4 returned 23:2x: Core1A/1B pair def19622; METER ~19k tokens",
     "next": {
       "actor": "fresh checker",
-      "text": "WAITS: Owner download, then S4 pair check"
+      "text": "S4 pair check"
     },
-    "updatedAt": "2026-10-27T19:22:36Z",
+    "updatedAt": "2026-10-27T19:29:19Z",
     "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/159#issuecomment-6451398444",
     "flags": []
   }
