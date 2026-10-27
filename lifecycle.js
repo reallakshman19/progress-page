@@ -1,19 +1,28 @@
 // Project tabs with "+", the Archived list, the project header and the revision row.
-import { el, link, whenText, isHttps, copyText } from './util.js?v=29';
+import { el, link, whenText, isHttps, copyText } from './util.js?v=30';
 
 const COMMON = 'https://github.com/reallakshman19/Common/tree/main/skills/agent-work/';
 const MODULES = ['task-decomposer', 'nudge-designer', 'independent-review', 'gatekeeper', 'local-handover', 'progress-page'];
 const WORD = { archived: 'Archived', superseded: 'Superseded', cancelled: 'Cancelled' };
   
-// Presentation-only nesting; these remain the same independently addressable routes.
-export const HOME_VIEWS = Object.freeze(['home','home-roadmap','home-sources','home-risks','oracle-continuity','actions','fixtures','timeline']);
+// Pure presentation nesting: historic deep-link routes remain independently addressable.
+export const HOME_VIEWS = Object.freeze(['home','home-roadmap','home-sources','actions','timeline']);
 export const HOME_SUBTABS = Object.freeze([
   ['home','Overview'], ['home-roadmap','Roadmap'], ['home-sources','Sources'],
-  ['home-risks','Risks & handoffs'], ['oracle-continuity','Oracle continuity'],
-  ['actions','My actions'], ['fixtures','Grounding fixtures'], ['timeline','Timeline'],
+  ['actions','My actions'], ['timeline','Timeline'],
 ]);
-export const PRIMARY_TABS = Object.freeze([['start','Agent Start'],['home','Project Home'],['progress','Progress / WBS']]);
-export const primaryTabActive = (id, view) => id === 'home' ? HOME_VIEWS.includes(view) : id === 'start' ? view === 'start' : id === 'progress' && view === 'progress';
+export const CONTINUITY_VIEWS = Object.freeze(['continuity','start','oracle-continuity','home-risks','fixtures']);
+export const CONTINUITY_SUBTABS = Object.freeze([
+  ['continuity','Overview'], ['start','Agent Start'], ['oracle-continuity','Oracle continuity'],
+  ['home-risks','Risks & handoffs'], ['fixtures','Grounding fixtures'],
+]);
+export const PRIMARY_TABS = Object.freeze([
+  ['home','Project Home'], ['progress','Progress / WBS'], ['continuity','Continuity / Onboard Central'],
+]);
+export const primaryTabActive = (id, view) =>
+  id === 'home' ? HOME_VIEWS.includes(view) :
+  id === 'progress' ? view === 'progress' :
+  id === 'continuity' && CONTINUITY_VIEWS.includes(view);
 
 
 export const isActive = (p) => (p.status || 'active') === 'active';
@@ -22,7 +31,7 @@ export const isActive = (p) => (p.status || 'active') === 'active';
 export function tabsRow(c) {
   const nav = el('nav', 'tabs');
   c.active.forEach((p) => {
-    const a = c.nav('#/' + p.key + '/start', p.label, 'tab' + (p.key === c.key ? ' on' : ''));
+    const a = c.nav('#/' + p.key + '/home', p.label, 'tab' + (p.key === c.key ? ' on' : ''));
     c.decorate(a, p);
     nav.append(a);
   });

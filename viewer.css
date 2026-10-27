@@ -248,8 +248,9 @@ details.nd{margin-top:6px;font-size:12px}
 .home-items li{line-height:1.45;padding:.12rem 0;overflow-wrap:anywhere}
 
 /* Project Home has its own compact pages, not a 200+ item expanded source wall. */
-.home-subtabs{margin-top:-4px;border-bottom:1px solid var(--bd)}
-.home-subtabs .view{font-size:13px;padding:7px 12px}
+.home-subtabs,.continuity-subtabs{margin-top:-4px;border-bottom:1px solid var(--bd)}
+.home-subtabs .view,.continuity-subtabs .view{font-size:13px;padding:7px 12px}
+.continuity-central .home-tiles{margin-top:16px}
 .project-home .home-note,.project-home .home-tip{font-size:12px;line-height:1.5}
 .home-tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin:12px 0 16px}
 .home-tile{display:flex;flex-direction:column;gap:5px;padding:12px;border:1px solid var(--bd);border-radius:10px;background:var(--card);color:var(--fg);text-decoration:none;min-width:0}
@@ -329,7 +330,10 @@ details.nd{margin-top:6px;font-size:12px}
 /* Scoped Agent Start: explicit scope selection, then concise source-backed work items. */
 .agent-start-choices{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:12px}
 .agent-start-choice,.agent-start-step,.agent-start-gate,.agent-start-item{background:var(--card);border:1px solid var(--bd);border-radius:9px;padding:13px 15px}
-.agent-start-choice{min-height:92px}
+.agent-start-choice{min-height:125px}
+.agent-start-choice-title{font-size:14px;margin:8px 0 0;line-height:1.4}
+.agent-start-choice-description{font-size:13px;color:var(--mut);line-height:1.5;overflow-wrap:anywhere;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:4;overflow:hidden}
+.agent-start-choice-counts{margin-top:auto!important;font-size:12px}
 .agent-start-choice-link,.agent-start-step-link{font-weight:700;font-size:15px;color:var(--acc);text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
 .agent-start-choice p,.agent-start-step p,.agent-start-gate p,.agent-start-item p{margin:7px 0;line-height:1.5}
 .agent-start-breadcrumb{display:flex;gap:7px;align-items:center;flex-wrap:wrap;font-size:13px;margin:0 0 5px}

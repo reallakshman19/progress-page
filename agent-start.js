@@ -1,7 +1,7 @@
 // Agent Start: choose an explicit scope before showing tasks. Never infer assignment or verdict.
-import { el, link, copyText } from './util.js?v=29';
-import { wbsGroups } from './progress.js?v=29';
-import { onboardingModel, renderOnboarding } from './onboarding.js?v=29';
+import { el, link, copyText } from './util.js?v=30';
+import { wbsGroups } from './progress.js?v=30';
+import { onboardingModel, renderOnboarding } from './onboarding.js?v=30';
 
 const valid = u => /^https:\/\/github\.com\/[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+\//.test(String(u || ''));
 const live = c => !!c && !c.closed && c.state !== 'NOT_APPLICABLE';
@@ -30,7 +30,8 @@ export function agentStartModel(project, { family = null, step = null, revision 
   const selectedMilestone = mode === 'step' ? {id: step, ...milestones[step]} : null;
   const cards = project?.cards || {};
   const groupChoices = groups.map(g => ({
-    key:g.key, label:g.label, count:g.steps.length, workCount:g.steps.reduce((n,s)=>n+milestoneCards(cards,s.key).length,0)
+    key:g.key, label:g.label, title:g.title, description:g.description,
+    count:g.steps.length, workCount:g.steps.reduce((n,s)=>n+milestoneCards(cards,s.key).length,0)
   }));
   const steps = selectedFamily ? selectedFamily.steps.map(s => {
     const m = milestones[s.key] || {};
@@ -150,7 +151,14 @@ export function renderAgentStart(root, project, opts = {}) {
     for(const g of m.choices.filter(g=>g.key!=='other')){
       const box=el('article','agent-start-choice');
       const main=nav(g.label,g.key,null,'agent-start-choice-link');
-      box.append(main,el('p','muted',g.count+' WBS steps · '+g.workCount+' recorded work items'));
+      box.append(main);
+      if (g.title) box.append(el('h4','agent-start-choice-title',g.title));
+      if (g.description) {
+        const description=el('p','agent-start-choice-description',g.description);
+        description.title=g.description;
+        box.append(description);
+      }
+      box.append(el('p','muted agent-start-choice-counts',g.count+' WBS steps · '+g.workCount+' recorded work items'));
       choices.append(box);
     }
     section.append(choices);
