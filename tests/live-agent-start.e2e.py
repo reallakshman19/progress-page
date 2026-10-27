@@ -69,7 +69,7 @@ def main():
                   "WBS-scoped Agent Start needs a source-backed checkpoint")
             page.locator(".checkpoint-disclosure > summary").click()
             panel=page.locator(".checkpoint-disclosure .checkpoint")
-            check("New-agent source checklist" in panel.inner_text(),
+            check("new-agent source checklist" in panel.inner_text().lower(),
                   "New agent lacks a source/return checklist")
             check("OUT_OF_SCOPE" in panel.inner_text() or "UNMAPPED" in panel.inner_text(),
                   "Unbound Cycle may not impersonate a task assignment")
