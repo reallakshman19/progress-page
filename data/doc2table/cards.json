@@ -86,14 +86,16 @@
       "role": "Agent"
     },
     "state": "SUBMITTED",
-    "now": "PR #7 at 130a8aa: D1 non-author PASS 09:06 (scoped; CI green). WAITS: O3's resolution, then the Owner's PR7-MERGE decision.",
+    "now": "PR #7 at 130a8aa: D1 PASS AS SCOPED, CI green, still draft. O3: ready for PR7-MERGE as is, with disclosures. Next card D2T-LAUNCH-GUARD-1 queued until after D2 and PR7-MERGE.",
     "next": {
-      "actor": "Oracle O3",
-      "text": "resolve the D1 return; say if PR #7 is ready for PR7-MERGE"
+      "actor": "YOU",
+      "text": "decide PR7-MERGE at exact head 130a8aa"
     },
-    "flags": [],
-    "updatedAt": "2026-10-25T05:07:56Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/157#issuecomment-6393744224"
+    "flags": [
+      "needs-you"
+    ],
+    "updatedAt": "2026-10-25T05:11:33Z",
+    "src": "https://github.com/reallakshman19/Word-to-Table/issues/1#issuecomment-6393784239"
   },
   "D2T-O3": {
     "order": 5,
@@ -104,14 +106,14 @@
       "chat": "d2t-o3",
       "role": "oracle"
     },
-    "state": "IN_PROGRESS",
-    "now": "ACTIVE epoch 3. Resolving the D1 PASS (sent 09:07, move OTM-D2T-O3-D1V-2510); asked for a launcher-hardening card and to confirm D2 next.",
+    "state": "SUBMITTED",
+    "now": "Posted 25 Oct 09:11: D1 PASS AS SCOPED (not acceptance); PR #7 ready for the Owner's PR7-MERGE as is; README privacy sentence false repo-wide; launcher binds all interfaces (hardening gap). Card D2T-LAUNCH-GUARD-1 queued, not sent.",
     "next": {
-      "actor": "Oracle O3",
-      "text": "post the D1 resolution and the next card on Word-to-Table#1"
+      "actor": "OTM",
+      "text": "run the D2 Native Word trial on S1.3 c1022e5 and return its outcome to O3"
     },
-    "updatedAt": "2026-10-25T05:07:57Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/157#issuecomment-6393744224",
+    "updatedAt": "2026-10-25T05:11:33Z",
+    "src": "https://github.com/reallakshman19/Word-to-Table/issues/1#issuecomment-6393784239",
     "flags": []
   }
 }
