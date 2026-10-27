@@ -71,3 +71,33 @@ test('latest audited Page changes are scope-specific and suppress repeated ident
   assert.equal(checkpointModel(p).changes.length,2);
   assert.equal(JSON.stringify(p),before);
 });
+
+test('Cycle now next stage distinguishes Owner decisions from already returned work',()=>{
+  const owner=cycleSummary(cycle,bound,'ciifr');
+  assert.equal(owner.nextPhase,'OWNER_DECISION_PENDING');
+  assert.equal(owner.assignmentId,'UNKNOWN');
+  assert.equal(owner.generation,'UNKNOWN');
+  const returned=cycleSummary({...cycle,next:{
+    ...cycle.next,status:'AWAIT_ORACLE_RECONCILIATION',recipient_role:'builder'},
+    active_assignment:{id:'GEO-123',generation:3}},bound,'ciifr');
+  assert.equal(returned.nextPhase,'AWAIT_ORACLE_RECONCILIATION');
+  assert.match(returned.message,/Do not rerun work/);
+  assert.equal(returned.assignmentId,'GEO-123');
+  assert.equal(returned.generation,'3');
+  const awaiting=cycleSummary({...cycle,next:{...cycle.next,recipient_role:'reviewer'}},bound,'ciifr');
+  assert.equal(awaiting.nextPhase,'ROLE_AND_GENERATION_RECHECK_REQUIRED');
+});
+test('cold-start evidence is scoped to exact task, and UNKNOWN preserves authority',()=>{
+  const p={index:ciifr,cards};
+  const fam=wbsGroups(ciifr).find(x=>x.key==='wbs:3');
+  const first=fam.steps[0];
+  const m=checkpointModel(p,{family:fam,step:first.key});
+  assert.equal(m.scope,'WBS '+first.wbs);
+  assert.equal(m.purpose,ciifr.milestones[first.key].full);
+  assert.equal(m.capability,ciifr.milestones[first.key].cap || 'NOT_DEMONSTRATED');
+  assert.equal(m.cycle.status,'OUT_OF_SCOPE');
+  assert.ok(m.aim);
+  assert.ok(m.purpose);
+  assert.equal(m.pageFetch,null);
+  assert.ok(m.last?.source===null || m.last?.source.startsWith('https://github.com/'));
+});

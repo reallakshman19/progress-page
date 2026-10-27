@@ -1,6 +1,6 @@
 // Read-only Project/WBS checkpoint and optional canonical Cycle projection.
 // Nothing in this module changes task assignments, verdicts or the Page ledger.
-import { el, link } from './util.js?v=32';
+import { el, link } from './util.js?v=33';
 
 const github = x => typeof x === 'string' && /^https:\/\/github\.com\/[^/\s]+\/[^/\s]+\//.test(x);
 const recent = x => {const n=Date.parse(x||'');return Number.isFinite(n)?n:-Infinity;};
@@ -28,13 +28,26 @@ export function cycleSummary(cycle,binding,pageKey) {
   if (cycle.activation!=='ACTIVE') return {status:'INACTIVE',revision:cycle.revision,
     message:'Canonical Cycle is not ACTIVE; no dispatch inferred.'};
   const next=cycle.next || {};
-  return {status:'OBSERVED',revision:cycle.revision,scope:binding.scope,
+  const nextPhase = typeof next.status==='string' && /RECONCIL|RETURNED/.test(next.status) ?
+    'AWAIT_ORACLE_RECONCILIATION' :
+    next.recipient_role==='owner' ? 'OWNER_DECISION_PENDING' :
+    'ROLE_AND_GENERATION_RECHECK_REQUIRED';
+  // The cycle's next role is not an independent authorization to perform work.
+  // Current recipient must still confirm exact assignment/generation on main.
+  const assignment=cycle.active_assignment || {};
+  const assignmentId=typeof assignment.id==='string' ? assignment.id : 'UNKNOWN';
+  const generation=Number.isInteger(assignment.generation) ? String(assignment.generation) : 'UNKNOWN';
+  return {status:'OBSERVED',nextPhase,assignmentId,generation,revision:cycle.revision,scope:binding.scope,
     actor:text(next.recipient_role,'UNKNOWN'),id8:text(next.recipient_chat_id8,'UNKNOWN'),
     action:text(next.instruction),nextStatus:text(next.status,'UNKNOWN'),
     evidence:github(next.evidence_ref)?next.evidence_ref:null,
     expected:text(next.required_return),candidate:text(next.source),
     projection:text(cycle.progress_projection?.publication_status,'UNKNOWN'),
-    message:'Canonical next record observed; opening the Page does not dispatch, accept or authorize an action.'};
+    message:nextPhase==='AWAIT_ORACLE_RECONCILIATION' ?
+      'Existing work appears returned; check the native receipt and Oracle reconciliation. Do not rerun work or repost completed evidence.' :
+      nextPhase==='OWNER_DECISION_PENDING' ?
+      'Owner decision or trial is recorded as next; no new production-agent dispatch is implied.' :
+      'Next role recorded. Read fresh canonical assignment ID/generation, recipient, candidate and native evidence before acting; the Page is not authority.'};
 }
 export function checkpointModel(project,{family=null,step=null,cycle=null,binding=null,cycleCheck=null,pageFetch=null,historical=false}={}) {
   const idx=project?.index||{},pj=idx.project||{};
@@ -58,9 +71,9 @@ export function checkpointModel(project,{family=null,step=null,cycle=null,bindin
   const open=visible.filter(([,c])=>pending(c));
   const scope=step ? (milestones[step]?.wbs ? 'WBS '+milestones[step].wbs : step) :
     family ? family.label : 'Project';
-  const record=step ? milestones[step] : family ?
-    (family.steps.find(x=>x.wbs===family.key.slice(4)) || (family.steps.length===1?family.steps[0]:null)) : null;
-  const milestone=record ? milestones[record.key] : null;
+  const anchor=step || (family ?
+    (family.steps.find(x=>x.wbs===family.key.slice(4)) || (family.steps.length===1?family.steps[0]:null))?.key : null);
+  const milestone=anchor ? milestones[anchor] : null;
   const item=latest?.[1],itemId=latest?.[0];
   const taskSource=github(item?.src)?item.src:null;
   const nativeCycle=historical ? {status:'HISTORICAL',message:'Historical snapshot: do not mix a live Cycle into this revision.'} :
@@ -135,6 +148,8 @@ export function renderCheckpoint(root,model,{projectKey='',revision='',isWbs=fal
     (model.cycle.projection?' · Page projection '+model.cycle.projection:'')));
   if(model.cycle.status==='OBSERVED'){
     next.append(el('p',null,'Recorded next: '+model.cycle.actor+' · '+model.cycle.id8+' · '+model.cycle.nextStatus));
+    next.append(el('p','muted','Continuation: '+model.cycle.nextPhase+
+      ' · assignment '+model.cycle.assignmentId+' · generation '+model.cycle.generation));
     next.append(el('p','muted',model.cycle.action));
     if(model.cycle.evidence)next.append(sourceAnchor(model.cycle.evidence,'Canonical next evidence'));
   } else if(model.advisory)next.append(el('p','muted',
@@ -144,6 +159,13 @@ export function renderCheckpoint(root,model,{projectKey='',revision='',isWbs=fal
     next.append(link(l,'Open explicitly mapped Common Cycle'));
   } else next.append(el('p','muted','For Cycle now, use the independently verified Common project locator and role.'));
   panel.append(next);
+  if(isWbs) {
+    const guide=row('New-agent source checklist',
+      '1. Confirm the Owner aim and original WBS scope. 2. Open the exact native task/source. 3. Read fresh Common CURRENT.json for your verified role, assignment ID/generation and candidate. 4. Respect HOLDs and return evidence only to the existing native destination. No Page acknowledgement.');
+    guide.append(el('p','muted',
+      'If no verified role or Cycle binding exists: NO ACTION. If work is already returned: await Oracle reconciliation, not another receipt.'));
+    panel.append(guide);
+  }
   const f=row('Evidence freshness',
     model.historical?'Historical snapshot, not live execution status':
       model.pageFetch?.status==='error'?'PAGE FETCH FAILED; retained Page data may be stale':
