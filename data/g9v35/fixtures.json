@@ -64,6 +64,14 @@
       "t": "Grade9v3.5 PR #305, owner-bank identity guard (draft, head 60f67601)",
       "u": "https://github.com/reallakshman19/Grade9v3.5/pull/305",
       "n": "Shared"
+    },
+    {
+      "t": "Common PR #546: Oracle continuity plan and successor prompt (draft, 1a450b3e)",
+      "u": "https://github.com/reallakshman19/Common/pull/546"
+    },
+    {
+      "t": "Common PR #547: WPE C1 research return (draft, d38d6d21)",
+      "u": "https://github.com/reallakshman19/Common/pull/547"
     }
   ],
   "roadmap": [
@@ -107,6 +115,11 @@
     },
     {
       "t": "FIRST DELIVERY (Owner approved): 2–3 baseline attempts plus ONE existing identified NLM question with staged support, a distinct check and actual learner use. This replaces the three-supported-question draft; a fuller questionnaire can follow the first working path."
+    },
+    {
+      "t": "WPE replaces NLM as the first full Physics demonstration; Physics and Mathematics research first, Chemistry later; reuse the existing app, libraries, QRT7 and blueprint/topic adapters",
+      "u": "https://github.com/reallakshman19/Grade9v3.5/blob/d87aa9a5ba0c53d4ea9437d75d7b3967af550c86/relay/RESEARCH/G9-L2-WPE-20261027/HANDOVER.md",
+      "n": "Not yet Owner words in CL #1"
     }
   ],
   "highRoi": [
@@ -316,6 +329,10 @@
     },
     {
       "t": "NLM source drift: the historical 25-item review bank hashes eb7ba61bd74f; PR 299 at 455103ad has a 39-item bank, c87ad141e4db. Its first three rows declare authored scenarios, not original exam questions. Historical FINE does not certify the changed bank or a current learning display."
+    },
+    {
+      "t": "Milestones M0-M4/Q0 predate the WPE-first direction and O5's refined WBS; resetting them is the Oracle's (MILESTONE SET)",
+      "u": "https://github.com/reallakshman19/Common/blob/1a450b3e3e58fc0851578f512c8b0857e55c404e/relay/AGENT_WORK/Grade9v3.5/oracle-continuity-20261027-6ae0484d/ORACLE_CONTINUITY.md"
     }
   ],
   "pending": [
@@ -350,6 +367,18 @@
       "t": "Owner wakes the IR-G9V35 session (card D3)",
       "s": "open",
       "n": "Shared"
+    },
+    {
+      "t": "#311 G9-WPE-RESEARCH-01 C1: return received with holds (Common PR #547 at d38d6d21)",
+      "u": "https://github.com/reallakshman19/Grade9v3.5/issues/311"
+    },
+    {
+      "t": "#312 G9-MATH-CONTRACT-01 C1: prepared, dispatch NOT_SENT",
+      "u": "https://github.com/reallakshman19/Grade9v3.5/issues/312"
+    },
+    {
+      "t": "#313 G9-WPE-C1-IR1 academic review of #311: prepared, dispatch NOT_SENT",
+      "u": "https://github.com/reallakshman19/Grade9v3.5/issues/313"
     }
   ]
 }

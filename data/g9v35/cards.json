@@ -372,15 +372,15 @@
       "role": "Oracle",
       "chat": "oracle5"
     },
-    "state": "SUBMITTED",
-    "now": "WAITS on the WBS 2.4 builder (not launched yet); nothing for O5 until it returns",
+    "state": "UNKNOWN",
+    "now": "NLM history kept (WBS 1 QRT-P1 DONE/B1; 2.1-2.3). Current g9v35 routing is Oracle 6ae0484d (Owner 27 Oct). O5's present activity UNKNOWN; not retired.",
     "next": {
-      "actor": "NLM page builder",
-      "text": "return the built NLM page; then O5 reads the return and keeps the two-card horizon"
+      "actor": "Oracle 6ae0484d",
+      "text": "reconcile O5's open NLM items before any new write overlaps them"
     },
     "flags": [],
-    "updatedAt": "2026-10-24T03:37:16Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6379392090"
+    "updatedAt": "2026-10-27T13:55:35Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6443730169"
   },
   "builder": {
     "order": 14,
@@ -390,15 +390,15 @@
     "who": {
       "role": "Agent"
     },
-    "state": "IN_PROGRESS",
-    "now": "WBS 2.4 builder launched by the Owner (Codex app, new chat) 08:1x; reads BUILDER-START.txt",
+    "state": "UNKNOWN",
+    "now": "WBS 2.4 NLM page: Owner launch recorded 24 Oct; chat id UNKNOWN; no compiled-page return found in #128; not stopped or cancelled. WPE is now the first Physics priority.",
     "next": {
-      "actor": "NLM page builder",
-      "text": "build the NLM page; then OTM runs it in real Chrome and the Owner validates (2.5)"
+      "actor": "Oracle 6ae0484d",
+      "text": "check 2.4's actual side effects and give it an explicit disposition"
     },
     "flags": [],
-    "updatedAt": "2026-10-24T04:12:52Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6379713544"
+    "updatedAt": "2026-10-27T13:55:35Z",
+    "src": "https://github.com/reallakshman19/Common/blob/1a450b3e3e58fc0851578f512c8b0857e55c404e/relay/AGENT_WORK/Grade9v3.5/oracle-continuity-20261027-6ae0484d/ORACLE_CONTINUITY.md"
   },
   "checker": {
     "order": 15,
@@ -424,13 +424,116 @@
       "chat": "content"
     },
     "state": "SUBMITTED",
-    "now": "WAITS on 2.4 build. DRAFT 10 pairs; O5 structural PASS; 4 D4 UNCERTAIN",
+    "now": "Historical NLM WBS 2.3: DRAFT 10 Core1A/1B pairs; O5 structural PASS; 4 D4 UNCERTAIN; not WPE evidence or academic approval",
     "next": {
-      "actor": "NLM page builder",
-      "text": "build the 2.4 page; then OTM routes the non-author D4 spot-check"
+      "actor": "Oracle 6ae0484d",
+      "text": "dispose of the NLM 2.3 pack together with 2.4"
     },
     "flags": [],
-    "updatedAt": "2026-10-24T02:27:00Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128#issuecomment-6378741959"
+    "updatedAt": "2026-10-27T13:55:35Z",
+    "src": "https://github.com/reallakshman19/Common/blob/1a450b3e3e58fc0851578f512c8b0857e55c404e/relay/AGENT_WORK/Grade9v3.5/oracle-continuity-20261027-6ae0484d/ORACLE_CONTINUITY.md"
+  },
+  "oracle6ae": {
+    "order": 17,
+    "group": "pilot",
+    "milestone": "Q0",
+    "label": "Oracle 6ae0484d (standalone)",
+    "who": {
+      "chat": "oracle6ae",
+      "role": "Oracle"
+    },
+    "state": "IN_PROGRESS",
+    "now": "Owner-appointed standalone Oracle. Continuity plan and successor prompt in draft Common PR #546 at 1a450b3e (self-assessed). Successor UNASSIGNED; no cutover.",
+    "next": {
+      "actor": "Oracle 6ae0484d",
+      "text": "keep #313 as the bounded academic review and bind an eligible reviewer and route; #312 runs alongside"
+    },
+    "refs": [
+      {
+        "k": "pr",
+        "l": "Common PR #546 continuity plan",
+        "u": "https://github.com/reallakshman19/Common/pull/546"
+      },
+      {
+        "k": "issue",
+        "l": "#313 academic review",
+        "u": "https://github.com/reallakshman19/Grade9v3.5/issues/313"
+      }
+    ],
+    "updatedAt": "2026-10-27T13:55:35Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6443730169"
+  },
+  "wpe-c1": {
+    "order": 18,
+    "group": "pilot",
+    "milestone": "Q0",
+    "label": "WPE C1 researcher (#311)",
+    "who": {
+      "role": "Agent"
+    },
+    "state": "SUBMITTED",
+    "now": "G9-WPE-RESEARCH-01 C1 return received with holds; candidate Common PR #547 at d38d6d21; chat id UNKNOWN; academic acceptance held",
+    "next": {
+      "actor": "Oracle 6ae0484d",
+      "text": "route the return to the #313 academic review; no rework assigned"
+    },
+    "refs": [
+      {
+        "k": "issue",
+        "l": "#311 WPE research",
+        "u": "https://github.com/reallakshman19/Grade9v3.5/issues/311"
+      },
+      {
+        "k": "pr",
+        "l": "Common PR #547 C1 return",
+        "u": "https://github.com/reallakshman19/Common/pull/547"
+      }
+    ],
+    "updatedAt": "2026-10-27T13:55:35Z",
+    "src": "https://github.com/reallakshman19/Common/blob/1a450b3e3e58fc0851578f512c8b0857e55c404e/relay/AGENT_WORK/Grade9v3.5/oracle-continuity-20261027-6ae0484d/ORACLE_CONTINUITY.md"
+  },
+  "math-c1": {
+    "order": 19,
+    "group": "pilot",
+    "milestone": "Q0",
+    "label": "Math researcher (#312)",
+    "who": {
+      "role": "Agent"
+    },
+    "state": "NOT_STARTED",
+    "now": "G9-MATH-CONTRACT-01 C1 prepared; dispatch NOT_SENT; recipient UNKNOWN; R2 partial (no selected question)",
+    "next": {
+      "actor": "Oracle 6ae0484d",
+      "text": "identify the actual researcher and route, then dispatch #312"
+    },
+    "refs": [
+      {
+        "k": "issue",
+        "l": "#312 Math contract",
+        "u": "https://github.com/reallakshman19/Grade9v3.5/issues/312"
+      }
+    ]
+  },
+  "wpe-ir1": {
+    "order": 20,
+    "group": "pilot",
+    "milestone": "Q0",
+    "label": "Academic reviewer (#313)",
+    "who": {
+      "role": "Agent"
+    },
+    "state": "NOT_STARTED",
+    "now": "G9-WPE-C1-IR1 prepared, not dispatched; reviewer UNKNOWN, must be a non-author; 004 QRT band (D4 vs D3) not adopted",
+    "next": {
+      "actor": "Oracle 6ae0484d",
+      "text": "bind an eligible non-author reviewer and route; send #313 with PR #547 at d38d6d21"
+    },
+    "refs": [
+      {
+        "k": "issue",
+        "l": "#313 academic review",
+        "u": "https://github.com/reallakshman19/Grade9v3.5/issues/313"
+      }
+    ]
   }
 }
