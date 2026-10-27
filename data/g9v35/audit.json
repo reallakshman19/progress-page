@@ -2199,6 +2199,20 @@
       "before": "IN_PROGRESS",
       "after": "IN_PROGRESS",
       "rev": "R3"
+    },
+    {
+      "seq": 162,
+      "id": "G9V35-R-0162",
+      "previous_id": "G9V35-R-0161",
+      "at": "2026-10-27T18:50:15Z",
+      "kind": "STATE",
+      "actor": "OTM",
+      "summary": "C1 return used as S0 input; sourcing moved to P1-WPE writer",
+      "source": "https://github.com/reallakshman19/Grade9v3.5/issues/311#issuecomment-6450502781",
+      "card": "wpe-c1",
+      "before": "SUBMITTED",
+      "after": "NOT_APPLICABLE",
+      "rev": "R3"
     }
   ]
 }
