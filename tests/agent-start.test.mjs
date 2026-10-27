@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { readFileSync } from 'node:fs';
-import { agentStartModel, agentStartText } from '../agent-start.js';
+import { agentStartModel, agentStartText, agentStartTaskText, agentStartHref } from '../agent-start.js';
 import { wbsGroups } from '../progress.js';
 import { PRIMARY_TABS } from '../lifecycle.js';
 
@@ -78,3 +78,31 @@ test('Agent Start remains a primary read-only view',()=>{
   assert.ok(PRIMARY_TABS.some(([id,name])=>id==='start'&&name==='Agent Start'));
   assert.equal(JSON.stringify(p),original);
 });
+
+
+test('same-milestone task IDs have distinct URLs, packets and visible failed resolution',()=>{
+  const family=wbsGroups(idx).find(g=>g.key==='wbs:4');
+  const broad=agentStartModel(p,{family,step:'M18',revision:'R4'});
+  assert.ok(broad.work.length>1);
+  const first=agentStartModel(p,{family,step:'M18',revision:'R4',cardId:broad.work[0].id});
+  const second=agentStartModel(p,{family,step:'M18',revision:'R4',cardId:broad.work[1].id});
+  assert.notEqual(first.selected.id,second.selected.id);
+  assert.notEqual(agentStartTaskText(first),agentStartTaskText(second));
+  assert.ok(agentStartTaskText(first).includes('Task ID: '+first.selected.id));
+  assert.ok(!agentStartTaskText(first).includes('WORK ITEM '+second.selected.id));
+  assert.match(agentStartTaskText(first),/not an acknowledged assignment/);
+  assert.match(agentStartTaskText(first),/NOT_RECORDED/);
+  assert.equal(first.work.length,broad.work.length,'related evidence is not hidden');
+  const missing=agentStartModel(p,{family,step:'M18',revision:'R4',cardId:'not-in-this-milestone'});
+  assert.equal(missing.selectionError,true);
+  assert.equal(missing.selected,null);
+  assert.equal(agentStartTaskText(missing),null);
+  assert.equal(JSON.stringify(p),original);
+});
+test('exact card URLs are stable and backward compatible',()=>{
+  assert.equal(agentStartHref('ciifr','R4','wbs:4','M18','card/1'),
+    '#/ciifr/start/R4/wbs%3A4/M18/card%2F1');
+  assert.equal(agentStartHref('ciifr','R4','wbs:4','M18'),
+    '#/ciifr/start/R4/wbs%3A4/M18');
+});
+

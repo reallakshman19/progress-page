@@ -426,3 +426,16 @@ main{width:100%;min-width:0}
 .tb th,.tb td{overflow-wrap:anywhere;word-break:break-word}
 .op{grid-template-columns:96px minmax(0,1fr)}
 @media(max-width:620px){.op{grid-template-columns:minmax(0,1fr)}}
+
+
+/* Task identity is explicit; related milestone records remain accessible. */
+.agent-start-brief{border:1px solid var(--acc);border-radius:9px;background:var(--card);padding:14px;margin:12px 0 18px}
+.agent-start-brief h4{margin:0 0 8px}
+.agent-start-selected{outline:2px solid var(--acc);outline-offset:2px}
+.agent-start-task-link{display:inline-block;margin:8px 0;font-weight:600}
+.agent-start-packet-controls{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:12px 0}
+.agent-start-packet-preview{max-height:360px;overflow:auto;white-space:pre-wrap;overflow-wrap:anywhere;font:12px/1.5 ui-monospace,Consolas,monospace}
+.agent-start-selection-error{border-left:3px solid var(--er);padding:10px}
+.oracle-continuity-overview{padding-left:18px}
+.oracle-continuity-overview li{margin:8px 0}
+

@@ -193,3 +193,13 @@ test('expansion survives same-revision refresh and never leaks from R4 into froz
     assert.equal(onboardingWbsGroup(p,group,[],context('R4'),m).open,false);
   } finally { fake.restore(); }
 });
+
+
+test('explicit onboarding task identity cannot silently choose another card',()=>{
+  const p=project();
+  p.cards['geo-g1']={...p.cards['geo-g0'],label:'G1',order:2};
+  assert.equal(onboardingModel(p,{cardId:'geo-g1'}).cardId,'geo-g1');
+  assert.equal(onboardingModel(p,{cardId:'wrong-card'}),null);
+  assert.equal(onboardingModel(p,{cardId:'geo-g0'}).cardId,'geo-g0');
+});
+

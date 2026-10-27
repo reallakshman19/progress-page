@@ -139,13 +139,13 @@ function site() {
 }
 
 function route() {
-  const [, pk, view, rev, family, step] = (hash || '').split('/');
+  const [, pk, view, rev, family, step, cardId] = (hash || '').split('/');
   const safe = (v) => { try { return v ? decodeURIComponent(v) : null; } catch { return null; } };
   const active = state.projects.filter(isActive);
   const key = state.data[pk] ? pk : (active[0] || state.projects[0] || {}).key;
   const lessonIds = (state.data.learned?.lessons?.items || []).map(item => item.id);
   const choices = key === 'learned' ? ['progress', ...lessonIds] : VIEWS;
-  return { key, v: choices.includes(view) ? view : 'progress', rev: safe(rev), family: safe(family), step: safe(step) };
+  return { key, v: choices.includes(view) ? view : 'progress', rev: safe(rev), family: safe(family), step: safe(step), cardId: safe(cardId) };
 }
 
 // An older revision is opened read-only from the git commit it was last current in.
@@ -318,7 +318,7 @@ function render() {
     setup.append(el('p', null, 'Chat ids are not clickable in this browser yet. Open your private setup link once, or paste your links under "My links".'));
     root.append(setup);
   }
-  const { key, v, rev, family: routedFamily, step: routedStep } = route();
+  const { key, v, rev, family: routedFamily, step: routedStep, cardId: routedCard } = route();
   const p = state.data[key];
   if (!p) { root.append(el('p', 'err', 'No project data.')); return; }
   const active = state.projects.filter(isActive).map((x) => state.data[x.key]);
@@ -423,7 +423,8 @@ function render() {
     const n = id === 'actions' ? openCount(view.actions) : 0;
     const on = primaryTabActive(id, v);
     // Entering Project Home starts at the project-wide view, not an invisible WBS-filtered one.
-    const targetSuffix = id === 'home' ? (older ? '/' + encodeURIComponent(rev) : '') : navSuffix;
+    const targetSuffix = id === 'home' ? (older ? '/' + encodeURIComponent(rev) : '') :
+      id === 'start' && v === 'start' && step && routedCard ? navSuffix + '/' + encodeURIComponent(routedCard) : navSuffix;
     const a = navLink('#/' + key + '/' + id + targetSuffix, label, 'view' + (on ? ' on' : ''));
     if (on) a.setAttribute('aria-current', 'page');
     const bd = badge(n);
@@ -474,7 +475,7 @@ function render() {
     const sv = shownStep ? stepView(view, [shownStep]) : family ? stepView(view, family.steps.map(x => x.key)) : view;
     if (v.startsWith('home')) renderProjectHome(body, view, v, !!older);
     else if (v === 'progress') renderProgress(body, view, ctx);
-    else if (v === 'start') renderAgentStart(body, view, { family, step, revision: rev || cur?.id, nav: navLink, projectKey: key, readOnly: ctx.readOnly });
+    else if (v === 'start') renderAgentStart(body, view, { family, step, cardId: routedCard, revision: rev || cur?.id, nav: navLink, projectKey: key, readOnly: ctx.readOnly });
     else if (v === 'actions') renderActions(body, sv);
     else if (v === 'oracle-continuity') renderOracleContinuity(body, view);
     else if (v === 'fixtures') renderFixtures(body, sv.fixtures, older ? '' : key, view.fixtures);
