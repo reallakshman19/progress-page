@@ -104,7 +104,8 @@ export function agentStartTaskText(m) {
     'Owner aim (approved wording): '+m.aim,
     'Owner aim source: '+(m.aimSrc || 'NOT_RECORDED'),
     'Parent WBS aim: NOT_RECORDED as a separate approved statement; verify the planning source.',
-    'Recorded task recipient: '+(w.recipient || w.who || 'UNKNOWN')+' (not an acknowledged assignment)',
+    'Recorded task recipient: '+(w.recipient || 'UNKNOWN')+' (not an acknowledged assignment)',
+    'Recorded role: '+(w.who || 'UNKNOWN'),
     'Recorded next actor: '+w.nextActor+' (not an acknowledged assignment)',
     'One recorded next action: '+(w.next || 'NOT_RECORDED'),
     'Return criteria: NOT_RECORDED separately; consult the original native task.',
@@ -211,7 +212,10 @@ export function renderAgentStart(root, project, opts = {}) {
       const w=m.selected;
       const brief=el('section','agent-start-brief');
       brief.append(el('h4',null,'Selected task · '+w.label+' ['+w.state+']'));
-      brief.append(el('p',null,'Task ID: '+w.id+' · Recorded recipient: '+(w.recipient || w.who || 'UNKNOWN')+' (not an acknowledged assignment)'));
+      brief.append(el('p',null,'Task ID: '+w.id+' · Recorded recipient: '+(w.recipient || 'UNKNOWN')+' (not an acknowledged assignment) · Role: '+(w.who || 'UNKNOWN')));
+      brief.append(el('p',null,'Parent WBS aim: NOT_RECORDED as a separate approved statement; consult native planning evidence.'));
+      brief.append(el('p',null,'Owner aim: '+m.aim));
+      if(m.aimSrc)brief.append(link(m.aimSrc,'Original Owner aim source','agent-start-source'));
       brief.append(el('p',null,'Recorded next actor: '+w.nextActor));
       brief.append(el('p',null,'Next action: '+(w.next || 'NOT_RECORDED')));
       brief.append(el('p',null,'Expected return: NOT_RECORDED separately; check the original task.'));
