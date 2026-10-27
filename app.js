@@ -1,17 +1,17 @@
 // Shell: loads the JSON, draws the project tabs and the views, refreshes every two minutes.
-import { el, link, tick, ago, whenText } from './util.js?v=30';
-import { buildSearchIndex, searchProgress } from './search.js?v=30';
-import { renderOracleContinuity } from './oracle-continuity.js?v=30';
-import { renderProgress, wbsPick, wbsGroups, wbsFamily, wbsRevisionScope, wbsRoute } from './progress.js?v=30';
-import { renderAgentStart } from './agent-start.js?v=30';
-import { renderLessons } from './lessons.js?v=30';
-import { renderActions, renderFixtures, renderProjectHome, openCount } from './actions.js?v=30';
-import { renderTimeline } from './timeline.js?v=30';
-import { tabsRow, archivedPanel, projectHead, revisionRow, isActive, HOME_VIEWS, HOME_SUBTABS, CONTINUITY_VIEWS, CONTINUITY_SUBTABS, PRIMARY_TABS, primaryTabActive } from './lifecycle.js?v=30';
-import { nudgesOf, openNudge } from './nudge.js?v=30';
-import { addProjectDialog, addRevisionDialog } from './briefs.js?v=30';
-import { loadLinks, takeLinksFromHash, linksPanel } from './links.js?v=30';
-import { rulesOf, holdOf, summary, needsAttention } from './triggers.js?v=30';
+import { el, link, tick, ago, whenText } from './util.js?v=31';
+import { buildSearchIndex, searchProgress } from './search.js?v=31';
+import { renderOracleContinuity } from './oracle-continuity.js?v=31';
+import { renderProgress, wbsPick, wbsGroups, wbsFamily, wbsRevisionScope, wbsRoute } from './progress.js?v=31';
+import { renderAgentStart } from './agent-start.js?v=31';
+import { renderLessons } from './lessons.js?v=31';
+import { renderActions, renderFixtures, renderProjectHome, openCount } from './actions.js?v=31';
+import { renderTimeline } from './timeline.js?v=31';
+import { tabsRow, archivedPanel, projectHead, revisionRow, isActive, HOME_VIEWS, HOME_SUBTABS, CONTINUITY_VIEWS, CONTINUITY_SUBTABS, PRIMARY_TABS, primaryTabActive } from './lifecycle.js?v=31';
+import { nudgesOf, openNudge } from './nudge.js?v=31';
+import { addProjectDialog, addRevisionDialog } from './briefs.js?v=31';
+import { loadLinks, takeLinksFromHash, linksPanel } from './links.js?v=31';
+import { rulesOf, holdOf, summary, needsAttention } from './triggers.js?v=31';
 
 const LIVE_DATA = 'https://reallakshman19.github.io/progress-page/data/';
 const q = new URLSearchParams(location.search);
@@ -319,7 +319,7 @@ function render() {
     root.append(el('p', 'banner', 'Setup link read: ' + setupLink.count + ' chat links saved in this browser.'));
   }
   if (state.panel) root.append(linksPanel(() => { state.links = mergedLinks(); state.panel = false; render(); }));
-  if (!Object.keys(state.links).length && route().v !== 'start') {
+  if (!Object.keys(state.links).length) {
     const setup = el('details', 'chat-setup');
     setup.append(el('summary', null, 'Optional · connect private chat shortcuts'));
     setup.append(el('p', null, 'Chat ids are not clickable in this browser yet. Open your private setup link once, or paste your links under "My links".'));

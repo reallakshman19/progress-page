@@ -42,6 +42,7 @@ The optional `#/PROJECT/start/REV/wbs%3AN/Mn/CARD_ID` route selects exactly one 
 
 ## What the page shows
 
+- **Stable project shell**: project title, revision row, collapsed Owner-aim/method disclosure and main navigation keep the same desktop/mobile geometry on Home, Progress/WBS and Continuity routes. The full Owner aim remains visible inside the Home overview. Narrow desktop WBS grids use three readable columns, and navigation scrolls horizontally on phones rather than wrapping or moving the other tabs.
 - **WBS family tiles** in both Progress / WBS and Agent Start show the recorded workstream title and milestone `full` description for all projects (including Doc to Table WBS 1–7). When no parent WBS exists, the viewer lists original child milestone names rather than inventing a parent aim; no additional JSON field or agent report is required.
 
 - Project tabs, `+` to add a project (a copy-paste brief for another agent), **Archived (n)** for closed projects.

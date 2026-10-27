@@ -1,8 +1,8 @@
 // My actions (decision cards) and Grounding fixtures.
-import { ciifrRoiModel } from './roi.js?v=30';
-import { el, link, md, age, copyText } from './util.js?v=30';
-import { issueUrl, pageUrl } from './reply.js?v=30';
-import { oracleContinuityModel } from './oracle-continuity.js?v=30';
+import { ciifrRoiModel } from './roi.js?v=31';
+import { el, link, md, age, copyText, isHttps } from './util.js?v=31';
+import { issueUrl, pageUrl } from './reply.js?v=31';
+import { oracleContinuityModel } from './oracle-continuity.js?v=31';
 
 export const openCount = (actions) => Object.values(actions || {}).filter((a) => a.status === 'open').length;
 
@@ -277,8 +277,15 @@ export function renderProjectHome(root, project, mode = 'home', historical = fal
     'Read-only, source-linked project context. Original GitHub records govern; this page grants no task, review, Writer or merge authority.'));
 
   if (mode === 'home') {
-    if (!m.aim) box.append(el('p', 'muted', 'Owner aim not recorded in this project.'));
-    // projectHead already displays the Owner aim and source; do not repeat the long text here.
+    // Display the full Owner aim where the Owner expects it, without changing
+    // the global project header height between tabs.
+    const aim = project?.index?.project || {};
+    if (aim.aim) {
+      const statement = el('p', 'home-owner-aim');
+      statement.append(el('b', null, 'Aim: '), aim.aim + ' ');
+      if (isHttps(aim.aimSrc)) statement.append(link(aim.aimSrc, 'source'));
+      box.append(statement);
+    } else box.append(el('p', 'muted', 'Owner aim not recorded in this project.'));
     const nav = el('div', 'home-tiles');
     const destinations = [
       ['Roadmap', m.roadmap.length + ' plan entries', 'home-roadmap', 'Delivery sequence and numbered WBS'],

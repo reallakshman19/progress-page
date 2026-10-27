@@ -1,5 +1,5 @@
 // Project tabs with "+", the Archived list, the project header and the revision row.
-import { el, link, whenText, isHttps, copyText } from './util.js?v=30';
+import { el, link, whenText, isHttps, copyText } from './util.js?v=31';
 
 const COMMON = 'https://github.com/reallakshman19/Common/tree/main/skills/agent-work/';
 const MODULES = ['task-decomposer', 'nudge-designer', 'independent-review', 'gatekeeper', 'local-handover', 'progress-page'];
@@ -119,26 +119,13 @@ export function projectHead(p, c) {
     b.append(' Nothing is deleted; the history stays readable.');
     box.append(b);
   }
-  // The task launchpad must not bury the executable next action under duplicated
-  // project aim, history and workflow material. They remain on Project Home.
-  if (c.view === 'start') {
-    const revisions = c.revisionListProject || p;
-    const current = (revisions.index.revisions || []).find(r => r.status === 'current');
-    const history = el('details','agent-start-revisions');
-    history.append(el('summary','muted','Revision ' + (c.rev || current?.id || 'unknown') + ' · plan history'));
-    history.append(revisionRow(revisions,c));
-    box.append(history);
-    if(c.revBanner) box.append(c.revBanner);
-    box.append(c.snapshotNotice || c.statusLine(p));
-    return box;
-  }
-  // Historical revisions are visible everywhere. Non-overview views use a compact
-  // expandable project brief so active work isn't buried by repeated long Owner text.
+  // Keep the same project-shell geometry on every route, including Agent Start
+  // and the Home overview. Full approved Owner wording stays in this disclosure
+  // and is displayed in the Home overview, below the stable primary navigation.
   box.append(revisionRow(c.revisionListProject || p, c));
   if (c.revBanner) box.append(c.revBanner);
-  const fullBrief = c.view === 'home';
-  const brief = fullBrief ? box : el('details', 'project-brief');
-  if (!fullBrief) brief.append(el('summary', null, 'Owner aim · project method'));
+  const brief = el('details', 'project-brief');
+  brief.append(el('summary', null, 'Owner aim · project method'));
   if (pj.subtitle) brief.append(el('p','muted',pj.subtitle));
   if (pj.aim) {
     const a = el('p', 'aim');
@@ -155,7 +142,7 @@ export function projectHead(p, c) {
   methods.append('How we work: ');
   MODULES.forEach((n, i) => { if (i) methods.append(' · '); methods.append(link(COMMON + n, n)); });
   brief.append(methods);
-  if (!fullBrief) box.append(brief);
+  box.append(brief);
   if (c.paths) box.append(localPaths(c.paths));
   box.append(c.snapshotNotice || c.statusLine(p));
   return box;
