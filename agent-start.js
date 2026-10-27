@@ -226,7 +226,9 @@ export function renderAgentStart(root, project, opts = {}) {
       const controls=el('div','agent-start-packet-controls');
       const taskCopy=el('button','btn pri','Copy this task');
       taskCopy.type='button';taskCopy.addEventListener('click',()=>copyText(packet,taskCopy));
-      controls.append(taskCopy,el('span','muted',packet.length+' characters · source-backed full text; no truncation'));
+      controls.append(taskCopy,el('span','muted',packet.length+' characters · '+
+        (packet.length > 3000 ? 'Above 3,000-character usability target; necessary evidence retained without truncation' :
+          'Source-backed full text; no truncation')));
       brief.append(controls);
       const preview=el('details','agent-start-detail');
       preview.append(el('summary',null,'Preview exact task packet ('+packet.length+' characters)'));
