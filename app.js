@@ -1,17 +1,17 @@
 // Shell: loads the JSON, draws the project tabs and the views, refreshes every two minutes.
-import { el, link, tick, ago, whenText } from './util.js?v=28';
-import { buildSearchIndex, searchProgress } from './search.js?v=28';
+import { el, link, tick, ago, whenText } from './util.js?v=29';
+import { buildSearchIndex, searchProgress } from './search.js?v=29';
 import { renderOracleContinuity } from './oracle-continuity.js?v=29';
 import { renderProgress, wbsPick, wbsGroups, wbsFamily, wbsRevisionScope, wbsRoute } from './progress.js?v=29';
 import { renderAgentStart } from './agent-start.js?v=29';
-import { renderLessons } from './lessons.js?v=28';
-import { renderActions, renderFixtures, renderProjectHome, openCount } from './actions.js?v=28';
-import { renderTimeline } from './timeline.js?v=28';
-import { tabsRow, archivedPanel, projectHead, revisionRow, isActive, HOME_VIEWS, HOME_SUBTABS, PRIMARY_TABS, primaryTabActive } from './lifecycle.js?v=28';
-import { nudgesOf, openNudge } from './nudge.js?v=28';
-import { addProjectDialog, addRevisionDialog } from './briefs.js?v=28';
-import { loadLinks, takeLinksFromHash, linksPanel } from './links.js?v=28';
-import { rulesOf, holdOf, summary, needsAttention } from './triggers.js?v=28';
+import { renderLessons } from './lessons.js?v=29';
+import { renderActions, renderFixtures, renderProjectHome, openCount } from './actions.js?v=29';
+import { renderTimeline } from './timeline.js?v=29';
+import { tabsRow, archivedPanel, projectHead, revisionRow, isActive, HOME_VIEWS, HOME_SUBTABS, PRIMARY_TABS, primaryTabActive } from './lifecycle.js?v=29';
+import { nudgesOf, openNudge } from './nudge.js?v=29';
+import { addProjectDialog, addRevisionDialog } from './briefs.js?v=29';
+import { loadLinks, takeLinksFromHash, linksPanel } from './links.js?v=29';
+import { rulesOf, holdOf, summary, needsAttention } from './triggers.js?v=29';
 
 const LIVE_DATA = 'https://reallakshman19.github.io/progress-page/data/';
 const q = new URLSearchParams(location.search);
