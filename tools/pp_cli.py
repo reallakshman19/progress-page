@@ -17,6 +17,7 @@ Run from the repository root:  python tools/pp_cli.py [--data data] <command> ..
   reconcile --project KEY --source GITHUB_URL [--expected-head SHA] [--card ID]  source facts and drift triggers (read-only)
   propose --project KEY --source GITHUB_URL --actor NAME [--card ID] [--expected-head SHA] [--output proposal.json]  reviewable source reference proposal (no data write)
   watch --project KEY [--baseline prior.json] [--limit 25]   read-only native source delta scan (no Page/event writes)
+  cycle-preflight --project PAGE_KEY --cycle COMMON_CYCLE_ID --wbs N   read-only source-verified Cycle/WBS binding readiness
   inputs --actor WHO                                        the Owner's replies and nudges that arrived as GitHub issues, with the command that records each
   check [--private] [--base REF]    triggers [--json]    local OUT [--links F] [--prerender BROWSER]    links FILE
   bootstrap DIR --repo OWNER/NAME --page URL                copy the page and these tools into a new repository
@@ -172,6 +173,10 @@ def build():
     p.add_argument("--project", required=True)
     p.add_argument("--baseline", help="prior scan JSON for material-delta comparison; not Page project data")
     p.add_argument("--limit", type=int, default=25, help="max distinct recorded native source URLs to examine (1..100)")
+    p = top.add_parser("cycle-preflight")
+    p.add_argument("--project", required=True, help="existing Page project key")
+    p.add_argument("--cycle", required=True, help="canonical Common oracle-cycles project slug")
+    p.add_argument("--wbs", required=True, help="exact Page WBS family number (e.g. 3)")
     p = top.add_parser("propose")
     p.add_argument("--project", required=True)
     p.add_argument("--source", required=True)
@@ -247,6 +252,9 @@ def run(a):
     if c == "watch":
         import pp_watch
         return sys.exit(pp_watch.run(d, a.project, a.limit, a.baseline))
+    if c == "cycle-preflight":
+        import pp_cycle_preflight
+        return sys.exit(pp_cycle_preflight.run(d, a.project, a.cycle, a.wbs))
     if c == "propose":
         import pp_propose
         return sys.exit(pp_propose.run(d, a.project, a.source, a.actor, a.card, a.expected_head, a.output))
