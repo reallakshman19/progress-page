@@ -570,13 +570,11 @@
     "state": "SUBMITTED",
     "now": "S4 returned 23:2x: Core1A/1B pair def19622; METER ~19k tokens",
     "next": {
-      "actor": "YOU",
-      "text": "download the two JSON files and 2024/2025 papers"
+      "actor": "fresh checker",
+      "text": "WAITS: Owner download, then S4 pair check"
     },
-    "updatedAt": "2026-10-27T19:21:23Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/159",
-    "flags": [
-      "needs-you"
-    ]
+    "updatedAt": "2026-10-27T19:22:36Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/159#issuecomment-6451398444",
+    "flags": []
   }
 }
