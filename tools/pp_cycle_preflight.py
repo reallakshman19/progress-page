@@ -91,7 +91,7 @@ def page_scope(data,project,wbs):
             "sourceLinks":ids,"revision":current[0].get("id") if len(current)==1 else None,
             "recordedCards":len(records),"rootRepos":set(r.get("repo") for r in roots if r.get("repo"))}
 
-def evaluate(page,cycle,canonical,cycleKey,observations=None):
+def evaluate(page,cycle,cycleKey,observations=None):
     """Pure decision function: cannot grant task or publication authority."""
     problems=[]; gaps=[]; verified=[]
     def violation(code):problems.append(code)
