@@ -543,7 +543,7 @@
   "oracle-otm": {
     "order": 21,
     "group": "pilot",
-    "milestone": "Q0",
+    "milestone": "W31",
     "label": "Oracle (OTM)",
     "who": {
       "role": "Oracle"

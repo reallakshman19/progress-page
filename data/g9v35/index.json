@@ -4,7 +4,7 @@
     "key": "g9v35",
     "title": "G9v3.5 Physics pilot",
     "subtitle": "Newton's Laws pilot on the ZIP-free track, and the owner-bank guard (PR #305)",
-    "updatedAt": "2026-10-28T15:44:30Z",
+    "updatedAt": "2026-10-28T15:45:38Z",
     "updatedBy": "OTM",
     "staleAfterMin": 120,
     "aim": "A personal-use app for one Grade 9 kid to self-learn difficult Physics, Mathematics and Chemistry concepts for one of the toughest competitive exams. Not a corporate product.",
@@ -194,6 +194,18 @@
       "cap": "NOT_DEMONSTRATED",
       "canDo": "Tiles exist as JSON only; no page beyond WEP-07",
       "activity": "pass 2 re-run in Antigravity; WEP-02 repair with writer"
+    },
+    "W31": {
+      "name": "3.1 Second topic: WPE pilot slice (WEP-07)",
+      "full": "One WPE key idea end to end: tile d04e98dc CHECKED, 4 NSEP Core2 crops CHECKED, W5 page CHECKED (sha 43f5c387). Missing: Owner try, kid use (B5-style), independent reviewer sample.",
+      "order": 13,
+      "wbs": "3.1",
+      "bench": "B6",
+      "keeps": "B2",
+      "cap": "CANDIDATE",
+      "canDo": "Open the W5 page and try it",
+      "capSrc": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/159",
+      "activity": "waits for the Owner's try"
     }
   },
   "groups": {
@@ -250,8 +262,19 @@
       "why": "Reset after OTM step-back: new Oracle O5 builds the requirement with the Owner step by step; P1 kid page by the local builder, Owner try, non-author spot-check, then a 15-minute kid session; at most one repair round per question.",
       "ownerWords": "save work state, supersede R2, create R3",
       "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6368887319",
+      "status": "superseded",
+      "supersedes": "R2",
+      "commit": "b2efdefd1d16"
+    },
+    {
+      "id": "R4",
+      "at": "2026-10-28T15:45:36Z",
+      "by": "OTM",
+      "why": "R4: 25 Oct WBS (G9O5-10, START_HERE + task-decomposer + prototype-first) now on the page; WPE added as second topic (3.1/3.2) via the syllabus route frozen 28 Oct; pass 2 is DISCOVER_FIRST.",
+      "ownerWords": "freeze as per syllabus then need to validate with questions from IIT JEE main (Second path/pass) and revisit tiles",
+      "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6470834370",
       "status": "current",
-      "supersedes": "R2"
+      "supersedes": "R3"
     }
   ]
 }
