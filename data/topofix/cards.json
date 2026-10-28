@@ -1,0 +1,396 @@
+{
+  "ir-safety": {
+    "order": 0,
+    "group": "main",
+    "milestone": "M13",
+    "label": "IR: current-batch safety",
+    "who": {
+      "chat": "ir",
+      "role": "Owner-designated independent reviewer; qualification pending"
+    },
+    "state": "NOT_STARTED",
+    "now": "Owner designated IR 6ae155fe for native issue #2. Exact relay inputs are staged; acknowledgment, own byte receipt, principal/expectation disclosures and assessment remain NOT_RUN. This gate is an acceptance method, not another product-completion unit.",
+    "next": {
+      "actor": "IR 6ae155fe",
+      "text": "Acknowledge #2, retrieve/verify the relay and original source, disclose independence and return the scoped safety verdict."
+    },
+    "refs": [
+      {
+        "k": "issue",
+        "l": "Native safety review",
+        "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/2",
+        "s": "ACK_PENDING"
+      },
+      {
+        "k": "pr",
+        "l": "Review-input relay (unmerged)",
+        "u": "https://github.com/reallakshman19/Common/pull/558",
+        "s": "PROPOSED"
+      }
+    ]
+  },
+  "topo-4-3": {
+    "order": 43,
+    "group": "proof",
+    "milestone": "M43",
+    "label": "4.3 Owner-usable end-to-end repair tri",
+    "who": {
+      "role": "Unassigned future builder"
+    },
+    "state": "NOT_STARTED",
+    "now": "The complete usable repair cycle remains unfinished; protected PR #346 remains Draft/HOLD. Future implementation is unassigned; publication of this plan grants no product write or merge authority.",
+    "next": {
+      "actor": "-",
+      "text": "Unassigned. Release one bounded implementation slice after the preceding reviewed frontier."
+    },
+    "refs": [
+      {
+        "k": "issue",
+        "l": "WBS R1 and acceptance",
+        "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/3"
+      },
+      {
+        "k": "pr",
+        "l": "[DRAFT][XML229 WP1] Standalone source-bound topology inspect",
+        "u": "https://github.com/reallakshman19/3D_Converters/pull/346",
+        "s": "observed head cba348152faa; not verified"
+      }
+    ],
+    "updatedAt": "2026-10-28T16:32:14Z",
+    "src": "https://github.com/reallakshman19/3D_Converters/pull/346"
+  },
+  "topo-4-2": {
+    "order": 42,
+    "group": "proof",
+    "milestone": "M42",
+    "label": "4.2 Independent repair and regression ",
+    "who": {
+      "role": "Unassigned future builder"
+    },
+    "state": "NOT_STARTED",
+    "now": "Independent before/after product qualification has not been performed. Future implementation is unassigned; publication of this plan grants no product write or merge authority.",
+    "next": {
+      "actor": "-",
+      "text": "Unassigned. Release one bounded implementation slice after the preceding reviewed frontier."
+    },
+    "refs": [
+      {
+        "k": "issue",
+        "l": "WBS R1 and acceptance",
+        "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/3"
+      }
+    ],
+    "edges": [
+      {
+        "to": "topo-4-3",
+        "k": "to"
+      }
+    ]
+  },
+  "topo-4-1": {
+    "order": 41,
+    "group": "proof",
+    "milestone": "M41",
+    "label": "4.1 Evidence-qualified connection clas",
+    "who": {
+      "role": "Unassigned future builder"
+    },
+    "state": "NOT_STARTED",
+    "now": "Full engineering connection graph is not demonstrated; near-miss screening alone is insufficient. Future implementation is unassigned; publication of this plan grants no product write or merge authority.",
+    "next": {
+      "actor": "-",
+      "text": "Unassigned. Release one bounded implementation slice after the preceding reviewed frontier."
+    },
+    "refs": [
+      {
+        "k": "issue",
+        "l": "WBS R1 and acceptance",
+        "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/3"
+      }
+    ],
+    "edges": [
+      {
+        "to": "topo-4-2",
+        "k": "to"
+      }
+    ]
+  },
+  "topo-3-3": {
+    "order": 33,
+    "group": "repair",
+    "milestone": "M33",
+    "label": "3.3 Actual S1 repair reimport and reco",
+    "who": {
+      "role": "Unassigned future builder"
+    },
+    "state": "NOT_STARTED",
+    "now": "No authorized real changed-identity repair/reimport cycle has been demonstrated. Future implementation is unassigned; publication of this plan grants no product write or merge authority.",
+    "next": {
+      "actor": "-",
+      "text": "Unassigned. Release one bounded implementation slice after the preceding reviewed frontier."
+    },
+    "refs": [
+      {
+        "k": "issue",
+        "l": "WBS R1 and acceptance",
+        "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/3"
+      }
+    ],
+    "edges": [
+      {
+        "to": "topo-4-1",
+        "k": "to"
+      }
+    ]
+  },
+  "topo-3-2": {
+    "order": 32,
+    "group": "repair",
+    "milestone": "M32",
+    "label": "3.2 Precise manual-review and repair d",
+    "who": {
+      "role": "Unassigned future builder"
+    },
+    "state": "NOT_STARTED",
+    "now": "Actionable case-specific manual directions are not implemented. Future implementation is unassigned; publication of this plan grants no product write or merge authority.",
+    "next": {
+      "actor": "-",
+      "text": "Unassigned. Release one bounded implementation slice after the preceding reviewed frontier."
+    },
+    "refs": [
+      {
+        "k": "issue",
+        "l": "WBS R1 and acceptance",
+        "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/3"
+      }
+    ],
+    "edges": [
+      {
+        "to": "topo-3-3",
+        "k": "to"
+      }
+    ]
+  },
+  "topo-3-1": {
+    "order": 31,
+    "group": "repair",
+    "milestone": "M31",
+    "label": "3.1 Auditable Auto fix result",
+    "who": {
+      "role": "Unassigned future builder"
+    },
+    "state": "NOT_STARTED",
+    "now": "Preview transactions exist; an engineering-qualified solution-level outcome is not demonstrated. Future implementation is unassigned; publication of this plan grants no product write or merge authority.",
+    "next": {
+      "actor": "-",
+      "text": "Unassigned. Release one bounded implementation slice after the preceding reviewed frontier."
+    },
+    "refs": [
+      {
+        "k": "issue",
+        "l": "WBS R1 and acceptance",
+        "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/3"
+      }
+    ],
+    "edges": [
+      {
+        "to": "topo-3-3",
+        "k": "to"
+      }
+    ]
+  },
+  "topo-2-3": {
+    "order": 23,
+    "group": "source",
+    "milestone": "M23",
+    "label": "2.3 Cases survive changed occurrence i",
+    "who": {
+      "role": "Unassigned future builder"
+    },
+    "state": "NOT_STARTED",
+    "now": "Renumbered/inserted-node case continuity is not implemented or demonstrated. Future implementation is unassigned; publication of this plan grants no product write or merge authority.",
+    "next": {
+      "actor": "-",
+      "text": "Unassigned. Release one bounded implementation slice after the preceding reviewed frontier."
+    },
+    "refs": [
+      {
+        "k": "issue",
+        "l": "WBS R1 and acceptance",
+        "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/3"
+      }
+    ],
+    "edges": [
+      {
+        "to": "topo-3-1",
+        "k": "to"
+      },
+      {
+        "to": "topo-3-2",
+        "k": "to"
+      }
+    ]
+  },
+  "topo-2-2": {
+    "order": 22,
+    "group": "source",
+    "milestone": "M22",
+    "label": "2.2 Immutable revisions and current-on",
+    "who": {
+      "role": "Unassigned future builder"
+    },
+    "state": "NOT_STARTED",
+    "now": "Revision/invalidation successor design exists; the complete behavior is not demonstrated. Future implementation is unassigned; publication of this plan grants no product write or merge authority.",
+    "next": {
+      "actor": "-",
+      "text": "Unassigned. Release one bounded implementation slice after the preceding reviewed frontier."
+    },
+    "refs": [
+      {
+        "k": "issue",
+        "l": "WBS R1 and acceptance",
+        "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/3"
+      }
+    ],
+    "edges": [
+      {
+        "to": "topo-2-3",
+        "k": "to"
+      }
+    ]
+  },
+  "topo-2-1": {
+    "order": 21,
+    "group": "source",
+    "milestone": "M21",
+    "label": "2.1 Admitted PSI116 source at every en",
+    "who": {
+      "role": "Unassigned future builder"
+    },
+    "state": "NOT_STARTED",
+    "now": "Strict admission is not implemented; Python negative controls currently accept invalid profiles. Future implementation is unassigned; publication of this plan grants no product write or merge authority.",
+    "next": {
+      "actor": "-",
+      "text": "Unassigned. Release one bounded implementation slice after the preceding reviewed frontier."
+    },
+    "refs": [
+      {
+        "k": "issue",
+        "l": "WBS R1 and acceptance",
+        "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/3"
+      }
+    ],
+    "edges": [
+      {
+        "to": "topo-2-2",
+        "k": "to"
+      }
+    ]
+  },
+  "topo-1-3": {
+    "order": 13,
+    "group": "cases",
+    "milestone": "M13",
+    "label": "1.3 Preservation-safe correction eligi",
+    "who": {
+      "role": "Oracle evidence awaiting designated IR"
+    },
+    "state": "BLOCKED",
+    "now": "A preservation counterexample is reproduced; no qualified safety repair has been delivered. Future implementation is unassigned; publication of this plan grants no product write or merge authority.",
+    "next": {
+      "actor": "IR 6ae155fe",
+      "text": "Review source-qualified dispositions and preservation controls under issue #2; Oracle reconciles the return."
+    },
+    "refs": [
+      {
+        "k": "issue",
+        "l": "WBS R1 and acceptance",
+        "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/3"
+      },
+      {
+        "k": "comment",
+        "l": "Full-transaction preservation falsifier",
+        "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/1#issuecomment-6464378974",
+        "s": "SELF_ASSESSED"
+      },
+      {
+        "k": "issue",
+        "l": "Bounded safety review",
+        "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/2",
+        "s": "ACK_PENDING"
+      }
+    ],
+    "edges": [
+      {
+        "to": "topo-2-1",
+        "k": "to"
+      }
+    ],
+    "updatedAt": "2026-10-28T16:30:28Z",
+    "src": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/3#issuecomment-6474564484"
+  },
+  "topo-1-2": {
+    "order": 12,
+    "group": "cases",
+    "milestone": "M12",
+    "label": "1.2 Disposition of all 66 proposals",
+    "who": {
+      "role": "Oracle evidence awaiting designated IR"
+    },
+    "state": "SUBMITTED",
+    "now": "Inspect the reconstructed 26-row ledger and source evidence; engineering dispositions remain unfinished. Ledger identity is accepted for continuation only; 17 shared-source, four semantic-screen and five wall exclusions remain engineering-open.",
+    "next": {
+      "actor": "IR 6ae155fe",
+      "text": "Review source-qualified dispositions and preservation controls under issue #2; Oracle reconciles the return."
+    },
+    "refs": [
+      {
+        "k": "issue",
+        "l": "WBS R1 and acceptance",
+        "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/3"
+      },
+      {
+        "k": "comment",
+        "l": "Reconstructed exclusion ledger",
+        "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/1#issuecomment-6463260954",
+        "s": "SELF_ASSESSED"
+      }
+    ],
+    "edges": [
+      {
+        "to": "topo-1-3",
+        "k": "to"
+      }
+    ],
+    "updatedAt": "2026-10-28T16:30:29Z",
+    "src": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/3#issuecomment-6474564484"
+  },
+  "topo-1-1": {
+    "order": 11,
+    "group": "cases",
+    "milestone": "M11",
+    "label": "1.1 One explanation per engineering ca",
+    "who": {
+      "role": "Unassigned future builder"
+    },
+    "state": "NOT_STARTED",
+    "now": "Current source witnesses exist; engineer-facing case consolidation is not delivered. Future implementation is unassigned; publication of this plan grants no product write or merge authority.",
+    "next": {
+      "actor": "-",
+      "text": "Unassigned. Release one bounded implementation slice after the preceding reviewed frontier."
+    },
+    "refs": [
+      {
+        "k": "issue",
+        "l": "WBS R1 and acceptance",
+        "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/3"
+      }
+    ],
+    "edges": [
+      {
+        "to": "topo-1-2",
+        "k": "to"
+      }
+    ]
+  }
+}

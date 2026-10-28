@@ -113,6 +113,15 @@
       "replyTo": {
         "kind": "none"
       }
+    },
+    {
+      "key": "topofix",
+      "label": "TopoFix",
+      "order": 10,
+      "mode": "standalone",
+      "replyTo": {
+        "kind": "none"
+      }
     }
   ],
   "site": {

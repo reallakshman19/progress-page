@@ -1,0 +1,205 @@
+{
+  "schema": 3,
+  "project": {
+    "key": "topofix",
+    "title": "TopoFix — auditable repair solutions",
+    "subtitle": "Safe automatic solutions, precise manual directions, revised-source recheck and verified case outcomes.",
+    "aim": "Topo should not burden with finding but provide auditable solution which are auto fixable if not set clear directions for manual review. Support controlled manual correction, revised-source reimport, full Topo recheck and evidence-based closure.",
+    "aimSrc": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/1#issuecomment-6474563974",
+    "updatedAt": "2026-10-28T16:32:14Z",
+    "updatedBy": "Topo Oracle",
+    "staleAfterMin": 120
+  },
+  "rules": {
+    "coordinator": "Topo Oracle",
+    "quietAfterMin": 30,
+    "idleAfterMin": 15,
+    "owesAfterMin": 15,
+    "waitingAfterMin": 15
+  },
+  "chats": {
+    "ir": {
+      "label": "IR (Owner designated)",
+      "id8": "6ae155fe",
+      "engine": "ChatGPT"
+    }
+  },
+  "milestones": {
+    "M1": {
+      "order": 10,
+      "name": "Auditable disposition of current cases",
+      "full": "WP-A: explain each engineering case, reconcile all 66 proposals and preserve source meaning. The engineer sees what the 40-action batch changed, what remains, why actions were excluded and the supported next operation. IR assesses the current preservation gap before a bounded repair.",
+      "wbs": "1",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "Planned engineering outcome; completion is not inferred from evidence or task counts."
+    },
+    "M2": {
+      "order": 20,
+      "name": "Trustworthy source and case continuity",
+      "full": "WP-B: admit the supported PSI116 format, preserve immutable S0/S1 identities and bind actions to the current analysis. Track the same engineering question through authorized renumbering, insertion and deletion; ambiguous correspondence stays UNVERIFIABLE.",
+      "wbs": "2",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "Planned engineering outcome; completion is not inferred from evidence or task counts."
+    },
+    "M3": {
+      "order": 30,
+      "name": "Usable automatic and manual repair cycle",
+      "full": "WP-C: offer auditable safe Auto fix results or precise manual-review/repair directions, then strictly reimport an actual authorized S1, rerun complete TopoFix and reconcile original, outstanding, new and regressed cases.",
+      "wbs": "3",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "Planned engineering outcome; completion is not inferred from evidence or task counts."
+    },
+    "M4": {
+      "order": 40,
+      "name": "Verified connection and repair outcomes",
+      "full": "WP-D: classify evidenced connections, islands, missing joints, cross-branch links and intended terminations; independently challenge before/after semantics and demonstrate an Owner-usable end-to-end repair outcome.",
+      "wbs": "4",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "Planned engineering outcome; completion is not inferred from evidence or task counts."
+    },
+    "M11": {
+      "name": "One explanation per engineering case",
+      "full": "Consolidate related findings and competing actions while retaining original witnesses. Show source/owner fields, proposed correction, reasons and next step. Measure the case count; do not equate 210 findings or 66 proposals to separate manual jobs.",
+      "order": 11,
+      "wbs": "1.1",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "Current source witnesses exist; engineer-facing case consolidation is not delivered.",
+      "repo": "reallakshman19/xml229-topology-wp1-preview-20261028",
+      "commit": "1b9804b21aacd14e12a884f98b5958b9441a9cc2",
+      "activity": "Source-qualified preview evidence; no future product writer assigned"
+    },
+    "M12": {
+      "name": "Disposition of all 66 proposals",
+      "full": "Trace 40 applied and 26 excluded proposals to source and fresh analysis. Distinguish conflicts, alternatives, prerequisites, source-authority review, preservation and unknowns. ACT-000007 only aliases 1780 to 1790; residual 1790/1800/1810 coincidence and 1790/1810 zero-length connection must remain visible.",
+      "order": 12,
+      "wbs": "1.2",
+      "cap": "CANDIDATE",
+      "canDo": "Inspect the reconstructed 26-row ledger and source evidence; engineering dispositions remain unfinished.",
+      "capSrc": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/1#issuecomment-6463260954",
+      "repo": "reallakshman19/xml229-topology-wp1-preview-20261028",
+      "commit": "1b9804b21aacd14e12a884f98b5958b9441a9cc2",
+      "activity": "Source-qualified preview evidence; no future product writer assigned"
+    },
+    "M13": {
+      "name": "Preservation-safe correction eligibility",
+      "full": "Align planner, UI eligibility and actual mutation authorization. Preserve NodeName, ComponentRefNo, restraint, rigid, weight, OD/wall and source ownership. Qualify ACT-000030 vetoes and ACT-000194 unique-reference loss; never relax checks to restore a preferred batch count.",
+      "order": 13,
+      "wbs": "1.3",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "A preservation counterexample is reproduced; no qualified safety repair has been delivered.",
+      "repo": "reallakshman19/xml229-topology-wp1-preview-20261028",
+      "commit": "1b9804b21aacd14e12a884f98b5958b9441a9cc2",
+      "activity": "Source-qualified preview evidence; no future product writer assigned"
+    },
+    "M21": {
+      "name": "Admitted PSI116 source at every entrance",
+      "full": "Admit authentic supported PSI116 before actionable rendering/planning; reject foreign wrapper, wrong namespace and foreign consumed fields at UI/parser/transaction/reimport. Qualify supported units/profile with authentic positives; local tag names alone are insufficient.",
+      "order": 21,
+      "wbs": "2.1",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "Strict admission is not implemented; Python negative controls currently accept invalid profiles."
+    },
+    "M22": {
+      "name": "Immutable revisions and current-only actions",
+      "full": "Keep original S0; record authorized changed source as S1 with parent and raw/text identities. Bind analysis/actions to source, code/rules/config and generation; reject stale selections/results. Downloaded XML does not supersede upstream CAD authority.",
+      "order": 22,
+      "wbs": "2.2",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "Revision/invalidation successor design exists; the complete behavior is not demonstrated."
+    },
+    "M23": {
+      "name": "Cases survive changed occurrence identities",
+      "full": "Persistent case history links S0 evidence and justified S1 correspondence through renumbering/insertion/deletion. Reuse exact automatic lineage where valid; support authoritative external mapping. Missing or ambiguous mapping stays UNVERIFIABLE, never silently resolved.",
+      "order": 23,
+      "wbs": "2.3",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "Renumbered/inserted-node case continuity is not implemented or demonstrated."
+    },
+    "M31": {
+      "name": "Auditable Auto fix result",
+      "full": "Show exact accepted edits, preserved evidence, exclusions and residual/new cases after complete rebuild. Offer only the validated copy. Challenge engineering meaning as well as selected-finding disappearance; a reduced-batch PASS cannot close a surviving case.",
+      "order": 31,
+      "wbs": "3.1",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "Preview transactions exist; an engineering-qualified solution-level outcome is not demonstrated."
+    },
+    "M32": {
+      "name": "Precise manual-review and repair directions",
+      "full": "Give each nonautomatic case source/owner context, conflicting fields, what to verify, required design decision/reference, authorized repair or preserve path and the post-change check. ACT-000030 must not instruct clearing NodeName/equalizing wall merely to pass.",
+      "order": 32,
+      "wbs": "3.2",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "Actionable case-specific manual directions are not implemented."
+    },
+    "M33": {
+      "name": "Actual S1 repair reimport and reconciliation",
+      "full": "Demonstrate a source-authority-approved real repair with changed identity: immutable S1, strict reimport, fresh full analysis and original/outstanding/new/regressed reconciliation. Show justified closure, preserve, reopen or unverifiable status; include ambiguity and a newly introduced defect.",
+      "order": 33,
+      "wbs": "3.3",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "No authorized real changed-identity repair/reimport cycle has been demonstrated."
+    },
+    "M41": {
+      "name": "Evidence-qualified connection classifications",
+      "full": "Distinguish actual disconnection, islands, missing joints, cross-branch links, near misses, coincident separate systems and approved ends using evidenced compatible ports/connections. Source-order strokes and XYZ proximity remain geometric evidence, not certified edges.",
+      "order": 41,
+      "wbs": "4.1",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "Full engineering connection graph is not demonstrated; near-miss screening alone is insufficient."
+    },
+    "M42": {
+      "name": "Independent repair and regression proof",
+      "full": "Test authentic/synthetic wrong cases and affected fields/connections with independent expectation provenance. Include meaningful-record loss, residual coincidence, false joins, boundary changes, stale actions and changed identity; retain exact candidate, commands, outputs and limits.",
+      "order": 42,
+      "wbs": "4.2",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "Independent before/after product qualification has not been performed."
+    },
+    "M43": {
+      "name": "Owner-usable end-to-end repair trial",
+      "full": "Owner tries source-linked diagnosis through auditable Auto fix or precise manual directions to S1 recheck. Demonstrate automatic, controlled manual and intentional-preserve/unverifiable cases, retained evidence and new/regressed-case visibility before product acceptance/integration.",
+      "order": 43,
+      "wbs": "4.3",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "The complete usable repair cycle remains unfinished; protected PR #346 remains Draft/HOLD."
+    }
+  },
+  "groups": {
+    "main": {
+      "order": 0,
+      "title": "Current safety-review gate",
+      "sub": "Inputs prepared; Owner-designated IR 6ae155fe; ACK/receipt/verdict pending."
+    },
+    "cases": {
+      "title": "Current cases and correction safety",
+      "sub": "WP-A: auditable dispositions and source-meaning preservation.",
+      "order": 1
+    },
+    "source": {
+      "title": "Trustworthy source continuity",
+      "sub": "WP-B: admission, immutable revisions and persistent cases.",
+      "order": 2
+    },
+    "repair": {
+      "title": "Engineer repair workflow",
+      "sub": "WP-C: automatic/manual solutions and full revised-source recheck.",
+      "order": 3
+    },
+    "proof": {
+      "title": "Connection and repair proof",
+      "sub": "WP-D: evidenced connection meaning, independent proof and Owner trial.",
+      "order": 4
+    }
+  },
+  "revisions": [
+    {
+      "id": "R1",
+      "at": "2026-10-28T16:28:29Z",
+      "by": "Topo Oracle",
+      "why": "Owner requested WBS publication centered on auditable solutions and designated IR 6ae155fe.",
+      "ownerWords": "Topo should not burden with finding but provide auditable solution which are auto fixable if not set clear directions for manual review. Owner: yes, now create WBS plan! upload to progress page.",
+      "src": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/1#issuecomment-6474563974",
+      "status": "current"
+    }
+  ]
+}
