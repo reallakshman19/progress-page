@@ -72,6 +72,30 @@ class Preflight(unittest.TestCase):
         self.assertEqual(r["result"],"INSUFFICIENT_EVIDENCE")
         self.assertIn("CYCLE_MERGE_DECISION_OUTDATED_BY_NATIVE_MERGE",r["gaps"])
         self.assertFalse(r["bindingActivated"])
+    def test_current_source_mirror_status_cannot_hide_a_native_merge(self):
+        data,c,o=self.fixture()
+        o["CANDIDATE"]["data"].update(state="closed",merged=True)
+        # Even when next.status is corrected, current candidate-bound mirrors
+        # must not keep a live UNMERGED claim.
+        c["source_boundary"]["vnext"]={"source":SHA,"status":"RETURNED_UNMERGED_BROWSER_PENDING"}
+        c["coordination_observation"]={"review":{"source":SHA,
+            "product_status":"IMPLEMENTED_UNMERGED"}}
+        r=P.evaluate(P.page_scope(data,"demo","3"),c,"cycle-demo",o)
+        self.assertIn("CYCLE_CURRENT_CANDIDATE_STATUS_OUTDATED_BY_NATIVE_MERGE",r["gaps"])
+        self.assertEqual(r["currentCandidateStaleFields"],
+            ["source_boundary.vnext.status","coordination_observation.review.product_status"])
+        self.assertFalse(r["eligibleForReviewedBinding"])
+        # Historical different-source claims are preserved, not falsely flagged.
+        c["source_boundary"]["vnext"]["source"]="b"*40
+        c["coordination_observation"]["review"]["source"]="b"*40
+        r=P.evaluate(P.page_scope(data,"demo","3"),c,"cycle-demo",o)
+        self.assertEqual(r["result"],"READY_FOR_REVIEW")
+        self.assertEqual(r["currentCandidateStaleFields"],[])
+        # An open PR cannot prove any old 'unmerged' status outdated.
+        o["CANDIDATE"]["data"].update(state="open",merged=False)
+        c["source_boundary"]["vnext"]["source"]=SHA
+        self.assertEqual(P.evaluate(P.page_scope(data,"demo","3"),c,"cycle-demo",o)["result"],
+                         "READY_FOR_REVIEW")
     def test_cycle_main_and_content_pinned_to_one_sha(self):
         raw=json.dumps({"schema":"oracle-cycle-current/v1"}).encode()
         blob=hashlib.sha1(("blob "+str(len(raw))+"\0").encode()+raw).hexdigest()

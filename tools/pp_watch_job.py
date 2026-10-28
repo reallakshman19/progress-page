@@ -38,9 +38,52 @@ def scoped_cycle_coverage(data,project,cycle,wbs,probe=None):
                  "nativeState":result.get("nativeState") or {}}
     return {"cycleProject":cycle,"wbs":"wbs:"+wbs,"status":result["result"],
             "gaps":gaps,"conflicts":conflicts,"verified":result.get("verified") or [],
-            "source":source.get("cycleUrl"),"fingerprint":fingerprint,
+            "source":source.get("cycleUrl"),
+            "cycleRevision":result.get("cycleRevision"),
+            "pageRevision":result.get("pageRevision"),
+            "nativeSources":{name:result.get(field) for name,field in
+                             (("wbs","nativeWbs"),("task","nativeTask"),
+                              ("candidate","nativeCandidate"))},
+            "currentCandidateStaleFields":result.get("currentCandidateStaleFields") or [],
+            "fingerprint":fingerprint,
             "bindingActivated":False,"pageDataWritten":False,
             "cycleModified":False,"nativeAcceptanceInferred":False}
+
+def reconciliation_handoff(coverage):
+    """Ephemeral, source-backed review *instructions*, never a new assignment or tracker."""
+    if reconciliation_health(coverage)!="NEEDS_RECONCILIATION":
+        return None
+    gaps=sorted(set(coverage.get("gaps") or []))
+    conflicts=sorted(set(coverage.get("conflicts") or []))
+    cycle_gaps=[s for s in gaps if s.startswith("CYCLE_") or s.startswith("CANONICAL_")
+                or s.startswith("CURRENT_NATIVE_CANDIDATE_HEAD")]
+    page_gaps=[s for s in gaps if s.startswith("CURRENT_NATIVE_TASK_NOT_LINKED")
+               or s.startswith("CURRENT_CANDIDATE_NOT_LINKED")
+               or s.startswith("WBS_") or s.startswith("PAGE_")]
+    observed=set(cycle_gaps+page_gaps)
+    unclassified=sorted((set(gaps)|set(conflicts))-observed)
+    actions=[]
+    if cycle_gaps:
+        actions.append({"custody":"incumbent_cycle_oracle","codes":cycle_gaps,
+                        "next":"Review exact canonical and native evidence; propose a revision through current Cycle PR authority"})
+    if page_gaps:
+        actions.append({"custody":"designated_page_writer","codes":page_gaps,
+                        "next":"Review actual WBS/source coverage; use existing checked Page proposal and batch path"})
+    if unclassified:
+        actions.append({"custody":"coordinator_review_required","codes":unclassified,
+                        "next":"Resolve source/authority uncertainty before choosing an authorized writer"})
+    return {"schema":"progress-page-reconciliation-handoff/v1",
+            "project":coverage.get("cycleProject"),
+            "wbs":coverage.get("wbs"),
+            "source":coverage.get("source"),
+            "cycleRevision":coverage.get("cycleRevision"),
+            "pageRevision":coverage.get("pageRevision"),
+            "nativeSources":coverage.get("nativeSources") or {},
+            "currentCandidateStaleFields":coverage.get("currentCandidateStaleFields") or [],
+            "actions":actions,
+            "readOnly":True,"assignmentAuthorized":False,
+            "pageWriteAuthorized":False,"cycleWriteAuthorized":False,
+            "engineeringAcceptanceInferred":False}
 
 def reconciliation_health(coverage):
     """Outstanding source discrepancies persist independently of a NO_CHANGE fingerprint.
@@ -105,6 +148,9 @@ def check(data,project,baseline_path,report_path,cache_path,limit=100,fetch=None
         "canonicalCycleChanged":False,"nativeAcceptanceInferred":False}
     if coverage is not None:
         result["cycleCoverage"]=coverage
+    handoff=reconciliation_handoff(coverage)
+    if handoff is not None:
+        result["reconciliationHandoff"]=handoff
     out=Path(report_path)
     out.parent.mkdir(parents=True,exist_ok=True)
     out.write_text(json.dumps(result,indent=2,ensure_ascii=False)+"\n",encoding="utf-8")
@@ -166,6 +212,9 @@ def run():
                     })+"\n\n")
                 if "counts" in result:
                     f.write("Source counts: "+json.dumps(result["counts"])+"\n\n")
+                if "reconciliationHandoff" in result:
+                    f.write("Read-only reconciliation handoff: "+
+                            json.dumps(result["reconciliationHandoff"],sort_keys=True)+"\n\n")
                 if result.get("reconciliationRequired") and status=="NO_CHANGE":
                     f.write("**Unresolved source gap persists.** No new source delta or duplicate artifact; existing Oracle/Page writer must reconcile the original records.\n")
                 else:

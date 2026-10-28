@@ -91,9 +91,31 @@ def page_scope(data,project,wbs):
             "sourceLinks":ids,"revision":current[0].get("id") if len(current)==1 else None,
             "recordedCards":len(records),"rootRepos":set(r.get("repo") for r in roots if r.get("repo"))}
 
+def current_candidate_stale_fields(cycle,source_head):
+    """Check only *current*, exact-source-bound state mirrors; historical returns stay historical.
+
+    Free-text summaries, old candidate assignments and unrelated tasks are not
+    treated as machine-readable status. This reports contradictions for a
+    designated Oracle to review; it never rewrites canonical meaning.
+    """
+    if not isinstance(source_head,str) or not SHA_RE.fullmatch(source_head):
+        return []
+    stale=[]
+    for parent in ("source_boundary","coordination_observation"):
+        records=cycle.get(parent)
+        if not isinstance(records,dict):continue
+        for name,value in sorted(records.items()):
+            if not isinstance(value,dict) or value.get("source")!=source_head:
+                continue
+            for field in ("status","product_status"):
+                claim=value.get(field)
+                if isinstance(claim,str) and "UNMERGED" in claim.upper():
+                    stale.append(parent+"."+name+"."+field)
+    return stale
+
 def evaluate(page,cycle,cycleKey,observations=None):
     """Pure decision function: cannot grant task or publication authority."""
-    problems=[]; gaps=[]; verified=[]
+    problems=[]; gaps=[]; verified=[]; stale_fields=[]
     def violation(code):problems.append(code)
     def missing(code):gaps.append(code)
     if cycle.get("schema")!="oracle-cycle-current/v1" or cycle.get("mode")!="standalone":
@@ -161,8 +183,12 @@ def evaluate(page,cycle,cycleKey,observations=None):
                 else:verified.append("CURRENT_NATIVE_CANDIDATE_HEAD_MATCH")
                 if not isinstance(data.get("merged"),bool) or data.get("state") not in ("open","closed"):
                     missing("CANDIDATE_NATIVE_MERGE_STATE_UNVERIFIED")
-                elif data["merged"] and "MERGE_DECISION" in str(nextrec.get("status") or ""):
-                    missing("CYCLE_MERGE_DECISION_OUTDATED_BY_NATIVE_MERGE")
+                elif data["merged"]:
+                    if "MERGE_DECISION" in str(nextrec.get("status") or ""):
+                        missing("CYCLE_MERGE_DECISION_OUTDATED_BY_NATIVE_MERGE")
+                    stale_fields=current_candidate_stale_fields(cycle,nextsrc)
+                    if stale_fields:
+                        missing("CYCLE_CURRENT_CANDIDATE_STATUS_OUTDATED_BY_NATIVE_MERGE")
             else:verified.append("CURRENT_NATIVE_"+label+"_RETRIEVED")
     result="SCOPE_MISMATCH" if problems else "INSUFFICIENT_EVIDENCE" if gaps else "READY_FOR_REVIEW"
     return {"schema":SCHEMA,"result":result,"pageProject":page["project"],
@@ -171,6 +197,7 @@ def evaluate(page,cycle,cycleKey,observations=None):
       "candidate":nextsrc if isinstance(nextsrc,str) and SHA_RE.fullmatch(nextsrc) else "UNKNOWN",
       "nativeWbs":ancestor,"nativeTask":task,"nativeCandidate":pull,
       "verified":verified,"conflicts":problems,"gaps":gaps,
+      "currentCandidateStaleFields":stale_fields,
       "eligibleForReviewedBinding":result=="READY_FOR_REVIEW",
       "bindingActivated":False,"pageDataWritten":False,"cycleModified":False,
       "assignmentDispatched":False,"next":"Owner/coordinator reviews actual WBS/current candidate and source custody. Only a separately authorized Page change can activate an exact binding."}
