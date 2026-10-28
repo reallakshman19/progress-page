@@ -449,7 +449,12 @@
     },
     {
       "t": "OTM: pass 2 run 2 custody check (sources/ files exist, hashes reproduce) before any checker",
-      "s": "waiting: run 2 return",
+      "s": "closed: custody PASS 28 Oct",
+      "milestone": "W32"
+    },
+    {
+      "t": "Pass 2 run 2 (4ac47110): non-author audit, then re-test against current tiles a886c004 and 9edb9bb4; waits until WPE resumes (Owner decision B)",
+      "s": "paused",
       "milestone": "W32"
     }
   ]

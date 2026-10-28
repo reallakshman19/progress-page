@@ -3616,6 +3616,57 @@
       "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128#issuecomment-6474442493",
       "scope": "milestone:W26",
       "rev": "R4"
+    },
+    {
+      "seq": 269,
+      "id": "G9V35-R-0269",
+      "previous_id": "G9V35-R-0268",
+      "at": "2026-10-28T16:25:14Z",
+      "kind": "FIXTURE",
+      "actor": "OTM",
+      "summary": "done: custody PASS; re-added as closed",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/159#issuecomment-6474545407",
+      "list": "pending",
+      "op": "remove",
+      "rev": "R4"
+    },
+    {
+      "seq": 270,
+      "id": "G9V35-R-0270",
+      "previous_id": "G9V35-R-0269",
+      "at": "2026-10-28T16:25:15Z",
+      "kind": "FIXTURE",
+      "actor": "OTM",
+      "summary": "closed status, text kept",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/159#issuecomment-6474545407",
+      "list": "pending",
+      "op": "add",
+      "rev": "R4"
+    },
+    {
+      "seq": 271,
+      "id": "G9V35-R-0271",
+      "previous_id": "G9V35-R-0270",
+      "at": "2026-10-28T16:25:16Z",
+      "kind": "FIXTURE",
+      "actor": "OTM",
+      "summary": "next pass 2 step, paused under B",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/159#issuecomment-6474545407",
+      "list": "pending",
+      "op": "add",
+      "rev": "R4"
+    },
+    {
+      "seq": 272,
+      "id": "G9V35-R-0272",
+      "previous_id": "G9V35-R-0271",
+      "at": "2026-10-28T16:25:17Z",
+      "kind": "PLAN",
+      "actor": "OTM",
+      "summary": "pass 2 run 2 custody PASS",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/159#issuecomment-6474545407",
+      "scope": "milestone:W32",
+      "rev": "R4"
     }
   ]
 }

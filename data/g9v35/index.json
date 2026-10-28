@@ -4,7 +4,7 @@
     "key": "g9v35",
     "title": "G9v3.5 Physics pilot",
     "subtitle": "Newton's Laws pilot on the ZIP-free track, and the owner-bank guard (PR #305)",
-    "updatedAt": "2026-10-28T16:21:17Z",
+    "updatedAt": "2026-10-28T16:25:17Z",
     "updatedBy": "OTM",
     "staleAfterMin": 120,
     "aim": "A personal-use app for one Grade 9 kid to self-learn difficult Physics, Mathematics and Chemistry concepts for one of the toughest competitive exams. Not a corporate product.",
@@ -193,7 +193,7 @@
       "keeps": "B6",
       "cap": "NOT_DEMONSTRATED",
       "canDo": "Tiles exist as JSON only; no page beyond WEP-07",
-      "activity": "pass 2 re-run in Antigravity; WEP-02 repair with writer"
+      "activity": "paused by Owner decision B; pass 2 run 2 custody PASS (4ac47110), audit waits"
     },
     "W31": {
       "name": "3.1 Second adapter: WPE WEP-07 slice (ran ahead of 2.6/2.7)",
