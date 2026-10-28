@@ -2871,6 +2871,78 @@
       "before": "IN_PROGRESS",
       "after": "IN_PROGRESS",
       "rev": "R3"
+    },
+    {
+      "seq": 210,
+      "id": "G9V35-R-0210",
+      "previous_id": "G9V35-R-0209",
+      "at": "2026-10-28T15:44:23Z",
+      "kind": "PLAN",
+      "actor": "OTM",
+      "summary": "WBS 2.6 from G9O5-10 on the page",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6470834370",
+      "scope": "milestone:W26",
+      "rev": "R3"
+    },
+    {
+      "seq": 211,
+      "id": "G9V35-R-0211",
+      "previous_id": "G9V35-R-0210",
+      "at": "2026-10-28T15:44:24Z",
+      "kind": "PLAN",
+      "actor": "OTM",
+      "summary": "WBS 2.7",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6470834370",
+      "scope": "milestone:W27",
+      "rev": "R3"
+    },
+    {
+      "seq": 212,
+      "id": "G9V35-R-0212",
+      "previous_id": "G9V35-R-0211",
+      "at": "2026-10-28T15:44:25Z",
+      "kind": "PLAN",
+      "actor": "OTM",
+      "summary": "WBS 2.8",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6470834370",
+      "scope": "milestone:W28",
+      "rev": "R3"
+    },
+    {
+      "seq": 213,
+      "id": "G9V35-R-0213",
+      "previous_id": "G9V35-R-0212",
+      "at": "2026-10-28T15:44:27Z",
+      "kind": "PLAN",
+      "actor": "OTM",
+      "summary": "WBS 3.2 = WPE syllabus route",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6470834370",
+      "scope": "milestone:W32",
+      "rev": "R3"
+    },
+    {
+      "seq": 214,
+      "id": "G9V35-R-0214",
+      "previous_id": "G9V35-R-0213",
+      "at": "2026-10-28T15:44:29Z",
+      "kind": "PLAN",
+      "actor": "OTM",
+      "summary": "card bound to WBS 3.2",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6470834370",
+      "scope": "milestone:W32",
+      "rev": "R3"
+    },
+    {
+      "seq": 215,
+      "id": "G9V35-R-0215",
+      "previous_id": "G9V35-R-0214",
+      "at": "2026-10-28T15:44:30Z",
+      "kind": "ACTION",
+      "actor": "OTM",
+      "summary": "Decision for the Owner: WPE ahead of B3-B5, or B3-B5 first?",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6470834370",
+      "action": "wbs-order",
+      "rev": "R3"
     }
   ]
 }

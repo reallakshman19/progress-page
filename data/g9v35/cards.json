@@ -563,7 +563,7 @@
   "p1-wpe": {
     "order": 22,
     "group": "pilot",
-    "milestone": "Q0",
+    "milestone": "W32",
     "label": "P1-WPE-G9v35 ChatGPT writer",
     "who": {
       "chat": "6ae0f0d5",

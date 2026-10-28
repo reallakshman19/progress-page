@@ -329,5 +329,36 @@
       "at": "2026-10-22T09:20:02Z",
       "ref": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6337284438"
     }
+  },
+  "wbs-order": {
+    "order": 6,
+    "status": "open",
+    "title": "WPE ahead of B3-B5, or B3-B5 first?",
+    "lead": "The 25 Oct WBS put B3, B4, B5 (NLM, kid use) before a second topic. Today WPE runs ahead as 3.1/3.2. Pick the order.",
+    "options": [
+      {
+        "key": "A",
+        "label": "Cap WPE, prove 3.1 first (suggested)",
+        "suggested": true,
+        "body": "Finish WEP-07 end to end (your try, kid use, IR sample), cap pass 1 at WEP-03, pass 2 on real papers; then decide B3 vs WPE breadth.",
+        "reply": "A: cap WPE, prove 3.1 first"
+      },
+      {
+        "key": "B",
+        "label": "B3-B5 first",
+        "suggested": false,
+        "body": "Pause WPE after WEP-03; issue the B3 card (NLM) as the 25 Oct WBS planned.",
+        "reply": "B: B3-B5 first"
+      },
+      {
+        "key": "C",
+        "label": "WPE breadth now",
+        "suggested": false,
+        "body": "Keep building WEP-04..10 while pass 2 runs.",
+        "reply": "C: WPE breadth now"
+      }
+    ],
+    "links": [],
+    "milestone": "W32"
   }
 }

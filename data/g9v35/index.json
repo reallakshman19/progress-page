@@ -4,7 +4,7 @@
     "key": "g9v35",
     "title": "G9v3.5 Physics pilot",
     "subtitle": "Newton's Laws pilot on the ZIP-free track, and the owner-bank guard (PR #305)",
-    "updatedAt": "2026-10-28T15:26:11Z",
+    "updatedAt": "2026-10-28T15:44:30Z",
     "updatedBy": "OTM",
     "staleAfterMin": 120,
     "aim": "A personal-use app for one Grade 9 kid to self-learn difficult Physics, Mathematics and Chemistry concepts for one of the toughest competitive exams. Not a corporate product.",
@@ -152,6 +152,48 @@
       "wbs": "1",
       "cap": "NOT_DEMONSTRATED",
       "canDo": "Step 0 ready for the Owner to paste into a new local Codex session"
+    },
+    "W26": {
+      "name": "B3: one trustworthy composed MODEL-D3 tile (NLM)",
+      "full": "Owner opens the real instance with the corrected teaching scene, traces Common + adapter into the content, and sees a wrong-scene control fail. Card cards/2.6-B3.json written 25 Oct; not issued.",
+      "order": 10,
+      "wbs": "2.6",
+      "bench": "B3",
+      "keeps": "B2",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "Card written; no builder started",
+      "activity": "not issued since OTM became Oracle (27 Oct)"
+    },
+    "W27": {
+      "name": "B4: one response leads to a justified teaching action",
+      "full": "Pre-help response persists; criterion evidence selects the existing repair; ambiguous stays unknown; export/import preserves it. Card cards/2.7-B4.json written; revise after B3 trial.",
+      "order": 11,
+      "wbs": "2.7",
+      "bench": "B4",
+      "keeps": "B3",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "Card written only"
+    },
+    "W28": {
+      "name": "B5: the kid uses a checked tile",
+      "full": "Actual kid response/reconstruction shows what they can now explain or do, with support disclosed; scoped non-author check before kid use.",
+      "order": 12,
+      "wbs": "2.8",
+      "bench": "B5",
+      "keeps": "B4",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "No kid session yet"
+    },
+    "W32": {
+      "name": "3.2 WPE topic by syllabus route: pass 1 tiles + pass 2 JEE validation",
+      "full": "Spine FROZEN 28 Oct (10 key ideas). Pass 1: WEP-01 CHECKED (a886c004), WEP-02 in repair, WEP-03 card queued, 04-10 proposed DEFERRED until 3.1 is proven and pass 2 has real papers. Pass 2: run 1 rejected (no downloads, synthetic hashes); run 2 started 19:26 = DISCOVER_FIRST.",
+      "order": 14,
+      "wbs": "3.2",
+      "bench": "B7",
+      "keeps": "B6",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "Tiles exist as JSON only; no page beyond WEP-07",
+      "activity": "pass 2 re-run in Antigravity; WEP-02 repair with writer"
     }
   },
   "groups": {
