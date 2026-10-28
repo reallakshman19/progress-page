@@ -549,14 +549,14 @@
       "role": "Oracle"
     },
     "state": "IN_PROGRESS",
-    "now": "WAITS writer S4R3 (move M5); then W5 page beside B2 + non-author spot-check",
+    "now": "WAITS checkers; then W5 page beside B2",
     "next": {
-      "actor": "P1-WPE-G9v35",
-      "text": "return S4R3 file"
+      "actor": "Checker",
+      "text": "return S4R3 recheck and Core2 spot-check"
     },
     "flags": [],
-    "updatedAt": "2026-10-28T09:56:57Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/159"
+    "updatedAt": "2026-10-28T11:08:13Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/159#issuecomment-6467402893"
   },
   "p1-wpe": {
     "order": 22,
@@ -567,14 +567,14 @@
       "chat": "6ae0f0d5",
       "role": "Agent"
     },
-    "state": "IN_PROGRESS",
-    "now": "IN_PROGRESS since 13:55: S4R3 move M5",
+    "state": "SUBMITTED",
+    "now": "SUBMITTED 15:07; WAITS fresh checker on S4R3",
     "next": {
-      "actor": "P1-WPE-G9v35",
-      "text": "return S4R3 file + TASK EVIDENCE"
+      "actor": "Checker",
+      "text": "recheck S4R3 two fixes"
     },
-    "updatedAt": "2026-10-28T09:55:55Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/159#issuecomment-6465911794",
+    "updatedAt": "2026-10-28T11:08:12Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/159#issuecomment-6467402893",
     "flags": []
   }
 }
