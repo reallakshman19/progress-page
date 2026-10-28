@@ -549,16 +549,16 @@
       "role": "Oracle"
     },
     "state": "IN_PROGRESS",
-    "now": "WAITS Owner: freeze WPE spine; validate W5",
+    "now": "WAITS writer S5 (WEP-01); W5 validation still with Owner",
     "next": {
       "actor": "YOU",
-      "text": "freeze the WPE spine (and validate W5)"
+      "text": "validate the W5 page"
     },
     "flags": [
       "needs-you"
     ],
-    "updatedAt": "2026-10-28T13:50:20Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6470763738"
+    "updatedAt": "2026-10-28T13:53:58Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6470834370"
   },
   "p1-wpe": {
     "order": 22,
@@ -569,14 +569,14 @@
       "chat": "6ae0f0d5",
       "role": "Agent"
     },
-    "state": "SUBMITTED",
-    "now": "IDLE: pilot content done; next task only after Owner validation",
+    "state": "IN_PROGRESS",
+    "now": "IN_PROGRESS since 17:53: S5 move M7 (WEP-01 pair)",
     "next": {
-      "actor": "OTM",
-      "text": "next card after Owner validates W5"
+      "actor": "P1-WPE-G9v35",
+      "text": "return WEP-01 pair + TASK EVIDENCE"
     },
-    "updatedAt": "2026-10-28T11:17:18Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/159",
+    "updatedAt": "2026-10-28T13:53:57Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6470834370",
     "flags": []
   }
 }

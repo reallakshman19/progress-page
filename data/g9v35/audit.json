@@ -2703,6 +2703,34 @@
       "before": "IN_PROGRESS",
       "after": "IN_PROGRESS",
       "rev": "R3"
+    },
+    {
+      "seq": 198,
+      "id": "G9V35-R-0198",
+      "previous_id": "G9V35-R-0197",
+      "at": "2026-10-28T13:53:57Z",
+      "kind": "STATE",
+      "actor": "OTM",
+      "summary": "Pass 1 (syllabus) started: S5 tile WEP-01 sent",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6470834370",
+      "card": "p1-wpe",
+      "before": "SUBMITTED",
+      "after": "IN_PROGRESS",
+      "rev": "R3"
+    },
+    {
+      "seq": 199,
+      "id": "G9V35-R-0199",
+      "previous_id": "G9V35-R-0198",
+      "at": "2026-10-28T13:53:58Z",
+      "kind": "UPDATE",
+      "actor": "OTM",
+      "summary": "WPE spine FROZEN; pass 1 tiles per key idea, pass 2 JEE Main validation then revisit tiles",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6470834370",
+      "card": "oracle-otm",
+      "before": "IN_PROGRESS",
+      "after": "IN_PROGRESS",
+      "rev": "R3"
     }
   ]
 }
