@@ -46,6 +46,28 @@ class Watch(unittest.TestCase):
         self.assertEqual(changed["counts"]["SOURCE_CHANGED"],2)
         self.assertTrue(changed["meaningfulSourceDelta"])
         self.assertFalse(changed["nativeClaimsQualified"])
+    def test_source_removed_from_page_still_requires_review(self):
+        data=self.data()
+        prior=W.collect(data,"demo",fetch=self.api())
+        cards=data/"demo"/"cards.json"
+        obj=json.loads(cards.read_text())
+        obj["a"]["refs"]=[{"u":P}]
+        cards.write_text(json.dumps(obj))
+        after=W.collect(data,"demo",baseline=prior,fetch=self.api())
+        self.assertEqual(after["counts"]["REMOVED_SOURCE"],1)
+        self.assertEqual(after["removedSources"],[I])
+        self.assertTrue(after["meaningfulSourceDelta"])
+        self.assertTrue(after["complete"])
+        # This is a source linkage change, not a new native engineering verdict.
+        self.assertFalse(after["nativeClaimsQualified"])
+        self.assertFalse(after["dataWritten"])
+        # When extra sources exceed the cap, missing-link claims are unknown:
+        # do not mistake an unexamined link for a removed one.
+        obj["c"]={"src":"https://github.com/acme/demo/issues/8"}
+        cards.write_text(json.dumps(obj))
+        incomplete=W.collect(data,"demo",limit=1,baseline=prior,fetch=self.api())
+        self.assertEqual(incomplete["counts"]["REMOVED_SOURCE"],0)
+        self.assertFalse(incomplete["complete"])
     def test_failure_never_advertises_fresh_or_noop(self):
         data=self.data()
         prior=W.collect(data,"demo",fetch=self.api())

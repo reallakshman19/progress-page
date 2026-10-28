@@ -44,6 +44,10 @@ def collect(data,project,limit=25,baseline=None,fetch=github_json):
             except ValueError:continue
             seen[url]=card_id
     selected=list(sorted(seen))[:limit]
+    # A removed public link is also a material projection change, even if all
+    # remaining sources are unchanged. Never infer a deletion from a truncated
+    # scan: that scan is already UNKNOWN.
+    removed=sorted(set(previous)-set(seen)) if baseline is not None and len(seen)<=limit else []
     results=[]
     for source in selected:
         item={"source":source,"card":seen[source],"status":"UNKNOWN","fingerprint":None}
@@ -59,10 +63,12 @@ def collect(data,project,limit=25,baseline=None,fetch=github_json):
         results.append(item)
     counts={s:sum(item["status"]==s for item in results) for s in
         ("SOURCE_CHANGED","NEW_SOURCE","NO_CHANGE","BASELINE_REQUIRED","UNKNOWN")}
+    counts["REMOVED_SOURCE"]=len(removed)
     return {"schema":"progress-page-source-watch/v1","project":project,"examined":len(selected),
       "availableSources":len(seen),"omitted":max(0,len(seen)-len(selected)),
       "baselineCompared":baseline is not None,"counts":counts,"results":results,
-      "meaningfulSourceDelta":bool(counts["SOURCE_CHANGED"] or counts["NEW_SOURCE"]),
+      "removedSources":removed,
+      "meaningfulSourceDelta":bool(counts["SOURCE_CHANGED"] or counts["NEW_SOURCE"] or removed),
       "complete":counts["UNKNOWN"]==0 and len(seen)==len(selected),
       "nativeClaimsQualified":False,"dataWritten":False,"assignmentDispatched":False,
       "next":"Coordinator checks actual source, candidate and WBS; prepare an authorized reviewed proposal only for real changes. No Page write on NO_CHANGE."}

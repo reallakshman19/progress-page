@@ -42,6 +42,21 @@ def scoped_cycle_coverage(data,project,cycle,wbs,probe=None):
             "bindingActivated":False,"pageDataWritten":False,
             "cycleModified":False,"nativeAcceptanceInferred":False}
 
+def reconciliation_health(coverage):
+    """Outstanding source discrepancies persist independently of a NO_CHANGE fingerprint.
+
+    READY_FOR_REVIEW is only a checked source boundary, never acceptance,
+    binding activation or permission to dispatch an agent.
+    """
+    if coverage is None:
+        return "UNSCOPED"
+    if coverage.get("status")=="UNKNOWN":
+        return "UNKNOWN"
+    if (coverage.get("status")!="READY_FOR_REVIEW" or
+        coverage.get("gaps") or coverage.get("conflicts")):
+        return "NEEDS_RECONCILIATION"
+    return "READY_FOR_REVIEW"
+
 def classify(result,has_baseline):
     if not result.get("complete"):
         return "UNKNOWN"
@@ -81,8 +96,11 @@ def check(data,project,baseline_path,report_path,cache_path,limit=100,fetch=None
                       "status":"UNKNOWN","reason":"CANONICAL_OR_NATIVE_SOURCE_UNAVAILABLE",
                       "detail":str(exc)[:240]}
             status="UNKNOWN"
+    health=reconciliation_health(coverage)
     result={**observation,"monitorStatus":status,"sourceOnly":True,
-        "complete":observation["complete"] and (coverage is None or coverage["status"]!="UNKNOWN"),
+        "complete":observation["complete"] and health!="UNKNOWN",
+        "reconciliationHealth":health,
+        "reconciliationRequired":health=="NEEDS_RECONCILIATION",
         "pageDataWritten":False,"pagePublication":"NOT_RUN",
         "canonicalCycleChanged":False,"nativeAcceptanceInferred":False}
     if coverage is not None:
@@ -115,6 +133,7 @@ def run():
         status="UNKNOWN"
         result={"monitorStatus":status,"project":args.project,
             "reason":"SOURCE_OR_BASELINE_UNAVAILABLE","detail":str(exc)[:240],
+            "reconciliationHealth":"UNKNOWN","reconciliationRequired":False,
             "pageDataWritten":False,"canonicalCycleChanged":False,
             "nativeAcceptanceInferred":False}
         path=Path(args.report)
@@ -127,13 +146,18 @@ def run():
                 "status":status,"complete":str(status!="UNKNOWN").lower(),
                 "needs_review":str(status in ("SOURCE_CHANGE_REVIEW",COVERAGE_GAP_REVIEW)).lower(),
                 "health_unknown":str(status=="UNKNOWN").lower(),
+                "open_gap":str(result.get("reconciliationRequired",False)).lower(),
             }.items():
                 f.write(label+"="+value+"\n")
-    if status in ("SOURCE_CHANGE_REVIEW",COVERAGE_GAP_REVIEW,"UNKNOWN"):
+    # An unresolved gap stays visibly unresolved on every run, including when
+    # its source fingerprint has not changed. Avoid duplicate review artifacts.
+    if (status in ("SOURCE_CHANGE_REVIEW",COVERAGE_GAP_REVIEW,"UNKNOWN")
+            or result.get("reconciliationRequired")):
         summary=os.getenv("GITHUB_STEP_SUMMARY")
         if summary:
             with open(summary,"a",encoding="utf-8") as f:
                 f.write("### Native source monitor: "+status+"\n\n")
+                f.write("Reconciliation health: **"+result.get("reconciliationHealth","UNKNOWN")+"**\n\n")
                 f.write("Page-linked sources plus explicitly scoped canonical Cycle if requested. No verdict or Page write.\n\n")
                 if "cycleCoverage" in result:
                     f.write("Cycle coverage: "+json.dumps({
@@ -142,8 +166,13 @@ def run():
                     })+"\n\n")
                 if "counts" in result:
                     f.write("Source counts: "+json.dumps(result["counts"])+"\n\n")
-                f.write("Review the short-lived artifact and original native records; unavailable evidence is UNKNOWN.\n")
-    print("Native source monitor:",args.project,status,json.dumps(result.get("counts") or {}))
+                if result.get("reconciliationRequired") and status=="NO_CHANGE":
+                    f.write("**Unresolved source gap persists.** No new source delta or duplicate artifact; existing Oracle/Page writer must reconcile the original records.\n")
+                else:
+                    f.write("Review the short-lived artifact and original native records; unavailable evidence is UNKNOWN.\n")
+    print("Native source monitor:",args.project,status,
+          "reconciliation="+str(result.get("reconciliationHealth","UNKNOWN")),
+          json.dumps(result.get("counts") or {}))
     if status=="UNKNOWN":
         print("::warning::Native source retrieval incomplete; previous baseline preserved, Page untouched")
     return 0
