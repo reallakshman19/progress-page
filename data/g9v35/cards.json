@@ -549,14 +549,14 @@
       "role": "Oracle"
     },
     "state": "IN_PROGRESS",
-    "now": "S4R recheck running; Core2 crops wait for papers",
+    "now": "S4R recheck PASS_WITH_NOTE; S4R2 with writer; Core2 waits for papers",
     "next": {
       "actor": "YOU",
       "text": "download the 2024 and 2025 IAPT papers for Core2 crops"
     },
     "flags": [],
-    "updatedAt": "2026-10-28T01:35:09Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/159#issuecomment-6456250350"
+    "updatedAt": "2026-10-28T01:37:53Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/159#issuecomment-6458320875"
   },
   "p1-wpe": {
     "order": 22,
@@ -567,14 +567,14 @@
       "chat": "6ae0f0d5",
       "role": "Agent"
     },
-    "state": "SUBMITTED",
-    "now": "S4R pair 4f30041d on disk (sha match); recheck running since 05:35",
+    "state": "IN_PROGRESS",
+    "now": "S4R2 since 05:4x: last repairs a-e to the pair",
     "next": {
-      "actor": "fresh checker",
-      "text": "return S4R recheck"
+      "actor": "P1-WPE-G9v35",
+      "text": "return S4R2 TASK EVIDENCE"
     },
-    "updatedAt": "2026-10-28T01:35:08Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/159#issuecomment-6456250350",
+    "updatedAt": "2026-10-28T01:37:52Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/159#issuecomment-6458320875",
     "flags": []
   }
 }
