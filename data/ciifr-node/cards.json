@@ -1,0 +1,88 @@
+{
+  "node-r0-code": {
+    "order": 1,
+    "group": "main",
+    "milestone": "M3",
+    "label": "Property R0 draft candidate",
+    "who": {},
+    "state": "SUBMITTED",
+    "now": "Draft PR226 read-only source present at prior exact head; independent native/browser original not run",
+    "next": {
+      "actor": "Unassigned independent reviewer",
+      "text": "Execute N-01 exact-head native/GUI regression"
+    },
+    "refs": [
+      {
+        "k": "pr",
+        "l": "PR226 read-only Property Transfer",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/226",
+        "s": "DRAFT"
+      }
+    ],
+    "updatedAt": "2026-10-28T14:37:49Z",
+    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/226"
+  },
+  "node-r0-ir": {
+    "order": 2,
+    "group": "main",
+    "milestone": "M4",
+    "label": "N-01 independent native/regression",
+    "who": {},
+    "state": "NOT_STARTED",
+    "now": "Prepared independent read-only task; no reviewer bound",
+    "next": {
+      "actor": "Unassigned independent reviewer",
+      "text": "Prove old Nodal baseline vs repaired candidate and full tab integrity"
+    },
+    "refs": [
+      {
+        "k": "issue",
+        "l": "N-01 independent review",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/228",
+        "s": "PREPARED"
+      }
+    ]
+  },
+  "node-original": {
+    "order": 3,
+    "group": "main",
+    "milestone": "M5",
+    "label": "N-02 core fixtures and private V14",
+    "who": {},
+    "state": "NOT_STARTED",
+    "now": "Common public-safe fixture relay proposed; original/private receiver access NOT_RUN",
+    "next": {
+      "actor": "Unassigned fixture reviewer",
+      "text": "Verify real relay bytes and authorized original V14 custody"
+    },
+    "refs": [
+      {
+        "k": "issue",
+        "l": "N-02 fixture qualification",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/229",
+        "s": "PREPARED"
+      }
+    ]
+  },
+  "node-correspondence": {
+    "order": 4,
+    "group": "main",
+    "milestone": "M7",
+    "label": "N-03 TO-only and SOURCE/TARGET mapping",
+    "who": {},
+    "state": "NOT_STARTED",
+    "now": "Read-only TO-only discovery/concordance concept prepared; implementation NOT_STARTED",
+    "next": {
+      "actor": "Unassigned correspondence analyst",
+      "text": "After N-01 reconcile, independently design TO-only conflict ledger"
+    },
+    "refs": [
+      {
+        "k": "issue",
+        "l": "N-03 correspondence",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/230",
+        "s": "PREPARED"
+      }
+    ]
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "repository": [
+    {
+      "t": "CONCEPT_NOTE · full two-path source and risk/ownership contract",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/blob/b2b695f66fc8dfc907f2b9a493b39bd4d4109570/docs/ciifr/property-transfer/CONCEPT_NOTE_v1.0.md",
+      "s": "CONCEPT_NOTE"
+    },
+    {
+      "t": "ARCHITECTURE_CONCEPT · canonical P0–P6 implementation and typed writer holds",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/blob/b2b695f66fc8dfc907f2b9a493b39bd4d4109570/docs/ciifr/property-transfer/IMPLEMENTATION_PLAN.md",
+      "s": "ARCHITECTURE_CONCEPT"
+    },
+    {
+      "t": "CIIFR-Node canonical WBS and complete engineering/property requirements",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/227",
+      "s": "SOURCE_WBS"
+    },
+    {
+      "t": "Current R0 Property Transfer draft PR226, head verification required",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/226",
+      "s": "DRAFT_HOLD"
+    }
+  ],
+  "issues": [],
+  "pullRequests": [],
+  "roadmap": [
+    {
+      "t": "P0–P6 canonical WBS: P3 read-only and P4 restraint-first prospective writer",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/227",
+      "s": "WBS_BASELINE"
+    }
+  ],
+  "highRoi": [],
+  "future": [],
+  "intent": [],
+  "inputs": [
+    {
+      "t": "Common public-safe synthetic core F00–F07; fixture receipt only; receiver NOT_RUN",
+      "u": "https://github.com/reallakshman19/Common/tree/docs/ciifr-node-wbs-fixtures-20261028/relay/AGENT_WORK/CIIFR-Node/CIIFR-NODE-WBS-P0-20261028",
+      "s": "RELAY_PROPOSED_NOT_RECEIVED"
+    },
+    {
+      "t": "Owner-controlled original V14 GLRD, protected bytes not in public GitHub",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/229",
+      "s": "PRIVATE_ORIGINAL_NOT_RECEIVED"
+    }
+  ],
+  "knownIssues": [
+    {
+      "t": "P1 native/Chromium/real V14 R0 IR still NOT_RUN after PR226 source repair",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/228",
+      "s": "QUALIFICATION_HOLD"
+    }
+  ],
+  "pending": [
+    {
+      "t": "N-01→N-02→N-03 tasks prepared; recipients UNASSIGNED, not dispatched",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/227",
+      "s": "NEXT_THREE_TASKS"
+    }
+  ]
+}
