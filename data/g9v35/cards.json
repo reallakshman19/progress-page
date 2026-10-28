@@ -549,14 +549,16 @@
       "role": "Oracle"
     },
     "state": "IN_PROGRESS",
-    "now": "WAITS S4R4 recheck + W5 non-author spot-check",
+    "now": "WAITS Owner: open and validate the W5 page",
     "next": {
-      "actor": "Checker",
-      "text": "return S4R4 recheck and W5 spot-check"
+      "actor": "YOU",
+      "text": "open the W5 page and validate it"
     },
-    "flags": [],
-    "updatedAt": "2026-10-28T11:15:55Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/159#issuecomment-6467547773"
+    "flags": [
+      "needs-you"
+    ],
+    "updatedAt": "2026-10-28T11:17:51Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/159"
   },
   "p1-wpe": {
     "order": 22,
