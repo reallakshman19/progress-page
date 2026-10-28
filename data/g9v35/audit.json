@@ -2535,6 +2535,34 @@
       "before": "SUBMITTED",
       "after": "SUBMITTED",
       "rev": "R3"
+    },
+    {
+      "seq": 186,
+      "id": "G9V35-R-0186",
+      "previous_id": "G9V35-R-0185",
+      "at": "2026-10-28T09:55:55Z",
+      "kind": "STATE",
+      "actor": "OTM",
+      "summary": "S4R2 PASS_WITH_NOTE; S4R3 (2 text fixes, Drive save) sent",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/159#issuecomment-6465911794",
+      "card": "p1-wpe",
+      "before": "SUBMITTED",
+      "after": "IN_PROGRESS",
+      "rev": "R3"
+    },
+    {
+      "seq": 187,
+      "id": "G9V35-R-0187",
+      "previous_id": "G9V35-R-0186",
+      "at": "2026-10-28T09:55:56Z",
+      "kind": "UPDATE",
+      "actor": "OTM",
+      "summary": "S4R2 checked PASS_WITH_NOTE; S4R3 sent; Core2 crops in progress",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/159#issuecomment-6465911794",
+      "card": "oracle-otm",
+      "before": "IN_PROGRESS",
+      "after": "IN_PROGRESS",
+      "rev": "R3"
     }
   ]
 }

@@ -549,14 +549,14 @@
       "role": "Oracle"
     },
     "state": "IN_PROGRESS",
-    "now": "S4R2 recheck by fresh checker running; Core2 crops next",
+    "now": "cropping Core2 from IAPT 2024/2025 papers",
     "next": {
       "actor": "OTM",
-      "text": "relay checker verdict on items a-e; crop Core2"
+      "text": "finish Core2 crops; relay S4R3"
     },
     "flags": [],
-    "updatedAt": "2026-10-28T09:53:26Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6465800698"
+    "updatedAt": "2026-10-28T09:55:56Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/159#issuecomment-6465911794"
   },
   "p1-wpe": {
     "order": 22,
@@ -567,14 +567,14 @@
       "chat": "6ae0f0d5",
       "role": "Agent"
     },
-    "state": "SUBMITTED",
-    "now": "SUBMITTED; WAITS fresh checker on items a-e",
+    "state": "IN_PROGRESS",
+    "now": "IN_PROGRESS since 13:55: S4R3 move M5",
     "next": {
-      "actor": "Checker",
-      "text": "recheck items a-e"
+      "actor": "P1-WPE-G9v35",
+      "text": "return S4R3 file + TASK EVIDENCE"
     },
-    "updatedAt": "2026-10-28T09:53:26Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6465800698",
+    "updatedAt": "2026-10-28T09:55:55Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/159#issuecomment-6465911794",
     "flags": []
   }
 }
