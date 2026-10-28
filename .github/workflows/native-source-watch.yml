@@ -1,7 +1,19 @@
 name: Native source watch (read-only CIIFR pilot)
 on:
+  # Check after Page source publications, rather than depending on the timer.
+  # Cross-repository native/Cycle changes cannot trigger this workflow directly;
+  # the schedule bounds typical detection delay but GitHub scheduling is best effort.
+  push:
+    branches: [main]
+    paths:
+      - 'data/ciifr/**'
+      - 'data/projects.json'
+      - 'tools/pp_watch.py'
+      - 'tools/pp_watch_job.py'
+      - 'tools/pp_cycle_preflight.py'
+      - '.github/workflows/native-source-watch.yml'
   schedule:
-    - cron: '17 5 * * *'
+    - cron: '17 5,11,17,23 * * *'
   workflow_dispatch:
 
 permissions:

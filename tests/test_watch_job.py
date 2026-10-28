@@ -117,8 +117,13 @@ class Monitor(unittest.TestCase):
         self.baseline.write_bytes(self.cache.read_bytes())
         same=self.cycle_scan(self.coverage())
         self.assertEqual(same["monitorStatus"],"NO_CHANGE")
+        self.assertEqual(first["reconciliationHealth"],"NEEDS_RECONCILIATION")
+        self.assertEqual(same["reconciliationHealth"],"NEEDS_RECONCILIATION")
+        self.assertTrue(same["reconciliationRequired"])
         changed=self.cycle_scan(self.coverage(blob="b"*40,gaps=[]))
         self.assertEqual(changed["monitorStatus"],"SOURCE_CHANGE_REVIEW")
+        self.assertEqual(changed["reconciliationHealth"],"READY_FOR_REVIEW")
+        self.assertFalse(changed["reconciliationRequired"])
         self.assertEqual(self.freeze(),original)
     def test_canonical_native_merge_change_is_a_delta_not_acceptance(self):
         self.cycle_scan(self.coverage(merged=False))
@@ -136,7 +141,28 @@ class Monitor(unittest.TestCase):
         result=self.cycle_scan(self.coverage(available=False))
         self.assertEqual(result["monitorStatus"],"UNKNOWN")
         self.assertFalse(result["complete"])
+        self.assertEqual(result["reconciliationHealth"],"UNKNOWN")
         self.assertEqual(self.cache.read_bytes(),old)
+    def test_same_gap_stays_visible_without_repeat_artifact(self):
+        from unittest.mock import patch
+        original=self.cycle_scan(self.coverage())
+        self.baseline.parent.mkdir(parents=True,exist_ok=True)
+        self.baseline.write_bytes(self.cache.read_bytes())
+        output=Path(self.temp.name)/"github-output.txt"
+        summary=Path(self.temp.name)/"github-summary.txt"
+        argv=["watch","--data",str(self.data),"--project","ciifr",
+              "--cycle","ciifr","--wbs","3","--baseline",str(self.baseline),
+              "--report",str(self.report),"--cache",str(self.cache)]
+        # The runner uses the same check result as the pure source fixture, no API.
+        unchanged=self.cycle_scan(self.coverage())
+        self.assertEqual(unchanged["monitorStatus"],"NO_CHANGE")
+        with patch.object(J,"check",return_value=unchanged),patch.object(sys,"argv",argv),patch.dict("os.environ",{"GITHUB_OUTPUT":str(output),"GITHUB_STEP_SUMMARY":str(summary)}):
+            self.assertEqual(J.run(),0)
+        self.assertIn("open_gap=true",output.read_text())
+        self.assertIn("needs_review=false",output.read_text())
+        self.assertIn("Unresolved source gap persists",summary.read_text())
+        self.assertIn("NEEDS_RECONCILIATION",summary.read_text())
+        self.assertFalse(original["pageDataWritten"])
     def test_scoped_monitor_rejects_missing_explicit_wbs(self):
         with self.assertRaises(ValueError):
             J.check(self.data,"ciifr",self.baseline,self.report,self.cache,
@@ -146,6 +172,11 @@ class Monitor(unittest.TestCase):
         self.assertIn("contents: read",wf)
         self.assertNotIn("contents: write",wf)
         self.assertNotIn("pull_request:",wf)
+        self.assertIn("push:",wf)
+        self.assertIn("branches: [main]",wf)
+        self.assertIn("'data/ciifr/**'",wf)
+        self.assertIn("'tools/pp_cycle_preflight.py'",wf)
+        self.assertIn("17 5,11,17,23 * * *",wf)
         self.assertIn("workflow_dispatch:",wf)
         self.assertIn("schedule:",wf)
         self.assertIn("--project ciifr",wf)
