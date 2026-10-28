@@ -570,13 +570,15 @@
       "role": "Agent"
     },
     "state": "SUBMITTED",
-    "now": "IDLE: WEP-02 v2 9edb9bb4 CHECKED (recheck PASS); WEP-03 card S7 held",
+    "now": "PAUSED by Owner decision B (20:20): WEP-01, WEP-02 CHECKED; WEP-03 card S7 not sent",
     "next": {
-      "actor": "YOU",
-      "text": "decide the WBS order (wbs-order) before WEP-03"
+      "actor": "OTM",
+      "text": "resume WPE only after B3-B5 (WBS 2.6-2.8) or on new Owner words"
     },
-    "updatedAt": "2026-10-28T16:07:43Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/159#issuecomment-6474084936",
-    "flags": []
+    "updatedAt": "2026-10-28T16:19:06Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6474390069",
+    "flags": [
+      "paused"
+    ]
   }
 }
