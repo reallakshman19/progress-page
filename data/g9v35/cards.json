@@ -549,16 +549,16 @@
       "role": "Oracle"
     },
     "state": "IN_PROGRESS",
-    "now": "WAITS AG pass-2 return + writer S5; W5 validation still with Owner",
+    "now": "WAITS on Owner: paste pass-2 re-run in Antigravity; validate W5 page",
     "next": {
       "actor": "YOU",
-      "text": "validate the W5 page"
+      "text": "paste pass-2 re-run prompt in Antigravity; validate W5 page"
     },
     "flags": [
       "needs-you"
     ],
-    "updatedAt": "2026-10-28T14:12:51Z",
-    "src": "OWNER_PRIVATE_REF:owner-chat-pass2-started"
+    "updatedAt": "2026-10-28T14:47:33Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/159#issuecomment-6472167606"
   },
   "p1-wpe": {
     "order": 22,
