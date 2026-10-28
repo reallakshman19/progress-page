@@ -673,10 +673,22 @@
         "k": "comment",
         "l": "Current native evidence",
         "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/186#issuecomment-6412690110"
+      },
+      {
+        "k": "issue",
+        "l": "[CIIFR_GEO][WBS3.1] Oracle framework contributed; ChatGPT GP",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/180",
+        "s": "observed edited 2026-10-27T05:43:52Z; not verified"
+      },
+      {
+        "k": "pr",
+        "l": "[CIIFR_GEO] Add independent A/B/C workbench tab to VNext Sta",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/191",
+        "s": "observed head 7d7d100c51a4; not verified"
       }
     ],
-    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/186#issuecomment-6415117812",
-    "updatedAt": "2026-10-26T12:21:49Z"
+    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/191",
+    "updatedAt": "2026-10-28T07:05:55Z"
   },
   "geo-g2": {
     "order": 22,
