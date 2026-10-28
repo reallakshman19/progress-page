@@ -163,6 +163,31 @@ class Monitor(unittest.TestCase):
         self.assertIn("Unresolved source gap persists",summary.read_text())
         self.assertIn("NEEDS_RECONCILIATION",summary.read_text())
         self.assertFalse(original["pageDataWritten"])
+    def test_handoff_routes_roles_not_people_or_dispatched_assignments(self):
+        first=self.cycle_scan(self.coverage())
+        handoff=first["reconciliationHandoff"]
+        self.assertEqual(handoff["schema"],"progress-page-reconciliation-handoff/v1")
+        self.assertTrue(handoff["readOnly"])
+        self.assertFalse(handoff["assignmentAuthorized"])
+        self.assertFalse(handoff["pageWriteAuthorized"])
+        self.assertFalse(handoff["cycleWriteAuthorized"])
+        owners={a["custody"] for a in handoff["actions"]}
+        self.assertEqual(owners,{"incumbent_cycle_oracle","designated_page_writer"})
+        self.assertNotIn("recipient_chat_id8",json.dumps(handoff))
+        self.baseline.parent.mkdir(parents=True,exist_ok=True)
+        self.baseline.write_bytes(self.cache.read_bytes())
+        repeated=self.cycle_scan(self.coverage())
+        self.assertEqual(repeated["monitorStatus"],"NO_CHANGE")
+        self.assertEqual(repeated["reconciliationHandoff"]["actions"],handoff["actions"])
+        resolved=self.cycle_scan(self.coverage(blob="b"*40,gaps=[]))
+        self.assertNotIn("reconciliationHandoff",resolved)
+    def test_unclassified_gaps_fail_to_coordinator_review(self):
+        coverage={"status":"SCOPE_MISMATCH","cycleProject":"demo","wbs":"wbs:2",
+                  "gaps":[],"conflicts":["NATIVE_WBS_REPOSITORY_CONFLICT"]}
+        plan=J.reconciliation_handoff(coverage)
+        self.assertEqual(plan["actions"][0]["custody"],"coordinator_review_required")
+        self.assertFalse(plan["assignmentAuthorized"])
+        self.assertIsNone(J.reconciliation_handoff({"status":"UNKNOWN"}))
     def test_scoped_monitor_rejects_missing_explicit_wbs(self):
         with self.assertRaises(ValueError):
             J.check(self.data,"ciifr",self.baseline,self.report,self.cache,

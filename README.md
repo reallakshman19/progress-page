@@ -44,6 +44,25 @@ The optional `#/PROJECT/start/REV/wbs%3AN/Mn/CARD_ID` route selects exactly one 
 
 Before proposing a Page `data/projects.json` Cycle binding, the authorized coordinator can run `python tools/pp_cli.py cycle-preflight --project ciifr --cycle ciifr --wbs 3`. This read-only command pins Common `main` to its observed commit, validates the returned canonical `CURRENT.json` Git blob, and checks exact Page project/WBS, original native WBS and task references, observed PR candidate head, active Cycle and Page revision/publication. It returns exactly **READY_FOR_REVIEW**, **SCOPE_MISMATCH**, or **INSUFFICIENT_EVIDENCE** with specific source gaps/conflicts. A green result means *eligible for separately authorized review of a binding*, **not** that a binding, agent assignment, engineering PASS or Owner acceptance exists. Missing/failed sources fail closed, not inferred by name or stored cached prose. Never auto-write Page data, Cycle state or acknowledgements. Any human-approved binding must still be restricted to the original `wbs:N` and use existing Page writer and Common Owner rules.
 
+## Architectural reconciliation guard — no second tracker
+
+The Cycle/WBS preflight now independently checks **candidate-bound live status fields**
+against the native PR's observed merge state. A corrected `next.status` cannot
+hide an `UNMERGED` status elsewhere in a currently source-matched Cycle record.
+Historical assignments and other candidate identities remain untouched. This
+is intentionally based on exact-source structured status fields rather than
+searching historical prose or inventing acceptance.
+
+When a scoped check reveals gaps, the existing watcher emits an **ephemeral
+read-only reconciliation handoff** containing original source identities, Cycle
+and Page revision where observed, exact reason codes and responsible **custody
+roles**. It never supplies a recipient identity, creates a task, assigns an
+agent, writes a Cycle/Page record or duplicates an engineering receipt.
+Unrecognized conflicts go to coordinator source/authority review, not an
+inferred writer. An unchanged gap remains visible in each run summary while
+duplicate review artifacts remain suppressed. The designated Oracle/Page
+writer uses the existing authorized process exactly once.
+
 ## Automated CIIFR native source monitor (read-only pilot)
 
 The reference Page repo has a **source-publication-triggered, four-times-daily and manual-runnable GitHub Actions pilot** (`.github/workflows/native-source-watch.yml`) that observes public sources linked to active `ciifr` Page cards **and** the explicitly selected canonical CIIFR Cycle's WBS 3 task/candidate. It invokes existing `pp_watch.collect` and the read-only `pp_cycle_preflight.preflight` through `tools/pp_watch_job.py` with a **maximum of 100 unique links**, read-only GitHub credentials, and a short-lived **Actions cache of source fingerprints** (not a second task ledger). The first complete observation establishes a baseline. Subsequent identical observations are a silent **NO_CHANGE** with no Page write, issue, PR, receipt, or artifact; native metadata differences create a **review-only** CI artifact and summary. Retrieval failure, expired/broken cache, or truncation yields **UNKNOWN** and never overwrites the last healthy baseline.
