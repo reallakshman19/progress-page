@@ -2689,6 +2689,20 @@
       "before": "IN_PROGRESS",
       "after": "IN_PROGRESS",
       "rev": "R3"
+    },
+    {
+      "seq": 197,
+      "id": "G9V35-R-0197",
+      "previous_id": "G9V35-R-0196",
+      "at": "2026-10-28T13:50:20Z",
+      "kind": "UPDATE",
+      "actor": "OTM",
+      "summary": "Syllabus route is now first path; WPE spine draft (10 nodes -> WEP-01..10) ready; W5 validation still open",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6470763738",
+      "card": "oracle-otm",
+      "before": "IN_PROGRESS",
+      "after": "IN_PROGRESS",
+      "rev": "R3"
     }
   ]
 }
