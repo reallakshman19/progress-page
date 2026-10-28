@@ -549,16 +549,14 @@
       "role": "Oracle"
     },
     "state": "IN_PROGRESS",
-    "now": "WAITS Owner: download wep07-core1ab-8761d7da.json and the 2024/2025 IAPT papers",
+    "now": "S4R2 recheck by fresh checker running; Core2 crops next",
     "next": {
-      "actor": "YOU",
-      "text": "download the S4R2 JSON and the two IAPT papers"
+      "actor": "OTM",
+      "text": "relay checker verdict on items a-e; crop Core2"
     },
-    "flags": [
-      "needs-you"
-    ],
-    "updatedAt": "2026-10-28T09:43:09Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/159#issuecomment-6465676621"
+    "flags": [],
+    "updatedAt": "2026-10-28T09:53:26Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6465800698"
   },
   "p1-wpe": {
     "order": 22,
@@ -570,13 +568,13 @@
       "role": "Agent"
     },
     "state": "SUBMITTED",
-    "now": "SUBMITTED 13:42; WAITS Owner download, then fresh checker on items a-e",
+    "now": "SUBMITTED; WAITS fresh checker on items a-e",
     "next": {
-      "actor": "OTM",
-      "text": "recheck items a-e once the file is downloaded"
+      "actor": "Checker",
+      "text": "recheck items a-e"
     },
-    "updatedAt": "2026-10-28T09:43:08Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/159#issuecomment-6465676621",
+    "updatedAt": "2026-10-28T09:53:26Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6465800698",
     "flags": []
   }
 }

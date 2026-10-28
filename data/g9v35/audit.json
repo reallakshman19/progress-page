@@ -2507,6 +2507,34 @@
       "before": "IN_PROGRESS",
       "after": "IN_PROGRESS",
       "rev": "R3"
+    },
+    {
+      "seq": 184,
+      "id": "G9V35-R-0184",
+      "previous_id": "G9V35-R-0183",
+      "at": "2026-10-28T09:53:26Z",
+      "kind": "UPDATE",
+      "actor": "OTM",
+      "summary": "OTM fetched S4R2 JSON + 2024/2025 IAPT papers via built-in browser; sha256 verified",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6465800698",
+      "card": "oracle-otm",
+      "before": "IN_PROGRESS",
+      "after": "IN_PROGRESS",
+      "rev": "R3"
+    },
+    {
+      "seq": 185,
+      "id": "G9V35-R-0185",
+      "previous_id": "G9V35-R-0184",
+      "at": "2026-10-28T09:53:26Z",
+      "kind": "UPDATE",
+      "actor": "OTM",
+      "summary": "S4R2 file 8761d7da fetched and sha256 verified",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6465800698",
+      "card": "p1-wpe",
+      "before": "SUBMITTED",
+      "after": "SUBMITTED",
+      "rev": "R3"
     }
   ]
 }
