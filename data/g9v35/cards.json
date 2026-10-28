@@ -580,5 +580,20 @@
     "flags": [
       "paused"
     ]
+  },
+  "b3-builder": {
+    "order": 23,
+    "group": "r4",
+    "milestone": "W26",
+    "label": "B3 builder (not started)",
+    "who": {
+      "role": "Agent"
+    },
+    "state": "NOT_STARTED",
+    "now": "Brief ready (BUILDER-BRIEF-B3.md 902936f4); card 2.6-B3; inputs hash-checked; builder not launched",
+    "next": {
+      "actor": "YOU",
+      "text": "start the B3 builder session card in the Code tab (or launch Antigravity with the brief)"
+    }
   }
 }

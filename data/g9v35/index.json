@@ -4,7 +4,7 @@
     "key": "g9v35",
     "title": "G9v3.5 Physics pilot",
     "subtitle": "Newton's Laws pilot on the ZIP-free track, and the owner-bank guard (PR #305)",
-    "updatedAt": "2026-10-28T16:19:06Z",
+    "updatedAt": "2026-10-28T16:21:17Z",
     "updatedBy": "OTM",
     "staleAfterMin": 120,
     "aim": "A personal-use app for one Grade 9 kid to self-learn difficult Physics, Mathematics and Chemistry concepts for one of the toughest competitive exams. Not a corporate product.",
@@ -161,8 +161,8 @@
       "bench": "B3",
       "keeps": "B2",
       "cap": "NOT_DEMONSTRATED",
-      "canDo": "Card written; no builder started",
-      "activity": "not issued since OTM became Oracle (27 Oct)"
+      "canDo": "Card and brief written; no builder started",
+      "activity": "builder brief ready 28 Oct; waits for Owner launch"
     },
     "W27": {
       "name": "B4: one response leads to a justified teaching action",
