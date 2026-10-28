@@ -2563,6 +2563,20 @@
       "before": "IN_PROGRESS",
       "after": "IN_PROGRESS",
       "rev": "R3"
+    },
+    {
+      "seq": 188,
+      "id": "G9V35-R-0188",
+      "previous_id": "G9V35-R-0187",
+      "at": "2026-10-28T09:56:57Z",
+      "kind": "UPDATE",
+      "actor": "OTM",
+      "summary": "Core2 crops built (4 items, sha256 in local MANIFEST); S4R3 with writer",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/159",
+      "card": "oracle-otm",
+      "before": "IN_PROGRESS",
+      "after": "IN_PROGRESS",
+      "rev": "R3"
     }
   ]
 }

@@ -549,14 +549,14 @@
       "role": "Oracle"
     },
     "state": "IN_PROGRESS",
-    "now": "cropping Core2 from IAPT 2024/2025 papers",
+    "now": "WAITS writer S4R3 (move M5); then W5 page beside B2 + non-author spot-check",
     "next": {
-      "actor": "OTM",
-      "text": "finish Core2 crops; relay S4R3"
+      "actor": "P1-WPE-G9v35",
+      "text": "return S4R3 file"
     },
     "flags": [],
-    "updatedAt": "2026-10-28T09:55:56Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/159#issuecomment-6465911794"
+    "updatedAt": "2026-10-28T09:56:57Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/159"
   },
   "p1-wpe": {
     "order": 22,
