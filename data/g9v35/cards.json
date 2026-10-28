@@ -568,13 +568,13 @@
       "role": "Agent"
     },
     "state": "SUBMITTED",
-    "now": "SUBMITTED 15:15; WAITS fresh checker on N1-N3",
+    "now": "IDLE: pilot content done; next task only after Owner validation",
     "next": {
-      "actor": "Checker",
-      "text": "recheck S4R4"
+      "actor": "OTM",
+      "text": "next card after Owner validates W5"
     },
-    "updatedAt": "2026-10-28T11:15:54Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/159#issuecomment-6467547773",
+    "updatedAt": "2026-10-28T11:17:18Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/159",
     "flags": []
   }
 }
