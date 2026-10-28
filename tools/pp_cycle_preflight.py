@@ -193,6 +193,11 @@ def preflight(data,page_key,cycle_key,major,fetch=github_json):
     result=evaluate(page,cycle,cycle_key,observed)
     result["source"] = provenance
     result["nativeObservation"]={k:("OK" if "data" in v else "UNKNOWN") for k,v in observed.items()}
+    # Stable source facts for a read-only monitoring delta, not a qualification
+    # claim. PR merge/head changes are visible even when Cycle has not caught up.
+    result["nativeState"]={k:{field:v["data"].get(field) for field in
+                             ("kind","observedHead","state","merged","updatedAt")}
+                           for k,v in observed.items() if "data" in v}
     return result
 
 def run(data,page,cycle,wbs):

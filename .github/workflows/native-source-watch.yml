@@ -30,7 +30,7 @@ jobs:
           key: pp-ciifr-native-observation-${{ github.run_id }}-${{ github.run_attempt }}
           restore-keys: |
             pp-ciifr-native-observation-
-      - name: Scan only linked, public native sources
+      - name: Scan linked native sources and explicit CIIFR Cycle WBS 3
         id: watch
         env:
           GITHUB_TOKEN: ${{ github.token }}
@@ -38,6 +38,8 @@ jobs:
           python -B tools/pp_watch_job.py \
             --data data \
             --project ciifr \
+            --cycle ciifr \
+            --wbs 3 \
             --limit 100 \
             --baseline .pp-watch/ciifr-baseline.json \
             --report .pp-watch/ciifr-report.json \

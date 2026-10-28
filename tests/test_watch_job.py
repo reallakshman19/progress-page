@@ -81,6 +81,66 @@ class Monitor(unittest.TestCase):
             self.scan(self.fetch(HEAD0))
         self.assertFalse(self.cache.exists())
 
+
+    @staticmethod
+    def coverage(blob="a"*40,head=HEAD0,gaps=None,merged=True,available=True):
+        def run(data,project,cycle,wbs):
+            assert project==cycle=="ciifr" and wbs=="3"
+            if not available:
+                raise OSError("canonical source unavailable")
+            missing=(["CURRENT_NATIVE_TASK_NOT_LINKED_IN_WBS",
+                      "CURRENT_CANDIDATE_NOT_LINKED_IN_WBS",
+                      "CYCLE_MERGE_DECISION_OUTDATED_BY_NATIVE_MERGE"]
+                     if gaps is None else gaps)
+            return {"pageProject":project,"cycleProject":cycle,"wbs":"wbs:3",
+                    "result":"INSUFFICIENT_EVIDENCE" if missing else "READY_FOR_REVIEW",
+                    "gaps":missing,"conflicts":[],"candidate":head,
+                    "source":{"cycleBlobSha":blob,"cycleUrl":"https://github.com/example/Cycle"},
+                    "nativeObservation":{"WBS":"OK","TASK":"OK","CANDIDATE":"OK"},
+                    "nativeState":{"CANDIDATE":{"kind":"pull","observedHead":head,
+                                                 "state":"closed" if merged else "open",
+                                                 "merged":merged}},
+                    "verified":["CURRENT_NATIVE_CANDIDATE_HEAD_MATCH"]}
+        return run
+    def cycle_scan(self,probe):
+        return J.check(self.data,"ciifr",self.baseline,self.report,self.cache,
+                       fetch=self.fetch(HEAD0),cycle="ciifr",wbs="3",cycle_probe=probe)
+    def test_unlinked_canonical_sources_flag_once_then_noop(self):
+        original=self.freeze()
+        first=self.cycle_scan(self.coverage())
+        self.assertEqual(first["monitorStatus"],"COVERAGE_GAP_REVIEW")
+        self.assertIn("CURRENT_NATIVE_TASK_NOT_LINKED_IN_WBS",first["cycleCoverage"]["gaps"])
+        self.assertTrue(first["complete"])
+        self.assertFalse(first["pageDataWritten"])
+        self.assertFalse(first["cycleCoverage"]["bindingActivated"])
+        self.baseline.parent.mkdir(parents=True,exist_ok=True)
+        self.baseline.write_bytes(self.cache.read_bytes())
+        same=self.cycle_scan(self.coverage())
+        self.assertEqual(same["monitorStatus"],"NO_CHANGE")
+        changed=self.cycle_scan(self.coverage(blob="b"*40,gaps=[]))
+        self.assertEqual(changed["monitorStatus"],"SOURCE_CHANGE_REVIEW")
+        self.assertEqual(self.freeze(),original)
+    def test_canonical_native_merge_change_is_a_delta_not_acceptance(self):
+        self.cycle_scan(self.coverage(merged=False))
+        self.baseline.parent.mkdir(parents=True,exist_ok=True)
+        self.baseline.write_bytes(self.cache.read_bytes())
+        changed=self.cycle_scan(self.coverage(merged=True))
+        self.assertEqual(changed["monitorStatus"],"SOURCE_CHANGE_REVIEW")
+        self.assertFalse(changed["nativeAcceptanceInferred"])
+        self.assertEqual(changed["cycleCoverage"]["fingerprint"]["nativeState"]["CANDIDATE"]["merged"],True)
+    def test_unavailable_cycle_preserves_healthy_baseline_and_is_unknown(self):
+        self.cycle_scan(self.coverage())
+        old=self.cache.read_bytes()
+        self.baseline.parent.mkdir(parents=True,exist_ok=True)
+        self.baseline.write_bytes(old)
+        result=self.cycle_scan(self.coverage(available=False))
+        self.assertEqual(result["monitorStatus"],"UNKNOWN")
+        self.assertFalse(result["complete"])
+        self.assertEqual(self.cache.read_bytes(),old)
+    def test_scoped_monitor_rejects_missing_explicit_wbs(self):
+        with self.assertRaises(ValueError):
+            J.check(self.data,"ciifr",self.baseline,self.report,self.cache,
+                    fetch=self.fetch(HEAD0),cycle="ciifr")
     def test_workflow_is_read_only_single_scope_and_restores_exact_baseline_path(self):
         wf=(Path(__file__).resolve().parents[1]/".github/workflows/native-source-watch.yml").read_text()
         self.assertIn("contents: read",wf)
@@ -89,6 +149,8 @@ class Monitor(unittest.TestCase):
         self.assertIn("workflow_dispatch:",wf)
         self.assertIn("schedule:",wf)
         self.assertIn("--project ciifr",wf)
+        self.assertIn("--cycle ciifr",wf)
+        self.assertIn("--wbs 3",wf)
         self.assertIn("--limit 100",wf)
         self.assertEqual(wf.count("path: .pp-watch/ciifr-baseline.json"),2)
         self.assertIn("--baseline .pp-watch/ciifr-baseline.json",wf)
