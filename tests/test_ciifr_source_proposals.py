@@ -1,4 +1,4 @@
-"""CIIFR WBS3 source proposal: exercised through the existing batch dry-run, never a data write."""
+"""CIIFR WBS3 native-source proposal lifecycle: dry-run before publication; no duplicate after."""
 import json
 import sys
 import unittest
@@ -38,13 +38,28 @@ class CIIFRProjectionHandoff(unittest.TestCase):
                 self.assertEqual(len(commands),1)
                 self.assertEqual(commands[0][:2],["card","set"])
                 self.assertIn("--ref",commands[0])
-                # Existing tool prepares and contract-checks an ephemeral data copy.
-                # It MUST NOT apply the proposal as a side-effect of CI.
-                report=B.run(ROOT/"data",path,apply=False)
-                self.assertFalse(report["applied"])
-                self.assertTrue(report["checked"])
-                self.assertEqual(report["newEventIds"] and len(report["newEventIds"]),1)
-                self.assertFalse(report["baseChecked"])
+                # Before publication, dry-run the canonical audited batch.
+                # After publication, the exact original source must have one
+                # native ref and one UPDATE event; reapplying must fail closed.
+                events=[e for e in json.loads(audit_path.read_text())["events"]
+                        if e.get("source")==source]
+                if events:
+                    self.assertEqual(len(events),1)
+                    ev=events[0]
+                    self.assertEqual((ev["kind"],ev["card"]),("UPDATE","geo-g1"))
+                    self.assertEqual((ev["before"],ev["after"]),("SUBMITTED","SUBMITTED"))
+                    refs=[r for r in json.loads(cards_path.read_text())["geo-g1"]["refs"]
+                          if r.get("u")==source]
+                    self.assertEqual(len(refs),1)
+                    self.assertEqual(json.loads(cards_path.read_text())["geo-g1"]["state"],"SUBMITTED")
+                    with self.assertRaisesRegex(ValueError,"source already recorded"):
+                        B.run(ROOT/"data",path,apply=False)
+                else:
+                    report=B.run(ROOT/"data",path,apply=False)
+                    self.assertFalse(report["applied"])
+                    self.assertTrue(report["checked"])
+                    self.assertEqual(len(report["newEventIds"]),1)
+                    self.assertFalse(report["baseChecked"])
         self.assertEqual(cards_path.read_bytes(),cards_before)
         self.assertEqual(audit_path.read_bytes(),audit_before)
 
