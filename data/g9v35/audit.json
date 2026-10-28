@@ -2605,6 +2605,34 @@
       "before": "IN_PROGRESS",
       "after": "IN_PROGRESS",
       "rev": "R3"
+    },
+    {
+      "seq": 191,
+      "id": "G9V35-R-0191",
+      "previous_id": "G9V35-R-0190",
+      "at": "2026-10-28T11:10:13Z",
+      "kind": "STATE",
+      "actor": "OTM",
+      "summary": "S4R3 PASS_WITH_NOTE; S4R4 (N1-N3 alignment, Drive save) sent",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/159",
+      "card": "p1-wpe",
+      "before": "SUBMITTED",
+      "after": "IN_PROGRESS",
+      "rev": "R3"
+    },
+    {
+      "seq": 192,
+      "id": "G9V35-R-0192",
+      "previous_id": "G9V35-R-0191",
+      "at": "2026-10-28T11:10:13Z",
+      "kind": "UPDATE",
+      "actor": "OTM",
+      "summary": "Core2 crops CHECKED (non-author PASS_WITH_NOTE); S4R4 sent",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/159",
+      "card": "oracle-otm",
+      "before": "IN_PROGRESS",
+      "after": "IN_PROGRESS",
+      "rev": "R3"
     }
   ]
 }
