@@ -549,16 +549,16 @@
       "role": "Oracle"
     },
     "state": "IN_PROGRESS",
-    "now": "WAITS writer S5 (WEP-01); W5 validation still with Owner",
+    "now": "WAITS Owner: start pass 2 in Antigravity; validate W5",
     "next": {
       "actor": "YOU",
-      "text": "validate the W5 page"
+      "text": "paste the pass-2 prompt in Antigravity (kind-carson)"
     },
     "flags": [
       "needs-you"
     ],
-    "updatedAt": "2026-10-28T13:53:58Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6470834370"
+    "updatedAt": "2026-10-28T13:56:39Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6470927163"
   },
   "p1-wpe": {
     "order": 22,
