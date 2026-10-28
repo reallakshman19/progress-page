@@ -671,6 +671,86 @@
       "before": "NOT_STARTED",
       "after": "NOT_STARTED",
       "rev": "R1"
+    },
+    {
+      "seq": 53,
+      "id": "TOPOFIX-R-0053",
+      "previous_id": "TOPOFIX-R-0052",
+      "at": "2026-10-28T20:27:33Z",
+      "kind": "PLAN",
+      "actor": "Topo Oracle",
+      "summary": "Record exact WBS 1.3 code candidate and its unqualified capability",
+      "source": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/4#issuecomment-6479886178",
+      "scope": "milestone:M13",
+      "rev": "R1"
+    },
+    {
+      "seq": 54,
+      "id": "TOPOFIX-R-0054",
+      "previous_id": "TOPOFIX-R-0053",
+      "at": "2026-10-28T20:27:34Z",
+      "kind": "STATE",
+      "actor": "Topo Oracle",
+      "summary": "Advance WBS 1.3 from reproduced counterexample to submitted repair candidate, pending IR",
+      "source": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/4#issuecomment-6479886178",
+      "card": "topo-1-3",
+      "before": "BLOCKED",
+      "after": "SUBMITTED",
+      "rev": "R1"
+    },
+    {
+      "seq": 55,
+      "id": "TOPOFIX-R-0055",
+      "previous_id": "TOPOFIX-R-0054",
+      "at": "2026-10-28T20:27:35Z",
+      "kind": "UPDATE",
+      "actor": "Topo Oracle",
+      "summary": "Bind designated IR to additive changed-candidate evidence without inventing acknowledgment",
+      "source": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/4#issuecomment-6479886178",
+      "card": "ir-safety",
+      "before": "NOT_STARTED",
+      "after": "NOT_STARTED",
+      "rev": "R1"
+    },
+    {
+      "seq": 56,
+      "id": "TOPOFIX-R-0056",
+      "previous_id": "TOPOFIX-R-0055",
+      "at": "2026-10-28T20:27:36Z",
+      "kind": "UPDATE",
+      "actor": "Topo Oracle",
+      "summary": "Keep historical disposition evidence distinct from the new 39/17/10 candidate accounting",
+      "source": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/4#issuecomment-6479886178",
+      "card": "topo-1-2",
+      "before": "SUBMITTED",
+      "after": "SUBMITTED",
+      "rev": "R1"
+    },
+    {
+      "seq": 57,
+      "id": "TOPOFIX-R-0057",
+      "previous_id": "TOPOFIX-R-0056",
+      "at": "2026-10-28T20:27:36Z",
+      "kind": "UPDATE",
+      "actor": "Topo Oracle",
+      "summary": "Clarify the bounded manual-guidance contribution without completing WBS 3.2",
+      "source": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/4#issuecomment-6479886178",
+      "card": "topo-3-2",
+      "before": "NOT_STARTED",
+      "after": "NOT_STARTED",
+      "rev": "R1"
+    },
+    {
+      "seq": 58,
+      "id": "TOPOFIX-R-0058",
+      "previous_id": "TOPOFIX-R-0057",
+      "at": "2026-10-28T20:27:37Z",
+      "kind": "PLAN",
+      "actor": "Topo Oracle",
+      "summary": "Keep full manual-review capability undemonstrated while recording the partial WBS 1.3 contribution",
+      "source": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/4#issuecomment-6479886178",
+      "scope": "milestone:M32",
+      "rev": "R1"
     }
   ]
 }
