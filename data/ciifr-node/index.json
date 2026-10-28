@@ -1,0 +1,190 @@
+{
+  "schema": 3,
+  "project": {
+    "key": "ciifr-node",
+    "title": "CIIFR-Node",
+    "subtitle": "Two independent Node→Element→Data / Node→Data property mapping workstreams",
+    "aim": "Auditable SOURCE→TARGET CII node/element and node-attached property transfer; inspect exact FROM→TO elements and individually owned restraints first, protect existing NodeName/Geometry, approve qualified edits only with independent byte and CAESAR evidence.",
+    "aimSrc": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/227",
+    "updatedAt": "2026-10-28T14:37:51Z",
+    "updatedBy": "Owner-directed CIIFR-Node Page source operator",
+    "staleAfterMin": 120
+  },
+  "rules": {
+    "coordinator": "Oracle",
+    "quietAfterMin": 30,
+    "idleAfterMin": 15,
+    "owesAfterMin": 15,
+    "waitingAfterMin": 15
+  },
+  "chats": {},
+  "milestones": {
+    "M1": {
+      "order": 1,
+      "name": "Home, intent and custody",
+      "full": "P0.0 · Owner aim, independent modules, concept/architecture, source/version/authority",
+      "wbs": "1",
+      "cap": "CANDIDATE",
+      "canDo": "Draft source present; this WBS gate not independently accepted",
+      "capSrc": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/227",
+      "repo": "reallakshman19/XML_Compare_Utilities"
+    },
+    "M2": {
+      "order": 2,
+      "name": "Core fixture and original custody",
+      "full": "P0.1 · Common public synthetic F00–F07, actual relay bytes plus private V14 receipt",
+      "wbs": "1.1",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "Not yet independently demonstrated",
+      "capSrc": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/229",
+      "repo": "reallakshman19/XML_Compare_Utilities"
+    },
+    "M3": {
+      "order": 3,
+      "name": "Two-path read-only inspector",
+      "full": "P1.0 · Independent Property Transfer tab and isolated SOURCE/TARGET intake; no TARGET1",
+      "wbs": "2",
+      "cap": "CANDIDATE",
+      "canDo": "Draft source present; this WBS gate not independently accepted",
+      "capSrc": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/226",
+      "repo": "reallakshman19/XML_Compare_Utilities"
+    },
+    "M4": {
+      "order": 4,
+      "name": "Native tab regression IR",
+      "full": "P1.1 · Reproduce existing Nodal test baseline vs repaired head and all affected tests",
+      "wbs": "2.1",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "Not yet independently demonstrated",
+      "capSrc": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/228",
+      "repo": "reallakshman19/XML_Compare_Utilities"
+    },
+    "M5": {
+      "name": "Owner original V14 R0 trial",
+      "full": "P1.2 · Private original read-only Node/Element/AUX/MISC inspector, sanitised counts",
+      "order": 5,
+      "wbs": "2.2",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "Not yet independently demonstrated",
+      "capSrc": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/229",
+      "repo": "reallakshman19/XML_Compare_Utilities"
+    },
+    "M6": {
+      "name": "Qualified SOURCE→TARGET correspondence",
+      "full": "P2.0 · Numeric-node/element orientation identity, multiple owners, ambiguity HOLD",
+      "order": 6,
+      "wbs": "3",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "Not yet independently demonstrated",
+      "capSrc": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/230",
+      "repo": "reallakshman19/XML_Compare_Utilities"
+    },
+    "M7": {
+      "name": "TO-only discovery and element selection",
+      "full": "P2.1 · Find every element with selected TO node; explicit pick, no arbitrary first",
+      "order": 7,
+      "wbs": "3.1",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "Not yet independently demonstrated",
+      "capSrc": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/230",
+      "repo": "reallakshman19/XML_Compare_Utilities"
+    },
+    "M8": {
+      "name": "Auxiliary-occurrence correlation",
+      "full": "P2.2 · Element pointer, block, slot, CNode/Tag/GUID and epoch evidence",
+      "order": 8,
+      "wbs": "3.2",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "Not yet independently demonstrated",
+      "capSrc": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/227",
+      "repo": "reallakshman19/XML_Compare_Utilities"
+    },
+    "M9": {
+      "name": "Restraint semantics, read-only",
+      "full": "P3.0 · Restraint type/slot, stiffness/gap/friction, CNode; first future writer priority",
+      "order": 9,
+      "wbs": "4",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "Not yet independently demonstrated",
+      "capSrc": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/227",
+      "repo": "reallakshman19/XML_Compare_Utilities"
+    },
+    "M10": {
+      "name": "Process semantics, read-only",
+      "full": "P3.1 · T/P/density/units/cases/material dependencies; reuse Element E1 #178",
+      "order": 10,
+      "wbs": "4.1",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "Not yet independently demonstrated",
+      "capSrc": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/227",
+      "repo": "reallakshman19/XML_Compare_Utilities"
+    },
+    "M11": {
+      "name": "Other properties semantic catalogue",
+      "full": "P3.2 · Rigid, displ, force, hangers/nozzles, material/geometry/aux positives",
+      "order": 11,
+      "wbs": "4.2",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "Not yet independently demonstrated",
+      "capSrc": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/227",
+      "repo": "reallakshman19/XML_Compare_Utilities"
+    },
+    "M12": {
+      "name": "Restraint-first existing-slot writer HOLD",
+      "full": "P4.0 · Exact approved restraint-field writer; byte oracle + licensed CAESAR import",
+      "order": 12,
+      "wbs": "5",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "Not yet independently demonstrated",
+      "capSrc": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/227",
+      "repo": "reallakshman19/XML_Compare_Utilities"
+    },
+    "M13": {
+      "name": "Process field writer HOLD",
+      "full": "P4.1 · Only after independent element/case/unit source-semantic authority",
+      "order": 13,
+      "wbs": "5.1",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "Not yet independently demonstrated",
+      "capSrc": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/227",
+      "repo": "reallakshman19/XML_Compare_Utilities"
+    },
+    "M14": {
+      "name": "Structural CONTROL/MISC transaction HOLD",
+      "full": "P5.0 · Counts/pointers, auxiliary record insertion, RRMAT and other MISC ownership",
+      "order": 14,
+      "wbs": "6",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "Not yet independently demonstrated",
+      "capSrc": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/227",
+      "repo": "reallakshman19/XML_Compare_Utilities"
+    },
+    "M15": {
+      "name": "Owner-gated standalone release",
+      "full": "P6.0 · Native source/target, Windows, independent review and release decision",
+      "order": 15,
+      "wbs": "7",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "Not yet independently demonstrated",
+      "capSrc": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/227",
+      "repo": "reallakshman19/XML_Compare_Utilities"
+    }
+  },
+  "groups": {
+    "main": {
+      "order": 1,
+      "title": "Work"
+    }
+  },
+  "revisions": [
+    {
+      "id": "R1",
+      "at": "2026-10-28T14:37:36Z",
+      "by": "Owner-directed CIIFR-Node Page source operator",
+      "why": "Owner requested separate CIIFR-Node project/WBS and fixtures.",
+      "ownerWords": "Create CIIFR-Node WBS, core fixtures and a separate Property Transfer tab; keep Node Name and other tabs unchanged.",
+      "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/227",
+      "status": "current"
+    }
+  ]
+}

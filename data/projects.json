@@ -104,6 +104,15 @@
       "statusAt": "2026-10-26T10:42:53Z",
       "statusBy": "ChatGPT (Owner-directed recorder)",
       "statusSrc": "OWNER_PRIVATE_REF:ciifr-element-remove-20261026"
+    },
+    {
+      "key": "ciifr-node",
+      "label": "CIIFR-Node",
+      "order": 9,
+      "mode": "standalone",
+      "replyTo": {
+        "kind": "none"
+      }
     }
   ],
   "site": {
