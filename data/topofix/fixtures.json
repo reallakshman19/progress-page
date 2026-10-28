@@ -1,0 +1,107 @@
+{
+  "repository": [
+    {
+      "t": "Exact preview candidate 1b9804b21aacd14e12a884f98b5958b9441a9cc2; preview-only code and evidence.",
+      "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/tree/1b9804b21aacd14e12a884f98b5958b9441a9cc2",
+      "s": "PINNED_PREVIEW",
+      "milestone": "M1"
+    },
+    {
+      "t": "Protected 3D_Converters comparator cba348152faa9c2077d5c91a5f85b4b81d2e8e25; no integration/merge authority.",
+      "u": "https://github.com/reallakshman19/3D_Converters/tree/cba348152faa9c2077d5c91a5f85b4b81d2e8e25",
+      "s": "PROTECTED_HOLD"
+    }
+  ],
+  "issues": [
+    {
+      "t": "Oracle source reconciliation and accepted repair-cycle architecture.",
+      "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/1",
+      "s": "OPEN",
+      "milestone": "M1"
+    },
+    {
+      "t": "Bounded safety review: Owner-designated IR 6ae155fe; ACK/own receipt/independence disclosures/verdict NOT_RUN.",
+      "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/2",
+      "s": "ACK_PENDING",
+      "milestone": "M13"
+    }
+  ],
+  "pullRequests": [
+    {
+      "t": "Protected PR #346 remains Draft/HOLD; 40 preview actions are not integrated or Owner-approved repairs.",
+      "u": "https://github.com/reallakshman19/3D_Converters/pull/346",
+      "s": "DRAFT_HOLD"
+    },
+    {
+      "t": "Common #558 proposed unmerged public-safe relay; exact payload commit 70698df22a6a01caf4f9a8c79fd9b9fc55e42051. Producer byte check is not reviewer receipt.",
+      "u": "https://github.com/reallakshman19/Common/pull/558",
+      "s": "PROPOSED_NOT_RECEIVED",
+      "milestone": "M13"
+    }
+  ],
+  "roadmap": [
+    {
+      "t": "WBS R1: 1 current-case disposition/safety -> 2 admission and case continuity -> 3 automatic/manual repair and S1 recheck -> 4 connection/repair proof and Owner trial.",
+      "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/3",
+      "s": "PLAN_R1"
+    }
+  ],
+  "highRoi": [
+    {
+      "t": "Reuse scene/picking, planner, transaction checks, selected-finding rebuild and exact automatic lineage. Improve auditable case solutions without a full revamp or ownership switch.",
+      "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/3",
+      "s": "PLANNED"
+    }
+  ],
+  "future": [
+    {
+      "t": "Demonstrate one authorized real manual/source-model repair with new S1 SHA and changed node identity, strict reimport, full re-TopoFix and supported case closure or explicit unresolved state.",
+      "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/3",
+      "s": "NOT_STARTED",
+      "milestone": "M33"
+    }
+  ],
+  "intent": [
+    {
+      "t": "Topo should not burden with finding but provide auditable solution which are auto fixable if not set clear directions for manual review.",
+      "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/3",
+      "s": "OWNER_INTENT"
+    }
+  ],
+  "inputs": [
+    {
+      "t": "Original public FirstpassXML: 144471 bytes; SHA256 feee5a5a6399207337e63bc56c8afb001fe37ab30c6a7a9283333ec60f6eea38. Retrieve exact bytes from the pinned original repository.",
+      "u": "https://github.com/reallakshman19/3D_Converters/blob/cba348152faa9c2077d5c91a5f85b4b81d2e8e25/Benchmarks/1885Sjson/FirstpassXML",
+      "s": "PUBLIC_SOURCE_PINNED",
+      "milestone": "M1"
+    }
+  ],
+  "knownIssues": [
+    {
+      "t": "Unique ComponentRefNo can disappear in a full synthetic transaction while all nine checks pass; original ACT-000194 ref survives elsewhere. Independent rule qualification and bounded repair remain open.",
+      "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/1#issuecomment-6464378974",
+      "s": "PRESERVATION_GAP",
+      "milestone": "M13"
+    },
+    {
+      "t": "Foreign wrapper/document namespace/consumed-field namespace are accepted by the Python parser. Strict admission implementation is not started; UI runtime negatives NOT_RUN.",
+      "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/1#issuecomment-6464378974",
+      "s": "ADMISSION_OPEN",
+      "milestone": "M21"
+    },
+    {
+      "t": "ACT-000007 aliases 1780 to 1790; fresh rebuilt analysis still reports 1790/1800/1810 coincidence and a 1790/1810 zero-length connection. Reduced-batch PASS does not close the whole case.",
+      "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/3",
+      "s": "RESIDUAL_CASE_OPEN",
+      "milestone": "M12"
+    }
+  ],
+  "pending": [
+    {
+      "t": "ONE NOW: IR 6ae155fe acknowledges #2, retrieves exact inputs, records own source/candidate custody and independent assessment; Oracle reconciles next. Future builders remain unassigned.",
+      "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/2",
+      "s": "OWNER_DESIGNATED",
+      "milestone": "M13"
+    }
+  ]
+}
