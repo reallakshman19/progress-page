@@ -542,7 +542,7 @@
   },
   "oracle-otm": {
     "order": 21,
-    "group": "pilot",
+    "group": "r4",
     "milestone": "W31",
     "label": "Oracle (OTM)",
     "who": {
@@ -562,7 +562,7 @@
   },
   "p1-wpe": {
     "order": 22,
-    "group": "pilot",
+    "group": "r4",
     "milestone": "W32",
     "label": "P1-WPE-G9v35 ChatGPT writer",
     "who": {
@@ -570,13 +570,13 @@
       "role": "Agent"
     },
     "state": "SUBMITTED",
-    "now": "IDLE after S6R; WEP-03 card S7 held pending Owner order decision (wbs-order)",
+    "now": "IDLE: WEP-02 v2 9edb9bb4 CHECKED (recheck PASS); WEP-03 card S7 held",
     "next": {
-      "actor": "OTM",
-      "text": "send S7 if the Owner picks A or C; recheck WEP-02 v2"
+      "actor": "YOU",
+      "text": "decide the WBS order (wbs-order) before WEP-03"
     },
-    "updatedAt": "2026-10-28T15:57:53Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/159#issuecomment-6473885184",
+    "updatedAt": "2026-10-28T16:07:43Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/159#issuecomment-6474084936",
     "flags": []
   }
 }

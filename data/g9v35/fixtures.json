@@ -14,6 +14,22 @@
       "t": "Grade9v3.5, tooling under Shared/tools",
       "u": "https://github.com/reallakshman19/Grade9v3.5",
       "n": "Shared"
+    },
+    {
+      "t": "Common oracle-continuity PROTOCOL (pinned a353371): a receiving Oracle reads the inherited WBS first",
+      "u": "https://github.com/reallakshman19/Common/blob/a353371d5f1ea3d6df8214165ecdecebda9df41b/skills/agent-work/oracle-continuity/PROTOCOL.md"
+    },
+    {
+      "t": "Common CONTRIBUTION_HANDOFF (pinned a353371): how a contributor hands work back",
+      "u": "https://github.com/reallakshman19/Common/blob/a353371d5f1ea3d6df8214165ecdecebda9df41b/skills/agent-work/CONTRIBUTION_HANDOFF.md"
+    },
+    {
+      "t": "Common oracle-standalone SKILL (pinned a353371)",
+      "u": "https://github.com/reallakshman19/Common/blob/a353371d5f1ea3d6df8214165ecdecebda9df41b/skills/agent-work/oracle-standalone/SKILL.md"
+    },
+    {
+      "t": "Common START_HERE, task-decomposer and progress-page (pinned a353371): plan from Common, one WBS on this page",
+      "u": "https://github.com/reallakshman19/Common/blob/a353371d5f1ea3d6df8214165ecdecebda9df41b/skills/agent-work/START_HERE.md"
     }
   ],
   "issues": [
@@ -72,6 +88,11 @@
     {
       "t": "Common PR #547: WPE C1 research return (draft, d38d6d21)",
       "u": "https://github.com/reallakshman19/Common/pull/547"
+    },
+    {
+      "t": "Common PR #562: one WBS on the Progress page; task-decomposer \"Repeat a proven unit\"; continuity and onboarding read the WBS first",
+      "u": "https://github.com/reallakshman19/Common/pull/562",
+      "s": "open, Owner merges"
     }
   ],
   "roadmap": [
@@ -120,6 +141,10 @@
       "t": "WPE replaces NLM as the first full Physics demonstration; Physics and Mathematics research first, Chemistry later; reuse the existing app, libraries, QRT7 and blueprint/topic adapters",
       "u": "https://github.com/reallakshman19/Grade9v3.5/blob/d87aa9a5ba0c53d4ea9437d75d7b3967af550c86/relay/RESEARCH/G9-L2-WPE-20261027/HANDOVER.md",
       "n": "Not yet Owner words in CL #1"
+    },
+    {
+      "t": "R4 governing WBS: G9O5-10 WBS-PROTOTYPES.md (25 Oct). The file sits in a local handoff folder, not on GitHub; this page's WBS milestones 1-4 are its public copy.",
+      "s": "current"
     }
   ],
   "highRoi": [
@@ -259,6 +284,18 @@
       "t": "OWNER (27 Oct 18:4x), on the D3/D4 default plan (bank, Smart Labelling 1 with D3/D4 selection, Core2, Core1A/1B, compile; assessment optional; prove one slice first): \"proceed, we have to pilot on topic:\\\"work power and energy\\\" in physics\".",
       "u": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6445075933",
       "n": "Pilot topic for D3/D4 plan"
+    },
+    {
+      "t": "Owner, 28 Oct: the syllabus route is the first path for a new topic",
+      "u": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6470763738"
+    },
+    {
+      "t": "Owner, 28 Oct: freeze as per syllabus, then validate with IIT JEE Main questions (second pass) and revisit tiles",
+      "u": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6470834370"
+    },
+    {
+      "t": "Owner, 28 Oct 20:01: first fix all the gaps, then the project",
+      "u": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6474002480"
     }
   ],
   "inputs": [
@@ -291,12 +328,6 @@
     }
   ],
   "knownIssues": [
-    {
-      "t": "The ZIP-free first attempt is a text design only; every N1 check is NOT_RUN",
-      "u": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128#issuecomment-6329713931",
-      "s": "open",
-      "n": "NLM"
-    },
     {
       "t": "Drive upload tool cannot take the author's local files (needs a file reference)",
       "u": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128#issuecomment-6317616600",
@@ -341,36 +372,30 @@
       "t": "NLM source drift: the historical 25-item review bank hashes eb7ba61bd74f; PR 299 at 455103ad has a 39-item bank, c87ad141e4db. Its first three rows declare authored scenarios, not original exam questions. Historical FINE does not certify the changed bank or a current learning display."
     },
     {
+      "t": "WPE work (3.1 WEP-07, 3.2 WEP-01/02) ran ahead of governing 2.6/2.7 (B3/B4), and 3.2 breadth goes against \"no seven-topic batch now\". Order decision wbs-order is with the Owner.",
+      "u": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6474002480",
+      "s": "open",
+      "milestone": "W32"
+    },
+    {
+      "t": "Pass 2 run 1 (ba55fa02) rejected at custody: sources/ was empty and the hashes were synthetic",
+      "u": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/159",
+      "s": "closed: rejected; run 2 = DISCOVER_FIRST",
+      "milestone": "W32"
+    },
+    {
+      "t": "The ZIP-free first attempt is a text design only; every N1 check is NOT_RUN",
+      "s": "closed: superseded by R4"
+    },
+    {
       "t": "Milestones M0-M4/Q0 predate the WPE-first direction and O5's refined WBS; resetting them is the Oracle's (MILESTONE SET)",
-      "u": "https://github.com/reallakshman19/Common/blob/1a450b3e3e58fc0851578f512c8b0857e55c404e/relay/AGENT_WORK/Grade9v3.5/oracle-continuity-20261027-6ae0484d/ORACLE_CONTINUITY.md"
+      "s": "closed: fixed 28 Oct, mapped to WBS 1-4"
     }
   ],
   "pending": [
     {
-      "t": "Reconcile the Oracle challenge on the ZIP-free workpack (04:47), then send the next packet",
-      "u": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/128#issuecomment-6329920555",
-      "s": "open",
-      "n": "NLM"
-    },
-    {
-      "t": "Oracle adjudication, then the Owner accepts or rejects 010 and 022",
-      "s": "waiting",
-      "n": "NLM"
-    },
-    {
-      "t": "Optional: Owner decides the private in-chat text route (card D4)",
-      "s": "open",
-      "n": "NLM"
-    },
-    {
       "t": "Owner decides how to treat the red CI checks",
       "s": "open",
-      "n": "Shared"
-    },
-    {
-      "t": "IR short recheck of head 69b1b4b5 (asked 02:10 on #135, no reply yet)",
-      "s": "waiting",
-      "u": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/135#issuecomment-6327655150",
       "n": "Shared"
     },
     {
@@ -389,6 +414,43 @@
     {
       "t": "#313 G9-WPE-C1-IR1 academic review of #311: prepared, dispatch NOT_SENT",
       "u": "https://github.com/reallakshman19/Grade9v3.5/issues/313"
+    },
+    {
+      "t": "Reconcile the Oracle challenge on the ZIP-free workpack (04:47), then send the next packet",
+      "s": "closed: superseded by R4"
+    },
+    {
+      "t": "Oracle adjudication, then the Owner accepts or rejects 010 and 022",
+      "s": "closed: superseded by R4"
+    },
+    {
+      "t": "Optional: Owner decides the private in-chat text route (card D4)",
+      "s": "closed: superseded by R4"
+    },
+    {
+      "t": "IR short recheck of head 69b1b4b5 (asked 02:10 on #135, no reply yet)",
+      "s": "closed: superseded by R4"
+    },
+    {
+      "t": "Owner: try the WEP-07 W5 page (3.1 CANDIDATE)",
+      "u": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/159",
+      "s": "waiting: Owner",
+      "milestone": "W31"
+    },
+    {
+      "t": "Owner: WBS order decision (wbs-order): B3-B5 first per the governing WBS, or WPE first",
+      "u": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6474002480",
+      "s": "waiting: Owner"
+    },
+    {
+      "t": "Owner: merge Common PR #562",
+      "u": "https://github.com/reallakshman19/Common/pull/562",
+      "s": "waiting: Owner"
+    },
+    {
+      "t": "OTM: pass 2 run 2 custody check (sources/ files exist, hashes reproduce) before any checker",
+      "s": "waiting: run 2 return",
+      "milestone": "W32"
     }
   ]
 }

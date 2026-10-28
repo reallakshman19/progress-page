@@ -4,7 +4,7 @@
     "key": "g9v35",
     "title": "G9v3.5 Physics pilot",
     "subtitle": "Newton's Laws pilot on the ZIP-free track, and the owner-bank guard (PR #305)",
-    "updatedAt": "2026-10-28T15:57:53Z",
+    "updatedAt": "2026-10-28T16:07:43Z",
     "updatedBy": "OTM",
     "staleAfterMin": 120,
     "aim": "A personal-use app for one Grade 9 kid to self-learn difficult Physics, Mathematics and Chemistry concepts for one of the toughest competitive exams. Not a corporate product.",
@@ -89,9 +89,9 @@
   "milestones": {
     "M0": {
       "order": 1,
-      "name": "P1 kid page + first kid session",
-      "full": "P1: one page in the kid's words, opened as a plain file: 3 warm-up questions (NLM-001, 002 with the cue fix, 012), then one NEW question on the first missed idea with 3 staged hints, one retry and the full solution, then results and Save. OTM runs it, the Owner tries it, a non-author physics spot-check, then P2: a 15-minute kid session whose saved answers pick M1's first concept. At most one repair round per question.",
-      "wbs": "1.1",
+      "name": "P1 diagnostic page / B1 (done)",
+      "full": "Governing WBS 1: P1 diagnostic / B1. Prior Owner trial retained; DONE, no restart. (R1-R2 wording: P1 kid page + first kid session.)",
+      "wbs": "1",
       "bench": "B1",
       "cap": "NOT_DEMONSTRATED",
       "canDo": "P1 brief ready; build not launched yet",
@@ -102,10 +102,10 @@
       "activity": "P1 build waits for the Owner's launch (agy)"
     },
     "M1": {
-      "order": 2,
-      "name": "NLM Core 1A/1B",
-      "full": "Each fixed pilot tile has a concept-building lesson and a matching inference-before-reveal task, checked as a pair; coverage and gaps are explicit.",
-      "wbs": "1.2",
+      "order": 4,
+      "name": "NLM path: B2 page, B3 tile, B4 teaching action, B5 kid use",
+      "full": "Governing WBS 2: 2-2.5 NLM Core1A/1B page (B2) accepted by the Owner for prototype trial and frozen; 2.6 B3 and 2.7 B4 are the only detailed cards; 2.8 B5 kid use; 2.9.x per-tile corrections; 2.10 optional, deferred.",
+      "wbs": "2",
       "bench": "B2",
       "keeps": "B1",
       "cap": "NOT_DEMONSTRATED",
@@ -113,10 +113,10 @@
       "activity": "to be re-planned in O5's roadmap (Q0 step 3)"
     },
     "M2": {
-      "order": 3,
-      "name": "NLM questionnaire refinement",
-      "full": "Refine Core 1B/2B diagnostics using observed attempts after the first working learning path. Initial baseline and demand capture already occur in M0; they do not wait for this fuller questionnaire.",
-      "wbs": "1.3",
+      "order": 17,
+      "name": "Optional: one automated criterion-feedback experiment (deferred)",
+      "full": "Governing WBS 2.10, optional branch: compare one criterion against human-labelled evidence; ambiguous answers stay unknown. DEFERRED, not approved now; considered after B4 evidence. Takes over the R2 step \"NLM questionnaire refinement\".",
+      "wbs": "2.10",
       "bench": "B3",
       "keeps": "B1, B2",
       "cap": "NOT_DEMONSTRATED",
@@ -124,10 +124,10 @@
       "activity": "to be re-planned in O5's roadmap (Q0 step 3)"
     },
     "M3": {
-      "order": 4,
-      "name": "NLM Core 2B",
-      "full": "Changed-demand transfer items address the observed gaps; a distinct spot-check covers the new decision and reveal behavior, followed by a learner retry.",
-      "wbs": "1.4",
+      "order": 30,
+      "name": "Concept-specific instances across remaining QRT cells (deferred)",
+      "full": "Governing WBS 4: honest cell/family coverage, separate learner evidence, no lesson loss on duplicate-cell placements. DEFERRED horizon; the all-28-per-topic aim is kept. Takes over the R2 step \"NLM Core 2B\".",
+      "wbs": "4",
       "bench": "B4",
       "keeps": "B1-B3",
       "cap": "NOT_DEMONSTRATED",
@@ -135,10 +135,10 @@
       "activity": "to be re-planned in O5's roadmap (Q0 step 3)"
     },
     "M4": {
-      "order": 5,
-      "name": "Next Physics topic (deferred)",
-      "full": "After the NLM learner cycle, select the next Physics topic from observed need and repeat the small pipeline; Mathematics and Chemistry remain later work.",
-      "wbs": "2",
+      "order": 20,
+      "name": "Second topic: same Common contract, new adapter, then topic by topic",
+      "full": "Governing WBS 3 (G9O5-10, 25 Oct): 3.1 prove the same Common MODEL-D3 contract with a second topic adapter after B3/B4 yield reusable meaning; 3.2 expand topic by topic after actual second-adapter reuse, no seven-topic generation batch now. Topic order is the Owner's.",
+      "wbs": "3",
       "bench": "B5",
       "keeps": "B1-B4",
       "cap": "NOT_DEMONSTRATED",
@@ -146,10 +146,10 @@
       "activity": "to be re-planned in O5's roadmap (Q0 step 3)"
     },
     "Q0": {
-      "name": "Requirement with the Owner (Oracle O5)",
-      "full": "New Oracle O5 builds the requirement with the Owner in small steps: 0 aim + 3 questions; 1 the kid and the exam; 2 one study session minute by minute (reacting to the P1 page); 3 roadmap where every step ends with something the Owner can open; 4 protocol, old history as links (reference, not direction). All agents new in R3, no reuse.",
-      "order": 0,
-      "wbs": "1",
+      "name": "History R3: requirement with Owner, then NLM B2 page (2.1-2.5)",
+      "full": "R3 steps with Oracle O5 produced the NLM Core1A/1B B2 page; the Owner accepted it for prototype trial use (\"all cores seen, ok\"). Frozen; later prototypes add beside it.",
+      "order": 5,
+      "wbs": "2.5",
       "cap": "NOT_DEMONSTRATED",
       "canDo": "Step 0 ready for the Owner to paste into a new local Codex session"
     },
@@ -185,9 +185,9 @@
       "canDo": "No kid session yet"
     },
     "W32": {
-      "name": "3.2 WPE topic by syllabus route: pass 1 tiles + pass 2 JEE validation",
-      "full": "Spine FROZEN 28 Oct (10 key ideas). Pass 1: WEP-01 CHECKED (a886c004), WEP-02 in repair, WEP-03 card queued, 04-10 proposed DEFERRED until 3.1 is proven and pass 2 has real papers. Pass 2: run 1 rejected (no downloads, synthetic hashes); run 2 started 19:26 = DISCOVER_FIRST.",
-      "order": 14,
+      "name": "3.2 WPE topic by syllabus route: pass 1 tiles + pass 2 JEE",
+      "full": "Governing 3.2 comes after actual second-adapter reuse; no seven-topic batch now. Built ahead of order: spine FROZEN 28 Oct (10 key ideas); WEP-01 a886c004 and WEP-02 v2 9edb9bb4 CHECKED; WEP-03 card held. Pass 2: run 1 rejected (no downloads, synthetic hashes); run 2 = DISCOVER_FIRST.",
+      "order": 22,
       "wbs": "3.2",
       "bench": "B7",
       "keeps": "B6",
@@ -196,9 +196,9 @@
       "activity": "pass 2 re-run in Antigravity; WEP-02 repair with writer"
     },
     "W31": {
-      "name": "3.1 Second topic: WPE pilot slice (WEP-07)",
-      "full": "One WPE key idea end to end: tile d04e98dc CHECKED, 4 NSEP Core2 crops CHECKED, W5 page CHECKED (sha 43f5c387). Missing: Owner try, kid use (B5-style), independent reviewer sample.",
-      "order": 13,
+      "name": "3.1 Second adapter: WPE WEP-07 slice (ran ahead of 2.6/2.7)",
+      "full": "Governing 3.1 = the same Common MODEL-D3 contract with a second topic adapter, after B3/B4. WEP-07 was built ahead of that order (27-28 Oct): tile d04e98dc, 4 NSEP Core2 crops and W5 page (sha 43f5c387) each CHECKED. Not shown: the same Common contract identity, Owner try, kid use, IR sample.",
+      "order": 21,
       "wbs": "3.1",
       "bench": "B6",
       "keeps": "B2",
@@ -206,13 +206,45 @@
       "canDo": "Open the W5 page and try it",
       "capSrc": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/159",
       "activity": "waits for the Owner's try"
+    },
+    "W291": {
+      "name": "Resolve the MODEL-D4 instance's cell fit",
+      "full": "Honest APPLY-D3 placement or a deliberately revised MODEL-D4 task, with instance preservation and evidenced scoring. Separate horizon; does not block checked MODEL-D3.",
+      "order": 13,
+      "wbs": "2.9.1",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "Written horizon only; not issued"
+    },
+    "W292": {
+      "name": "Correct the REPRESENT instance",
+      "full": "Supported acceleration statement, correct rope representation and an explicit D3/D4 placement decision. Affected tile only; no whole-topic rewrite.",
+      "order": 14,
+      "wbs": "2.9.2",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "Written horizon only; not issued"
+    },
+    "W293": {
+      "name": "Correct the JUSTIFY instance",
+      "full": "ABC/AB teaching scenes, owned external arrows and boundaries match the valid proof; fit disposition visible. Affected tile only.",
+      "order": 15,
+      "wbs": "2.9.3",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "Written horizon only; not issued"
+    },
+    "W294": {
+      "name": "Record the SYNTHESIZE assessment accurately",
+      "full": "Keep the valid construction; record borderline D4=8 and scoped review/calibration limits. Do not invent a physics defect.",
+      "order": 16,
+      "wbs": "2.9.4",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "Written horizon only; not issued"
     }
   },
   "groups": {
     "pilot": {
       "order": 1,
-      "title": "ZIP-free Physics pilot",
-      "sub": "Your rule of 22 Oct: no ZIP, proceed with the task."
+      "title": "History: ZIP-free pilot, Oracles O4/O5 (R1-R3)",
+      "sub": "Kept for the record; no live work here since R4."
     },
     "held": {
       "order": 2,
@@ -231,6 +263,11 @@
     "done": {
       "order": 4,
       "title": "Done"
+    },
+    "r4": {
+      "title": "R4 · governing WBS (G9O5-10, 25 Oct)",
+      "sub": "One WBS on this page. Every live card names its WBS step; the groups below are history.",
+      "order": 0
     }
   },
   "revisions": [
