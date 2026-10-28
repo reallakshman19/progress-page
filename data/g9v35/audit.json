@@ -2423,6 +2423,34 @@
       "before": "IN_PROGRESS",
       "after": "IN_PROGRESS",
       "rev": "R3"
+    },
+    {
+      "seq": 178,
+      "id": "G9V35-R-0178",
+      "previous_id": "G9V35-R-0177",
+      "at": "2026-10-28T01:35:08Z",
+      "kind": "UPDATE",
+      "actor": "OTM",
+      "summary": "pair 4f30041d on disk; recheck running",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/159#issuecomment-6456250350",
+      "card": "p1-wpe",
+      "before": "SUBMITTED",
+      "after": "SUBMITTED",
+      "rev": "R3"
+    },
+    {
+      "seq": 179,
+      "id": "G9V35-R-0179",
+      "previous_id": "G9V35-R-0178",
+      "at": "2026-10-28T01:35:09Z",
+      "kind": "UPDATE",
+      "actor": "OTM",
+      "summary": "pair in; papers still needed",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/159#issuecomment-6456250350",
+      "card": "oracle-otm",
+      "before": "IN_PROGRESS",
+      "after": "IN_PROGRESS",
+      "rev": "R3"
     }
   ]
 }
