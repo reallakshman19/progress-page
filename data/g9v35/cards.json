@@ -549,14 +549,14 @@
       "role": "Oracle"
     },
     "state": "IN_PROGRESS",
-    "now": "IN_PROGRESS: building W5 page beside B2",
+    "now": "WAITS S4R4 recheck + W5 non-author spot-check",
     "next": {
-      "actor": "OTM",
-      "text": "build W5 page; relay S4R4"
+      "actor": "Checker",
+      "text": "return S4R4 recheck and W5 spot-check"
     },
     "flags": [],
-    "updatedAt": "2026-10-28T11:10:13Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/159"
+    "updatedAt": "2026-10-28T11:15:55Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/159#issuecomment-6467547773"
   },
   "p1-wpe": {
     "order": 22,
@@ -567,14 +567,14 @@
       "chat": "6ae0f0d5",
       "role": "Agent"
     },
-    "state": "IN_PROGRESS",
-    "now": "IN_PROGRESS since 15:10: S4R4 move M6",
+    "state": "SUBMITTED",
+    "now": "SUBMITTED 15:15; WAITS fresh checker on N1-N3",
     "next": {
-      "actor": "P1-WPE-G9v35",
-      "text": "return S4R4 file + TASK EVIDENCE"
+      "actor": "Checker",
+      "text": "recheck S4R4"
     },
-    "updatedAt": "2026-10-28T11:10:13Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/159",
+    "updatedAt": "2026-10-28T11:15:54Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/159#issuecomment-6467547773",
     "flags": []
   }
 }
