@@ -1,0 +1,20 @@
+{
+  "project": "ciifr",
+  "actor": "CIIFR designated Page writer (on execution)",
+  "source": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/191",
+  "proposalVersion": 1,
+  "sourceObservation": {
+    "kind": "pull",
+    "observedHead": "7d7d100c51a4ccebc2b9ba877ebb6e337e1a591a"
+  },
+  "changes": [
+    {
+      "command": "card set",
+      "args": {
+        "card": "geo-g1",
+        "summary": "Source observed: [CIIFR_GEO] Add independent A/B/C workbench tab to VNext Standalone; no claim status, actor or approval changed",
+        "ref": "pr|[CIIFR_GEO] Add independent A/B/C workbench tab to VNext Sta|https://github.com/reallakshman19/XML_Compare_Utilities/pull/191|observed head 7d7d100c51a4; not verified"
+      }
+    }
+  ]
+}
