@@ -360,5 +360,36 @@
     ],
     "links": [],
     "milestone": "W32"
+  },
+  "wbs-order-2": {
+    "order": 7,
+    "status": "open",
+    "title": "WBS order: B3-B5 first, or WPE first? (replaces wbs-order)",
+    "lead": "Replaces card wbs-order: I suggested A there, before re-reading the 25 Oct WBS. That WBS puts 3.1 after B3/B4 and says no topic breadth now.",
+    "options": [
+      {
+        "key": "B",
+        "label": "B3-B5 first (suggested) (suggested)",
+        "suggested": true,
+        "body": "Follows the governing WBS: prove the Common tile contract on NLM (B3 card written, 4-hour timebox), then a teaching action (B4), then kid use (B5). WPE keeps its 2 CHECKED tiles and the WEP-07 page; nothing is lost. Your W5 try stays a 10-minute item.",
+        "reply": "B: B3-B5 first"
+      },
+      {
+        "key": "A",
+        "label": "Cap WPE, prove 3.1 first",
+        "suggested": false,
+        "body": "Finish WEP-07 end to end (your try, kid use, IR sample) and cap pass 1 at WEP-03. Runs a second topic before the contract is proven on NLM.",
+        "reply": "A: cap WPE, prove 3.1 first"
+      },
+      {
+        "key": "C",
+        "label": "WPE breadth now",
+        "suggested": false,
+        "body": "Build WEP-04..10 while pass 2 runs. Goes against the WBS rule of no topic breadth now.",
+        "reply": "C: WPE breadth now"
+      }
+    ],
+    "links": [],
+    "milestone": "W26"
   }
 }

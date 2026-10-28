@@ -3540,6 +3540,18 @@
       "before": "SUBMITTED",
       "after": "SUBMITTED",
       "rev": "R4"
+    },
+    {
+      "seq": 263,
+      "id": "G9V35-R-0263",
+      "previous_id": "G9V35-R-0262",
+      "at": "2026-10-28T16:16:12Z",
+      "kind": "ACTION",
+      "actor": "OTM",
+      "summary": "Decision for the Owner: WBS order: B3-B5 first, or WPE first? (replaces wbs-order)",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6474326599",
+      "action": "wbs-order-2",
+      "rev": "R4"
     }
   ]
 }
