@@ -549,16 +549,16 @@
       "role": "Oracle"
     },
     "state": "IN_PROGRESS",
-    "now": "WAITS on Owner: paste pass-2 re-run in Antigravity; validate W5 page",
+    "now": "WAITS on Owner: validate W5 page (pass-2 re-run running)",
     "next": {
       "actor": "YOU",
-      "text": "paste pass-2 re-run prompt in Antigravity; validate W5 page"
+      "text": "validate the W5 page"
     },
     "flags": [
       "needs-you"
     ],
-    "updatedAt": "2026-10-28T14:47:33Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/159#issuecomment-6472167606"
+    "updatedAt": "2026-10-28T15:26:11Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1"
   },
   "p1-wpe": {
     "order": 22,
