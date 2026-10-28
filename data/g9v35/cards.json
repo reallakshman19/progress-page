@@ -569,14 +569,14 @@
       "chat": "6ae0f0d5",
       "role": "Agent"
     },
-    "state": "IN_PROGRESS",
-    "now": "WORKING on S6R (move M10)",
+    "state": "SUBMITTED",
+    "now": "IDLE after S6R; WEP-03 card S7 held pending Owner order decision (wbs-order)",
     "next": {
-      "actor": "P1-WPE-G9v35",
-      "text": "return repaired WEP-02 tile"
+      "actor": "OTM",
+      "text": "send S7 if the Owner picks A or C; recheck WEP-02 v2"
     },
-    "updatedAt": "2026-10-28T15:24:12Z",
-    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/159",
+    "updatedAt": "2026-10-28T15:57:53Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/159#issuecomment-6473885184",
     "flags": []
   }
 }
