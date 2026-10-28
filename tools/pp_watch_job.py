@@ -5,6 +5,43 @@ import os
 from pathlib import Path
 from pp_watch import collect
 
+COVERAGE_GAP_REVIEW = "COVERAGE_GAP_REVIEW"
+
+def scoped_cycle_coverage(data,project,cycle,wbs,probe=None):
+    """Observe a named Cycle scope without activating its Page binding.
+
+    The reference workflow selects the scope explicitly. A native source missing
+    from Page JSON can therefore be reported without editing the Page or asking
+    an agent for another receipt.
+    """
+    from pp_cycle_preflight import preflight, key, WBS_RE
+    key(cycle,"cycle"); key(project,"project")
+    if not isinstance(wbs,str) or not WBS_RE.fullmatch(wbs):
+        raise ValueError("invalid explicit Cycle WBS scope")
+    result=(probe or preflight)(data,project,cycle,wbs)
+    if (not isinstance(result,dict) or
+        result.get("pageProject")!=project or result.get("cycleProject")!=cycle or
+        result.get("wbs")!="wbs:"+wbs or
+        result.get("result") not in ("READY_FOR_REVIEW","INSUFFICIENT_EVIDENCE","SCOPE_MISMATCH")):
+        raise ValueError("Cycle preflight identity or result could not be verified")
+    source=result.get("source") or {}
+    states=result.get("nativeObservation") or {}
+    if (not isinstance(source.get("cycleBlobSha"),str) or
+        set(states)!={"WBS","TASK","CANDIDATE"} or
+        any(v!="OK" for v in states.values())):
+        raise ValueError("canonical Cycle or native WBS/task/PR source was unavailable")
+    gaps=sorted(set(result.get("gaps") or []))
+    conflicts=sorted(set(result.get("conflicts") or []))
+    fingerprint={"cycleBlobSha":source["cycleBlobSha"],
+                 "result":result["result"],"gaps":gaps,"conflicts":conflicts,
+                 "candidate":result.get("candidate"),
+                 "nativeState":result.get("nativeState") or {}}
+    return {"cycleProject":cycle,"wbs":"wbs:"+wbs,"status":result["result"],
+            "gaps":gaps,"conflicts":conflicts,"verified":result.get("verified") or [],
+            "source":source.get("cycleUrl"),"fingerprint":fingerprint,
+            "bindingActivated":False,"pageDataWritten":False,
+            "cycleModified":False,"nativeAcceptanceInferred":False}
+
 def classify(result,has_baseline):
     if not result.get("complete"):
         return "UNKNOWN"
@@ -14,7 +51,10 @@ def classify(result,has_baseline):
         return "SOURCE_CHANGE_REVIEW"
     return "NO_CHANGE"
 
-def check(data,project,baseline_path,report_path,cache_path,limit=100,fetch=None):
+def check(data,project,baseline_path,report_path,cache_path,limit=100,fetch=None,
+          cycle=None,wbs=None,cycle_probe=None):
+    if (cycle is None)!=(wbs is None):
+        raise ValueError("Cycle monitoring requires both explicit --cycle and --wbs")
     prior=Path(baseline_path)
     old=json.loads(prior.read_text(encoding="utf-8")) if prior.is_file() else None
     options={"limit":limit,"baseline":old}
@@ -22,9 +62,31 @@ def check(data,project,baseline_path,report_path,cache_path,limit=100,fetch=None
         options["fetch"]=fetch
     observation=collect(data,project,**options)
     status=classify(observation,old is not None)
+    coverage=None
+    if cycle is not None:
+        try:
+            coverage=scoped_cycle_coverage(data,project,cycle,wbs,cycle_probe)
+            previous=(old or {}).get("cycleCoverage") or {}
+            prev_fp=previous.get("fingerprint")
+            changed=prev_fp is not None and prev_fp!=coverage["fingerprint"]
+            gaps=bool(coverage["gaps"] or coverage["conflicts"])
+            if observation["complete"] and status not in ("UNKNOWN","SOURCE_CHANGE_REVIEW"):
+                if changed:
+                    status="SOURCE_CHANGE_REVIEW"
+                elif prev_fp is None and gaps:
+                    status=COVERAGE_GAP_REVIEW
+                # An unchanged, known gap is quiet on every later scan.
+        except (OSError,ValueError,KeyError,TypeError,UnicodeError) as exc:
+            coverage={"cycleProject":cycle,"wbs":"wbs:"+str(wbs),
+                      "status":"UNKNOWN","reason":"CANONICAL_OR_NATIVE_SOURCE_UNAVAILABLE",
+                      "detail":str(exc)[:240]}
+            status="UNKNOWN"
     result={**observation,"monitorStatus":status,"sourceOnly":True,
+        "complete":observation["complete"] and (coverage is None or coverage["status"]!="UNKNOWN"),
         "pageDataWritten":False,"pagePublication":"NOT_RUN",
         "canonicalCycleChanged":False,"nativeAcceptanceInferred":False}
+    if coverage is not None:
+        result["cycleCoverage"]=coverage
     out=Path(report_path)
     out.parent.mkdir(parents=True,exist_ok=True)
     out.write_text(json.dumps(result,indent=2,ensure_ascii=False)+"\n",encoding="utf-8")
@@ -42,9 +104,12 @@ def run():
     parser.add_argument("--report",required=True)
     parser.add_argument("--cache",required=True)
     parser.add_argument("--limit",type=int,default=100)
+    parser.add_argument("--cycle",help="explicit canonical Cycle project (read-only)")
+    parser.add_argument("--wbs",help="explicit WBS major from that Cycle, e.g. 3")
     args=parser.parse_args()
     try:
-        result=check(args.data,args.project,args.baseline,args.report,args.cache,args.limit)
+        result=check(args.data,args.project,args.baseline,args.report,args.cache,args.limit,
+                     cycle=args.cycle,wbs=args.wbs)
         status=result["monitorStatus"]
     except (ValueError,OSError,TypeError,KeyError,json.JSONDecodeError) as exc:
         status="UNKNOWN"
@@ -60,16 +125,21 @@ def run():
         with open(output,"a",encoding="utf-8") as f:
             for label,value in {
                 "status":status,"complete":str(status!="UNKNOWN").lower(),
-                "needs_review":str(status=="SOURCE_CHANGE_REVIEW").lower(),
+                "needs_review":str(status in ("SOURCE_CHANGE_REVIEW",COVERAGE_GAP_REVIEW)).lower(),
                 "health_unknown":str(status=="UNKNOWN").lower(),
             }.items():
                 f.write(label+"="+value+"\n")
-    if status in ("SOURCE_CHANGE_REVIEW","UNKNOWN"):
+    if status in ("SOURCE_CHANGE_REVIEW",COVERAGE_GAP_REVIEW,"UNKNOWN"):
         summary=os.getenv("GITHUB_STEP_SUMMARY")
         if summary:
             with open(summary,"a",encoding="utf-8") as f:
                 f.write("### Native source monitor: "+status+"\n\n")
-                f.write("Public CIIFR Page sources only. No status verdict or Page write.\n\n")
+                f.write("Page-linked sources plus explicitly scoped canonical Cycle if requested. No verdict or Page write.\n\n")
+                if "cycleCoverage" in result:
+                    f.write("Cycle coverage: "+json.dumps({
+                        k:v for k,v in result["cycleCoverage"].items()
+                        if k in ("cycleProject","wbs","status","gaps","conflicts","source","reason")
+                    })+"\n\n")
                 if "counts" in result:
                     f.write("Source counts: "+json.dumps(result["counts"])+"\n\n")
                 f.write("Review the short-lived artifact and original native records; unavailable evidence is UNKNOWN.\n")
