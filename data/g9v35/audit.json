@@ -2479,6 +2479,34 @@
       "before": "IN_PROGRESS",
       "after": "IN_PROGRESS",
       "rev": "R3"
+    },
+    {
+      "seq": 182,
+      "id": "G9V35-R-0182",
+      "previous_id": "G9V35-R-0181",
+      "at": "2026-10-28T09:43:08Z",
+      "kind": "STATE",
+      "actor": "OTM",
+      "summary": "S4R2 returned: wep07-core1ab-8761d7da.json, items a-e claimed done",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/159#issuecomment-6465676621",
+      "card": "p1-wpe",
+      "before": "IN_PROGRESS",
+      "after": "SUBMITTED",
+      "rev": "R3"
+    },
+    {
+      "seq": 183,
+      "id": "G9V35-R-0183",
+      "previous_id": "G9V35-R-0182",
+      "at": "2026-10-28T09:43:09Z",
+      "kind": "UPDATE",
+      "actor": "OTM",
+      "summary": "S4R2 file in; needs Owner downloads",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/159#issuecomment-6465676621",
+      "card": "oracle-otm",
+      "before": "IN_PROGRESS",
+      "after": "IN_PROGRESS",
+      "rev": "R3"
     }
   ]
 }
