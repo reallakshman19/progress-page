@@ -57,7 +57,7 @@ FIXTURES = [
  ("repository","CIIFR-Node canonical WBS and complete engineering/property requirements",WBS,"SOURCE_WBS"),
  ("repository","Current R0 Property Transfer draft PR226, head verification required",PR,"DRAFT_HOLD"),
  ("inputs","Common public-safe synthetic core F00–F07; fixture receipt only; receiver NOT_RUN",COMMON_RELAY,"RELAY_PROPOSED_NOT_RECEIVED"),
- ("inputs","Owner-controlled original V14 GLRD, protected bytes not in public GitHub",N02,"OWNER_PRIVATE_REF_HANDOFFS_PRIMARY_NOT_RECEIVED"),
+ ("inputs","Owner-controlled original V14 GLRD, protected bytes not in public GitHub",N02,"PRIVATE_ORIGINAL_NOT_RECEIVED"),
  ("roadmap","P0–P6 canonical WBS: P3 read-only and P4 restraint-first prospective writer",WBS,"WBS_BASELINE"),
  ("knownIssues","P1 native/Chromium/real V14 R0 IR still NOT_RUN after PR226 source repair",N01,"QUALIFICATION_HOLD"),
  ("pending","N-01→N-02→N-03 tasks prepared; recipients UNASSIGNED, not dispatched",WBS,"NEXT_THREE_TASKS"),
