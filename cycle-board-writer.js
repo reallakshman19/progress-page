@@ -81,8 +81,11 @@ export function cycleBoardWriterModel(page,context,delta,{historical=false}={}){
   });
   const pendingCount=items.filter(i=>i.status==='PROPOSAL_CANDIDATE').length;
   const recordedCount=items.filter(i=>i.status==='ALREADY_RECORDED').length;
+  // A previously audited URL is not necessarily an audited new PR head.
+  // Only CT-2 exact scoped revision correlation permits ALREADY_RECONCILED.
+  const exactPublished=delta?.publication?.status==='CURRENT';
   return {...base,status:pendingCount?'REVIEW_PENDING':
-    items.length&&items.every(i=>i.status==='ALREADY_RECORDED')?'ALREADY_RECONCILED':
+    items.length&&items.every(i=>i.status==='ALREADY_RECORDED')&&exactPublished?'ALREADY_RECONCILED':
     items.some(i=>i.status==='UNKNOWN'||i.status==='UNMAPPED')?'UNKNOWN':'REVIEW_REQUIRED',
     items,pendingCount,recordedCount};
 }
