@@ -6,7 +6,7 @@ from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/"tools"))
 import pp_propose as P
 import pp_batch as B
-from helpers import copy_valid,load
+from helpers import copy_valid,load,ok
 
 SOURCE="https://github.com/acme/demo/pull/999"
 HEAD="a"*40
@@ -21,7 +21,11 @@ def fake(url):
     raise ValueError("unexpected GitHub endpoint: "+url)
 
 class Proposal(unittest.TestCase):
-    def setUp(self):self.data=copy_valid()
+    def setUp(self):
+        self.data=copy_valid()
+        ok(self.data,"plan","milestone","--project","demo","--id","M2","--wbs","2",
+           "--summary","Explicit WBS scope for source evidence fixture",
+           "--actor","Test writer","--src","https://github.com/acme/demo/issues/9")
     def test_unmatched_source_never_infers_a_card_or_writes_data(self):
         audit=Path(self.data)/"demo"/"audit.json"
         before=audit.read_bytes()
@@ -35,7 +39,7 @@ class Proposal(unittest.TestCase):
         m=p["proposal"]
         self.assertEqual(m["sourceObservation"]["observedHead"],HEAD)
         self.assertEqual(m["nativeOccurrenceId"],"github:acme/demo:pull-head:999:"+HEAD)
-        self.assertEqual(m["wbs"],"1")
+        self.assertEqual(m["wbs"],"2")
         self.assertEqual(len(m["changes"]),1)
         change=m["changes"][0]
         self.assertEqual(change["command"],"card set")
