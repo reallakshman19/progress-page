@@ -1,5 +1,6 @@
 """Timeline (ledger) checks for one project: the chain, every event, and agreement with the current data."""
 import pp_lib as L
+from pp_occurrence import valid_identity
 
 TOLERANCE = 60  # seconds a card's updatedAt may be later than the Timeline entry that records it
 
@@ -106,6 +107,22 @@ def _events(c, w, key, docs, st):
         c.text(at, e, "actor", limit=60)
         c.text(at, e, "summary", limit=400)
         c.link(at, e, "source", source=True)
+        # Optional v2 provenance is validated on new events only. Historical
+        # URL-only entries remain untouched and cannot prove a PR-head match.
+        if "nativeOccurrenceId" in e or "wbs" in e:
+            occ=e.get("nativeOccurrenceId");wbs=e.get("wbs");cid=e.get("card")
+            if not valid_identity(e.get("source"),occ):
+                c.err(at,"nativeOccurrenceId does not match the original source URL")
+            if not isinstance(wbs,str) or not wbs or not any(
+                m.get("wbs")==wbs for m in (index.get("milestones") or {}).values()):
+                c.err(at,"native occurrence WBS is not in the published Page plan")
+            if not isinstance(cid,str) or cid not in cards:
+                c.err(at,"native occurrence must belong to an existing Page card")
+            elif not any(r.get("u")==e.get("source") and r.get("nativeOccurrenceId")==occ
+                         and r.get("wbs")==wbs for r in cards[cid].get("refs",[])):
+                c.err(at,"native occurrence lacks the corresponding append-only card reference")
+            if e.get("kind")!="UPDATE":
+                c.err(at,"source-only occurrence must append an UPDATE; no engineering promotion")
         if revs:
             n = int(e["rev"][1:]) if e.get("rev") in revs else None
             if n is None:
