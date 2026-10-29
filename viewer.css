@@ -527,3 +527,25 @@ main{width:100%;min-width:0}
 .demo-card .demo-card-head{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .demo-mono{font:12px/1.45 ui-monospace,Consolas,monospace;overflow-wrap:anywhere}
 @media(max-width:520px){.demo-controls label{flex-basis:100%}}
+
+/* Adhoc Projects: separate read-only navigation hub, not a Page/WBS project. */
+.adhoc-heading{margin:8px 0 14px}
+.adhoc-heading h2{font-size:20px;margin:0 0 6px}
+.adhoc-heading p,.adhoc-intro{max-width:92ch;line-height:1.55;margin:5px 0 12px}
+.adhoc-project-subtabs{margin-bottom:7px}
+.adhoc-section-subtabs{margin-bottom:18px;padding-left:8px}
+.adhoc-section-subtabs .view{font-size:13px;padding:7px 12px}
+.adhoc-body>h2{font-size:19px;margin-bottom:5px}
+.adhoc-section{margin-top:18px}
+.adhoc-section>h3{font-size:16px;margin-bottom:4px}
+.adhoc-section>p{max-width:92ch}
+.adhoc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin-top:12px}
+.adhoc-card,.adhoc-tile{display:flex;flex-direction:column;gap:9px;min-width:0;padding:16px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
+.adhoc-card h3{font-size:15px}
+.adhoc-card p{margin:0;line-height:1.5}
+.adhoc-links{display:flex;gap:7px;flex-wrap:wrap;margin-top:auto}
+.adhoc-tile{color:var(--fg);text-decoration:none;font-weight:600}
+.adhoc-tile .muted{font-weight:400;font-size:13px}
+.adhoc-tile-next{color:var(--acc);font-size:12px}
+.adhoc-tile:hover,.adhoc-tile:focus-visible{border-color:var(--acc);outline:1px solid var(--acc)}
+@media(max-width:620px){.adhoc-grid{grid-template-columns:1fr}.adhoc-card,.adhoc-tile{padding:12px}.adhoc-section-subtabs{padding-left:0}}
