@@ -65,10 +65,27 @@ Page WBS reference** while retaining GATE_R0 HOLD, SELF_ASSESSED and Cycle
 UNMAPPED. A public Board cannot authenticate the private recipient or grant
 `CONTINUE_AUTHORIZED`; execution still requires a fresh exact canonical
 assignment, generation, candidate, native evidence and receipt check under the
-selected Cycle. CT-3 writer proposal and CT-4 independent evaluation remain
-separate future verticals. This preview is not evidence of saved time or an
-Owner usability trial. Reference contracts remain a
-[review-required Common draft PR](https://github.com/reallakshman19/Common/pull/567).
+selected Cycle.
+
+**CT-3 is stacked in the same draft:** the same Board displays a separate
+source-linked **Reviewed Page reconciliation** panel. It selects an existing
+open WBS card only when the mapping is unambiguous, marks existing audit URLs
+`ALREADY_RECORDED` (not a second achievement), and leaves incomplete/uncertain
+source or mapping `UNKNOWN`/`REVIEW_REQUIRED`. A unique, source-backed
+newer occurrence provides *review-only* commands for the existing
+`pp_cli.py propose --card ... --expected-head ... --output ...` and
+`pp_batch.py ... --data data` dry-run. The Page writer supplies its actual
+actor/authority, reruns original GitHub checks and inspects staged diffs.
+The Board does **not** generate an approved manifest, run commands, mark
+published, or write `data/**`. Only a later authorized and read-back audited
+Page merge may establish publication. CI also replays those exact writer
+commands against an **isolated copy** of CIIFR-Node's real Page fixture, with
+no `--apply` and no data mutation.
+
+CT-4 independent evaluation remains separate; neither a CI green check nor
+this preview measures saved time or constitutes an Owner usability trial.
+Reference contracts: [Common PR #567](https://github.com/reallakshman19/Common/pull/567)
+(merged governance documentation; actual agent dispatch remains separate).
 
 ## Cycle now via Timeline — opt-in operational pilot
 
