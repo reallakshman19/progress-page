@@ -4,8 +4,8 @@
     "key": "g9v35",
     "title": "G9v3.5 Physics pilot",
     "subtitle": "Newton's Laws pilot on the ZIP-free track, and the owner-bank guard (PR #305)",
-    "updatedAt": "2026-10-28T16:25:17Z",
-    "updatedBy": "OTM",
+    "updatedAt": "2026-10-29T04:50:51Z",
+    "updatedBy": "Oracle G9v3.5",
     "staleAfterMin": 120,
     "aim": "A personal-use app for one Grade 9 kid to self-learn difficult Physics, Mathematics and Chemistry concepts for one of the toughest competitive exams. Not a corporate product.",
     "aimSrc": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6339599529"
@@ -238,6 +238,14 @@
       "wbs": "2.9.4",
       "cap": "NOT_DEMONSTRATED",
       "canDo": "Written horizon only; not issued"
+    },
+    "W40": {
+      "name": "QRT tiles for Work, Power and Energy, levels 3-4 (Owner's WBS 1, 28 Oct)",
+      "full": "Physics blueprint (14 cells) + energy topic adapter; every level-3/4 book and JEE Main item gets Core1A/1B. Level 3: 7 tiles built and checker-passed; level 4 building. Physics not yet independently checked.",
+      "order": 30,
+      "wbs": "4.1",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "7 level-3 tile pages exist on the Owner's PC; not yet checked by someone other than the builder"
     }
   },
   "groups": {

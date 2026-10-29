@@ -3667,6 +3667,88 @@
       "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/159#issuecomment-6474545407",
       "scope": "milestone:W32",
       "rev": "R4"
+    },
+    {
+      "seq": 273,
+      "id": "G9V35-R-0273",
+      "previous_id": "G9V35-R-0272",
+      "at": "2026-10-29T04:50:43Z",
+      "kind": "PLAN",
+      "actor": "Oracle G9v3.5",
+      "summary": "Owner WBS 1 (28-29 Oct): QRT blueprint and tiles for Work, Power and Energy, levels 3-4",
+      "source": "OWNER_PRIVATE_REF:G9V35-STORY-29OCT",
+      "scope": "milestone:W40",
+      "rev": "R4"
+    },
+    {
+      "seq": 274,
+      "id": "G9V35-R-0274",
+      "previous_id": "G9V35-R-0273",
+      "at": "2026-10-29T04:50:44Z",
+      "kind": "BASELINE",
+      "actor": "Oracle G9v3.5",
+      "summary": "Level-3 tiles D3.1-D3.7: VERIFIED",
+      "source": "OWNER_PRIVATE_REF:G9V35-STORY-29OCT",
+      "card": "qrt-d3",
+      "before": null,
+      "after": "VERIFIED",
+      "rev": "R4"
+    },
+    {
+      "seq": 275,
+      "id": "G9V35-R-0275",
+      "previous_id": "G9V35-R-0274",
+      "at": "2026-10-29T04:50:44Z",
+      "kind": "BASELINE",
+      "actor": "Oracle G9v3.5",
+      "summary": "Level-4 tiles D4.1-D4.7: IN_PROGRESS",
+      "source": "OWNER_PRIVATE_REF:G9V35-STORY-29OCT",
+      "card": "qrt-d4",
+      "before": null,
+      "after": "IN_PROGRESS",
+      "rev": "R4"
+    },
+    {
+      "seq": 276,
+      "id": "G9V35-R-0276",
+      "previous_id": "G9V35-R-0275",
+      "at": "2026-10-29T04:50:45Z",
+      "kind": "BASELINE",
+      "actor": "Oracle G9v3.5",
+      "summary": "Methodology concept note: SUBMITTED",
+      "source": "OWNER_PRIVATE_REF:G9V35-STORY-29OCT",
+      "card": "qrt-note",
+      "before": null,
+      "after": "SUBMITTED",
+      "rev": "R4"
+    },
+    {
+      "seq": 277,
+      "id": "G9V35-R-0277",
+      "previous_id": "G9V35-R-0276",
+      "at": "2026-10-29T04:50:46Z",
+      "kind": "BASELINE",
+      "actor": "Oracle G9v3.5",
+      "summary": "Smart Labelling 1 and 2 skills: SUBMITTED",
+      "source": "OWNER_PRIVATE_REF:G9V35-STORY-29OCT",
+      "card": "smart-labels",
+      "before": null,
+      "after": "SUBMITTED",
+      "rev": "R4"
+    },
+    {
+      "seq": 278,
+      "id": "G9V35-R-0278",
+      "previous_id": "G9V35-R-0277",
+      "at": "2026-10-29T04:50:51Z",
+      "kind": "STATE",
+      "actor": "Oracle G9v3.5",
+      "summary": "Level-3 tiles: SUBMITTED (checker-passed, not independently verified)",
+      "source": "OWNER_PRIVATE_REF:G9V35-STORY-29OCT",
+      "card": "qrt-d3",
+      "before": "VERIFIED",
+      "after": "SUBMITTED",
+      "rev": "R4"
     }
   ]
 }

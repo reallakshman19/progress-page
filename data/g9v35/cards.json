@@ -595,5 +595,65 @@
       "actor": "YOU",
       "text": "start the B3 builder session card in the Code tab (or launch Antigravity with the brief)"
     }
+  },
+  "qrt-d3": {
+    "order": 24,
+    "group": "r4",
+    "milestone": "W40",
+    "label": "Level-3 tiles D3.1-D3.7",
+    "who": {},
+    "state": "SUBMITTED",
+    "now": "All 7 built; checker passes on each (re-run by Oracle); exam answers match Oracle's worked keys",
+    "next": {
+      "actor": "OWNER",
+      "text": "look at the pages; independent physics check before she uses them"
+    },
+    "updatedAt": "2026-10-29T04:50:51Z",
+    "src": "OWNER_PRIVATE_REF:G9V35-STORY-29OCT"
+  },
+  "qrt-d4": {
+    "order": 25,
+    "group": "r4",
+    "milestone": "W40",
+    "label": "Level-4 tiles D4.1-D4.7",
+    "who": {},
+    "state": "IN_PROGRESS",
+    "now": "Builders for D4.1/4.2 and D4.3/4.4 running; D4.5/4.6 and D4.7 next (two at a time, usage limits)",
+    "next": {
+      "actor": "Oracle",
+      "text": "check each tile as it returns, then one blueprint revision for all gap notes"
+    },
+    "updatedAt": "2026-10-29T04:50:44Z",
+    "src": "OWNER_PRIVATE_REF:G9V35-STORY-29OCT"
+  },
+  "qrt-note": {
+    "order": 26,
+    "group": "r4",
+    "milestone": "W40",
+    "label": "Methodology concept note",
+    "who": {},
+    "state": "SUBMITTED",
+    "now": "Claude doc 'QRT Methodology Concept Note' written (aim, pipeline diagram, grid, blueprint+adapter, coverage, gap rule, checks)",
+    "next": {
+      "actor": "OWNER",
+      "text": "read it"
+    },
+    "updatedAt": "2026-10-29T04:50:45Z",
+    "src": "OWNER_PRIVATE_REF:G9V35-STORY-29OCT"
+  },
+  "smart-labels": {
+    "order": 27,
+    "group": "r4",
+    "milestone": "W40",
+    "label": "Smart Labelling 1 and 2 skills",
+    "who": {},
+    "state": "SUBMITTED",
+    "now": "Two project skills with checkers; tested on 2 exam questions (found a key sign error and a leaked answer)",
+    "next": {
+      "actor": "OWNER",
+      "text": "try them on a new topic's questions"
+    },
+    "updatedAt": "2026-10-29T04:50:46Z",
+    "src": "OWNER_PRIVATE_REF:G9V35-STORY-29OCT"
   }
 }
