@@ -60,7 +60,13 @@ function card(title,description,targets=[]) {
   const a=el('article','adhoc-card');
   a.append(el('h3',null,title),el('p','muted',description));
   const foot=el('div','adhoc-links');
-  for(const [label,url] of targets)foot.append(link(url,label,'btn small'));
+  for(const [label,url] of targets){
+    if(typeof url==='string'&&/^#\/[a-z0-9-]+\/[a-z0-9-]+$/.test(url)){
+      const local=el('a','btn small',label);
+      local.href=url;
+      foot.append(local);
+    }else foot.append(link(url,label,'btn small'));
+  }
   if(targets.length)a.append(foot);
   return a;
 }
@@ -232,7 +238,7 @@ export function renderAdhocProjects(root,route,nav) {
       'Choose the appropriate source. Existing project tabs still contain the governing AIM, WBS, native evidence and audited history.');
     addCards(s,[
       card('Current Progress Page','Open the published project pages and their original WBS and source references.',[['Open live site',LIVE]]),
-      card('Cycle Board pilot','Inspect the existing CIIFR operational Action/Info view. Live event intake is optional and may be empty.',[['Open CIIFR-Node Board',LIVE+'#/ciifr-node/cycle-board']]),
+      card('Cycle Board pilot','Inspect the existing CIIFR operational Action/Info view. Live event intake is optional and may be empty.',[['Open CIIFR-Node Board','#/ciifr-node/cycle-board']]),
       card('Downstream implementation contracts','Review the source-bound data interface and four bounded implementation slices before changing behavior.',[['Review contract PR',CT_PR]]),
       card('Reference application','UI and published data live in the Progress Page repository. The Common module is its portable copy.',[['View source',P]])
     ]);
@@ -240,7 +246,7 @@ export function renderAdhocProjects(root,route,nav) {
     const s=section(body,'Cycle Board — source-bound continuation',
       'One native action supplies reusable evidence. The Board must never grant a new assignment, engineering PASS or Page publication.');
     addCards(s,[
-      card('Existing Action / Info Timeline','CIIFR-Node Board shows original Page audit and explicitly configured native issue/PR evidence without inferring canonical Cycle authority.',[['Open Cycle Board',LIVE+'#/ciifr-node/cycle-board'],['Read source',P+'/blob/main/timeline-live.js']]),
+      card('Existing Action / Info Timeline','CIIFR-Node Board shows original Page audit and explicitly configured native issue/PR evidence without inferring canonical Cycle authority.',[['Open Cycle Board','#/ciifr-node/cycle-board'],['Read source',P+'/blob/main/timeline-live.js']]),
       card('Canonical Cycle','Only an explicitly activated and verified Cycle assignment can authorize standalone continuation; other projects retain their native/OTM routes.',[['Read protocol',C+'/blob/main/oracle-cycles/PROTOCOL.md']]),
       card('Source-bound interface','One immutable source occurrence and truthful UNKNOWN states are reused across Board, Agent Start and Oracle continuity.',[['Read contract',DOC+'CYCLE_BOARD_CONTRACT.md']])
     ]);
