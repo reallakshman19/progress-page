@@ -202,6 +202,10 @@ def main():
                           "Board may recommend only review or UNKNOWN when recipient authority absent")
                     check("UNMAPPED" in page.locator(".cb-delta").inner_text(),
                           "No canonical CIIFR-Node Cycle means no authorized continuation")
+                    check("CONTINUE_AUTHORIZED" not in page.locator(".cb-delta").inner_text(),
+                          "Read-only Board must not authorize agent continuation")
+                    check("ALREADY_RECONCILED" not in page.locator(".cb-writer").inner_text(),
+                          "Unpublished native occurrences must not look reconciled")
                     g=geometry(page)
                     check(g["documentWidth"]<=width+3,
                           "Cycle Board horizontal overflow")
