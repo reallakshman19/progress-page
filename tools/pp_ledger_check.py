@@ -161,6 +161,26 @@ def check_ledger(c, key, entry, docs):
         c.err(f"projects.json project {key!r}", f"status is {entry.get('status') or 'active'} but the Timeline says {st['status']}")
     if index.get("revisions") and st["revs"] != [r.get("id") for r in index["revisions"]]:
         c.err(w, "every revision needs exactly one REVISION event, in order")
+    # Every structured native reference must also have one exact append-only
+    # audit event; URL-only historical refs are never upgraded implicitly.
+    for cid,card in cards.items():
+        seen=set()
+        for ref in card.get("refs") or []:
+            if "nativeOccurrenceId" not in ref and "wbs" not in ref:
+                continue
+            occurrence=ref.get("nativeOccurrenceId")
+            wbs=ref.get("wbs")
+            source=ref.get("u")
+            marker=(source,occurrence,wbs)
+            if not valid_identity(source,occurrence) or not isinstance(wbs,str) or not wbs:
+                c.err(w,f"card {cid!r} contains a malformed native occurrence reference")
+            if marker in seen:
+                c.err(w,f"card {cid!r} repeats the same occurrence and scope")
+            seen.add(marker)
+            if not any(e.get("source")==source and e.get("nativeOccurrenceId")==occurrence
+                       and e.get("wbs")==wbs and e.get("card")==cid
+                       for e in led["events"]):
+                c.err(w,f"card {cid!r} native occurrence has no exact audit event")
     for cid, card in cards.items():
         if cid not in st["last"]:
             c.err(w, f"card {cid!r} has no event")
