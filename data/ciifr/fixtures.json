@@ -154,6 +154,13 @@
       "s": "HOSTING_REQUESTED",
       "n": "Recorded evidence; no fixes applied",
       "milestone": "M24"
+    },
+    {
+      "t": "CII GOLDEN G01 | Scope: reusable onboarding for the pinned read-only v14 reader profile at e548e8b. Stored bytes and accepted parser shape do not establish effective engineering meaning or universal v14/native-import qualification.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/blob/e548e8b9b6799a83d8926409681f959956077bee/tools/ciifr-wbs4/readonly-catalog.mjs",
+      "s": "REUSABLE_SOURCE_PROFILE",
+      "n": "Pinned profile; no semantic approval",
+      "milestone": "M17"
     }
   ],
   "issues": [
@@ -1049,6 +1056,195 @@
       "s": "RECORDED_EVIDENCE",
       "n": "Native CII validation remains pending",
       "milestone": "M24"
+    },
+    {
+      "t": "CII GOLDEN G02 | Identity: distinguish physical ELEMENTS occurrence, endpoint node and indexed auxiliary record. Bind an occurrence to exact source identity plus physical ordinal; equal FROM/TO, branch text or record counts do not prove the same occurrence or SOURCE/TARGET correspondence.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/blob/e548e8b9b6799a83d8926409681f959956077bee/tools/ciifr-wbs4/readonly-catalog.mjs",
+      "s": "REUSABLE_SOURCE_PROFILE",
+      "n": "Pinned profile; no semantic approval",
+      "milestone": "M17"
+    },
+    {
+      "t": "CII GOLDEN G03 | ELEMENTS occurrence =15 nonblank data rows: real rows1-8 contain6 fields each (80bytes); row9 contains5 (67bytes); rows10/11 are name/branch; row12 display metadata; pointer rows13/14 contain6 each (80bytes), row15 contains3 (41bytes). Widths exclude newline bytes.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/blob/e548e8b9b6799a83d8926409681f959956077bee/tools/ciifr-wbs4/readonly-catalog.mjs",
+      "s": "REUSABLE_SOURCE_PROFILE",
+      "n": "Pinned profile; no semantic approval",
+      "milestone": "M17"
+    },
+    {
+      "t": "CII GOLDEN G04 | Addressing: real ordinal k is one-based; zero-based row=floor((k-1)/6), column=2+13*((k-1)%6). A field span is [rowStart+column, +13), zero-based and end-exclusive. Pointer p uses row12+floor((p-1)/6). Derive starts from original bytes; preserve LF/CRLF and variable label lengths.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/blob/e548e8b9b6799a83d8926409681f959956077bee/tools/ciifr-wbs4/readonly-catalog.mjs",
+      "s": "REUSABLE_SOURCE_PROFILE",
+      "n": "Pinned profile; no semantic approval",
+      "milestone": "M17"
+    },
+    {
+      "t": "CII GOLDEN G05 | Labels: Element Name row10 and physical Line Number/branch row11 use length-prefixed text (7X,I5,1X,A500); declared length at columns7-11, text begins13. A branch label differs from endpoint number and NODENAME pointer12; each has separate ownership. Reader display metadata is not fully interpreted.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/blob/e548e8b9b6799a83d8926409681f959956077bee/tools/ciifr-wbs4/readonly-catalog.mjs",
+      "s": "REUSABLE_SOURCE_PROFILE",
+      "n": "Pinned profile; no semantic approval",
+      "milestone": "M17"
+    },
+    {
+      "t": "CII GOLDEN G06 | Numeric fidelity: retain exact13-byte lexeme including padding separately from JS numericValue. D/d exponent conversion is parsing only. Preserve negative-zero spelling (Object.is for JS -0); JSON numbers alone lose it. Zero,1E-10 and9999.99 have no universal empty/default meaning; do not split fixed rows on whitespace.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/blob/e548e8b9b6799a83d8926409681f959956077bee/tools/ciifr-wbs4/readonly-catalog.mjs",
+      "s": "REUSABLE_SOURCE_PROFILE",
+      "n": "Pinned profile; no semantic approval",
+      "milestone": "M17"
+    },
+    {
+      "t": "CII GOLDEN G07 | Real row1 slot map: 1 FROM node; 2 TO node; 3 Delta X; 4 Delta Y; 5 Delta Z; 6 Outside Diameter. Stored profile only; units unqualified.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/blob/e548e8b9b6799a83d8926409681f959956077bee/tools/ciifr-wbs4/readonly-catalog.mjs",
+      "s": "REUSABLE_SOURCE_PROFILE",
+      "n": "Pinned profile; no semantic approval",
+      "milestone": "M17"
+    },
+    {
+      "t": "CII GOLDEN G08 | Real row2 slot map: 7 Wall Thickness; 8 Insulation Thickness; 9 Corrosion Allowance; 10 Expansion Coefficient / Temperature #1; 11 Expansion Coefficient / Temperature #2; 12 Expansion Coefficient / Temperature #3. Stored profile only; units unqualified.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/blob/e548e8b9b6799a83d8926409681f959956077bee/tools/ciifr-wbs4/readonly-catalog.mjs",
+      "s": "REUSABLE_SOURCE_PROFILE",
+      "n": "Pinned profile; no semantic approval",
+      "milestone": "M17"
+    },
+    {
+      "t": "CII GOLDEN G09 | Real row3 slot map: 13 Expansion Coefficient / Temperature #4; 14 Expansion Coefficient / Temperature #5; 15 Expansion Coefficient / Temperature #6; 16 Expansion Coefficient / Temperature #7; 17 Expansion Coefficient / Temperature #8; 18 Expansion Coefficient / Temperature #9. Stored profile only; units unqualified.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/blob/e548e8b9b6799a83d8926409681f959956077bee/tools/ciifr-wbs4/readonly-catalog.mjs",
+      "s": "REUSABLE_SOURCE_PROFILE",
+      "n": "Pinned profile; no semantic approval",
+      "milestone": "M17"
+    },
+    {
+      "t": "CII GOLDEN G10 | Real row4 slot map: 19 Pressure #1; 20 Pressure #2; 21 Pressure #3; 22 Pressure #4; 23 Pressure #5; 24 Pressure #6. Stored profile only; units unqualified.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/blob/e548e8b9b6799a83d8926409681f959956077bee/tools/ciifr-wbs4/readonly-catalog.mjs",
+      "s": "REUSABLE_SOURCE_PROFILE",
+      "n": "Pinned profile; no semantic approval",
+      "milestone": "M17"
+    },
+    {
+      "t": "CII GOLDEN G11 | Real row5 slot map: 25 Pressure #7; 26 Pressure #8; 27 Pressure #9; 28 Cold Elastic Modulus; 29 Poisson Ratio; 30 Pipe Density. Stored profile only; units unqualified.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/blob/e548e8b9b6799a83d8926409681f959956077bee/tools/ciifr-wbs4/readonly-catalog.mjs",
+      "s": "REUSABLE_SOURCE_PROFILE",
+      "n": "Pinned profile; no semantic approval",
+      "milestone": "M17"
+    },
+    {
+      "t": "CII GOLDEN G12 | Real row6 slot map: 31 Insulation Density; 32 Fluid Density; 33 Minus Mill Tolerance; 34 Plus Mill Tolerance; 35 Seam Weld; 36 Hydro Pressure. Stored profile only; units unqualified.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/blob/e548e8b9b6799a83d8926409681f959956077bee/tools/ciifr-wbs4/readonly-catalog.mjs",
+      "s": "REUSABLE_SOURCE_PROFILE",
+      "n": "Pinned profile; no semantic approval",
+      "milestone": "M17"
+    },
+    {
+      "t": "CII GOLDEN G13 | Real row7 slot map: 37 Hot Elastic Modulus #1; 38 Hot Elastic Modulus #2; 39 Hot Elastic Modulus #3; 40 Hot Elastic Modulus #4; 41 Hot Elastic Modulus #5; 42 Hot Elastic Modulus #6. Stored profile only; units unqualified.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/blob/e548e8b9b6799a83d8926409681f959956077bee/tools/ciifr-wbs4/readonly-catalog.mjs",
+      "s": "REUSABLE_SOURCE_PROFILE",
+      "n": "Pinned profile; no semantic approval",
+      "milestone": "M17"
+    },
+    {
+      "t": "CII GOLDEN G14 | Real row8 slot map: 43 Hot Elastic Modulus #7; 44 Hot Elastic Modulus #8; 45 Hot Elastic Modulus #9; 46 wL Factor; 47 Orientation Angle To (FEATools); 48 Orientation Angle From (FEATools). Stored profile only; units unqualified.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/blob/e548e8b9b6799a83d8926409681f959956077bee/tools/ciifr-wbs4/readonly-catalog.mjs",
+      "s": "REUSABLE_SOURCE_PROFILE",
+      "n": "Pinned profile; no semantic approval",
+      "milestone": "M17"
+    },
+    {
+      "t": "CII GOLDEN G15 | Real row9 slot map: 49 Cladding Thickness; 50 Cladding Density; 51 Insulation and Cladding Weight/Length; 52 Refractory Thickness; 53 Refractory Density. Stored profile only; units unqualified.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/blob/e548e8b9b6799a83d8926409681f959956077bee/tools/ciifr-wbs4/readonly-catalog.mjs",
+      "s": "REUSABLE_SOURCE_PROFILE",
+      "n": "Pinned profile; no semantic approval",
+      "milestone": "M17"
+    },
+    {
+      "t": "CII GOLDEN G16 | CONTROL in this reader: four nonblank rows =6 main counts then13 auxiliary fields in6+6+1. Main1 counts ELEMENTS; main4 NONAM, main5 NORED, main6 NUMFLG. Auxiliary12 is IZUP flag0/1, not a count. Auxiliary13 counts EQUIPMNT. Main2/3 meanings remain unqualified here.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/blob/e548e8b9b6799a83d8926409681f959956077bee/tools/ciifr-wbs4/readonly-catalog.mjs",
+      "s": "REUSABLE_SOURCE_PROFILE",
+      "n": "Pinned profile; no semantic approval",
+      "milestone": "M17"
+    },
+    {
+      "t": "CII GOLDEN G17 | All15 pointer targets, part1: 1 BEND,2 RIGID,3 EXPJT,4 RESTRANT,5 DISPLMNT,6 FORCMNT,7 UNIFORM,8 WIND. Nonzero pointer is a one-based section-local logical record index, not node number or physical line; zero means no attached record. Pointers1-11 use corresponding auxiliary CONTROL counts.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/blob/e548e8b9b6799a83d8926409681f959956077bee/tools/ciifr-wbs4/readonly-catalog.mjs",
+      "s": "REUSABLE_SOURCE_PROFILE",
+      "n": "Pinned profile; no semantic approval",
+      "milestone": "M17"
+    },
+    {
+      "t": "CII GOLDEN G18 | All15 pointer targets, part2: 9 OFFSETS,10 ALLOWBLS,11 SIF&TEES,12 NODENAME,13 REDUCERS,14 FLANGES,15 EQUIPMNT. Pointers12-14 use main CONTROL4/5/6; pointer15 uses auxiliary13. Require nonnegative safe integer value, declared range and a present/nonempty positively counted section.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/blob/e548e8b9b6799a83d8926409681f959956077bee/tools/ciifr-wbs4/readonly-catalog.mjs",
+      "s": "REUSABLE_SOURCE_PROFILE",
+      "n": "Pinned profile; no semantic approval",
+      "milestone": "M17"
+    },
+    {
+      "t": "CII GOLDEN G19 | Logical count differs from physical lines. Current cardinality map: BEND3, RIGID1, EXPJT1, NODENAME1, REDUCERS2, FLANGES12, EQUIPMNT6 lines/record. Other auxiliary bodies remain UNVALIDATED_RECORD_SHAPE. Valid pointer bounds do not prove record-body meaning or native acceptance.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/blob/e548e8b9b6799a83d8926409681f959956077bee/tools/ciifr-wbs4/readonly-catalog.mjs",
+      "s": "REUSABLE_SOURCE_PROFILE",
+      "n": "Pinned profile; no semantic approval",
+      "milestone": "M17"
+    },
+    {
+      "t": "CII GOLDEN G20 | RIGID pointer2:0 means absence, never fabricated Weight0 or array[-1]. Pointer1 addresses record1/array[0]. A present record may explicitly store Weight0 or -0. RIGID line is2 blanks + Weight13bytes + Type13bytes: spans[2,15) and[15,28), excluding newline.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/blob/e548e8b9b6799a83d8926409681f959956077bee/tools/ciifr-wbs4/five-field-evidence.mjs",
+      "s": "REUSABLE_SOURCE_PROFILE",
+      "n": "Pinned profile; no semantic approval",
+      "milestone": "M17"
+    },
+    {
+      "t": "CII GOLDEN G21 | RIGID sharing: multiple physical occurrences may own one auxiliary record. Preserve the complete zero-based owners list; validate selected and unselected owners. A future edit can affect all owners, so atomic ownership policy requires separate authority. An unreferenced record is not permission to repurpose it.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/blob/e548e8b9b6799a83d8926409681f959956077bee/tools/ciifr-wbs4/five-field-evidence.mjs",
+      "s": "REUSABLE_SOURCE_PROFILE",
+      "n": "Pinned profile; no semantic approval",
+      "milestone": "M17"
+    },
+    {
+      "t": "CII GOLDEN G22 | Strict RIGID I13 containment: every original pointer2 slot must be13bytes with ASCII-space left padding, optional ASCII sign and digits only; exact BigInt agreement with bounded pointer. Accept +1 and0; reject decimal/exponent, TAB, NBSP, trailing blanks/controls, including a malformed unselected shared owner.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/blob/e548e8b9b6799a83d8926409681f959956077bee/tools/ciifr-wbs4/five-field-evidence.mjs",
+      "s": "REUSABLE_SOURCE_PROFILE",
+      "n": "Pinned profile; no semantic approval",
+      "milestone": "M17"
+    },
+    {
+      "t": "CII GOLDEN G23 | Five-field addresses: TEMPERATURE_1=real10,row2,[41,54); PRESSURE_1=real19,row4,[2,15); FLUID_DENSITY=real32,row6,[15,28). RIGID Weight/Type are pointer2-resolved auxiliary slots. All effective fields remain EFFECTIVE_UNKNOWN; transferAuthority NONE and nativeCaesarValidation NOT_RUN.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/blob/e548e8b9b6799a83d8926409681f959956077bee/tools/ciifr-wbs4/five-field-evidence.mjs",
+      "s": "REUSABLE_SOURCE_PROFILE",
+      "n": "Pinned profile; no semantic approval",
+      "milestone": "M17"
+    },
+    {
+      "t": "CII GOLDEN G26 | Privacy: private report contains source digest, exact spans/lexemes, values, identifiers and ownership. publicFiveFieldSummary emits a fixed model-data-free whitelist, not the private report or catalog publicInventory counts. Direct CLI rejection is constant; successful LOCAL_ONLY_DIRECTORY is private local diagnostics.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/blob/e548e8b9b6799a83d8926409681f959956077bee/tools/ciifr-wbs4/five-field-cli.mjs",
+      "s": "READ_ONLY_CONTRACT",
+      "n": "Pinned profile; no semantic approval",
+      "milestone": "M17"
+    },
+    {
+      "t": "CII GOLDEN G27 | Independent oracles: compute expected fields/branch/occurrence from synthetic literal bytes and row starts; checking only producer-returned spans can preserve the same mistake. Challenge equal endpoints/different branches, wrong field offset, pointer0 vs stored0, shared/unselected poisoned owner, LF/CRLF and unchanged input bytes.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/blob/e548e8b9b6799a83d8926409681f959956077bee/tests/ciifr-wbs4-five-field-f3.test.mjs",
+      "s": "SYNTHETIC_REVIEW_PATTERN",
+      "n": "Pinned profile; no semantic approval",
+      "milestone": "M17"
+    },
+    {
+      "t": "CII GOLDEN G28 | Future editing requires separate typed field/units/state qualification, accepted source-target correspondence, current source identities, explicit span scope, ownership closure and approved writer/native checks. A53-field catalog or read-only PASS does not authorize node renumbering, pointer reindexing, TARGET1 export or engineering acceptance.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/blob/e548e8b9b6799a83d8926409681f959956077bee/tools/ciifr-wbs4/five-field-evidence.mjs",
+      "s": "EDIT_AUTHORITY_NONE",
+      "n": "Pinned profile; no semantic approval",
+      "milestone": "M17"
+    },
+    {
+      "t": "CII GOLDEN G29 | Windows privacy is actual SID/DACL authorization, not POSIX mode0600. Protection is applied at directory creation and checked before report content. The independent current/Everyone-restricted-token contrast checks bit1 read/list only; it is not a second login or proof against privileged bypass. POSIX mode/UID evidence is separate.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/blob/e548e8b9b6799a83d8926409681f959956077bee/tools/ciifr-wbs4/private-output-windows.ps1",
+      "s": "BOUNDED_PLATFORM_EVIDENCE",
+      "n": "Pinned profile; no semantic approval",
+      "milestone": "M17"
+    },
+    {
+      "t": "CII GOLDEN G30 | Failure custody: second-report serialization can fail after first JSON exists. Remove only newly created reports; preserve unrelated bytes and use nonrecursive directory removal. e548e8b translates cleanup errors to a neutral rejection. OS denial can leave protected residue; directory-create/close errors need separate assessment.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/blob/e548e8b9b6799a83d8926409681f959956077bee/tools/ciifr-wbs4/private-output.mjs",
+      "s": "AUTHOR_TESTED_PATTERN",
+      "n": "Pinned profile; no semantic approval",
+      "milestone": "M17"
     }
   ],
   "knownIssues": [
@@ -1236,6 +1432,20 @@
       "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/177#issuecomment-6407926621",
       "s": "G2_SIGNATURE_FALSE_PASS",
       "milestone": "M14"
+    },
+    {
+      "t": "CII GOLDEN G24 | Engineering unknowns: thermal slots may be temperature or expansion coefficient. Bind original-job Alpha/config, material/expansion edition, units, operating/pressure/hydro cases, density/FDM and native RIGID Weight/Type meaning before inference. Do not guess thresholds, code meanings, unit conversions or another job configuration.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/blob/e548e8b9b6799a83d8926409681f959956077bee/tools/ciifr-wbs4/five-field-evidence.mjs",
+      "s": "SEMANTICS_UNQUALIFIED",
+      "n": "Pinned profile; no semantic approval",
+      "milestone": "M17"
+    },
+    {
+      "t": "CII GOLDEN G25 | Parent boundary: the inherited catalog already checks all15 pointer ranges/count routing. General integer lexical grammar still uses real-number parsing plus trim, and strict CONTROL width/prefix qualification remains unresolved. PR187 RIGID I13 containment is not a global parent-parser repair; PR168/#173 remain separate.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/blob/e548e8b9b6799a83d8926409681f959956077bee/tools/ciifr-wbs4/readonly-catalog.mjs",
+      "s": "PARENT_GRAMMAR_UNQUALIFIED",
+      "n": "Pinned profile; no semantic approval",
+      "milestone": "M17"
     }
   ],
   "pending": [
