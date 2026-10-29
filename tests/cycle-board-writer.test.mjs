@@ -72,7 +72,10 @@ test('CT-3 cannot treat already-audited mutable URL as a fresh achievement or ex
  assert.equal(model.status,'REVIEW_REQUIRED','source URL is not proof of revised head publication');
  assert.equal(model.recordedCount,1);
  const exact=structuredClone(pg);
- exact.audit.events[exact.audit.events.length-1].summary='Reviewed exact head '+sha;
+ const published=exact.audit.events[exact.audit.events.length-1];
+ published.nativeOccurrenceId=pr().occurrenceId;
+ published.wbs='2';
+ published.summary='Reviewed exact head '+sha;
  const current=sourceModel(exact,[pr()]);
  const reconciled=cycleBoardWriterModel(exact,current.ctx,current.delta);
  assert.equal(current.delta.publication.status,'CURRENT');
