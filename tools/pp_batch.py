@@ -16,6 +16,7 @@ import tempfile
 from pathlib import Path
 
 from pp_reconcile import source_target, observe
+from pp_occurrence import occurrence_id, exact_events, legacy_events
 
 ALLOWED = {
     ("plan","milestone"), ("plan","group"), ("plan","chat"),
@@ -57,7 +58,7 @@ def commands(manifest):
     # Auto-proposed manifests can only append one evidence reference. They cannot
     # edit state, claim, actor, milestone, activity, or an Owner gate.
     if manifest.get("proposalVersion") is not None:
-        if manifest["proposalVersion"] != 1: raise ValueError("unsupported proposal version")
+        if manifest["proposalVersion"] not in (1,2): raise ValueError("unsupported proposal version")
         fp=manifest.get("sourceObservation")
         if not isinstance(fp,dict) or fp.get("kind") not in ("pull","issue","issue-comment"):
             raise ValueError("proposal needs a native source identity")
@@ -71,6 +72,18 @@ def commands(manifest):
             raise ValueError("proposal may only append an original native-source reference")
         if props["ref"].split("|")[2:3]!=[manifest["source"]]:
             raise ValueError("proposal reference must cite the exact observed source")
+        if manifest["proposalVersion"] == 2:
+            expected=occurrence_id(manifest["source"],fp)
+            if manifest.get("nativeOccurrenceId")!=expected:
+                raise ValueError("proposal occurrence identity does not match original native source")
+            wbs=manifest.get("wbs")
+            if not isinstance(wbs,str) or not wbs.strip() or len(wbs)>40:
+                raise ValueError("proposal WBS must be explicitly scoped")
+            review=manifest.get("legacyReview")
+            if review is not None:
+                if not isinstance(review,dict) or review.get("acknowledged") is not True or not isinstance(review.get("reason"),str) or not 20<=len(review["reason"].strip())<=300:
+                    raise ValueError("legacy URL-only history needs explicit written review")
+            out[0].extend(["--native-occurrence-id",expected,"--native-wbs",wbs])
     return out
 
 def source_fresh(manifest, reader=observe):
@@ -94,8 +107,28 @@ def run(data, manifest_path, apply=False, base=None, observe_source=observe):
     cmdlist=commands(manifest)
     if not (target/manifest["project"]/"audit.json").is_file():raise ValueError("unknown project")
     old_events=json.loads((target/manifest["project"]/"audit.json").read_text(encoding="utf-8"))["events"]
-    existing=[e.get("id") for e in old_events if e.get("source")==manifest["source"]]
-    if existing:raise ValueError("source already recorded: "+", ".join(existing)+"; review distinct evidence before another batch")
+    if manifest.get("proposalVersion")==2:
+        source=manifest["source"];identity=manifest["nativeOccurrenceId"];wbs=manifest["wbs"]
+        selected=manifest["changes"][0]["args"]["card"]
+        cards=json.loads((target/manifest["project"]/"cards.json").read_text(encoding="utf-8"))
+        index=json.loads((target/manifest["project"]/"index.json").read_text(encoding="utf-8"))
+        card=cards.get(selected)
+        if not card or card.get("closed"):
+            raise ValueError("selected Page card missing or closed")
+        if (index.get("milestones") or {}).get(card.get("milestone"),{}).get("wbs")!=wbs:
+            raise ValueError("selected card WBS differs from reviewed proposal")
+        existing=[e.get("id") for e in old_events if e.get("source")==source
+                  and e.get("nativeOccurrenceId")==identity and e.get("wbs")==wbs]
+        if existing:
+            raise ValueError("same occurrence and WBS already recorded: "+", ".join(existing))
+        legacy=legacy_events(old_events,source)
+        legacy_ref=any(r.get("u")==source and not r.get("nativeOccurrenceId")
+                       for r in card.get("refs",[]))
+        if (legacy or legacy_ref) and not manifest.get("legacyReview"):
+            raise ValueError("LEGACY_REVIEW_REQUIRED: URL-only historical evidence needs explicit writer review")
+    else:
+        existing=[e.get("id") for e in old_events if e.get("source")==manifest["source"]]
+        if existing:raise ValueError("source already recorded: "+", ".join(existing)+"; review distinct evidence before another batch")
     with tempfile.TemporaryDirectory(prefix=".pp-batch-",dir=target.parent) as temp:
         stage=Path(temp)/"stage"
         shutil.copytree(target,stage)
@@ -112,6 +145,19 @@ def run(data, manifest_path, apply=False, base=None, observe_source=observe):
         new_events=json.loads((stage/manifest["project"]/"audit.json").read_text(encoding="utf-8"))["events"]
         if len(new_events)!=len(old_events)+len(cmdlist) or new_events[:len(old_events)]!=old_events:
             raise ValueError("history not append-only: expected one event per operation")
+        if manifest.get("proposalVersion")==2:
+            event=new_events[-1]
+            if (event.get("nativeOccurrenceId")!=manifest["nativeOccurrenceId"] or
+                event.get("wbs")!=manifest["wbs"] or
+                event.get("card")!=selected or event.get("source")!=manifest["source"]):
+                raise ValueError("staged audit does not preserve exact source occurrence and WBS/card")
+            before_card=cards[selected]
+            after_card=json.loads((stage/manifest["project"]/"cards.json").read_text(encoding="utf-8"))[selected]
+            for field in ("state","now","next","milestone","who","closed","flags"):
+                if before_card.get(field)!=after_card.get(field):
+                    raise ValueError("source-only proposal must not change "+field)
+            if len(after_card.get("refs",[]))!=len(before_card.get("refs",[]))+1:
+                raise ValueError("new native occurrence needs exactly one appended card reference")
         report={"project":manifest["project"],"source":manifest["source"],"commands":len(cmdlist),
             "newEventIds":[e.get("id") for e in new_events[len(old_events):]],"changedFiles":changed,
             "applied":False,"checked":True,"baseChecked":False}
