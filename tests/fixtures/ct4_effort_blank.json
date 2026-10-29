@@ -1,0 +1,68 @@
+{
+  "schema": "cycle-board.effort/v1",
+  "project": "ciifr-node",
+  "candidate": {
+    "head_sha": null,
+    "source_pr": "https://github.com/reallakshman19/progress-page/pull/83"
+  },
+  "amortization_runs": 10,
+  "baseline": {
+    "status": "NOT_RUN",
+    "scope": {
+      "project": "ciifr-node",
+      "workflow": "native-evidence-reconciliation",
+      "work_unit": "one-native-occurrence",
+      "sample_count": 3
+    },
+    "role_minutes": {
+      "coder": null,
+      "ir": null,
+      "oracle_otm": null,
+      "owner": null,
+      "page_writer": null
+    },
+    "maintenance_minutes_per_run": null,
+    "setup_minutes": null,
+    "extra_mandatory_board_reports": null,
+    "time_to_first_runnable_minutes": null,
+    "continuation_recovery_minutes": null,
+    "evidence": [],
+    "input_basis": {
+      "role_minutes": "PER_RUN_MEAN",
+      "maintenance_minutes_per_run": "PER_RUN_MEAN",
+      "setup_minutes": "ONE_TIME"
+    }
+  },
+  "pilot": {
+    "status": "NOT_RUN",
+    "scope": {
+      "project": "ciifr-node",
+      "workflow": "native-evidence-reconciliation",
+      "work_unit": "one-native-occurrence",
+      "sample_count": 3
+    },
+    "role_minutes": {
+      "coder": null,
+      "ir": null,
+      "oracle_otm": null,
+      "owner": null,
+      "page_writer": null
+    },
+    "maintenance_minutes_per_run": null,
+    "setup_minutes": null,
+    "extra_mandatory_board_reports": null,
+    "time_to_first_runnable_minutes": null,
+    "continuation_recovery_minutes": null,
+    "evidence": [],
+    "input_basis": {
+      "role_minutes": "PER_RUN_MEAN",
+      "maintenance_minutes_per_run": "PER_RUN_MEAN",
+      "setup_minutes": "ONE_TIME"
+    }
+  },
+  "owner_trial": {
+    "status": "NOT_RUN",
+    "runnable_url": null,
+    "evidence": []
+  }
+}
