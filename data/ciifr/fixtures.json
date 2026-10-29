@@ -676,6 +676,13 @@
       "u": "https://github.com/reallakshman19/Common/pull/511",
       "s": "VNEXT_RELEASE_BOUNDARY",
       "milestone": "M7"
+    },
+    {
+      "t": "Owner: Check restraint fallback default axis and default stiffness; check restraint placement for Datum etc. Create WBS in CIIFR R4 and record the supplied reference state.",
+      "u": "https://github.com/reallakshman19/3D_Converters/issues/350",
+      "s": "OWNER_REQUEST_RECORDED",
+      "n": "Pinned reference; runtime NOT_RUN",
+      "milestone": "M24"
     }
   ],
   "inputs": [
@@ -986,6 +993,34 @@
       "t": "Separate Element Cycle ACTIVE rev3 (not rev0/rev1); independent WBS4 source/config gate, no Writer/TARGET1 or Geometry control transfer.",
       "u": "https://github.com/reallakshman19/Common/blob/main/oracle-cycles/ciifr-element/CURRENT.json",
       "s": "ELEMENT_CYCLE_R3"
+    },
+    {
+      "t": "Owner-designated restraint reference state: REF-STATE-agent/xml-cii-node140-gap-benchmark-rca",
+      "u": "https://github.com/reallakshman19/3D_Converters/tree/57710dd744669a9dc1d4dbdd103d78f9f2928bce",
+      "s": "REFERENCE_PINNED_NOT_ACCEPTED",
+      "n": "Pinned reference; runtime NOT_RUN",
+      "milestone": "M24"
+    },
+    {
+      "t": "Owner-designated restraint reference state: REF-STATE-agent/xml-cii-node140-gap-benchmark-rca",
+      "u": "https://github.com/reallakshman19/3D_Converters/tree/57710dd744669a9dc1d4dbdd103d78f9f2928bce",
+      "s": "REFERENCE_PINNED_NOT_ACCEPTED",
+      "n": "Pinned reference; runtime NOT_RUN",
+      "milestone": "M25"
+    },
+    {
+      "t": "Owner-designated restraint reference state: REF-STATE-agent/xml-cii-node140-gap-benchmark-rca",
+      "u": "https://github.com/reallakshman19/3D_Converters/tree/57710dd744669a9dc1d4dbdd103d78f9f2928bce",
+      "s": "REFERENCE_PINNED_NOT_ACCEPTED",
+      "n": "Pinned reference; runtime NOT_RUN",
+      "milestone": "M26"
+    },
+    {
+      "t": "Owner-designated restraint reference state: REF-STATE-agent/xml-cii-node140-gap-benchmark-rca",
+      "u": "https://github.com/reallakshman19/3D_Converters/tree/57710dd744669a9dc1d4dbdd103d78f9f2928bce",
+      "s": "REFERENCE_PINNED_NOT_ACCEPTED",
+      "n": "Pinned reference; runtime NOT_RUN",
+      "milestone": "M27"
     }
   ],
   "knownIssues": [

@@ -4,8 +4,8 @@
     "key": "ciifr",
     "title": "CII Find & Replace VNext",
     "subtitle": "R4 current: Geometry WBS3 read-only G1/G2; Element WBS4 source/config qualification; VNext integration held pending independent evidence.",
-    "updatedAt": "2026-10-28T07:05:55Z",
-    "updatedBy": "Owner-directed CIIFR Page source operator",
+    "updatedAt": "2026-10-29T06:29:24Z",
+    "updatedBy": "6ae1bed6 (Owner-directed recorder)",
     "staleAfterMin": 120,
     "aim": "Extend CIIFR NodeName VNext into typed ELEMENTS real-value/Line Number edits plus pointer-resolved RIGID Weight/Type. Preserve original bytes, v14 units/sentinels, node/pointer/branch relations, per-span approvals, new-copy export and native import review. Retain R3 Geometry WBS3 review-only, frozen P2/P2.1 and XML custody; defer structural graph/pointer edits and P3.",
     "aimSrc": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394203305"
@@ -85,6 +85,11 @@
     "ciifr-g41": {
       "label": "G4.1-CIIFR4",
       "id8": "6adcde70",
+      "engine": "ChatGPT"
+    },
+    "restraint-6ae1bed6": {
+      "label": "Restraint audit recorder",
+      "id8": "6ae1bed6",
       "engine": "ChatGPT"
     }
   },
@@ -328,6 +333,58 @@
       "canDo": "Explicit HOLD until a new Owner-controlled engineering work packet.",
       "repo": "reallakshman19/XML_Compare_Utilities",
       "activity": "WBS 4.x proposed; no coder assignment or acceptance."
+    },
+    "M24": {
+      "name": "Restraint fallback and Datum placement",
+      "full": "Audit default restraint axis and stiffness, source/config precedence and placement relative to Datum, coordinate frames and node ownership. KEEP existing WBS 3/4/5; DISCOVER_FIRST engineering expectations before repair.",
+      "order": 40,
+      "wbs": "6",
+      "bench": "RESTRAINT-INTEGRATED",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "Planning/source inspection only; no verified restraint behavior or repair.",
+      "repo": "reallakshman19/3D_Converters",
+      "branch": "REF-STATE-agent/xml-cii-node140-gap-benchmark-rca",
+      "commit": "57710dd744669a9dc1d4dbdd103d78f9f2928bce",
+      "activity": "Owner-requested audit; runtime and independent acceptance NOT_RUN."
+    },
+    "M25": {
+      "name": "Fallback axis and stiffness",
+      "full": "Trace source/staged/config precedence through resolver, InputXML and emitted CII. Check REST/GUIDE/LINESTOP/ANCHOR/SPRING; missing, blank, zero, invalid and explicit values; global/local axes, signs, units and disabled mapping. Preserve explicit values.",
+      "order": 41,
+      "wbs": "6.1",
+      "bench": "RESTRAINT-FALLBACK",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "Planning/source inspection only; no verified restraint behavior or repair.",
+      "repo": "reallakshman19/3D_Converters",
+      "branch": "REF-STATE-agent/xml-cii-node140-gap-benchmark-rca",
+      "commit": "57710dd744669a9dc1d4dbdd103d78f9f2928bce",
+      "activity": "Owner-requested audit; runtime and independent acceptance NOT_RUN."
+    },
+    "M26": {
+      "name": "Datum and restraint placement",
+      "full": "Verify Datum/coordinate transforms, actual branch/node attachment, snap and coincidence tolerances, endpoint versus interior placement and co-located supports. Independently calculate coordinates; contrast translated Datum, off-pipe, duplicated and ambiguous supports.",
+      "order": 42,
+      "wbs": "6.2",
+      "bench": "RESTRAINT-DATUM",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "Planning/source inspection only; no verified restraint behavior or repair.",
+      "repo": "reallakshman19/3D_Converters",
+      "branch": "REF-STATE-agent/xml-cii-node140-gap-benchmark-rca",
+      "commit": "57710dd744669a9dc1d4dbdd103d78f9f2928bce",
+      "activity": "Owner-requested audit; runtime and independent acceptance NOT_RUN."
+    },
+    "M27": {
+      "name": "Integrated restraint verification",
+      "full": "Run pinned original fixture and contrary cases through production; record input/config/candidate hashes and emitted CII rows. Independently review axis, stiffness, units and placement; native import and Owner trial remain required for acceptance.",
+      "order": 43,
+      "wbs": "6.3",
+      "bench": "RESTRAINT-INTEGRATED",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "Planning/source inspection only; no verified restraint behavior or repair.",
+      "repo": "reallakshman19/3D_Converters",
+      "branch": "REF-STATE-agent/xml-cii-node140-gap-benchmark-rca",
+      "commit": "57710dd744669a9dc1d4dbdd103d78f9f2928bce",
+      "activity": "Owner-requested audit; runtime and independent acceptance NOT_RUN."
     }
   },
   "groups": {
@@ -397,6 +454,11 @@
       "title": "WBS4 E5/E6 · Writer protection / structural HOLD",
       "sub": "Only approved field spans in immutable TARGET1; independent pointer/alias/unit/byte falsification and CAESAR import. Endpoint renumber/pointer rebuild remain Owner-held.",
       "order": 32
+    },
+    "r4-restraint-audit": {
+      "title": "WBS 6 · Restraint defaults and Datum placement",
+      "sub": "Owner-requested audit; reference fixture pinned; no production acceptance claimed.",
+      "order": 40
     }
   },
   "revisions": [

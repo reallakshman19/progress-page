@@ -1238,5 +1238,74 @@
         "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/178#issuecomment-6407707652"
       }
     ]
+  },
+  "restraint-fallback-audit": {
+    "order": 48,
+    "group": "r4-restraint-audit",
+    "milestone": "M25",
+    "label": "Axis and stiffness audit",
+    "who": {
+      "chat": "restraint-6ae1bed6",
+      "role": "Owner-directed audit recorder"
+    },
+    "state": "NOT_STARTED",
+    "now": "Scope recorded; initial source inspection only. Execution and independent verification NOT_RUN.",
+    "next": {
+      "actor": "6ae1bed6",
+      "text": "Ground expected engineering behavior on pinned reference and return evidence to issue #350; no production change or release implied."
+    },
+    "refs": [
+      {
+        "k": "issue",
+        "l": "Restraint audit scope and evidence",
+        "u": "https://github.com/reallakshman19/3D_Converters/issues/350"
+      }
+    ]
+  },
+  "restraint-datum-audit": {
+    "order": 49,
+    "group": "r4-restraint-audit",
+    "milestone": "M26",
+    "label": "Datum and placement audit",
+    "who": {
+      "chat": "restraint-6ae1bed6",
+      "role": "Owner-directed audit recorder"
+    },
+    "state": "NOT_STARTED",
+    "now": "Scope recorded; initial source inspection only. Execution and independent verification NOT_RUN.",
+    "next": {
+      "actor": "6ae1bed6",
+      "text": "Ground expected engineering behavior on pinned reference and return evidence to issue #350; no production change or release implied."
+    },
+    "refs": [
+      {
+        "k": "issue",
+        "l": "Restraint audit scope and evidence",
+        "u": "https://github.com/reallakshman19/3D_Converters/issues/350"
+      }
+    ]
+  },
+  "restraint-integrated-audit": {
+    "order": 50,
+    "group": "r4-restraint-audit",
+    "milestone": "M27",
+    "label": "Integrated restraint verification",
+    "who": {
+      "chat": "restraint-6ae1bed6",
+      "role": "Owner-directed audit recorder"
+    },
+    "state": "NOT_STARTED",
+    "now": "Scope recorded; initial source inspection only. Execution and independent verification NOT_RUN.",
+    "next": {
+      "actor": "6ae1bed6",
+      "text": "Ground expected engineering behavior on pinned reference and return evidence to issue #350; no production change or release implied."
+    },
+    "refs": [
+      {
+        "k": "issue",
+        "l": "Restraint audit scope and evidence",
+        "u": "https://github.com/reallakshman19/3D_Converters/issues/350"
+      }
+    ]
   }
 }
