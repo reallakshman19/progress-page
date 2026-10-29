@@ -9,9 +9,9 @@
       "role": "Owner-designated independent reviewer; qualification pending"
     },
     "state": "NOT_STARTED",
-    "now": "Owner-designated IR 6ae155fe remains ACK_PENDING on #2. Original 66/40/26 evidence remains historical; changed candidate PR #5 (9804e2c6108d) now has a separately scoped handoff on #4 and verified outgoing archive in Common PR #563. Separate IR receipt, principal/expectation disclosures, assessment and real browser journey remain NOT_RUN.",
+    "now": "Owner-designated IR 6ae2d5ac remains ACK_PENDING on #2. Original 66/40/26 evidence remains historical; changed candidate PR #5 (9804e2c6108d) now has a separately scoped handoff on #4 and verified outgoing archive in Common PR #563. Separate IR receipt, principal/expectation disclosures, assessment and real browser journey remain NOT_RUN.",
     "next": {
-      "actor": "IR 6ae155fe",
+      "actor": "IR 6ae2d5ac",
       "text": "Acknowledge #2, preserve the original baseline assessment, retrieve and independently assess changed candidate #5 via #4; report actual browser limits and scoped verdict."
     },
     "refs": [
@@ -44,10 +44,16 @@
         "l": "Changed-candidate handoff",
         "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/4#issuecomment-6479886178",
         "s": "SELF_ASSESSED"
+      },
+      {
+        "k": "comment",
+        "l": "Owner routing correction",
+        "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/2#issuecomment-6489595593",
+        "s": "DESIGNATED; ACK_PENDING"
       }
     ],
-    "updatedAt": "2026-10-28T20:27:35Z",
-    "src": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/4#issuecomment-6479886178"
+    "updatedAt": "2026-10-29T06:25:57Z",
+    "src": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/2#issuecomment-6489595593"
   },
   "topo-4-3": {
     "order": 43,
@@ -321,12 +327,13 @@
     "milestone": "M13",
     "label": "1.3 Preservation-safe correction eligi",
     "who": {
-      "role": "Oracle author; independent qualification pending"
+      "role": "Oracle author; independent qualification pending",
+      "chat": "oracle"
     },
     "state": "SUBMITTED",
     "now": "Draft PR #5 at 9804e2c6108d preserves meaningful source references, shares removal vetoes between planning and mutation, and supplies source-specific manual directions. Author checks: 13 Python + 19 Node PASS. Original-source replay: 39 actions, 48 aliases, all 216 records/references retained; 17 conflicts and 10 preservation reviews. SELF_ASSESSED; browser/Pyodide/download journey NOT_RUN. No product merge or deployment.",
     "next": {
-      "actor": "IR 6ae155fe",
+      "actor": "IR 6ae2d5ac",
       "text": "Acknowledge #2; independently retrieve/hash #4 handoff, inspect source and exact PR #5, run full Python/Node plus real browser journey and return scoped safety verdict."
     },
     "refs": [
@@ -363,6 +370,12 @@
         "l": "Candidate evidence archive",
         "u": "https://github.com/reallakshman19/Common/pull/563",
         "s": "OPEN/DRAFT; remote bytes verified"
+      },
+      {
+        "k": "comment",
+        "l": "Owner routing correction",
+        "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/2#issuecomment-6489595593",
+        "s": "DESIGNATED; ACK_PENDING"
       }
     ],
     "edges": [
@@ -371,8 +384,8 @@
         "k": "to"
       }
     ],
-    "updatedAt": "2026-10-28T20:27:34Z",
-    "src": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/4#issuecomment-6479886178"
+    "updatedAt": "2026-10-29T06:25:57Z",
+    "src": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/2#issuecomment-6489595593"
   },
   "topo-1-2": {
     "order": 12,
@@ -380,12 +393,13 @@
     "milestone": "M12",
     "label": "1.2 Disposition of all 66 proposals",
     "who": {
-      "role": "Oracle evidence awaiting designated IR"
+      "role": "Oracle evidence awaiting designated IR",
+      "chat": "oracle"
     },
     "state": "SUBMITTED",
     "now": "Historical original 66/40/26 ledger remains available and engineering-open: 17 shared-source, four semantic-screen and five wall exclusions. Repair candidate #5 separately accounts for the original 66 proposals as 39 applied, 17 conflicts and 10 nonmutating preservation reviews. Counts and author tests are not engineering dispositions or case counts.",
     "next": {
-      "actor": "IR 6ae155fe",
+      "actor": "IR 6ae2d5ac",
       "text": "Review source-qualified dispositions and preservation controls under issue #2; Oracle reconciles the return."
     },
     "refs": [
@@ -405,6 +419,12 @@
         "l": "Compare changed safety candidate",
         "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/pull/5",
         "s": "SELF_ASSESSED"
+      },
+      {
+        "k": "comment",
+        "l": "Owner routing correction",
+        "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/2#issuecomment-6489595593",
+        "s": "DESIGNATED; ACK_PENDING"
       }
     ],
     "edges": [
@@ -413,8 +433,8 @@
         "k": "to"
       }
     ],
-    "updatedAt": "2026-10-28T20:27:36Z",
-    "src": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/4#issuecomment-6479886178"
+    "updatedAt": "2026-10-29T06:25:58Z",
+    "src": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/2#issuecomment-6489595593"
   },
   "topo-1-1": {
     "order": 11,
