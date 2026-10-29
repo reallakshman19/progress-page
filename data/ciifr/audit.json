@@ -6337,6 +6337,60 @@
       "list": "intent",
       "op": "add",
       "rev": "R4"
+    },
+    {
+      "seq": 484,
+      "id": "CIIFR-R-0484",
+      "previous_id": "CIIFR-R-0483",
+      "at": "2026-10-29T07:34:24Z",
+      "kind": "STATE",
+      "actor": "6ae1bed6 (Owner-directed recorder)",
+      "summary": "Record bounded comparison return for restraint-fallback-audit",
+      "source": "https://github.com/reallakshman19/3D_Converters/issues/350#issuecomment-6490791640",
+      "card": "restraint-fallback-audit",
+      "before": "NOT_STARTED",
+      "after": "SUBMITTED",
+      "rev": "R4"
+    },
+    {
+      "seq": 485,
+      "id": "CIIFR-R-0485",
+      "previous_id": "CIIFR-R-0484",
+      "at": "2026-10-29T07:34:25Z",
+      "kind": "STATE",
+      "actor": "6ae1bed6 (Owner-directed recorder)",
+      "summary": "Record bounded comparison return for restraint-datum-audit",
+      "source": "https://github.com/reallakshman19/3D_Converters/issues/350#issuecomment-6490791640",
+      "card": "restraint-datum-audit",
+      "before": "NOT_STARTED",
+      "after": "SUBMITTED",
+      "rev": "R4"
+    },
+    {
+      "seq": 486,
+      "id": "CIIFR-R-0486",
+      "previous_id": "CIIFR-R-0485",
+      "at": "2026-10-29T07:34:25Z",
+      "kind": "FIXTURE",
+      "actor": "6ae1bed6 (Owner-directed recorder)",
+      "summary": "Add executed EF05 comparison fixture for M25",
+      "source": "https://github.com/reallakshman19/3D_Converters/issues/350#issuecomment-6490791640",
+      "list": "inputs",
+      "op": "add",
+      "rev": "R4"
+    },
+    {
+      "seq": 487,
+      "id": "CIIFR-R-0487",
+      "previous_id": "CIIFR-R-0486",
+      "at": "2026-10-29T07:34:26Z",
+      "kind": "FIXTURE",
+      "actor": "6ae1bed6 (Owner-directed recorder)",
+      "summary": "Add executed EF05 comparison fixture for M26",
+      "source": "https://github.com/reallakshman19/3D_Converters/issues/350#issuecomment-6490791640",
+      "list": "inputs",
+      "op": "add",
+      "rev": "R4"
     }
   ]
 }

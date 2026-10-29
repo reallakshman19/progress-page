@@ -1021,6 +1021,20 @@
       "s": "REFERENCE_PINNED_NOT_ACCEPTED",
       "n": "Pinned reference; runtime NOT_RUN",
       "milestone": "M27"
+    },
+    {
+      "t": "EF05 Datum/default comparison fixture: identical source blob caf814c906e4155dcf388ac7ea822aeafec76780 at pin and current revision. Original bytes verified; no staged JSON attached.",
+      "u": "https://github.com/reallakshman19/3D_Converters/blob/57710dd744669a9dc1d4dbdd103d78f9f2928bce/Benchmarks/EF-05-PRO.TEST.xml",
+      "s": "COMPARISON_EXECUTED_NOT_ACCEPTED",
+      "n": "Native CII / independent review NOT_RUN",
+      "milestone": "M25"
+    },
+    {
+      "t": "EF05 Datum/default comparison fixture: identical source blob caf814c906e4155dcf388ac7ea822aeafec76780 at pin and current revision. Original bytes verified; no staged JSON attached.",
+      "u": "https://github.com/reallakshman19/3D_Converters/blob/57710dd744669a9dc1d4dbdd103d78f9f2928bce/Benchmarks/EF-05-PRO.TEST.xml",
+      "s": "COMPARISON_EXECUTED_NOT_ACCEPTED",
+      "n": "Native CII / independent review NOT_RUN",
+      "milestone": "M26"
     }
   ],
   "knownIssues": [
