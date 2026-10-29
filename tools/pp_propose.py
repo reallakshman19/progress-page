@@ -19,8 +19,11 @@ from pp_occurrence import occurrence_id, exact_events, legacy_events
 
 def _iso(value):
     return isinstance(value,str) and bool(re.fullmatch(r"\d{4}-\d\d-\d\dT\d\d:\d\d:\d\dZ",value))
+_PRIVATE = re.compile(r"https?://|chatgpt\\.com|gh[pousr]_[A-Za-z0-9_]+|github_pat_[A-Za-z0-9_]+|sk-[A-Za-z0-9_-]{15,}|[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,}|(?:token|password|secret)\\s*[:=]",re.I)
 def _sanitize(value,limit=100):
-    return " ".join(str(value or "").replace("|"," ").split())[:limit]
+    text=" ".join(str(value or "").replace("|"," ").split())
+    return (text[:limit] if len(text)<=limit and not _PRIVATE.search(text) else
+            "Native source title withheld")
 
 def propose(data,project,source,actor,card_id=None,expected_head=None,fetch=github_json,
             review_legacy=False,legacy_reason=None):
