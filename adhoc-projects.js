@@ -17,7 +17,7 @@ export const ADHOC_SECTIONS = Object.freeze([
 
 const P = 'https://github.com/reallakshman19/progress-page';
 const C = 'https://github.com/reallakshman19/Common';
-const DOC = C+'/blob/docs/cycle-board-source-bound-contract-20261029/skills/agent-work/progress-page/references/';
+const DOC = C+'/blob/91a5d65c49cc7ec513d21d12df2c9bf5c28b146b/skills/agent-work/progress-page/references/';
 const CT_PR = C+'/pull/567';
 const LIVE = 'https://reallakshman19.github.io/progress-page/';
 
