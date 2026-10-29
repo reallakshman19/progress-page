@@ -4,7 +4,7 @@
     "key": "g9v35",
     "title": "G9v3.5 Physics pilot",
     "subtitle": "Newton's Laws pilot on the ZIP-free track, and the owner-bank guard (PR #305)",
-    "updatedAt": "2026-10-29T16:28:28Z",
+    "updatedAt": "2026-10-29T16:42:35Z",
     "updatedBy": "Oracle G9v3.5",
     "staleAfterMin": 120,
     "aim": "A personal-use app for one Grade 9 kid to self-learn difficult Physics, Mathematics and Chemistry concepts for one of the toughest competitive exams. Not a corporate product. Now: one Physics blueprint split by physics idea (D3.1.1–D3.1.6) builds each Recall question's teaching and try from the library plus a minimal topic adapter; tested on 18 real questions, then reused for D4.1 and D3.2.",
@@ -261,7 +261,7 @@
       "order": 32,
       "wbs": "4.2.1",
       "cap": "NOT_DEMONSTRATED",
-      "canDo": "D3.1.1 and D3.1.2 pages built and checked (private); not yet for her use"
+      "canDo": "D3.1.1-D3.1.3 pages built and checked (private); not yet for her use"
     },
     "W422": {
       "name": "Scan 18 questions, 3 per sub-tile",
