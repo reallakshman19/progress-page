@@ -179,6 +179,12 @@ def main():
                           "Native, Page and Cycle axes must be independent")
                     check(page.locator(".cb-delta button").count()==1,
                           "Configured native source should expose on-demand recheck")
+                    check(page.locator(".cb-writer").count()==1,
+                          "CT-3 reviewed Page writer preview must render on same Board URL")
+                    check("automatic Page write" in page.locator(".cb-writer").inner_text(),
+                          "Page writer preview must warn against automatic publication")
+                    check(page.locator(".cb-writer-commands").count()<=2,
+                          "Only configured original sources can be writer candidates")
                     check("REVIEW_PAGE_DRIFT" in page.locator(".cb-delta").inner_text() or
                           "UNKNOWN_STOP" in page.locator(".cb-delta").inner_text(),
                           "Board may recommend only review or UNKNOWN when recipient authority absent")
