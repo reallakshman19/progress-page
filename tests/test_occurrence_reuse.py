@@ -186,6 +186,17 @@ console.log(classifyPageCoverage(page,ctx).status);
         self.assertEqual(audited[-2],old,"legacy history remains unchanged")
         self.assertEqual(audited[-1]["nativeOccurrenceId"],reviewed["nativeOccurrenceId"])
         self.unchanged()
+    def test_private_native_title_is_not_copied_into_page_reference(self):
+        def unsafe(url):
+            return {**api(HEAD_A)(url),
+                    "title":"Private handoff https://chatgpt.com/c/example-credential"}
+        proposed=P.propose(self.data,"ciifr-node",URL,"Writer fixture",
+                           card_id="node-r0-code",expected_head=HEAD_A,fetch=unsafe)
+        self.assertEqual(proposed["blockers"],[])
+        manifest=proposed["proposal"]
+        self.assertNotIn("chatgpt.com",json.dumps(manifest))
+        self.assertIn("title withheld",json.dumps(manifest))
+        self.unchanged()
     def test_issue_and_comment_board_id_formats_are_source_bound(self):
         self.assertTrue(valid_identity(
             "https://github.com/reallakshman19/XML_Compare_Utilities/issues/231",
