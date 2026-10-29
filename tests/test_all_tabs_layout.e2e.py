@@ -159,6 +159,34 @@ def main():
                     if width==390 and section=="tests":picture(page,"adhoc-progress-page-tests-mobile")
                     return {"documentWidth":g["documentWidth"],"section":section}
                 run_case(str(width)+"px adhoc/progress-page/"+section,run_adhoc)
+            # CT-1 vertical: a real Board URL must work without any Timeline intake comment.
+            if width in (1440,390):
+                def cycle_board_ct1():
+                    route="ciifr-node/timeline-live"
+                    load(page,route)
+                    board=page.locator(".cycle-board-context")
+                    board.wait_for(timeout=35000)
+                    content=board.inner_text()
+                    check("WBS 2" in content,"CIIFR-Node governing WBS2 not shown")
+                    check("Cycle UNMAPPED" in content,"unbound CIIFR-Node invented a Cycle")
+                    check("Page R1" in content,"published Page revision absent")
+                    check("Existing published Page history" in content,
+                          "published audit replaced by operational feed")
+                    check("PR226" in content or "PR226" in page.locator(".ct-auto-section").inner_text(),
+                          "prior published native PR226 missing")
+                    check(page.locator(".ct-auto-section").count()==1,
+                          "INFO_AUTO unavailable without operational intake")
+                    check("No live operational intake configured" in page.locator(".body").inner_text(),
+                          "unconfigured live feed not distinguished from Page history")
+                    check("Delta/authority classification: CT-2 NOT_IMPLEMENTED" in content,
+                          "CT-1 incorrectly granted continuation")
+                    g=geometry(page)
+                    check(g["documentWidth"]<=width+3,
+                          "Cycle Board causes horizontal overflow")
+                    if width==1440:picture(page,"ct1-ciifr-node-cycle-board")
+                    return {"scope":"WBS2","cycle":"UNMAPPED","feed":"NOT_CONFIGURED",
+                            "source":"Page audit PR226 retained","width":width}
+                run_case(str(width)+"px ciifr-node/timeline-live CT-1",cycle_board_ct1)
             context.close()
         # Explicitly exercise the archived-history-independent Lessons reading paths.
         ctx=browser.new_context(viewport={"width":1440,"height":900},device_scale_factor=1)
