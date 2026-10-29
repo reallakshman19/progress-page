@@ -662,11 +662,13 @@
     "milestone": "W421",
     "label": "D3.1 sub-tiles D3.1.1-D3.1.6",
     "who": {},
-    "state": "NOT_STARTED",
-    "now": "Plan recorded in the project WBS (4.2); waiting for the Owner's refinement",
+    "state": "IN_PROGRESS",
+    "now": "D3.1.1 (direction decides the effect) is built from the blueprint, library and adapter; 140 checks pass and all 20 planted errors are rejected. Independent re-check of its changed library texts: not run. D3.1.2-D3.1.6 not started.",
     "next": {
       "actor": "OWNER",
-      "text": "refine the plan; then the Oracle builds D3.1.1 end to end"
-    }
+      "text": "look at D3.1.1; then the Oracle builds D3.1.2"
+    },
+    "updatedAt": "2026-10-29T16:11:21Z",
+    "src": "OWNER_PRIVATE_REF:G9V35-STORY-29OCT-WBS42"
   }
 }
