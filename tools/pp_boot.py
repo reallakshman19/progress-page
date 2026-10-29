@@ -5,7 +5,7 @@ from pathlib import Path
 import pp_lib as L
 
 VIEWER = ("index.html", "app.js", "checkpoint.js", "agent-start.js", "progress.js", "onboarding.js", "actions.js", "roi.js", "triggers.js", "util.js", "reply.js", "popup.js", "briefs.js",
-          "nudge.js", "timeline.js", "timeline-live.js", "smart-badges.js", "lifecycle.js", "links.js", "lessons.js", "search.js", "oracle-continuity.js", "viewer.css")
+          "nudge.js", "timeline.js", "timeline-live.js", "smart-badges.js", "test-page.js", "lifecycle.js", "links.js", "lessons.js", "search.js", "oracle-continuity.js", "viewer.css")
 
 WORKFLOW = """name: Check progress data
 on:
