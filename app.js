@@ -11,6 +11,7 @@ import { renderTimeline } from './timeline.js?v=33';
 import { renderTestPage } from './test-page.js?v=33';
 import { parseAdhocRoute, renderAdhocProjects } from './adhoc-projects.js?v=33';
 import { loadCycleTimeline, renderCycleTimeline } from './timeline-live.js?v=33';
+import { hasBoardNativeSources, loadBoardNative, buildBoardContext } from './cycle-board-context.js?v=33';
 import { tabsRow, archivedPanel, projectHead, revisionRow, isActive, HOME_VIEWS, HOME_SUBTABS, CONTINUITY_VIEWS, CONTINUITY_SUBTABS, PRIMARY_TABS, primaryTabActive } from './lifecycle.js?v=33';
 import { nudgesOf, openNudge } from './nudge.js?v=33';
 import { addProjectDialog, addRevisionDialog } from './briefs.js?v=33';
@@ -46,7 +47,7 @@ function mergedLinks() {
 }
 
 const state = { projects: [], data: {}, site: {}, links: mergedLinks(), error: null, panel: false, offline: false, archivedOpen: false, rev: null, paths: null, repo: {}, searchOpen: false, searchQuery: '', searchIndex: [],
-  pageFetch: { status:'unknown', observedAt:null }, cycles: {}, liveTimelines: {} };
+  pageFetch: { status:'unknown', observedAt:null }, cycles: {}, liveTimelines: {}, boardNative: {} };
 
 // The local hub server (127.0.0.1) serves each project's private coding and reference folders; the website never has them.
 async function loadPaths() {
@@ -141,6 +142,18 @@ async function loadLiveTimelines(projects) {
   }));
   state.liveTimelines = next;
 }
+async function loadBoardNativeSources(projects) {
+  const next={};
+  await Promise.all(projects.filter(p=>hasBoardNativeSources(p.key)).map(async p=>{
+    try{
+      next[p.key]=await withTimeout(loadBoardNative(p.key),8000);
+    }catch(error){
+      next[p.key]={status:'UNKNOWN',observedAt:null,sources:[],errors:[{
+        url:'',reason:String(error.message||error)}]};
+    }
+  }));
+  state.boardNative=next;
+}
 async function refresh() {
   try {
     const r = await withTimeout(loadAll(get), 12000);
@@ -151,7 +164,7 @@ async function refresh() {
     state.offline = false;
     state.error = null;
     state.pageFetch={status:'ok',observedAt:new Date().toISOString()};
-    await Promise.all([loadCycles(r.projects), loadLiveTimelines(r.projects)]);
+    await Promise.all([loadCycles(r.projects), loadLiveTimelines(r.projects), loadBoardNativeSources(r.projects)]);
   } catch (e) {
     // Retained data is not fresh evidence; never advertise 'live' after failure.
     state.error = String(e.message || e);
@@ -592,7 +605,10 @@ function render() {
       if(family || step) showCheckpoint(false); // The scoped native task stays first.
     }
     else if (v === 'actions') renderActions(body, sv);
-    else if (v === 'timeline-live') renderCycleTimeline(body, view, older ? {status:'historical'} : state.liveTimelines[key]);
+    else if (v === 'timeline-live') renderCycleTimeline(body, view,
+      older ? {status:'historical'} : state.liveTimelines[key],
+      buildBoardContext(view,{native:older?null:state.boardNative[key],
+        pageObservedAt:older?null:(state.pageFetch?.status==='ok'?state.pageFetch.observedAt:null)}));
     else if (v === 'test') renderTestPage(body, view, { historical:!!older });
     else if (v === 'oracle-continuity') renderOracleContinuity(body, view);
     else if (v === 'fixtures') renderFixtures(body, sv.fixtures, older ? '' : key, view.fixtures);
