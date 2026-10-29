@@ -58,7 +58,8 @@ export function testPagePacket(model) {
 }
 
 const HOSTED_REVIEWS=Object.freeze({
-  g9v35:[['QRT grid · Work, Power and Energy (status of all 28 tiles)','https://reallakshman19.github.io/progress-page/reviews/g9v35/qrt-grid.html'],
+  g9v35:[['Concept note · QRT methodology (Claude doc, private to the Owner)','https://claude.ai/artifact/1osysArLbsaARasJKQwFcF'],
+    ['QRT grid · Work, Power and Energy (status of all 28 tiles)','https://reallakshman19.github.io/progress-page/reviews/g9v35/qrt-grid.html'],
     ['Physics blueprint · levels 3 and 4','https://reallakshman19.github.io/progress-page/reviews/g9v35/blueprint.html'],
     ['Physics review · level-3 tiles','https://reallakshman19.github.io/progress-page/reviews/g9v35/physics-review-d3.html'],
     ['Physics review · level-4 tiles','https://reallakshman19.github.io/progress-page/reviews/g9v35/physics-review-d4.html']]
