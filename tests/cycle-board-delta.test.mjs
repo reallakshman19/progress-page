@@ -146,7 +146,7 @@ test('CT-2 wrong recipient and inactive Cycle never dispatch',()=>{
  assert.equal(classifyCycleAuthority('ciifr',{...actual,readStatus:'error'}).status,'UNKNOWN');
  assert.equal(classifyCycleAuthority('ciifr',{...actual,record:{...canonical,project:'other'}}).status,'UNKNOWN');
  const wrong=cycleBoardDeltaModel(ciifrPage,ciifrContext(),{binding:BIND,
-  cycleRead:{status:'ok',record:canonical},recipient:{...match,role:'reviewer'},
+  cycleRead:{status:'ok',record:canonical,proof},recipient:{...match,role:'reviewer'},
   assignment:exact,receipt:{inboxChecked:true},proof});
  assert.equal(wrong.next.advice,'NO_ACTION');
  assert.equal(classifyCycleAuthority('ciifr',{...actual,binding:null}).status,'UNMAPPED');
@@ -160,7 +160,7 @@ test('CT-2 already-returned, receipt missing and already-accepted never repeat e
    recipient:match,assignment:exact,receipt:{inboxChecked:true,accepted:true},proof};
  assert.equal(classifyCycleAuthority('ciifr',options).status,'RETURNED_ACCEPTED');
  const already=cycleBoardDeltaModel(ciifrPage,ciifrContext(),{binding:BIND,
-   cycleRead:{status:'ok',record},recipient:match,assignment:exact,
+   cycleRead:{status:'ok',record,proof},recipient:match,assignment:exact,
    receipt:{inboxChecked:true,accepted:true},proof});
  assert.equal(already.next.advice,'AWAIT_ORACLE_RECONCILIATION');
  const missing={...returned,cycle_receipt_url:undefined};
@@ -199,7 +199,7 @@ test('CT-2 synthetic full active private preflight is a conditional advisory, ne
  const ctx=ciifrContext();
  const baseline=structuredClone(ctx);
  const out=cycleBoardDeltaModel(ciifrPage,ctx,{previous:baseline,binding:BIND,
-   cycleRead:{status:'ok',record:canonical},recipient:match,
+   cycleRead:{status:'ok',record:canonical,proof},recipient:match,
    assignment:exact,receipt:{inboxChecked:true},proof});
  assert.equal(out.cycle.status,'PREFLIGHT_MATCHED');
  assert.equal(out.native.status,'UNCHANGED');
@@ -207,7 +207,7 @@ test('CT-2 synthetic full active private preflight is a conditional advisory, ne
    'Page reconciliation has higher priority than any hypothetical active worker continuation');
  const noHold=structuredClone(ctx);noHold.sources.forEach(e=>{e.reportedHold=false;e.sourceAt='2026-10-27T01:00:00Z';});
  const normal=cycleBoardDeltaModel(ciifrPage,noHold,{previous:noHold,binding:BIND,
-   cycleRead:{status:'ok',record:canonical},recipient:match,assignment:exact,
+   cycleRead:{status:'ok',record:canonical,proof},recipient:match,assignment:exact,
    receipt:{inboxChecked:true},proof});
  assert.equal(normal.next.advice,'UNKNOWN_STOP',
    'even matching synthetic proof cannot authenticate or authorize a browser');
