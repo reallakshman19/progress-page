@@ -36,6 +36,11 @@ const mockContext=(nativeStatus='ok')=>cycleBoardContextModel(page,{
     }]},
   cycleStatus:'UNMAPPED',pageFetch:{status:'ok',observedAt:'2026-10-29T09:00:00Z'}
 });
+// Canonical Cycle positive/negative tests must use the SAME actual project
+// as the explicit binding. Cross-project bindings rightly fail UNMAPPED.
+const ciifrPage=structuredClone(page);
+ciifrPage.index.project.key='ciifr';
+const ciifrContext=()=>({...mockContext(),project:'ciifr'});
 const BIND={pageProject:'ciifr',project:'ciifr',scope:'wbs:3',
  url:'https://raw.githubusercontent.com/reallakshman19/Common/main/oracle-cycles/ciifr/CURRENT.json'};
 const assignment={id:'A-1',generation:2,recipient_role:'coder',
@@ -92,7 +97,7 @@ test('CT-2 wrong recipient and inactive Cycle never dispatch',()=>{
  assert.equal(classifyCycleAuthority('ciifr',{...actual,record:{...canonical,activation:'INACTIVE'}}).status,'INACTIVE');
  assert.equal(classifyCycleAuthority('ciifr',{...actual,readStatus:'error'}).status,'UNKNOWN');
  assert.equal(classifyCycleAuthority('ciifr',{...actual,record:{...canonical,project:'other'}}).status,'UNKNOWN');
- const wrong=cycleBoardDeltaModel(page,mockContext(),{binding:BIND,
+ const wrong=cycleBoardDeltaModel(ciifrPage,ciifrContext(),{binding:BIND,
   cycleRead:{status:'ok',record:canonical},recipient:{...match,role:'reviewer'},
   assignment:exact,receipt:{inboxChecked:true}});
  assert.equal(wrong.next.advice,'NO_ACTION');
@@ -106,7 +111,7 @@ test('CT-2 already-returned, receipt missing and already-accepted never repeat e
  const options={binding:BIND,record,readStatus:'ok',
    recipient:match,assignment:exact,receipt:{inboxChecked:true,accepted:true}};
  assert.equal(classifyCycleAuthority('ciifr',options).status,'RETURNED_ACCEPTED');
- const already=cycleBoardDeltaModel(page,mockContext(),{binding:BIND,
+ const already=cycleBoardDeltaModel(ciifrPage,ciifrContext(),{binding:BIND,
    cycleRead:{status:'ok',record},recipient:match,assignment:exact,
    receipt:{inboxChecked:true,accepted:true}});
  assert.equal(already.next.advice,'AWAIT_ORACLE_RECONCILIATION');
@@ -126,9 +131,9 @@ test('CT-2 stale candidate, generation, recipient ID and historical-only assignm
  assert.equal(classifyCycleAuthority('ciifr',{...options,assignment:{...exact,observedRevision:9}}).status,'STALE_ASSIGNMENT');
 });
 test('CT-2 synthetic full active private preflight is a conditional advisory, never an automatic action',()=>{
- const ctx=mockContext();
+ const ctx=ciifrContext();
  const baseline=structuredClone(ctx);
- const out=cycleBoardDeltaModel(page,ctx,{previous:baseline,binding:BIND,
+ const out=cycleBoardDeltaModel(ciifrPage,ctx,{previous:baseline,binding:BIND,
    cycleRead:{status:'ok',record:canonical},recipient:match,
    assignment:exact,receipt:{inboxChecked:true}});
  assert.equal(out.cycle.status,'AUTHORIZED');
@@ -136,11 +141,11 @@ test('CT-2 synthetic full active private preflight is a conditional advisory, ne
  assert.equal(out.next.advice,'REVIEW_PAGE_DRIFT',
    'Page reconciliation has higher priority than any hypothetical active worker continuation');
  const noHold=structuredClone(ctx);noHold.sources.forEach(e=>{e.reportedHold=false;e.sourceAt='2026-10-27T01:00:00Z';});
- const normal=cycleBoardDeltaModel(page,noHold,{previous:noHold,binding:BIND,
+ const normal=cycleBoardDeltaModel(ciifrPage,noHold,{previous:noHold,binding:BIND,
    cycleRead:{status:'ok',record:canonical},recipient:match,assignment:exact,
    receipt:{inboxChecked:true}});
  assert.equal(normal.next.advice,'CONTINUE_AUTHORIZED');
- assert.equal(cycleBoardDeltaModel(page,noHold,{previous:noHold,binding:BIND,
+ assert.equal(cycleBoardDeltaModel(ciifrPage,noHold,{previous:noHold,binding:BIND,
    cycleRead:{status:'ok',record:canonical}}).next.advice,'UNKNOWN_STOP');
 });
 function fakeEl(tag){
