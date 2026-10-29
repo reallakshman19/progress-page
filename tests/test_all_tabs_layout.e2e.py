@@ -184,6 +184,15 @@ def main():
                           "CT-2 incorrectly invented Cycle authority")
                     check("Next advice: " in content,
                           "CT-2 advice and unresolved sources not visible")
+                    check(page.locator(".ct-writer-review").count()==1,
+                          "CT-3 Page writer preview missing")
+                    check("Writer-only Page reconciliation" in content,
+                          "CT-3 preview heading missing")
+                    check(page.locator(".ct-writer-review button").count()<=1,
+                          "CT-3 must not expose multiple writer/submit operations")
+                    check(page.locator(".ct-writer-review button").count()==0 or
+                          page.locator(".ct-writer-review button").inner_text()=="Copy writer review brief",
+                          "CT-3 exposed an unauthorized publication control")
                     check("CONTINUE_AUTHORIZED" not in content,
                           "unmapped browser source must not authorize continuation")
                     g=geometry(page)

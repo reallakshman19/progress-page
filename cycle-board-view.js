@@ -1,5 +1,6 @@
 // CT-1 source-bound Board presentation. Do not infer Cycle assignment or engineering PASS.
-import {el,link} from './util.js?v=33';
+import {el,link,copyText} from './util.js?v=33';
+import {previewBoardReconciliation,boardWriterBrief} from './cycle-board-reconciliation.js?v=33';
 import {smartBadgesForScope,renderSmartBadges} from './smart-badges.js?v=33';
 
 const cycleChip=(label)=>el('span','chip',label);
@@ -67,7 +68,20 @@ export function renderCycleBoardContext(root,project,ctx){
   if(delta.causes)for(const [axis,cause] of Object.entries(delta.causes)){
     if(cause)section.append(el('p','muted',axis+' reason: '+cause));
   }
-  section.append(el('p','muted','Advisory only. The Board cannot authenticate a browser chat, '
+  const proposal=previewBoardReconciliation(ctx);
+  const writer=el('section','ct-card ct-writer-review');
+  writer.append(el('h4',null,'CT-3 · Writer-only Page reconciliation'),
+    el('p','muted','Status '+proposal.status+' · '+proposal.reason),
+    el('p','muted','Review required · source occurrence '+(proposal.sourceOccurrenceId||'UNKNOWN')));
+  if(proposal.source)writer.append(link(proposal.source,'Candidate native original'));
+  writer.append(el('p','muted','Existing Page audit IDs: '+(proposal.pageAuditIds||[]).join(', ')));
+  if(proposal.writerCommand){
+    const c=el('button','ct-copy','Copy writer review brief');
+    c.type='button';c.addEventListener('click',()=>copyText(boardWriterBrief(proposal),c));
+    writer.append(c,el('p','muted','The existing pp_cli propose and pp_batch dry-run must be run separately by an authorized Page writer. No browser write or --apply.'));
+  }else writer.append(el('p','muted','No qualified proposal command. Resolve source or audit correlation in the existing Page writer workflow.'));
+  section.append(writer);
+  section.append(el('p','muted','Advisory only. The Board cannot authenticate a browser chat, 
     +'approve a technical result, authorize task continuation, create a Cycle receipt or publish the Page.'));
   root.append(section);
 }
