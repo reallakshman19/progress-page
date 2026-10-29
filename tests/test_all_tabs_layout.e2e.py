@@ -25,7 +25,7 @@ def picture(page,name):
     SCREENSHOTS.append(str(path))
 def load(page,route):
     page.goto(BASE.rstrip("/")+"/#/"+route,wait_until="domcontentloaded",timeout=60000)
-    page.locator(".ptitle, .ll-page").first.wait_for(timeout=30000)
+    page.locator(".ptitle, .ll-page, .adhoc-heading").first.wait_for(timeout=30000)
     page.wait_for_timeout(120)
 def geometry(page):
     return page.evaluate("""() => {
@@ -135,6 +135,30 @@ def main():
                         return {"documentWidth":g["documentWidth"],
                                 "mainWidth":round(g["main"]["width"]), "wbsCards":len(g["cards"])}
                     run_case(str(width)+"px "+route,run_one)
+            # Adhoc is a top-level navigation workspace, never a project-data/WBS tab.
+            for section in ("overview","cycle-board","contracts","delivery","tests"):
+                def run_adhoc():
+                    route="adhoc/progress-page/"+section
+                    load(page,route)
+                    check(page.locator("nav.tabs a.on").count()==1,
+                          "one top-level Adhoc Projects tab must be selected")
+                    check(page.locator("nav.tabs a.on").inner_text()=="Adhoc Projects",
+                          "top-level Adhoc Projects tab not selected")
+                    check(page.locator("nav.adhoc-project-subtabs a.on").count()==1,
+                          "Progress Page second-level tab missing")
+                    check(page.locator("nav.adhoc-section-subtabs a").count()==5,
+                          "all Progress Page subtabs must be present")
+                    check(page.locator("nav.adhoc-section-subtabs a.on").count()==1,
+                          "exactly one Progress Page section selected")
+                    check(page.locator(".adhoc-body").count()==1,
+                          "Adhoc section missing its content body")
+                    g=geometry(page)
+                    check(g["documentWidth"]<=width+3,
+                          route+" horizontal overflow "+str(g["documentWidth"])+" > "+str(width))
+                    if width==1440 and section=="overview":picture(page,"adhoc-progress-page-overview")
+                    if width==390 and section=="tests":picture(page,"adhoc-progress-page-tests-mobile")
+                    return {"documentWidth":g["documentWidth"],"section":section}
+                run_case(str(width)+"px adhoc/progress-page/"+section,run_adhoc)
             context.close()
         # Explicitly exercise the archived-history-independent Lessons reading paths.
         ctx=browser.new_context(viewport={"width":1440,"height":900},device_scale_factor=1)
