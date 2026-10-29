@@ -54,6 +54,8 @@ jobs:
         run: node --experimental-default-type=module --test tests/cycle-board-delta.test.mjs
       - name: CT-3 Cycle Board writer preview and duplicate-source restrictions
         run: node --experimental-default-type=module --test tests/cycle-board-writer.test.mjs
+      - name: CT-4 independent-candidate negative regressions (author CI, not IR)
+        run: node --experimental-default-type=module --test tests/cycle-board-ct4-falsifiers.test.mjs
       - name: Onboarding readiness contrasts
         run: node --experimental-default-type=module --test tests/onboarding.test.mjs
       - name: Project Home navigation and source-retention tests

@@ -98,9 +98,13 @@ test('CT-2 exact scoped audited revision can be CURRENT without technical PASS',
  published.audit.events.push(
    {id:'PUBLISHED-HEAD-1',kind:'UPDATE',scope:'milestone:M3',
     source:candidate.source,at:'2026-10-29T09:00:00Z',
+    card:'node-r0-code',wbs:'2',
+    nativeOccurrenceId:candidate.occurrenceId,nativeRevision:candidate.revision,
     summary:'Reviewed Page evidence for original PR head '+candidate.revision},
    {id:'PUBLISHED-ISSUE-1',kind:'UPDATE',scope:'milestone:M3',
     source:matching.source,at:'2026-10-29T09:00:00Z',
+    card:'node-r0-code',wbs:'2',
+    nativeOccurrenceId:matching.occurrenceId,nativeRevision:matching.revision,
     summary:'Reviewed Page evidence for original issue revision '+matching.revision}
  );
  const result=classifyPageCoverage(published,ctx);
@@ -162,7 +166,21 @@ test('CT-2 synthetic full active private preflight is a conditional advisory, ne
  const normal=cycleBoardDeltaModel(ciifrPage,noHold,{previous:noHold,binding:BIND,
    cycleRead:{status:'ok',record:canonical},recipient:match,assignment:exact,
    receipt:{inboxChecked:true}});
- assert.equal(normal.next.advice,'CONTINUE_AUTHORIZED');
+ assert.equal(normal.publication.status,'UNKNOWN');
+ assert.equal(normal.next.advice,'UNKNOWN_STOP',
+   'An authenticated recipient cannot continue on uncorrelated Page audit.');
+ const published=structuredClone(ciifrPage);
+ for(const [i,e] of noHold.sources.entries()){
+   published.audit.events.push({id:'CB4-PUBLISHED-'+i,kind:'EVIDENCE',scope:'milestone:'+e.milestone,
+     card:'node-r0-code',wbs:e.wbs,source:e.source,
+     nativeOccurrenceId:e.occurrenceId,nativeRevision:e.revision,
+     at:'2026-10-29T09:00:00Z',summary:'Exact native source publication'});
+ }
+ const qualified=cycleBoardDeltaModel(published,noHold,{previous:noHold,binding:BIND,
+   cycleRead:{status:'ok',record:canonical},recipient:match,assignment:exact,
+   receipt:{inboxChecked:true}});
+ assert.equal(qualified.publication.status,'CURRENT');
+ assert.equal(qualified.next.advice,'CONTINUE_AUTHORIZED');
  assert.equal(cycleBoardDeltaModel(ciifrPage,noHold,{previous:noHold,binding:BIND,
    cycleRead:{status:'ok',record:canonical}}).next.advice,'UNKNOWN_STOP');
 });

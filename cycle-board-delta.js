@@ -62,8 +62,17 @@ export function classifyPageCoverage(page,context){
     else {
       // Same URL may point to a new PR head. Never claim exact Page equivalence
       // without versioned native identity in a checked, published audit.
+      // A free-text summary can contain a SHA from an unrelated or older
+      // source. Never certify a mutable URL with substring matching.
+      // Only an explicitly published, scoped native occurrence counts.
+      // Current legacy Page audit has no such fields: remain UNKNOWN and
+      // route a reviewed writer proposal rather than inventing CURRENT.
       const versioned=mappedAudit.some(a=>a.source===e.source&&
-        typeof a.summary==='string'&&a.summary.includes(e.revision));
+        a.nativeOccurrenceId===e.occurrenceId&&
+        a.nativeRevision===e.revision&&
+        a.wbs===e.wbs&&a.scope==='milestone:'+milestoneId&&
+        typeof a.card==='string'&&cards[a.card]?.milestone===milestoneId&&
+        typeof a.kind==='string'&&a.kind.length>0);
       if(!versioned)findings.push({source:e.source,revision:e.revision,
         milestoneId,wbs:e.wbs,status:'VERSION_UNVERIFIED'});
     }
@@ -158,7 +167,7 @@ export function cycleBoardDeltaModel(page,current,{previous=null,binding=null,
   }else if(publication.status==='STALE_PAGE'){
     advice='REVIEW_PAGE_DRIFT';reason=publication.reason;
   }else if(cycle.status==='AUTHORIZED'&&!holds&&
-    native.status!=='UNKNOWN'&&publication.status!=='UNMAPPED'){
+    native.status==='UNCHANGED'&&publication.status==='CURRENT'){
     advice='CONTINUE_AUTHORIZED';reason=
       'Private recipient checks passed; reread original Cycle/native instructions before acting.';
   }
