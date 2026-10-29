@@ -1,7 +1,7 @@
 // CT-1 read-only Cycle Board context. No task dispatch, acceptance, or Page mutation.
 export const BOARD_SCHEMA='cycle-board.context/v1';
-const GH=/^https:\/\/github\.com\/([A-Za-z0-9_.-]+)\/([A-Za-z0-9_.-]+)\/(issues|pull)\/([1-9]\d*)$/;
-const ISO=/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?Z$/;
+const CB_GH=/^https:\/\/github\.com\/([A-Za-z0-9_.-]+)\/([A-Za-z0-9_.-]+)\/(issues|pull)\/([1-9]\d*)$/;
+const CB_ISO=/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?Z$/;
 // Explicit pilot sources are task references, not a standalone Cycle mapping.
 // CT-2 must classify differences; CT-1 only displays observed source facts.
 export const BOARD_SOURCES=Object.freeze({
@@ -12,12 +12,12 @@ export const BOARD_SOURCES=Object.freeze({
 });
 export const hasBoardNativeSources=key=>Object.hasOwn(BOARD_SOURCES,key);
 export function sourceOccurrence(item){
-  const m=GH.exec(item?.url||'');
+  const m=CB_GH.exec(item?.url||'');
   if(!m)return null;
   const repo=m[1]+'/'+m[2],number=Number(m[4]);
   if(m[3]==='pull'&&/^[a-f0-9]{40}$/i.test(item.headSha||''))
     return 'github:'+repo+':pr-head:'+number+':'+item.headSha.toLowerCase();
-  if(m[3]==='issues'&&ISO.test(item.sourceAt||''))
+  if(m[3]==='issues'&&CB_ISO.test(item.sourceAt||''))
     return 'github:'+repo+':issue-version:'+number+':'+item.sourceAt;
   return null; // No made-up immutable occurrence for failed/partial source reads.
 }
@@ -29,7 +29,7 @@ export function collectBoardNative(key,records,observedAt){
     const r=records?.[i];
     if(!r||r.error||r.url!==url){errors.push({url,reason:r?.error||'NOT_OBSERVED'});continue;}
     const item={url,kind:r.kind,headSha:r.headSha||null,sourceAt:r.sourceAt||null,
-      observedAt,claim:'REPORTED_UNVERIFIED',evidenceStatus:'SOURCE_LINKED',
+      observedAt,immutableEventId:null,claim:'REPORTED_UNVERIFIED',evidenceStatus:'SOURCE_LINKED',
       state:r.state||'UNKNOWN',draft:r.draft===true,merged:r.merged===true,
       title:String(r.title||'').slice(0,150)};
     item.occurrenceId=sourceOccurrence(item);
@@ -43,7 +43,7 @@ export async function loadBoardNative(key,fetcher=fetch,clock=()=>new Date().toI
   const config=BOARD_SOURCES[key];
   if(!config)return collectBoardNative(key,[],null);
   const records=await Promise.all(config.sources.map(async url=>{
-    const m=GH.exec(url);
+    const m=CB_GH.exec(url);
     if(!m)return {url,error:'INVALID_SOURCE'};
     const api='https://api.github.com/repos/'+m[1]+'/'+m[2]+'/'+(m[3]==='pull'?'pulls':'issues')+'/'+m[4];
     try{
@@ -65,7 +65,7 @@ export function buildBoardContext(project,{native=null,pageObservedAt=null,cycle
   const milestoneId=selected?.[0]||null,card=config?.card&&cards[config.card]||null;
   const mapping=selected&&card?.milestone===milestoneId?'SOURCE_MATCHED':'UNMAPPED';
   const rev=(index.revisions||[]).find(r=>r.status==='current')?.id||null;
-  const pageEvents=events.filter(e=>e?.card===config?.card||e?.scope==='milestone:'+milestoneId)
+  const pageEvents=events.filter(e=>config&&(e?.card===config.card||e?.scope==='milestone:'+milestoneId))
     .filter(e=>/^https:\/\/github\.com\//.test(e.source||'')).slice(-6).map(e=>({
       auditId:e.id,source:e.source,kind:e.kind,at:e.at,summary:e.summary,
       occurrenceId:'page-audit:'+key+':'+e.id

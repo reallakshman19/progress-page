@@ -2,15 +2,15 @@
 import {el,link} from './util.js?v=33';
 import {smartBadgesForScope,renderSmartBadges} from './smart-badges.js?v=33';
 
-const chip=(label)=>el('span','chip',label);
+const cycleChip=(label)=>el('span','chip',label);
 export function renderCycleBoardContext(root,project,ctx){
   const section=el('section','panel cycle-board-context');
   section.append(el('h3',null,'Cycle Board · source-bound current context'),
     el('p','muted','CT-1 read-only pilot. Original sources and the published Page audit are distinct. '
       +'No new reporting, Cycle assignment, technical PASS or Page publication.'));
   const scope=el('p');
-  scope.append(chip('Project '+(ctx.project||'UNKNOWN')),chip('Page '+(ctx.scope.pageRevision||'UNKNOWN')),
-    chip('WBS '+(ctx.scope.wbs||'NOT_SELECTED')),chip('Cycle '+ctx.cycle.binding));
+  scope.append(cycleChip('Project '+(ctx.project||'UNKNOWN')),cycleChip('Page '+(ctx.scope.pageRevision||'UNKNOWN')),
+    cycleChip('WBS '+(ctx.scope.wbs||'NOT_SELECTED')),cycleChip('Cycle '+ctx.cycle.binding));
   section.append(scope);
   if(ctx.scope.aim) {
     const aim=el('p','ct-description',ctx.scope.aim);
@@ -33,7 +33,7 @@ export function renderCycleBoardContext(root,project,ctx){
   for(const s of ctx.sources){
     const item=el('div','ct-card');
     const heading=el('div','ct-top');
-    heading.append(chip(s.kind),chip(s.state),el('b',null,s.title||s.kind));
+    heading.append(cycleChip(s.kind),cycleChip(s.state),el('b',null,s.title||s.kind));
     item.append(heading,link(s.url,'Original native '+s.kind),
       el('p','muted','Occurrence '+s.occurrenceId),
       el('p','muted','Source updated '+(s.sourceAt||'UNKNOWN')+
@@ -45,7 +45,7 @@ export function renderCycleBoardContext(root,project,ctx){
   }
   for(const err of ctx.readErrors||[]){
     const row=el('p','banner','Source not qualified: '+err.reason+' · ');
-    row.append(link(err.url,'source'));section.append(row);
+    if(err.url)row.append(link(err.url,'source'));section.append(row);
   }
   section.append(el('h4',null,'Existing published Page history'));
   if(!ctx.page.events.length)section.append(el('p','muted','No scoped audited Page events found.'));
