@@ -7,7 +7,9 @@ export const ADHOC_PROJECTS = Object.freeze([
   Object.freeze({key:'progress-page',label:'Progress Page',
     description:'Small, bounded improvements to the reusable Progress Page experience.'}),
   Object.freeze({key:'xml-ps-mapping',label:'XML-PS Mapping',
-    description:'Source-linked PS Mapping candidate reviews, identity rules and engineering evidence; no duplicate project WBS.'})
+    description:'Source-linked PS Mapping candidate reviews, identity rules and engineering evidence; no duplicate project WBS.'}),
+  Object.freeze({key:'xml-compare',label:'XML-Compare',
+    description:'Source-bound XML comparison, ISO engineering audit and validation references.'})
 ]);
 export const ADHOC_SECTIONS = Object.freeze([
   Object.freeze(['overview','Overview']),
@@ -22,8 +24,15 @@ export const XML_PS_MAPPING_SECTIONS = Object.freeze([
   Object.freeze(['matching-rules','Matching rules']),
   Object.freeze(['evidence','Evidence'])
 ]);
+export const XML_COMPARE_SECTIONS = Object.freeze([
+  Object.freeze(['overview','Overview']),
+  Object.freeze(['sources','Sources & architecture']),
+  Object.freeze(['validation','Validation']),
+  Object.freeze(['delivery','Delivery evidence'])
+]);
 export const sectionsForAdhocProject = project =>
-  project==='xml-ps-mapping' ? XML_PS_MAPPING_SECTIONS : ADHOC_SECTIONS;
+  project==='xml-ps-mapping' ? XML_PS_MAPPING_SECTIONS :
+  project==='xml-compare' ? XML_COMPARE_SECTIONS : ADHOC_SECTIONS;
 
 const P = 'https://github.com/reallakshman19/progress-page';
 const C = 'https://github.com/reallakshman19/Common';
@@ -31,6 +40,7 @@ const DOC = C+'/blob/91a5d65c49cc7ec513d21d12df2c9bf5c28b146b/skills/agent-work/
 const CT_PR = C+'/pull/567';
 const LIVE = 'https://reallakshman19.github.io/progress-page/';
 const XML_PS_REPO = 'https://github.com/reallakshman19/XML_Compare_Utilities';
+const XML = XML_PS_REPO;
 const XML_PS_LIVE = 'https://reallakshman19.github.io/XML_Compare_Utilities/';
 const XML_PS_MATRIX = XML_PS_LIVE+'ps-mapping-candidate-matrix-validation.html';
 
@@ -109,6 +119,57 @@ function renderXmlPsMapping(root,selectedSection) {
   root.append(body,el('p','foot muted','Adhoc XML-PS Mapping is a read-only source navigator. The governing engineering WBS, acceptance decisions and native evidence stay with their owning project.'));
 }
 
+function renderXmlCompareWorkspace(body, selected) {
+  body.append(el('h2',null,'XML-Compare'),
+    el('p','adhoc-intro','Read-only links to native XML Compare source, policy and engineering review evidence. This workspace does not create another WBS, approve support matches or change model geometry.'));
+  if (selected === 'overview') {
+    const s=section(body,'XML-Compare · Start here',
+      'Start with the native project and the current engineering sources. Status and acceptance must be checked at their original GitHub record.');
+    addCards(s,[
+      card('XML Compare Utilities','Application repository, issue history, current implementation and governing project instructions.',
+        [['Open repository',XML],['Read agent instructions',XML+'/blob/main/AGENTS.md']]),
+      card('ISO engineering comparison','Exact normalized pipeline plus full support ID. Read-only identity and typed-restraint/gap evidence, not an approved physical modification.',
+        [['Inspect comparator',XML+'/blob/main/xml-compare/XmlCompareIsoNoteDirectCompare.js']]),
+      card('Engineering candidate matrix','Review action / evidence examples, including line-mismatch ambiguity and a hold on unauthorized hardware changes.',
+        [['Open validation matrix',XML+'/blob/main/docs/ps-mapping-candidate-matrix-validation.html']])
+    ]);
+  } else if (selected === 'sources') {
+    const s=section(body,'Authoritative code and policy',
+      'These are source pointers, not a replacement architecture or an alternative WBS.');
+    addCards(s,[
+      card('ISO identity adapter','Pipeline-aware composite identities and source ID preservation.',
+        [['Read identity adapter',XML+'/blob/main/xml-compare/XmlCompareIsoNoteIdentityAdapter.js']]),
+      card('Engineering rules','Typed REST, GUIDE and LINE STOP clearance and restraint evidence.',
+        [['Read rules',XML+'/blob/main/xml-compare/XmlCompareIsoNoteEngineeringRules.js']]),
+      card('Finding evidence ledger','Original source references, review action, finding IDs and read-only engineering exports.',
+        [['Read findings',XML+'/blob/main/xml-compare/XmlCompareIsoNoteEngineeringFindings.js']])
+    ]);
+  } else if (selected === 'validation') {
+    const s=section(body,'Verification references',
+      'Read actual assertions and current workflow results before reporting PASS. A fixture is not physical engineering sign-off.');
+    addCards(s,[
+      card('Engineering architecture regression','Exact support identity, negated REST and typed gap tests, including wrong-line negative controls.',
+        [['Open tests',XML+'/blob/main/tests/xml-compare-iso-note-engineering-architecture.test.js']]),
+      card('Three-tab browser regression','Synthetic XML uploads through the production UI; review-only audit and no automatic transfer authority.',
+        [['Open browser test',XML+'/blob/main/tests/browser/option-b-three-tab-workflow.spec.mjs']]),
+      card('Candidate matrix validation','Review action / evidence detail for PS Mapping candidate ambiguity; this matching policy is not the ISO exact identity policy.',
+        [['Open case matrix',XML+'/blob/main/docs/ps-mapping-candidate-matrix-validation.html']])
+    ]);
+  } else if (selected === 'delivery') {
+    const s=section(body,'Native delivery and review',
+      'PR links are pointers, not assertions about latest merge status or authorization. Inspect the current PR and its checks.');
+    addCards(s,[
+      card('Option B audit authority','Audit-versus-transfer isolation and bound approval policy.',
+        [['Open PR #214',XML+'/pull/214']]),
+      card('Immutable snapshot lineage','Content fingerprints, comparison snapshot and reproducible finding identity.',
+        [['Open PR #217',XML+'/pull/217']]),
+      card('Review action evidence','Evidence-specific engineering review narratives; read current code and qualification before acceptance.',
+        [['Open PR #234',XML+'/pull/234']])
+    ]);
+  }
+}
+
+
 export function renderAdhocProjects(root,route,nav) {
   const heading=el('div','adhoc-heading');
   heading.append(el('h2',null,'Adhoc Projects'),
@@ -143,8 +204,8 @@ export function renderAdhocProjects(root,route,nav) {
     return;
   }
   const subs=el('nav','views adhoc-section-subtabs');
-  subs.setAttribute('aria-label',route.project==='xml-ps-mapping'
-    ? 'XML-PS Mapping workspace sections' : 'Progress Page workspace sections');
+  const selected=ADHOC_PROJECTS.find(p=>p.key===route.project);
+  subs.setAttribute('aria-label',selected.label+' workspace sections');
   for(const [id,label] of sectionsForAdhocProject(route.project)){
     const on=id===route.section;
     const a=nav(adhocHref(route.project,id),label,'view'+(on?' on':''));
@@ -154,6 +215,12 @@ export function renderAdhocProjects(root,route,nav) {
   root.append(subs);
   if(route.project==='xml-ps-mapping') {
     renderXmlPsMapping(root,route.section);
+    return;
+  }
+  if(route.project==='xml-compare') {
+    const xmlBody=el('div','body adhoc-body');
+    renderXmlCompareWorkspace(xmlBody,route.section);
+    root.append(xmlBody,el('p','foot muted','XML-Compare adhoc workspace: read-only source navigation. No independent WBS, Page audit entry, physical engineering approval or assignment is created.'));
     return;
   }
 
