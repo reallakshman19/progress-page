@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import { readFileSync } from 'node:fs';
 import { adhocHref, parseAdhocRoute, ADHOC_PROJECTS, ADHOC_SECTIONS,
-  renderAdhocProjects } from '../adhoc-projects.js';
+  renderAdhocProjects, XML_COMPARE_SECTIONS } from '../adhoc-projects.js';
 
 function fakeEl(tag) {
   const node={tag,className:'',children:[],attributes:{},href:'',
@@ -47,9 +47,19 @@ test('Adhoc Projects and Progress Page have stable nested hash routes',()=>{
   assert.equal(parseAdhocRoute('#/adhoc/progress-page/unknown').valid,false);
   assert.equal(parseAdhocRoute('#/adhoc/progress-page/tests/extra').valid,false);
   assert.equal(adhocHref(), '#/adhoc/progress-page/overview');
-  assert.deepEqual(ADHOC_PROJECTS.map(x=>x.label),['Progress Page']);
+  assert.deepEqual(ADHOC_PROJECTS.map(x=>x.label),['Progress Page','XML-Compare']);
   assert.deepEqual(ADHOC_SECTIONS.map(x=>x[0]),
     ['overview','cycle-board','contracts','delivery','tests']);
+  assert.deepEqual(parseAdhocRoute('#/adhoc/xml-compare'),
+    {project:'xml-compare',section:'overview',valid:true});
+  assert.deepEqual(parseAdhocRoute('#/adhoc/xml-compare/validation'),
+    {project:'xml-compare',section:'validation',valid:true});
+  assert.equal(parseAdhocRoute('#/adhoc/xml-compare/unknown').valid,false);
+  assert.equal(parseAdhocRoute('#/adhoc/xml-compare/tests').valid,false,
+    'Progress Page Test Lab must not leak into XML-Compare');
+  assert.equal(adhocHref('xml-compare'), '#/adhoc/xml-compare/overview');
+  assert.deepEqual(XML_COMPARE_SECTIONS.map(x=>x[0]),
+    ['overview','sources','validation','delivery']);
 });
 test('Hub exposes Progress Page second-level tab and links to third-level sections',()=>{
   const hub=render('#/adhoc');
@@ -65,6 +75,41 @@ test('Hub exposes Progress Page second-level tab and links to third-level sectio
   assert.equal(on.href,'#/adhoc/progress-page/contracts');
   assert.match(pp.textContent,/source identity/i);
   assert.match(pp.textContent,/Review PR #567/);
+});
+test('XML-Compare has its own project tab, source sections and exact hash links',()=>{
+  const hub=render('#/adhoc');
+  assert.match(hub.textContent,/XML-Compare/);
+  const hubLinks=find(hub,n=>n.tag==='a').map(n=>n.href);
+  assert.ok(hubLinks.includes('#/adhoc/progress-page/overview'));
+  assert.ok(hubLinks.includes('#/adhoc/xml-compare/overview'));
+  const xml=render('#/adhoc/xml-compare/validation');
+  const projects=find(xml,n=>n.tag==='nav'&&n.attributes['aria-label']==='Adhoc Projects');
+  assert.deepEqual(projects[0].children.map(n=>n.textContent),['Progress Page','XML-Compare']);
+  assert.equal(projects[0].children.find(n=>n.attributes['aria-current']==='page').href,
+    '#/adhoc/xml-compare/overview');
+  const tabs=find(xml,n=>n.tag==='nav'&&n.attributes['aria-label']==='XML-Compare workspace sections');
+  assert.equal(tabs.length,1);
+  assert.deepEqual(tabs[0].children.map(n=>n.href),
+    XML_COMPARE_SECTIONS.map(([id])=>adhocHref('xml-compare',id)));
+  assert.equal(tabs[0].children.find(n=>n.attributes['aria-current']==='page').href,
+    '#/adhoc/xml-compare/validation');
+  assert.match(xml.textContent,/wrong-line negative controls/);
+  assert.doesNotMatch(xml.textContent,/Four bounded vertical delivery slices/);
+});
+test('XML-Compare source links are truthful, read-only and never invent a WBS',()=>{
+  const overview=render('#/adhoc/xml-compare/overview');
+  assert.match(overview.textContent,/read-only/i);
+  const links=find(overview,n=>n.tag==='a').map(n=>n.href);
+  assert.ok(links.includes('https://github.com/reallakshman19/XML_Compare_Utilities'));
+  assert.ok(links.includes('https://github.com/reallakshman19/XML_Compare_Utilities/blob/main/docs/ps-mapping-candidate-matrix-validation.html'));
+  for(const section of ['sources','validation','delivery']){
+    const v=render('#/adhoc/xml-compare/'+section);
+    assert.match(v.textContent,/No independent WBS/i);
+    assert.ok(find(v,n=>n.attributes?.role==='alert').length===0);
+  }
+  const invalid=render('#/adhoc/xml-compare/tests');
+  assert.equal(find(invalid,n=>n.attributes?.role==='alert').length,1,
+    'unsupported XML section must fail closed');
 });
 test('Delivery and Test Lab are navigable, honest and read-only',()=>{
   const delivery=render('#/adhoc/progress-page/delivery');
