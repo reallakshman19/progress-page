@@ -4,7 +4,7 @@
     "key": "ciifr",
     "title": "CII Find & Replace VNext",
     "subtitle": "R4 current: Geometry WBS3 read-only G1/G2; Element WBS4 source/config qualification; VNext integration held pending independent evidence.",
-    "updatedAt": "2026-10-29T12:17:04Z",
+    "updatedAt": "2026-10-29T13:46:49Z",
     "updatedBy": "6ae1bed6 (Owner-directed builder/recorder)",
     "staleAfterMin": 120,
     "aim": "Extend CIIFR NodeName VNext into typed ELEMENTS real-value/Line Number edits plus pointer-resolved RIGID Weight/Type. Preserve original bytes, v14 units/sentinels, node/pointer/branch relations, per-span approvals, new-copy export and native import review. Retain R3 Geometry WBS3 review-only, frozen P2/P2.1 and XML custody; defer structural graph/pointer edits and P3.",
@@ -386,6 +386,21 @@
       "commit": "bdd5e581d7c3cc9f6b719454c3a75d395dbc5d3a",
       "activity": "Draft XML download candidate; native checks pass, Owner trial and restraint main integration pending.",
       "capSrc": "https://github.com/reallakshman19/3D_Converters/pull/354"
+    },
+    "M28": {
+      "name": "BM2 OLET connectivity and support preservation",
+      "full": "KEEP one bounded Owner-approved BM2 repair: exclude witnessed anonymous OLET geometry helpers before Final acceptance; retain positive junctions, child branch diameters, physical owners and restraint placement. Validate real native CII and contrary cases; independent engineering review and Owner import remain separate.",
+      "order": 44,
+      "wbs": "6.4",
+      "bench": "BM2-OLET-ROUTE",
+      "keeps": "RESTRAINT-INTEGRATED; PL-BM1 bore and Final mass custody",
+      "cap": "CANDIDATE",
+      "canDo": "Review PR355: BM2 helper backtracks removed in actual native CII;147 helper records excluded,49 junctions/139 mass owners/69 restraint slots preserved. Owner trial and native import pending.",
+      "repo": "reallakshman19/3D_Converters",
+      "branch": "fix/xml229-olet-helper-route-6ae1bed6",
+      "commit": "af40c23396b5ef2d2868a866f221d84d84c99540",
+      "activity": "Draft PR355; native Python and JS22/24 CI pass; actual browser/Preview checks running; historical CI preflight failures disclosed.",
+      "capSrc": "https://github.com/reallakshman19/3D_Converters/pull/355"
     }
   },
   "groups": {

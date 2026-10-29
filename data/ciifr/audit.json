@@ -6539,6 +6539,97 @@
       "before": "SUBMITTED",
       "after": "SUBMITTED",
       "rev": "R4"
+    },
+    {
+      "seq": 499,
+      "id": "CIIFR-R-0499",
+      "previous_id": "CIIFR-R-0498",
+      "at": "2026-10-29T13:37:14Z",
+      "kind": "PLAN",
+      "actor": "6ae1bed6 (Owner-directed builder/recorder)",
+      "summary": "Extend existing WBS6 with source-grounded BM2 topology repair",
+      "source": "https://github.com/reallakshman19/3D_Converters/issues/351#issuecomment-6498100565",
+      "scope": "milestone:M28",
+      "rev": "R4"
+    },
+    {
+      "seq": 500,
+      "id": "CIIFR-R-0500",
+      "previous_id": "CIIFR-R-0499",
+      "at": "2026-10-29T13:37:15Z",
+      "kind": "BASELINE",
+      "actor": "6ae1bed6 (Owner-directed builder/recorder)",
+      "summary": "Record bounded OLET implementation assignment",
+      "source": "https://github.com/reallakshman19/3D_Converters/issues/351#issuecomment-6498100565",
+      "card": "bm2-olet-route",
+      "before": null,
+      "after": "IN_PROGRESS",
+      "rev": "R4"
+    },
+    {
+      "seq": 501,
+      "id": "CIIFR-R-0501",
+      "previous_id": "CIIFR-R-0500",
+      "at": "2026-10-29T13:37:15Z",
+      "kind": "FIXTURE",
+      "actor": "6ae1bed6 (Owner-directed builder/recorder)",
+      "summary": "Record current Owner direction",
+      "source": "https://github.com/reallakshman19/3D_Converters/issues/351#issuecomment-6498100565",
+      "list": "intent",
+      "op": "add",
+      "rev": "R4"
+    },
+    {
+      "seq": 502,
+      "id": "CIIFR-R-0502",
+      "previous_id": "CIIFR-R-0501",
+      "at": "2026-10-29T13:37:16Z",
+      "kind": "FIXTURE",
+      "actor": "6ae1bed6 (Owner-directed builder/recorder)",
+      "summary": "Pin BM2 repair fixture independently of PL-BM1",
+      "source": "https://github.com/reallakshman19/3D_Converters/issues/351#issuecomment-6498100565",
+      "list": "inputs",
+      "op": "add",
+      "rev": "R4"
+    },
+    {
+      "seq": 503,
+      "id": "CIIFR-R-0503",
+      "previous_id": "CIIFR-R-0502",
+      "at": "2026-10-29T13:46:47Z",
+      "kind": "PLAN",
+      "actor": "6ae1bed6 (Owner-directed builder/recorder)",
+      "summary": "Record runnable BM2 OLET repair candidate",
+      "source": "https://github.com/reallakshman19/3D_Converters/pull/355",
+      "scope": "milestone:M28",
+      "rev": "R4"
+    },
+    {
+      "seq": 504,
+      "id": "CIIFR-R-0504",
+      "previous_id": "CIIFR-R-0503",
+      "at": "2026-10-29T13:46:48Z",
+      "kind": "STATE",
+      "actor": "6ae1bed6 (Owner-directed builder/recorder)",
+      "summary": "Return reviewable OLET repair",
+      "source": "https://github.com/reallakshman19/3D_Converters/pull/355",
+      "card": "bm2-olet-route",
+      "before": "IN_PROGRESS",
+      "after": "SUBMITTED",
+      "rev": "R4"
+    },
+    {
+      "seq": 505,
+      "id": "CIIFR-R-0505",
+      "previous_id": "CIIFR-R-0504",
+      "at": "2026-10-29T13:46:49Z",
+      "kind": "FIXTURE",
+      "actor": "6ae1bed6 (Owner-directed builder/recorder)",
+      "summary": "Link production repair and evidence",
+      "source": "https://github.com/reallakshman19/3D_Converters/pull/355",
+      "list": "pullRequests",
+      "op": "add",
+      "rev": "R4"
     }
   ]
 }

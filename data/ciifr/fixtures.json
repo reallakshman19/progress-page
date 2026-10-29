@@ -315,6 +315,12 @@
       "u": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/185",
       "s": "G1_PR185_F1_SCOPED",
       "milestone": "M13"
+    },
+    {
+      "t": "PR355: witnessed BM2 OLET helpers excluded before Final; corrected actual CII963→816elements; native geometry/mass guards unchanged.",
+      "u": "https://github.com/reallakshman19/3D_Converters/pull/355",
+      "s": "DRAFT_CANDIDATE",
+      "milestone": "M28"
     }
   ],
   "roadmap": [
@@ -702,6 +708,12 @@
       "u": "https://github.com/reallakshman19/3D_Converters/issues/350#issuecomment-6496341808",
       "s": "CANDIDATE_PR354",
       "milestone": "M27"
+    },
+    {
+      "t": "Owner: ok fix — BM2 OLET connectivity, connected-port diameter and restraint preservation; no broad production changes or merge granted.",
+      "u": "https://github.com/reallakshman19/3D_Converters/issues/351#issuecomment-6498100565",
+      "s": "OWNER_SCOPED",
+      "milestone": "M28"
     }
   ],
   "inputs": [
@@ -1061,6 +1073,12 @@
       "s": "RECORDED_EVIDENCE",
       "n": "Native CII validation remains pending",
       "milestone": "M24"
+    },
+    {
+      "t": "Original GLRD-1000-PI-01 - BM2.xml; Git blob2008bbcc344ef48dde95addd6a72dc9e08aee56c;629889bytes;49 OLET groups, no Datum-named nodes.",
+      "u": "https://github.com/reallakshman19/3D_Converters/blob/59df118588837f70ca22dfe0d0573ef874e07dd0/Benchmarks/XML-CII-2019/revamped/GLRD-1000-PI-01%20-%20BM2.xml",
+      "s": "SOURCE_BYTES_VERIFIED",
+      "milestone": "M28"
     }
   ],
   "knownIssues": [

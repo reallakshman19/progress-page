@@ -1343,5 +1343,35 @@
     ],
     "updatedAt": "2026-10-29T12:14:19Z",
     "src": "https://github.com/reallakshman19/3D_Converters/issues/350#issuecomment-6496341808"
+  },
+  "bm2-olet-route": {
+    "order": 51,
+    "group": "r4-restraint-audit",
+    "milestone": "M28",
+    "label": "BM2 OLET helper route",
+    "who": {
+      "chat": "restraint-6ae1bed6",
+      "role": "Owner-directed builder"
+    },
+    "state": "SUBMITTED",
+    "now": "PR355 source-qualified pre-Final helper exclusion passes real BM2 native CII:963→816 elements,49 junctions,139 owners,69 restraint slots unchanged. Tests/remote native CI pass; Owner trial/native import/independent engineering review pending.",
+    "next": {
+      "actor": "Owner / independent engineering reviewer",
+      "text": "Review PR355 and native topology evidence; after merge/deploy reload and regenerate BM2 Preview/Final/Run."
+    },
+    "refs": [
+      {
+        "k": "comment",
+        "l": "Owner-scoped repair and source diagnosis",
+        "u": "https://github.com/reallakshman19/3D_Converters/issues/351#issuecomment-6498100565"
+      },
+      {
+        "k": "pr",
+        "l": "BM2 OLET route repair",
+        "u": "https://github.com/reallakshman19/3D_Converters/pull/355"
+      }
+    ],
+    "updatedAt": "2026-10-29T13:46:48Z",
+    "src": "https://github.com/reallakshman19/3D_Converters/pull/355"
   }
 }
