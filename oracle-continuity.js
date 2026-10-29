@@ -1,6 +1,7 @@
 // Oracle-specific continuity presentation. Only source-recorded Oracle transitions appear.
 // Engineering G0/coder onboarding stays in WBS evidence and is never promoted to Oracle readiness.
 import { el, link } from './util.js?v=33';
+import { smartBadgesForScope, renderSmartBadges } from './smart-badges.js?v=33';
 
 export const CONTINUITY_PROTOCOL =
   'https://github.com/reallakshman19/Common/tree/main/skills/agent-work/oracle-continuity';
@@ -25,7 +26,8 @@ export function oracleContinuityModel(project) {
     return /onboard|continuity|successor|succession|handover|cutover/i.test(name)
       && /oracle|successor|continuity|handover|cutover/i.test(name + ' ' + context)
       && !/coder|builder/i.test(c.who?.role || '');
-  }).map(([id,c]) => ({id, ...c}));
+  }).map(([id,c]) => ({id, ...c,
+    smartBadges:smartBadgesForScope(project,{cardId:id,continuity:true})}));
   const ids = new Set(cards.map(c=>c.id));
   const events = (project?.audit?.events || []).filter(e => ids.has(e.card)
     && (e.kind === 'BASELINE' || e.kind === 'TRANSFER'
@@ -70,6 +72,7 @@ export function renderOracleContinuity(root, project) {
     const wbs = project?.index?.milestones?.[c.milestone]?.wbs;
     const heading = (wbs ? 'WBS '+wbs+' · ' : 'Whole-project continuity · ') + (c.label || c.id);
     details.append(el('summary',null,heading));
+    renderSmartBadges(details,c.smartBadges);
     const inner=el('div','onb-detail-body');
     inner.append(el('p',null,'Recorded state: '+(c.state||'UNKNOWN')+
       ' · Project revision now: '+(model.revision||'unrecorded')+

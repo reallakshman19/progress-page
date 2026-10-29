@@ -98,6 +98,31 @@ fixtures, Owner actions and the **existing audited Page Timeline** through
 the checked `pp_propose` → `pp_batch` route. Live posts never activate bindings,
 grant engineering PASS, verify bytes, acknowledge assignment or accept a product.
 
+## Source-linked Smart Badge IDs — shared context, zero additional agent reports
+
+`smart-badges.js` is the **same pure source-derived adapter** for the live
+`Cycle now via Timeline` Info cards, the Page writer's copied grounding brief,
+exact Agent Start task packets, and the pre-existing Oracle continuity cards.
+No separate tag database, new agent check-in, Cycle assignment or audited event.
+
+Each badge has a stable `project/type/key` identifier, compact visible label,
+source URL (or `SOURCE_UNAVAILABLE`), exact original record path, and a
+corresponding Page navigation target. The types are **AIM** (recorded Owner
+aim), **ROADMAP** (published milestone sequence, not a separate approved
+roadmap claim), **WBS** (exact milestone scope), **PLAN** (only an actual
+audited PLAN event), **FIXTURE** (only an audited FIXTURE list event, not
+byte/access verification), and **ORACLE_CONTINUITY** (only an already
+identified Oracle-specific handover record). Unlinked badges visibly show
+`source unknown` and may not be interpreted as source receipt or acceptance.
+
+IDs, links and labels are reconstructed from existing Page records every
+time; only exact selected tasks acquire an Agent Start packet. Incorrect
+card/milestone scope produces no badges, rather than assigning a different
+WBS. Oracle continuity excludes unrelated coder onboarding. The Page writer
+can copy the same badge IDs and original source links from INFO-Auto generated
+cards for human-verified `pp_propose → pp_batch` reconciliation. No
+automatic Page data write, Cycle binding or Owner product approval.
+
 ## Canonical Cycle-to-WBS binding preflight (source only)
 
 Before proposing a Page `data/projects.json` Cycle binding, the authorized coordinator can run `python tools/pp_cli.py cycle-preflight --project ciifr --cycle ciifr --wbs 3`. This read-only command pins Common `main` to its observed commit, validates the returned canonical `CURRENT.json` Git blob, and checks exact Page project/WBS, original native WBS and task references, observed PR candidate head, active Cycle and Page revision/publication. It returns exactly **READY_FOR_REVIEW**, **SCOPE_MISMATCH**, or **INSUFFICIENT_EVIDENCE** with specific source gaps/conflicts. A green result means *eligible for separately authorized review of a binding*, **not** that a binding, agent assignment, engineering PASS or Owner acceptance exists. Missing/failed sources fail closed, not inferred by name or stored cached prose. Never auto-write Page data, Cycle state or acknowledgements. Any human-approved binding must still be restricted to the original `wbs:N` and use existing Page writer and Common Owner rules.

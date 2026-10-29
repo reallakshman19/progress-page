@@ -505,3 +505,8 @@ main{width:100%;min-width:0}
 .ct-auto .ct-top{gap:8px}
 .ct-auto .ct-top>.muted{font-size:11px;white-space:normal;overflow-wrap:anywhere}
 .ct-auto .ct-tools{display:flex;flex-wrap:wrap}
+
+/* Shared stable source-derived badge identifiers, with no inferred authority. */
+.smart-badges{display:flex;align-items:center;gap:5px;flex-wrap:wrap;min-width:0;margin:6px 0}
+.smart-badges .chip{display:inline-block;white-space:normal;overflow-wrap:anywhere;text-decoration:none;max-width:100%}
+.smart-badges a.chip:hover{text-decoration:underline}
