@@ -278,3 +278,8 @@ To check all affected view types against PR code before merging, run the `All pr
 ## Proposal-only merge is not a Page publication
 
 PR checks classify the actual Git changed paths, independently of the PR title. When `proposals/**` changes but `data/*.json` does not, the PR check summary says **PROPOSAL_ONLY_NOT_PUBLISHED**. A data change is only `PAGE_DATA_CHANGE_REQUIRES_HISTORY_CHECK` until the existing contract/history gate and authorized merge. Neither condition establishes canonical Cycle acknowledgement or Owner acceptance. This adds no agent reporting, duplicate record, or write to protected sources.
+
+### CIIFR RCA bench
+
+The Owner-requested `#/ciifr/test` view includes recorded RCA #350/#351 comparisons for valve bore, OLET port sizing, REST/Datum fallback and config defaults. It links the native evidence and hosts `data/ciifr/test/rca-350-351.zip` with the XML and source-witness artifacts. An optional source check fetches pinned public PL-BM1 XML and checks SHA-256 before showing the actual records. The bench does not apply fixes, change Final masses or config, or claim native CII/independent acceptance. Historical snapshots and other project Test pages keep their existing behavior.
+

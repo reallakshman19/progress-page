@@ -6391,6 +6391,32 @@
       "list": "inputs",
       "op": "add",
       "rev": "R4"
+    },
+    {
+      "seq": 488,
+      "id": "CIIFR-R-0488",
+      "previous_id": "CIIFR-R-0487",
+      "at": "2026-10-29T09:24:04Z",
+      "kind": "FIXTURE",
+      "actor": "6ae1bed6 (Owner-directed recorder)",
+      "summary": "Record Owner-requested Test page host",
+      "source": "https://github.com/reallakshman19/progress-page/issues/66#issuecomment-6492886351",
+      "list": "repository",
+      "op": "add",
+      "rev": "R4"
+    },
+    {
+      "seq": 489,
+      "id": "CIIFR-R-0489",
+      "previous_id": "CIIFR-R-0488",
+      "at": "2026-10-29T09:24:04Z",
+      "kind": "FIXTURE",
+      "actor": "6ae1bed6 (Owner-directed recorder)",
+      "summary": "Record Owner-requested RCA evidence download",
+      "source": "https://github.com/reallakshman19/progress-page/issues/66#issuecomment-6492886351",
+      "list": "inputs",
+      "op": "add",
+      "rev": "R4"
     }
   ]
 }

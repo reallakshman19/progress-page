@@ -35,6 +35,9 @@ export function tabsRow(c) {
     c.decorate(a, p);
     nav.append(a);
   });
+  const adhoc = c.nav('#/adhoc','Adhoc Projects','tab'+(c.adhocActive?' on':''));
+  if(c.adhocActive)adhoc.setAttribute('aria-current','page');
+  nav.append(adhoc);
   const plus = el('button', 'tab plus', '+');
   plus.type = 'button';
   plus.title = 'Add a project: a copy-paste brief for another agent';

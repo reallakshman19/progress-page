@@ -147,6 +147,13 @@
       "u": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/181",
       "s": "G1_XML_GRAPH_INPUT",
       "milestone": "M13"
+    },
+    {
+      "t": "CIIFR Test page: recorded bore, port sizing, REST/Datum and default-config findings; source witnesses and comparison downloads.",
+      "u": "https://reallakshman19.github.io/progress-page/#/ciifr/test",
+      "s": "HOSTING_REQUESTED",
+      "n": "Recorded evidence; no fixes applied",
+      "milestone": "M24"
     }
   ],
   "issues": [
@@ -1035,6 +1042,13 @@
       "s": "COMPARISON_EXECUTED_NOT_ACCEPTED",
       "n": "Native CII / independent review NOT_RUN",
       "milestone": "M26"
+    },
+    {
+      "t": "RCA #350/#351 downloadable comparison: enriched XMLs, per-Datum CSV, config probes, PL-BM1 source and bore witness/edge records.",
+      "u": "https://reallakshman19.github.io/progress-page/data/ciifr/test/rca-350-351.zip",
+      "s": "RECORDED_EVIDENCE",
+      "n": "Native CII validation remains pending",
+      "milestone": "M24"
     }
   ],
   "knownIssues": [
