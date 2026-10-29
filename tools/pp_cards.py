@@ -1,6 +1,7 @@
 """Card, decision and fixture operations. Each one records a Timeline entry and runs the checker."""
 import pp_lib as L
 from pp_ops import open_project, record, save
+from pp_occurrence import valid_identity, exact_events
 
 
 def _write(data, root, docs, names):
@@ -20,7 +21,8 @@ def _ref(text):
 
 
 def card_set(data, key, cid, actor, src, summary, at=None, label=None, group=None, milestone=None, state=None, now=None,
-             next_actor=None, next_text=None, chat=None, role=None, flags=None, refs=None, edges=None, order=None):
+             next_actor=None, next_text=None, chat=None, role=None, flags=None, refs=None, edges=None, order=None,
+             native_occurrence_id=None, native_wbs=None):
     """Create a card (BASELINE) or change it (STATE when the state moves, UPDATE otherwise)."""
     root, docs = open_project(data, key)
     cards, index = docs["cards"], docs["index"]
@@ -41,7 +43,26 @@ def card_set(data, key, cid, actor, src, summary, at=None, label=None, group=Non
         card["who"] = {**card.get("who", {}), **({"chat": chat} if chat else {}), **({"role": role} if role else {})}
     if flags is not None:
         card["flags"] = flags
-    if refs:
+    if native_occurrence_id is not None or native_wbs is not None:
+        if not old or not native_occurrence_id or not native_wbs or not refs or len(refs) != 1:
+            raise SystemExit("exact occurrence requires one reference on an existing Page card")
+        if not valid_identity(src, native_occurrence_id):
+            raise SystemExit("native occurrence does not correspond to the original source URL")
+        if milestone is not None or group is not None or state is not None or now is not None or next_actor is not None or next_text is not None or label is not None:
+            raise SystemExit("occurrence reference cannot change engineering status, actor, milestone or capability")
+        expected = (index.get("milestones") or {}).get(card.get("milestone"), {}).get("wbs")
+        if not expected or expected != native_wbs:
+            raise SystemExit("source occurrence WBS does not match the selected Page card")
+        if any(e.get("source") == src and e.get("nativeOccurrenceId") == native_occurrence_id
+               and e.get("wbs") == native_wbs for e in docs["audit"]["events"]):
+            raise SystemExit("same native occurrence already recorded on this WBS")
+        one = _ref(refs[0])
+        if one["u"] != src:
+            raise SystemExit("reference URL must equal the verified source")
+        one["nativeOccurrenceId"] = native_occurrence_id
+        one["wbs"] = native_wbs
+        card["refs"] = (card.get("refs") or []) + [one]
+    elif refs:
         card["refs"] = (card.get("refs") or []) + [_ref(r) for r in refs]
     if edges:
         card["edges"] = (card.get("edges") or []) + [dict(zip(("to", "k"), e.split(":"))) for e in edges]
@@ -59,7 +80,7 @@ def card_set(data, key, cid, actor, src, summary, at=None, label=None, group=Non
     kind = "BASELINE" if old is None else ("STATE" if old["state"] != card["state"] else "UPDATE")
     cards[cid] = card
     record(docs, key, kind, actor, summary, src, card=cid, before=old["state"] if old else None, after=card["state"],
-           source_at=at if at else None)
+           source_at=at if at else None, nativeOccurrenceId=native_occurrence_id, wbs=native_wbs)
     _write(data, root, docs, ("index", "cards", "audit"))
     return f"{kind} recorded for card {cid} ({card['state']})."
 
