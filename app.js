@@ -9,8 +9,9 @@ import { renderLessons } from './lessons.js?v=33';
 import { renderActions, renderFixtures, renderProjectHome, openCount } from './actions.js?v=33';
 import { renderTimeline } from './timeline.js?v=33';
 import { renderTestPage } from './test-page.js?v=33';
+import { parseAdhocRoute, renderAdhocProjects } from './adhoc-projects.js?v=34';
 import { loadCycleTimeline, renderCycleTimeline } from './timeline-live.js?v=33';
-import { tabsRow, archivedPanel, projectHead, revisionRow, isActive, HOME_VIEWS, HOME_SUBTABS, CONTINUITY_VIEWS, CONTINUITY_SUBTABS, PRIMARY_TABS, primaryTabActive } from './lifecycle.js?v=33';
+import { tabsRow, archivedPanel, projectHead, revisionRow, isActive, HOME_VIEWS, HOME_SUBTABS, CONTINUITY_VIEWS, CONTINUITY_SUBTABS, PRIMARY_TABS, primaryTabActive } from './lifecycle.js?v=34';
 import { nudgesOf, openNudge } from './nudge.js?v=33';
 import { addProjectDialog, addRevisionDialog } from './briefs.js?v=33';
 import { loadLinks, takeLinksFromHash, linksPanel } from './links.js?v=33';
@@ -373,6 +374,21 @@ function render() {
     setup.append(el('summary', null, 'Optional · connect private chat shortcuts'));
     setup.append(el('p', null, 'Chat ids are not clickable in this browser yet. Open your private setup link once, or paste your links under "My links".'));
     root.append(setup);
+  }
+  // Adhoc Projects is a navigation workspace, not a new data/projects.json
+  // project or an additional governing WBS. Existing project routes remain intact.
+  const adhocRoute=parseAdhocRoute(hash);
+  if(adhocRoute){
+    const active=state.projects.filter(isActive).map(x=>state.data[x.key]).filter(Boolean);
+    const closed=state.projects.filter(x=>!isActive(x)).map(x=>state.data[x.key]).filter(Boolean);
+    root.append(tabsRow({active,closed,adhocActive:true,nav:navLink,
+      decorate:(a,pr)=>{const b=badge(openCount(pr.actions));if(b)a.append(b);},
+      addProject:()=>addProjectDialog(site()),
+      archivedOpen:state.archivedOpen,
+      toggleArchived:()=>{state.archivedOpen=!state.archivedOpen;render();}}));
+    if(state.archivedOpen)root.append(archivedPanel({closed,nav:navLink}));
+    renderAdhocProjects(root,adhocRoute,navLink);
+    return;
   }
   const { key, v, rev, family: routedFamily, step: routedStep, cardId: routedCard, routeError } = route();
   if (routeError) {
