@@ -94,6 +94,7 @@ function rcaSourceInspector(parent) {
   details.append(el('p', 'muted', 'Fetch the original public PL-BM1 file, verify its SHA-256, and inspect the actual component and port records. This checks source bytes; it does not rerun Preview or certify a fix.'));
   const button = el('button', 'btn', 'Load and verify PL-BM1 witnesses'); button.type = 'button';
   const status = el('p', 'muted', 'Source not loaded in this browser.'); status.setAttribute('aria-live', 'polite');
+  status.style.cssText = 'overflow-wrap:anywhere;';
   const output = el('div'); details.append(button, status, output); parent.append(details);
   button.addEventListener('click', async () => {
     button.disabled = true; status.textContent = 'Loading pinned source…'; output.replaceChildren();
