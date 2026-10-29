@@ -213,6 +213,28 @@ def main():
                     return {"documentWidth":g["documentWidth"],
                             "autoEvidence":page.locator(".ct-auto-section .ct-auto").count()}
                 run_case(str(width)+"px ciifr-node/cycle-board",cycle_board_native_case)
+                def native_trial_case():
+                    load(page,"ciifr-node/test")
+                    lab=page.locator('[data-prototype-trial="ciifr-node"]')
+                    lab.wait_for(timeout=30000)
+                    check("Property Transfer" in lab.inner_text(),
+                          "Native trial workspace is not first-class")
+                    check("RUNTIME NOT VERIFIED" in lab.inner_text(),
+                          "Unhosted native PR must not be described as runnable/accepted")
+                    check(lab.locator("select").count()==5,
+                          "Real native observation cases missing")
+                    check(lab.locator("select").first.input_value()=="NOT_RUN",
+                          "Unobserved trial must begin NOT_RUN")
+                    check(lab.locator("a[aria-disabled='true']").count()==1,
+                          "Local preview must not launch without source + operator")
+                    demo=page.locator("details",has_text="Workflow demo · Action / Info simulator")
+                    check(demo.count()==1 and demo.get_attribute("open") is None,
+                          "Legacy Action/Info demo should be clearly separate and folded")
+                    g=geometry(page)
+                    check(g["documentWidth"]<=width+3,
+                          "Prototype trial workspace horizontal overflow")
+                    return {"documentWidth":g["documentWidth"],"cases":5,"status":"NOT_RUN"}
+                run_case(str(width)+"px ciifr-node/test prototype trial",native_trial_case)
             context.close()
         # Explicitly exercise the archived-history-independent Lessons reading paths.
         ctx=browser.new_context(viewport={"width":1440,"height":900},device_scale_factor=1)
