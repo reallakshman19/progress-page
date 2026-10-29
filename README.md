@@ -123,6 +123,29 @@ can copy the same badge IDs and original source links from INFO-Auto generated
 cards for human-verified `pp_propose → pp_batch` reconciliation. No
 automatic Page data write, Cycle binding or Owner product approval.
 
+## Per-project Test page — optional demonstration
+
+Every standard project panel has `#/PROJECT_KEY/test` under **Project Home → Test page**.
+The Lessons reader has the same `#/learned/test` route in its own tab set.
+Controls remain **in browser memory**; selecting a task, switching Action/Info
+or toggling simulated Needs Owner never posts a GitHub comment, changes
+Cycle/Progress Page data, sends an agent message or creates an acceptance record.
+
+Modes: `ACTION` demonstrates a single pending communication; `INFO`
+demonstrates its handoff acknowledgement without closing the IR's separate
+review; `INFO-Auto generated` displays an existing **audited** Page
+observation for the chosen WBS if available, otherwise states that no
+matching source record is available. Smart Badge IDs are derived from actual
+project metadata; demo Actions are visually and textually marked `DEMO ONLY`.
+`Copy demonstration packet` produces a non-production, non-importable
+description for the Owner/agent to discuss; it is not a Timeline event.
+
+Use the Test page **only when demonstration is requested**; it is not a
+new onboarding stage, mandatory report, test verdict, Writer permission
+or substitute for exact native evidence. A scoped Agent Start link remains
+the task entry; the canonical Oracle, reviewer independence and audited
+Page writer flow remain unchanged.
+
 ## Canonical Cycle-to-WBS binding preflight (source only)
 
 Before proposing a Page `data/projects.json` Cycle binding, the authorized coordinator can run `python tools/pp_cli.py cycle-preflight --project ciifr --cycle ciifr --wbs 3`. This read-only command pins Common `main` to its observed commit, validates the returned canonical `CURRENT.json` Git blob, and checks exact Page project/WBS, original native WBS and task references, observed PR candidate head, active Cycle and Page revision/publication. It returns exactly **READY_FOR_REVIEW**, **SCOPE_MISMATCH**, or **INSUFFICIENT_EVIDENCE** with specific source gaps/conflicts. A green result means *eligible for separately authorized review of a binding*, **not** that a binding, agent assignment, engineering PASS or Owner acceptance exists. Missing/failed sources fail closed, not inferred by name or stored cached prose. Never auto-write Page data, Cycle state or acknowledgements. Any human-approved binding must still be restricted to the original `wbs:N` and use existing Page writer and Common Owner rules.

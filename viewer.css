@@ -510,3 +510,20 @@ main{width:100%;min-width:0}
 .smart-badges{display:flex;align-items:center;gap:5px;flex-wrap:wrap;min-width:0;margin:6px 0}
 .smart-badges .chip{display:inline-block;white-space:normal;overflow-wrap:anywhere;text-decoration:none;max-width:100%}
 .smart-badges a.chip:hover{text-decoration:underline}
+
+/* Test page: optional in-memory demo, never a production status. */
+.demo-page{display:grid;gap:12px;min-width:0}
+.demo-safety{border:1px dashed var(--wn);border-radius:8px;padding:10px;background:var(--wnbg)}
+.demo-controls{display:flex;gap:8px;flex-wrap:wrap;align-items:end;padding:12px;border:1px solid var(--bd);border-radius:10px}
+.demo-controls label{display:grid;gap:4px;min-width:180px;flex:1}
+.demo-controls select{font:inherit;color:var(--fg);background:var(--card);border:1px solid var(--bd);border-radius:6px;padding:6px;max-width:100%}
+.demo-stage{display:flex;gap:6px;flex-wrap:wrap}
+.demo-stage button[aria-pressed=true]{border-color:var(--acc);background:var(--accbg);color:var(--acc);font-weight:700}
+.demo-card{border:1px solid var(--bd);border-radius:12px;padding:12px;display:grid;gap:8px;min-width:0}
+.demo-card.action{border-left:4px solid var(--wn)}
+.demo-card.info{border-left:4px solid var(--ok)}
+.demo-card.auto{border-left:4px solid var(--acc)}
+.demo-card p{margin:0;overflow-wrap:anywhere}
+.demo-card .demo-card-head{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.demo-mono{font:12px/1.45 ui-monospace,Consolas,monospace;overflow-wrap:anywhere}
+@media(max-width:520px){.demo-controls label{flex-basis:100%}}

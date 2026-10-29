@@ -8,6 +8,7 @@ import { renderAgentStart } from './agent-start.js?v=33';
 import { renderLessons } from './lessons.js?v=33';
 import { renderActions, renderFixtures, renderProjectHome, openCount } from './actions.js?v=33';
 import { renderTimeline } from './timeline.js?v=33';
+import { renderTestPage } from './test-page.js?v=33';
 import { loadCycleTimeline, renderCycleTimeline } from './timeline-live.js?v=33';
 import { tabsRow, archivedPanel, projectHead, revisionRow, isActive, HOME_VIEWS, HOME_SUBTABS, CONTINUITY_VIEWS, CONTINUITY_SUBTABS, PRIMARY_TABS, primaryTabActive } from './lifecycle.js?v=33';
 import { nudgesOf, openNudge } from './nudge.js?v=33';
@@ -194,7 +195,7 @@ function route() {
   const active = state.projects.filter(isActive);
   const key = routeError ? null : knownProject ? pk : (active[0] || state.projects[0] || {}).key;
   const lessonIds = (state.data.learned?.lessons?.items || []).map(item => item.id);
-  const choices = key === 'learned' ? ['progress', ...lessonIds] : VIEWS;
+  const choices = key === 'learned' ? ['progress','test', ...lessonIds] : VIEWS;
   return { key, v: choices.includes(view) ? view : 'progress', rev: safe(rev), family: safe(family), step: safe(step), cardId: safe(cardId), routeError };
 }
 
@@ -421,7 +422,7 @@ function render() {
     // Sections inside L01/L02 remain vertical full-page documents, not horizontal sections.
     const subnav = el('nav', 'views lesson-subtabs');
     subnav.setAttribute('aria-label', 'Lessons subtabs');
-    const destinations = [{ id: 'progress', label: 'Overview' }]
+    const destinations = [{ id: 'progress', label: 'Overview' }, { id: 'test', label: 'Test page' }]
       .concat((p.lessons?.items || []).map((item, i) => ({ id: item.id, label: 'Lesson ' + (i + 1) })));
     destinations.forEach(({ id, label }) => {
       const a = navLink('#/learned/' + id, label, 'view' + (v === id ? ' on' : ''));
@@ -430,7 +431,8 @@ function render() {
     });
     root.append(subnav);
     const page = el('div', 'body');
-    renderLessons(page, p.lessons, v, navLink);
+    if(v === 'test') renderTestPage(page, p, { historical:!!older });
+    else renderLessons(page, p.lessons, v, navLink);
     root.append(page);
     return;
   }
@@ -575,6 +577,7 @@ function render() {
     }
     else if (v === 'actions') renderActions(body, sv);
     else if (v === 'timeline-live') renderCycleTimeline(body, view, older ? {status:'historical'} : state.liveTimelines[key]);
+    else if (v === 'test') renderTestPage(body, view, { historical:!!older });
     else if (v === 'oracle-continuity') renderOracleContinuity(body, view);
     else if (v === 'fixtures') renderFixtures(body, sv.fixtures, older ? '' : key, view.fixtures);
     else if (shownStep || family) renderTimeline(body, sv);
