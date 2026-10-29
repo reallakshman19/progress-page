@@ -6,7 +6,7 @@
     "subtitle": "Safe automatic solutions, precise manual directions, revised-source recheck and verified case outcomes.",
     "aim": "Topo should not burden with finding but provide auditable solution which are auto fixable if not set clear directions for manual review. Support controlled manual correction, revised-source reimport, full Topo recheck and evidence-based closure.",
     "aimSrc": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/1#issuecomment-6474563974",
-    "updatedAt": "2026-10-29T10:44:32Z",
+    "updatedAt": "2026-10-29T13:49:15Z",
     "updatedBy": "Topo Oracle 6ae1b0f7",
     "staleAfterMin": 120
   },
@@ -91,12 +91,12 @@
       "order": 13,
       "wbs": "1.3",
       "cap": "CANDIDATE",
-      "canDo": "Draft candidate preserves source references, gives precise manual directions and rejects deletion without source-map proof; author tests pass, independent engineering/browser qualification pending.",
+      "canDo": "Preview code is merged and CI browser-tested; IR verifies bounded P1 source-map hardening. Full engineering preservation/connectivity and independent authentic/browser qualification remain open.",
       "repo": "reallakshman19/xml229-topology-wp1-preview-20261028",
-      "commit": "a5491cd836ae02db8a2b11b49f6cb969d3235f2e",
-      "activity": "IR PARTIAL at 9804e2c; author P1 repair at a5491cd with 20 Node / 13 Python and source replay PASS. NOT_VERIFIED / engineering HOLD.",
-      "capSrc": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/4#issuecomment-6494521640",
-      "branch": "fix/topo-source-reference-preservation-20261028"
+      "commit": "fb9ef50033845e813f68d4b28ec993c98442f85d",
+      "activity": "CODE MERGED fb9ef50 (same full tree as a5491cd); P1 bounded VERIFIED; overall ENGINEERING PARTIAL/HOLD, WBS NOT_VERIFIED.",
+      "capSrc": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/2#issuecomment-6498396209",
+      "branch": "main"
     },
     "M21": {
       "name": "Admitted PSI116 source at every entrance",
@@ -176,7 +176,7 @@
     "main": {
       "order": 0,
       "title": "Current safety-review gate",
-      "sub": "IR 6ae2d5ac returned PARTIAL; engineering independence not established. Oracle 6ae1b0f7 repaired P1; new-head qualification pending."
+      "sub": "Preview code MERGED; IR R2 P1 verified. Overall engineering PARTIAL / HOLD; independent authentic replay and full browser qualification pending."
     },
     "cases": {
       "title": "Current cases and correction safety",
