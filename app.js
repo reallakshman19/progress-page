@@ -11,7 +11,7 @@ import { renderTimeline } from './timeline.js?v=33';
 import { renderTestPage } from './test-page.js?v=33';
 import { parseAdhocRoute, renderAdhocProjects } from './adhoc-projects.js?v=33';
 import { loadCycleTimeline, renderCycleTimeline } from './timeline-live.js?v=33';
-import { loadBoardNative, boardSourceConfigured } from './cycle-board-context.js?v=33';
+import { loadBoardNative, boardSourceConfigured, cycleBoardContextModel } from './cycle-board-context.js?v=33';
 import { tabsRow, archivedPanel, projectHead, revisionRow, isActive, HOME_VIEWS, HOME_SUBTABS, CONTINUITY_VIEWS, CONTINUITY_SUBTABS, PRIMARY_TABS, primaryTabActive } from './lifecycle.js?v=33';
 import { nudgesOf, openNudge } from './nudge.js?v=33';
 import { addProjectDialog, addRevisionDialog } from './briefs.js?v=33';
@@ -47,7 +47,7 @@ function mergedLinks() {
 }
 
 const state = { projects: [], data: {}, site: {}, links: mergedLinks(), error: null, panel: false, offline: false, archivedOpen: false, rev: null, paths: null, repo: {}, searchOpen: false, searchQuery: '', searchIndex: [],
-  pageFetch: { status:'unknown', observedAt:null }, cycles: {}, liveTimelines: {}, boardNative: {} };
+  pageFetch: { status:'unknown', observedAt:null }, cycles: {}, liveTimelines: {}, boardNative: {}, boardPrior: {}, boardChecking: {} };
 
 // The local hub server (127.0.0.1) serves each project's private coding and reference folders; the website never has them.
 async function loadPaths() {
@@ -153,6 +153,25 @@ function ensureBoardNative(key){
     state.boardNative[key]={status:'unknown',observedAt:null,observations:[],
       failures:[{source:'configured native sources',error:String(error.message||error)}]};
   }).then(()=>render());
+}
+function recheckBoardNative(key){
+  if(!boardSourceConfigured(key)||state.boardChecking[key])return;
+  // Preserve last complete Page+source observation as the independent
+  // comparison baseline. A failed read MUST NOT be treated as unchanged.
+  const last=state.boardNative[key];
+  const project=state.data[key];
+  if(last?.status==='ok'&&project){
+    state.boardPrior[key]=cycleBoardContextModel(project,{native:last,
+      pageFetch:state.pageFetch});
+  } else state.boardPrior[key]=null;
+  state.boardChecking[key]=true;
+  render();
+  withTimeout(loadBoardNative(key),12000).then(next=>{
+    state.boardNative[key]=next;
+  },error=>{
+    state.boardNative[key]={status:'unknown',observedAt:null,observations:[],
+      failures:[{source:'configured native sources',error:String(error.message||error)}]};
+  }).then(()=>{state.boardChecking[key]=false;render();});
 }
 async function refresh() {
   try {
@@ -610,8 +629,13 @@ function render() {
       if(!older)ensureBoardNative(key);
       renderCycleTimeline(body,view,older?{status:'historical'}:state.liveTimelines[key],
         {native:older?null:state.boardNative[key]||null,
+        previous:older?null:state.boardPrior[key]||null,
         cycleStatus:checkpointModel(view,checkOptions).cycle.status,
-        pageFetch:state.pageFetch});
+        binding:older?null:p.cycle||null,
+        cycleRead:older?null:state.cycles[key]||null,
+        pageFetch:state.pageFetch,
+        checking:!!state.boardChecking[key],
+        onRecheck:!older&&boardSourceConfigured(key)?()=>recheckBoardNative(key):null});
     }
     else if (v === 'test') renderTestPage(body, view, { historical:!!older });
     else if (v === 'oracle-continuity') renderOracleContinuity(body, view);
