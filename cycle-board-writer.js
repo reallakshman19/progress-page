@@ -12,11 +12,15 @@ const cleanUrl=x=>typeof x==='string'&&(PR.test(x)||ISSUE.test(x));
 const ordered=xs=>xs.slice().sort((a,b)=>a.source.localeCompare(b.source));
 
 function evidenceIdentity(s){
-  if(!s||!cleanUrl(s.source)||typeof s.occurrenceId!=='string'||
-     !s.occurrenceId.startsWith('github:')||!s.occurrenceId.endsWith(':'+s.revision))
-    return false;
-  if(s.kind==='PULL')return PR.test(s.source)&&SHA.test(s.revision);
-  if(s.kind==='ISSUE')return ISSUE.test(s.source)&&ISO.test(s.revision);
+  if(!s||!cleanUrl(s.source)||typeof s.occurrenceId!=='string')return false;
+  const match=/^https:\/\/github\.com\/([A-Za-z0-9_.-]+)\/([A-Za-z0-9_.-]+)\/(pull|issues)\/([1-9][0-9]*)$/.exec(s.source);
+  if(!match)return false;
+  const [,owner,repo,type,number]=match;
+  const stem='github:'+owner+'/'+repo+':'+(type==='pull'?'pull-head':'issue-revision')+':'+number+':';
+  if(s.kind==='PULL'&&type==='pull'&&SHA.test(s.revision))
+    return s.occurrenceId===stem+s.revision;
+  if(s.kind==='ISSUE'&&type==='issues'&&ISO.test(s.revision))
+    return s.occurrenceId===stem+s.revision;
   return false;
 }
 
