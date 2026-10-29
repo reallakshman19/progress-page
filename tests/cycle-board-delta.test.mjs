@@ -44,14 +44,18 @@ const ciifrContext=()=>({...mockContext(),project:'ciifr'});
 const BIND={pageProject:'ciifr',project:'ciifr',scope:'wbs:3',
  url:'https://raw.githubusercontent.com/reallakshman19/Common/main/oracle-cycles/ciifr/CURRENT.json'};
 const assignment={id:'A-1',generation:2,recipient_role:'coder',
- recipient_chat_id8:'1234abcd',candidate:'sha-1',dispatch:'ASSIGNED'};
+ recipient_chat_id8:'1234abcd',candidate:'a'.repeat(40),dispatch:'ASSIGNED'};
 const canonical={schema:'oracle-cycle-current/v1',mode:'standalone',project:'ciifr',
  activation:'ACTIVE',revision:10,progress_projection:{project_key:'ciifr'},
  next:{recipient_role:'coder'},assignments:[assignment],
  active_assignment:{...assignment}};
 const match={role:'coder',chatId8:'1234abcd',verified:true,
  taskChecked:true,holdsChecked:true,sourceChecked:true};
-const exact={id:'A-1',generation:2,candidate:'sha-1',observedRevision:10};
+const exact={id:'A-1',generation:2,candidate:'a'.repeat(40),observedRevision:10};
+const proof={origin:'TRUSTED_PRIVATE_CYCLE_PRECHECK',canonicalReadSha:'b'.repeat(40),
+ canonicalChecked:true,originalInputChecked:true,
+ assignmentId:exact.id,generation:exact.generation,candidate:exact.candidate,
+ canonicalRevision:10,taskVerified:true,holdsVerified:true};
 
 test('CT-2 CIIFR-Node: newer PR232/issue231 creates REVIEW_PAGE_DRIFT, no Cycle',()=>{
  const ctx=mockContext();
@@ -96,10 +100,12 @@ test('CT-2 exact scoped audited revision can be CURRENT without technical PASS',
  const candidate=ctx.sources[0];
  const matching=ctx.sources[1];
  published.audit.events.push(
-   {id:'PUBLISHED-HEAD-1',kind:'UPDATE',scope:'milestone:M3',
+   {id:'PUBLISHED-HEAD-1',kind:'UPDATE',scope:'milestone:M3',card:'node-r0-code',
+    wbs:'2',nativeOccurrenceId:candidate.occurrenceId,
     source:candidate.source,at:'2026-10-29T09:00:00Z',
     summary:'Reviewed Page evidence for original PR head '+candidate.revision},
-   {id:'PUBLISHED-ISSUE-1',kind:'UPDATE',scope:'milestone:M3',
+   {id:'PUBLISHED-ISSUE-1',kind:'UPDATE',scope:'milestone:M3',card:'node-r0-code',
+    wbs:'2',nativeOccurrenceId:matching.occurrenceId,
     source:matching.source,at:'2026-10-29T09:00:00Z',
     summary:'Reviewed Page evidence for original issue revision '+matching.revision}
  );
@@ -108,16 +114,40 @@ test('CT-2 exact scoped audited revision can be CURRENT without technical PASS',
  assert.match(result.reason,/NOT engineering PASS/);
  assert.equal(JSON.stringify(page),original,'authoritative source fixture unmodified');
 });
+test('CT-4 mutable URL and summary text do not establish exact current Page occurrence',()=>{
+ const pg=structuredClone(page),ctx=mockContext();
+ for(const source of ctx.sources)pg.audit.events.push({
+   id:'AUDIT-URL-'+source.number,kind:'UPDATE',scope:'milestone:M3',
+   card:'node-r0-code',wbs:'2',source:source.source,
+   summary:'Reviewed PR revision '+source.revision,at:'2026-10-29T09:00:00Z'
+ });
+ assert.notEqual(classifyPageCoverage(pg,ctx).status,'CURRENT');
+ pg.audit.events.forEach((event)=>{
+   if(String(event.id).startsWith('AUDIT-URL-'))event.nativeOccurrenceId='outdated-occurrence';
+ });
+ assert.notEqual(classifyPageCoverage(pg,ctx).status,'CURRENT');
+ const corrected=structuredClone(pg);
+ for(const event of corrected.audit.events){
+   if(!String(event.id).startsWith('AUDIT-URL-'))continue;
+   const source=ctx.sources.find(s=>s.source===event.source);
+   event.nativeOccurrenceId=source.occurrenceId;
+ }
+ assert.equal(classifyPageCoverage(corrected,ctx).status,'CURRENT',
+   'exact native occurrence + WBS/card correlation only; never engineering PASS');
+ corrected.audit.events.find(e=>e.id==='AUDIT-URL-232').wbs='3';
+ assert.notEqual(classifyPageCoverage(corrected,ctx).status,'CURRENT',
+   'wrong WBS never qualifies as published current head');
+});
 test('CT-2 wrong recipient and inactive Cycle never dispatch',()=>{
  const actual={binding:BIND,record:canonical,readStatus:'ok',
-  recipient:{...match,role:'reviewer'},assignment:exact,receipt:{inboxChecked:true}};
+  recipient:{...match,role:'reviewer'},assignment:exact,receipt:{inboxChecked:true},proof};
  assert.equal(classifyCycleAuthority('ciifr',actual).status,'WRONG_RECIPIENT');
  assert.equal(classifyCycleAuthority('ciifr',{...actual,record:{...canonical,activation:'INACTIVE'}}).status,'INACTIVE');
  assert.equal(classifyCycleAuthority('ciifr',{...actual,readStatus:'error'}).status,'UNKNOWN');
  assert.equal(classifyCycleAuthority('ciifr',{...actual,record:{...canonical,project:'other'}}).status,'UNKNOWN');
  const wrong=cycleBoardDeltaModel(ciifrPage,ciifrContext(),{binding:BIND,
   cycleRead:{status:'ok',record:canonical},recipient:{...match,role:'reviewer'},
-  assignment:exact,receipt:{inboxChecked:true}});
+  assignment:exact,receipt:{inboxChecked:true},proof});
  assert.equal(wrong.next.advice,'NO_ACTION');
  assert.equal(classifyCycleAuthority('ciifr',{...actual,binding:null}).status,'UNMAPPED');
 });
@@ -127,11 +157,11 @@ test('CT-2 already-returned, receipt missing and already-accepted never repeat e
    cycle_receipt_url:'https://github.com/acme/common/issues/2#issuecomment-44'};
  const record={...canonical,assignments:[returned],active_assignment:{...returned}};
  const options={binding:BIND,record,readStatus:'ok',
-   recipient:match,assignment:exact,receipt:{inboxChecked:true,accepted:true}};
+   recipient:match,assignment:exact,receipt:{inboxChecked:true,accepted:true},proof};
  assert.equal(classifyCycleAuthority('ciifr',options).status,'RETURNED_ACCEPTED');
  const already=cycleBoardDeltaModel(ciifrPage,ciifrContext(),{binding:BIND,
    cycleRead:{status:'ok',record},recipient:match,assignment:exact,
-   receipt:{inboxChecked:true,accepted:true}});
+   receipt:{inboxChecked:true,accepted:true},proof});
  assert.equal(already.next.advice,'AWAIT_ORACLE_RECONCILIATION');
  const missing={...returned,cycle_receipt_url:undefined};
  const checked={...options,record:{...record,assignments:[missing]},
@@ -141,28 +171,46 @@ test('CT-2 already-returned, receipt missing and already-accepted never repeat e
 });
 test('CT-2 stale candidate, generation, recipient ID and historical-only assignment fail closed',()=>{
  const options={binding:BIND,record:canonical,readStatus:'ok',
-   recipient:match,assignment:exact,receipt:{inboxChecked:true}};
+   recipient:match,assignment:exact,receipt:{inboxChecked:true},proof};
  assert.equal(classifyCycleAuthority('ciifr',{...options,assignment:{...exact,candidate:'wrong'}}).status,'STALE_ASSIGNMENT');
  assert.equal(classifyCycleAuthority('ciifr',{...options,assignment:{...exact,generation:1}}).status,'STALE_ASSIGNMENT');
  assert.equal(classifyCycleAuthority('ciifr',{...options,recipient:{...match,chatId8:'wrong'}}).status,'WRONG_RECIPIENT');
  assert.equal(classifyCycleAuthority('ciifr',{...options,record:{...canonical,active_assignment:null}}).status,'UNKNOWN');
  assert.equal(classifyCycleAuthority('ciifr',{...options,assignment:{...exact,observedRevision:9}}).status,'STALE_ASSIGNMENT');
 });
+test('CT-4 private Cycle proof mismatches fail closed, browser flags never authorize',()=>{
+ const args={binding:BIND,record:canonical,readStatus:'ok',
+   recipient:match,assignment:exact,receipt:{inboxChecked:true},proof};
+ assert.equal(classifyCycleAuthority('ciifr',{...args,proof:null}).status,'UNKNOWN');
+ assert.equal(classifyCycleAuthority('ciifr',{...args,proof:{...proof,assignmentId:'other'}}).status,'STALE_ASSIGNMENT');
+ assert.equal(classifyCycleAuthority('ciifr',{...args,proof:{...proof,generation:3}}).status,'STALE_ASSIGNMENT');
+ assert.equal(classifyCycleAuthority('ciifr',{...args,proof:{...proof,candidate:'b'.repeat(40)}}).status,'STALE_ASSIGNMENT');
+ assert.equal(classifyCycleAuthority('ciifr',{...args,proof:{...proof,canonicalRevision:11}}).status,'STALE_ASSIGNMENT');
+ assert.equal(classifyCycleAuthority('ciifr',{...args,proof:{...proof,taskVerified:false}}).status,'STALE_ASSIGNMENT');
+ assert.equal(classifyCycleAuthority('ciifr',{...args,proof:{...proof,holdsVerified:false}}).status,'STALE_ASSIGNMENT');
+ const valid=classifyCycleAuthority('ciifr',args);
+ assert.equal(valid.status,'PREFLIGHT_MATCHED');
+ assert.equal(cycleBoardDeltaModel(ciifrPage,ciifrContext(),{
+   binding:BIND,cycleRead:{status:'ok',record:canonical,proof},
+   recipient:match,assignment:exact,receipt:{inboxChecked:true}
+ }).next.advice,'REVIEW_PAGE_DRIFT');
+});
 test('CT-2 synthetic full active private preflight is a conditional advisory, never an automatic action',()=>{
  const ctx=ciifrContext();
  const baseline=structuredClone(ctx);
  const out=cycleBoardDeltaModel(ciifrPage,ctx,{previous:baseline,binding:BIND,
    cycleRead:{status:'ok',record:canonical},recipient:match,
-   assignment:exact,receipt:{inboxChecked:true}});
- assert.equal(out.cycle.status,'AUTHORIZED');
+   assignment:exact,receipt:{inboxChecked:true},proof});
+ assert.equal(out.cycle.status,'PREFLIGHT_MATCHED');
  assert.equal(out.native.status,'UNCHANGED');
  assert.equal(out.next.advice,'REVIEW_PAGE_DRIFT',
    'Page reconciliation has higher priority than any hypothetical active worker continuation');
  const noHold=structuredClone(ctx);noHold.sources.forEach(e=>{e.reportedHold=false;e.sourceAt='2026-10-27T01:00:00Z';});
  const normal=cycleBoardDeltaModel(ciifrPage,noHold,{previous:noHold,binding:BIND,
    cycleRead:{status:'ok',record:canonical},recipient:match,assignment:exact,
-   receipt:{inboxChecked:true}});
- assert.equal(normal.next.advice,'CONTINUE_AUTHORIZED');
+   receipt:{inboxChecked:true},proof});
+ assert.equal(normal.next.advice,'UNKNOWN_STOP',
+   'even matching synthetic proof cannot authenticate or authorize a browser');
  assert.equal(cycleBoardDeltaModel(ciifrPage,noHold,{previous:noHold,binding:BIND,
    cycleRead:{status:'ok',record:canonical}}).next.advice,'UNKNOWN_STOP');
 });
