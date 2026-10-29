@@ -440,6 +440,91 @@
         }
       ],
       "evidenceLimit": "Owner confirmed a corrected P2.1 flow on Windows; later real backend transfer checks were agent-reported. Native served-browser Owner acceptance was still outstanding."
+    },
+    {
+      "id": "L03",
+      "title": "Oracle aligned by OTM: own one project's outcome, not its paperwork",
+      "date": "2026-10-29",
+      "origin": "G9v3.5 Physics pilot (Oracle mode)",
+      "status": "DRAFT",
+      "summary": "After OTM-style juggling drew the Owner's verdict (28 Oct), the Oracle re-grounded on the Owner's words, built one reusable method and let builders produce tiles in parallel under checks.",
+      "aim": "Textbook-quality study tiles for one learner: every level-3/4 book and JEE Main item gets a teaching part and her own try, built as Physics blueprint + topic adapter.",
+      "observation": "Before alignment: codes the Owner could not remember, hand-written lessons that broke the 'blueprint + adapter' mantra, repair loops on one lesson, three lines of work at once. After alignment: a story file re-read after every compaction, one blueprint, one adapter, a checker, and 14 tiles built by parallel builders in one day.",
+      "takeaway": "Read the Owner's intent in date order → reconcile the plan with the latest words → build the reusable rule, not the instance → let builders change only the topic part and report gaps → re-run every check yourself → say plainly what is not yet verified.",
+      "recoveries": [
+        {
+          "title": "Read the framework before designing",
+          "problem": "I designed without reading the QRT concept; Owner: 'did you read QRT concept!!'.",
+          "correction": "Re-read the source, corrected the story, then designed from it."
+        },
+        {
+          "title": "Exact text, not memory",
+          "problem": "I guessed an exam answer from memory and got it wrong.",
+          "correction": "Work every answer from the exact stored text; keep a key-answer list in the story."
+        },
+        {
+          "title": "Gap notes instead of improvising",
+          "problem": "Builders could have bent the blueprint to fit each tile.",
+          "correction": "Builders change only the topic adapter; 15+ gap notes collected for one blueprint revision."
+        },
+        {
+          "title": "Usage limits stopped nine parallel builders",
+          "problem": "Nine builders at once hit the session and weekly limits three times.",
+          "correction": "Resume saved agents by message, two at a time; record the resume order in the story file."
+        },
+        {
+          "title": "Checker-passed is not verified",
+          "problem": "Temptation to mark tiles VERIFIED after the checker passed.",
+          "correction": "State SUBMITTED; independent physics check and Owner look come before the learner."
+        }
+      ],
+      "stages": [
+        {
+          "title": "Story and intent",
+          "action": "Wrote the project story in the Owner's words; re-read after each compaction.",
+          "evidence": "C:/t/handover/G9V35-STORY.md (Owner-local)."
+        },
+        {
+          "title": "Blueprint + adapter",
+          "action": "Physics blueprint for 14 cells and the energy topic adapter; validator with 140 checks.",
+          "evidence": "Oracle self-run."
+        },
+        {
+          "title": "Coverage and sources",
+          "action": "62 JEE Main questions extracted with explanations; level-3/4 maps; flawed items flagged.",
+          "evidence": "Owner-local extract; two flawed keys found."
+        },
+        {
+          "title": "Parallel production",
+          "action": "Builders produced 13 of 14 tiles; each passes the tile checker, re-run by the Oracle.",
+          "evidence": "Checker re-runs; scores PROPOSED; physics not yet independently checked."
+        },
+        {
+          "title": "Method made reusable",
+          "action": "Methodology concept note; Smart Labelling 1 and 2 skills with checkers.",
+          "evidence": "Skills tested on two real questions."
+        }
+      ],
+      "checklist": [
+        "Have I read the Owner's intent in date order before acting?",
+        "Am I building the reusable rule (blueprint + adapter) or another one-off lesson?",
+        "Can each agent change only its own part, and report gaps instead of improvising?",
+        "Did I re-run every check myself, and did someone other than the author check it?",
+        "Does my message say plainly what is not yet verified?"
+      ],
+      "applications": [
+        {
+          "text": "G9v3.5 WBS 1: 14 Work, Power and Energy tiles built and independently physics-checked",
+          "source": "https://github.com/reallakshman19/progress-page/blob/main/data/g9v35/cards.json",
+          "state": "APPLIED"
+        }
+      ],
+      "sources": [
+        {
+          "label": "G9v3.5 project cards on this page",
+          "url": "https://github.com/reallakshman19/progress-page/blob/main/data/g9v35/cards.json"
+        }
+      ]
     }
   ]
 }

@@ -147,6 +147,13 @@
       "u": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/181",
       "s": "G1_XML_GRAPH_INPUT",
       "milestone": "M13"
+    },
+    {
+      "t": "CIIFR Test page: recorded bore, port sizing, REST/Datum and default-config findings; source witnesses and comparison downloads.",
+      "u": "https://reallakshman19.github.io/progress-page/#/ciifr/test",
+      "s": "HOSTING_REQUESTED",
+      "n": "Recorded evidence; no fixes applied",
+      "milestone": "M24"
     }
   ],
   "issues": [
@@ -676,6 +683,13 @@
       "u": "https://github.com/reallakshman19/Common/pull/511",
       "s": "VNEXT_RELEASE_BOUNDARY",
       "milestone": "M7"
+    },
+    {
+      "t": "Owner: Check restraint fallback default axis and default stiffness; check restraint placement for Datum etc. Create WBS in CIIFR R4 and record the supplied reference state.",
+      "u": "https://github.com/reallakshman19/3D_Converters/issues/350",
+      "s": "OWNER_REQUEST_RECORDED",
+      "n": "Pinned reference; runtime NOT_RUN",
+      "milestone": "M24"
     }
   ],
   "inputs": [
@@ -986,6 +1000,55 @@
       "t": "Separate Element Cycle ACTIVE rev3 (not rev0/rev1); independent WBS4 source/config gate, no Writer/TARGET1 or Geometry control transfer.",
       "u": "https://github.com/reallakshman19/Common/blob/main/oracle-cycles/ciifr-element/CURRENT.json",
       "s": "ELEMENT_CYCLE_R3"
+    },
+    {
+      "t": "Owner-designated restraint reference state: REF-STATE-agent/xml-cii-node140-gap-benchmark-rca",
+      "u": "https://github.com/reallakshman19/3D_Converters/tree/57710dd744669a9dc1d4dbdd103d78f9f2928bce",
+      "s": "REFERENCE_PINNED_NOT_ACCEPTED",
+      "n": "Pinned reference; runtime NOT_RUN",
+      "milestone": "M24"
+    },
+    {
+      "t": "Owner-designated restraint reference state: REF-STATE-agent/xml-cii-node140-gap-benchmark-rca",
+      "u": "https://github.com/reallakshman19/3D_Converters/tree/57710dd744669a9dc1d4dbdd103d78f9f2928bce",
+      "s": "REFERENCE_PINNED_NOT_ACCEPTED",
+      "n": "Pinned reference; runtime NOT_RUN",
+      "milestone": "M25"
+    },
+    {
+      "t": "Owner-designated restraint reference state: REF-STATE-agent/xml-cii-node140-gap-benchmark-rca",
+      "u": "https://github.com/reallakshman19/3D_Converters/tree/57710dd744669a9dc1d4dbdd103d78f9f2928bce",
+      "s": "REFERENCE_PINNED_NOT_ACCEPTED",
+      "n": "Pinned reference; runtime NOT_RUN",
+      "milestone": "M26"
+    },
+    {
+      "t": "Owner-designated restraint reference state: REF-STATE-agent/xml-cii-node140-gap-benchmark-rca",
+      "u": "https://github.com/reallakshman19/3D_Converters/tree/57710dd744669a9dc1d4dbdd103d78f9f2928bce",
+      "s": "REFERENCE_PINNED_NOT_ACCEPTED",
+      "n": "Pinned reference; runtime NOT_RUN",
+      "milestone": "M27"
+    },
+    {
+      "t": "EF05 Datum/default comparison fixture: identical source blob caf814c906e4155dcf388ac7ea822aeafec76780 at pin and current revision. Original bytes verified; no staged JSON attached.",
+      "u": "https://github.com/reallakshman19/3D_Converters/blob/57710dd744669a9dc1d4dbdd103d78f9f2928bce/Benchmarks/EF-05-PRO.TEST.xml",
+      "s": "COMPARISON_EXECUTED_NOT_ACCEPTED",
+      "n": "Native CII / independent review NOT_RUN",
+      "milestone": "M25"
+    },
+    {
+      "t": "EF05 Datum/default comparison fixture: identical source blob caf814c906e4155dcf388ac7ea822aeafec76780 at pin and current revision. Original bytes verified; no staged JSON attached.",
+      "u": "https://github.com/reallakshman19/3D_Converters/blob/57710dd744669a9dc1d4dbdd103d78f9f2928bce/Benchmarks/EF-05-PRO.TEST.xml",
+      "s": "COMPARISON_EXECUTED_NOT_ACCEPTED",
+      "n": "Native CII / independent review NOT_RUN",
+      "milestone": "M26"
+    },
+    {
+      "t": "RCA #350/#351 downloadable comparison: enriched XMLs, per-Datum CSV, config probes, PL-BM1 source and bore witness/edge records.",
+      "u": "https://reallakshman19.github.io/progress-page/data/ciifr/test/rca-350-351.zip",
+      "s": "RECORDED_EVIDENCE",
+      "n": "Native CII validation remains pending",
+      "milestone": "M24"
     }
   ],
   "knownIssues": [

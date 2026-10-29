@@ -15,6 +15,7 @@ FUNCTIONS = {  # viewer module -> declarations the bundle must still contain
     "util.js": ("whenText", "copyText", "link", "md"), "triggers.js": ("cardTags", "nudgeTag", "summary", "fmt"), "popup.js": ("dialog",),
     "reply.js": ("issueUrl",), "nudge.js": ("openNudge", "nudgeRow"), "progress.js": ("renderProgress", "milestoneState"),
     "checkpoint.js": ("checkpointModel", "cycleSource", "cycleSummary", "renderCheckpoint"),
+    "test-page-rca.js": ("inspectBoreWitnesses", "renderRcaBench"),
     "agent-start.js": ("agentStartModel", "agentStartText", "renderAgentStart"), "onboarding.js": ("renderOnboarding", "onboardingModel"), "actions.js": ("renderActions", "renderFixtures", "renderProjectHome", "projectHomeModel"), "timeline.js": ("renderTimeline",), "timeline-live.js": ("timelineCardModel","parseTimelineCardEvent","renderCycleTimeline"), "smart-badges.js": ("smartBadgesForScope","smartBadgeText","renderSmartBadges"), "test-page.js": ("testPageModel","renderTestPage"), "cycle-board-context.js": ("cycleBoardContextModel","renderCycleBoardContext","loadBoardNative"), "cycle-board-delta.js": ("cycleBoardDeltaModel","renderCycleBoardDelta"), "adhoc-projects.js": ("parseAdhocRoute","renderAdhocProjects"), "lifecycle.js": ("tabsRow", "archivedPanel", "projectHead", "revisionRow"),
     "roi.js": ("ciifrRoiModel",), "search.js": ("buildSearchIndex", "searchProgress"), "oracle-continuity.js": ("oracleContinuityModel", "renderOracleContinuity"),
     "briefs.js": ("addProjectDialog", "addRevisionDialog", "projectBrief"), "links.js": ("loadLinks", "takeLinksFromHash", "linksPanel"), "lessons.js": ("renderLessons",), "app.js": ("loadAll", "render", "route"),
@@ -196,3 +197,4 @@ class ModuleVersion(unittest.TestCase):
             for v in re.findall(r"\.js\?v=(\d+)", f.read_text(encoding="utf-8")):
                 found.setdefault(v, []).append(f.name)
         self.assertEqual(len(found), 1, found)
+

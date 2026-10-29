@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import { readFileSync } from 'node:fs';
 import { adhocHref, parseAdhocRoute, ADHOC_PROJECTS, ADHOC_SECTIONS,
-  renderAdhocProjects } from '../adhoc-projects.js';
+  XML_PS_MAPPING_SECTIONS, sectionsForAdhocProject, renderAdhocProjects } from '../adhoc-projects.js';
 
 function fakeEl(tag) {
   const node={tag,className:'',children:[],attributes:{},href:'',
@@ -47,7 +47,16 @@ test('Adhoc Projects and Progress Page have stable nested hash routes',()=>{
   assert.equal(parseAdhocRoute('#/adhoc/progress-page/unknown').valid,false);
   assert.equal(parseAdhocRoute('#/adhoc/progress-page/tests/extra').valid,false);
   assert.equal(adhocHref(), '#/adhoc/progress-page/overview');
-  assert.deepEqual(ADHOC_PROJECTS.map(x=>x.label),['Progress Page']);
+  assert.deepEqual(ADHOC_PROJECTS.map(x=>x.label),['Progress Page','XML-PS Mapping']);
+  assert.deepEqual(parseAdhocRoute('#/adhoc/xml-ps-mapping'),
+    {project:'xml-ps-mapping',section:'overview',valid:true});
+  assert.deepEqual(parseAdhocRoute('#/adhoc/xml-ps-mapping/candidate-matrix'),
+    {project:'xml-ps-mapping',section:'candidate-matrix',valid:true});
+  assert.equal(parseAdhocRoute('#/adhoc/xml-ps-mapping/cycle-board').valid,false);
+  assert.equal(parseAdhocRoute('#/adhoc/progress-page/candidate-matrix').valid,false);
+  assert.deepEqual(sectionsForAdhocProject('xml-ps-mapping'),XML_PS_MAPPING_SECTIONS);
+  assert.deepEqual(XML_PS_MAPPING_SECTIONS.map(([key])=>key),
+    ['overview','candidate-matrix','matching-rules','evidence']);
   assert.deepEqual(ADHOC_SECTIONS.map(x=>x[0]),
     ['overview','cycle-board','contracts','delivery','tests']);
 });
@@ -56,6 +65,8 @@ test('Hub exposes Progress Page second-level tab and links to third-level sectio
   assert.match(hub.textContent,/Adhoc Projects/);
   const links=find(hub,n=>n.tag==='a').map(n=>n.href);
   assert.ok(links.includes('#/adhoc/progress-page/overview'));
+  assert.ok(links.includes('#/adhoc/xml-ps-mapping/overview'));
+  assert.match(hub.textContent,/XML-PS Mapping/);
   const pp=render('#/adhoc/progress-page/contracts');
   const tabs=find(pp,n=>n.tag==='nav'&&n.attributes['aria-label']==='Progress Page workspace sections');
   assert.equal(tabs.length,1);
@@ -83,6 +94,54 @@ test('Unknown adhoc routes fail visibly rather than showing another project',()=
   assert.equal(find(root,n=>n.attributes?.role==='alert').length,1);
   assert.doesNotMatch(root.textContent,/Current Progress Page/);
 });
+
+test('XML-PS Mapping Adhoc tab has distinct sections and direct evidence, not another WBS',()=>{
+  const page=render('#/adhoc/xml-ps-mapping/candidate-matrix');
+  const mainNav=find(page,n=>n.tag==='nav'&&n.attributes['aria-label']==='Adhoc Projects');
+  assert.equal(mainNav.length,1);
+  assert.deepEqual(mainNav[0].children.map(n=>n.href),
+    ['#/adhoc/progress-page/overview','#/adhoc/xml-ps-mapping/overview']);
+  const current=mainNav[0].children.filter(n=>n.attributes['aria-current']==='page');
+  assert.equal(current.length,1);
+  assert.equal(current[0].textContent,'XML-PS Mapping');
+  const tabs=find(page,n=>n.tag==='nav'
+    && n.attributes['aria-label']==='XML-PS Mapping workspace sections');
+  assert.equal(tabs.length,1);
+  assert.deepEqual(tabs[0].children.map(n=>n.href),
+    XML_PS_MAPPING_SECTIONS.map(([id])=>adhocHref('xml-ps-mapping',id)));
+  const currentSection=tabs[0].children.filter(n=>n.attributes['aria-current']==='page');
+  assert.equal(currentSection[0].href,'#/adhoc/xml-ps-mapping/candidate-matrix');
+  const links=find(page,n=>n.tag==='a').map(n=>n.href);
+  assert.ok(links.includes('https://reallakshman19.github.io/XML_Compare_Utilities/ps-mapping-candidate-matrix-validation.html'));
+  assert.match(page.textContent,/PS-131\.1/);
+  assert.match(page.textContent,/SL-211\.2/);
+  assert.match(page.textContent,/not the full production candidate dataset/i);
+});
+
+test('XML-PS Mapping matching rules preserve line mismatch as review, not qualified coverage',()=>{
+  const rules=render('#/adhoc/xml-ps-mapping/matching-rules');
+  assert.match(rules.textContent,/Pass 1/);
+  assert.match(rules.textContent,/Pass 2/);
+  assert.match(rules.textContent,/Ambiguous — Line Mismatch/);
+  assert.match(rules.textContent,/no automatic mapping/i);
+  const links=find(rules,n=>n.tag==='a').map(n=>n.href);
+  assert.ok(links.includes('https://github.com/reallakshman19/XML_Compare_Utilities/pull/225'));
+  const evidence=render('#/adhoc/xml-ps-mapping/evidence');
+  assert.match(evidence.textContent,/PR #233/);
+  assert.match(evidence.textContent,/read-only source navigator/i);
+  assert.doesNotMatch(evidence.textContent,/engineering PASS achieved/i);
+});
+
+test('XML-PS Mapping route rejects wrong or extra sections without selecting Progress Page',()=>{
+  for(const hash of ['#/adhoc/xml-ps-mapping/contracts',
+    '#/adhoc/xml-ps-mapping/matching-rules/extra','#/adhoc/xml-ps-mappings/overview']){
+    const root=render(hash);
+    assert.equal(find(root,n=>n.attributes?.role==='alert').length,1);
+    assert.match(root.textContent,/Unknown Adhoc Projects path/);
+    assert.doesNotMatch(root.textContent,/Current Progress Page/);
+  }
+});
+
 test('Adhoc UI does not create another WBS or change project JSON',()=>{
   const before=JSON.parse(readFileSync(new URL('../data/projects.json',import.meta.url),'utf8'));
   assert.equal(before.projects.some(x=>x.key==='adhoc'||x.key==='progress-page'),false);

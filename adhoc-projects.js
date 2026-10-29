@@ -5,7 +5,9 @@ import { el, link } from './util.js?v=33';
 export const ADHOC_ROOT = '#/adhoc';
 export const ADHOC_PROJECTS = Object.freeze([
   Object.freeze({key:'progress-page',label:'Progress Page',
-    description:'Small, bounded improvements to the reusable Progress Page experience.'})
+    description:'Small, bounded improvements to the reusable Progress Page experience.'}),
+  Object.freeze({key:'xml-ps-mapping',label:'XML-PS Mapping',
+    description:'Source-linked PS Mapping candidate reviews, identity rules and engineering evidence; no duplicate project WBS.'})
 ]);
 export const ADHOC_SECTIONS = Object.freeze([
   Object.freeze(['overview','Overview']),
@@ -14,12 +16,23 @@ export const ADHOC_SECTIONS = Object.freeze([
   Object.freeze(['delivery','Delivery slices']),
   Object.freeze(['tests','Test Lab'])
 ]);
+export const XML_PS_MAPPING_SECTIONS = Object.freeze([
+  Object.freeze(['overview','Overview']),
+  Object.freeze(['candidate-matrix','Candidate Matrix']),
+  Object.freeze(['matching-rules','Matching rules']),
+  Object.freeze(['evidence','Evidence'])
+]);
+export const sectionsForAdhocProject = project =>
+  project==='xml-ps-mapping' ? XML_PS_MAPPING_SECTIONS : ADHOC_SECTIONS;
 
 const P = 'https://github.com/reallakshman19/progress-page';
 const C = 'https://github.com/reallakshman19/Common';
 const DOC = C+'/blob/91a5d65c49cc7ec513d21d12df2c9bf5c28b146b/skills/agent-work/progress-page/references/';
 const CT_PR = C+'/pull/567';
 const LIVE = 'https://reallakshman19.github.io/progress-page/';
+const XML_PS_REPO = 'https://github.com/reallakshman19/XML_Compare_Utilities';
+const XML_PS_LIVE = 'https://reallakshman19.github.io/XML_Compare_Utilities/';
+const XML_PS_MATRIX = XML_PS_LIVE+'ps-mapping-candidate-matrix-validation.html';
 
 export const adhocHref = (project='progress-page',section='overview') =>
   ADHOC_ROOT+'/'+project+'/'+section;
@@ -29,7 +42,7 @@ export function parseAdhocRoute(hash) {
   const parts=String(hash).slice(2).split('/');
   const project=parts[1]||null, section=parts[2]||'overview';
   const validProject=project===null||ADHOC_PROJECTS.some(p=>p.key===project);
-  const validSection=ADHOC_SECTIONS.some(([key])=>key===section);
+  const validSection=sectionsForAdhocProject(project).some(([key])=>key===section);
   return {project,section,valid:validProject&&validSection&&parts.length<=3};
 }
 
@@ -51,6 +64,49 @@ function addCards(sectionNode,cards) {
   const grid=el('div','adhoc-grid');
   grid.append(...cards);
   sectionNode.append(grid);
+}
+
+// Navigation-only projection of existing XML Compare Utilities sources.
+// No local state, independent WBS, engineering verdict or mutable Page record.
+function renderXmlPsMapping(root,selectedSection) {
+  const body=el('div','body adhoc-body');
+  body.append(el('h2',null,'XML-PS Mapping'),
+    el('p','adhoc-intro','Reference links for the PS Mapping utility, candidate evidence and two-pass identity review. The XML Compare Utilities repository owns the engineering logic and tests; this workspace does not establish engineering acceptance or its own WBS.'));
+  if(selectedSection==='overview') {
+    const s=section(body,'Open the existing PS Mapping workflow',
+      'Start from the actual tool and the source-derived review. A line-mismatch candidate is not a confirmed node match or proof that hardware is missing.');
+    addCards(s,[
+      card('XML Compare Utilities','Launch the live application; use the PS Mapping utility to evaluate actual input tables.',[['Open application',XML_PS_LIVE]]),
+      card('Two-case Candidate Matrix','Inspect the published PS-131.1 / Node 4190 and SL-211.2 / Node 720 review cases. These are fixtures, not a complete production export.',[['Open Candidate Matrix',XML_PS_MATRIX]]),
+      card('Engineering source and tests','The resolver, fixture cases and published app source remain in XML Compare Utilities.',[['View repository',XML_PS_REPO],['Read fixture tests',XML_PS_REPO+'/blob/main/tests/ps-mapping-two-pass-line-mismatch.test.mjs']])
+    ]);
+  } else if(selectedSection==='candidate-matrix') {
+    const s=section(body,'Candidate Matrix — validated examples',
+      'The separate matrix is computed by the PS Mapping resolver using source-derived fixtures. It supports case filters and CSV export; it is not the full production candidate dataset.');
+    addCards(s,[
+      card('PS-131.1 · Node 4190','PIPE STOP TYPE-602 is classified as LINE STOP; the reference and model line families differ. The correct output holds identity for review instead of proposing another support.',[['Review row in matrix',XML_PS_MATRIX],['Read regression',XML_PS_REPO+'/blob/main/tests/ps-mapping-two-pass-line-mismatch.test.mjs']]),
+      card('SL-211.2 · Node 720','Existing REST and LINE STOP model components have conflicting line family identity. The 25 mm LINE STOP gap still requires separate verification.',[['Review row in matrix',XML_PS_MATRIX]]),
+      card('Production candidate export','For other nodes, run the PS Mapping utility against the current original reference and model tables. This page does not import a historical CSV or certify unseen cases.',[['Open utility',XML_PS_LIVE]])
+    ]);
+  } else if(selectedSection==='matching-rules') {
+    const s=section(body,'Two-pass line identity — review boundary',
+      'The governing resolver requires source-backed identity before a component contributes to confirmed node restraint coverage.');
+    addCards(s,[
+      card('Pass 1 · qualified mapping','Support Base + Line Family + DN + Reference Node. A valid, unique match can proceed to restraint presence and independent gap compliance checks.',[['Read merged change',XML_PS_REPO+'/pull/225']]),
+      card('Pass 2 · Ambiguous — Line Mismatch','Support Base + DN + Reference Node with different line families. This is a review-only candidate: no automatic mapping and no automatic .Xn hardware replacement while identity is unresolved.',[['Read regression cases',XML_PS_REPO+'/blob/main/tests/ps-mapping-two-pass-line-mismatch.test.mjs']]),
+      card('Separate evidence categories','Physical restraint evidence, qualified node coverage and gap/clearance compliance are distinct. Unknown line identity is not equivalent to missing hardware.',[['Inspect Candidate Matrix',XML_PS_MATRIX]])
+    ]);
+  } else if(selectedSection==='evidence') {
+    const s=section(body,'Native engineering evidence',
+      'Use source files and actual PRs for traceability. This navigation hub neither records engineering PASS nor changes the owning repository.');
+    addCards(s,[
+      card('PS Mapping resolver','Inspect the original application source that produces candidate identities and node-level diagnostics.',[['Core resolver',XML_PS_REPO+'/blob/main/tabs/ps-mapping-utility/ps-mapping-engine-diagnostics.js'],['Canonical assessment',XML_PS_REPO+'/blob/main/tabs/ps-mapping-utility/ps-mapping-engine-diagnostics-v25.js']]),
+      card('Two-pass identity implementation','Merged engineering change introducing review-only fallback and missing-support proposal suppression.',[['PR #225',XML_PS_REPO+'/pull/225']]),
+      card('Published Candidate Matrix','Merged page and browser regression for the two example cases, with links to their current source.',[['PR #233',XML_PS_REPO+'/pull/233'],['Open published matrix',XML_PS_MATRIX]]),
+      card('Oracle onboarding reference','The Common start guide defines role boundaries, original-source grounding and owner acceptance requirements.',[['Read START_HERE',C+'/blob/main/skills/agent-work/START_HERE.md']])
+    ]);
+  }
+  root.append(body,el('p','foot muted','Adhoc XML-PS Mapping is a read-only source navigator. The governing engineering WBS, acceptance decisions and native evidence stay with their owning project.'));
 }
 
 export function renderAdhocProjects(root,route,nav) {
@@ -79,7 +135,7 @@ export function renderAdhocProjects(root,route,nav) {
       'Select a workspace to see its own nested sections. This hub does not register a new governing WBS or change project status.');
     const projects=el('div','adhoc-grid');
     for(const p of ADHOC_PROJECTS){
-      const tile=nav(adhocHref(p.key),'Progress Page','adhoc-tile');
+      const tile=nav(adhocHref(p.key),p.label,'adhoc-tile');
       tile.append(el('span','muted',p.description),el('span','adhoc-tile-next','Open workspace →'));
       projects.append(tile);
     }
@@ -87,14 +143,19 @@ export function renderAdhocProjects(root,route,nav) {
     return;
   }
   const subs=el('nav','views adhoc-section-subtabs');
-  subs.setAttribute('aria-label','Progress Page workspace sections');
-  for(const [id,label] of ADHOC_SECTIONS){
+  subs.setAttribute('aria-label',route.project==='xml-ps-mapping'
+    ? 'XML-PS Mapping workspace sections' : 'Progress Page workspace sections');
+  for(const [id,label] of sectionsForAdhocProject(route.project)){
     const on=id===route.section;
     const a=nav(adhocHref(route.project,id),label,'view'+(on?' on':''));
     if(on)a.setAttribute('aria-current','page');
     subs.append(a);
   }
   root.append(subs);
+  if(route.project==='xml-ps-mapping') {
+    renderXmlPsMapping(root,route.section);
+    return;
+  }
 
   const body=el('div','body adhoc-body');
   const title=el('h2',null,'Progress Page');
