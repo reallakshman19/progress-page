@@ -20,10 +20,10 @@
       "milestone": "M1"
     },
     {
-      "t": "Bounded safety review: Owner-designated IR 6ae2d5ac; ACK/own receipt/independence disclosures/verdict NOT_RUN.",
-      "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/2",
-      "s": "ACK_PENDING",
-      "n": "Owner update; ACK pending",
+      "t": "IR 6ae2d5ac source/client review returned PARTIAL; engineering independence not established; Python/browser and ZIP receipt remain NOT_RUN.",
+      "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/2#issuecomment-6494348817",
+      "s": "PARTIAL_HOLD",
+      "n": "Prior return covers 9804e2c only",
       "milestone": "M13"
     }
   ],
@@ -97,13 +97,5 @@
       "milestone": "M12"
     }
   ],
-  "pending": [
-    {
-      "t": "ONE NOW: IR 6ae2d5ac acknowledges #2, retrieves exact inputs, records own source/candidate custody and independent assessment; Oracle 6ae1b0f7 reconciles next. Future builders remain unassigned.",
-      "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/2",
-      "s": "OWNER_DESIGNATED",
-      "n": "Owner update; ACK pending",
-      "milestone": "M13"
-    }
-  ]
+  "pending": []
 }
