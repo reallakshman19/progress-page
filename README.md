@@ -40,6 +40,26 @@ Dry-run first: `python tools/pp_batch.py update.json --data data`. It stages the
 
 The optional `#/PROJECT/start/REV/wbs%3AN/Mn/CARD_ID` route selects exactly one source-recorded card inside the milestone. A wrong, closed or mismatched ID produces a visible unresolved request, never another card. **Copy this task** exports the selected card and its full recorded status, next action, source links, unknowns and authorization boundary; **Copy milestone evidence** remains the explicitly broader multi-item export. Neither action sends a task, acknowledges an assignment or grants authority. Legacy workstream and milestone links are retained.
 
+## Cycle Board — CT-1 source-bound read-only preview
+
+Open `#/ciifr-node/cycle-board` for a **working read-only view** that reuses the
+published CIIFR-Node Page/WBS audit and explicitly configured public native
+[issue #231](https://github.com/reallakshman19/XML_Compare_Utilities/issues/231)
+and [draft PR #232](https://github.com/reallakshman19/XML_Compare_Utilities/pull/232).
+The native source is fetched only when that Board is opened. Its exact head or
+issue revision, actual observation time, partial/UNKNOWN fetch failures and
+`SELF_ASSESSED` label remain distinct from the previously published Page R1
+source (PR #226). An INFO-Auto snapshot still renders when no live Timeline
+comment intake exists; `#/PROJECT/timeline-live` remains compatible.
+
+This **does not** activate a CIIFR-Node Oracle Cycle, prove independent review
+PASS, dispatch an agent or update the Progress Page. In other projects, already
+published Page audit context still renders even without configured native intake.
+CT-2 changed-only authority checks, CT-3 writer proposal and CT-4 independent
+evaluation are separate future verticals. This preview is not evidence of saved
+time or an Owner usability trial. Reference contracts remain a
+[review-required Common draft PR](https://github.com/reallakshman19/Common/pull/567).
+
 ## Cycle now via Timeline — opt-in operational pilot
 
 Open `#/ciifr/timeline-live` to read live public-safe agent event comments from
