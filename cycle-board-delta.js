@@ -62,8 +62,13 @@ export function classifyPageCoverage(page,context){
     else {
       // Same URL may point to a new PR head. Never claim exact Page equivalence
       // without versioned native identity in a checked, published audit.
+      // Exact structured identity, not free-form summary text or URL equality.
+      // An audit event must bind this immutable occurrence and the actual
+      // Page WBS/card, otherwise a newer mutable PR head remains unverified.
       const versioned=mappedAudit.some(a=>a.source===e.source&&
-        typeof a.summary==='string'&&a.summary.includes(e.revision));
+        a.nativeOccurrenceId===e.occurrenceId&&
+        a.wbs===e.wbs&&
+        a.card&&cards[a.card]?.milestone===milestoneId);
       if(!versioned)findings.push({source:e.source,revision:e.revision,
         milestoneId,wbs:e.wbs,status:'VERSION_UNVERIFIED'});
     }
@@ -84,7 +89,7 @@ export function classifyPageCoverage(page,context){
 // and exact current Cycle assignment. The public Board deliberately supplies
 // neither; it can safely identify a mismatched role but must not dispatch.
 export function classifyCycleAuthority(pageKey,{binding=null,record=null,
-  readStatus='unknown',recipient=null,assignment=null,receipt=null}={}){
+  readStatus='unknown',recipient=null,assignment=null,receipt=null,proof=null}={}){
   if(!cycleSource(binding,pageKey))
     return {status:'UNMAPPED',reason:'No explicitly scoped canonical Cycle binding; native/OTM work stays independent.'};
   if(readStatus!=='ok'||!record)
@@ -100,12 +105,22 @@ export function classifyCycleAuthority(pageKey,{binding=null,record=null,
   if(!nextRole)return {status:'UNKNOWN',reason:'Canonical next recipient role is not established.'};
   if(role&&role!==nextRole)
     return {status:'WRONG_RECIPIENT',reason:'Recipient role differs from the canonical next actor.'};
+  // A public JavaScript field like verified:true is not authentication.
+  // There is no trusted private recipient integration in this viewer.
+  // Proof is evaluated for correspondence below, but NEVER grants dispatch.
   if(!role||!recipient?.verified)
     return {status:'UNKNOWN',reason:'Public Board does not verify a private recipient or dispatch.'};
+  if(proof?.origin!=='TRUSTED_PRIVATE_CYCLE_PRECHECK'||
+     !proof.canonicalReadSha||!/^[a-f0-9]{40}$/i.test(proof.canonicalReadSha)||
+     !proof.canonicalChecked||!proof.originalInputChecked)
+    return {status:'UNKNOWN',reason:'No source-pinned private Cycle preflight; public role flags cannot establish authority.'};
   const assignments=Array.isArray(record.assignments)?record.assignments:[];
   const actual=assignments.find(a=>a.id===assignment?.id&&a.generation===assignment?.generation);
   if(!actual||actual.recipient_role!==role||!safe(assignment?.candidate)||
-     actual.candidate!==assignment.candidate)
+     actual.candidate!==assignment.candidate||actual.id!==proof?.assignmentId||
+     actual.generation!==proof?.generation||actual.candidate!==proof?.candidate||
+     record.revision!==proof?.canonicalRevision||
+     proof?.taskVerified!==true||proof?.holdsVerified!==true)
     return {status:'STALE_ASSIGNMENT',reason:'Assignment ID, generation, candidate or role is not current and exact.'};
   if(safe(actual.recipient_chat_id8)&&
       actual.recipient_chat_id8!==safe(recipient?.chatId8))
@@ -136,8 +151,8 @@ export function classifyCycleAuthority(pageKey,{binding=null,record=null,
     return {status:'UNKNOWN',reason:'Task, holds, native source or receipt inbox has not been verified.'};
   if(receipt?.alreadyReturned)
     return {status:'RETURNED_ACCEPTED',reason:'Existing accepted return must not be duplicated.'};
-  return {status:'AUTHORIZED',reason:
-    'Exact recipient/canonical candidate checks reported by the caller; Cycle now still governs execution, not this Board.'};
+  return {status:'PREFLIGHT_MATCHED',reason:
+    'Source and assignment fields correspond in this advisory model, but a browser cannot authenticate the private actor. Invoke the real Cycle now guard; this Board grants no continuation.'};
 }
 
 export function cycleBoardDeltaModel(page,current,{previous=null,binding=null,
@@ -146,7 +161,7 @@ export function cycleBoardDeltaModel(page,current,{previous=null,binding=null,
   const publication=classifyPageCoverage(page,current);
   const cycle=classifyCycleAuthority(current?.project,{binding,
     record:cycleRead?.record,readStatus:cycleRead?.status||'unknown',
-    recipient,assignment,receipt});
+    recipient,assignment,receipt,proof:cycleRead?.proof||null});
   const holds=(current?.sources||[]).some(e=>e.reportedHold===true);
   let advice='UNKNOWN_STOP',reason='Source and authority are not sufficient to authorize a new task.';
   if(cycle.status==='WRONG_RECIPIENT'||cycle.status==='INACTIVE'){
@@ -157,15 +172,10 @@ export function cycleBoardDeltaModel(page,current,{previous=null,binding=null,
     advice='SCOPED_CORRECTION_BRIEF';reason=cycle.reason;
   }else if(publication.status==='STALE_PAGE'){
     advice='REVIEW_PAGE_DRIFT';reason=publication.reason;
-  }else if(cycle.status==='AUTHORIZED'&&!holds&&
-    native.status!=='UNKNOWN'&&publication.status!=='UNMAPPED'){
-    advice='CONTINUE_AUTHORIZED';reason=
-      'Private recipient checks passed; reread original Cycle/native instructions before acting.';
+  }else if(cycle.status==='PREFLIGHT_MATCHED'){
+    advice='UNKNOWN_STOP';reason='Private source checks correspond but browser identity/dispatch authority is never established. Use canonical Cycle now.';
   }
-  // Never deliver a CONTINUE claim for a public Board lacking private identity.
-  if(!recipient&&advice==='CONTINUE_AUTHORIZED'){
-    advice='UNKNOWN_STOP';reason='Private recipient and exact canonical authority are unverified.';
-  }
+  // No UI or synthetic proof may turn this read-only Board into a dispatcher.
   return {schema:'cycle-board.delta/v1',native,publication,cycle,
     next:{advice,reason},holds,previousObservedAt:previous?.native?.observedAt||null,
     currentObservedAt:current?.native?.observedAt||null};
