@@ -56,6 +56,21 @@ chat URLs, credentials, protected artifact links or private bytes** on GitHub
 or the Page. GitHub cannot authenticate a ChatGPT chat or reviewer independence.
 If private enrollment is absent, the agent must not post.
 
+**INFO · Auto-generated:** The current Page's *existing audited Timeline* is also
+projected on read into a clearly separate set of WBS-wise **INFO · Auto-generated**
+cards. These are derived from the **latest public-source-backed audit event per
+actual WBS card or milestone**. They display recorded actor, timestamp, Page
+revision, original source, recorded current card state/next with an explicit
+staleness caution, and only grounded Smart Tags (`WBS`, and `PLAN`/`FIXTURE`
+when supported by the original event, or `ROADMAP` only with a published
+milestone source). They remain visible even when the live GitHub comment
+intake is unavailable: that intake is still separately `UNKNOWN`.
+Generated Info is a **rendered projection only**: no event is posted to
+GitHub, no new audit item, no invented chat status/IR acknowledgment, no
+Action auto-closure, no acceptance/binding, and no duplicate status-report
+requirement. **Copy grounding / Page brief** packages the source for later
+review without claiming new Page work.
+
 For usable task/handoff cards, use the `CYCLE_TIMELINE_CARD v2` envelope
 with explicit `kind=ACTION|INFO`, a stable `threadId`, and
 `actionRef` on a resolving Info. The Action is not deleted: the linked Info

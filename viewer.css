@@ -494,3 +494,14 @@ main{width:100%;min-width:0}
 .ct-card .ct-tools{margin-top:2px}
 .ct-history{padding-top:6px;border-top:1px solid var(--bd)}
 .ct-history>summary{cursor:pointer;color:var(--mut);font-size:12px}
+
+
+/* Source-backed, derived INFO cards: distinct from an agent's Info handoff. */
+.ct-auto-section{display:grid;gap:10px;margin:14px 0 20px;min-width:0}
+.ct-auto-head{display:flex;gap:9px;align-items:center;flex-wrap:wrap}
+.ct-auto-disclosure{display:grid;gap:12px;min-width:0}
+.ct-auto-disclosure>summary{cursor:pointer;color:var(--mut);font-size:12px;padding:6px 0}
+.ct-auto{border-left:4px solid var(--acc)}
+.ct-auto .ct-top{gap:8px}
+.ct-auto .ct-top>.muted{font-size:11px;white-space:normal;overflow-wrap:anywhere}
+.ct-auto .ct-tools{display:flex;flex-wrap:wrap}
