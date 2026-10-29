@@ -108,6 +108,8 @@ def build():
     p.add_argument("--flag", action="append", dest="flags", help="paused or needs-you (repeat); --no-flags clears")
     p.add_argument("--no-flags", action="store_true")
     p.add_argument("--ref", action="append", help="kind|label|https-url[|status]; kind is issue, comment or pr")
+    p.add_argument("--native-occurrence-id", help="verified immutable native occurrence; writer reference only")
+    p.add_argument("--native-wbs", help="WBS of the existing selected card for an occurrence")
     p.add_argument("--edge", action="append", help="otherCardId:to|back|both")
     p.add_argument("--order", type=int)
     for name in ("supersede", "cancel"):
@@ -182,6 +184,8 @@ def build():
     p.add_argument("--source", required=True)
     p.add_argument("--actor", required=True)
     p.add_argument("--card", help="existing card ID; required if source is unmatched or ambiguous")
+    p.add_argument("--review-legacy-url", action="store_true", help="explicitly review legacy URL-only evidence before a new occurrence")
+    p.add_argument("--legacy-reason", help="written rationale for uncertain URL-only historical audit")
     p.add_argument("--expected-head", help="expected PR candidate head SHA, if pinned")
     p.add_argument("--output", help="write reviewed pp_batch manifest to NEW file; never touches Page data")
     p = top.add_parser("inputs")
@@ -231,7 +235,8 @@ def run(a):
     if c == "card" and s == "set":
         flags = [] if a.no_flags else a.flags
         return C.card_set(d, a.project, a.card, a.actor, a.src, a.why, a.at, a.label, a.group, a.milestone, a.state, a.now, a.next_actor,
-                          a.next_text, a.chat, a.role, flags, a.ref, a.edge, a.order)
+                          a.next_text, a.chat, a.role, flags, a.ref, a.edge, a.order,
+                          a.native_occurrence_id, a.native_wbs)
     if c == "card" and s in ("supersede", "cancel"):
         return C.card_close(d, a.project, a.card, s.upper(), a.why, a.actor, a.src, getattr(a, "by", None))
     if c == "card":
@@ -257,7 +262,8 @@ def run(a):
         return sys.exit(pp_cycle_preflight.run(d, a.project, a.cycle, a.wbs))
     if c == "propose":
         import pp_propose
-        return sys.exit(pp_propose.run(d, a.project, a.source, a.actor, a.card, a.expected_head, a.output))
+        return sys.exit(pp_propose.run(d, a.project, a.source, a.actor, a.card, a.expected_head, a.output,
+                                           a.review_legacy_url, a.legacy_reason))
     if c == "inputs":
         import pp_inputs
         return pp_inputs.list_inputs(d, a.actor, a.since, a.json)
