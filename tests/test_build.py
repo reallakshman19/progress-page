@@ -15,7 +15,7 @@ FUNCTIONS = {  # viewer module -> declarations the bundle must still contain
     "util.js": ("whenText", "copyText", "link", "md"), "triggers.js": ("cardTags", "nudgeTag", "summary", "fmt"), "popup.js": ("dialog",),
     "reply.js": ("issueUrl",), "nudge.js": ("openNudge", "nudgeRow"), "progress.js": ("renderProgress", "milestoneState"),
     "checkpoint.js": ("checkpointModel", "cycleSource", "cycleSummary", "renderCheckpoint"),
-    "agent-start.js": ("agentStartModel", "agentStartText", "renderAgentStart"), "onboarding.js": ("renderOnboarding", "onboardingModel"), "actions.js": ("renderActions", "renderFixtures", "renderProjectHome", "projectHomeModel"), "timeline.js": ("renderTimeline",), "lifecycle.js": ("tabsRow", "archivedPanel", "projectHead", "revisionRow"),
+    "agent-start.js": ("agentStartModel", "agentStartText", "renderAgentStart"), "onboarding.js": ("renderOnboarding", "onboardingModel"), "actions.js": ("renderActions", "renderFixtures", "renderProjectHome", "projectHomeModel"), "timeline.js": ("renderTimeline",), "timeline-live.js": ("timelineCardModel","parseTimelineCardEvent","renderCycleTimeline"), "lifecycle.js": ("tabsRow", "archivedPanel", "projectHead", "revisionRow"),
     "roi.js": ("ciifrRoiModel",), "search.js": ("buildSearchIndex", "searchProgress"), "oracle-continuity.js": ("oracleContinuityModel", "renderOracleContinuity"),
     "briefs.js": ("addProjectDialog", "addRevisionDialog", "projectBrief"), "links.js": ("loadLinks", "takeLinksFromHash", "linksPanel"), "lessons.js": ("renderLessons",), "app.js": ("loadAll", "render", "route"),
 }

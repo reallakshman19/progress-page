@@ -1,48 +1,48 @@
 // Live, public-safe Cycle now via Timeline observations; never the curated Page audit.
 import { el, link, copyText } from './util.js?v=33';
 
-export const SOURCES = Object.freeze({
+export const CT_SOURCES = Object.freeze({
   ciifr: Object.freeze({ owner:'reallakshman19', repo:'Common', issue:564 })
 });
 const FENCE=String.fromCharCode(96).repeat(3);
-const HEADER=new RegExp('^CYCLE_TIMELINE_EVENT v1\n'+FENCE+'json\n([\\s\\S]+?)\n'+FENCE+'\\s*$');
-const ALIAS=/^[a-z][a-z0-9-]{1,31}$/;
-const EVENT=/^[a-z0-9][a-z0-9-]{3,79}$/;
-const WBS=/^[1-9]\d{0,2}(?:\.[1-9]\d{0,2}){0,3}$/;
-const SOURCE=/^https:\/\/github\.com\/[a-z0-9_.-]+\/[a-z0-9_.-]+\/(?:issues\/[1-9]\d*|pull\/[1-9]\d*|commit\/[a-f0-9]{40})(?:#issuecomment-[1-9]\d*)?$/i;
-const PRIVATE=/(?:chatgpt\.com\/c\/|chat\.openai\.com\/|claude\.ai\/chat\/|antigravity\.google\.com\/|drive\.google\.com\/|[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12})/i;
-const ROLES=new Set(['CODER','ORACLE','REVIEWER_IR']);
-const STATUSES=new Set(['WORKING','BLOCKED','NEEDS_OWNER','WAITING','RETURN_POSTED','REVIEWING','NO_ACTION']);
-const REQUIRED=['project','eventId','actorAlias','peerAlias','role','wbs','card','status','ownerAsk','next','source','fixtureRefs'];
+const CT_HEADER=new RegExp('^CYCLE_TIMELINE_EVENT v1\n'+FENCE+'json\n([\\s\\S]+?)\n'+FENCE+'\\s*$');
+const CT_ALIAS=/^[a-z][a-z0-9-]{1,31}$/;
+const CT_EVENT=/^[a-z0-9][a-z0-9-]{3,79}$/;
+const CT_WBS=/^[1-9]\d{0,2}(?:\.[1-9]\d{0,2}){0,3}$/;
+const CT_SOURCE=/^https:\/\/github\.com\/[a-z0-9_.-]+\/[a-z0-9_.-]+\/(?:issues\/[1-9]\d*|pull\/[1-9]\d*|commit\/[a-f0-9]{40})(?:#issuecomment-[1-9]\d*)?$/i;
+const CT_PRIVATE=/(?:chatgpt\.com\/c\/|chat\.openai\.com\/|claude\.ai\/chat\/|antigravity\.google\.com\/|drive\.google\.com\/|[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12})/i;
+const CT_ROLES=new Set(['CODER','ORACLE','REVIEWER_IR']);
+const CT_STATUSES=new Set(['WORKING','BLOCKED','NEEDS_OWNER','WAITING','RETURN_POSTED','REVIEWING','NO_ACTION']);
+const CT_REQUIRED=['project','eventId','actorAlias','peerAlias','role','wbs','card','status','ownerAsk','next','source','fixtureRefs'];
 
 export function parseCycleTimelineComment(comment, project) {
   if(!comment||typeof comment.body!=='string'||comment.body.length>6000||
-     !Number.isInteger(comment.id)||!SOURCE.test(comment.html_url||'')||
+     !Number.isInteger(comment.id)||!CT_SOURCE.test(comment.html_url||'')||
      !Number.isFinite(Date.parse(comment.created_at||''))) return null;
-  const match=HEADER.exec(comment.body.replace(/\r\n/g,'\n').trim());
-  if(!match||PRIVATE.test(comment.body))return null;
+  const match=CT_HEADER.exec(comment.body.replace(/\r\n/g,'\n').trim());
+  if(!match||CT_PRIVATE.test(comment.body))return null;
   let data;
   try {data=JSON.parse(match[1]);} catch {return null;}
   if(!data||typeof data!=='object'||Array.isArray(data)||
-     Object.keys(data).sort().join()!==REQUIRED.slice().sort().join()||
-     data.project!==project||!EVENT.test(data.eventId||'')||
-     !ALIAS.test(data.actorAlias||'')||
-     !(data.peerAlias==='NO_DIRECT_PEER'||ALIAS.test(data.peerAlias||''))||
-     !ROLES.has(data.role)||!STATUSES.has(data.status)||
-     !(data.wbs==='UNSCOPED'||WBS.test(data.wbs||''))||
-     !(data.card==='UNSCOPED'||ALIAS.test(data.card||''))||
+     Object.keys(data).sort().join()!==CT_REQUIRED.slice().sort().join()||
+     data.project!==project||!CT_EVENT.test(data.eventId||'')||
+     !CT_ALIAS.test(data.actorAlias||'')||
+     !(data.peerAlias==='NO_DIRECT_PEER'||CT_ALIAS.test(data.peerAlias||''))||
+     !CT_ROLES.has(data.role)||!CT_STATUSES.has(data.status)||
+     !(data.wbs==='UNSCOPED'||CT_WBS.test(data.wbs||''))||
+     !(data.card==='UNSCOPED'||CT_ALIAS.test(data.card||''))||
      typeof data.ownerAsk!=='string'||data.ownerAsk.length>300||
      typeof data.next!=='string'||!data.next.trim()||data.next.length>350||
-     !SOURCE.test(data.source||'')||!Array.isArray(data.fixtureRefs)||
+     !CT_SOURCE.test(data.source||'')||!Array.isArray(data.fixtureRefs)||
      data.fixtureRefs.length>8||
-     !data.fixtureRefs.every(x=>typeof x==='string'&&SOURCE.test(x))||
+     !data.fixtureRefs.every(x=>typeof x==='string'&&CT_SOURCE.test(x))||
      (data.status==='NEEDS_OWNER'?!data.ownerAsk.trim():!!data.ownerAsk.trim()))return null;
   return {...data,commentId:comment.id,at:comment.created_at,commentUrl:comment.html_url,
     provenance:'REPORTED_UNVERIFIED'};
 }
 
 export async function loadCycleTimeline(project,fetcher=fetch) {
-  const src=SOURCES[project];
+  const src=CT_SOURCES[project];
   if(!src)return [];
   const comments=[];
   for(let page=1;page<=5;page++) {
@@ -102,20 +102,20 @@ const CARD_HEADER=new RegExp('^CYCLE_TIMELINE_CARD v2\\n'+String.fromCharCode(96
 
 export function parseTimelineCardEvent(comment,project) {
   if(!comment||typeof comment.body!=='string'||comment.body.length>6500||
-    !Number.isInteger(comment.id)||!SOURCE.test(comment.html_url||'')||
-    !Number.isFinite(Date.parse(comment.created_at||''))||PRIVATE.test(comment.body))return null;
+    !Number.isInteger(comment.id)||!CT_SOURCE.test(comment.html_url||'')||
+    !Number.isFinite(Date.parse(comment.created_at||''))||CT_PRIVATE.test(comment.body))return null;
   const matched=CARD_HEADER.exec(comment.body.replace(/\r\n/g,'\n').trim());
   if(!matched)return null;
   let e;try{e=JSON.parse(matched[1]);}catch{return null;}
   if(!e||typeof e!=='object'||Array.isArray(e)||
      Object.keys(e).sort().join()!==CARD_FIELDS.slice().sort().join()||
-     e.project!==project||!EVENT.test(e.eventId||'')||!EVENT.test(e.threadId||'')||
-     !(e.actionRef===null||EVENT.test(e.actionRef||''))||
-     !ALIAS.test(e.actorAlias||'')||
-     !(e.peerAlias==='NO_DIRECT_PEER'||ALIAS.test(e.peerAlias||''))||
-     !ROLES.has(e.role)||!CARD_TYPES.has(e.kind)||
-     !(e.wbs==='UNSCOPED'||WBS.test(e.wbs||''))||
-     !(e.card==='UNSCOPED'||ALIAS.test(e.card||''))||
+     e.project!==project||!CT_EVENT.test(e.eventId||'')||!CT_EVENT.test(e.threadId||'')||
+     !(e.actionRef===null||CT_EVENT.test(e.actionRef||''))||
+     !CT_ALIAS.test(e.actorAlias||'')||
+     !(e.peerAlias==='NO_DIRECT_PEER'||CT_ALIAS.test(e.peerAlias||''))||
+     !CT_ROLES.has(e.role)||!CARD_TYPES.has(e.kind)||
+     !(e.wbs==='UNSCOPED'||CT_WBS.test(e.wbs||''))||
+     !(e.card==='UNSCOPED'||CT_ALIAS.test(e.card||''))||
      !((e.kind==='ACTION'?ACTION_STATES:INFO_STATES).has(e.state))||
      typeof e.title!=='string'||!e.title.trim()||e.title.length>120||
      typeof e.details!=='string'||e.details.length>850||
@@ -124,12 +124,12 @@ export function parseTimelineCardEvent(comment,project) {
      (e.kind==='ACTION'&&(!e.next.trim()||e.actionRef!==null))||
      (e.kind==='INFO'&&e.ownerAsk!=='')||
      (e.state==='NEEDS_OWNER'?!e.ownerAsk.trim():!!e.ownerAsk.trim())||
-     !SOURCE.test(e.source||'')||
+     !CT_SOURCE.test(e.source||'')||
      !Array.isArray(e.smartTags)||e.smartTags.length>12||
      !e.smartTags.every(t=>t&&typeof t==='object'&&!Array.isArray(t)&&
        Object.keys(t).sort().join()==='label,source,type'&&
        TAG_TYPES.has(t.type)&&typeof t.label==='string'&&t.label.trim()&&
-       t.label.length<=70&&SOURCE.test(t.source)))return null;
+       t.label.length<=70&&CT_SOURCE.test(t.source)))return null;
   return {...e,commentId:comment.id,at:comment.created_at,commentUrl:comment.html_url,
     provenance:'REPORTED_UNVERIFIED'};
 }
@@ -224,7 +224,7 @@ export function timelinePageBrief(info) {
 }
 
 export function renderCycleTimeline(root,project,state){
-  const src=SOURCES[project?.index?.project?.key];
+  const src=CT_SOURCES[project?.index?.project?.key];
   root.append(el('h3',null,'Cycle now via Timeline'));
   if(!src){root.append(el('p','banner','No live intake configured for this project.'));return;}
   root.append(el('p','muted','Action = someone owes a step. Info = a step was recorded or handed off. The old Action stays in the history. '),
