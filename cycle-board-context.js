@@ -14,8 +14,12 @@ export const BOARD_NATIVE_SOURCES=Object.freeze({
 const API='https://api.github.com/repos/';
 const SOURCE_RE=/^https:\/\/github\.com\/[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+\/(?:issues|pull)\/\d+$/;
 const SHA_RE=/^[0-9a-f]{40}$/;
-const sensitive=/chatgpt\.com\/c\/|\b[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}\b|gh[pousr]_[A-Za-z0-9_]+/i;
-const safeTitle=x=>typeof x==='string'&&!sensitive.test(x)?x.slice(0,180):'Source title unavailable';
+// Native titles are untrusted and public display is unnecessary for identity.
+// Fail closed on URLs, long opaque credentials, emails or private chat IDs;
+// render a neutral label instead of trying to redact only a substring.
+const sensitive=/https?:\/\/|chatgpt\.com|\b[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}\b|gh[pousr]_[A-Za-z0-9_]+|github_pat_[A-Za-z0-9_]+|sk-[A-Za-z0-9_-]{15,}|[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}|(?:token|password|secret|authorization)\s*[:=]/i;
+const safeTitle=x=>typeof x==='string'&&x.length<=180&&!sensitive.test(x)?
+  x.replace(/[\r\n\t]/g,' ').trim()||'Source title unavailable':'Source title unavailable';
 
 export const boardSourceConfigured=key=>Object.hasOwn(BOARD_NATIVE_SOURCES,key);
 
