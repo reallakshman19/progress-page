@@ -581,3 +581,15 @@ main{width:100%;min-width:0}
 .cb-delta button{margin:8px 0}
 .cb-delta button:disabled{opacity:.65;cursor:wait}
 @media(max-width:620px){.cb-delta{padding:10px}.cb-delta-facts{grid-template-columns:1fr}}
+
+/* CT-3 reviewer-only Page writer preview. Commands are not executed in-browser. */
+.cb-writer{margin:14px 0 18px;padding:14px;border:1px solid var(--bd);border-radius:12px;overflow-wrap:anywhere}
+.cb-writer>h4{font-size:15px;margin:0 0 6px}
+.cb-writer-state{display:flex;gap:7px;flex-wrap:wrap;margin:12px 0}
+.cb-writer-item{border:1px solid var(--bd);border-radius:9px;padding:12px;margin:10px 0;background:var(--card);min-width:0}
+.cb-writer-item>p{font-size:12px;line-height:1.5;margin:6px 0}
+.cb-writer-commands{margin:10px 0}
+.cb-writer-commands summary{cursor:pointer;font-weight:600;font-size:13px}
+.cb-writer-commands>p{margin:9px 0;font-size:12px}
+.cb-writer-code{overflow-x:auto;white-space:pre-wrap;overflow-wrap:anywhere;padding:10px;font-size:12px;background:var(--bg);border:1px solid var(--bd);border-radius:7px}
+@media(max-width:620px){.cb-writer{padding:10px}.cb-writer-item{padding:9px}}
