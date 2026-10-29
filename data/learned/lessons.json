@@ -504,6 +504,26 @@
           "action": "Methodology concept note; Smart Labelling 1 and 2 skills with checkers.",
           "evidence": "Skills tested on two real questions."
         }
+      ],
+      "checklist": [
+        "Have I read the Owner's intent in date order before acting?",
+        "Am I building the reusable rule (blueprint + adapter) or another one-off lesson?",
+        "Can each agent change only its own part, and report gaps instead of improvising?",
+        "Did I re-run every check myself, and did someone other than the author check it?",
+        "Does my message say plainly what is not yet verified?"
+      ],
+      "applications": [
+        {
+          "text": "G9v3.5 WBS 1: 14 Work, Power and Energy tiles built and independently physics-checked",
+          "source": "https://github.com/reallakshman19/progress-page/blob/main/data/g9v35/cards.json",
+          "state": "APPLIED"
+        }
+      ],
+      "sources": [
+        {
+          "label": "G9v3.5 project cards on this page",
+          "url": "https://github.com/reallakshman19/progress-page/blob/main/data/g9v35/cards.json"
+        }
       ]
     }
   ]
