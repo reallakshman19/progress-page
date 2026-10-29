@@ -564,3 +564,20 @@ main{width:100%;min-width:0}
 .cb-source p{margin:5px 0}
 .cb-source .smart-badges{margin:6px 0}
 @media(max-width:620px){.cb-context{padding:11px}.cb-facts{grid-template-columns:1fr}}
+
+/* CT-2 on-demand source delta; deliberately no authoritative status control. */
+.cb-delta{margin:14px 0 18px;padding:14px;border:1px solid var(--bd);border-radius:12px}
+.cb-delta>h4{font-size:15px;margin:0 0 6px}
+.cb-delta>p{margin:6px 0 12px}
+.cb-delta-facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));gap:10px;margin:12px 0}
+.cb-delta-fact{border:1px solid var(--bd);background:var(--card);border-radius:9px;padding:10px}
+.cb-delta-fact>span{display:block;font-size:11px}
+.cb-delta-fact strong{display:block;font-size:13px;margin:3px 0;overflow-wrap:anywhere}
+.cb-delta-fact p{font-size:12px;line-height:1.45;margin:5px 0}
+.cb-advice{padding:10px 12px;border-left:3px solid var(--acc);background:var(--card);border-radius:4px;margin:9px 0}
+.cb-advice p{margin:5px 0}
+.cb-delta-sources{margin:10px 0;overflow-wrap:anywhere}
+.cb-delta-sources p{margin:4px 0}
+.cb-delta button{margin:8px 0}
+.cb-delta button:disabled{opacity:.65;cursor:wait}
+@media(max-width:620px){.cb-delta{padding:10px}.cb-delta-facts{grid-template-columns:1fr}}
