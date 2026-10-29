@@ -40,6 +40,36 @@ Dry-run first: `python tools/pp_batch.py update.json --data data`. It stages the
 
 The optional `#/PROJECT/start/REV/wbs%3AN/Mn/CARD_ID` route selects exactly one source-recorded card inside the milestone. A wrong, closed or mismatched ID produces a visible unresolved request, never another card. **Copy this task** exports the selected card and its full recorded status, next action, source links, unknowns and authorization boundary; **Copy milestone evidence** remains the explicitly broader multi-item export. Neither action sends a task, acknowledges an assignment or grants authority. Legacy workstream and milestone links are retained.
 
+## Cycle now via Timeline — opt-in operational pilot
+
+Open `#/ciifr/timeline-live` to read live public-safe agent event comments from
+[Common issue #564](https://github.com/reallakshman19/Common/issues/564).
+This feed is explicitly **REPORTED_UNVERIFIED**: it is neither Cycle authority
+nor the audited Page Timeline (`data/ciifr/audit.json`). No automatic Page,
+Cycle, WBS, fixtures, My actions or assignment writes occur.
+
+**Private enrollment is required before posting:** Each agent must privately
+know its project, full chat ID, interacting chat's full ID (or explicitly
+`NO_DIRECT_PEER`), and CODER/ORACLE/REVIEWER_IR role. A private Owner-held
+mapping connects these to stable public aliases. **Never publish full IDs,
+chat URLs, credentials, protected artifact links or private bytes** on GitHub
+or the Page. GitHub cannot authenticate a ChatGPT chat or reviewer independence.
+If private enrollment is absent, the agent must not post.
+
+Agents post one `CYCLE_TIMELINE_EVENT v1` JSON comment for a meaningful
+status/Owner-request change, referencing existing native source evidence;
+no repeated check-ins or duplicate engineering returns. The read-only viewer
+groups **latest reported status per actor+WBS+card**, detects mismatched WBS/card
+as `UNRESOLVED_SCOPE`, and shows `NEEDS_OWNER` only with a current explicit ask.
+GitHub retrieval errors, incomplete pagination and malformed events are
+visibly unknown or partial, not empty or verified agent status.
+
+The incumbent Oracle may separately reconcile native returns into canonical
+Cycle. The designated Page writer may separately reconcile supported WBS tiles,
+fixtures, Owner actions and the **existing audited Page Timeline** through
+the checked `pp_propose` → `pp_batch` route. Live posts never activate bindings,
+grant engineering PASS, verify bytes, acknowledge assignment or accept a product.
+
 ## Canonical Cycle-to-WBS binding preflight (source only)
 
 Before proposing a Page `data/projects.json` Cycle binding, the authorized coordinator can run `python tools/pp_cli.py cycle-preflight --project ciifr --cycle ciifr --wbs 3`. This read-only command pins Common `main` to its observed commit, validates the returned canonical `CURRENT.json` Git blob, and checks exact Page project/WBS, original native WBS and task references, observed PR candidate head, active Cycle and Page revision/publication. It returns exactly **READY_FOR_REVIEW**, **SCOPE_MISMATCH**, or **INSUFFICIENT_EVIDENCE** with specific source gaps/conflicts. A green result means *eligible for separately authorized review of a binding*, **not** that a binding, agent assignment, engineering PASS or Owner acceptance exists. Missing/failed sources fail closed, not inferred by name or stored cached prose. Never auto-write Page data, Cycle state or acknowledgements. Any human-approved binding must still be restricted to the original `wbs:N` and use existing Page writer and Common Owner rules.

@@ -8,6 +8,7 @@ import { renderAgentStart } from './agent-start.js?v=33';
 import { renderLessons } from './lessons.js?v=33';
 import { renderActions, renderFixtures, renderProjectHome, openCount } from './actions.js?v=33';
 import { renderTimeline } from './timeline.js?v=33';
+import { loadCycleTimeline, renderCycleTimeline } from './timeline-live.js?v=33';
 import { tabsRow, archivedPanel, projectHead, revisionRow, isActive, HOME_VIEWS, HOME_SUBTABS, CONTINUITY_VIEWS, CONTINUITY_SUBTABS, PRIMARY_TABS, primaryTabActive } from './lifecycle.js?v=33';
 import { nudgesOf, openNudge } from './nudge.js?v=33';
 import { addProjectDialog, addRevisionDialog } from './briefs.js?v=33';
@@ -43,7 +44,7 @@ function mergedLinks() {
 }
 
 const state = { projects: [], data: {}, site: {}, links: mergedLinks(), error: null, panel: false, offline: false, archivedOpen: false, rev: null, paths: null, repo: {}, searchOpen: false, searchQuery: '', searchIndex: [],
-  pageFetch: { status:'unknown', observedAt:null }, cycles: {} };
+  pageFetch: { status:'unknown', observedAt:null }, cycles: {}, liveTimelines: {} };
 
 // The local hub server (127.0.0.1) serves each project's private coding and reference folders; the website never has them.
 async function loadPaths() {
@@ -123,6 +124,21 @@ async function loadCycles(projects) {
   }));
   state.cycles=next;
 }
+async function loadLiveTimelines(projects) {
+  const next = {};
+  await Promise.all(projects.map(async p => {
+    if (p.key !== 'ciifr') return; // Explicit pilot source only; no inferred Cycle binding.
+    try {
+      const comments = await withTimeout(loadCycleTimeline(p.key), 15000);
+      next[p.key] = { status:'ok', observedAt:new Date().toISOString(), comments };
+    } catch (error) {
+      // A failed read cannot be interpreted as an empty/healthy agent board.
+      next[p.key] = { status:'unknown', observedAt:new Date().toISOString(),
+        error:String(error.message || error), comments:null };
+    }
+  }));
+  state.liveTimelines = next;
+}
 async function refresh() {
   try {
     const r = await withTimeout(loadAll(get), 12000);
@@ -133,7 +149,7 @@ async function refresh() {
     state.offline = false;
     state.error = null;
     state.pageFetch={status:'ok',observedAt:new Date().toISOString()};
-    await loadCycles(r.projects);
+    await Promise.all([loadCycles(r.projects), loadLiveTimelines(r.projects)]);
   } catch (e) {
     // Retained data is not fresh evidence; never advertise 'live' after failure.
     state.error = String(e.message || e);
@@ -558,6 +574,7 @@ function render() {
       if(family || step) showCheckpoint(false); // The scoped native task stays first.
     }
     else if (v === 'actions') renderActions(body, sv);
+    else if (v === 'timeline-live') renderCycleTimeline(body, view, older ? {status:'historical'} : state.liveTimelines[key]);
     else if (v === 'oracle-continuity') renderOracleContinuity(body, view);
     else if (v === 'fixtures') renderFixtures(body, sv.fixtures, older ? '' : key, view.fixtures);
     else if (shownStep || family) renderTimeline(body, sv);
