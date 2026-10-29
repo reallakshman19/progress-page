@@ -1,5 +1,5 @@
 // Live, public-safe Cycle now via Timeline observations; never the curated Page audit.
-import { el, link } from './util.js?v=33';
+import { el, link, copyText } from './util.js?v=33';
 
 export const SOURCES = Object.freeze({
   ciifr: Object.freeze({ owner:'reallakshman19', repo:'Common', issue:564 })
@@ -90,54 +90,240 @@ export function cycleTimelineModel(comments,project) {
     groups:[...groups].map(([wbs,records])=>({wbs,records})),ignored};
 }
 
-export function renderCycleTimeline(root,project,state) {
-  const src=SOURCES[project?.index?.project?.key];
-  root.append(el('h3',null,'Cycle now via Timeline'),
-    el('p','muted','Agent-reported activity; NOT canonical Cycle assignment, audited Page update, verified chat identity, fixture delivery or engineering acceptance. Full chat IDs remain private.'));
-  if(!src){root.append(el('p','banner','No live intake configured for this project.'));return;}
-  root.append(el('p','muted','Public operational intake: '),
-    link('https://github.com/'+src.owner+'/'+src.repo+'/issues/'+src.issue,'Open live timeline issue'));
-  if(state?.status==='historical'){
-    root.append(el('p','banner','Historical Page revision: live current agent claims are intentionally excluded.'));return;
-  }
-  if(state?.status!=='ok'){
-    root.append(el('p','banner','Live status UNKNOWN: GitHub intake was not completely retrieved. '+
-      (state?.error||'No successful observation yet.')));return;
-  }
-  const model=cycleTimelineModel(state.comments,project);
-  root.append(el('p','muted','Last source read '+(state.observedAt||'UNKNOWN')+' · '+model.health+
-    ' · '+model.events.length+' valid claims · '+model.ignored+' excluded. Reported status is not authenticated.'));
-  if(model.health==='PARTIAL')root.append(el('p','banner',
-    'Some source comments were invalid or duplicated; excluded, not silently interpreted.'));
-  const owner=el('section','panel');
-  owner.append(el('h4',null,'Needs Owner · reported'));
-  if(!model.ownerRequests.length)owner.append(el('p','muted',
-    'No latest source-matched claim asks for Owner action; this does not prove all work is unblocked.'));
-  for(const e of model.ownerRequests) {
-    const row=el('p');
-    row.append(el('b',null,'WBS '+e.wbs+' · '+e.actorAlias+' ('+e.role+')'),
-      ': '+e.ownerAsk+' ',link(e.commentUrl,'event'),' · ',link(e.source,'native source'));
-    owner.append(row);
-  }
-  root.append(owner,el('h4',null,'WBS-wise agent reports'));
-  if(!model.groups.length)root.append(el('p','empty',
-    'No valid public-safe events have been posted. The board does not imply anyone has checked in.'));
-  for(const g of model.groups) {
-    const box=el('section','panel');
-    box.append(el('h4',null,g.wbs==='UNRESOLVED_SCOPE'?'Unresolved WBS/card identity':
-      g.wbs==='UNSCOPED'?'Unscoped source reports':'WBS '+g.wbs));
-    for(const e of g.records){
-      const row=el('div','tl-row'),detail=el('div','tl-m');
-      row.append(el('span','chip',e.status.replaceAll('_',' ')));
-      detail.append(el('b',null,e.actorAlias+' · '+e.role),
-        el('p','muted','Peer '+e.peerAlias+' · card '+e.card+' · '+e.provenance+' · '+e.scope),
-        el('p',null,e.next),link(e.commentUrl,'event'),' · ',link(e.source,'source'));
-      if(e.fixtureRefs.length)detail.append(el('p','muted',
-        e.fixtureRefs.length+' fixture reference candidates; access and bytes NOT VERIFIED'));
-      row.append(detail);box.append(row);
+
+const CARD_TYPES=new Set(['ACTION','INFO']);
+const ACTION_STATES=new Set(['OPEN','IN_PROGRESS','BLOCKED','NEEDS_OWNER','WAITING']);
+const INFO_STATES=new Set(['RECORDED','HANDED_OFF','DONE']);
+const TAG_TYPES=new Set(['WBS','ROADMAP','PLAN','FIXTURE']);
+const CARD_FIELDS=['project','eventId','threadId','actionRef','actorAlias','peerAlias',
+  'role','wbs','card','kind','state','title','details','ownerAsk','next','source','smartTags'];
+const CARD_HEADER=new RegExp('^CYCLE_TIMELINE_CARD v2\\n'+String.fromCharCode(96).repeat(3)+
+  'json\\n([\\s\\S]+?)\\n'+String.fromCharCode(96).repeat(3)+'\\s*$');
+
+export function parseTimelineCardEvent(comment,project) {
+  if(!comment||typeof comment.body!=='string'||comment.body.length>6500||
+    !Number.isInteger(comment.id)||!SOURCE.test(comment.html_url||'')||
+    !Number.isFinite(Date.parse(comment.created_at||''))||PRIVATE.test(comment.body))return null;
+  const matched=CARD_HEADER.exec(comment.body.replace(/\r\n/g,'\n').trim());
+  if(!matched)return null;
+  let e;try{e=JSON.parse(matched[1]);}catch{return null;}
+  if(!e||typeof e!=='object'||Array.isArray(e)||
+     Object.keys(e).sort().join()!==CARD_FIELDS.slice().sort().join()||
+     e.project!==project||!EVENT.test(e.eventId||'')||!EVENT.test(e.threadId||'')||
+     !(e.actionRef===null||EVENT.test(e.actionRef||''))||
+     !ALIAS.test(e.actorAlias||'')||
+     !(e.peerAlias==='NO_DIRECT_PEER'||ALIAS.test(e.peerAlias||''))||
+     !ROLES.has(e.role)||!CARD_TYPES.has(e.kind)||
+     !(e.wbs==='UNSCOPED'||WBS.test(e.wbs||''))||
+     !(e.card==='UNSCOPED'||ALIAS.test(e.card||''))||
+     !((e.kind==='ACTION'?ACTION_STATES:INFO_STATES).has(e.state))||
+     typeof e.title!=='string'||!e.title.trim()||e.title.length>120||
+     typeof e.details!=='string'||e.details.length>850||
+     typeof e.ownerAsk!=='string'||e.ownerAsk.length>350||
+     typeof e.next!=='string'||e.next.length>450||
+     (e.kind==='ACTION'&&(!e.next.trim()||e.actionRef!==null))||
+     (e.kind==='INFO'&&e.ownerAsk!=='')||
+     (e.state==='NEEDS_OWNER'?!e.ownerAsk.trim():!!e.ownerAsk.trim())||
+     !SOURCE.test(e.source||'')||
+     !Array.isArray(e.smartTags)||e.smartTags.length>12||
+     !e.smartTags.every(t=>t&&typeof t==='object'&&!Array.isArray(t)&&
+       Object.keys(t).sort().join()==='label,source,type'&&
+       TAG_TYPES.has(t.type)&&typeof t.label==='string'&&t.label.trim()&&
+       t.label.length<=70&&SOURCE.test(t.source)))return null;
+  return {...e,commentId:comment.id,at:comment.created_at,commentUrl:comment.html_url,
+    provenance:'REPORTED_UNVERIFIED'};
+}
+
+export function timelineCardModel(comments,project) {
+  if(!Array.isArray(comments))return {health:'UNKNOWN',cards:[],ownerRequests:[],groups:[],
+    events:[],ignored:0,unresolved:0};
+  const events=[],ids=new Set(),milestones=project?.index?.milestones||{},
+    pageCards=project?.cards||{};
+  let ignored=0,unresolved=0;
+  for(const comment of comments){
+    let e=parseTimelineCardEvent(comment,project?.index?.project?.key);
+    if(!e){
+      // Legacy event comments remain visible as reported cards until migrated.
+      const v1=parseCycleTimelineComment(comment,project?.index?.project?.key);
+      if(v1)e={...v1,kind:['RETURN_POSTED','NO_ACTION'].includes(v1.status)?'INFO':'ACTION',
+        state:v1.status,threadId:v1.actorAlias+'-'+v1.wbs.replaceAll('.','-')+'-'+v1.card,
+        title:v1.card+' · '+v1.role,details:'Legacy Cycle status report',
+        smartTags:[],actionRef:null};
     }
-    root.append(box);
+    if(!e||ids.has(e.eventId)){ignored++;continue;}
+    ids.add(e.eventId);
+    const card=pageCards[e.card];
+    const wbsFound=Object.values(milestones).some(m=>m.wbs===e.wbs);
+    const matches=e.card==='UNSCOPED'||(card&&!card.closed&&
+      milestones[card.milestone]?.wbs===e.wbs);
+    e.scope=e.wbs==='UNSCOPED'&&e.card==='UNSCOPED'?'UNSCOPED':
+      wbsFound&&matches?'SOURCE_MATCHED':'UNRESOLVED_SCOPE';
+    events.push(e);
   }
-  root.append(el('p','muted',
-    'Oracle reconciliation → canonical Cycle; designated Page writer → audited WBS tiles, source fixtures and My actions. No automatic write or binding.'));
+  events.sort((a,b)=>Date.parse(a.at)-Date.parse(b.at)||a.commentId-b.commentId);
+  const byId=new Map(),threads=new Map(),extra=[];
+  for(const e of events){
+    if(e.kind==='INFO'&&e.actionRef){
+      const previous=byId.get(e.actionRef), current=threads.get(e.threadId);
+      // Closing a stale prior Action must not erase a newer open Action.
+      if(!previous||previous.kind!=='ACTION'||!current||
+         current.eventId!==e.actionRef||previous.threadId!==e.threadId||
+         previous.wbs!==e.wbs||previous.card!==e.card){
+        e.scope='UNRESOLVED_HANDOFF';unresolved++;extra.push(e);
+        byId.set(e.eventId,e);continue;
+      }
+    } else if(e.kind==='INFO'&&threads.get(e.threadId)?.kind==='ACTION') {
+      // An unsolicited informational comment cannot close an open Action.
+      e.scope='UNRESOLVED_HANDOFF';unresolved++;extra.push(e);
+      byId.set(e.eventId,e);continue;
+    }
+    byId.set(e.eventId,e);
+    threads.set(e.threadId,e);
+  }
+  const cards=[...threads.values()].reverse().concat(extra.reverse());
+  const ownerRequests=cards.filter(e=>e.kind==='ACTION'&&e.state==='NEEDS_OWNER'&&
+    e.scope==='SOURCE_MATCHED');
+  const groups=new Map();
+  for(const e of cards){
+    const scope=e.scope==='SOURCE_MATCHED'?e.wbs:e.scope;
+    if(!groups.has(scope))groups.set(scope,[]);
+    groups.get(scope).push(e);
+  }
+  return {health:ignored||unresolved?'PARTIAL':'CURRENT',cards,ownerRequests,
+    groups:[...groups].map(([wbs,records])=>({wbs,records})),
+    events:events.slice().reverse(),ignored,unresolved};
+}
+
+export function timelineInfoTemplate(action) {
+  if(!action||action.kind!=='ACTION')return null;
+  const next=action.peerAlias==='NO_DIRECT_PEER'?action.actorAlias:action.peerAlias;
+  const result={
+    project:action.project,eventId:action.threadId+'-info-'+Date.now().toString(36),
+    threadId:action.threadId,actionRef:action.eventId,
+    actorAlias:next,peerAlias:action.actorAlias,role:'REVIEWER_IR',
+    wbs:action.wbs,card:action.card,kind:'INFO',state:'HANDED_OFF',
+    title:action.title,details:'Describe exactly what occurred and link the confirming source.',
+    ownerAsk:'',next:'Describe the next separately owned action, if any.',
+    source:action.source,smartTags:action.smartTags||[]
+  };
+  const fence=String.fromCharCode(96).repeat(3);
+  return 'CYCLE_TIMELINE_CARD v2\n'+fence+'json\n'+JSON.stringify(result,null,2)+'\n'+fence;
+}
+
+export function timelinePageBrief(info) {
+  if(!info||info.kind!=='INFO')return null;
+  const tags=(info.smartTags||[]).map(t=>t.type+': '+t.label+' ('+t.source+')').join('\n');
+  return ['Page writer review suggestion — NOT a Page update',
+    'Project: '+info.project,'WBS: '+info.wbs,'Card: '+info.card,
+    'Thread: '+info.threadId,'Agent claim: '+info.actorAlias+' → '+info.peerAlias,
+    'Info: '+info.title,'Details: '+info.details,
+    'Next: '+info.next,'Smart Tags:\n'+(tags||'None'),
+    'Agent event: '+info.commentUrl,'Original source: '+info.source,
+    'Check original evidence, scope, custody and fixtures before any pp_propose/pp_batch publication.'
+  ].join('\n');
+}
+
+export function renderCycleTimeline(root,project,state){
+  const src=SOURCES[project?.index?.project?.key];
+  root.append(el('h3',null,'Cycle now via Timeline'));
+  if(!src){root.append(el('p','banner','No live intake configured for this project.'));return;}
+  root.append(el('p','muted','Action = someone owes a step. Info = a step was recorded or handed off. The old Action stays in the history. '),
+    link('https://github.com/'+src.owner+'/'+src.repo+'/issues/'+src.issue,'Open live Timeline intake'));
+  if(state?.status==='historical'){root.append(el('p','banner','Historical Page revision: current Timeline is separate.'));return;}
+  if(state?.status!=='ok'){
+    root.append(el('p','banner','Live intake UNKNOWN: '+(state?.error||'no complete GitHub read yet')));return;
+  }
+  const model=timelineCardModel(state.comments,project);
+  const actionCount=model.cards.filter(e=>e.kind==='ACTION').length;
+  const infoCount=model.cards.filter(e=>e.kind==='INFO').length;
+  root.append(el('p','muted','Observed '+(state.observedAt||'?')+' · '+model.health+
+    ' · '+actionCount+' Action · '+infoCount+' Info · '+model.ownerRequests.length+
+    ' need Owner · '+model.ignored+' excluded · '+model.unresolved+' unresolved handoffs.'));
+  if(model.health==='PARTIAL')root.append(el('p','banner','Some events were invalid, duplicated or have unmatched handoff links.'));
+  const owner=el('section','panel');
+  owner.append(el('h4',null,'Needs Owner'));
+  if(!model.ownerRequests.length)owner.append(el('p','muted','No source-matched outstanding Owner request in this feed.'));
+  for(const item of model.ownerRequests){
+    const line=el('p');
+    line.append(el('b',null,'WBS '+item.wbs+' · '+item.actorAlias),': '+item.ownerAsk+' ',
+      link(item.commentUrl,'Action'), ' · ',link(item.source,'source'));
+    owner.append(line);
+  }
+  root.append(owner);
+  const controls=el('div','ct-controls');
+  controls.append(el('h4',null,'WBS-wise Timeline cards'));
+  const list=el('div','ct-list'),counter={mode:'ALL'};
+  const show=(mode)=>{
+    counter.mode=mode;list.replaceChildren();
+    for(const button of controls.querySelectorAll('button'))button.setAttribute('aria-pressed',
+      String(button.dataset.mode===mode));
+    let visible=0;
+    for(const group of model.groups){
+      const subset=group.records.filter(e=>mode==='ALL'||e.kind===mode);
+      if(!subset.length)continue;
+      visible+=subset.length;
+      const section=el('section','ct-group');
+      const title=group.wbs==='UNRESOLVED_SCOPE'?'Unresolved WBS/card':
+        group.wbs==='UNRESOLVED_HANDOFF'?'Unresolved handoff':
+        group.wbs==='UNSCOPED'?'Unscoped':'WBS '+group.wbs;
+      section.append(el('h4',null,title));
+      for(const e of subset)section.append(drawTimelineCard(e,model.events,src));
+      list.append(section);
+    }
+    if(!visible)list.append(el('p','empty','No '+mode.toLowerCase()+' cards observed.'));
+  };
+  for(const [mode,label] of [['ALL','All'],['ACTION','Action · '+actionCount],['INFO','Info · '+infoCount]]){
+    const button=el('button','btn small',label);
+    button.type='button';button.dataset.mode=mode;
+    button.addEventListener('click',()=>show(mode));controls.append(button);
+  }
+  root.append(controls,list);show('ALL');
+  root.append(el('p','muted','Smart Tags are review suggestions for Roadmap / Plan / WBS / Grounding fixtures. The Page writer checks original sources before an audited Page update. No automatic acceptance or task mutation.'));
+}
+
+function drawTimelineCard(e,all,src){
+  const box=el('article','ct-card '+(e.kind==='ACTION'?'ct-action':'ct-info'));
+  const top=el('div','ct-top');
+  top.append(el('span','chip '+(e.kind==='ACTION'?'w':'s'),e.kind),
+    el('span','chip',e.state.replaceAll('_',' ')));
+  const header=el('div');
+  header.append(el('b',null,e.title),el('p','muted',
+    e.actorAlias+' ('+e.role+') → '+e.peerAlias+' · '+e.wbs+' · '+e.card));
+  box.append(top,header);
+  if(e.details)box.append(el('p','ct-description',e.details));
+  if(e.ownerAsk)box.append(el('p','ct-owner','Needs Owner: '+e.ownerAsk));
+  if(e.next)box.append(el('p','ct-next','Next: '+e.next));
+  const tags=el('div','ct-tags');
+  for(const tag of e.smartTags||[]){
+    const item=link(tag.source,tag.type+' · '+tag.label,'chip');
+    tags.append(item);
+  }
+  if(e.wbs!=='UNSCOPED'&&!(e.smartTags||[]).some(t=>t.type==='WBS'))
+    tags.append(el('span','chip','WBS · '+e.wbs));
+  if(tags.childNodes.length)box.append(tags);
+  const links=el('div','ct-links');
+  links.append(link(e.commentUrl,'Timeline event'),' · ',link(e.source,'Source evidence'));
+  box.append(links);
+  const actions=el('div','ct-tools');
+  const copyButton=(label,text)=>{
+    const button=el('button','btn small',label);button.type='button';
+    button.addEventListener('click',()=>copyText(text,button));actions.append(button);
+  };
+  if(e.kind==='ACTION')copyButton('Copy → Info handoff template',timelineInfoTemplate(e));
+  else copyButton('Copy Page update brief',timelinePageBrief(e));
+  actions.append(link('https://github.com/'+src.owner+'/'+src.repo+'/issues/'+src.issue,
+    'Post follow-up in GitHub','btn small'));
+  box.append(actions);
+  const history=all.filter(v=>v.threadId===e.threadId).slice().reverse();
+  if(history.length>1){
+    const detail=el('details','ct-history');
+    detail.append(el('summary',null,'History · '+history.length+' events'));
+    for(const h of history){
+      const p=el('p','muted',h.kind+' · '+h.state+' · '+h.actorAlias+' · ');
+      p.append(link(h.commentUrl,'source event'));detail.append(p);
+    }
+    box.append(detail);
+  }
+  box.append(el('p','muted','Reported observation · '+e.scope+' · not a Cycle assignment or Page acceptance'));
+  return box;
 }

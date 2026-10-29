@@ -56,7 +56,20 @@ chat URLs, credentials, protected artifact links or private bytes** on GitHub
 or the Page. GitHub cannot authenticate a ChatGPT chat or reviewer independence.
 If private enrollment is absent, the agent must not post.
 
-Agents post one `CYCLE_TIMELINE_EVENT v1` JSON comment for a meaningful
+For usable task/handoff cards, use the `CYCLE_TIMELINE_CARD v2` envelope
+with explicit `kind=ACTION|INFO`, a stable `threadId`, and
+`actionRef` on a resolving Info. The Action is not deleted: the linked Info
+becomes the current card after its source event arrives. An IR starting work
+can complete the communication Action as `INFO/HANDED_OFF` while its own
+independent review remains a **separate open Action**, not an implicit PASS.
+Each card carries typed, source-linked `smartTags`:
+`WBS`, `ROADMAP`, `PLAN`, `FIXTURE`. These are Page writer **candidates**
+rather than updates. The interface exposes Action/Info filters, explicit Owner
+asks, thread history, a Copy-to-Info follow-up template, and a Copy Page
+writer brief button. Posting still happens in the authenticated GitHub
+intake, not through a simulated browser-side write.
+
+Legacy agents post one `CYCLE_TIMELINE_EVENT v1` JSON comment for a meaningful
 status/Owner-request change, referencing existing native source evidence;
 no repeated check-ins or duplicate engineering returns. The read-only viewer
 groups **latest reported status per actor+WBS+card**, detects mismatched WBS/card
