@@ -25,6 +25,47 @@ python tools/pp_cli.py reconcile --project ciifr --source https://github.com/rea
 Every write needs `--actor` (who), `--src` (a public GitHub link, or `OWNER_PRIVATE_REF:<id>`) and a reason. It writes one Timeline entry, runs the checker,
 and leaves every file as it was if the check fails. Nothing is deleted: supersede, cancel, archive or withdraw. Use plain `python` (not `python -I`).
 
+## Cycle Board exact native occurrence reuse — reviewed writer only
+
+The Adhoc **Open Cycle Board** link now navigates within the current site to
+`#/ciifr-node/cycle-board`, not CIIFR's different project/WBS. Existing
+`#/ciifr/timeline-live` routes remain compatible.
+
+A reviewed `pp_cli.py propose` now generates a **v2 reference-only manifest**
+containing `nativeOccurrenceId`, exact `sourceObservation`, and the selected
+existing card's published `wbs`. It uses the Board-compatible identities
+`github:OWNER/REPO:pull-head:NUMBER:SHA40`,
+`github:OWNER/REPO:issue-revision:NUMBER:updatedAt`, or
+`github:OWNER/REPO:comment-revision:COMMENT_ID:updatedAt`. The existing
+`pp_batch.py` stages the usual `card set` command, appending precisely one
+reference and one audit UPDATE with the same ID/WBS/card. No state, next actor,
+capability, independent PASS, or Owner decision may be changed.
+
+```sh
+python tools/pp_cli.py propose --project ciifr-node \
+  --source https://github.com/reallakshman19/XML_Compare_Utilities/pull/232 \
+  --actor "Authorized Page writer" --card node-r0-code \
+  --expected-head VERIFIED_EXACT_SHA40 --output reviewed.json
+python tools/pp_batch.py reviewed.json --data data    # isolated dry-run only
+```
+
+The same occurrence+WBS is rejected when already audited; a *different*
+verified head at the same URL can create a **new source reference**, but never
+automatically count a new achievement. Existing URL-only audit history remains
+unchanged and its exact head remains UNKNOWN. An authorized writer must read
+the original history and explicitly choose `--review-legacy-url` with a
+substantive `--legacy-reason "..." ` before such a source can be proposed;
+the Board deliberately offers no automatic command for uncertain legacy URLs.
+The actual apply path rechecks the source immediately before the audited swap
+and rejects head drift. Publishing any of this data requires separate Page
+writer authority and a reviewed PR; a local dry-run or PR draft does not
+establish the Board's `CURRENT` state.
+
+CT-4 issue [#80](https://github.com/reallakshman19/progress-page/issues/80)
+remains open for independent review, an actually observed Owner trial and
+comparable five-role baseline/pilot effort data. Automated tests and a staged
+replay do **not** prove savings or usability acceptance.
+
 ## Evidence-first, reviewable batch updates (coordinator only)
 
 For one native source supporting several related changes, prepare a reviewed public-safe JSON manifest:

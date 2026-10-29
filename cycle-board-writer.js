@@ -5,7 +5,7 @@ import { el, link, copyText } from './util.js?v=34';
 const PR=/^https:\/\/github\.com\/[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+\/pull\/[1-9][0-9]*$/;
 const ISSUE=/^https:\/\/github\.com\/[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+\/issues\/[1-9][0-9]*$/;
 const SHA=/^[a-f0-9]{40}$/;
-const ISO=/^\d{4}-\d\d-\d\dT\d\d:\d\d:\d\dZ$/;
+const ISO=/^\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d(?:\.\d+)?Z$/;
 const KEY=/^[a-z][a-z0-9-]{0,48}$/;
 const safeId=x=>typeof x==='string'&&KEY.test(x);
 const cleanUrl=x=>typeof x==='string'&&(PR.test(x)||ISSUE.test(x));
@@ -45,9 +45,15 @@ export function cycleBoardWriterModel(page,context,delta,{historical=false}={}){
   const items=ordered(context.sources||[]).map(s=>{
     const exactSource=evidenceIdentity(s),m=milestones[s?.milestone];
     const validScope=!!(m?.wbs&&m.wbs===s.wbs&&s.scope==='SOURCE_MATCHED');
-    const auditMatches=audit.filter(a=>a.source===s.source).map(a=>a.id).filter(Boolean);
+    const auditEntries=audit.filter(a=>a.source===s.source);
+    const auditMatches=auditEntries.map(a=>a.id).filter(Boolean);
+    const exactRecorded=auditEntries.some(a=>a.nativeOccurrenceId===s.occurrenceId&&
+      a.wbs===s.wbs&&a.card&&cards[a.card]?.milestone===s.milestone);
+    const legacyAudit=auditEntries.some(a=>!a.nativeOccurrenceId);
     const existingRefs=Object.entries(cards).filter(([,c])=>c.src===s.source||
       (c.refs||[]).some(r=>r.u===s.source)).map(([id])=>id).sort();
+    const legacyRef=Object.values(cards).some(c=>(c.refs||[]).some(r=>
+      r.u===s.source&&!r.nativeOccurrenceId));
     const options=Object.entries(cards).filter(([,c])=>!c.closed&&
       c.milestone===s.milestone).map(([id])=>id).sort();
     let status='REVIEW_REQUIRED',reason='Native source needs original review before any Page proposal.',cardId=null;
@@ -55,17 +61,22 @@ export function cycleBoardWriterModel(page,context,delta,{historical=false}={}){
       status='UNKNOWN';reason='Original source or immutable occurrence identity cannot be verified.';
     } else if(!validScope){
       status='UNMAPPED';reason='No exact current Page milestone/WBS mapping.';
-    } else if(auditMatches.length){
-      status='ALREADY_RECORDED';reason='Original source URL is already in append-only Page audit. Current writer refuses duplicate URL even for a later head. Review a distinct native event rather than counting a second achievement.';
-    } else if(existingRefs.length){
-      status='REVIEW_REQUIRED';reason='Source URL is already recorded on a Page card; duplicate reference proposal is not permitted.';
+    } else if(exactRecorded){
+      status='ALREADY_RECORDED';reason='The exact native occurrence and WBS/card scope are already published. Re-reading it never creates a second achievement.';
+    } else if(legacyAudit||legacyRef){
+      status='LEGACY_REVIEW_REQUIRED';reason='Prior URL-only evidence has unknown head coverage. A Page writer must inspect original records and explicitly opt into reviewed legacy reconciliation; no automatic replay.';
     } else if(options.length!==1){
-      status='CARD_SELECTION_REQUIRED';reason='No unique open Page card for this WBS; the writer must select and verify the actual evidence owner.';
+      status='CARD_SELECTION_REQUIRED';reason='No unique open Page card for this WBS; writer must verify the actual owner.';
+    } else if(auditEntries.some(a=>a.nativeOccurrenceId&&a.nativeOccurrenceId!==s.occurrenceId)||
+      Object.values(cards).some(c=>(c.refs||[]).some(r=>r.u===s.source&&
+        r.nativeOccurrenceId&&r.nativeOccurrenceId!==s.occurrenceId))){
+      cardId=options[0];status='PROPOSAL_CANDIDATE';
+      reason='Different immutable occurrence at the same URL; review changed head/revision against original source and existing audit. No automatic progress promotion.';
     } else if(!drift.has(s.source+'\n'+s.revision)){
-      status='REVIEW_REQUIRED';reason='CT-2 has not established this exact source/revision as newer than published Page evidence.';
+      status='REVIEW_REQUIRED';reason='CT-2 has not established this source/revision as newer; do not count the same URL again.';
     } else{
       cardId=options[0];status='PROPOSAL_CANDIDATE';
-      reason='One existing Page card and a newer native occurrence are identified. Writer must inspect original scope/head and run existing propose + dry-run; no automatic update.';
+      reason='One existing card and a newer native occurrence are identified. Use the authorized existing writer; no automatic update.';
     }
     const command=cardId?[
       'python tools/pp_cli.py propose --project '+key+
@@ -100,7 +111,7 @@ export function renderCycleBoardWriter(root,model){
     el('p','muted','Original native evidence → existing Page writer proposal → checked dry-run → separately authorized publication. Never a second status report or automatic Page write.'));
   const h=el('p','cb-writer-state');
   h.append(el('strong',null,model.status+' · '+model.pendingCount+' proposal candidate(s)'),
-    el('span','muted',' · '+model.recordedCount+' source URL(s) already audited'));
+    el('span','muted',' · '+model.recordedCount+' exact occurrence(s) already audited'));
   panel.append(h);
   if(!model.items.length)panel.append(el('p','banner',model.note));
   for(const s of model.items){
@@ -119,7 +130,7 @@ export function renderCycleBoardWriter(root,model){
       const pre=el('pre','cb-writer-code');
       pre.textContent=s.command.join('\n');
       details.append(el('p','muted',
-        'Replace the actor placeholder; run from the repository checkout. The CLI rereads GitHub and may stop on changed head, duplicated URL, missing scope or existing reference. A dry-run does not publish.'),
+        'Replace the actor placeholder; run from the repository checkout. The CLI rereads GitHub and may stop on changed head, duplicated occurrence, uncertain legacy audit or missing scope. A dry-run does not publish.'),
         pre);
       const button=el('button','btn small','Copy writer commands (requires review)');
       button.type='button';button.addEventListener('click',()=>copyText(s.command.join('\n'),button));

@@ -6,7 +6,7 @@ from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/"tools"))
 import pp_propose as P
 import pp_batch as B
-from helpers import copy_valid,load
+from helpers import copy_valid,load,ok
 
 SOURCE="https://github.com/acme/demo/pull/999"
 HEAD="a"*40
@@ -21,7 +21,11 @@ def fake(url):
     raise ValueError("unexpected GitHub endpoint: "+url)
 
 class Proposal(unittest.TestCase):
-    def setUp(self):self.data=copy_valid()
+    def setUp(self):
+        self.data=copy_valid()
+        ok(self.data,"plan","milestone","--project","demo","--id","M2","--wbs","2",
+           "--summary","Explicit WBS scope for source evidence fixture",
+           "--actor","Test writer","--src","https://github.com/acme/demo/issues/9")
     def test_unmatched_source_never_infers_a_card_or_writes_data(self):
         audit=Path(self.data)/"demo"/"audit.json"
         before=audit.read_bytes()
@@ -31,9 +35,11 @@ class Proposal(unittest.TestCase):
         self.assertEqual(before,audit.read_bytes())
     def test_selected_card_generates_ref_only_not_state_or_permission(self):
         p=P.propose(self.data,"demo",SOURCE,"Oracle",card_id="a1",fetch=fake)
-        self.assertEqual(p["proposalVersion"] if "proposalVersion" in p else p["proposal"]["proposalVersion"],1)
+        self.assertEqual(p["proposalVersion"] if "proposalVersion" in p else p["proposal"]["proposalVersion"],2)
         m=p["proposal"]
         self.assertEqual(m["sourceObservation"]["observedHead"],HEAD)
+        self.assertEqual(m["nativeOccurrenceId"],"github:acme/demo:pull-head:999:"+HEAD)
+        self.assertEqual(m["wbs"],"2")
         self.assertEqual(len(m["changes"]),1)
         change=m["changes"][0]
         self.assertEqual(change["command"],"card set")
@@ -65,7 +71,7 @@ class Proposal(unittest.TestCase):
             raise ValueError(url)
         p=P.propose(self.data,"demo",SRC,"Oracle",card_id="a1",fetch=existing)
         self.assertIsNone(p["proposal"])
-        self.assertTrue(any("ALREADY_RECORDED" in x for x in p["blockers"]))
+        self.assertTrue(any("LEGACY_REVIEW_REQUIRED" in x for x in p["blockers"]))
         p2=P.propose(self.data,"demo",SOURCE,"Oracle",card_id="a1",expected_head=CHANGED,fetch=fake)
         self.assertIsNone(p2["proposal"])
         self.assertTrue(any("HEAD_DRIFT" in x for x in p2["blockers"]))

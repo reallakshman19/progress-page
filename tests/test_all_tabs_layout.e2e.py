@@ -155,6 +155,18 @@ def main():
                     g=geometry(page)
                     check(g["documentWidth"]<=width+3,
                           route+" horizontal overflow "+str(g["documentWidth"])+" > "+str(width))
+                    if section=="cycle-board" and width in (1440,390):
+                        board_link=page.locator(".adhoc-body a",has_text="Open Cycle Board")
+                        check(board_link.count()==1,"specific Adhoc Cycle Board link missing or duplicated")
+                        check(board_link.get_attribute("href").endswith("#/ciifr-node/cycle-board"),
+                              "Adhoc Cycle Board link opens wrong project")
+                        board_link.click()
+                        page.locator(".cb-context").wait_for(timeout=30000)
+                        check("#/ciifr-node/cycle-board" in page.url,"Adhoc click did not navigate to native Board")
+                        text=page.locator(".cb-context").inner_text()
+                        check("ciifr-node" in text,"Board displayed wrong project")
+                        check("WBS 2" in text,"CIIFR-Node mapped WBS2 missing after link click")
+                        check("UNMAPPED" in text,"UI invented a standalone CIIFR-Node Cycle")
                     if width==1440 and section=="overview":picture(page,"adhoc-progress-page-overview")
                     if width==390 and section=="tests":picture(page,"adhoc-progress-page-tests-mobile")
                     return {"documentWidth":g["documentWidth"],"section":section}

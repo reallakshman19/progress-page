@@ -1,5 +1,6 @@
 """Timeline (ledger) checks for one project: the chain, every event, and agreement with the current data."""
 import pp_lib as L
+from pp_occurrence import valid_identity
 
 TOLERANCE = 60  # seconds a card's updatedAt may be later than the Timeline entry that records it
 
@@ -106,6 +107,22 @@ def _events(c, w, key, docs, st):
         c.text(at, e, "actor", limit=60)
         c.text(at, e, "summary", limit=400)
         c.link(at, e, "source", source=True)
+        # Optional v2 provenance is validated on new events only. Historical
+        # URL-only entries remain untouched and cannot prove a PR-head match.
+        if "nativeOccurrenceId" in e or "wbs" in e:
+            occ=e.get("nativeOccurrenceId");wbs=e.get("wbs");cid=e.get("card")
+            if not valid_identity(e.get("source"),occ):
+                c.err(at,"nativeOccurrenceId does not match the original source URL")
+            if not isinstance(wbs,str) or not wbs or not any(
+                m.get("wbs")==wbs for m in (index.get("milestones") or {}).values()):
+                c.err(at,"native occurrence WBS is not in the published Page plan")
+            if not isinstance(cid,str) or cid not in cards:
+                c.err(at,"native occurrence must belong to an existing Page card")
+            elif not any(r.get("u")==e.get("source") and r.get("nativeOccurrenceId")==occ
+                         and r.get("wbs")==wbs for r in cards[cid].get("refs",[])):
+                c.err(at,"native occurrence lacks the corresponding append-only card reference")
+            if e.get("kind")!="UPDATE":
+                c.err(at,"source-only occurrence must append an UPDATE; no engineering promotion")
         if revs:
             n = int(e["rev"][1:]) if e.get("rev") in revs else None
             if n is None:
@@ -144,6 +161,26 @@ def check_ledger(c, key, entry, docs):
         c.err(f"projects.json project {key!r}", f"status is {entry.get('status') or 'active'} but the Timeline says {st['status']}")
     if index.get("revisions") and st["revs"] != [r.get("id") for r in index["revisions"]]:
         c.err(w, "every revision needs exactly one REVISION event, in order")
+    # Every structured native reference must also have one exact append-only
+    # audit event; URL-only historical refs are never upgraded implicitly.
+    for cid,card in cards.items():
+        seen=set()
+        for ref in card.get("refs") or []:
+            if "nativeOccurrenceId" not in ref and "wbs" not in ref:
+                continue
+            occurrence=ref.get("nativeOccurrenceId")
+            wbs=ref.get("wbs")
+            source=ref.get("u")
+            marker=(source,occurrence,wbs)
+            if not valid_identity(source,occurrence) or not isinstance(wbs,str) or not wbs:
+                c.err(w,f"card {cid!r} contains a malformed native occurrence reference")
+            if marker in seen:
+                c.err(w,f"card {cid!r} repeats the same occurrence and scope")
+            seen.add(marker)
+            if not any(e.get("source")==source and e.get("nativeOccurrenceId")==occurrence
+                       and e.get("wbs")==wbs and e.get("card")==cid
+                       for e in led["events"]):
+                c.err(w,f"card {cid!r} native occurrence has no exact audit event")
     for cid, card in cards.items():
         if cid not in st["last"]:
             c.err(w, f"card {cid!r} has no event")
