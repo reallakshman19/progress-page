@@ -2,6 +2,7 @@
 import { el, link, copyText } from './util.js?v=33';
 import { wbsGroups } from './progress.js?v=33';
 import { onboardingModel, renderOnboarding } from './onboarding.js?v=33';
+import { smartBadgesForScope, smartBadgeText, renderSmartBadges } from './smart-badges.js?v=33';
 
 const valid = u => /^https:\/\/github\.com\/[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+\//.test(String(u || ''));
 const live = c => !!c && !c.closed && c.state !== 'NOT_APPLICABLE';
@@ -41,6 +42,7 @@ export function agentStartModel(project, { family = null, step = null, revision 
   }) : [];
   const work = selectedMilestone ? milestoneCards(cards,step).map(([id,c])=>({
     id,label:c.label || id,state:c.state || 'UNKNOWN',
+    smartBadges:smartBadgesForScope(project,{cardId:id,milestoneId:step}),
     next:c.next?.text || '',nextActor:actor(c.next?.actor),
     status:c.now || '',source:c.src || '',
     refs:(c.refs || []).filter(r => valid(r.u)),who:c.who?.role || '',updatedAt:c.updatedAt || '',
@@ -102,6 +104,7 @@ export function agentStartTaskText(m) {
     'Project: '+m.title,'Plan revision: '+m.revision,
     'WBS scope: '+m.scope,'Task ID: '+w.id,
     'Task: '+w.label+' ['+w.state+']',
+    'Smart Badge identifiers (recorded context only):\n'+smartBadgeText(w.smartBadges),
     'Owner aim (approved wording): '+m.aim,
     'Owner aim source: '+(m.aimSrc || 'NOT_RECORDED'),
     'Parent WBS aim: NOT_RECORDED as a separate approved statement; verify the planning source.',
@@ -226,6 +229,7 @@ export function renderAgentStart(root, project, opts = {}) {
       brief.append(el('p',null,'Task ID: '+w.id+' · Recorded recipient: '+(w.recipient || 'UNKNOWN')+' (not an acknowledged assignment) · Role: '+(w.who || 'UNKNOWN')));
       brief.append(el('p',null,'Parent WBS aim: NOT_RECORDED as a separate approved statement; consult native planning evidence.'));
       brief.append(el('p',null,'Owner aim: '+m.aim));
+      renderSmartBadges(brief,w.smartBadges);
       if(m.aimSrc)brief.append(link(m.aimSrc,'Original Owner aim source','agent-start-source'));
       brief.append(el('p',null,'Recorded next actor: '+w.nextActor));
       brief.append(el('p',null,'Next action: '+(w.next || 'NOT_RECORDED')));
@@ -259,6 +263,7 @@ export function renderAgentStart(root, project, opts = {}) {
         'agent-start-task-link',w.id);
       taskLink.setAttribute('aria-label','Open task '+w.id+' · '+w.label);
       row.append(h,taskLink);
+      if(!m.selected||m.selected.id!==w.id)renderSmartBadges(row,w.smartBadges);
       if(m.selected?.id===w.id)row.className+=' agent-start-selected';
       row.append(el('p','agent-start-next','Recorded next: '+(w.next?short(w.next):'No next action recorded')));
       row.append(el('p','agent-start-actor','Actor: '+w.nextActor));
