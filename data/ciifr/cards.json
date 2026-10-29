@@ -1246,13 +1246,13 @@
     "label": "Axis and stiffness audit",
     "who": {
       "chat": "restraint-6ae1bed6",
-      "role": "Owner-directed audit recorder"
+      "role": "Owner-directed builder"
     },
     "state": "SUBMITTED",
-    "now": "Comparison submitted: old full path and current legacy control produce 173 +Y REST rows; direct engine enrichment retains 119 Z/zero-stiffness rows. Current native candidate bypasses the full fallback wrapper. Config friction=0 and gap=7 inconsistencies reproduced in both refs.",
+    "now": "PR353 was merged into its former feature base after PR352 landed. The restraint/default candidate still needs integration to main; it is not live-main acceptance. Earlier EF05 Datum73/73 candidate evidence and retained support-census limitation survive. PR354 adds actual native XML download for inspection.",
     "next": {
-      "actor": "Owner / coordinator",
-      "text": "Review issue #350 comparison before choosing a restraint-only repair; preserve Final geometry/mass custody."
+      "actor": "Owner / engineering reviewer",
+      "text": "Integrate and review PR353 changes to main separately, then inspect native XML/CII restraint census; explicit saved profiles and source supports remain authoritative."
     },
     "refs": [
       {
@@ -1264,10 +1264,15 @@
         "k": "comment",
         "l": "Pinned-vs-current restraint comparison",
         "u": "https://github.com/reallakshman19/3D_Converters/issues/350#issuecomment-6490791640"
+      },
+      {
+        "k": "pr",
+        "l": "Pre-Final restraint candidate",
+        "u": "https://github.com/reallakshman19/3D_Converters/pull/353"
       }
     ],
-    "updatedAt": "2026-10-29T07:34:24Z",
-    "src": "https://github.com/reallakshman19/3D_Converters/issues/350#issuecomment-6490791640"
+    "updatedAt": "2026-10-29T12:17:04Z",
+    "src": "https://github.com/reallakshman19/3D_Converters/pull/353"
   },
   "restraint-datum-audit": {
     "order": 49,
@@ -1276,13 +1281,13 @@
     "label": "Datum and placement audit",
     "who": {
       "chat": "restraint-6ae1bed6",
-      "role": "Owner-directed audit recorder"
+      "role": "Owner-directed builder"
     },
     "state": "SUBMITTED",
-    "now": "Comparison submitted on exact EF05 source: 73/73 Datum owners have REST via pinned/full control, 55/73 via current direct enrichment. 18 missing restraints; matching coordinates retained. Native CII and independent acceptance NOT_RUN.",
+    "now": "PR353 was merged into its former feature base after PR352 landed. The restraint/default candidate still needs integration to main; it is not live-main acceptance. Earlier EF05 Datum73/73 candidate evidence and retained support-census limitation survive. PR354 adds actual native XML download for inspection.",
     "next": {
-      "actor": "Owner / coordinator",
-      "text": "Review issue #350 comparison before choosing a restraint-only repair; preserve Final geometry/mass custody."
+      "actor": "Owner / engineering reviewer",
+      "text": "Integrate and review PR353 changes to main separately, then inspect native XML/CII restraint census; explicit saved profiles and source supports remain authoritative."
     },
     "refs": [
       {
@@ -1294,10 +1299,15 @@
         "k": "comment",
         "l": "Pinned-vs-current restraint comparison",
         "u": "https://github.com/reallakshman19/3D_Converters/issues/350#issuecomment-6490791640"
+      },
+      {
+        "k": "pr",
+        "l": "Pre-Final restraint candidate",
+        "u": "https://github.com/reallakshman19/3D_Converters/pull/353"
       }
     ],
-    "updatedAt": "2026-10-29T07:34:25Z",
-    "src": "https://github.com/reallakshman19/3D_Converters/issues/350#issuecomment-6490791640"
+    "updatedAt": "2026-10-29T12:17:04Z",
+    "src": "https://github.com/reallakshman19/3D_Converters/pull/353"
   },
   "restraint-integrated-audit": {
     "order": 50,
@@ -1306,20 +1316,62 @@
     "label": "Integrated restraint verification",
     "who": {
       "chat": "restraint-6ae1bed6",
-      "role": "Owner-directed audit recorder"
+      "role": "Owner-directed builder"
     },
-    "state": "NOT_STARTED",
-    "now": "Scope recorded; initial source inspection only. Execution and independent verification NOT_RUN.",
+    "state": "SUBMITTED",
+    "now": "PR354 supplies the actual native enriched XML for download, including later CII failures; local26/26 plus native mass24/24 pass, exact-head native checks pass. Source/Final freshness and CII release gates preserved. PR352 is in main; PR353 merged to its former feature base after PR352 landed, restraint main integration remains outstanding.",
     "next": {
-      "actor": "6ae1bed6",
-      "text": "Ground expected engineering behavior on pinned reference and return evidence to issue #350; no production change or release implied."
+      "actor": "Owner / engineering reviewer",
+      "text": "Review PR354, integrate the existing restraint candidate to main separately, then run the actual model and inspect the downloaded XML."
     },
     "refs": [
       {
         "k": "issue",
         "l": "Restraint audit scope and evidence",
         "u": "https://github.com/reallakshman19/3D_Converters/issues/350"
+      },
+      {
+        "k": "pr",
+        "l": "Pre-Final restraint candidate",
+        "u": "https://github.com/reallakshman19/3D_Converters/pull/353"
+      },
+      {
+        "k": "pr",
+        "l": "Native enriched XML download",
+        "u": "https://github.com/reallakshman19/3D_Converters/pull/354"
       }
-    ]
+    ],
+    "updatedAt": "2026-10-29T12:14:19Z",
+    "src": "https://github.com/reallakshman19/3D_Converters/issues/350#issuecomment-6496341808"
+  },
+  "bm2-olet-route": {
+    "order": 51,
+    "group": "r4-restraint-audit",
+    "milestone": "M28",
+    "label": "BM2 OLET helper route",
+    "who": {
+      "chat": "restraint-6ae1bed6",
+      "role": "Owner-directed builder"
+    },
+    "state": "SUBMITTED",
+    "now": "PR355 source-qualified pre-Final helper exclusion passes real BM2 native CII:963→816 elements,49 junctions,139 owners,69 restraint slots unchanged. Tests/remote native CI pass; Owner trial/native import/independent engineering review pending.",
+    "next": {
+      "actor": "Owner / independent engineering reviewer",
+      "text": "Review PR355 and native topology evidence; after merge/deploy reload and regenerate BM2 Preview/Final/Run."
+    },
+    "refs": [
+      {
+        "k": "comment",
+        "l": "Owner-scoped repair and source diagnosis",
+        "u": "https://github.com/reallakshman19/3D_Converters/issues/351#issuecomment-6498100565"
+      },
+      {
+        "k": "pr",
+        "l": "BM2 OLET route repair",
+        "u": "https://github.com/reallakshman19/3D_Converters/pull/355"
+      }
+    ],
+    "updatedAt": "2026-10-29T13:46:48Z",
+    "src": "https://github.com/reallakshman19/3D_Converters/pull/355"
   }
 }
