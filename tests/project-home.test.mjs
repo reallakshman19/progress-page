@@ -132,9 +132,10 @@ test('primary navigation prioritizes Project Home, WBS and a continuity central 
   const home = HOME_SUBTABS.map(([route]) => route);
   const continuity = CONTINUITY_SUBTABS.map(([route]) => route);
   assert.deepEqual(primary, ['home', 'progress', 'continuity']);
-  assert.deepEqual(home, ['home','home-roadmap','home-sources','actions','timeline','timeline-live','test']);
+  assert.deepEqual(home, ['home','home-roadmap','home-sources','actions','timeline','cycle-board','test']);
   assert.deepEqual(continuity, ['continuity','start','oracle-continuity','home-risks','fixtures']);
-  assert.deepEqual(HOME_VIEWS, home);
+  assert.deepEqual(new Set(HOME_VIEWS),new Set([...home,'timeline-live']));
+  assert.equal(primaryTabActive('home','timeline-live'),true,'legacy route stays supported');
   assert.deepEqual(CONTINUITY_VIEWS, continuity);
   assert.equal(new Set([...home,...continuity]).size,home.length+continuity.length);
   for (const v of home) {

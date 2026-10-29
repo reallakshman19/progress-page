@@ -159,6 +159,44 @@ def main():
                     if width==390 and section=="tests":picture(page,"adhoc-progress-page-tests-mobile")
                     return {"documentWidth":g["documentWidth"],"section":section}
                 run_case(str(width)+"px adhoc/progress-page/"+section,run_adhoc)
+            # Source-bound Board: rendered Page WBS and INFO-Auto must not need
+            # a live comment feed or an activated Oracle Cycle.
+            if width in (1440,390):
+                def cycle_board_native_case():
+                    load(page,"ciifr-node/cycle-board")
+                    page.locator(".cb-context").wait_for(timeout=30000)
+                    check(page.locator(".ct-auto-section").count()==1,
+                          "Page audit INFO-Auto must be present without live intake")
+                    check("Cycle Board" in page.locator(".body").inner_text(),
+                          "Canonical Cycle Board route did not render")
+                    check("UNMAPPED" in page.locator(".cb-context").inner_text(),
+                          "CIIFR-Node must not infer an Oracle Cycle")
+                    check("No optional live-comment intake configured" in page.locator(".body").inner_text(),
+                          "Missing live comments must not suppress native/Page context")
+                    check(page.locator(".cb-delta").count()==1,
+                          "CT-2 delta advisory must be visible on the same Board URL")
+                    check(page.locator(".cb-delta-fact").count()==3,
+                          "Native, Page and Cycle axes must be independent")
+                    check(page.locator(".cb-delta button").count()==1,
+                          "Configured native source should expose on-demand recheck")
+                    check(page.locator(".cb-writer").count()==1,
+                          "CT-3 reviewed Page writer preview must render on same Board URL")
+                    check("automatic Page write" in page.locator(".cb-writer").inner_text(),
+                          "Page writer preview must warn against automatic publication")
+                    check(page.locator(".cb-writer-commands").count()<=2,
+                          "Only configured original sources can be writer candidates")
+                    check("REVIEW_PAGE_DRIFT" in page.locator(".cb-delta").inner_text() or
+                          "UNKNOWN_STOP" in page.locator(".cb-delta").inner_text(),
+                          "Board may recommend only review or UNKNOWN when recipient authority absent")
+                    check("UNMAPPED" in page.locator(".cb-delta").inner_text(),
+                          "No canonical CIIFR-Node Cycle means no authorized continuation")
+                    g=geometry(page)
+                    check(g["documentWidth"]<=width+3,
+                          "Cycle Board horizontal overflow")
+                    picture(page,"ciifr-node-cycle-board-"+str(width))
+                    return {"documentWidth":g["documentWidth"],
+                            "autoEvidence":page.locator(".ct-auto-section .ct-auto").count()}
+                run_case(str(width)+"px ciifr-node/cycle-board",cycle_board_native_case)
             context.close()
         # Explicitly exercise the archived-history-independent Lessons reading paths.
         ctx=browser.new_context(viewport={"width":1440,"height":900},device_scale_factor=1)

@@ -11,6 +11,7 @@ import { renderTimeline } from './timeline.js?v=33';
 import { renderTestPage } from './test-page.js?v=33';
 import { parseAdhocRoute, renderAdhocProjects } from './adhoc-projects.js?v=33';
 import { loadCycleTimeline, renderCycleTimeline } from './timeline-live.js?v=33';
+import { loadBoardNative, boardSourceConfigured, cycleBoardContextModel } from './cycle-board-context.js?v=33';
 import { tabsRow, archivedPanel, projectHead, revisionRow, isActive, HOME_VIEWS, HOME_SUBTABS, CONTINUITY_VIEWS, CONTINUITY_SUBTABS, PRIMARY_TABS, primaryTabActive } from './lifecycle.js?v=33';
 import { nudgesOf, openNudge } from './nudge.js?v=33';
 import { addProjectDialog, addRevisionDialog } from './briefs.js?v=33';
@@ -46,7 +47,7 @@ function mergedLinks() {
 }
 
 const state = { projects: [], data: {}, site: {}, links: mergedLinks(), error: null, panel: false, offline: false, archivedOpen: false, rev: null, paths: null, repo: {}, searchOpen: false, searchQuery: '', searchIndex: [],
-  pageFetch: { status:'unknown', observedAt:null }, cycles: {}, liveTimelines: {} };
+  pageFetch: { status:'unknown', observedAt:null }, cycles: {}, liveTimelines: {}, boardNative: {}, boardPrior: {}, boardChecking: {} };
 
 // The local hub server (127.0.0.1) serves each project's private coding and reference folders; the website never has them.
 async function loadPaths() {
@@ -140,6 +141,37 @@ async function loadLiveTimelines(projects) {
     }
   }));
   state.liveTimelines = next;
+}
+// CT-1 native source reads are on-demand when this project's Board is opened.
+// No auto-follow of PR titles or optional chat reports. Browser reload rechecks.
+function ensureBoardNative(key){
+  if(!boardSourceConfigured(key)||state.boardNative[key])return;
+  state.boardNative[key]={status:'loading',observedAt:null,observations:[],failures:[]};
+  withTimeout(loadBoardNative(key),12000).then(result=>{
+    state.boardNative[key]=result;
+  },error=>{
+    state.boardNative[key]={status:'unknown',observedAt:null,observations:[],
+      failures:[{source:'configured native sources',error:String(error.message||error)}]};
+  }).then(()=>render());
+}
+function recheckBoardNative(key){
+  if(!boardSourceConfigured(key)||state.boardChecking[key])return;
+  // Preserve last complete Page+source observation as the independent
+  // comparison baseline. A failed read MUST NOT be treated as unchanged.
+  const last=state.boardNative[key];
+  const project=state.data[key];
+  if(last?.status==='ok'&&project){
+    state.boardPrior[key]=cycleBoardContextModel(project,{native:last,
+      pageFetch:state.pageFetch});
+  } else state.boardPrior[key]=null;
+  state.boardChecking[key]=true;
+  render();
+  withTimeout(loadBoardNative(key),12000).then(next=>{
+    state.boardNative[key]=next;
+  },error=>{
+    state.boardNative[key]={status:'unknown',observedAt:null,observations:[],
+      failures:[{source:'configured native sources',error:String(error.message||error)}]};
+  }).then(()=>{state.boardChecking[key]=false;render();});
 }
 async function refresh() {
   try {
@@ -522,9 +554,10 @@ function render() {
     subtabs.forEach(([id, label]) => {
       // Original route identities remain stable, including revision-specific task links.
       const suffix = older ? '/' + encodeURIComponent(rev) : '';
-      const a = navLink('#/' + key + '/' + id + suffix, label, 'view' + (id === v ? ' on' : ''));
+      const selected=id===v||(id==='cycle-board'&&v==='timeline-live');
+      const a = navLink('#/' + key + '/' + id + suffix, label, 'view' + (selected ? ' on' : ''));
       if (id === 'actions') { const n = openCount(view.actions); if (n) a.append(badge(n)); }
-      if (id === v) a.setAttribute('aria-current', 'page');
+      if (selected) a.setAttribute('aria-current', 'page');
       subnav.append(a);
     });
     root.append(subnav);
@@ -592,7 +625,18 @@ function render() {
       if(family || step) showCheckpoint(false); // The scoped native task stays first.
     }
     else if (v === 'actions') renderActions(body, sv);
-    else if (v === 'timeline-live') renderCycleTimeline(body, view, older ? {status:'historical'} : state.liveTimelines[key]);
+    else if (v === 'timeline-live' || v === 'cycle-board') {
+      if(!older)ensureBoardNative(key);
+      renderCycleTimeline(body,view,older?{status:'historical'}:state.liveTimelines[key],
+        {native:older?null:state.boardNative[key]||null,
+        previous:older?null:state.boardPrior[key]||null,
+        cycleStatus:checkpointModel(view,checkOptions).cycle.status,
+        binding:older?null:p.cycle||null,
+        cycleRead:older?null:state.cycles[key]||null,
+        pageFetch:state.pageFetch,
+        checking:!!state.boardChecking[key],
+        onRecheck:!older&&boardSourceConfigured(key)?()=>recheckBoardNative(key):null});
+    }
     else if (v === 'test') renderTestPage(body, view, { historical:!!older });
     else if (v === 'oracle-continuity') renderOracleContinuity(body, view);
     else if (v === 'fixtures') renderFixtures(body, sv.fixtures, older ? '' : key, view.fixtures);

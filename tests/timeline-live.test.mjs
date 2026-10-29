@@ -101,9 +101,29 @@ test('IR starting changes prior ACTION into INFO with linked history, not indepe
  assert.match(brief,/Plan|PLAN/);
  assert.match(brief,/FIXTURE.*candidate/);
  assert.match(brief,/NOT a Page update/);
- const templ=timelineInfoTemplate(action);
+ const guidance=timelineInfoTemplate(action);
+ assert.match(guidance,/NOT A POSTABLE EVENT/);
+ assert.match(guidance,/UNKNOWN or UNVERIFIED/);
+ assert.doesNotMatch(guidance,/CYCLE_TIMELINE_CARD v2/);
+ assert.match(guidance,/ciifr-geometry-ir-001/);
+ const templ=timelineInfoTemplate(action,{responderRole:'ORACLE',verified:true});
  assert.match(templ,/CYCLE_TIMELINE_CARD v2/);
+ assert.match(templ,/"role": "ORACLE"/);
+ assert.doesNotMatch(templ,/"role": "REVIEWER_IR"/);
  assert.match(templ,/ciifr-geometry-ir-001/);
+});
+test('unverified peer alias never becomes a reviewer identity or postable Info card',()=>{
+ const actionForOracle={...action,peerAlias:'oracle-a'};
+ const unverified=timelineInfoTemplate(actionForOracle);
+ assert.match(unverified,/NOT A POSTABLE EVENT/);
+ assert.doesNotMatch(unverified,/CYCLE_TIMELINE_CARD v2/);
+ const falseRole=timelineInfoTemplate(actionForOracle,{responderRole:'REVIEWER_IR',verified:false});
+ assert.match(falseRole,/UNKNOWN or UNVERIFIED/);
+ const invalidRole=timelineInfoTemplate(actionForOracle,{responderRole:'OWNER',verified:true});
+ assert.match(invalidRole,/NOT A POSTABLE EVENT/);
+ const verified=timelineInfoTemplate(actionForOracle,{responderRole:'ORACLE',verified:true});
+ assert.match(verified,/"role": "ORACLE"/);
+ assert.doesNotMatch(verified,/"role": "REVIEWER_IR"/);
 });
 test('Unreferenced Info cannot falsely close a newer ACTION',()=>{
  const later={...action,eventId:'ciifr-geometry-ir-003',

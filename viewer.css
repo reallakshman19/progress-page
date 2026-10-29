@@ -549,3 +549,47 @@ main{width:100%;min-width:0}
 .adhoc-tile-next{color:var(--acc);font-size:12px}
 .adhoc-tile:hover,.adhoc-tile:focus-visible{border-color:var(--acc);outline:1px solid var(--acc)}
 @media(max-width:620px){.adhoc-grid{grid-template-columns:1fr}.adhoc-card,.adhoc-tile{padding:12px}.adhoc-section-subtabs{padding-left:0}}
+
+/* CT-1 read-only source-bound Board; not an authoritative Cycle or Page ledger. */
+.cb-context{border:1px solid var(--bd);border-radius:12px;padding:15px;margin:12px 0 16px;max-width:100%;overflow-wrap:anywhere}
+.cb-context>h4{font-size:15px;margin:0 0 6px}
+.cb-context>p{margin:6px 0 12px}
+.cb-facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:7px;margin:14px 0}
+.cb-fact{display:flex;flex-direction:column;gap:3px;padding:8px 10px;border-radius:8px;background:var(--card);min-width:0}
+.cb-fact span{font-size:11px}
+.cb-fact strong{font-size:12px;overflow-wrap:anywhere}
+.cb-current,.cb-native{border-top:1px solid var(--bd);padding:12px 0 0;margin:14px 0 0}
+.cb-current>h4,.cb-native>h4{font-size:13px;margin-bottom:8px}
+.cb-source{padding:10px 12px;margin:8px 0;border:1px solid var(--bd);border-radius:8px}
+.cb-source p{margin:5px 0}
+.cb-source .smart-badges{margin:6px 0}
+@media(max-width:620px){.cb-context{padding:11px}.cb-facts{grid-template-columns:1fr}}
+
+/* CT-2 on-demand source delta; deliberately no authoritative status control. */
+.cb-delta{margin:14px 0 18px;padding:14px;border:1px solid var(--bd);border-radius:12px}
+.cb-delta>h4{font-size:15px;margin:0 0 6px}
+.cb-delta>p{margin:6px 0 12px}
+.cb-delta-facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));gap:10px;margin:12px 0}
+.cb-delta-fact{border:1px solid var(--bd);background:var(--card);border-radius:9px;padding:10px}
+.cb-delta-fact>span{display:block;font-size:11px}
+.cb-delta-fact strong{display:block;font-size:13px;margin:3px 0;overflow-wrap:anywhere}
+.cb-delta-fact p{font-size:12px;line-height:1.45;margin:5px 0}
+.cb-advice{padding:10px 12px;border-left:3px solid var(--acc);background:var(--card);border-radius:4px;margin:9px 0}
+.cb-advice p{margin:5px 0}
+.cb-delta-sources{margin:10px 0;overflow-wrap:anywhere}
+.cb-delta-sources p{margin:4px 0}
+.cb-delta button{margin:8px 0}
+.cb-delta button:disabled{opacity:.65;cursor:wait}
+@media(max-width:620px){.cb-delta{padding:10px}.cb-delta-facts{grid-template-columns:1fr}}
+
+/* CT-3 reviewer-only Page writer preview. Commands are not executed in-browser. */
+.cb-writer{margin:14px 0 18px;padding:14px;border:1px solid var(--bd);border-radius:12px;overflow-wrap:anywhere}
+.cb-writer>h4{font-size:15px;margin:0 0 6px}
+.cb-writer-state{display:flex;gap:7px;flex-wrap:wrap;margin:12px 0}
+.cb-writer-item{border:1px solid var(--bd);border-radius:9px;padding:12px;margin:10px 0;background:var(--card);min-width:0}
+.cb-writer-item>p{font-size:12px;line-height:1.5;margin:6px 0}
+.cb-writer-commands{margin:10px 0}
+.cb-writer-commands summary{cursor:pointer;font-weight:600;font-size:13px}
+.cb-writer-commands>p{margin:9px 0;font-size:12px}
+.cb-writer-code{overflow-x:auto;white-space:pre-wrap;overflow-wrap:anywhere;padding:10px;font-size:12px;background:var(--bg);border:1px solid var(--bd);border-radius:7px}
+@media(max-width:620px){.cb-writer{padding:10px}.cb-writer-item{padding:9px}}
