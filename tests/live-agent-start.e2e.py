@@ -100,7 +100,13 @@ def main():
             check(page.locator(".agent-start-choice-link").filter(has_text="WBS 5").count()==1,
                 "Mapping choice missing")
             check("25 more" not in txt,"Hidden backlog leak")
-            check(page.locator(".agent-start-choice").count()==3,"Exactly three active WBS families should be primary")
+            # New published WBS 6 must not break source-grounded Agent Start.
+            # The number of choices follows the current governing Page WBS,
+            # not a stale hard-coded three-family assumption.
+            source=json.loads((Path(__file__).resolve().parents[1]/"data/ciifr/index.json").read_text(encoding="utf-8"))
+            expected=len({str(m.get("wbs","")).split(".")[0] for m in source.get("milestones",{}).values() if m.get("wbs")})
+            check(page.locator(".agent-start-choice").count()==expected,
+                  f"Every currently published active WBS family must be selectable ({expected} expected)")
             check(page.locator(".agent-start-other a").count()==1,"Legacy milestones should remain reachable but secondary")
             capture(page,"00-workstream-chooser")
             return {"choices":page.locator(".agent-start-choice").count(),"arbitrarilySelectedTasks":0}
