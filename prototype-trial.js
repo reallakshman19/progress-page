@@ -82,7 +82,7 @@ export function trialPacket({candidate,localConfirmed=false,previewUrl=null,
  return lines.join('\n');
 }
 const trialButton=(label,action)=>{
- const b=el('trialButton','btn small',label);b.type='trialButton';b.addEventListener('click',action);return b;
+ const b=el('button','btn small',label);b.type='button';b.addEventListener('click',action);return b;
 };
 function trialInstruction(text){return el('p','muted',text);}
 export function renderPropertyTrial(root,{historical=false,fetcher=fetch}={}){
@@ -124,7 +124,7 @@ export function renderPropertyTrial(root,{historical=false,fetcher=fetch}={}){
  details.append(el('summary',null,'Launch the actual candidate locally (manual setup)'));
  details.append(trialInstruction('Check source head, copy these commands and run them in an isolated directory. This starts the native app locally; it does not deploy PR #232.'));
  const setup=el('pre','demo-mono');setup.style.cssText='white-space:pre-wrap;overflow-wrap:anywhere;padding:12px;border:1px solid var(--bd);border-radius:8px;';
- setup.textContent='Select “Check native PR head” first. No TRIAL_SHA40 assumed.';
+ setup.textContent='Select “Check native PR head” first. No SHA assumed.';
  const copySetup=trialButton('Copy exact-head local setup',()=>{const x=trialSetup(state.candidate?.head);if(x)copyText(x,copySetup);});
  copySetup.disabled=true;
  details.append(setup,copySetup);
