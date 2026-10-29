@@ -40,6 +40,8 @@ jobs:
           node-version: '20'
       - name: Agent Start task/deep-link regression
         run: node --experimental-default-type=module --test tests/agent-start.test.mjs
+      - name: Cycle now via Timeline live-source privacy and WBS regressions
+        run: node --experimental-default-type=module --test tests/timeline-live.test.mjs
       - name: Onboarding readiness contrasts
         run: node --experimental-default-type=module --test tests/onboarding.test.mjs
       - name: Project Home navigation and source-retention tests

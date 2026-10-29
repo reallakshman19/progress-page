@@ -471,3 +471,37 @@ main{width:100%;min-width:0}
 .oracle-continuity-overview{padding-left:18px}
 .oracle-continuity-overview li{margin:8px 0}
 
+
+
+/* Cycle now via Timeline cards: clearly separate operational Action from Info */
+.ct-controls{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin:12px 0}
+.ct-controls h4{width:100%;margin:0 0 2px}
+.ct-controls button[aria-pressed="true"]{background:var(--accbg);border-color:var(--acc);font-weight:700}
+.ct-list{display:grid;gap:14px}
+.ct-group{display:grid;gap:8px;min-width:0}
+.ct-group>h4{margin:0;font-size:13px;color:var(--mut)}
+.ct-card{min-width:0;display:grid;gap:7px;padding:12px;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
+.ct-action{border-left:4px solid var(--wn)}
+.ct-info{border-left:4px solid var(--ok)}
+.ct-top,.ct-tags,.ct-tools,.ct-links{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.ct-top .chip{font-weight:700}
+.ct-card p{margin:0;min-width:0;overflow-wrap:anywhere}
+.ct-card .ct-owner{border-left:3px solid var(--wn);padding:5px 8px;background:var(--wnbg)}
+.ct-card .ct-next{font-weight:500}
+.ct-card .ct-description{font-size:13px}
+.ct-card .ct-tags{padding:4px 0}
+.ct-card .ct-tags .chip{white-space:normal;text-decoration:none}
+.ct-card .ct-tools{margin-top:2px}
+.ct-history{padding-top:6px;border-top:1px solid var(--bd)}
+.ct-history>summary{cursor:pointer;color:var(--mut);font-size:12px}
+
+
+/* Source-backed, derived INFO cards: distinct from an agent's Info handoff. */
+.ct-auto-section{display:grid;gap:10px;margin:14px 0 20px;min-width:0}
+.ct-auto-head{display:flex;gap:9px;align-items:center;flex-wrap:wrap}
+.ct-auto-disclosure{display:grid;gap:12px;min-width:0}
+.ct-auto-disclosure>summary{cursor:pointer;color:var(--mut);font-size:12px;padding:6px 0}
+.ct-auto{border-left:4px solid var(--acc)}
+.ct-auto .ct-top{gap:8px}
+.ct-auto .ct-top>.muted{font-size:11px;white-space:normal;overflow-wrap:anywhere}
+.ct-auto .ct-tools{display:flex;flex-wrap:wrap}

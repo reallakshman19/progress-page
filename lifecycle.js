@@ -6,10 +6,10 @@ const MODULES = ['task-decomposer', 'nudge-designer', 'independent-review', 'gat
 const WORD = { archived: 'Archived', superseded: 'Superseded', cancelled: 'Cancelled' };
   
 // Pure presentation nesting: historic deep-link routes remain independently addressable.
-export const HOME_VIEWS = Object.freeze(['home','home-roadmap','home-sources','actions','timeline']);
+export const HOME_VIEWS = Object.freeze(['home','home-roadmap','home-sources','actions','timeline','timeline-live']);
 export const HOME_SUBTABS = Object.freeze([
   ['home','Overview'], ['home-roadmap','Roadmap'], ['home-sources','Sources'],
-  ['actions','My actions'], ['timeline','Timeline'],
+  ['actions','My actions'], ['timeline','Timeline'], ['timeline-live','Cycle now via Timeline'],
 ]);
 export const CONTINUITY_VIEWS = Object.freeze(['continuity','start','oracle-continuity','home-risks','fixtures']);
 export const CONTINUITY_SUBTABS = Object.freeze([
