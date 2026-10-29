@@ -55,9 +55,19 @@ comment intake exists; `#/PROJECT/timeline-live` remains compatible.
 This **does not** activate a CIIFR-Node Oracle Cycle, prove independent review
 PASS, dispatch an agent or update the Progress Page. In other projects, already
 published Page audit context still renders even without configured native intake.
-CT-2 changed-only authority checks, CT-3 writer proposal and CT-4 independent
-evaluation are separate future verticals. This preview is not evidence of saved
-time or an Owner usability trial. Reference contracts remain a
+CT-2 is stacked in the same draft PR: the Board now shows three independent
+advisory classifications (**Native change / Page reconciliation / Cycle authority**)
+and a **Recheck native evidence** button. The initial comparison is UNKNOWN
+until a prior complete observation exists; a recheck fetches the same original
+sources and compares stable occurrence identities without a Timeline post.
+Newer CIIFR-Node PR232/issue231 evidence can flag a **review-required stale
+Page WBS reference** while retaining GATE_R0 HOLD, SELF_ASSESSED and Cycle
+UNMAPPED. A public Board cannot authenticate the private recipient or grant
+`CONTINUE_AUTHORIZED`; execution still requires a fresh exact canonical
+assignment, generation, candidate, native evidence and receipt check under the
+selected Cycle. CT-3 writer proposal and CT-4 independent evaluation remain
+separate future verticals. This preview is not evidence of saved time or an
+Owner usability trial. Reference contracts remain a
 [review-required Common draft PR](https://github.com/reallakshman19/Common/pull/567).
 
 ## Cycle now via Timeline — opt-in operational pilot
