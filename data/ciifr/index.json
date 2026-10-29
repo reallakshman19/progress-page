@@ -4,7 +4,7 @@
     "key": "ciifr",
     "title": "CII Find & Replace VNext",
     "subtitle": "R4 current: Geometry WBS3 read-only G1/G2; Element WBS4 source/config qualification; VNext integration held pending independent evidence.",
-    "updatedAt": "2026-10-29T13:46:49Z",
+    "updatedAt": "2026-10-29T13:53:47Z",
     "updatedBy": "6ae1bed6 (Owner-directed builder/recorder)",
     "staleAfterMin": 120,
     "aim": "Extend CIIFR NodeName VNext into typed ELEMENTS real-value/Line Number edits plus pointer-resolved RIGID Weight/Type. Preserve original bytes, v14 units/sentinels, node/pointer/branch relations, per-span approvals, new-copy export and native import review. Retain R3 Geometry WBS3 review-only, frozen P2/P2.1 and XML custody; defer structural graph/pointer edits and P3.",
@@ -399,7 +399,7 @@
       "repo": "reallakshman19/3D_Converters",
       "branch": "fix/xml229-olet-helper-route-6ae1bed6",
       "commit": "af40c23396b5ef2d2868a866f221d84d84c99540",
-      "activity": "Draft PR355; native Python and JS22/24 CI pass; actual browser/Preview checks running; historical CI preflight failures disclosed.",
+      "activity": "PR355 af40c233 native, JS22/24, Preview/browser PASS;68 checks PASS/15 historical preflight FAIL. Owner trial/native import pending.",
       "capSrc": "https://github.com/reallakshman19/3D_Converters/pull/355"
     }
   },

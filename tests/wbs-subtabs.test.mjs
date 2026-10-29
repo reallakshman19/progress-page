@@ -79,15 +79,17 @@ test('CIIFR R4 WBS 5 CIIFR-MAP groups only M8–M11; seven others stay separate'
     ['M12','M13','M14','M15','M16'],
     ['M17','M18','M19','M20','M21','M22','M23'],
     ['M8','M9','M10','M11'],
-    ['M24','M25','M26','M27'],
+    ['M24','M25','M26','M27','M28'],
     ['M6','M7','M4','M5','M1','M2','M3']
   ]);
   assert.deepEqual(groups[2].steps.map(s=>s.short),['5.0','5.1','5.2','5.3']);
   assert.deepEqual(groups[2].steps.map(s=>s.wbs),['5','5.1','5.2','5.3']);
   assert.equal(groups[2].steps.find(s=>s.key==='M11').name,'Authorized mapped transfer');
   assert.equal(ciifr.milestones.M11.cap,'NOT_DEMONSTRATED');
-  assert.deepEqual(groups[3].steps.map(s=>s.wbs),['6','6.1','6.2','6.3']);
+  assert.deepEqual(groups[3].steps.map(s=>s.wbs),['6','6.1','6.2','6.3','6.4']);
   assert.equal(ciifr.milestones.M24.name,'Restraint fallback and Datum placement');
+  assert.equal(ciifr.milestones.M28.name,'BM2 OLET connectivity and support preservation');
+  assert.equal(cards['bm2-olet-route'].milestone,'M28');
   const ids=groups.flatMap(g=>g.steps.map(s=>s.key));
   assert.equal(new Set(ids).size,ids.length,'no duplicate milestone IDs');
   assert.deepEqual([...ids].sort(),Object.keys(ciifr.milestones).sort(),'no milestone lost');
