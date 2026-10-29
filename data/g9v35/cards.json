@@ -603,13 +603,13 @@
     "label": "Level-3 tiles D3.1-D3.7",
     "who": {},
     "state": "SUBMITTED",
-    "now": "All 7 built; checker passes on each (re-run by Oracle); exam answers match Oracle's worked keys",
+    "now": "All 7 written by builders (not compiled); independent physics check: all pass with fixes",
     "next": {
       "actor": "OWNER",
-      "text": "look at the pages; independent physics check before she uses them"
+      "text": "look at the pages; the open fixes go into the 4.2 rebuild"
     },
-    "updatedAt": "2026-10-29T04:50:51Z",
-    "src": "OWNER_PRIVATE_REF:G9V35-STORY-29OCT"
+    "updatedAt": "2026-10-29T15:35:43Z",
+    "src": "OWNER_PRIVATE_REF:G9V35-STORY-29OCT-WBS42"
   },
   "qrt-d4": {
     "order": 25,
@@ -617,14 +617,14 @@
     "milestone": "W40",
     "label": "Level-4 tiles D4.1-D4.7",
     "who": {},
-    "state": "IN_PROGRESS",
-    "now": "Builders for D4.1/4.2 and D4.3/4.4 running; D4.5/4.6 and D4.7 next (two at a time, usage limits)",
+    "state": "SUBMITTED",
+    "now": "All 7 written by builders (not compiled); independent physics check: 6 pass, 1 pass with fixes",
     "next": {
-      "actor": "Oracle",
-      "text": "check each tile as it returns, then one blueprint revision for all gap notes"
+      "actor": "OWNER",
+      "text": "look at the pages"
     },
-    "updatedAt": "2026-10-29T04:50:44Z",
-    "src": "OWNER_PRIVATE_REF:G9V35-STORY-29OCT"
+    "updatedAt": "2026-10-29T15:35:44Z",
+    "src": "OWNER_PRIVATE_REF:G9V35-STORY-29OCT-WBS42"
   },
   "qrt-note": {
     "order": 26,
@@ -655,5 +655,18 @@
     },
     "updatedAt": "2026-10-29T04:50:46Z",
     "src": "OWNER_PRIVATE_REF:G9V35-STORY-29OCT"
+  },
+  "subtiles-d31": {
+    "order": 28,
+    "group": "r4",
+    "milestone": "W421",
+    "label": "D3.1 sub-tiles D3.1.1-D3.1.6",
+    "who": {},
+    "state": "NOT_STARTED",
+    "now": "Plan recorded in the project WBS (4.2); waiting for the Owner's refinement",
+    "next": {
+      "actor": "OWNER",
+      "text": "refine the plan; then the Oracle builds D3.1.1 end to end"
+    }
   }
 }

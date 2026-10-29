@@ -4,11 +4,11 @@
     "key": "g9v35",
     "title": "G9v3.5 Physics pilot",
     "subtitle": "Newton's Laws pilot on the ZIP-free track, and the owner-bank guard (PR #305)",
-    "updatedAt": "2026-10-29T04:50:51Z",
+    "updatedAt": "2026-10-29T15:35:44Z",
     "updatedBy": "Oracle G9v3.5",
     "staleAfterMin": 120,
-    "aim": "A personal-use app for one Grade 9 kid to self-learn difficult Physics, Mathematics and Chemistry concepts for one of the toughest competitive exams. Not a corporate product.",
-    "aimSrc": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6339599529"
+    "aim": "A personal-use app for one Grade 9 kid to self-learn difficult Physics, Mathematics and Chemistry concepts for one of the toughest competitive exams. Not a corporate product. Now: one Physics blueprint split by physics idea (D3.1.1–D3.1.6) builds each Recall question's teaching and try from the library plus a minimal topic adapter; tested on 18 real questions, then reused for D4.1 and D3.2.",
+    "aimSrc": "OWNER_PRIVATE_REF:G9V35-STORY-29OCT-WBS42"
   },
   "rules": {
     "quietAfterMin": 30,
@@ -241,11 +241,59 @@
     },
     "W40": {
       "name": "QRT tiles for Work, Power and Energy, levels 3-4 (Owner's WBS 1, 28 Oct)",
-      "full": "Physics blueprint (14 cells) + energy topic adapter; every level-3/4 book and JEE Main item gets Core1A/1B. Level 3: 7 tiles built and checker-passed; level 4 building. Physics not yet independently checked.",
+      "full": "Physics blueprint (14 cells) + energy topic adapter. Builders wrote the 14 level-3/4 tile packs (written, not compiled). All 14 were physics-checked by an independent reviewer: level 4 has 6 pass and 1 pass with fixes; level 3 has all 7 pass with fixes. The method is replaced by 4.2; the physics is kept as input.",
       "order": 30,
       "wbs": "4.1",
       "cap": "NOT_DEMONSTRATED",
-      "canDo": "7 level-3 tile pages exist on the Owner's PC; not yet checked by someone other than the builder"
+      "canDo": "The Owner can view the 14 tile pages privately; not yet for her use"
+    },
+    "W42": {
+      "name": "Physics blueprint split by physics idea (Owner's WBS, 29 Oct)",
+      "full": "D3.1.1–D3.1.6 built from blueprint + library + minimal topic adapter + question labels; 18 real questions (3 per sub-tile) find blueprint gaps (general goes to the blueprint, topic-specific to the adapter); rest of D3.1 to agents; then D4.1 (depth only), then D3.2.",
+      "order": 31,
+      "wbs": "4.2",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "Plan recorded; nothing built yet"
+    },
+    "W421": {
+      "name": "Build D3.1.1–D3.1.6 (prove D3.1.1 first)",
+      "full": "Six sub-tiles, one physics idea each: direction decides the effect; the whole, not one part; which system; which observer or zero; path or endpoints; stored, transferred or a rate. Every page part traces to a source.",
+      "order": 32,
+      "wbs": "4.2.1",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "Not built"
+    },
+    "W422": {
+      "name": "Scan 18 questions, 3 per sub-tile",
+      "full": "Build each from the blueprint with adapter changes only. A gap that recurs, or would fit another Physics topic, goes to the blueprint; an energy-only gap to the adapter; a missing fact to the library (checked). 5 of the 18 questions are in hand.",
+      "order": 33,
+      "wbs": "4.2.2",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "Not started"
+    },
+    "W423": {
+      "name": "Rest of D3.1 by agents",
+      "full": "Ideas 7-9, the remaining questions, wording and review fixes; agents change only the library (checked) and the adapter, and report blueprint gaps.",
+      "order": 34,
+      "wbs": "4.2.3",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "Not started"
+    },
+    "W424": {
+      "name": "D4.1: the same six ideas, only the depth varies",
+      "full": "No separate research: reuse the library, adapter and questions; only the level-4 rule differs.",
+      "order": 35,
+      "wbs": "4.2.4",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "Not started"
+    },
+    "W425": {
+      "name": "D3.2: Explain with the same six ideas",
+      "full": "Reuse the idea sections; only the column rule differs.",
+      "order": 36,
+      "wbs": "4.2.5",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "Not started"
     }
   },
   "groups": {
@@ -318,8 +366,19 @@
       "why": "R4: 25 Oct WBS (G9O5-10, START_HERE + task-decomposer + prototype-first) now on the page; WPE added as second topic (3.1/3.2) via the syllabus route frozen 28 Oct; pass 2 is DISCOVER_FIRST.",
       "ownerWords": "freeze as per syllabus then need to validate with questions from IIT JEE main (Second path/pass) and revisit tiles",
       "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6470834370",
+      "status": "superseded",
+      "supersedes": "R3",
+      "commit": "f4b6309a0238"
+    },
+    {
+      "id": "R5",
+      "at": "2026-10-29T15:35:34Z",
+      "by": "Oracle G9v3.5",
+      "why": "The Owner replaced builder-written tiles with one Physics blueprint split by physics idea, tested on real questions",
+      "ownerWords": "Plan build D3.1.1 to D3.1.6. We will refine. Then scan though 3x6 (18 questions) the identified D3.1 and see the gap in Blueprint 3.1.1 to D3.1.6 , if not worth to update blueprint, i.e, specific, then they are Topic adapters!. Rest of D3.1 fine tuning by agents offloaded, you move to D4.1 (No separate research only depth will vary) then you move to D3.2 Record this as you new WBS and AIM!!",
+      "src": "OWNER_PRIVATE_REF:G9V35-STORY-29OCT-WBS42",
       "status": "current",
-      "supersedes": "R3"
+      "supersedes": "R4"
     }
   ]
 }
