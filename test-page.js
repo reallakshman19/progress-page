@@ -57,7 +57,21 @@ export function testPagePacket(model) {
   return lines.join('\n');
 }
 
+const HOSTED_REVIEWS=Object.freeze({
+  g9v35:[['QRT grid · Work, Power and Energy (status of all 28 tiles)','reviews/g9v35/qrt-grid.html'],
+    ['Physics blueprint · levels 3 and 4','reviews/g9v35/blueprint.html'],
+    ['Physics review · level-3 tiles','reviews/g9v35/physics-review-d3.html'],
+    ['Physics review · level-4 tiles','reviews/g9v35/physics-review-d4.html']]
+});
+
 export function renderTestPage(root,project,{historical=false}={}) {
+  const hosted=HOSTED_REVIEWS[project?.index?.project?.key];
+  if(hosted){
+    const box=el('section','demo-page');
+    box.append(el('h3',null,'Hosted review pages'));
+    hosted.forEach(([label,href])=>{const p=el('p');p.append(link(href,label+' ↗'));box.append(p);});
+    root.append(box);
+  }
   renderRcaBench(root, project, { historical });
   let current={mode:'ACTION',cardId:null,needsOwner:false};
   const wrapper=el('section','demo-page');
