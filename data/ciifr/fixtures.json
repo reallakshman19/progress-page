@@ -154,6 +154,12 @@
       "s": "HOSTING_REQUESTED",
       "n": "Recorded evidence; no fixes applied",
       "milestone": "M24"
+    },
+    {
+      "t": "Bore PR352: component DN250 and port-specific OLET OD60.3; source and mass custody retained.",
+      "u": "https://github.com/reallakshman19/3D_Converters/pull/352",
+      "s": "DRAFT_REVIEW_PENDING",
+      "milestone": "M24"
     }
   ],
   "issues": [
