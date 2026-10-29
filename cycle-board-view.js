@@ -81,7 +81,7 @@ export function renderCycleBoardContext(root,project,ctx){
     writer.append(c,el('p','muted','The existing pp_cli propose and pp_batch dry-run must be run separately by an authorized Page writer. No browser write or --apply.'));
   }else writer.append(el('p','muted','No qualified proposal command. Resolve source or audit correlation in the existing Page writer workflow.'));
   section.append(writer);
-  section.append(el('p','muted','Advisory only. The Board cannot authenticate a browser chat, 
+  section.append(el('p','muted','Advisory only. The Board cannot authenticate a browser chat, '
     +'approve a technical result, authorize task continuation, create a Cycle receipt or publish the Page.'));
   root.append(section);
 }
