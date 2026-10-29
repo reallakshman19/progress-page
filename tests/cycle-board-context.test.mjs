@@ -124,6 +124,32 @@ test('Wrong PR identity, lost head and private title fail closed',async()=>{
  }));
  assert.ok(privateSource.observations.every(e=>!e.title.includes('chatgpt.com')));
 });
+test('CT-4 untrusted native titles redact private URLs, UUIDs, tokens and emails',async()=>{
+ const samples=[
+  'review chat https://chatgpt.com/c/a1b2c3d4-eeee-4222-8999-999911112222',
+  'incident key ghp_ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnop',
+  'Owner private mail someone@example.com',
+  'secret sk-abcDEF1234567890QWERTY',
+  'token:ABCD123 private'
+ ];
+ for(const title of samples){
+  const output=await loadBoardNative(projectKey,async url=>({
+   ok:true,status:200,json:async()=>({...nativeMock(url),title})
+  }),()=> '2026-10-29T09:00:00Z');
+  assert.equal(output.status,'ok');
+  assert.ok(output.observations.every(e=>e.title==='Source title unavailable'));
+  const context=cycleBoardContextModel(page,{native:output});
+  withFakeDom(()=>{
+   const root=fakeElement('main');
+   renderCycleBoardContext(root,context);
+   assert.doesNotMatch(root.textContent,/chatgpt\\.com|example\\.com|ghp_|sk-abcDEF|ABCD123/i);
+  });
+ }
+ const normal=await loadBoardNative(projectKey,async url=>({
+  ok:true,status:200,json:async()=>({...nativeMock(url),title:'Scoped self-assessed repair'})
+ }));
+ assert.ok(normal.observations.every(x=>x.title==='Scoped self-assessed repair'));
+});
 test('Archived Page revisions do not blend with live native source or Cycle',()=>{
  const model=cycleBoardContextModel(page,{historical:true,cycleStatus:'OBSERVED',
    native:{status:'ok',observedAt:'2026-10-29T09:00:00Z',observations:[{}],failures:[]}});
