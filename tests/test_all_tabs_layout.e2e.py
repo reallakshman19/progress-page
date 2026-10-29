@@ -178,8 +178,14 @@ def main():
                           "INFO_AUTO unavailable without operational intake")
                     check("No live operational intake configured" in page.locator(".body").inner_text(),
                           "unconfigured live feed not distinguished from Page history")
-                    check("Delta/authority classification: CT-2 NOT_IMPLEMENTED" in content,
-                          "CT-1 incorrectly granted continuation")
+                    check("On-demand delta" in content,
+                          "CT-2 advisory missing")
+                    check("Cycle UNMAPPED" in content,
+                          "CT-2 incorrectly invented Cycle authority")
+                    check("Next advice: " in content,
+                          "CT-2 advice and unresolved sources not visible")
+                    check("CONTINUE_AUTHORIZED" not in content,
+                          "unmapped browser source must not authorize continuation")
                     g=geometry(page)
                     check(g["documentWidth"]<=width+3,
                           "Cycle Board causes horizontal overflow")

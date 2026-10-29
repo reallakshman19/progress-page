@@ -12,6 +12,7 @@ import { renderTestPage } from './test-page.js?v=33';
 import { parseAdhocRoute, renderAdhocProjects } from './adhoc-projects.js?v=33';
 import { loadCycleTimeline, renderCycleTimeline } from './timeline-live.js?v=33';
 import { hasBoardNativeSources, loadBoardNative, buildBoardContext } from './cycle-board-context.js?v=33';
+import { classifyBoardDelta } from './cycle-board-delta.js?v=33';
 import { tabsRow, archivedPanel, projectHead, revisionRow, isActive, HOME_VIEWS, HOME_SUBTABS, CONTINUITY_VIEWS, CONTINUITY_SUBTABS, PRIMARY_TABS, primaryTabActive } from './lifecycle.js?v=33';
 import { nudgesOf, openNudge } from './nudge.js?v=33';
 import { addProjectDialog, addRevisionDialog } from './briefs.js?v=33';
@@ -47,7 +48,7 @@ function mergedLinks() {
 }
 
 const state = { projects: [], data: {}, site: {}, links: mergedLinks(), error: null, panel: false, offline: false, archivedOpen: false, rev: null, paths: null, repo: {}, searchOpen: false, searchQuery: '', searchIndex: [],
-  pageFetch: { status:'unknown', observedAt:null }, cycles: {}, liveTimelines: {}, boardNative: {} };
+  pageFetch: { status:'unknown', observedAt:null }, cycles: {}, liveTimelines: {}, boardNative: {}, boardBaseline: {}, boardPriorNative: {} };
 
 // The local hub server (127.0.0.1) serves each project's private coding and reference folders; the website never has them.
 async function loadPaths() {
@@ -152,6 +153,8 @@ async function loadBoardNativeSources(projects) {
         url:'',reason:String(error.message||error)}]};
     }
   }));
+  state.boardPriorNative={...state.boardBaseline};
+  for(const [key,value] of Object.entries(next))if(value.status==='COMPLETE')state.boardBaseline[key]=value;
   state.boardNative=next;
 }
 async function refresh() {
@@ -607,8 +610,10 @@ function render() {
     else if (v === 'actions') renderActions(body, sv);
     else if (v === 'timeline-live') renderCycleTimeline(body, view,
       older ? {status:'historical'} : state.liveTimelines[key],
-      buildBoardContext(view,{native:older?null:state.boardNative[key],
-        pageObservedAt:older?null:(state.pageFetch?.status==='ok'?state.pageFetch.observedAt:null)}));
+      classifyBoardDelta(buildBoardContext(view,{native:older?null:state.boardNative[key],
+        pageObservedAt:older?null:(state.pageFetch?.status==='ok'?state.pageFetch.observedAt:null)}),
+        {historical:!!older,prior:state.boardPriorNative[key]?
+          buildBoardContext(view,{native:state.boardPriorNative[key]}):null}));
     else if (v === 'test') renderTestPage(body, view, { historical:!!older });
     else if (v === 'oracle-continuity') renderOracleContinuity(body, view);
     else if (v === 'fixtures') renderFixtures(body, sv.fixtures, older ? '' : key, view.fixtures);

@@ -55,8 +55,19 @@ export function renderCycleBoardContext(root,project,ctx){
       link(e.source,'recorded original'));section.append(row);
   }
   section.append(el('p','muted','Page card state: '+(ctx.page.recordedState||'UNKNOWN')+
-    ' · recorded next (may be stale): '+(ctx.page.recordedNext||'UNKNOWN')),
-    el('p','muted','Delta/authority classification: CT-2 NOT_IMPLEMENTED. '
-      +'A displayed newer native source is not an authorized next assignment.'));
+    ' · recorded next (may be stale): '+(ctx.page.recordedNext||'UNKNOWN')));
+  const delta=ctx.delta||{};
+  section.append(el('h4',null,'On-demand delta · read-only advisory'),
+    el('p','ct-description','Native '+(delta.native||'UNKNOWN')+
+      ' · Page '+(delta.page||'UNKNOWN')+' · Cycle '+(delta.cycle||'UNKNOWN')+
+      ' · Return '+(delta.receipt||'UNKNOWN')));
+  const advice=el('p','ct-next','Next advice: '+(ctx.next?.advice||'UNKNOWN_STOP')+
+    ' · relevant role: '+(ctx.next?.responsibleRole||'NOT_ESTABLISHED'));
+  section.append(advice);
+  if(delta.causes)for(const [axis,cause] of Object.entries(delta.causes)){
+    if(cause)section.append(el('p','muted',axis+' reason: '+cause));
+  }
+  section.append(el('p','muted','Advisory only. The Board cannot authenticate a browser chat, '
+    +'approve a technical result, authorize task continuation, create a Cycle receipt or publish the Page.'));
   root.append(section);
 }
