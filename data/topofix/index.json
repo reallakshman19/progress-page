@@ -6,8 +6,8 @@
     "subtitle": "Safe automatic solutions, precise manual directions, revised-source recheck and verified case outcomes.",
     "aim": "Topo should not burden with finding but provide auditable solution which are auto fixable if not set clear directions for manual review. Support controlled manual correction, revised-source reimport, full Topo recheck and evidence-based closure.",
     "aimSrc": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/1#issuecomment-6474563974",
-    "updatedAt": "2026-10-28T20:27:37Z",
-    "updatedBy": "Topo Oracle",
+    "updatedAt": "2026-10-29T06:26:32Z",
+    "updatedBy": "Topo Oracle 6ae1b0f7",
     "staleAfterMin": 120
   },
   "rules": {
@@ -20,7 +20,12 @@
   "chats": {
     "ir": {
       "label": "IR (Owner designated)",
-      "id8": "6ae155fe",
+      "id8": "6ae2d5ac",
+      "engine": "ChatGPT"
+    },
+    "oracle": {
+      "label": "Oracle (Owner confirmed)",
+      "id8": "6ae1b0f7",
       "engine": "ChatGPT"
     }
   },
@@ -171,7 +176,7 @@
     "main": {
       "order": 0,
       "title": "Current safety-review gate",
-      "sub": "Inputs prepared; Owner-designated IR 6ae155fe; ACK/receipt/verdict pending."
+      "sub": "Oracle 6ae1b0f7; Owner-designated IR 6ae2d5ac; acknowledgment, separate receipt and verdict pending."
     },
     "cases": {
       "title": "Current cases and correction safety",
