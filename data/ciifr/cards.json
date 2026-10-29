@@ -1319,10 +1319,10 @@
       "role": "Owner-directed builder"
     },
     "state": "SUBMITTED",
-    "now": "Draft production PR353 restores missing ATTA fallback before Final; actual EF05 Datum73/73. Friction0 preserved; inherited gap defaults fixed, explicit saved profiles retained. Support census differs from legacy cleanup; native CII/import and independent review pending.",
+    "now": "PR354 supplies the actual native enriched XML for download, including later CII failures; local26/26 plus native mass24/24 pass, exact-head native checks pass. Source/Final freshness and CII release gates preserved. PR352 is in main; PR353 merged to its former feature base after PR352 landed, restraint main integration remains outstanding.",
     "next": {
-      "actor": "Independent engineering reviewer / Owner",
-      "text": "Review stacked PR353 after bore PR352; inspect support census and native CII restraints before merge."
+      "actor": "Owner / engineering reviewer",
+      "text": "Review PR354, integrate the existing restraint candidate to main separately, then run the actual model and inspect the downloaded XML."
     },
     "refs": [
       {
@@ -1334,9 +1334,14 @@
         "k": "pr",
         "l": "Pre-Final restraint candidate",
         "u": "https://github.com/reallakshman19/3D_Converters/pull/353"
+      },
+      {
+        "k": "pr",
+        "l": "Native enriched XML download",
+        "u": "https://github.com/reallakshman19/3D_Converters/pull/354"
       }
     ],
-    "updatedAt": "2026-10-29T11:35:42Z",
-    "src": "https://github.com/reallakshman19/3D_Converters/issues/350#issuecomment-6495548000"
+    "updatedAt": "2026-10-29T12:14:19Z",
+    "src": "https://github.com/reallakshman19/3D_Converters/issues/350#issuecomment-6496341808"
   }
 }

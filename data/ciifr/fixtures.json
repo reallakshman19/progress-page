@@ -696,6 +696,12 @@
       "s": "OWNER_REQUEST_RECORDED",
       "n": "Pinned reference; runtime NOT_RUN",
       "milestone": "M24"
+    },
+    {
+      "t": "Owner: allow download of enriched XML; unavailable artifact showed no filename and0 bytes. PR354 retains actual native Final-bound XML, without changing CII release authority.",
+      "u": "https://github.com/reallakshman19/3D_Converters/issues/350#issuecomment-6496341808",
+      "s": "CANDIDATE_PR354",
+      "milestone": "M27"
     }
   ],
   "inputs": [
