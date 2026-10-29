@@ -270,7 +270,7 @@ export function renderAdhocProjects(root,route,nav) {
     ]);
   } else if(route.section==='tests'){
     const s=section(body,'Project-specific Test Lab',
-      'CIIFR-Node has a native prototype trial worksheet; other project scenarios remain browser-local demos. Neither qualifies engineering acceptance.');
+      'CIIFR-Node has a native prototype trial worksheet; other project scenarios remain browser-local demos. These tests cannot mutate production state or establish independent engineering acceptance.');
     addCards(s,[
       card('CIIFR Test page','Exercise illustrative Action, Info handoff and audited INFO-Auto using CIIFR context.',[['Open Test page',LIVE+'#/ciifr/test']]),
       card('CIIFR-Node Test page','Inspect the published WBS context. The newer PR232 repair needs an original-source drift check; do not infer a Cycle.',[['Open Test page',LIVE+'#/ciifr-node/test']]),
