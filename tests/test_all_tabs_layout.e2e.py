@@ -172,8 +172,8 @@ def main():
                     check("Page R1" in content,"published Page revision absent")
                     check("Existing published Page history" in content,
                           "published audit replaced by operational feed")
-                    check("PR226" in content or "PR226" in page.locator(".ct-auto-section").inner_text(),
-                          "prior published native PR226 missing")
+                    check(page.locator('.cycle-board-context a[href*="/pull/226"]').count()>=1,
+                          "prior published native PR226 source link missing")
                     check(page.locator(".ct-auto-section").count()==1,
                           "INFO_AUTO unavailable without operational intake")
                     check("No live operational intake configured" in page.locator(".body").inner_text(),
