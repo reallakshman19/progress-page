@@ -1249,10 +1249,10 @@
       "role": "Owner-directed builder"
     },
     "state": "SUBMITTED",
-    "now": "Draft production PR353 restores missing ATTA fallback before Final; actual EF05 Datum73/73. Friction0 preserved; inherited gap defaults fixed, explicit saved profiles retained. Support census differs from legacy cleanup; native CII/import and independent review pending.",
+    "now": "PR353 was merged into its former feature base after PR352 landed. The restraint/default candidate still needs integration to main; it is not live-main acceptance. Earlier EF05 Datum73/73 candidate evidence and retained support-census limitation survive. PR354 adds actual native XML download for inspection.",
     "next": {
-      "actor": "Independent engineering reviewer / Owner",
-      "text": "Review stacked PR353 after bore PR352; inspect support census and native CII restraints before merge."
+      "actor": "Owner / engineering reviewer",
+      "text": "Integrate and review PR353 changes to main separately, then inspect native XML/CII restraint census; explicit saved profiles and source supports remain authoritative."
     },
     "refs": [
       {
@@ -1271,8 +1271,8 @@
         "u": "https://github.com/reallakshman19/3D_Converters/pull/353"
       }
     ],
-    "updatedAt": "2026-10-29T11:35:41Z",
-    "src": "https://github.com/reallakshman19/3D_Converters/issues/350#issuecomment-6495548000"
+    "updatedAt": "2026-10-29T12:17:04Z",
+    "src": "https://github.com/reallakshman19/3D_Converters/pull/353"
   },
   "restraint-datum-audit": {
     "order": 49,
@@ -1284,10 +1284,10 @@
       "role": "Owner-directed builder"
     },
     "state": "SUBMITTED",
-    "now": "Draft production PR353 restores missing ATTA fallback before Final; actual EF05 Datum73/73. Friction0 preserved; inherited gap defaults fixed, explicit saved profiles retained. Support census differs from legacy cleanup; native CII/import and independent review pending.",
+    "now": "PR353 was merged into its former feature base after PR352 landed. The restraint/default candidate still needs integration to main; it is not live-main acceptance. Earlier EF05 Datum73/73 candidate evidence and retained support-census limitation survive. PR354 adds actual native XML download for inspection.",
     "next": {
-      "actor": "Independent engineering reviewer / Owner",
-      "text": "Review stacked PR353 after bore PR352; inspect support census and native CII restraints before merge."
+      "actor": "Owner / engineering reviewer",
+      "text": "Integrate and review PR353 changes to main separately, then inspect native XML/CII restraint census; explicit saved profiles and source supports remain authoritative."
     },
     "refs": [
       {
@@ -1306,8 +1306,8 @@
         "u": "https://github.com/reallakshman19/3D_Converters/pull/353"
       }
     ],
-    "updatedAt": "2026-10-29T11:35:41Z",
-    "src": "https://github.com/reallakshman19/3D_Converters/issues/350#issuecomment-6495548000"
+    "updatedAt": "2026-10-29T12:17:04Z",
+    "src": "https://github.com/reallakshman19/3D_Converters/pull/353"
   },
   "restraint-integrated-audit": {
     "order": 50,
