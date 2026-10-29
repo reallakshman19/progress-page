@@ -1,6 +1,6 @@
 // Optional Adhoc Projects navigation hub; never an extra Progress Page WBS,
 // Cycle assignment, agent report, or source of engineering status.
-import { el, link } from './util.js?v=33';
+import { el, link } from './util.js?v=34';
 
 export const ADHOC_ROOT = '#/adhoc';
 export const ADHOC_PROJECTS = Object.freeze([

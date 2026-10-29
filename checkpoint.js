@@ -1,6 +1,6 @@
 // Read-only Project/WBS checkpoint and optional canonical Cycle projection.
 // Nothing in this module changes task assignments, verdicts or the Page ledger.
-import { el, link } from './util.js?v=33';
+import { el, link } from './util.js?v=34';
 
 const github = x => typeof x === 'string' && /^https:\/\/github\.com\/[^/\s]+\/[^/\s]+\//.test(x);
 const recent = x => {const n=Date.parse(x||'');return Number.isFinite(n)?n:-Infinity;};

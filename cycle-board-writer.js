@@ -1,6 +1,6 @@
 // CT-3: source-bound Page writer reconciliation *preview*, never publication.
 // The existing pp_cli.py propose / pp_batch.py dry-run are the only writer path.
-import { el, link, copyText } from './util.js?v=33';
+import { el, link, copyText } from './util.js?v=34';
 
 const PR=/^https:\/\/github\.com\/[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+\/pull\/[1-9][0-9]*$/;
 const ISSUE=/^https:\/\/github\.com\/[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+\/issues\/[1-9][0-9]*$/;

@@ -1,8 +1,8 @@
 // Agent Start: choose an explicit scope before showing tasks. Never infer assignment or verdict.
-import { el, link, copyText } from './util.js?v=33';
-import { wbsGroups } from './progress.js?v=33';
-import { onboardingModel, renderOnboarding } from './onboarding.js?v=33';
-import { smartBadgesForScope, smartBadgeText, renderSmartBadges } from './smart-badges.js?v=33';
+import { el, link, copyText } from './util.js?v=34';
+import { wbsGroups } from './progress.js?v=34';
+import { onboardingModel, renderOnboarding } from './onboarding.js?v=34';
+import { smartBadgesForScope, smartBadgeText, renderSmartBadges } from './smart-badges.js?v=34';
 
 const valid = u => /^https:\/\/github\.com\/[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+\//.test(String(u || ''));
 const live = c => !!c && !c.closed && c.state !== 'NOT_APPLICABLE';

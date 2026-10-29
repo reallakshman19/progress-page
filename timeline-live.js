@@ -1,9 +1,9 @@
 // Live, public-safe Cycle now via Timeline observations; never the curated Page audit.
-import { el, link, copyText } from './util.js?v=33';
-import { smartBadgesForScope, smartBadgeText, renderSmartBadges } from './smart-badges.js?v=33';
-import { cycleBoardContextModel, renderCycleBoardContext } from './cycle-board-context.js?v=33';
-import { cycleBoardDeltaModel, renderCycleBoardDelta } from './cycle-board-delta.js?v=33';
-import { cycleBoardWriterModel, renderCycleBoardWriter } from './cycle-board-writer.js?v=33';
+import { el, link, copyText } from './util.js?v=34';
+import { smartBadgesForScope, smartBadgeText, renderSmartBadges } from './smart-badges.js?v=34';
+import { cycleBoardContextModel, renderCycleBoardContext } from './cycle-board-context.js?v=34';
+import { cycleBoardDeltaModel, renderCycleBoardDelta } from './cycle-board-delta.js?v=34';
+import { cycleBoardWriterModel, renderCycleBoardWriter } from './cycle-board-writer.js?v=34';
 
 export const CT_SOURCES = Object.freeze({
   ciifr: Object.freeze({ owner:'reallakshman19', repo:'Common', issue:564 })

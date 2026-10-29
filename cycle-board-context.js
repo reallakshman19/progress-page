@@ -1,7 +1,7 @@
 // CT-1: read-only source-bound Cycle Board context. No Cycle dispatch, Page write,
 // automatic IR PASS, or new agent posting requirement. GitHub public sources ONLY.
-import { el, link } from './util.js?v=33';
-import { smartBadgesForScope, renderSmartBadges } from './smart-badges.js?v=33';
+import { el, link } from './util.js?v=34';
+import { smartBadgesForScope, renderSmartBadges } from './smart-badges.js?v=34';
 
 // Explicit native-source pilot, not inferred from a Page key, mode, or PR title.
 // Adding a locator enables observation, NOT an Oracle Cycle or WBS publication.

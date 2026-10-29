@@ -1,6 +1,6 @@
 // Shared source-grounded Smart Badge identifiers for Timeline, Agent Start and Oracle continuity.
 // A badge is a read-only index into recorded evidence; never a status/approval/assignment.
-import { el, link } from './util.js?v=33';
+import { el, link } from './util.js?v=34';
 
 export const SMART_BADGE_TYPES = Object.freeze([
   'AIM','ROADMAP','WBS','PLAN','FIXTURE','ORACLE_CONTINUITY'
