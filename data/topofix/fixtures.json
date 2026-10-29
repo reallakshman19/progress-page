@@ -20,10 +20,10 @@
       "milestone": "M1"
     },
     {
-      "t": "IR 6ae2d5ac source/client review returned PARTIAL; engineering independence not established; Python/browser and ZIP receipt remain NOT_RUN.",
-      "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/2#issuecomment-6494348817",
-      "s": "PARTIAL_HOLD",
-      "n": "Prior return covers 9804e2c only",
+      "t": "IR R2: bounded P1 fix verified and Python/Node/synthetic transaction/module-browser checks PASS; overall engineering PARTIAL / INDEPENDENCE_NOT_ESTABLISHED / HOLD.",
+      "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/2#issuecomment-6495609071",
+      "s": "PARTIAL_ENGINEERING_HOLD",
+      "n": "No overall engineering acceptance",
       "milestone": "M13"
     }
   ],
@@ -37,6 +37,13 @@
       "t": "Common #558 proposed unmerged public-safe relay; exact payload commit 70698df22a6a01caf4f9a8c79fd9b9fc55e42051. Producer byte check is not reviewer receipt.",
       "u": "https://github.com/reallakshman19/Common/pull/558",
       "s": "PROPOSED_NOT_RECEIVED",
+      "milestone": "M13"
+    },
+    {
+      "t": "CURRENT preview PR #5 MERGED at fb9ef50033845e813f68d4b28ec993c98442f85d; full tree equals reviewed a5491cd. Engineering qualification PARTIAL / HOLD, not acceptance.",
+      "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/pull/5",
+      "s": "MERGED_ENGINEERING_HOLD",
+      "n": "Earlier Draft refs are historical",
       "milestone": "M13"
     }
   ],
@@ -75,6 +82,12 @@
       "u": "https://github.com/reallakshman19/3D_Converters/blob/cba348152faa9c2077d5c91a5f85b4b81d2e8e25/Benchmarks/1885Sjson/FirstpassXML",
       "s": "PUBLIC_SOURCE_PINNED",
       "milestone": "M1"
+    },
+    {
+      "t": "Exact-merge CI real browser/export receipt: run 40867386112, artifact 12894471535; 39 applied / 17 excluded / 9 checks, 216 retained records and expected output SHA. Author harness execution, not independent engineering qualification.",
+      "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/actions/runs/40867386112",
+      "s": "CI_BROWSER_PASS_NOT_ACCEPTANCE",
+      "milestone": "M13"
     }
   ],
   "knownIssues": [
@@ -97,5 +110,13 @@
       "milestone": "M12"
     }
   ],
-  "pending": []
+  "pending": [
+    {
+      "t": "ONE NOW: IR 6ae2d5ac independently executes authentic S0 replay and qualifies the full browser journey; inspect new exact-merge CI report. Oracle 6ae1b0f7 reconciles; code MERGED is separate from engineering acceptance.",
+      "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/2#issuecomment-6498396209",
+      "s": "PARTIAL_ENGINEERING_HOLD",
+      "n": "No overall engineering acceptance",
+      "milestone": "M13"
+    }
+  ]
 }

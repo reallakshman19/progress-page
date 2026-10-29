@@ -9,10 +9,10 @@
       "role": "Owner-designated independent reviewer; qualification pending"
     },
     "state": "SUBMITTED",
-    "now": "IR 6ae2d5ac acknowledged and returned PARTIAL / INDEPENDENCE_NOT_ESTABLISHED on reviewed 9804e2c: source-byte/witness checks and bounded exact-code JS observations executed. Independent Python/replay, actual browser journey and Common ZIP receipt NOT_RUN. The P1 missing-map helper finding now has an author repair at a5491cd; this changed head is not covered by the old return. Engineering HOLD remains.",
+    "now": "IR R2 on a5491cd verifies the narrow P1 missing-map fix, candidate Python 13/13 and Node 20/20, additional transaction/client/stub checks, Chromium-module 8/8 and Common R2 input receipt. Full engineering independence remains unestablished; IR authentic-source replay and full browser qualification remain open. IR output ZIP is LOCAL_ONLY / NOT_TRANSFERRED. Preview PR #5 is now MERGED; old Draft refs are historical. Exact-merge CI subsequently passed the full author browser/download harness; this is not independent engineering qualification.",
     "next": {
       "actor": "IR 6ae2d5ac",
-      "text": "Verify new a5491cd / Common #568 bytes and P1 controls; complete independently grounded Python/replays and Chromium/Pyodide/download qualification, return #2."
+      "text": "Inspect exact-merge CI artifact/actual report; independently execute authentic S0 replay and qualify full browser/Pyodide/download in a capable authorized environment; transfer existing IR evidence and return #2."
     },
     "refs": [
       {
@@ -62,10 +62,28 @@
         "l": "P1 changed-candidate artifact",
         "u": "https://github.com/reallakshman19/Common/pull/568",
         "s": "OPEN/DRAFT; outgoing integrity only"
+      },
+      {
+        "k": "comment",
+        "l": "IR R2 bounded P1 verified",
+        "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/2#issuecomment-6495609071",
+        "s": "P1 VERIFIED; engineering PARTIAL"
+      },
+      {
+        "k": "comment",
+        "l": "IR merge-state correction",
+        "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/2#issuecomment-6498009901",
+        "s": "Preview MERGED; engineering HOLD"
+      },
+      {
+        "k": "pr",
+        "l": "CURRENT preview lifecycle",
+        "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/pull/5",
+        "s": "MERGED fb9ef50; NOT engineering acceptance"
       }
     ],
-    "updatedAt": "2026-10-29T10:44:27Z",
-    "src": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/4#issuecomment-6494521640"
+    "updatedAt": "2026-10-29T13:49:09Z",
+    "src": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/2#issuecomment-6498396209"
   },
   "topo-4-3": {
     "order": 43,
@@ -343,10 +361,10 @@
       "chat": "oracle"
     },
     "state": "SUBMITTED",
-    "now": "PR #5 current head a5491cd adds the IR P1 follow-up: missing/null source maps now reject PIPE deletion, with empty-reference controls and unrelated aliases retained. Author 20 Node + 13 Python PASS; 39-action replay, 48 operations, 9/9 checks, 216/216 records/references retained, prior output SHA unchanged. IR PARTIAL / INDEPENDENCE_NOT_ESTABLISHED applies to old 9804e2c only. Current head remains SELF_ASSESSED; real browser journey NOT_RUN; engineering HOLD.",
+    "now": "Preview PR #5 MERGED by Owner at fb9ef50, with full Git tree identical to reviewed a5491cd. P1 missing-map fix VERIFIED in bounded IR R2 checks. Overall WBS 1.3 remains SUBMITTED / NOT_VERIFIED / ENGINEERING HOLD. Exact-merge CI full Chromium/Pyodide/download audit PASS: actual report recovered, 39 applied, 17 excluded, 9 checks, 216 retained records/fields and expected output SHA. This is author-harness CI evidence; IR authentic replay and full engineering/browser qualification remain open. Earlier Draft source statuses are historical.",
     "next": {
       "actor": "IR 6ae2d5ac",
-      "text": "Assess exact new head and archive, verify missing-map/positive controls, run independent source transaction/replays and actual browser journey; return #2."
+      "text": "Complete independent authentic S0/engineering replay and browser qualification using the new CI evidence; retain residual-case and design-intent limits."
     },
     "refs": [
       {
@@ -406,6 +424,24 @@
         "l": "P1 evidence archive",
         "u": "https://github.com/reallakshman19/Common/pull/568",
         "s": "OPEN/DRAFT"
+      },
+      {
+        "k": "pr",
+        "l": "CURRENT code MERGED",
+        "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/pull/5",
+        "s": "MERGED fb9ef50; engineering NOT_VERIFIED"
+      },
+      {
+        "k": "comment",
+        "l": "IR R2 on reviewed head",
+        "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/2#issuecomment-6495609071",
+        "s": "P1 VERIFIED; WP-A PARTIAL"
+      },
+      {
+        "k": "comment",
+        "l": "Current lifecycle and CI receipt",
+        "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/2#issuecomment-6498396209",
+        "s": "MERGED / ENGINEERING HOLD"
       }
     ],
     "edges": [
@@ -414,8 +450,8 @@
         "k": "to"
       }
     ],
-    "updatedAt": "2026-10-29T10:44:28Z",
-    "src": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/4#issuecomment-6494521640"
+    "updatedAt": "2026-10-29T13:49:09Z",
+    "src": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/2#issuecomment-6498396209"
   },
   "topo-1-2": {
     "order": 12,
@@ -427,10 +463,10 @@
       "chat": "oracle"
     },
     "state": "SUBMITTED",
-    "now": "IR returned source/witness and bounded client checks, but full original 66/40/26 engineering dispositions and changed 39/17/10 replay were NOT_RUN by the IR. Author current-head replay retains the 39-action selection and all 216 records; counts remain action accounting, not independent engineering dispositions or case closure.",
+    "now": "Full original 66/40/26 engineering disposition remains incomplete. IR R2 executed synthetic full transactions and client falsifiers, but not authentic 39-action S0 replay. Newly recovered real CI export accounts for 56 mutating candidates as 39 applied / 17 excluded; ten original proposals remain preservation reviews. This is current author-harness execution evidence, not the old historical export or independent all-66 engineering disposition.",
     "next": {
       "actor": "IR 6ae2d5ac",
-      "text": "Complete source-qualified original and changed-candidate dispositions and independent replay, preserving the two candidate identities."
+      "text": "Complete original and current source-qualified engineering dispositions and independent authentic replay; preserve the distinct historical/current receipts."
     },
     "refs": [
       {
@@ -461,6 +497,12 @@
         "l": "IR disposition coverage limits",
         "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/2#issuecomment-6494348817",
         "s": "PARTIAL; full partition NOT_RUN"
+      },
+      {
+        "k": "comment",
+        "l": "Actual current CI receipt and limits",
+        "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/2#issuecomment-6498396209",
+        "s": "CI observed; engineering open"
       }
     ],
     "edges": [
@@ -469,8 +511,8 @@
         "k": "to"
       }
     ],
-    "updatedAt": "2026-10-29T10:44:28Z",
-    "src": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/4#issuecomment-6494521640"
+    "updatedAt": "2026-10-29T13:49:10Z",
+    "src": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/2#issuecomment-6498396209"
   },
   "topo-1-1": {
     "order": 11,
