@@ -240,7 +240,7 @@ export function renderAdhocProjects(root,route,nav) {
     const s=section(body,'Cycle Board — source-bound continuation',
       'One native action supplies reusable evidence. The Board must never grant a new assignment, engineering PASS or Page publication.');
     addCards(s,[
-      card('Existing Action / Info Timeline','CIIFR-Node Board shows original Page audit and explicitly configured native issue/PR evidence without inferring canonical Cycle authority.',[['Open Cycle Board',LIVE+'#/ciifr/timeline-live'],['Read source',P+'/blob/main/timeline-live.js']]),
+      card('Existing Action / Info Timeline','CIIFR-Node Board shows original Page audit and explicitly configured native issue/PR evidence without inferring canonical Cycle authority.',[['Open Cycle Board',LIVE+'#/ciifr-node/cycle-board'],['Read source',P+'/blob/main/timeline-live.js']]),
       card('Canonical Cycle','Only an explicitly activated and verified Cycle assignment can authorize standalone continuation; other projects retain their native/OTM routes.',[['Read protocol',C+'/blob/main/oracle-cycles/PROTOCOL.md']]),
       card('Source-bound interface','One immutable source occurrence and truthful UNKNOWN states are reused across Board, Agent Start and Oracle continuity.',[['Read contract',DOC+'CYCLE_BOARD_CONTRACT.md']])
     ]);
