@@ -58,7 +58,7 @@ test('family and step choices remain independent between projects, and can be cl
 test('published CIIFR R4 gives Geometry 3.x, Element 4.x and accessible legacy milestones', () => {
   const ciifr=JSON.parse(readFileSync(new URL('../data/ciifr/index.json', import.meta.url),'utf8'));
   const groups=wbsGroups(ciifr);
-  assert.deepEqual(groups.map(g=>g.key),['wbs:3','wbs:4','wbs:5','other']);
+  assert.deepEqual(groups.map(g=>g.key),['wbs:3','wbs:4','wbs:5','wbs:6','other']);
   assert.equal(groups[0].label,'WBS 3','Geometry stays unchanged');
   assert.equal(groups[1].label,'WBS4- CIIFR-Element');
   assert.equal(wbsGroups({project:{key:'unrelated'},milestones:ciifr.milestones})[1].label,'WBS 4');
@@ -73,18 +73,21 @@ test('CIIFR R4 WBS 5 CIIFR-MAP groups only M8–M11; seven others stay separate'
   const cards=JSON.parse(readFileSync(new URL('../data/ciifr/cards.json',import.meta.url),'utf8'));
   const initial=JSON.stringify({index:ciifr,cards});
   const groups=wbsGroups(ciifr);
-  assert.deepEqual(groups.map(g=>g.key),['wbs:3','wbs:4','wbs:5','other']);
-  assert.deepEqual(groups.map(g=>g.label),['WBS 3','WBS4- CIIFR-Element','WBS 5 CIIFR-MAP','Other milestones']);
+  assert.deepEqual(groups.map(g=>g.key),['wbs:3','wbs:4','wbs:5','wbs:6','other']);
+  assert.deepEqual(groups.map(g=>g.label),['WBS 3','WBS4- CIIFR-Element','WBS 5 CIIFR-MAP','WBS 6','Other milestones']);
   assert.deepEqual(groups.map(g=>g.steps.map(s=>s.key)),[
     ['M12','M13','M14','M15','M16'],
     ['M17','M18','M19','M20','M21','M22','M23'],
     ['M8','M9','M10','M11'],
+    ['M24','M25','M26','M27'],
     ['M6','M7','M4','M5','M1','M2','M3']
   ]);
   assert.deepEqual(groups[2].steps.map(s=>s.short),['5.0','5.1','5.2','5.3']);
   assert.deepEqual(groups[2].steps.map(s=>s.wbs),['5','5.1','5.2','5.3']);
   assert.equal(groups[2].steps.find(s=>s.key==='M11').name,'Authorized mapped transfer');
   assert.equal(ciifr.milestones.M11.cap,'NOT_DEMONSTRATED');
+  assert.deepEqual(groups[3].steps.map(s=>s.wbs),['6','6.1','6.2','6.3']);
+  assert.equal(ciifr.milestones.M24.name,'Restraint fallback and Datum placement');
   const ids=groups.flatMap(g=>g.steps.map(s=>s.key));
   assert.equal(new Set(ids).size,ids.length,'no duplicate milestone IDs');
   assert.deepEqual([...ids].sort(),Object.keys(ciifr.milestones).sort(),'no milestone lost');
@@ -120,3 +123,4 @@ test('WBS tiles describe Doc to Table workstreams and do not invent unsupported 
   assert.equal(found[3].description,'Includes: Legacy A · Legacy B');
   assert.equal(wbsGroups({project:{key:'unrelated'},milestones:other.milestones})[1].description,'Original description');
 });
+

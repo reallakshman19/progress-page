@@ -24,8 +24,8 @@ class LessonsTest(unittest.TestCase):
         self.assertEqual(events[-2]["id"], "LESSONS-R-0022")
 
     def test_content_and_evidence(self):
-        a, b = read("data/learned/lessons.json")["items"]
-        self.assertEqual([a["id"], b["id"]], ["L01", "L02"])
+        a, b, c = read("data/learned/lessons.json")["items"]
+        self.assertEqual([a["id"], b["id"], c["id"]], ["L01", "L02", "L03"])
         self.assertEqual((len(a["issues"]), len(a["actions"]), len(a["open"])), (7, 8, 3))
         self.assertEqual((b["status"], len(b["cases"]), len(b["rules"])), ("DRAFT", 9, 8))
         ids = {x["id"] for x in a["actions"]}
@@ -33,6 +33,9 @@ class LessonsTest(unittest.TestCase):
         self.assertTrue(all(x["source"].startswith("https://github.com/") for x in a["issues"] + a["actions"] + a["open"]))
         self.assertTrue(all(x["state"] == "RECORDED_DONE" for x in a["actions"]))
         self.assertTrue(all(x["discriminating_test"] and x["evidence_limit"] for x in b["cases"]))
+        self.assertEqual((c["status"], len(c["recoveries"]), len(c["stages"])), ("DRAFT", 5, 5))
+        self.assertTrue(all(x["problem"] and x["correction"] for x in c["recoveries"]))
+        self.assertTrue(all(x["action"] and x["evidence"] for x in c["stages"]))
 
     def test_vertical_view(self):
         js = (ROOT / "lessons.js").read_text(encoding="utf-8")
@@ -51,7 +54,7 @@ class LessonsTest(unittest.TestCase):
     def test_local_snapshot(self):
         from tools.build_local import snapshot
         out = snapshot(ROOT / "data")
-        self.assertEqual(len(out["files"]["learned/lessons.json"]["items"]), 2)
+        self.assertEqual([x["id"] for x in out["files"]["learned/lessons.json"]["items"]], ["L01", "L02", "L03"])
 
     def test_syntax(self):
         if not shutil.which("node"):
@@ -59,3 +62,4 @@ class LessonsTest(unittest.TestCase):
         for name in ("app.js", "lessons.js"):
             p = subprocess.run(["node", "--input-type=module", "--check"], input=(ROOT / name).read_text(encoding="utf-8"), text=True, capture_output=True)
             self.assertEqual(p.returncode, 0, p.stderr)
+
