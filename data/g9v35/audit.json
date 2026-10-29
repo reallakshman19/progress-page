@@ -3927,6 +3927,32 @@
       "source": "OWNER_PRIVATE_REF:G9V35-STORY-29OCT-WBS42",
       "scope": "milestone:W421",
       "rev": "R5"
+    },
+    {
+      "seq": 293,
+      "id": "G9V35-R-0293",
+      "previous_id": "G9V35-R-0292",
+      "at": "2026-10-29T16:28:27Z",
+      "kind": "UPDATE",
+      "actor": "Oracle G9v3.5",
+      "summary": "D3.1.2 built and checked",
+      "source": "OWNER_PRIVATE_REF:G9V35-STORY-29OCT-WBS42",
+      "card": "subtiles-d31",
+      "before": "IN_PROGRESS",
+      "after": "IN_PROGRESS",
+      "rev": "R5"
+    },
+    {
+      "seq": 294,
+      "id": "G9V35-R-0294",
+      "previous_id": "G9V35-R-0293",
+      "at": "2026-10-29T16:28:28Z",
+      "kind": "PLAN",
+      "actor": "Oracle G9v3.5",
+      "summary": "D3.1.2 built",
+      "source": "OWNER_PRIVATE_REF:G9V35-STORY-29OCT-WBS42",
+      "scope": "milestone:W421",
+      "rev": "R5"
     }
   ]
 }

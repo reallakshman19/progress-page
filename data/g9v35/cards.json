@@ -663,12 +663,12 @@
     "label": "D3.1 sub-tiles D3.1.1-D3.1.6",
     "who": {},
     "state": "IN_PROGRESS",
-    "now": "D3.1.1 (direction decides the effect) is built from the blueprint, library and adapter; 140 checks pass and all 20 planted errors are rejected. Independent re-check of its changed library texts: not run. D3.1.2-D3.1.6 not started.",
+    "now": "D3.1.1 (direction decides the effect) and D3.1.2 (the whole, not one part) are built from the blueprint, library and adapter; no blueprint gap in either; all planted errors rejected. Independent re-check of their changed and new library texts: not run. D3.1.3-D3.1.6 not started.",
     "next": {
       "actor": "OWNER",
-      "text": "look at D3.1.1; then the Oracle builds D3.1.2"
+      "text": "look at D3.1.1 and D3.1.2; the Oracle goes on to D3.1.3"
     },
-    "updatedAt": "2026-10-29T16:11:21Z",
+    "updatedAt": "2026-10-29T16:28:27Z",
     "src": "OWNER_PRIVATE_REF:G9V35-STORY-29OCT-WBS42"
   }
 }
