@@ -72,6 +72,9 @@ export function classifyPageCoverage(page,context){
   if(newer.length)return {status:'STALE_PAGE',reason:
     'Explicitly mapped native evidence is newer than published Page WBS evidence. Review originals; no WBS capability or PASS is promoted.',
     sources:newer};
+  if(!findings.length)return {status:'CURRENT',reason:
+    'The exact observed native revisions appear in scoped, already-published Page audit entries. This is publication correlation, NOT engineering PASS.',
+    sources:[]};
   return {status:'UNKNOWN',reason:
     'Exact native revision-to-audit publication correlation is not established. URL matching alone is insufficient.',
     sources:findings};
@@ -93,7 +96,9 @@ export function classifyCycleAuthority(pageKey,{binding=null,record=null,
     return {status:'INACTIVE',reason:'Canonical standalone Cycle is not active.'};
   const next=record.next||{};
   const role=safe(recipient?.role)?.toLowerCase();
-  if(role&&role!==safe(next.recipient_role)?.toLowerCase())
+  const nextRole=safe(next.recipient_role)?.toLowerCase();
+  if(!nextRole)return {status:'UNKNOWN',reason:'Canonical next recipient role is not established.'};
+  if(role&&role!==nextRole)
     return {status:'WRONG_RECIPIENT',reason:'Recipient role differs from the canonical next actor.'};
   if(!role||!recipient?.verified)
     return {status:'UNKNOWN',reason:'Public Board does not verify a private recipient or dispatch.'};
