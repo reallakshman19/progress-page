@@ -173,6 +173,17 @@ def main():
                           "CIIFR-Node must not infer an Oracle Cycle")
                     check("No optional live-comment intake configured" in page.locator(".body").inner_text(),
                           "Missing live comments must not suppress native/Page context")
+                    check(page.locator(".cb-delta").count()==1,
+                          "CT-2 delta advisory must be visible on the same Board URL")
+                    check(page.locator(".cb-delta-fact").count()==3,
+                          "Native, Page and Cycle axes must be independent")
+                    check(page.locator(".cb-delta button").count()==1,
+                          "Configured native source should expose on-demand recheck")
+                    check("REVIEW_PAGE_DRIFT" in page.locator(".cb-delta").inner_text() or
+                          "UNKNOWN_STOP" in page.locator(".cb-delta").inner_text(),
+                          "Board may recommend only review or UNKNOWN when recipient authority absent")
+                    check("UNMAPPED" in page.locator(".cb-delta").inner_text(),
+                          "No canonical CIIFR-Node Cycle means no authorized continuation")
                     g=geometry(page)
                     check(g["documentWidth"]<=width+3,
                           "Cycle Board horizontal overflow")
