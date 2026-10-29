@@ -65,6 +65,10 @@ class WriterVertical(unittest.TestCase):
         manifest=p["proposal"]
         self.assertEqual(manifest["sourceObservation"],
                          {"kind":"pull","observedHead":SHA})
+        self.assertEqual(manifest["proposalVersion"],2)
+        self.assertEqual(manifest["nativeOccurrenceId"],
+                         "github:reallakshman19/XML_Compare_Utilities:pull-head:232:"+SHA)
+        self.assertEqual(manifest["wbs"],"2")
         self.assertEqual(len(manifest["changes"]),1)
         self.assertEqual(manifest["changes"][0]["command"],"card set")
         self.assertEqual(set(manifest["changes"][0]["args"]),{"card","summary","ref"})
@@ -90,9 +94,11 @@ class WriterVertical(unittest.TestCase):
         self.assertEqual(m["sourceObservation"],
                          {"kind":"issue","updatedAt":UPDATED})
         self.assertEqual(set(m["changes"][0]["args"]),{"card","summary","ref"})
+        self.assertEqual(m["nativeOccurrenceId"],
+                         "github:reallakshman19/XML_Compare_Utilities:issue-revision:231:"+UPDATED)
         self.assertEqual(m["changes"][0]["args"]["ref"].split("|")[0],"issue")
         self.assert_production_unmodified()
-    def test_audited_url_blocks_repeat_even_if_mutable_head_changes(self):
+    def test_legacy_url_audit_requires_explicit_writer_review(self):
         path=self.data/"ciifr-node/audit.json"
         audit=json.loads(path.read_text())
         latest=audit["events"][-1].copy()
@@ -103,7 +109,7 @@ class WriterVertical(unittest.TestCase):
         path.write_text(json.dumps(audit))
         p=self.proposal()
         self.assertIsNone(p["proposal"])
-        self.assertTrue(any("ALREADY_RECORDED" in b for b in p["blockers"]))
+        self.assertTrue(any("LEGACY_REVIEW_REQUIRED" in b for b in p["blockers"]))
         self.assertEqual(json.loads(path.read_text())["events"][-1]["source"],PR)
         self.assertEqual((ROOT/"data/ciifr-node/audit.json").read_bytes(),
                          self.source_bytes[ROOT/"data/ciifr-node/audit.json"])
