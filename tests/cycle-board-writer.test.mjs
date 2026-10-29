@@ -66,11 +66,11 @@ test('CT-3 cannot treat already-audited mutable URL as a fresh achievement or ex
   at:'2026-10-28T18:00:00Z',summary:'Prior PR head observed; no current SHA proof'});
  const {ctx,delta}=sourceModel(pg,[pr()]);
  const model=cycleBoardWriterModel(pg,ctx,delta);
- assert.equal(model.items[0].status,'ALREADY_RECORDED');
+ assert.equal(model.items[0].status,'LEGACY_REVIEW_REQUIRED');
  assert.deepEqual(model.items[0].auditIds,['CIIFR-NODE-R-0030']);
  assert.equal(model.items[0].command,null);
- assert.equal(model.status,'REVIEW_REQUIRED','source URL is not proof of revised head publication');
- assert.equal(model.recordedCount,1);
+ assert.equal(model.status,'REVIEW_REQUIRED','source URL alone is not an exact audited occurrence');
+ assert.equal(model.recordedCount,0);
  const exact=structuredClone(pg);
  const published=exact.audit.events[exact.audit.events.length-1];
  published.nativeOccurrenceId=pr().occurrenceId;
@@ -79,8 +79,27 @@ test('CT-3 cannot treat already-audited mutable URL as a fresh achievement or ex
  const current=sourceModel(exact,[pr()]);
  const reconciled=cycleBoardWriterModel(exact,current.ctx,current.delta);
  assert.equal(current.delta.publication.status,'CURRENT');
+ assert.equal(reconciled.items[0].status,'ALREADY_RECORDED');
  assert.equal(reconciled.status,'ALREADY_RECONCILED');
  assert.equal(reconciled.pendingCount,0);
+ assert.equal(JSON.stringify(page),saved);
+});
+test('CT-4 same URL different head is reviewable, same exact occurrence is not',()=>{
+ const oldPage=structuredClone(page),before=pr(),newSha='b'.repeat(40);
+ oldPage.audit.events.push({id:'CIIFR-NODE-R-0030',source:nativeUrl,
+  card:'node-r0-code',scope:'milestone:M3',wbs:'2',
+  nativeOccurrenceId:before.occurrenceId,summary:'Source reference to prior head',
+  at:'2026-10-29T08:00:00Z'});
+ const later=pr(nativeUrl,newSha);
+ const next=sourceModel(oldPage,[later]);
+ const candidate=cycleBoardWriterModel(oldPage,next.ctx,next.delta);
+ assert.equal(candidate.items[0].status,'PROPOSAL_CANDIDATE');
+ assert.equal(candidate.pendingCount,1);
+ assert.ok(candidate.items[0].command[0].includes('--expected-head '+newSha));
+ const same=sourceModel(oldPage,[before]);
+ const duplicate=cycleBoardWriterModel(oldPage,same.ctx,same.delta);
+ assert.equal(duplicate.items[0].status,'ALREADY_RECORDED');
+ assert.equal(duplicate.items[0].command,null);
  assert.equal(JSON.stringify(page),saved);
 });
 test('CT-3 wrong WBS, duplicate Page card source and ambiguous owner require review',()=>{
