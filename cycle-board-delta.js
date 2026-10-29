@@ -105,17 +105,27 @@ export function classifyCycleAuthority(pageKey,{binding=null,record=null,
   if(safe(actual.recipient_chat_id8)&&
       actual.recipient_chat_id8!==safe(recipient?.chatId8))
     return {status:'WRONG_RECIPIENT',reason:'Selected recipient does not match canonical short ID.'};
+  if(actual.native_return_url&&!actual.cycle_receipt_url&&
+     receipt?.inboxChecked&&receipt.found===false)
+    return {status:'MISSING_ROUTING_RECEIPT',reason:'A checked receipt inbox has no routing envelope for the already-returned native evidence. Repair only the existing envelope.'};
+  if(actual.native_return_url&&!actual.cycle_receipt_url&&
+     !receipt?.inboxChecked)
+    return {status:'UNKNOWN',reason:'Native return exists, but required Cycle receipt inbox was not checked.'};
   if(isReturn(actual.dispatch)||receipt?.accepted===true||
      (safe(actual.cycle_receipt_url)&&actual.native_return_url))
     return {status:'RETURNED_ACCEPTED',reason:'An already-returned assignment must not be reexecuted; await Oracle reconciliation.'};
-  if(actual.native_return_url&&!actual.cycle_receipt_url)
-    return {status:'MISSING_ROUTING_RECEIPT',reason:'Native return exists but routing receipt is not established; reuse the original engineering evidence.'};
   if(next.recipient_role==='owner')
     return {status:'WRONG_RECIPIENT',reason:'Canonical next step is for Owner; no worker dispatch.'};
   if(actual.dispatch!=='ACTIVE'&&actual.dispatch!=='ASSIGNED')
     return {status:'UNKNOWN',reason:'No live unreturned dispatch was established.'};
   if(!Number.isInteger(record.revision)||assignment.observedRevision!==record.revision)
     return {status:'STALE_ASSIGNMENT',reason:'Current canonical revision was not checked by the recipient.'};
+  // History entries are not a current dispatch. A public Cycle may have an
+  // assignments[] archive, but no active_assignment pointer.
+  const active=record.active_assignment;
+  if(!active||active.id!==actual.id||active.generation!==actual.generation||
+     active.candidate!==actual.candidate||active.recipient_role!==actual.recipient_role)
+    return {status:'UNKNOWN',reason:'No exact canonical active_assignment pointer; historic assignments never authorize execution.'};
   if(!recipient?.taskChecked||!recipient?.holdsChecked||!recipient?.sourceChecked||
      !receipt?.inboxChecked)
     return {status:'UNKNOWN',reason:'Task, holds, native source or receipt inbox has not been verified.'};
