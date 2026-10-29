@@ -50,6 +50,8 @@ jobs:
         run: node --experimental-default-type=module --test tests/timeline-live.test.mjs
       - name: CT-1 Cycle Board source-bound native and Page context falsifiers
         run: node --experimental-default-type=module --test tests/cycle-board-context.test.mjs
+      - name: CT-2 Cycle Board changed-only and continuation negative cases
+        run: node --experimental-default-type=module --test tests/cycle-board-delta.test.mjs
       - name: Onboarding readiness contrasts
         run: node --experimental-default-type=module --test tests/onboarding.test.mjs
       - name: Project Home navigation and source-retention tests
