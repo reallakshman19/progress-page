@@ -90,6 +90,24 @@ test('CT-2 WBS missing, Page fetch unavailable, old native and URL-only equality
  assert.notEqual(classifyPageCoverage(page,sameUrl).status,'CURRENT',
    'same mutable PR URL cannot certify the new head is audited');
 });
+test('CT-2 exact scoped audited revision can be CURRENT without technical PASS',()=>{
+ const published=structuredClone(page);
+ const ctx=mockContext();
+ const candidate=ctx.sources[0];
+ const matching=ctx.sources[1];
+ published.audit.events.push(
+   {id:'PUBLISHED-HEAD-1',kind:'UPDATE',scope:'milestone:M3',
+    source:candidate.source,at:'2026-10-29T09:00:00Z',
+    summary:'Reviewed Page evidence for original PR head '+candidate.revision},
+   {id:'PUBLISHED-ISSUE-1',kind:'UPDATE',scope:'milestone:M3',
+    source:matching.source,at:'2026-10-29T09:00:00Z',
+    summary:'Reviewed Page evidence for original issue revision '+matching.revision}
+ );
+ const result=classifyPageCoverage(published,ctx);
+ assert.equal(result.status,'CURRENT');
+ assert.match(result.reason,/NOT engineering PASS/);
+ assert.equal(JSON.stringify(page),original,'authoritative source fixture unmodified');
+});
 test('CT-2 wrong recipient and inactive Cycle never dispatch',()=>{
  const actual={binding:BIND,record:canonical,readStatus:'ok',
   recipient:{...match,role:'reviewer'},assignment:exact,receipt:{inboxChecked:true}};
