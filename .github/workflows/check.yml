@@ -48,6 +48,8 @@ jobs:
         run: node --experimental-default-type=module --test tests/smart-badges.test.mjs
       - name: Cycle now via Timeline live-source privacy and WBS regressions
         run: node --experimental-default-type=module --test tests/timeline-live.test.mjs
+      - name: CT-1 Cycle Board source-bound native and Page context falsifiers
+        run: node --experimental-default-type=module --test tests/cycle-board-context.test.mjs
       - name: Onboarding readiness contrasts
         run: node --experimental-default-type=module --test tests/onboarding.test.mjs
       - name: Project Home navigation and source-retention tests
