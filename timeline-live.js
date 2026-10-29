@@ -204,9 +204,9 @@ export function timelineInfoTemplate(action,{responderRole=null,verified=false}=
   // Actor alias != authenticated ChatGPT identity. A peer nickname alone must
   // NEVER be upgraded to REVIEWER_IR or another role by this viewer.
   if(!verified||!CT_ROLES.has(responderRole))
-    return 'Optional Info handoff guidance — NOT A POSTABLE EVENT\\n'+
+    return 'Optional Info handoff guidance — NOT A POSTABLE EVENT\n'+
       'Responding role UNKNOWN or UNVERIFIED. Reuse the existing native issue/PR evidence; '+
-      'no additional Timeline report is mandatory.\\n'+
+      'no additional Timeline report is mandatory.\n'+
       'Original Action: '+action.eventId+' / WBS '+action.wbs+
       '. If an explicitly authorized actor needs an Info card, verify the actual responder role and source first.';
   const next=action.peerAlias==='NO_DIRECT_PEER'?action.actorAlias:action.peerAlias;
@@ -220,7 +220,7 @@ export function timelineInfoTemplate(action,{responderRole=null,verified=false}=
     source:action.source,smartTags:action.smartTags||[]
   };
   const fence=String.fromCharCode(96).repeat(3);
-  return 'CYCLE_TIMELINE_CARD v2\\n'+fence+'json\\n'+JSON.stringify(result,null,2)+'\\n'+fence;
+  return 'CYCLE_TIMELINE_CARD v2\n'+fence+'json\n'+JSON.stringify(result,null,2)+'\n'+fence;
 }
 
 export function timelinePageBrief(info) {
