@@ -211,28 +211,40 @@ can copy the same badge IDs and original source links from INFO-Auto generated
 cards for human-verified `pp_propose → pp_batch` reconciliation. No
 automatic Page data write, Cycle binding or Owner product approval.
 
-## Per-project Test page — optional demonstration
+## Per-project Trials & demos — actual candidate versus demonstration
 
-Every standard project panel has `#/PROJECT_KEY/test` under **Project Home → Test page**.
-The Lessons reader has the same `#/learned/test` route in its own tab set.
-Controls remain **in browser memory**; selecting a task, switching Action/Info
-or toggling simulated Needs Owner never posts a GitHub comment, changes
-Cycle/Progress Page data, sends an agent message or creates an acceptance record.
+The existing `#/PROJECT_KEY/test` route is retained (old deep links stay valid).
+The tab is named **Trials & demos** so an Action/Info simulation is never
+mistaken for a real prototype or technical PASS.
 
-Modes: `ACTION` demonstrates a single pending communication; `INFO`
-demonstrates its handoff acknowledgement without closing the IR's separate
-review; `INFO-Auto generated` displays an existing **audited** Page
-observation for the chosen WBS if available, otherwise states that no
-matching source record is available. Smart Badge IDs are derived from actual
-project metadata; demo Actions are visually and textually marked `DEMO ONLY`.
-`Copy demonstration packet` produces a non-production, non-importable
-description for the Owner/agent to discuss; it is not a Timeline event.
+**CIIFR-Node** shows the **Property Transfer · prototype trial** first.
+Use **Check native PR head** to re-read the original GitHub PR #232 before
+running anything. The tool fails closed if GitHub is unavailable or the
+response cannot prove a 40-hex source-head shape. It supplies exact-head
+`git fetch` / detached checkout / `python -m http.server 8080`
+commands, but **does not** download, execute, publish or verify the native
+runtime. It can launch a **user-provided localhost** native server URL
+only after the user confirms their local checkout. Local head consistency
+is a **user assertion**, not an attestation by Progress Page.
 
-Use the Test page **only when demonstration is requested**; it is not a
-new onboarding stage, mandatory report, test verdict, Writer permission
-or substitute for exact native evidence. A scoped Agent Start link remains
-the task entry; the canonical Oracle, reviewer independence and audited
-Page writer flow remain unchanged.
+Five native **observation** cases cover independent Property paths, preserved
+Normal/Nodal state, pending-CSV stale export revocation, invalid
+endpoint/pointer rejection and visible UNKNOWN residue. Entries default to
+`NOT_RUN`; PASS/FAIL/BLOCKED are **local observations only**. Results and
+notes live only in browser memory and can be copied as a sanitized local
+trial report; no upload or automatic post occurs. A refreshed different PR
+head resets previous answers. No protected CII data or private local paths
+should be entered. Actual PR #232 remains DRAFT/HOLD; browser/Windows/
+original-file qualification and engineering/Owner acceptance are separate.
+
+The former Action / Info / INFO-Auto **Workflow demo** stays accessible
+under a collapsed disclosure on the same CIIFR-Node route. Other projects
+retain their preexisting local demonstration and CIIFR RCA bench.
+The demo's controls never modify Timeline, published Page/Cycle JSON,
+dispatch agents or close independent review. This testing workspace
+does not create another WBS, mandatory agent report or production
+source of truth. CIIFR-Node's **Cycle Board** remains the separate
+`#/ciifr-node/cycle-board` evidence-reuse acceptance route.
 
 ## Canonical Cycle-to-WBS binding preflight (source only)
 
