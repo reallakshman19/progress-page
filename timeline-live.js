@@ -199,20 +199,28 @@ export function timelineCardModel(comments,project) {
     events:events.slice().reverse(),ignored,unresolved};
 }
 
-export function timelineInfoTemplate(action) {
+export function timelineInfoTemplate(action,{responderRole=null,verified=false}={}) {
   if(!action||action.kind!=='ACTION')return null;
+  // Actor alias != authenticated ChatGPT identity. A peer nickname alone must
+  // NEVER be upgraded to REVIEWER_IR or another role by this viewer.
+  if(!verified||!CT_ROLES.has(responderRole))
+    return 'Optional Info handoff guidance — NOT A POSTABLE EVENT\\n'+
+      'Responding role UNKNOWN or UNVERIFIED. Reuse the existing native issue/PR evidence; '+
+      'no additional Timeline report is mandatory.\\n'+
+      'Original Action: '+action.eventId+' / WBS '+action.wbs+
+      '. If an explicitly authorized actor needs an Info card, verify the actual responder role and source first.';
   const next=action.peerAlias==='NO_DIRECT_PEER'?action.actorAlias:action.peerAlias;
   const result={
     project:action.project,eventId:action.threadId+'-info-'+Date.now().toString(36),
     threadId:action.threadId,actionRef:action.eventId,
-    actorAlias:next,peerAlias:action.actorAlias,role:'REVIEWER_IR',
+    actorAlias:next,peerAlias:action.actorAlias,role:responderRole,
     wbs:action.wbs,card:action.card,kind:'INFO',state:'HANDED_OFF',
     title:action.title,details:'Describe exactly what occurred and link the confirming source.',
     ownerAsk:'',next:'Describe the next separately owned action, if any.',
     source:action.source,smartTags:action.smartTags||[]
   };
   const fence=String.fromCharCode(96).repeat(3);
-  return 'CYCLE_TIMELINE_CARD v2\n'+fence+'json\n'+JSON.stringify(result,null,2)+'\n'+fence;
+  return 'CYCLE_TIMELINE_CARD v2\\n'+fence+'json\\n'+JSON.stringify(result,null,2)+'\\n'+fence;
 }
 
 export function timelinePageBrief(info) {
@@ -438,7 +446,7 @@ function drawTimelineCard(e,all,src){
     const button=el('button','btn small',label);button.type='button';
     button.addEventListener('click',()=>copyText(text,button));actions.append(button);
   };
-  if(e.kind==='ACTION')copyButton('Copy → Info handoff template',timelineInfoTemplate(e));
+  if(e.kind==='ACTION')copyButton('Copy optional handoff guidance',timelineInfoTemplate(e));
   else copyButton('Copy Page update brief',timelinePageBrief(e));
   actions.append(link('https://github.com/'+src.owner+'/'+src.repo+'/issues/'+src.issue,
     'Post follow-up in GitHub','btn small'));
