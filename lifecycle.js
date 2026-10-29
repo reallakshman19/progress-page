@@ -9,7 +9,7 @@ const WORD = { archived: 'Archived', superseded: 'Superseded', cancelled: 'Cance
 export const HOME_VIEWS = Object.freeze(['home','home-roadmap','home-sources','actions','timeline','timeline-live','cycle-board','test']);
 export const HOME_SUBTABS = Object.freeze([
   ['home','Overview'], ['home-roadmap','Roadmap'], ['home-sources','Sources'],
-  ['actions','My actions'], ['timeline','Timeline'], ['cycle-board','Cycle Board'], ['test','Test page'],
+  ['actions','My actions'], ['timeline','Timeline'], ['cycle-board','Cycle Board'], ['test','Trials & demos'],
 ]);
 export const CONTINUITY_VIEWS = Object.freeze(['continuity','start','oracle-continuity','home-risks','fixtures']);
 export const CONTINUITY_SUBTABS = Object.freeze([
