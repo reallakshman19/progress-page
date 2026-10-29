@@ -6,7 +6,7 @@
     "subtitle": "Safe automatic solutions, precise manual directions, revised-source recheck and verified case outcomes.",
     "aim": "Topo should not burden with finding but provide auditable solution which are auto fixable if not set clear directions for manual review. Support controlled manual correction, revised-source reimport, full Topo recheck and evidence-based closure.",
     "aimSrc": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/1#issuecomment-6474563974",
-    "updatedAt": "2026-10-29T06:26:32Z",
+    "updatedAt": "2026-10-29T10:44:32Z",
     "updatedBy": "Topo Oracle 6ae1b0f7",
     "staleAfterMin": 120
   },
@@ -91,11 +91,11 @@
       "order": 13,
       "wbs": "1.3",
       "cap": "CANDIDATE",
-      "canDo": "Draft code preserves reference-bearing pipes and gives source/owner/property-specific manual recheck directions; author tests pass, IR and browser journey pending.",
+      "canDo": "Draft candidate preserves source references, gives precise manual directions and rejects deletion without source-map proof; author tests pass, independent engineering/browser qualification pending.",
       "repo": "reallakshman19/xml229-topology-wp1-preview-20261028",
-      "commit": "9804e2c6108dfc0368f407fe8d52170dd071f78a",
-      "activity": "WBS 1.3 repair Draft PR #5; 13 Python and 19 Node PASS, SELF_ASSESSED; browser NOT_RUN; no product merge/deploy.",
-      "capSrc": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/4#issuecomment-6479886178",
+      "commit": "a5491cd836ae02db8a2b11b49f6cb969d3235f2e",
+      "activity": "IR PARTIAL at 9804e2c; author P1 repair at a5491cd with 20 Node / 13 Python and source replay PASS. NOT_VERIFIED / engineering HOLD.",
+      "capSrc": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/4#issuecomment-6494521640",
       "branch": "fix/topo-source-reference-preservation-20261028"
     },
     "M21": {
@@ -176,7 +176,7 @@
     "main": {
       "order": 0,
       "title": "Current safety-review gate",
-      "sub": "Oracle 6ae1b0f7; Owner-designated IR 6ae2d5ac; acknowledgment, separate receipt and verdict pending."
+      "sub": "IR 6ae2d5ac returned PARTIAL; engineering independence not established. Oracle 6ae1b0f7 repaired P1; new-head qualification pending."
     },
     "cases": {
       "title": "Current cases and correction safety",
