@@ -65,7 +65,8 @@ const HOSTED_REVIEWS=Object.freeze({
 });
 
 export function renderTestPage(root,project,{historical=false}={}) {
-  const hosted=HOSTED_REVIEWS[project?.index?.project?.key];
+  const routeKey=(typeof location!=='undefined'?location.hash.split('/')[1]:'')||'';
+  const hosted=HOSTED_REVIEWS[project?.index?.project?.key]||HOSTED_REVIEWS[routeKey];
   if(hosted){
     const box=el('section','demo-page');
     box.append(el('h3',null,'Hosted review pages'));
