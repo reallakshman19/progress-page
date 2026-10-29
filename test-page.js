@@ -58,10 +58,10 @@ export function testPagePacket(model) {
 }
 
 const HOSTED_REVIEWS=Object.freeze({
-  g9v35:[['QRT grid · Work, Power and Energy (status of all 28 tiles)','reviews/g9v35/qrt-grid.html'],
-    ['Physics blueprint · levels 3 and 4','reviews/g9v35/blueprint.html'],
-    ['Physics review · level-3 tiles','reviews/g9v35/physics-review-d3.html'],
-    ['Physics review · level-4 tiles','reviews/g9v35/physics-review-d4.html']]
+  g9v35:[['QRT grid · Work, Power and Energy (status of all 28 tiles)','https://reallakshman19.github.io/progress-page/reviews/g9v35/qrt-grid.html'],
+    ['Physics blueprint · levels 3 and 4','https://reallakshman19.github.io/progress-page/reviews/g9v35/blueprint.html'],
+    ['Physics review · level-3 tiles','https://reallakshman19.github.io/progress-page/reviews/g9v35/physics-review-d3.html'],
+    ['Physics review · level-4 tiles','https://reallakshman19.github.io/progress-page/reviews/g9v35/physics-review-d4.html']]
 });
 
 export function renderTestPage(root,project,{historical=false}={}) {
