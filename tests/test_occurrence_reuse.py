@@ -57,8 +57,32 @@ class NativeReuse(unittest.TestCase):
         path=Path(self.temp.name)/name
         path.write_text(json.dumps(p["proposal"]),encoding="utf-8")
         return path
+    def board_coverage(self, head):
+        """Read the *actual staged Page JSON* through the JS Board classifier."""
+        script=r"""
+import { readFileSync } from 'node:fs';
+import { cycleBoardContextModel } from './cycle-board-context.js';
+import { classifyPageCoverage } from './cycle-board-delta.js';
+const path=process.argv[1],head=process.argv[2];
+const read=kind=>JSON.parse(readFileSync(path+'/ciifr-node/'+kind+'.json','utf8'));
+const page={index:read('index'),cards:read('cards'),audit:read('audit')};
+const url='https://github.com/reallakshman19/XML_Compare_Utilities/pull/232';
+const native={status:'ok',observedAt:'2026-10-29T11:00:00Z',failures:[],
+ observations:[{kind:'PULL',number:232,milestone:'M3',source:url,
+ occurrenceId:'github:reallakshman19/XML_Compare_Utilities:pull-head:232:'+head,
+ revision:head,sourceAt:'2026-10-29T10:22:02Z',observedAt:'2026-10-29T11:00:00Z',
+ state:'DRAFT',qualification:'SELF_ASSESSED',reportedHold:true}]};
+const ctx=cycleBoardContextModel(page,{native,pageFetch:{status:'ok',observedAt:'2026-10-29T11:00:00Z'}});
+console.log(classifyPageCoverage(page,ctx).status);
+"""
+        result=subprocess.run(["node","--input-type=module","-e",script,str(self.data),head],
+                              cwd=ROOT,capture_output=True,text=True,timeout=25)
+        self.assertEqual(result.returncode,0,result.stderr)
+        return result.stdout.strip()
     def test_exact_occurrence_then_new_head_reuses_url_without_promoting_progress(self):
         before=self.snapshot();cards_before=self.doc("cards")
+        self.assertNotEqual(self.board_coverage(HEAD_A),"CURRENT",
+                            "URL-only historic Page has not published this head")
         p=self.propose()
         self.assertEqual(p["blockers"],[])
         self.assertEqual(p["proposal"]["nativeOccurrenceId"],occurrence_id(URL,p["observed"]))
@@ -78,6 +102,10 @@ class NativeReuse(unittest.TestCase):
         self.assertEqual(prior_event["card"],"node-r0-code")
         self.assertEqual(prior_event["wbs"],"2")
         self.assertEqual(prior_event["kind"],"UPDATE")
+        self.assertEqual(self.board_coverage(HEAD_A),"CURRENT",
+                         "exact event through real writer must be recognized by real Board")
+        self.assertNotEqual(self.board_coverage(HEAD_B),"CURRENT",
+                            "new mutable head is not published just because URL matches")
         self.assertEqual(self.doc("cards")["node-r0-code"]["state"],
                          cards_before["node-r0-code"]["state"])
         self.assertEqual(self.doc("cards")["node-r0-code"]["next"],
@@ -108,6 +136,7 @@ class NativeReuse(unittest.TestCase):
         self.assertEqual(after[-2],prior_event)
         self.assertEqual(after[-1]["nativeOccurrenceId"],
                          "github:reallakshman19/XML_Compare_Utilities:pull-head:232:"+HEAD_B)
+        self.assertEqual(self.board_coverage(HEAD_B),"CURRENT")
         self.assertEqual(self.doc("cards")["node-r0-code"]["state"],
                          cards_before["node-r0-code"]["state"])
         self.assertEqual(self.doc("cards")["node-r0-code"]["next"],
@@ -139,6 +168,7 @@ class NativeReuse(unittest.TestCase):
         B.run(self.data,path,apply=True)
         old=self.doc("audit")["events"][-1]
         self.assertNotIn("nativeOccurrenceId",old)
+        self.assertNotEqual(self.board_coverage(HEAD_A),"CURRENT")
         unreviewed=self.propose()
         self.assertIsNone(unreviewed["proposal"])
         self.assertTrue(any("LEGACY_REVIEW_REQUIRED" in e for e in unreviewed["blockers"]))
