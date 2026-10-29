@@ -31,9 +31,11 @@ class Proposal(unittest.TestCase):
         self.assertEqual(before,audit.read_bytes())
     def test_selected_card_generates_ref_only_not_state_or_permission(self):
         p=P.propose(self.data,"demo",SOURCE,"Oracle",card_id="a1",fetch=fake)
-        self.assertEqual(p["proposalVersion"] if "proposalVersion" in p else p["proposal"]["proposalVersion"],1)
+        self.assertEqual(p["proposalVersion"] if "proposalVersion" in p else p["proposal"]["proposalVersion"],2)
         m=p["proposal"]
         self.assertEqual(m["sourceObservation"]["observedHead"],HEAD)
+        self.assertEqual(m["nativeOccurrenceId"],"github:acme/demo:pull-head:999:"+HEAD)
+        self.assertEqual(m["wbs"],"1")
         self.assertEqual(len(m["changes"]),1)
         change=m["changes"][0]
         self.assertEqual(change["command"],"card set")
@@ -65,7 +67,7 @@ class Proposal(unittest.TestCase):
             raise ValueError(url)
         p=P.propose(self.data,"demo",SRC,"Oracle",card_id="a1",fetch=existing)
         self.assertIsNone(p["proposal"])
-        self.assertTrue(any("ALREADY_RECORDED" in x for x in p["blockers"]))
+        self.assertTrue(any("LEGACY_REVIEW_REQUIRED" in x for x in p["blockers"]))
         p2=P.propose(self.data,"demo",SOURCE,"Oracle",card_id="a1",expected_head=CHANGED,fetch=fake)
         self.assertIsNone(p2["proposal"])
         self.assertTrue(any("HEAD_DRIFT" in x for x in p2["blockers"]))
