@@ -730,7 +730,7 @@
     "order": 32,
     "group": "r6",
     "milestone": "W432",
-    "label": "Core2 coding candidate (synthetic; local only)",
+    "label": "Core2 coding · synthetic candidate",
     "who": {
       "role": "Oracle standalone · contributor (SELF_ASSESSED)"
     },
