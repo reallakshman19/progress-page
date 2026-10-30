@@ -645,3 +645,9 @@ main{width:100%;min-width:0}
  .trial-header{gap:8px}
  .trial-panel,.trial-related{padding:12px}
 }
+
+
+/* V3 universal trial profiles and source-only fallback. */
+.trial-profile-select{display:block;width:min(100%,560px);max-width:100%;padding:9px;margin:7px 0 12px}
+.trial-v3-mount{max-width:100%;min-width:0}
+.trial-v3-mount [data-trial-status="UNCONFIGURED"]{border:1px dashed var(--bd);border-radius:10px;padding:16px}
