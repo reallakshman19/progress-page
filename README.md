@@ -227,6 +227,16 @@ runtime. It can launch a **user-provided localhost** native server URL
 only after the user confirms their local checkout. Local head consistency
 is a **user assertion**, not an attestation by Progress Page.
 
+The trial console is organized as **Prepare candidate → Open prototype →
+Test scenarios → Review results**. Five compact scenario rows expand via
+**Inspect** to reveal expected behavior, an outcome selector and optional notes.
+A live progress count and four result counters update only when an operator
+enters results. **Reset observations** clears local outcomes and notes; **Reset
+session** additionally clears the candidate head and local-launch confirmation.
+A separate **Related tools** footer opens the existing Cycle Board, original
+task and the retained collapsed Workflow demo. The UI remains responsive at
+desktop and phone widths and preserves the old route.
+
 Five native **observation** cases cover independent Property paths, preserved
 Normal/Nodal state, pending-CSV stale export revocation, invalid
 endpoint/pointer rejection and visible UNKNOWN residue. Entries default to

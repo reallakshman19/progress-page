@@ -121,6 +121,7 @@ export function renderTestPage(root,project,{historical=false}={}) {
   wrapper.append(panel);
   if(hasNativeTrial){
     const workflow=el('details','project-brief');
+    workflow.id='ciifr-node-workflow-demo';
     workflow.append(el('summary',null,'Workflow demo · Action / Info simulator (not prototype testing)'),
       wrapper);
     root.append(workflow);
