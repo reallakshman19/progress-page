@@ -628,33 +628,33 @@
   },
   "qrt-note": {
     "order": 26,
-    "group": "r4",
-    "milestone": "W40",
+    "group": "r6",
+    "milestone": "W44",
     "label": "Methodology concept note",
     "who": {},
     "state": "SUBMITTED",
-    "now": "Claude doc 'QRT Methodology Concept Note' written (aim, pipeline diagram, grid, blueprint+adapter, coverage, gap rule, checks)",
+    "now": "Revised methodology §14 corrected D3.7→D4.7; detailed Source→Core1A report and public-safe concept/architecture reconcile ownership and gaps. SELF_ASSESSED; no science/course acceptance.",
     "next": {
       "actor": "OWNER",
-      "text": "read it"
+      "text": "Review reconciled concept and source-to-construction frontier"
     },
-    "updatedAt": "2026-10-29T04:50:45Z",
-    "src": "OWNER_PRIVATE_REF:G9V35-STORY-29OCT"
+    "updatedAt": "2026-10-30T11:09:01Z",
+    "src": "https://github.com/reallakshman19/Common/commit/3fc1330c176255c8f421cd49b88b598be293c1d4"
   },
   "smart-labels": {
     "order": 27,
-    "group": "r4",
-    "milestone": "W40",
+    "group": "r6",
+    "milestone": "W431",
     "label": "Smart Labelling 1 and 2 skills",
     "who": {},
     "state": "SUBMITTED",
-    "now": "Two project skills with checkers; tested on 2 exam questions (found a key sign error and a leaked answer)",
+    "now": "R2 hardening candidate retained, uninstalled. Recorded90 author regressions; source/key custody, trusted review consumption and semantic/native integration remain open. Original skills unchanged.",
     "next": {
       "actor": "OWNER",
-      "text": "try them on a new topic's questions"
+      "text": "Review/select next actual qualification scope; no automatic installation"
     },
-    "updatedAt": "2026-10-29T04:50:46Z",
-    "src": "OWNER_PRIVATE_REF:G9V35-STORY-29OCT"
+    "updatedAt": "2026-10-30T11:09:00Z",
+    "src": "https://github.com/reallakshman19/Common/commit/3fc1330c176255c8f421cd49b88b598be293c1d4"
   },
   "subtiles-d31": {
     "order": 28,
@@ -662,13 +662,68 @@
     "milestone": "W421",
     "label": "D3.1 sub-tiles D3.1.1-D3.1.6",
     "who": {},
-    "state": "IN_PROGRESS",
-    "now": "D3.1.1, D3.1.2 and D3.1.3 are built from the blueprint, library and adapter; no blueprint gap in any; every planted error rejected. Independent re-check of their changed and new library texts: not run. D3.1.4-D3.1.6 not started.",
+    "state": "BLOCKED",
+    "now": "PAUSED by Owner. Organized D3.1 candidates exist; no repair/build started under the paused finalisation scope. Static text preservation and runtime/academic claims remain separate.",
     "next": {
       "actor": "OWNER",
-      "text": "look at the three pages; the Oracle goes on to D3.1.4"
+      "text": "Only explicit D3.1 resume can reopen dependent work"
     },
-    "updatedAt": "2026-10-29T16:42:34Z",
-    "src": "OWNER_PRIVATE_REF:G9V35-STORY-29OCT-WBS42"
+    "updatedAt": "2026-10-30T11:08:59Z",
+    "src": "https://github.com/reallakshman19/Common/commit/3fc1330c176255c8f421cd49b88b598be293c1d4",
+    "flags": [
+      "paused"
+    ]
+  },
+  "wpe-core2-21": {
+    "order": 29,
+    "group": "r6",
+    "milestone": "W43",
+    "label": "Core2 candidate: 14 / 7 / 0",
+    "who": {
+      "role": "Artifact; no worker appointed"
+    },
+    "state": "SUBMITTED",
+    "now": "Latest received return:79 dispositions/78 counting identities,14 conditional selections,7 vacancies,0 independent admissions. Old13/8/0 freeze unchanged. UNAPPOINTED diagnostic is not independent review; native learner Core2 not built.",
+    "next": {
+      "actor": "OWNER",
+      "text": "Review candidate and select bounded custody/QRT/native-fidelity work; Core1A approval gate remains"
+    },
+    "updatedAt": "2026-10-30T11:09:02Z",
+    "src": "https://github.com/reallakshman19/Common/commit/3fc1330c176255c8f421cd49b88b598be293c1d4"
+  },
+  "wpe-source-core1a": {
+    "order": 30,
+    "group": "r6",
+    "milestone": "W441",
+    "label": "Source→Core1A preparation candidate",
+    "who": {
+      "role": "Artifact; no lesson author assigned"
+    },
+    "state": "SUBMITTED",
+    "now": "One uninstalled R1 companion skill/dossier:6 sources,11 units,3 claims,3 roles,7 native targets. Recorded50/50 mechanical controls and relocation. Science unqualified, reviewed task join missing; no native lesson.",
+    "next": {
+      "actor": "OWNER",
+      "text": "Review preparation candidate and select a bounded qualification/coverage step"
+    },
+    "updatedAt": "2026-10-30T11:09:03Z",
+    "src": "https://github.com/reallakshman19/Common/commit/3fc1330c176255c8f421cd49b88b598be293c1d4"
+  },
+  "oracle-wpe-current": {
+    "order": 31,
+    "group": "r6",
+    "milestone": "W44",
+    "label": "Oracle WPE continuity (standalone)",
+    "who": {
+      "chat": "oracle01a188e5",
+      "role": "Oracle (standalone)"
+    },
+    "state": "SUBMITTED",
+    "now": "Public-safe concept, artifact identities, full fixture metadata and onboarding prepared at Common PR571 (draft, Owner merge). Scoped Page records update; no mode/custody cutover, agents, lessons or D3.1 resume.",
+    "next": {
+      "actor": "OWNER",
+      "text": "Review Common documentation PR and select next bounded project operation"
+    },
+    "updatedAt": "2026-10-30T11:09:04Z",
+    "src": "https://github.com/reallakshman19/Common/commit/3fc1330c176255c8f421cd49b88b598be293c1d4"
   }
 }

@@ -30,6 +30,41 @@
     {
       "t": "Common START_HERE, task-decomposer and progress-page (pinned a353371): plan from Common, one WBS on this page",
       "u": "https://github.com/reallakshman19/Common/blob/a353371d5f1ea3d6df8214165ecdecebda9df41b/skills/agent-work/START_HERE.md"
+    },
+    {
+      "t": "WPE concept and architecture: two source tracks, ownership, real gaps",
+      "u": "https://github.com/reallakshman19/Common/blob/3fc1330c176255c8f421cd49b88b598be293c1d4/relay/AGENT_WORK/g9v35/WPE-ORACLE-CONTINUITY-20261030/payload/CONCEPT_ARCHITECTURE.md",
+      "s": "CONCEPT_NOTE",
+      "n": "PR571 draft; SELF_ASSESSED",
+      "milestone": "W44"
+    },
+    {
+      "t": "WPE Oracle continuity: exact frontier, decisions, authority and next outcome",
+      "u": "https://github.com/reallakshman19/Common/blob/3fc1330c176255c8f421cd49b88b598be293c1d4/relay/AGENT_WORK/g9v35/WPE-ORACLE-CONTINUITY-20261030/payload/ORACLE_CONTINUITY.md",
+      "s": "ORACLE_CONTINUITY",
+      "n": "PR571 draft; SELF_ASSESSED",
+      "milestone": "W44"
+    },
+    {
+      "t": "Cold-agent preparation: one resolved slice, real inputs and native return; not a dispatch",
+      "u": "https://github.com/reallakshman19/Common/blob/3fc1330c176255c8f421cd49b88b598be293c1d4/relay/AGENT_WORK/g9v35/WPE-ORACLE-CONTINUITY-20261030/payload/AGENT_ONBOARDING.md",
+      "s": "AGENT_ONBOARDING",
+      "n": "PR571 draft; SELF_ASSESSED",
+      "milestone": "W431"
+    },
+    {
+      "t": "All scoped fixture classes: two candidates, seven calibration entries, fifteen anti-examples and256 physical rows",
+      "u": "https://github.com/reallakshman19/Common/blob/3fc1330c176255c8f421cd49b88b598be293c1d4/relay/AGENT_WORK/g9v35/WPE-ORACLE-CONTINUITY-20261030/payload/FIXTURES.md",
+      "s": "FIXTURE_CATALOGUE",
+      "n": "PR571 draft; SELF_ASSESSED",
+      "milestone": "W44"
+    },
+    {
+      "t": "Exact frozen artifact identities; private originals LOCAL_ONLY, future recipient access NOT_RUN",
+      "u": "https://github.com/reallakshman19/Common/blob/3fc1330c176255c8f421cd49b88b598be293c1d4/relay/AGENT_WORK/g9v35/WPE-ORACLE-CONTINUITY-20261030/payload/ARTIFACT_REGISTER.md",
+      "s": "ARTIFACT_RELAY",
+      "n": "PR571 draft; SELF_ASSESSED",
+      "milestone": "W43"
     }
   ],
   "issues": [
@@ -145,6 +180,11 @@
     {
       "t": "R4 governing WBS: G9O5-10 WBS-PROTOTYPES.md (25 Oct). The file sits in a local handoff folder, not on GitHub; this page's WBS milestones 1-4 are its public copy.",
       "s": "current"
+    },
+    {
+      "t": "Next connected outcomes:4.3 resolve authentic Core2 evidence/native-fidelity and Owner approval;4.4 qualify parallel source brief then Core1A after gate;4.5 fresh Core1B after Core1A approval. KEEP historical4.1/4.2; no parallel WBS.",
+      "s": "CURRENT",
+      "milestone": "W43"
     }
   ],
   "highRoi": [
@@ -296,6 +336,11 @@
     {
       "t": "Owner, 28 Oct 20:01: first fix all the gaps, then the project",
       "u": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6474002480"
+    },
+    {
+      "t": "Owner30Oct: Core2 target21 authentic originals (3 per7 operations across D3/D4); show Core2 for approval, then Core1A for approval, then Core1B. Two tracks: question bank→Core2; non-bank→Core1A preparation. D3.1 stays PAUSED.",
+      "s": "CURRENT_SCOPED_OWNER_DIRECTION",
+      "n": "Owner direction; local receipt retained"
     }
   ],
   "inputs": [
@@ -325,6 +370,11 @@
     },
     {
       "t": "Located; handoff upload pending: g9v35/new_items_f4883273c43e.md; 16956 bytes; sha256 f4883273c43e5622336fe84d2c6f0363201c71872f343f01a8081bab7d8f7439. Local source C:/t/nnf7/new_items.md. The 13-item reference was read by headings only; no Oracle correctness claim."
+    },
+    {
+      "t": "Protected original ZIPs/source corpus remain local/private. Common packet is public-safe metadata only; future-agent retrieval/hash verification NOT_RUN. Custodian must provide exact permitted bytes before execution.",
+      "s": "LOCAL_ONLY_NOT_TRANSFERRED",
+      "milestone": "W431"
     }
   ],
   "knownIssues": [
@@ -390,6 +440,11 @@
     {
       "t": "Milestones M0-M4/Q0 predate the WPE-first direction and O5's refined WBS; resetting them is the Oracle's (MILESTONE SET)",
       "s": "closed: fixed 28 Oct, mapped to WBS 1-4"
+    },
+    {
+      "t": "Core2 catalogue lacks native learner attempt/support/solution runtime. Authentic figures/official keys, independent QRT dispositions, selected WPE adapter and semantic resolver remain unresolved. No acceptance from coherent fields or a green checker.",
+      "s": "OPEN",
+      "milestone": "W431"
     }
   ],
   "pending": [
@@ -456,6 +511,11 @@
       "t": "Pass 2 run 2 (4ac47110): non-author audit, then re-test against current tiles a886c004 and 9edb9bb4; waits until WPE resumes (Owner decision B)",
       "s": "paused",
       "milestone": "W32"
+    },
+    {
+      "t": "Owner reviews received14/7/0 Core2 proposal, R1 preparation candidate and CommonPR571 documentation. No Core1A lesson until completed Core2 approval; no Core1B until Core1A approval; D3.1 remains paused.",
+      "s": "OWNER_REVIEW",
+      "milestone": "W43"
     }
   ]
 }
