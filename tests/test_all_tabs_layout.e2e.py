@@ -256,6 +256,43 @@ def main():
                           "Prototype trial workspace horizontal overflow")
                     return {"documentWidth":g["documentWidth"],"cases":5,"status":"NOT_RUN"}
                 run_case(str(width)+"px ciifr-node/test prototype trial",native_trial_case)
+                def universal_trials_case():
+                    for key,expected_title,count in (
+                        ("ciifr","R3 native prototype launch qualification",3),
+                        ("g9v35","QRT grid",3),
+                        ("topofix","NO TRIAL CONFIGURED",0),
+                    ):
+                        load(page,key+"/test")
+                        lab=page.locator('[data-trial-workspace="'+key+'"]')
+                        lab.wait_for(timeout=30000)
+                        check(expected_title in lab.inner_text(),
+                              key+" is not showing its own trial template")
+                        check(lab.locator(".trial-case").count()==count,
+                              key+" trial cases are not project-scoped")
+                        check(page.locator("#"+key+"-workflow-demo").count()==1,
+                              key+" lost the old optional Workflow demo")
+                        if key=="ciifr":
+                            selector=lab.get_by_label("Select trial profile")
+                            check(selector.count()==1,"CIIFR two distinct trial profiles missing")
+                            selector.select_option("1")
+                            check("Geometry RCA source review" in lab.inner_text(),
+                                  "CIIFR profile switch did not replace source and cases")
+                            check(lab.locator(".trial-case").count()==2,
+                                  "CIIFR geometry cases must be separately scoped")
+                            check("0 / 2 OBSERVED" in lab.inner_text(),
+                                  "New profile must begin with no inherited results")
+                        if key=="g9v35":
+                            check(lab.locator("a",has_text="Open source for review").count()==1,
+                                  "Grade9 hosted review must open a real review link")
+                        if key=="topofix":
+                            check(lab.locator(".trial-launch").count()==0,
+                                  "Unconfigured project must not fabricate launch or readiness")
+                        g=geometry(page)
+                        check(g["documentWidth"]<=width+3,
+                              key+" Trials V3 has horizontal overflow")
+                    return {"projects":["ciifr","g9v35","topofix"],"unconfiguredSafe":True}
+                run_case(str(width)+"px universal Trials V3 profiles",universal_trials_case)
+
             context.close()
         # Explicitly exercise the archived-history-independent Lessons reading paths.
         ctx=browser.new_context(viewport={"width":1440,"height":900},device_scale_factor=1)
