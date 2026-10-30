@@ -726,6 +726,18 @@
       "u": "https://github.com/reallakshman19/3D_Converters/issues/351#issuecomment-6528178717",
       "s": "OWNER_SCOPED",
       "milestone": "M29"
+    },
+    {
+      "t": "Owner reports JSON REST/GUIDE/LINE STOP types and gaps no longer reach enriched XML/CII; restore source-bound values before fallback and Final.",
+      "u": "https://github.com/reallakshman19/3D_Converters/issues/350#issuecomment-6530010922",
+      "s": "OWNER_CONTINUATION",
+      "milestone": "M30"
+    },
+    {
+      "t": "Owner reports BM2 flange DN20/45% fallback finding persists; correct component-body lookup while retaining source endpoint dimensions and confirmed Final0.",
+      "u": "https://github.com/reallakshman19/3D_Converters/issues/350#issuecomment-6530010922",
+      "s": "OWNER_CONTINUATION",
+      "milestone": "M31"
     }
   ],
   "inputs": [

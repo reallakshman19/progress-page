@@ -6772,6 +6772,84 @@
       "list": "knownIssues",
       "op": "add",
       "rev": "R4"
+    },
+    {
+      "seq": 517,
+      "id": "CIIFR-R-0517",
+      "previous_id": "CIIFR-R-0516",
+      "at": "2026-10-30T18:09:24Z",
+      "kind": "PLAN",
+      "actor": "Builder6ae1bed6 (direct Owner)",
+      "summary": "Add6.6 for the observed JSON restraint transfer failure, preserving prior WBS steps.",
+      "source": "https://github.com/reallakshman19/3D_Converters/issues/350#issuecomment-6530010922",
+      "scope": "milestone:M30",
+      "rev": "R4"
+    },
+    {
+      "seq": 518,
+      "id": "CIIFR-R-0518",
+      "previous_id": "CIIFR-R-0517",
+      "at": "2026-10-30T18:09:25Z",
+      "kind": "PLAN",
+      "actor": "Builder6ae1bed6 (direct Owner)",
+      "summary": "Add6.7 for the surviving flange lookup mismatch, without overwriting Owner Final.",
+      "source": "https://github.com/reallakshman19/3D_Converters/issues/350#issuecomment-6530010922",
+      "scope": "milestone:M31",
+      "rev": "R4"
+    },
+    {
+      "seq": 519,
+      "id": "CIIFR-R-0519",
+      "previous_id": "CIIFR-R-0518",
+      "at": "2026-10-30T18:09:25Z",
+      "kind": "BASELINE",
+      "actor": "Builder6ae1bed6 (direct Owner)",
+      "summary": "Bind6.6 to the continuing builder and exact source observation.",
+      "source": "https://github.com/reallakshman19/3D_Converters/issues/350#issuecomment-6530010922",
+      "card": "json-restraint-transfer",
+      "before": null,
+      "after": "IN_PROGRESS",
+      "rev": "R4"
+    },
+    {
+      "seq": 520,
+      "id": "CIIFR-R-0520",
+      "previous_id": "CIIFR-R-0519",
+      "at": "2026-10-30T18:09:26Z",
+      "kind": "BASELINE",
+      "actor": "Builder6ae1bed6 (direct Owner)",
+      "summary": "Bind6.7 to the surviving flange case and protected Owner mass decisions.",
+      "source": "https://github.com/reallakshman19/3D_Converters/issues/350#issuecomment-6530010922",
+      "card": "component-body-bore",
+      "before": null,
+      "after": "IN_PROGRESS",
+      "rev": "R4"
+    },
+    {
+      "seq": 521,
+      "id": "CIIFR-R-0521",
+      "previous_id": "CIIFR-R-0520",
+      "at": "2026-10-30T18:09:26Z",
+      "kind": "FIXTURE",
+      "actor": "Builder6ae1bed6 (direct Owner)",
+      "summary": "Record JSON-restraint continuation in the governing WBS.",
+      "source": "https://github.com/reallakshman19/3D_Converters/issues/350#issuecomment-6530010922",
+      "list": "intent",
+      "op": "add",
+      "rev": "R4"
+    },
+    {
+      "seq": 522,
+      "id": "CIIFR-R-0522",
+      "previous_id": "CIIFR-R-0521",
+      "at": "2026-10-30T18:09:27Z",
+      "kind": "FIXTURE",
+      "actor": "Builder6ae1bed6 (direct Owner)",
+      "summary": "Record surviving flange continuation without inventing an accepted mass.",
+      "source": "https://github.com/reallakshman19/3D_Converters/issues/350#issuecomment-6530010922",
+      "list": "intent",
+      "op": "add",
+      "rev": "R4"
     }
   ]
 }

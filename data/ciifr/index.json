@@ -4,8 +4,8 @@
     "key": "ciifr",
     "title": "CII Find & Replace VNext",
     "subtitle": "R4 current: Geometry WBS3 read-only G1/G2; Element WBS4 source/config qualification; VNext integration held pending independent evidence.",
-    "updatedAt": "2026-10-30T17:03:47Z",
-    "updatedBy": "Builder 6ae1bed6 (direct Owner)",
+    "updatedAt": "2026-10-30T18:09:27Z",
+    "updatedBy": "Builder6ae1bed6 (direct Owner)",
     "staleAfterMin": 120,
     "aim": "Extend CIIFR NodeName VNext into typed ELEMENTS real-value/Line Number edits plus pointer-resolved RIGID Weight/Type. Preserve original bytes, v14 units/sentinels, node/pointer/branch relations, per-span approvals, new-copy export and native import review. Retain R3 Geometry WBS3 review-only, frozen P2/P2.1 and XML custody; defer structural graph/pointer edits and P3.",
     "aimSrc": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394203305"
@@ -416,6 +416,34 @@
       "commit": "662b53fb9d858bbafc59946cc4fc5b7da73c68fd",
       "activity": "PR356 source/native PASS; CI68 PASS/15 historical preflight FAIL atbcecd2d1. Final662b53fb tests/recovery; Owner trial/import pending.",
       "capSrc": "https://github.com/reallakshman19/3D_Converters/pull/356"
+    },
+    "M30": {
+      "name": "JSON restraints through Final and native export",
+      "full": "Extend existing WBS6: resolve REST/GUIDE/LINESTOP and their gaps from source-bound staged JSON before Final geometry freeze; apply fallback only after JSON and explicit XML evidence. Verify Worker finalized XML, consumed enriched XML and actual CII; preserve coordinates, owners and late guards.",
+      "order": 46,
+      "wbs": "6.6",
+      "bench": "JSON-RESTRAINT-TRANSFER",
+      "keeps": "BM2-OLET-ROUTE; BM2-TEE-ROUTE; explicit XML/Final mass custody",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "Exact-current-source reproduction confirms JSON types/gaps lost before Final; repair in progress.",
+      "repo": "reallakshman19/3D_Converters",
+      "branch": "fix/xml229-json-restraints-body-bore-6ae1bed6",
+      "commit": "7ac4f00a9fedb23952611ddc9be0465289813f20",
+      "activity": "JSON closure resolves +Y/GUI6/LIM8; finalized Worker XML omits all three. Owner requests correction."
+    },
+    "M31": {
+      "name": "Physical component bore matches native body",
+      "full": "Resolve the physical weight bore from the same source-qualified component span used by native element OD. Keep endpoint bore/dimensions distinct, reject identity drift, preserve explicit Final0 and mass ownership. Verify BM2 flange2760→6960 and PL-BM1 bore regressions; no guessed accepted mass.",
+      "order": 47,
+      "wbs": "6.7",
+      "bench": "COMPONENT-BODY-BORE",
+      "keeps": "PL-BM1 DN250/DN50; physical owner and source port custody",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "Flange DN20 endpoint lookup versus DN50 native body reproduced; original port dimensions unchanged.",
+      "repo": "reallakshman19/3D_Converters",
+      "branch": "fix/xml229-json-restraints-body-bore-6ae1bed6",
+      "commit": "7ac4f00a9fedb23952611ddc9be0465289813f20",
+      "activity": "RCA-only flange finding still unresolved; scoped component-body repair in progress."
     }
   },
   "groups": {
