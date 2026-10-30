@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import {PROPERTY_CASES,SOURCE_API,nativeCandidate,readNativeCandidate,
-  localPreviewUrl,trialSetup,trialPacket} from '../prototype-trial.js';
+  localPreviewUrl,trialSetup,trialPacket,trialSummary} from '../prototype-trial.js';
 
 const HEAD='d3fbd4041ef4434b4cf5b3c22459f06167be2729';
 const fixture={head:{sha:HEAD},state:'open',draft:true};
@@ -69,4 +69,14 @@ test('sanitize private notes from a copied local report',()=>{
  assert.doesNotMatch(report,/chatgpt\.com|PRIVATE\.cii/);
  assert.match(report,/note withheld: potentially private content/);
  assert.match(report,/output disabled while loading/);
+});
+
+test('console summary has five default NOT_RUN cases and counts observations without inventing a PASS',()=>{
+ const blank=trialSummary();
+ assert.deepEqual(blank,{PASS:0,FAIL:0,BLOCKED:0,NOT_RUN:5,observed:0,total:5});
+ const observed=trialSummary({'PT-01':'PASS','PT-02':'FAIL','PT-03':'BLOCKED',
+  'PT-04':'FORGED','PT-05':'NOT_RUN'});
+ assert.deepEqual(observed,{PASS:1,FAIL:1,BLOCKED:1,NOT_RUN:2,observed:3,total:5});
+ const report=trialPacket({outcomes:{'PT-01':'PASS','PT-02':'FAIL','PT-03':'BLOCKED'}});
+ assert.match(report,/NOT ENGINEERING OR OWNER ACCEPTANCE/);
 });
