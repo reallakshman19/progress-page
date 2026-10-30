@@ -4,8 +4,8 @@
     "key": "ciifr",
     "title": "CII Find & Replace VNext",
     "subtitle": "R4 current: Geometry WBS3 read-only G1/G2; Element WBS4 source/config qualification; VNext integration held pending independent evidence.",
-    "updatedAt": "2026-10-29T13:53:47Z",
-    "updatedBy": "6ae1bed6 (Owner-directed builder/recorder)",
+    "updatedAt": "2026-10-30T16:46:08Z",
+    "updatedBy": "Builder 6ae1bed6 (direct Owner)",
     "staleAfterMin": 120,
     "aim": "Extend CIIFR NodeName VNext into typed ELEMENTS real-value/Line Number edits plus pointer-resolved RIGID Weight/Type. Preserve original bytes, v14 units/sentinels, node/pointer/branch relations, per-span approvals, new-copy export and native import review. Retain R3 Geometry WBS3 review-only, frozen P2/P2.1 and XML custody; defer structural graph/pointer edits and P3.",
     "aimSrc": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/167#issuecomment-6394203305"
@@ -401,6 +401,20 @@
       "commit": "af40c23396b5ef2d2868a866f221d84d84c99540",
       "activity": "PR355 af40c233 native, JS22/24, Preview/browser PASS;68 checks PASS/15 historical preflight FAIL. Owner trial/native import pending.",
       "capSrc": "https://github.com/reallakshman19/3D_Converters/pull/355"
+    },
+    "M29": {
+      "name": "BM2 TEE port routing and source slope",
+      "full": "SPLIT the newly observed TEE defect from completed OLET6.4: qualify source TEE ports, retain run1→0→2, exclude only anonymous non-authoritative branch-port3 from the serial main route before Final. Preserve actual branch connections, coordinates, source slope, mass owners and restraints. Check all31 BM2 tees and the two marked DY cases in actual native CII.",
+      "order": 45,
+      "wbs": "6.5",
+      "bench": "BM2-TEE-ROUTE",
+      "keeps": "BM2-OLET-ROUTE; restraint attachment; PL-BM1 bore and Final mass custody",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "Source RCA verified; production repair and native output validation in progress.",
+      "repo": "reallakshman19/3D_Converters",
+      "branch": "fix/xml229-tee-port-route-6ae1bed6",
+      "commit": "690400a012d2bbc8f53a4e192ce80addacfa1439",
+      "activity": "Owner requests TEE DY repair; source run at2690 DY0, at3120 DY−0.32mm."
     }
   },
   "groups": {

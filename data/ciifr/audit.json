@@ -6642,6 +6642,58 @@
       "source": "https://github.com/reallakshman19/3D_Converters/issues/351#issuecomment-6498511241",
       "scope": "milestone:M28",
       "rev": "R4"
+    },
+    {
+      "seq": 507,
+      "id": "CIIFR-R-0507",
+      "previous_id": "CIIFR-R-0506",
+      "at": "2026-10-30T16:46:06Z",
+      "kind": "PLAN",
+      "actor": "Builder 6ae1bed6 (direct Owner)",
+      "summary": "Extend governing R4 WBS6 with bounded TEE6.5; preserve OLET6.4 and existing scope.",
+      "source": "https://github.com/reallakshman19/3D_Converters/issues/351#issuecomment-6528178717",
+      "scope": "milestone:M29",
+      "rev": "R4"
+    },
+    {
+      "seq": 508,
+      "id": "CIIFR-R-0508",
+      "previous_id": "CIIFR-R-0507",
+      "at": "2026-10-30T16:46:06Z",
+      "kind": "BASELINE",
+      "actor": "Builder 6ae1bed6 (direct Owner)",
+      "summary": "Bind the continuing builder to WBS6.5 and the native task return.",
+      "source": "https://github.com/reallakshman19/3D_Converters/issues/351#issuecomment-6528178717",
+      "card": "bm2-tee-route",
+      "before": null,
+      "after": "IN_PROGRESS",
+      "rev": "R4"
+    },
+    {
+      "seq": 509,
+      "id": "CIIFR-R-0509",
+      "previous_id": "CIIFR-R-0508",
+      "at": "2026-10-30T16:46:07Z",
+      "kind": "FIXTURE",
+      "actor": "Builder 6ae1bed6 (direct Owner)",
+      "summary": "Record TEE repair direction in the same WBS family.",
+      "source": "https://github.com/reallakshman19/3D_Converters/issues/351#issuecomment-6528178717",
+      "list": "intent",
+      "op": "add",
+      "rev": "R4"
+    },
+    {
+      "seq": 510,
+      "id": "CIIFR-R-0510",
+      "previous_id": "CIIFR-R-0509",
+      "at": "2026-10-30T16:46:08Z",
+      "kind": "FIXTURE",
+      "actor": "Builder 6ae1bed6 (direct Owner)",
+      "summary": "Pin original TEE source fixture and independent vector witnesses.",
+      "source": "https://github.com/reallakshman19/3D_Converters/issues/351#issuecomment-6528178717",
+      "list": "inputs",
+      "op": "add",
+      "rev": "R4"
     }
   ]
 }

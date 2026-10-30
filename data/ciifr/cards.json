@@ -1373,5 +1373,30 @@
     ],
     "updatedAt": "2026-10-29T13:46:48Z",
     "src": "https://github.com/reallakshman19/3D_Converters/pull/355"
+  },
+  "bm2-tee-route": {
+    "order": 52,
+    "group": "r4-restraint-audit",
+    "milestone": "M29",
+    "label": "BM2 TEE routing / unwanted DY",
+    "who": {
+      "chat": "restraint-6ae1bed6",
+      "role": "Owner-directed builder; self-checks disclosed"
+    },
+    "state": "IN_PROGRESS",
+    "now": "Current main serializes TEE1,3,0,2, sending main run through branch port3. Source31 groups inspected; two screenshot DY vectors independently calculated. No weight Final decision or writer change.",
+    "next": {
+      "actor": "Builder6ae1bed6",
+      "text": "Implement bounded pre-Final TEE port classification; execute original BM2 Preview/Worker/native and contrary cases."
+    },
+    "refs": [
+      {
+        "k": "comment",
+        "l": "Owner-scoped TEE repair",
+        "u": "https://github.com/reallakshman19/3D_Converters/issues/351#issuecomment-6528178717"
+      }
+    ],
+    "updatedAt": "2026-10-30T16:46:06Z",
+    "src": "https://github.com/reallakshman19/3D_Converters/issues/351#issuecomment-6528178717"
   }
 }

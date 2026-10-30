@@ -714,6 +714,12 @@
       "u": "https://github.com/reallakshman19/3D_Converters/issues/351#issuecomment-6498100565",
       "s": "OWNER_SCOPED",
       "milestone": "M28"
+    },
+    {
+      "t": "Owner: fix the two unwanted TEE DY cases; retain source slopes and actual branches. Continuing builder6ae1bed6, direct Owner; no new Oracle or merge authority.",
+      "u": "https://github.com/reallakshman19/3D_Converters/issues/351#issuecomment-6528178717",
+      "s": "OWNER_SCOPED",
+      "milestone": "M29"
     }
   ],
   "inputs": [
@@ -1079,6 +1085,12 @@
       "u": "https://github.com/reallakshman19/3D_Converters/blob/59df118588837f70ca22dfe0d0573ef874e07dd0/Benchmarks/XML-CII-2019/revamped/GLRD-1000-PI-01%20-%20BM2.xml",
       "s": "SOURCE_BYTES_VERIFIED",
       "milestone": "M28"
+    },
+    {
+      "t": "Original BM2 XML:31 TEE groups; Git blob2008bbcc344ef48dde95addd6a72dc9e08aee56c,629889bytes. Source XYZ maps to CII X,Z,−Y; centre2690 run DY0, centre3120 run DY−0.32mm.",
+      "u": "https://github.com/reallakshman19/3D_Converters/blob/690400a012d2bbc8f53a4e192ce80addacfa1439/Benchmarks/XML-CII-2019/revamped/GLRD-1000-PI-01%20-%20BM2.xml",
+      "s": "BYTES_VERIFIED",
+      "milestone": "M29"
     }
   ],
   "knownIssues": [
