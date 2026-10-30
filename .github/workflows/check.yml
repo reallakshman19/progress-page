@@ -60,6 +60,8 @@ jobs:
         run: node --experimental-default-type=module --test tests/cycle-board-writer.test.mjs
       - name: CT-4 three-project adversarial replay (author-only, not independent IR)
         run: node --experimental-default-type=module --test tests/cycle-board-ct4-project-matrix.test.mjs
+      - name: Oracle, continuity, agent, concept and source graph stress
+        run: node --experimental-default-type=module --test tests/oracle-agent-lifecycle.stress.test.mjs tests/oracle-agent-adhoc.stress.test.mjs
       - name: Onboarding readiness contrasts
         run: node --experimental-default-type=module --test tests/onboarding.test.mjs
       - name: Project Home navigation and source-retention tests

@@ -1,0 +1,88 @@
+{
+  "schema": "oracle-agent-lifecycle-stress/v1",
+  "classification": "SYNTHETIC_TEST_GRAPH_NOT_OWNER_AUTHORITY",
+  "sourceRoot": "https://github.com/reallakshman19/Common/blob/999dd8d1516af6a65a840d9f3f489b5f0115d261/",
+  "nodes": [
+    {
+      "id": "owner-aim",
+      "kind": "OWNER_AIM",
+      "proof": "https://github.com/acme/demo/issues/1#issuecomment-100"
+    },
+    {
+      "id": "concept-note",
+      "kind": "CONCEPT_NOTE",
+      "proof": "https://github.com/reallakshman19/Common/blob/999dd8d1516af6a65a840d9f3f489b5f0115d261/skills/agent-work/PROJECT_HOME_GUIDE.md"
+    },
+    {
+      "id": "concept-map",
+      "kind": "ARCHITECTURE_CONCEPT",
+      "proof": "https://github.com/reallakshman19/Common/blob/999dd8d1516af6a65a840d9f3f489b5f0115d261/skills/agent-work/ARTIFACT_RELAY.md"
+    },
+    {
+      "id": "native-sources",
+      "kind": "SOURCE_BOUNDARY",
+      "proof": "https://github.com/reallakshman19/Common/blob/999dd8d1516af6a65a840d9f3f489b5f0115d261/skills/agent-work/START_HERE.md"
+    },
+    {
+      "id": "oracle-continuity",
+      "kind": "ORACLE_HANDOVER",
+      "proof": "https://github.com/reallakshman19/Common/blob/999dd8d1516af6a65a840d9f3f489b5f0115d261/skills/agent-work/oracle-continuity/PROTOCOL.md"
+    },
+    {
+      "id": "agent-onboarding",
+      "kind": "AGENT_START",
+      "proof": "https://github.com/reallakshman19/Common/blob/999dd8d1516af6a65a840d9f3f489b5f0115d261/skills/agent-work/CONTRIBUTION_HANDOFF.md"
+    },
+    {
+      "id": "relay-custody",
+      "kind": "ARTIFACT_RELAY",
+      "proof": "https://github.com/reallakshman19/Common/blob/999dd8d1516af6a65a840d9f3f489b5f0115d261/skills/agent-work/ARTIFACT_RELAY.md"
+    },
+    {
+      "id": "page-projection",
+      "kind": "PROGRESS_PAGE",
+      "proof": "https://github.com/reallakshman19/Common/blob/999dd8d1516af6a65a840d9f3f489b5f0115d261/skills/agent-work/progress-page/SKILL.md"
+    }
+  ],
+  "edges": [
+    [
+      "owner-aim",
+      "concept-note"
+    ],
+    [
+      "concept-note",
+      "concept-map"
+    ],
+    [
+      "concept-map",
+      "native-sources"
+    ],
+    [
+      "native-sources",
+      "oracle-continuity"
+    ],
+    [
+      "oracle-continuity",
+      "agent-onboarding"
+    ],
+    [
+      "native-sources",
+      "relay-custody"
+    ],
+    [
+      "agent-onboarding",
+      "relay-custody"
+    ],
+    [
+      "relay-custody",
+      "page-projection"
+    ]
+  ],
+  "nonClaims": [
+    "No concept source authenticated by URL format alone",
+    "No private bytes verified from a relay pointer",
+    "No Oracle cutover from a Page card",
+    "No agent dispatch from onboarding stage",
+    "No acceptance from Page publication"
+  ]
+}
