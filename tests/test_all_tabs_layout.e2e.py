@@ -274,6 +274,10 @@ def main():
                         if key=="ciifr":
                             selector=lab.get_by_label("Select trial profile")
                             check(selector.count()==1,"CIIFR two distinct trial profiles missing")
+                            lab.locator(".trial-case details").first.locator("summary").click()
+                            lab.get_by_label("R3-01 observed result").select_option("FAIL")
+                            check("1 / 3 OBSERVED" in lab.inner_text(),
+                                  "First CIIFR profile must count local observations")
                             selector.select_option("1")
                             check("Geometry RCA source review" in lab.inner_text(),
                                   "CIIFR profile switch did not replace source and cases")
