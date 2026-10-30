@@ -211,50 +211,50 @@ can copy the same badge IDs and original source links from INFO-Auto generated
 cards for human-verified `pp_propose → pp_batch` reconciliation. No
 automatic Page data write, Cycle binding or Owner product approval.
 
-## Per-project Trials & demos — actual candidate versus demonstration
+## Trials V3 — one shared console, reviewed project templates
 
-The existing `#/PROJECT_KEY/test` route is retained (old deep links stay valid).
-The tab is named **Trials & demos** so an Action/Info simulation is never
-mistaken for a real prototype or technical PASS.
+Every existing `#/PROJECT_KEY/test` deep link now opens the same source-bound
+**Trials** console. The UI engine lives in `trial-workspace.js`; versioned,
+reviewed trial profiles live in `trial-templates.js`. Adding another trial
+should require only a reviewed **declarative template** containing project,
+existing published WBS/card scope, original evidence URL, explicit launch/review
+mode, and expected test cases, not a copied Page or duplicate WBS. The existing
+Action/Info/INFO-Auto workflow simulator is preserved as a **collapsed Workflow
+demo**, not a live source of engineering approval or agent reporting.
 
-**CIIFR-Node** shows the **Property Transfer · prototype trial** first.
-Use **Check native PR head** to re-read the original GitHub PR #232 before
-running anything. The tool fails closed if GitHub is unavailable or the
-response cannot prove a 40-hex source-head shape. It supplies exact-head
-`git fetch` / detached checkout / `python -m http.server 8080`
-commands, but **does not** download, execute, publish or verify the native
-runtime. It can launch a **user-provided localhost** native server URL
-only after the user confirms their local checkout. Local head consistency
-is a **user assertion**, not an attestation by Progress Page.
+**Configured examples (all sourced from current Page WBS and links):**
+- `ciifr-node` — Property Transfer PR #232 exact-head check, isolated local
+  checkout and loopback-only user-confirmed launch, five read-only native
+  scenarios. The app is **not hosted or verified by Progress Page**.
+- `ciifr` — two **source-review only** profiles: pinned R3 prototype launch
+  guide (WBS 5), original Geometry RCA issue (WBS 3). These are not fabricated
+  runnable CIIFR prototypes; the native qualification gates remain independent.
+- `g9v35` — **hosted-review** QRT grid (WBS 2.5), with content observations
+  and direct link to the existing published review page. A hosted document
+  review is **not** an independently verified learning or engineering PASS.
 
-The trial console is organized as **Prepare candidate → Open prototype →
-Test scenarios → Review results**. Five compact scenario rows expand via
-**Inspect** to reveal expected behavior, an outcome selector and optional notes.
-A live progress count and four result counters update only when an operator
-enters results. **Reset observations** clears local outcomes and notes; **Reset
-session** additionally clears the candidate head and local-launch confirmation.
-A separate **Related tools** footer opens the existing Cycle Board, original
-task and the retained collapsed Workflow demo. The UI remains responsive at
-desktop and phone widths and preserves the old route.
+For other/archived projects the shared Trials tab explicitly says
+`NO TRIAL CONFIGURED` until a suitable reviewed template exists. It does
+not invent tests, app hosting, trial assignments, or a default status. A
+mis-scoped template whose WBS/card is absent from the selected Page is rejected
+rather than mapped to another project.
 
-Five native **observation** cases cover independent Property paths, preserved
-Normal/Nodal state, pending-CSV stale export revocation, invalid
-endpoint/pointer rejection and visible UNKNOWN residue. Entries default to
-`NOT_RUN`; PASS/FAIL/BLOCKED are **local observations only**. Results and
-notes live only in browser memory and can be copied as a sanitized local
-trial report; no upload or automatic post occurs. A refreshed different PR
-head resets previous answers. No protected CII data or private local paths
-should be entered. Actual PR #232 remains DRAFT/HOLD; browser/Windows/
-original-file qualification and engineering/Owner acceptance are separate.
+Each configured trial uses the same **Prepare → Open/Review → Test scenarios
+→ Review results** layout and local in-memory PASS/FAIL/BLOCKED/NOT_RUN
+controls. Switching trial profiles resets outcomes and notes, preventing
+carryover between sources; a different native PR head or failed source read
+also clears prior observations and disables the local launch until explicitly
+reconfirmed. A copied local report includes the trial profile, original source
+and actual observed revision, not private local paths or original test bytes.
+No observations are posted automatically.
 
-The former Action / Info / INFO-Auto **Workflow demo** stays accessible
-under a collapsed disclosure on the same CIIFR-Node route. Other projects
-retain their preexisting local demonstration and CIIFR RCA bench.
-The demo's controls never modify Timeline, published Page/Cycle JSON,
-dispatch agents or close independent review. This testing workspace
-does not create another WBS, mandatory agent report or production
-source of truth. CIIFR-Node's **Cycle Board** remains the separate
-`#/ciifr-node/cycle-board` evidence-reuse acceptance route.
+**Authority boundary:** Opening a source, running a local native prototype,
+author-typed PASS or completing browser CI never creates Page audit/Cycle
+state, engineering PASS, independent-review approval, Owner product acceptance
+or a new mandatory agent report. Native source evidence and Page writer
+authorization remain in their existing original systems. The Cycle Board is
+a separate evidence-reuse trial and CT-4 issue #80 stays open for true
+independent review, human Owner use, and measured five-role effort.
 
 ## Canonical Cycle-to-WBS binding preflight (source only)
 
