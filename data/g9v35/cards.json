@@ -725,5 +725,29 @@
     },
     "updatedAt": "2026-10-30T11:09:04Z",
     "src": "https://github.com/reallakshman19/Common/commit/3fc1330c176255c8f421cd49b88b598be293c1d4"
+  },
+  "wpe-core2-coding-r1": {
+    "order": 32,
+    "group": "r6",
+    "milestone": "W432",
+    "label": "Core2 coding · synthetic candidate",
+    "who": {
+      "role": "Oracle standalone · contributor (SELF_ASSESSED)"
+    },
+    "state": "SUBMITTED",
+    "now": "Local source→product admission and attempt-first learner candidate: 33/33 Python author tests, 26/26 Chromium synthetic assertions. 14 pending selections HOLD; 7 vacancies; 0 admitted. Native renderer, independent QA, academic admission NOT_RUN. Artifact LOCAL_ONLY / NOT_TRANSFERRED.",
+    "next": {
+      "actor": "OWNER",
+      "text": "Authorize native E1 integration/relay and distinct reviews; do not treat this candidate as completed Core2"
+    },
+    "refs": [
+      {
+        "k": "comment",
+        "l": "Author coding receipt (public-safe)",
+        "u": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6521619329"
+      }
+    ],
+    "updatedAt": "2026-10-30T11:32:38Z",
+    "src": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6521619329"
   }
 }

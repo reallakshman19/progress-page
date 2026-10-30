@@ -4411,6 +4411,21 @@
       "list": "inputs",
       "op": "add",
       "rev": "R6"
+    },
+    {
+      "seq": 331,
+      "id": "G9V35-R-0331",
+      "previous_id": "G9V35-R-0330",
+      "at": "2026-10-30T11:33:34Z",
+      "kind": "BASELINE",
+      "actor": "Oracle standalone (SELF_ASSESSED)",
+      "summary": "Record local self-tested WPE Core2 coding candidate under R6/4.3.2; no academic admission or native renderer PASS",
+      "source": "https://github.com/reallakshman19/CoordinatorLandingpage/issues/1#issuecomment-6521619329",
+      "card": "wpe-core2-coding-r1",
+      "before": null,
+      "after": "SUBMITTED",
+      "source_at": "2026-10-30T11:32:38Z",
+      "rev": "R6"
     }
   ]
 }
