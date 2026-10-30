@@ -321,6 +321,12 @@
       "u": "https://github.com/reallakshman19/3D_Converters/pull/355",
       "s": "DRAFT_CANDIDATE",
       "milestone": "M28"
+    },
+    {
+      "t": "PR356 TEE route candidate: source-qualified pre-Final exclusion of anonymous branch-port3; actual BM2816→785,62 run vectors verified,139 owners/69 restraints unchanged. Head662b53fb; tested productionbcecd2d1.",
+      "u": "https://github.com/reallakshman19/3D_Converters/pull/356",
+      "s": "DRAFT_CANDIDATE",
+      "milestone": "M29"
     }
   ],
   "roadmap": [
@@ -1278,6 +1284,12 @@
       "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/177#issuecomment-6407926621",
       "s": "G2_SIGNATURE_FALSE_PASS",
       "milestone": "M14"
+    },
+    {
+      "t": "TEE product checks PASS atbcecd2d1, overall CI remains FAIL:13 historical4f14beb merge-base pins and835/884 qualification-only file allowlists. All15 logs inspected; no workflow changes. Final-head reconciliation on PR356; Owner trial/CAESAR import NOT_RUN.",
+      "u": "https://github.com/reallakshman19/3D_Converters/issues/351#issuecomment-6528549194",
+      "s": "CI_PREFLIGHT_HOLD",
+      "milestone": "M29"
     }
   ],
   "pending": [

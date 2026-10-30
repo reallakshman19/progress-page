@@ -1354,10 +1354,10 @@
       "role": "Owner-directed builder"
     },
     "state": "SUBMITTED",
-    "now": "PR355 source-qualified pre-Final helper exclusion passes real BM2 native CII:963→816 elements,49 junctions,139 owners,69 restraint slots unchanged. Tests/remote native CI pass; Owner trial/native import/independent engineering review pending.",
+    "now": "PR355 is merged996b17e7 in main690400a0. Prior native963→816 OLET evidence retained; TEE detours are a separate6.5 candidate in PR356. Owner live/native import acceptance remains pending.",
     "next": {
-      "actor": "Owner / independent engineering reviewer",
-      "text": "Review PR355 and native topology evidence; after merge/deploy reload and regenerate BM2 Preview/Final/Run."
+      "actor": "Owner / engineering reviewer",
+      "text": "Use fresh deployed Preview/Weight/Final/Run after reviewing the separate TEE candidate; preserve native import and engineering acceptance limits."
     },
     "refs": [
       {
@@ -1371,8 +1371,8 @@
         "u": "https://github.com/reallakshman19/3D_Converters/pull/355"
       }
     ],
-    "updatedAt": "2026-10-29T13:46:48Z",
-    "src": "https://github.com/reallakshman19/3D_Converters/pull/355"
+    "updatedAt": "2026-10-30T17:03:46Z",
+    "src": "https://github.com/reallakshman19/3D_Converters/issues/351#issuecomment-6528549194"
   },
   "bm2-tee-route": {
     "order": 52,
@@ -1383,20 +1383,26 @@
       "chat": "restraint-6ae1bed6",
       "role": "Owner-directed builder; self-checks disclosed"
     },
-    "state": "IN_PROGRESS",
-    "now": "Current main serializes TEE1,3,0,2, sending main run through branch port3. Source31 groups inspected; two screenshot DY vectors independently calculated. No weight Final decision or writer change.",
+    "state": "SUBMITTED",
+    "now": "PR356 removes31 artificial TEE detours before Final;2690 DY0,3120 DY−0.32mm. Independent actual CII audit preserves real branches,139 owners,69 restraints and all other source fields/edges/auxiliary payloads. No Owner mass decision changed.",
     "next": {
-      "actor": "Builder6ae1bed6",
-      "text": "Implement bounded pre-Final TEE port classification; execute original BM2 Preview/Worker/native and contrary cases."
+      "actor": "Owner / engineering reviewer",
+      "text": "Review PR356 and historical CI preflight blockers; after authorized merge/deployment, reload and run fresh BM2 Preview/Weight/Final/Run, then native CAESAR import."
     },
     "refs": [
       {
         "k": "comment",
         "l": "Owner-scoped TEE repair",
         "u": "https://github.com/reallakshman19/3D_Converters/issues/351#issuecomment-6528178717"
+      },
+      {
+        "k": "pr",
+        "l": "TEE route repair and exact-head checks",
+        "u": "https://github.com/reallakshman19/3D_Converters/pull/356",
+        "s": "DRAFT_NOT_MERGED"
       }
     ],
-    "updatedAt": "2026-10-30T16:46:06Z",
-    "src": "https://github.com/reallakshman19/3D_Converters/issues/351#issuecomment-6528178717"
+    "updatedAt": "2026-10-30T17:03:45Z",
+    "src": "https://github.com/reallakshman19/3D_Converters/issues/351#issuecomment-6528549194"
   }
 }

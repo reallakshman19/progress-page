@@ -4,7 +4,7 @@
     "key": "ciifr",
     "title": "CII Find & Replace VNext",
     "subtitle": "R4 current: Geometry WBS3 read-only G1/G2; Element WBS4 source/config qualification; VNext integration held pending independent evidence.",
-    "updatedAt": "2026-10-30T16:46:08Z",
+    "updatedAt": "2026-10-30T17:03:47Z",
     "updatedBy": "Builder 6ae1bed6 (direct Owner)",
     "staleAfterMin": 120,
     "aim": "Extend CIIFR NodeName VNext into typed ELEMENTS real-value/Line Number edits plus pointer-resolved RIGID Weight/Type. Preserve original bytes, v14 units/sentinels, node/pointer/branch relations, per-span approvals, new-copy export and native import review. Retain R3 Geometry WBS3 review-only, frozen P2/P2.1 and XML custody; defer structural graph/pointer edits and P3.",
@@ -399,7 +399,7 @@
       "repo": "reallakshman19/3D_Converters",
       "branch": "fix/xml229-olet-helper-route-6ae1bed6",
       "commit": "af40c23396b5ef2d2868a866f221d84d84c99540",
-      "activity": "PR355 af40c233 native, JS22/24, Preview/browser PASS;68 checks PASS/15 historical preflight FAIL. Owner trial/native import pending.",
+      "activity": "PR355 merged996b17e7 in main690400a0. OLET evidence retained; TEE work is6.5. Owner trial/native import pending.",
       "capSrc": "https://github.com/reallakshman19/3D_Converters/pull/355"
     },
     "M29": {
@@ -409,12 +409,13 @@
       "wbs": "6.5",
       "bench": "BM2-TEE-ROUTE",
       "keeps": "BM2-OLET-ROUTE; restraint attachment; PL-BM1 bore and Final mass custody",
-      "cap": "NOT_DEMONSTRATED",
-      "canDo": "Source RCA verified; production repair and native output validation in progress.",
+      "cap": "CANDIDATE",
+      "canDo": "Review PR356: actual BM2 native816→785 elements; all62 TEE run vectors match source,139 owners and69 restraints preserved. Owner fresh trial/native import pending.",
       "repo": "reallakshman19/3D_Converters",
       "branch": "fix/xml229-tee-port-route-6ae1bed6",
-      "commit": "690400a012d2bbc8f53a4e192ce80addacfa1439",
-      "activity": "Owner requests TEE DY repair; source run at2690 DY0, at3120 DY−0.32mm."
+      "commit": "662b53fb9d858bbafc59946cc4fc5b7da73c68fd",
+      "activity": "PR356 source/native PASS; CI68 PASS/15 historical preflight FAIL atbcecd2d1. Final662b53fb tests/recovery; Owner trial/import pending.",
+      "capSrc": "https://github.com/reallakshman19/3D_Converters/pull/356"
     }
   },
   "groups": {

@@ -6694,6 +6694,84 @@
       "list": "inputs",
       "op": "add",
       "rev": "R4"
+    },
+    {
+      "seq": 511,
+      "id": "CIIFR-R-0511",
+      "previous_id": "CIIFR-R-0510",
+      "at": "2026-10-30T17:03:44Z",
+      "kind": "PLAN",
+      "actor": "Builder 6ae1bed6 (direct Owner)",
+      "summary": "Return bounded source-qualified TEE candidate and actual native evidence to WBS6.5.",
+      "source": "https://github.com/reallakshman19/3D_Converters/issues/351#issuecomment-6528549194",
+      "scope": "milestone:M29",
+      "rev": "R4"
+    },
+    {
+      "seq": 512,
+      "id": "CIIFR-R-0512",
+      "previous_id": "CIIFR-R-0511",
+      "at": "2026-10-30T17:03:45Z",
+      "kind": "STATE",
+      "actor": "Builder 6ae1bed6 (direct Owner)",
+      "summary": "Record source/native return and one next actor; retain Owner import and merge boundaries.",
+      "source": "https://github.com/reallakshman19/3D_Converters/issues/351#issuecomment-6528549194",
+      "card": "bm2-tee-route",
+      "before": "IN_PROGRESS",
+      "after": "SUBMITTED",
+      "rev": "R4"
+    },
+    {
+      "seq": 513,
+      "id": "CIIFR-R-0513",
+      "previous_id": "CIIFR-R-0512",
+      "at": "2026-10-30T17:03:45Z",
+      "kind": "PLAN",
+      "actor": "Builder 6ae1bed6 (direct Owner)",
+      "summary": "Reconcile predecessor OLET merge with live repository truth without claiming engineering acceptance.",
+      "source": "https://github.com/reallakshman19/3D_Converters/issues/351#issuecomment-6528549194",
+      "scope": "milestone:M28",
+      "rev": "R4"
+    },
+    {
+      "seq": 514,
+      "id": "CIIFR-R-0514",
+      "previous_id": "CIIFR-R-0513",
+      "at": "2026-10-30T17:03:46Z",
+      "kind": "UPDATE",
+      "actor": "Builder 6ae1bed6 (direct Owner)",
+      "summary": "Correct stale OLET draft/merge wording and preserve separate TEE scope.",
+      "source": "https://github.com/reallakshman19/3D_Converters/issues/351#issuecomment-6528549194",
+      "card": "bm2-olet-route",
+      "before": "SUBMITTED",
+      "after": "SUBMITTED",
+      "rev": "R4"
+    },
+    {
+      "seq": 515,
+      "id": "CIIFR-R-0515",
+      "previous_id": "CIIFR-R-0514",
+      "at": "2026-10-30T17:03:46Z",
+      "kind": "FIXTURE",
+      "actor": "Builder 6ae1bed6 (direct Owner)",
+      "summary": "Link reviewable TEE implementation and canonical recovery to its WBS step.",
+      "source": "https://github.com/reallakshman19/3D_Converters/issues/351#issuecomment-6528549194",
+      "list": "pullRequests",
+      "op": "add",
+      "rev": "R4"
+    },
+    {
+      "seq": 516,
+      "id": "CIIFR-R-0516",
+      "previous_id": "CIIFR-R-0515",
+      "at": "2026-10-30T17:03:47Z",
+      "kind": "FIXTURE",
+      "actor": "Builder 6ae1bed6 (direct Owner)",
+      "summary": "Keep executed product PASS distinct from surviving CI and native acceptance holds.",
+      "source": "https://github.com/reallakshman19/3D_Converters/issues/351#issuecomment-6528549194",
+      "list": "knownIssues",
+      "op": "add",
+      "rev": "R4"
     }
   ]
 }
