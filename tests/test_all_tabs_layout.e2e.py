@@ -227,6 +227,27 @@ def main():
                           "Unobserved trial must begin NOT_RUN")
                     check(lab.locator("a[aria-disabled='true']").count()==1,
                           "Local preview must not launch without source + operator")
+                    check("0 / 5 OBSERVED" in lab.inner_text(),
+                          "New trial console should show honest zero-observed progress")
+                    check(lab.locator(".trial-case").count()==5,
+                          "Compact test rows must represent all five scenarios")
+                    check(lab.locator(".trial-case details").count()==5,
+                          "Each test row must expose expandable expected behavior")
+                    check(lab.locator('[data-trial-count="NOT_RUN"]').inner_text()=="5",
+                          "Unobserved summary must count five NOT_RUN cases")
+                    lab.locator(".trial-case details").first.locator("summary").click()
+                    lab.locator('[aria-label="PT-01 observed result"]').select_option("PASS")
+                    check("1 / 5 OBSERVED" in lab.inner_text(),
+                          "Observed results should update progress immediately")
+                    check(lab.locator('[data-trial-count="PASS"]').inner_text()=="1",
+                          "PASS must be marked as self-reported and counted exactly once")
+                    lab.get_by_role("button",name="Reset observations").click()
+                    check("0 / 5 OBSERVED" in lab.inner_text() and
+                          lab.locator('[data-trial-count="NOT_RUN"]').inner_text()=="5",
+                          "Reset must return the lab to NOT_RUN without writes")
+                    check(lab.locator("a[href='#/ciifr-node/cycle-board']").count()==1,
+                          "Testing workspace must provide direct evidence Board navigation")
+
                     demo=page.locator("details",has_text="Workflow demo · Action / Info simulator")
                     check(demo.count()==1 and demo.get_attribute("open") is None,
                           "Legacy Action/Info demo should be clearly separate and folded")
