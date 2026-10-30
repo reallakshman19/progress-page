@@ -203,15 +203,15 @@
     "order": 32,
     "group": "repair",
     "milestone": "M32",
-    "label": "3.2 Precise manual-review and repair d",
+    "label": "3.2 Manual Fix by rule + second pass",
     "who": {
-      "role": "Unassigned future builder"
+      "role": "Oracle 6ae1b0f7 (author-side)"
     },
-    "state": "NOT_STARTED",
-    "now": "Draft PR #5 implements precise directions for preservation-review proposals only: original source/owner, reason, actual reference/name/OD/wall values, design-authority decision and re-export/full recheck. The complete case-level manual repair workflow remains unfinished and browser behavior is NOT_RUN. Remaining implementation is unassigned.",
+    "state": "SUBMITTED",
+    "now": "Draft PR #9 exact head 9bb612830e13c44d21558287c3b69d22452393f4 implements collapsed manual rule/case navigation and a source-bound selected connection second pass beyond 25 mm. Author checks: 68 Python / 36 Node PASS; full Chromium/Pyodide/download CI PASS. Public PIPE/flange and GASK/PIPE 75 mm examples each recheck 3 -> 1 manual findings. Missing diameter is rejected; the automatic 25 mm policy is unchanged. Independent engineering/native/physical Weight gates remain HOLD.",
     "next": {
-      "actor": "-",
-      "text": "Unassigned. Release one bounded implementation slice after the preceding reviewed frontier."
+      "actor": "Owner / IR 6ae2d5ac",
+      "text": "Try the selected-connection workflow and assess the exact new head; retain existing engineering HOLD. No merge or deployment implied."
     },
     "refs": [
       {
@@ -224,6 +224,12 @@
         "l": "Partial preservation-case directions",
         "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/pull/5",
         "s": "partial; browser NOT_RUN"
+      },
+      {
+        "k": "pr",
+        "l": "Manual Fix by rule and selected second pass",
+        "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/pull/9",
+        "s": "SELF_ASSESSED; exact-head full browser CI PASS; engineering HOLD"
       }
     ],
     "edges": [
@@ -232,8 +238,8 @@
         "k": "to"
       }
     ],
-    "updatedAt": "2026-10-28T20:27:36Z",
-    "src": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/4#issuecomment-6479886178"
+    "updatedAt": "2026-10-30T11:15:45Z",
+    "src": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/pull/9"
   },
   "topo-3-1": {
     "order": 31,

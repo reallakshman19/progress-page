@@ -6,7 +6,7 @@
     "subtitle": "Safe automatic solutions, precise manual directions, revised-source recheck and verified case outcomes.",
     "aim": "Topo should not burden with finding but provide auditable solution which are auto fixable if not set clear directions for manual review. Support controlled manual correction, revised-source reimport, full Topo recheck and evidence-based closure.",
     "aimSrc": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/1#issuecomment-6474563974",
-    "updatedAt": "2026-10-29T13:49:15Z",
+    "updatedAt": "2026-10-30T11:15:45Z",
     "updatedBy": "Topo Oracle 6ae1b0f7",
     "staleAfterMin": 120
   },
@@ -131,13 +131,17 @@
       "canDo": "Preview transactions exist; an engineering-qualified solution-level outcome is not demonstrated."
     },
     "M32": {
-      "name": "Precise manual-review and repair directions",
-      "full": "Give each nonautomatic case source/owner context, conflicting fields, what to verify, required design decision/reference, authorized repair or preserve path and the post-change check. ACT-000030 must not instruct clearing NodeName/equalizing wall merely to pass.",
+      "name": "Manual Fix by rule and second pass",
+      "full": "WBS 3.2.1: collapsed Manual Fix rule groups and source cases. 3.2.2: exact physical partner selection by list or canvas. 3.2.3: source-bound movement preview and explicit approval for a selected connection, including >25 mm. 3.2.4: atomic Apply, full recheck, updated counts/canvas and downloadable connection receipts. Preserve existing manual guidance and unchanged automatic <=25 mm policy; unsupported or incompatible cases retain concrete source-review directions.",
       "order": 32,
       "wbs": "3.2",
-      "cap": "NOT_DEMONSTRATED",
-      "canDo": "Preservation-case manual directions exist in Draft PR #5; complete case-level manual-review workflow remains undemonstrated.",
-      "capSrc": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/4#issuecomment-6479886178"
+      "cap": "CANDIDATE",
+      "canDo": "Try draft PR #9: select Manual Fix / By Rule, open a case, Add second pass, choose partner, preview and confirm. Author CI passes; engineering acceptance remains HOLD.",
+      "capSrc": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/pull/9",
+      "repo": "reallakshman19/xml229-topology-wp1-preview-20261028",
+      "branch": "feat/topo-manual-second-pass-20261030",
+      "commit": "9bb612830e13c44d21558287c3b69d22452393f4",
+      "activity": "Author implementation and full browser evidence submitted; no merge/deployment"
     },
     "M33": {
       "name": "Actual S1 repair reimport and reconciliation",

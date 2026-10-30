@@ -1117,6 +1117,32 @@
       "list": "pending",
       "op": "add",
       "rev": "R1"
+    },
+    {
+      "seq": 87,
+      "id": "TOPOFIX-R-0087",
+      "previous_id": "TOPOFIX-R-0086",
+      "at": "2026-10-30T11:15:45Z",
+      "kind": "PLAN",
+      "actor": "Topo Oracle 6ae1b0f7",
+      "summary": "Continue existing WBS 3.2 with Owner-requested rule navigation and selected-connection second pass; keep engineering acceptance separate.",
+      "source": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/pull/9",
+      "scope": "milestone:M32",
+      "rev": "R1"
+    },
+    {
+      "seq": 88,
+      "id": "TOPOFIX-R-0088",
+      "previous_id": "TOPOFIX-R-0087",
+      "at": "2026-10-30T11:15:45Z",
+      "kind": "STATE",
+      "actor": "Topo Oracle 6ae1b0f7",
+      "summary": "Record the implemented WBS 3.2 slice and actual author CI evidence without inventing independent acceptance.",
+      "source": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/pull/9",
+      "card": "topo-3-2",
+      "before": "NOT_STARTED",
+      "after": "SUBMITTED",
+      "rev": "R1"
     }
   ]
 }
