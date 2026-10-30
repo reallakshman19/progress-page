@@ -236,6 +236,25 @@ def main():
                     check(lab.locator('[data-trial-count="NOT_RUN"]').inner_text()=="5",
                           "Unobserved summary must count five NOT_RUN cases")
                     lab.locator(".trial-case details").first.locator("summary").click()
+                    # Regression: expanded <details> is a direct grid child and
+                    # must occupy a new full-width row, not the 76px Inspect
+                    # column (which produced a very tall, one-word-wide panel).
+                    panel_size=lab.locator(".trial-case").first.evaluate("""card => {
+                        const rect=x=>x.getBoundingClientRect();
+                        const body=card.querySelector(".trial-inspect-body");
+                        const details=card.querySelector(".trial-inspect");
+                        const name=card.querySelector(".trial-case-name");
+                        return {cardWidth:rect(card).width,bodyWidth:rect(body).width,
+                          bodyHeight:rect(body).height,cardHeight:rect(card).height,
+                          detailsTop:rect(details).top,nameTop:rect(name).top};
+                    }""")
+                    check(panel_size["bodyWidth"]>=panel_size["cardWidth"]*0.70,
+                          "Expanded Inspect must span scenario width, not a narrow column: "+
+                          str(panel_size))
+                    check(panel_size["detailsTop"]>panel_size["nameTop"]+5,
+                          "Expanded Inspect must appear in a separate row: "+str(panel_size))
+                    check(panel_size["cardHeight"]<650,
+                          "Expanded Inspect produced excessive vertical height: "+str(panel_size))
                     lab.locator('[aria-label="PT-01 observed result"]').select_option("PASS")
                     check("1 / 5 OBSERVED" in lab.inner_text(),
                           "Observed results should update progress immediately")
@@ -275,6 +294,12 @@ def main():
                             selector=lab.get_by_label("Select trial profile")
                             check(selector.count()==1,"CIIFR two distinct trial profiles missing")
                             lab.locator(".trial-case details").first.locator("summary").click()
+                            review_size=lab.locator(".trial-case").first.evaluate("""card => ({
+                                caseWidth:card.getBoundingClientRect().width,
+                                bodyWidth:card.querySelector(".trial-inspect-body").getBoundingClientRect().width
+                            })""")
+                            check(review_size["bodyWidth"]>=review_size["caseWidth"]*0.70,
+                                  "Shared V3 review Inspect must span scenario width: "+str(review_size))
                             lab.get_by_label("R3-01 observed result").select_option("FAIL")
                             check("1 / 3 OBSERVED" in lab.inner_text(),
                                   "First CIIFR profile must count local observations")

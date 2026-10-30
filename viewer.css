@@ -630,7 +630,12 @@ main{width:100%;min-width:0}
 .trial-case[data-result="FAIL"]{border-left:3px solid #b55}
 .trial-case[data-result="BLOCKED"]{border-left:3px solid #bc8f37}
 .trial-inspect>summary{font-size:12px;font-weight:600}
-.trial-inspect-body{grid-column:1/-1;border-top:1px solid var(--bd);padding:12px 14px}
+ /* A <details> is one grid item. Expanding its *child* cannot span the
+    parent grid, so move the opened <details> into its own full-width row. */
+.trial-case-top>.trial-inspect{min-width:0}
+.trial-case-top>.trial-inspect[open]{grid-column:1/-1;grid-row:2;min-width:0;width:100%}
+.trial-case-top>.trial-inspect[open]>summary{text-align:right;margin:0 0 8px}
+.trial-inspect-body{min-width:0;overflow-wrap:anywhere;border-top:1px solid var(--bd);padding:12px 14px}
 .trial-inspect-body .trial-field-label select{display:block;margin:8px 0;max-width:100%}
 .trial-expected{font-weight:700;letter-spacing:.03em;font-size:11px;color:var(--mut)}
 .trial-notes{display:block;width:100%;max-width:100%;min-height:68px;margin-top:8px;resize:vertical}
