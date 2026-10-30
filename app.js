@@ -470,7 +470,7 @@ function render() {
     // Sections inside L01/L02 remain vertical full-page documents, not horizontal sections.
     const subnav = el('nav', 'views lesson-subtabs');
     subnav.setAttribute('aria-label', 'Lessons subtabs');
-    const destinations = [{ id: 'progress', label: 'Overview' }, { id: 'test', label: 'Trials & demos' }]
+    const destinations = [{ id: 'progress', label: 'Overview' }, { id: 'test', label: 'Trials' }]
       .concat((p.lessons?.items || []).map((item, i) => ({ id: item.id, label: 'Lesson ' + (i + 1) })));
     destinations.forEach(({ id, label }) => {
       const a = navLink('#/learned/' + id, label, 'view' + (v === id ? ' on' : ''));

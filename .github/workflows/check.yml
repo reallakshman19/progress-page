@@ -42,6 +42,8 @@ jobs:
         run: node --experimental-default-type=module --test tests/agent-start.test.mjs
       - name: Per-project Test page local demo and isolation checks
         run: node --experimental-default-type=module --test tests/test-page.test.mjs
+      - name: Trials V3 universal template schema, isolation and source safety
+        run: node --experimental-default-type=module --test tests/trial-workspace-v3.test.mjs
       - name: Property Transfer prototype trial readiness and safety
         run: node --experimental-default-type=module --test tests/prototype-trial.test.mjs
       - name: Adhoc Projects nested workspace navigation and read-only boundaries
