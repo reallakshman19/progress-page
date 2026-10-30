@@ -69,6 +69,8 @@ const HOSTED_REVIEWS=Object.freeze({
 export function renderTestPage(root,project,{historical=false}={}) {
   const routeKey=(typeof location!=='undefined'?location.hash.split('/')[1]:'')||'';
   const hosted=HOSTED_REVIEWS[project?.index?.project?.key]||HOSTED_REVIEWS[routeKey];
+  const key=project?.index?.project?.key||routeKey;
+  renderPropertyTrial(root,{project,projectKey:key,historical});
   if(hosted){
     const box=el('section','demo-page');
     box.append(el('h3',null,'Hosted review pages'));
@@ -76,9 +78,6 @@ export function renderTestPage(root,project,{historical=false}={}) {
     root.append(box);
   }
   renderRcaBench(root, project, { historical });
-  const key=project?.index?.project?.key||routeKey;
-  const hasNativeTrial=key==='ciifr-node';
-  if(hasNativeTrial)renderPropertyTrial(root,{historical});
   let current={mode:'ACTION',cardId:null,needsOwner:false};
   const wrapper=el('section','demo-page');
   wrapper.append(el('h3',null,'Test page · Project demonstration'),
@@ -119,13 +118,10 @@ export function renderTestPage(root,project,{historical=false}={}) {
   const panel=el('div');
   panel.append(controls,preview);
   wrapper.append(panel);
-  if(hasNativeTrial){
-    const workflow=el('details','project-brief');
-    workflow.id='ciifr-node-workflow-demo';
-    workflow.append(el('summary',null,'Workflow demo · Action / Info simulator (not prototype testing)'),
-      wrapper);
-    root.append(workflow);
-  }else root.append(wrapper);
+  const workflow=el('details','project-brief');
+  workflow.id=key+'-workflow-demo';
+  workflow.append(el('summary',null,'Workflow demo · Action / Info simulator (not prototype testing)'),wrapper);
+  root.append(workflow);
   function update(){
     const model=testPageModel(project,current);
     preview.replaceChildren();
