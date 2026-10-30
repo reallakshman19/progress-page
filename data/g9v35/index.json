@@ -4,11 +4,11 @@
     "key": "g9v35",
     "title": "G9v3.5 Physics pilot",
     "subtitle": "Newton's Laws pilot on the ZIP-free track, and the owner-bank guard (PR #305)",
-    "updatedAt": "2026-10-29T16:42:35Z",
-    "updatedBy": "Oracle G9v3.5",
+    "updatedAt": "2026-10-30T11:09:24Z",
+    "updatedBy": "Oracle standalone 01a188e5 (SELF_ASSESSED)",
     "staleAfterMin": 120,
-    "aim": "A personal-use app for one Grade 9 kid to self-learn difficult Physics, Mathematics and Chemistry concepts for one of the toughest competitive exams. Not a corporate product. Now: one Physics blueprint split by physics idea (D3.1.1–D3.1.6) builds each Recall question's teaching and try from the library plus a minimal topic adapter; tested on 18 real questions, then reused for D4.1 and D3.2.",
-    "aimSrc": "OWNER_PRIVATE_REF:G9V35-STORY-29OCT-WBS42"
+    "aim": "Personal learning app; recorded learner refinement Grade10/JEE Main. WPE: qualify21 authentic D3/D4 originals (3 per7 operations), review Core2, then Core1A, then Core1B with separate Owner approvals. Book/syllabus preparation may proceed in parallel. D3.1 paused; source truth, native teaching and independent review remain required.",
+    "aimSrc": "OWNER_PRIVATE_REF:WPE-OWNER-20261030-CORE2-FIRST"
   },
   "rules": {
     "quietAfterMin": 30,
@@ -84,6 +84,11 @@
       "label": "P1-WPE-G9v35",
       "id8": "6ae0f0d5",
       "engine": "ChatGPT"
+    },
+    "oracle01a188e5": {
+      "label": "Oracle (standalone)",
+      "id8": "01a188e5",
+      "engine": "Codex"
     }
   },
   "milestones": {
@@ -125,8 +130,8 @@
     },
     "M3": {
       "order": 30,
-      "name": "Concept-specific instances across remaining QRT cells (deferred)",
-      "full": "Governing WBS 4: honest cell/family coverage, separate learner evidence, no lesson loss on duplicate-cell placements. DEFERRED horizon; the all-28-per-topic aim is kept. Takes over the R2 step \"NLM Core 2B\".",
+      "name": "4. QRT construction: retained tiles and current WPE qualification",
+      "full": "Governing WBS family 4. KEEP 4.1 historical tiles and 4.2 D3.1 paused; extend with 4.3 authentic Core2 qualification, 4.4 non-bank preparation then Core1A after approval, 4.5 fresh Core1B after Core1A approval. All-28-per-topic horizon retained, no breadth acceptance inferred.",
       "wbs": "4",
       "bench": "B4",
       "keeps": "B1-B3",
@@ -253,7 +258,8 @@
       "order": 31,
       "wbs": "4.2",
       "cap": "NOT_DEMONSTRATED",
-      "canDo": "Plan recorded; nothing built yet"
+      "canDo": "Plan recorded; nothing built yet",
+      "activity": "PAUSED: no continuation from this documentation update; old source evidence retained"
     },
     "W421": {
       "name": "Build D3.1.1–D3.1.6 (prove D3.1.1 first)",
@@ -261,7 +267,8 @@
       "order": 32,
       "wbs": "4.2.1",
       "cap": "NOT_DEMONSTRATED",
-      "canDo": "D3.1.1-D3.1.3 pages built and checked (private); not yet for her use"
+      "canDo": "D3.1.1-D3.1.3 pages built and checked (private); not yet for her use",
+      "activity": "PAUSED: no continuation from this documentation update; old source evidence retained"
     },
     "W422": {
       "name": "Scan 18 questions, 3 per sub-tile",
@@ -269,7 +276,8 @@
       "order": 33,
       "wbs": "4.2.2",
       "cap": "NOT_DEMONSTRATED",
-      "canDo": "Not started"
+      "canDo": "Not started",
+      "activity": "PAUSED: no continuation from this documentation update; old source evidence retained"
     },
     "W423": {
       "name": "Rest of D3.1 by agents",
@@ -277,7 +285,8 @@
       "order": 34,
       "wbs": "4.2.3",
       "cap": "NOT_DEMONSTRATED",
-      "canDo": "Not started"
+      "canDo": "Not started",
+      "activity": "PAUSED: no continuation from this documentation update; old source evidence retained"
     },
     "W424": {
       "name": "D4.1: the same six ideas, only the depth varies",
@@ -285,7 +294,8 @@
       "order": 35,
       "wbs": "4.2.4",
       "cap": "NOT_DEMONSTRATED",
-      "canDo": "Not started"
+      "canDo": "Not started",
+      "activity": "PAUSED: no continuation from this documentation update; old source evidence retained"
     },
     "W425": {
       "name": "D3.2: Explain with the same six ideas",
@@ -293,7 +303,71 @@
       "order": 36,
       "wbs": "4.2.5",
       "cap": "NOT_DEMONSTRATED",
-      "canDo": "Not started"
+      "canDo": "Not started",
+      "activity": "PAUSED: no continuation from this documentation update; old source evidence retained"
+    },
+    "W43": {
+      "name": "4.3 WPE Core2: 21 authentic originals across seven operations",
+      "full": "Three originals per operation across D3/D4; 14 navigation cells, 21 places. Latest received14 conditional/seven gaps/zero independent admissions; frozen13/eight/zero preserved. Owner catalogue is not native learner Core2.",
+      "order": 40,
+      "wbs": "4.3",
+      "cap": "CANDIDATE",
+      "canDo": "Owner can inspect private evidence catalogue and received coverage proposal",
+      "capSrc": "https://github.com/reallakshman19/Common/commit/3fc1330c176255c8f421cd49b88b598be293c1d4"
+    },
+    "W431": {
+      "name": "4.3.1 Source custody, identity and independent QRT disposition",
+      "full": "Resolve source/figure/key custody, aliases and scientific/cognitive disputes. 79 dispositions represent78 counting groups. Seven vacancies: RETRIEVE3 EXPLAIN3 JUSTIFY1. No worker/reviewer appointed by this update.",
+      "order": 41,
+      "wbs": "4.3.1",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "No authentic independent admissions yet",
+      "capSrc": "https://github.com/reallakshman19/Common/commit/3fc1330c176255c8f421cd49b88b598be293c1d4"
+    },
+    "W432": {
+      "name": "4.3.2 Native Core2 fidelity and Owner approval",
+      "full": "Preserve administrative catalogue; native package/manifest/renderer and attempt/support/solution behavior are not built. Complete actual Core2 and show Owner before Core1A lesson authoring.",
+      "order": 42,
+      "wbs": "4.3.2",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "No native learner Core2 candidate from this workstream",
+      "capSrc": "https://github.com/reallakshman19/Common/commit/3fc1330c176255c8f421cd49b88b598be293c1d4"
+    },
+    "W44": {
+      "name": "4.4 Book/syllabus to Core1A: prepare, qualify, then teach",
+      "full": "Parallel non-bank preparation allowed; one candidate dossier exists. Qualified warrants, reviewed task/adapter join and Owner Core2 approval are prerequisites for lesson construction.",
+      "order": 43,
+      "wbs": "4.4",
+      "cap": "CANDIDATE",
+      "canDo": "Owner can inspect one source-to-construction preparation dossier",
+      "capSrc": "https://github.com/reallakshman19/Common/commit/3fc1330c176255c8f421cd49b88b598be293c1d4"
+    },
+    "W441": {
+      "name": "4.4.1 Exact units, claims and qualified construction brief",
+      "full": "Six sources/11 exact units/three claims/three construction roles/seven native targets. R1 uninstalled; recorded50 tests plus relocation, semantics NOT_RUN. Extend remaining source nodes under a new bounded assignment; no lessons.",
+      "order": 44,
+      "wbs": "4.4.1",
+      "cap": "CANDIDATE",
+      "canDo": "One mechanical preparation example; science and real task binding open",
+      "capSrc": "https://github.com/reallakshman19/Common/commit/3fc1330c176255c8f421cd49b88b598be293c1d4"
+    },
+    "W442": {
+      "name": "4.4.2 Governed Core1A and Owner approval",
+      "full": "DEFER lesson authoring until completed Core2 approval. Then named author uses actual native package/manifest/schema/renderer, complete teaching, distinct scientific/runtime checks and Owner review. No lesson exists now.",
+      "order": 45,
+      "wbs": "4.4.2",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "No new Core1A lesson/package/course render",
+      "capSrc": "https://github.com/reallakshman19/Common/commit/3fc1330c176255c8f421cd49b88b598be293c1d4"
+    },
+    "W45": {
+      "name": "4.5 Fresh Core1B after Core1A approval",
+      "full": "DEFERRED. Genuine learner reconstruction of the same operation, actual two-way sufficiency/freshness/protection witness. Owner Core1A approval first.",
+      "order": 46,
+      "wbs": "4.5",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "No new Core1B authored",
+      "capSrc": "https://github.com/reallakshman19/Common/commit/3fc1330c176255c8f421cd49b88b598be293c1d4"
     }
   },
   "groups": {
@@ -323,6 +397,11 @@
     "r4": {
       "title": "R4 · governing WBS (G9O5-10, 25 Oct)",
       "sub": "One WBS on this page. Every live card names its WBS step; the groups below are history.",
+      "order": 0
+    },
+    "r6": {
+      "title": "R6 · WPE Core2 qualification and source construction preparation",
+      "sub": "Owner approval sequence retained; no new agents or product work launched.",
       "order": 0
     }
   },
@@ -377,8 +456,19 @@
       "why": "The Owner replaced builder-written tiles with one Physics blueprint split by physics idea, tested on real questions",
       "ownerWords": "Plan build D3.1.1 to D3.1.6. We will refine. Then scan though 3x6 (18 questions) the identified D3.1 and see the gap in Blueprint 3.1.1 to D3.1.6 , if not worth to update blueprint, i.e, specific, then they are Topic adapters!. Rest of D3.1 fine tuning by agents offloaded, you move to D4.1 (No separate research only depth will vary) then you move to D3.2 Record this as you new WBS and AIM!!",
       "src": "OWNER_PRIVATE_REF:G9V35-STORY-29OCT-WBS42",
+      "status": "superseded",
+      "supersedes": "R4",
+      "commit": "3d0c0f5d0733"
+    },
+    {
+      "id": "R6",
+      "at": "2026-10-30T11:08:41Z",
+      "by": "Oracle standalone 01a188e5 (SELF_ASSESSED)",
+      "why": "Record subsequent Owner two-track Core2-first approval sequence; retain older WBS and D3.1 pause",
+      "ownerWords": "I want you to cover core 2 of 7x3=21 questions (D3/4~*7), prepare Core 2. show me for approval, then core 1A, show me for approval then 1B",
+      "src": "OWNER_PRIVATE_REF:WPE-OWNER-20261030-CORE2-FIRST",
       "status": "current",
-      "supersedes": "R4"
+      "supersedes": "R5"
     }
   ]
 }
