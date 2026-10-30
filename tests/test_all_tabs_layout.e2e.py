@@ -171,6 +171,49 @@ def main():
                     if width==390 and section=="tests":picture(page,"adhoc-progress-page-tests-mobile")
                     return {"documentWidth":g["documentWidth"],"section":section}
                 run_case(str(width)+"px adhoc/progress-page/"+section,run_adhoc)
+            # Oracle lifecycle Adhoc stress: all nested workspace sections remain
+            # read-only navigators, not independent engineering WBSs.
+            if width in (1440,390):
+                for adhoc_project,adhoc_sections in (
+                    ("xml-ps-mapping", ("overview","candidate-matrix","matching-rules","evidence")),
+                    ("xml-compare", ("overview","sources","validation","delivery")),
+                ):
+                    for adhoc_section in adhoc_sections:
+                        def run_adhoc_source():
+                            route="adhoc/"+adhoc_project+"/"+adhoc_section
+                            load(page,route)
+                            check(page.locator("nav.tabs a.on").count()==1,
+                                  "Adhoc source workspace has no unique primary tab: "+route)
+                            check(page.locator("nav.tabs a.on").inner_text()=="Adhoc Projects",
+                                  "Source workspace escaped Adhoc tab: "+route)
+                            check(page.locator("nav.adhoc-project-subtabs a.on").count()==1,
+                                  "Source workspace selected wrong project: "+route)
+                            check(page.locator("nav.adhoc-section-subtabs a.on").count()==1,
+                                  "Source workspace has invalid section: "+route)
+                            check(page.locator(".adhoc-body").count()==1,
+                                  "Source workspace lost its evidence navigator: "+route)
+                            check(page.locator(".adhoc-body .adhoc-card").count()>=1,
+                                  "No original-source links exposed: "+route)
+                            check(page.locator("nav.wbs-nav").count()==0,
+                                  "Adhoc invented a separate WBS: "+route)
+                            check("Unknown Adhoc Projects path" not in page.locator("body").inner_text(),
+                                  "Valid route rejected: "+route)
+                            g=geometry(page)
+                            check(g["documentWidth"]<=width+3,
+                                  route+" horizontal overflow "+str(g["documentWidth"]))
+                            return {"workspace":adhoc_project,"section":adhoc_section,
+                                    "documentWidth":g["documentWidth"]}
+                        run_case(str(width)+"px adhoc/"+adhoc_project+"/"+adhoc_section,
+                                 run_adhoc_source)
+                def run_invalid_adhoc():
+                    route="adhoc/xml-compare/tests"
+                    load(page,route)
+                    check(page.locator('[role="alert"]').count()==1,
+                          "Invalid cross-project Adhoc section must fail closed")
+                    check(page.locator(".adhoc-body").count()==0,
+                          "Wrong project content rendered for invalid route")
+                    return {"invalidRoute":route,"failedClosed":True}
+                run_case(str(width)+"px invalid adhoc section",run_invalid_adhoc)
             # Source-bound Board: rendered Page WBS and INFO-Auto must not need
             # a live comment feed or an activated Oracle Cycle.
             if width in (1440,390):
