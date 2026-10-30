@@ -139,10 +139,13 @@ export function renderTrialWorkspace(root,{projectKey,project,historical=false,f
   sourceLine.setAttribute('aria-live','polite');
   if(template.candidate.kind==='github-pr'){
    const refresh=trial3Button('Check latest PR head',async()=>{
-    refresh.disabled=true;sourceLine.textContent='Checking original GitHub PR…';
+    const priorHead=state.head;
+    refresh.disabled=true;
+    state.head=null;confirmBox.checked=false;updateLaunch();updateStatus();
+    sourceLine.textContent='Checking original GitHub PR…';
     try{
      const observed=await trial3ReadHead(template,fetcher);
-     if(observed.head!==state.head){resetObservations();confirmBox.checked=false;state.confirmed=false;}
+     if(observed.head!==priorHead){resetObservations();confirmBox.checked=false;state.confirmed=false;}
      state.head=observed.head;
      sourceLine.textContent='Native '+observed.state+' / '+(observed.draft?'DRAFT':'not draft')+
       ' · exact source head '+observed.head+' · runtime NOT VERIFIED';
