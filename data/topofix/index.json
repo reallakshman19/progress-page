@@ -6,7 +6,7 @@
     "subtitle": "Safe automatic solutions, precise manual directions, revised-source recheck and verified case outcomes.",
     "aim": "Topo should not burden with finding but provide auditable solution which are auto fixable if not set clear directions for manual review. Support controlled manual correction, revised-source reimport, full Topo recheck and evidence-based closure.",
     "aimSrc": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/1#issuecomment-6474563974",
-    "updatedAt": "2026-10-30T11:15:45Z",
+    "updatedAt": "2026-10-30T11:38:36Z",
     "updatedBy": "Topo Oracle 6ae1b0f7",
     "staleAfterMin": 120
   },
@@ -136,12 +136,12 @@
       "order": 32,
       "wbs": "3.2",
       "cap": "CANDIDATE",
-      "canDo": "Try draft PR #9: select Manual Fix / By Rule, open a case, Add second pass, choose partner, preview and confirm. Author CI passes; engineering acceptance remains HOLD.",
+      "canDo": "Use the merged preview Manual Fix / By Rule and Add second pass workflow. Author browser and download checks pass; engineering release remains HOLD.",
       "capSrc": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/pull/9",
       "repo": "reallakshman19/xml229-topology-wp1-preview-20261028",
       "branch": "feat/topo-manual-second-pass-20261030",
-      "commit": "9bb612830e13c44d21558287c3b69d22452393f4",
-      "activity": "Author implementation and full browser evidence submitted; no merge/deployment"
+      "commit": "94374b41b499c06baa158f65de4fe5cddae4b417",
+      "activity": "Preview code MERGED at fb92be7b; final prototype tests PASS; engineering HOLD remains"
     },
     "M33": {
       "name": "Actual S1 repair reimport and reconciliation",

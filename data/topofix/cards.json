@@ -208,10 +208,10 @@
       "role": "Oracle 6ae1b0f7 (author-side)"
     },
     "state": "SUBMITTED",
-    "now": "Draft PR #9 exact head 9bb612830e13c44d21558287c3b69d22452393f4 implements collapsed manual rule/case navigation and a source-bound selected connection second pass beyond 25 mm. Author checks: 68 Python / 36 Node PASS; full Chromium/Pyodide/download CI PASS. Public PIPE/flange and GASK/PIPE 75 mm examples each recheck 3 -> 1 manual findings. Missing diameter is rejected; the automatic 25 mm policy is unchanged. Independent engineering/native/physical Weight gates remain HOLD.",
+    "now": "Preview PRs 7, 8 and 9 are MERGED to main; PR9 merge fb92be7bd8dba997d71d2028b0b36b0d3fe2c24c, tested head 94374b41b499c06baa158f65de4fe5cddae4b417. Author checks: 68 Python / 36 Node and full Chromium/Pyodide/download PASS. Rule/case expansion, partner-edit invalidation, Cancel, exact-key search and replacement-source invalidation pass. Two 75 mm cases each reduce manual findings 3 -> 1. Preview integration is complete; engineering/native/physical Weight acceptance remains HOLD.",
     "next": {
       "actor": "Owner / IR 6ae2d5ac",
-      "text": "Try the selected-connection workflow and assess the exact new head; retain existing engineering HOLD. No merge or deployment implied."
+      "text": "Try the merged preview and independently assess connection semantics. Keep protected PR346 and engineering release on HOLD until their separate evidence gates are met."
     },
     "refs": [
       {
@@ -238,7 +238,7 @@
         "k": "to"
       }
     ],
-    "updatedAt": "2026-10-30T11:15:45Z",
+    "updatedAt": "2026-10-30T11:38:36Z",
     "src": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/pull/9"
   },
   "topo-3-1": {

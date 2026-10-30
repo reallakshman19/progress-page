@@ -1143,6 +1143,32 @@
       "before": "NOT_STARTED",
       "after": "SUBMITTED",
       "rev": "R1"
+    },
+    {
+      "seq": 89,
+      "id": "TOPOFIX-R-0089",
+      "previous_id": "TOPOFIX-R-0088",
+      "at": "2026-10-30T11:38:36Z",
+      "kind": "PLAN",
+      "actor": "Topo Oracle 6ae1b0f7",
+      "summary": "Owner merged preview PRs 7, 8 and 9 after final prototype interaction tests; record current tested head without granting engineering release.",
+      "source": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/pull/9",
+      "scope": "milestone:M32",
+      "rev": "R1"
+    },
+    {
+      "seq": 90,
+      "id": "TOPOFIX-R-0090",
+      "previous_id": "TOPOFIX-R-0089",
+      "at": "2026-10-30T11:38:36Z",
+      "kind": "UPDATE",
+      "actor": "Topo Oracle 6ae1b0f7",
+      "summary": "Reconcile Owner-authorized preview merge and final prototype test head with the existing WBS card.",
+      "source": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/pull/9",
+      "card": "topo-3-2",
+      "before": "SUBMITTED",
+      "after": "SUBMITTED",
+      "rev": "R1"
     }
   ]
 }
