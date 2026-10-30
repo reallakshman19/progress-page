@@ -85,106 +85,230 @@ const trialButton=(label,action)=>{
  const b=el('button','btn small',label);b.type='button';b.addEventListener('click',action);return b;
 };
 function trialInstruction(text){return el('p','muted',text);}
+// Counts reflect only explicit locally entered outcomes, not execution evidence.
+export function trialSummary(outcomes={}){
+ const counts={PASS:0,FAIL:0,BLOCKED:0,NOT_RUN:0};
+ for(const item of PROPERTY_CASES){
+  const result=TRIAL_OUTCOMES.includes(outcomes?.[item.id])?outcomes[item.id]:'NOT_RUN';
+  counts[result]++;
+ }
+ return {...counts,observed:PROPERTY_CASES.length-counts.NOT_RUN,total:PROPERTY_CASES.length};
+}
+
 export function renderPropertyTrial(root,{historical=false,fetcher=fetch}={}){
- const section=el('section','demo-page');
+ const section=el('section','demo-page trial-lab');
  section.setAttribute('data-prototype-trial','ciifr-node');
- section.append(el('h3',null,'Property Transfer · prototype trial'),
-  trialInstruction('Run the real native candidate in your own isolated local preview, then record what you observed. This is not the Action/Info simulator.'),
-  el('p','demo-safety','RUNTIME NOT VERIFIED — PR #232 is a draft. Progress Page cannot execute the native Property engine, verify local build bytes, receive protected originals or grant an engineering PASS.'));
- if(historical)section.append(el('p','demo-safety','HISTORICAL PAGE — use current sources for any new trial; this screen cannot certify a past runtime.'));
- const source=el('div','demo-controls');
- const headLine=el('p','muted','Native PR #232 source: NOT_CHECKED; local runtime: NOT_VERIFIED');
  const state={candidate:null,confirmed:false,outcomes:{},notes:{}};
- const refresh=trialButton('Check native PR head',async()=>{
+ const resultInputs=[],noteInputs=[],rowStatuses=[],rowCards=[];
+ const header=el('div','trial-header');
+ const title=el('div');
+ title.append(el('p','trial-eyebrow','CIIFR-Node · WBS 2 / 2.1'),
+  el('h3',null,'Property Transfer · prototype trial'),
+  trialInstruction('Test the actual native candidate in a separate local browser tab. Results here are personal observations, not engineering acceptance.'));
+ const sessionReset=trialButton('Reset session',()=>resetSession());
+ sessionReset.classList.add('trial-reset');
+ header.append(title,sessionReset);
+ section.append(header);
+ section.append(el('p','demo-safety','RUNTIME NOT VERIFIED — native PR #232 is still a draft candidate. Progress Page cannot execute its CII parser, check your local build, receive protected original files or establish independent engineering PASS.'));
+ if(historical)section.append(el('p','demo-safety','HISTORICAL PAGE — this worksheet reads current native sources; do not claim historic runtime qualification.'));
+ const status=el('div','trial-status');
+ const sourceBadge=el('span','trial-status-item','Source · NOT CHECKED');
+ const runtimeBadge=el('span','trial-status-item','Runtime · NOT VERIFIED');
+ const acceptanceBadge=el('span','trial-status-item','Acceptance · HOLD');
+ const sessionBadge=el('span','trial-status-item','Session · NOT RUN');
+ status.append(sourceBadge,runtimeBadge,acceptanceBadge,sessionBadge);
+ section.append(status);
+
+ const prepare=el('section','trial-panel');
+ prepare.append(el('h4',null,'1. Prepare candidate'));
+ const prepareRow=el('div','trial-row trial-row-wrap');
+ const refresh=trialButton('Check latest PR head',async()=>{
   refresh.disabled=true;
   headLine.textContent='Reading original GitHub PR #232…';
   try{
    const next=await readNativeCandidate(fetcher);
-   if(state.candidate?.head!==next.head){
-    state.outcomes={};state.notes={};state.confirmed=false;confirmBox.checked=false;
-    for(const x of outcomeControls)x.value='NOT_RUN';
-    for(const x of noteControls)x.value='';
-   }
+   if(state.candidate?.head!==next.head)resetObservations();
    state.candidate=next;
-   headLine.textContent='GitHub source '+next.state+' · '+(next.draft?'DRAFT':'not draft')+
-     ' · exact head '+next.head+' · local runtime NOT_VERIFIED';
+   headLine.textContent='Native PR #232 · '+next.state+' / '+(next.draft?'draft':'not draft')+
+    ' · exact head '+next.head;
    setup.textContent=trialSetup(next.head);
-   launchState();
   }catch{
-   state.candidate=null;state.confirmed=false;confirmBox.checked=false;
-   headLine.textContent='SOURCE READ FAILED — head UNKNOWN. No candidate qualified.';
-   setup.textContent='Recheck original GitHub PR before running any local trial.';
-   launchState();
-  }finally{refresh.disabled=false;}
+   state.candidate=null;
+   resetObservations();
+   confirmBox.checked=false;
+   headLine.textContent='SOURCE READ FAILED — exact head UNKNOWN. Do not infer a tested candidate.';
+   setup.textContent='Source unavailable. Check original PR #232 before using local setup.';
+  }finally{
+   refresh.disabled=false;
+   updateLaunch();
+   updateStatus();
+  }
  });
- source.append(refresh,link(NATIVE_PR,'Open native PR #232'),link(NATIVE_ISSUE,'Open repair HOLD #231'));
- section.append(source,headLine);
- const details=el('details','project-brief');
- details.open=true;
- details.append(el('summary',null,'Launch the actual candidate locally (manual setup)'));
- details.append(trialInstruction('Check source head, copy these commands and run them in an isolated directory. This starts the native app locally; it does not deploy PR #232.'));
- const setup=el('pre','demo-mono');setup.style.cssText='white-space:pre-wrap;overflow-wrap:anywhere;padding:12px;border:1px solid var(--bd);border-radius:8px;';
- setup.textContent='Select “Check native PR head” first. No SHA assumed.';
- const copySetup=trialButton('Copy exact-head local setup',()=>{const x=trialSetup(state.candidate?.head);if(x)copyText(x,copySetup);});
+ prepareRow.append(el('span','trial-hint','Native PR #232'),
+  refresh,link(NATIVE_PR,'Open original PR'));
+ const headLine=el('p','trial-source-line','Native PR #232 source: NOT_CHECKED · no exact head observed');
+ headLine.setAttribute('aria-live','polite');
+ prepare.append(prepareRow,headLine);
+ const setupDetails=el('details','trial-setup');
+ setupDetails.append(el('summary',null,'Exact-head local setup commands'));
+ const setup=el('pre','demo-mono trial-command');
+ setup.textContent='Check the native PR head to generate version-pinned commands.';
+ const copySetup=trialButton('Copy setup commands',()=>{
+  const command=trialSetup(state.candidate?.head);
+  if(command)copyText(command,copySetup);
+ });
  copySetup.disabled=true;
- details.append(setup,copySetup);
- const urlLabel=el('label',null,'Your locally running native preview URL (localhost only)');
- const urlInput=el('input');urlInput.placeholder='http://127.0.0.1:8080/';urlInput.setAttribute('aria-label','Local native preview URL');
- urlInput.style.cssText='display:block;width:min(100%,520px);margin:8px 0;';
+ setupDetails.append(trialInstruction('Run these commands in an isolated directory on a machine with Git, Python and the native browser-compatible source. The Progress Page does not run them.'),setup,copySetup);
+ prepare.append(setupDetails);
+ section.append(prepare);
+
+ const open=el('section','trial-panel');
+ open.append(el('h4',null,'2. Open the real prototype'));
+ const urlLabel=el('label','trial-field-label','Local preview address (localhost only)');
+ const urlInput=el('input','trial-url');
+ urlInput.placeholder='http://127.0.0.1:8080/';
+ urlInput.setAttribute('aria-label','Local native preview URL');
  urlLabel.append(urlInput);
- const confirmLabel=el('label');
+ const confirmLabel=el('label','trial-confirm');
  const confirmBox=el('input');confirmBox.type='checkbox';
  confirmBox.setAttribute('aria-label','I checked out this exact source head locally');
- confirmLabel.append(confirmBox,' I personally checked out the displayed exact head; this is my assertion, not verification by Progress Page.');
- const launch=el('a','btn small','Open local native prototype');
+ confirmLabel.append(confirmBox,' I personally checked out this exact PR head locally (self-attested, not independently verified).');
+ const launchRow=el('div','trial-row trial-row-wrap');
+ const launch=el('a','btn small trial-launch','Open prototype');
  launch.target='_blank';launch.rel='noopener noreferrer';launch.setAttribute('aria-disabled','true');
- launch.style.cssText='display:inline-block;margin-top:10px;opacity:.55;pointer-events:none;';
- const launchHelp=trialInstruction('Launch remains disabled until a source head is observed, a localhost URL is entered and you confirm the checkout.');
- function launchState(){
+ const launchHelp=trialInstruction('Launch disabled until a current source head, loopback URL and your checkout confirmation are provided.');
+ launchRow.append(launch);
+ const openInfo=trialInstruction('The native application opens in a separate tab. Local build/host provenance is never verified here.');
+ function updateLaunch(){
   state.confirmed=confirmBox.checked&&!!state.candidate;
   const valid=localPreviewUrl(urlInput.value);
   const ready=!!valid&&state.confirmed;
   copySetup.disabled=!state.candidate;
-  launch.style.pointerEvents=ready?'auto':'none';launch.style.opacity=ready?'1':'.55';
   launch.setAttribute('aria-disabled',String(!ready));
   if(ready)launch.href=valid;else launch.removeAttribute('href');
-  launchHelp.textContent=ready?'Launch is user-attested; actual native runtime and head remain independently UNVERIFIED.':
-   'Check the PR head, enter a localhost URL and confirm the exact checkout to enable launch.';
+  launchHelp.textContent=ready
+   ?'Local launch enabled by your assertion only. Native runtime and exact checkout are NOT independently verified.'
+   :'Launch disabled until an exact source head, localhost address and checkout confirmation are present.';
+  updateStatus();
  }
- urlInput.addEventListener('input',launchState);
- confirmBox.addEventListener('change',launchState);
- details.append(urlLabel,confirmLabel,launch,launchHelp);
- section.append(details);
- const cases=el('section');cases.append(el('h4',null,'Real-run observation checklist'),
-  trialInstruction('Open the native app above. Enter results only after observing them there. PASS here means your local scenario observation, not a qualified engineering PASS.'));
- const outcomeControls=[],noteControls=[];
+ urlInput.addEventListener('input',updateLaunch);
+ confirmBox.addEventListener('change',updateLaunch);
+ open.append(urlLabel,confirmLabel,launchRow,launchHelp,openInfo);
+ section.append(open);
+
+ const scenarioSection=el('section','trial-panel');
+ const scenariosTop=el('div','trial-row trial-between');
+ const scenarioTitle=el('h4',null,'3. Test scenarios');
+ const progress=el('span','trial-progress','0 / 5 OBSERVED');
+ progress.setAttribute('aria-live','polite');
+ scenariosTop.append(scenarioTitle,progress);
+ scenarioSection.append(scenariosTop,
+  trialInstruction('Choose Inspect on each row to see expected behavior, enter an observed outcome and add optional non-private notes.'));
+ const scenarioList=el('div','trial-scenarios');
  for(const item of PROPERTY_CASES){
-  const card=el('article','demo-card');
-  card.style.cssText='margin:10px 0;padding:12px;';
-  card.append(el('h4',null,item.id+' · '+item.title),trialInstruction('Expected: '+item.expected));
-  const labels=el('label',null,'Observed result ');
-  const select=el('select');select.setAttribute('aria-label',item.id+' observed result');
-  for(const status of TRIAL_OUTCOMES){const opt=el('option',null,status);opt.value=status;select.append(opt);}
-  select.addEventListener('change',()=>{state.outcomes[item.id]=select.value;});
-  outcomeControls.push(select);labels.append(select);card.append(labels);
-  const note=el('textarea');note.rows=2;note.maxLength=300;note.placeholder='Optional brief observation; no private source bytes/paths';
+  const card=el('article','trial-case');
+  const top=el('div','trial-case-top');
+  const id=el('span','trial-case-id',item.id);
+  const name=el('strong','trial-case-name',item.title);
+  const stateLabel=el('span','trial-case-status','NOT RUN');
+  const inspect=el('details','trial-inspect');
+  inspect.append(el('summary',null,'Inspect'));
+  const inner=el('div','trial-inspect-body');
+  inner.append(el('p','trial-expected','EXPECTED BEHAVIOR'),
+   trialInstruction(item.expected));
+  const labels=el('label','trial-field-label','Observed result ');
+  const select=el('select');
+  select.setAttribute('aria-label',item.id+' observed result');
+  for(const result of TRIAL_OUTCOMES){
+   const option=el('option',null,result.replace('_',' '));option.value=result;select.append(option);
+  }
+  select.addEventListener('change',()=>{
+   state.outcomes[item.id]=select.value;
+   updateSummary();
+  });
+  labels.append(select);inner.append(labels);
+  const note=el('textarea','trial-notes');note.rows=2;note.maxLength=300;
+  note.placeholder='What did you observe? Do not include private inputs or file paths.';
   note.setAttribute('aria-label',item.id+' observation notes');
-  note.style.cssText='display:block;width:100%;margin-top:8px;';
   note.addEventListener('input',()=>{state.notes[item.id]=note.value;});
-  noteControls.push(note);card.append(note);cases.append(card);
+  inner.append(note);
+  inspect.append(inner);
+  top.append(id,name,stateLabel,inspect);
+  card.append(top);
+  scenarioList.append(card);
+  resultInputs.push(select);noteInputs.push(note);rowStatuses.push(stateLabel);rowCards.push(card);
  }
- section.append(cases);
- const actions=el('div','demo-controls');
- const copy=trialButton('Copy local observation report',()=>copyText(trialPacket({
+ scenarioSection.append(scenarioList);
+ section.append(scenarioSection);
+
+ const results=el('section','trial-panel');
+ results.append(el('h4',null,'4. Review results'));
+ const counts=el('div','trial-counts');
+ const labels=Object.freeze([['PASS','Passed'],['FAIL','Failed'],['BLOCKED','Blocked'],['NOT_RUN','Not run']]);
+ const counters={};
+ for(const [key,label] of labels){
+  const item=el('div','trial-counter');
+  const value=el('strong',null,'0');value.setAttribute('data-trial-count',key);
+  item.append(value,el('span',null,label));counts.append(item);counters[key]=value;
+ }
+ results.append(counts,trialInstruction('A locally selected PASS is self-reported. These numbers cannot certify engineering, independent reviewer or Owner product acceptance.'));
+ const actions=el('div','trial-row trial-row-wrap');
+ const copy=trialButton('Copy trial report',()=>copyText(trialPacket({
   candidate:state.candidate,localConfirmed:state.confirmed,
   previewUrl:urlInput.value,outcomes:state.outcomes,notes:state.notes
  }),copy));
- const reset=trialButton('Reset local observations',()=>{
-  state.outcomes={};state.notes={};
-  for(const control of outcomeControls)control.value='NOT_RUN';
-  for(const control of noteControls)control.value='';
- });
+ const reset=trialButton('Reset observations',resetObservations);
  actions.append(copy,reset);
- section.append(actions,trialInstruction('Nothing is saved or transmitted by this workspace. Copy your report before leaving; do not treat it as a Page audit, mandatory agent post or independent review.'));
+ results.append(actions,trialInstruction('Nothing is saved or transmitted automatically. Copy your report before leaving this route; no mandatory Board report is created.'));
+ section.append(results);
+
+ const related=el('section','trial-related');
+ related.append(el('h4',null,'Related tools'));
+ const relatedLinks=el('div','trial-row trial-row-wrap');
+ const board=el('a','btn small','Cycle Board');
+ board.href='#/ciifr-node/cycle-board';
+ const original=link(NATIVE_ISSUE,'Original task');
+ const demo=trialButton('Workflow demo',()=>{
+  const workflow=root.querySelector('#ciifr-node-workflow-demo');
+  if(workflow){
+   workflow.open=true;
+   if(typeof workflow.scrollIntoView==='function')workflow.scrollIntoView({block:'start',behavior:'smooth'});
+  }
+ });
+ relatedLinks.append(board,original,demo);related.append(relatedLinks);
+ section.append(related);
+
+ function updateStatus(){
+  sourceBadge.textContent='Source · '+(state.candidate?'HEAD CHECKED':'NOT CHECKED');
+  runtimeBadge.textContent='Runtime · NOT VERIFIED';
+  acceptanceBadge.textContent='Acceptance · HOLD';
+  sessionBadge.textContent='Session · '+(trialSummary(state.outcomes).observed?'OBSERVATIONS':'NOT RUN');
+ }
+ function updateSummary(){
+  const summary=trialSummary(state.outcomes);
+  progress.textContent=summary.observed+' / '+summary.total+' OBSERVED';
+  for(const [key] of labels)counters[key].textContent=String(summary[key]);
+  PROPERTY_CASES.forEach((item,i)=>{
+   const current=TRIAL_OUTCOMES.includes(state.outcomes[item.id])?state.outcomes[item.id]:'NOT_RUN';
+   rowStatuses[i].textContent=current.replace('_',' ');
+   rowCards[i].setAttribute('data-result',current);
+  });
+  updateStatus();
+ }
+ function resetObservations(){
+  state.outcomes={};state.notes={};
+  resultInputs.forEach(x=>{x.value='NOT_RUN';});
+  noteInputs.forEach(x=>{x.value='';});
+  updateSummary();
+ }
+ function resetSession(){
+  state.candidate=null;
+  confirmBox.checked=false;urlInput.value='';
+  headLine.textContent='Native PR #232 source: NOT_CHECKED · no exact head observed';
+  setup.textContent='Check the native PR head to generate version-pinned commands.';
+  resetObservations();updateLaunch();
+ }
+ updateSummary();
+ updateLaunch();
  root.append(section);
 }
