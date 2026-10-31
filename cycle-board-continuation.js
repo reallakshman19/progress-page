@@ -1,0 +1,207 @@
+// CT-5: source-bound, cross-project continuation handoff.
+// Read-only UI; private chat shortcuts come exclusively from existing My links.
+// No transport API is connected. Copy/open never means delivered or acknowledged.
+import { el, link, copyText } from './util.js?v=34';
+import { wbsGroups } from './progress.js?v=34';
+import { agentStartModel, agentStartTaskText } from './agent-start.js?v=34';
+import { smartBadgesForScope, renderSmartBadges } from './smart-badges.js?v=34';
+
+const PUBLIC_SOURCE=/^https:\/\/github\.com\/[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+\/(?:issues\/[1-9]\d*|pull\/[1-9]\d*|commit\/[a-fA-F0-9]{40})(?:#issuecomment-[1-9]\d*)?$/;
+const CHATGPT=/^https:\/\/chatgpt\.com\/(?:c\/|g\/[^/?#]+\/c\/)[A-Za-z0-9_-]+(?:[/?#].*)?$/;
+const CLAUDE=/^https:\/\/claude\.ai\/chat\/[A-Za-z0-9_-]+(?:[/?#].*)?$/;
+const BROWSER_SITE='https://reallakshman19.github.io/progress-page/';
+const knownChat=u=>typeof u==='string'&&(CHATGPT.test(u)||CLAUDE.test(u));
+const safeSource=u=>typeof u==='string'&&PUBLIC_SOURCE.test(u);
+const currentRevision=p=>(p?.index?.revisions||[]).find(r=>r.status==='current')?.id||'UNKNOWN';
+const safe=x=>typeof x==='string'&&x.trim()?x.trim():null;
+const ended=x=>/^(?:DONE|VERIFIED|COMPLETE|COMPLETED|CLOSED|RETURNED|FULFILLED)$/i.test(x||'');
+
+// An audit can *identify* an explicitly linked agent return without proving
+// that the intended recipient authored it, acknowledged the task or owns it.
+function linkedReturn(project,id,source){
+ const events=project?.audit?.events||[];
+ const candidates=events.filter(e=>e.card===id&&
+   ['AGENT_RETURN','RETURN','REVIEW_RETURN'].includes(e.kind)&&
+   safeSource(e.source)&&safe(e.nativeOccurrenceId)&&
+   (e.source===source||e.source.includes('#issuecomment-')));
+ return candidates.length?candidates.at(-1):null;
+}
+const pageHref=(key,view='cycle-board')=>BROWSER_SITE+'#/'+encodeURIComponent(key)+'/'+view;
+function pickPrivate(chatLinks,keys){
+ // Browsing convenience only: the map is private to the current browser;
+ // it is not proof that the URL belongs to the authentic recipient.
+ for(const key of keys){
+  if(key&&knownChat(chatLinks?.[key]))return chatLinks[key];
+ }
+ return null;
+}
+
+function pageRows(project,key,chatLinks,observations,scope){
+ const idx=project.index||{}, milestones=idx.milestones||{},groups=wbsGroups(idx);
+ const chats=idx.chats||{};
+ const rows=[];
+ for(const [id,c] of Object.entries(project.cards||{})){
+  if(c?.closed)continue;
+  const m=milestones[c?.milestone],wbs=m?.wbs||null;
+  if(!m||!wbs||(Array.isArray(scope)&&!scope.includes(wbs)))continue;
+  const family=groups.find(g=>g.steps.some(s=>s.key===c.milestone));
+  const packetModel=family?agentStartModel(project,{family,step:c.milestone,
+    revision:currentRevision(project),cardId:id}):null;
+  const chat=chats[c?.who?.chat]||{};
+  const id8=safe(chat.id8)||null;
+  const nativeSource=[c.src,...(c.refs||[]).map(r=>r.u)].find(safeSource)||null;
+  const observation=(observations||[]).find(s=>s.source===nativeSource)||null;
+  const state=safe(c.state)||'UNKNOWN';
+  const returned=linkedReturn(project,id,nativeSource);
+  const status=ended(state)?'RECONCILE_FIRST':'REVIEW_NATIVE_AUTHORITY';
+  const nextActor=safe(c.next?.actor)||'UNKNOWN';
+  const notAgent=/^(?:owner|oracle|reviewer|reviewer_ir|ir)$/i.test(nextActor);
+  const instruction=packetModel?agentStartTaskText(packetModel):null;
+  rows.push({
+   key,id,sourceType:'PUBLISHED_PAGE_CARD',label:c.label||id,wbs,milestoneId:c.milestone,
+   role:safe(c.who?.role)||'UNKNOWN',recipientLabel:safe(chat.label)||'NOT_RECORDED',
+   source:nativeSource,sourceRevision:observation?.revision||null,sourceOccurrence:observation?.occurrenceId||null,
+   state,recordedNext:safe(c.next?.text)||'NOT_RECORDED',nextActor,
+   recipientIdKnown:!!id8,privateUrl:pickPrivate(chatLinks,[id8]),
+   status:!instruction?'TASK_PACKET_UNAVAILABLE':notAgent?'ACTOR_REVIEW_REQUIRED':status,
+   delivery:'NOT_VERIFIED',acknowledgment:'NOT_VERIFIED',
+   returnState:returned?'PAGE_AUDIT_RETURN_POINTER_ONLY':'NOT_VERIFIED',
+   returnUrl:returned?.source||null,
+   instructions:instruction,smartBadges:smartBadgesForScope(project,{cardId:id,milestoneId:c.milestone})
+  });
+ }
+ return rows.sort((a,b)=>a.wbs.localeCompare(b.wbs,undefined,{numeric:true})||
+   a.id.localeCompare(b.id));
+}
+function nativeRows(nativeTasks,chatLinks,observations){
+ return (nativeTasks||[]).map(t=>{
+  const source=safeSource(t.issue)?t.issue:null;
+  const matched=(observations||[]).find(x=>x.source===source)||null;
+  const privateUrl=pickPrivate(chatLinks,[t.chatId8,t.key,t.id]);
+  const lines=[
+   'Cycle now — '+t.key.toUpperCase()+' (existing native task; NOT a canonical Cycle activation)',
+   'Native task: '+(source||'NOT_VERIFIED'),
+   'Governing WBS: '+(t.wbs||'UNMAPPED'),
+   'Task: '+t.label,
+   'Source observation revision: '+(matched?.revision||'NOT_VERIFIED'),
+   'Source occurrence: '+(matched?.occurrenceId||'NOT_VERIFIED'),
+   'Recorded next action: '+(t.next||'NOT_RECORDED'),
+   'Read current Board: '+pageHref('adhoc/'+t.key).replace('/cycle-board','/cycle-board'),
+   'Continue only the existing authorized READ_ONLY task. Read original sources and earlier native return;',
+   'do NOT redo completed work, edit engineering models, treat CLOS/unsupported XML as approved, or assert PASS.',
+   'Return once to the existing native task; otherwise AWAIT_ORACLE_RECONCILIATION.',
+   'Delivery/recipient acknowledgment: NOT_VERIFIED. Copying this instruction does not send it.'
+  ];
+  // Adhoc route is different from real project routes.
+  lines[6]='Read current Board: '+BROWSER_SITE+'#/adhoc/'+t.key+'/cycle-board';
+  return {
+   key:t.key,id:t.id||t.key,sourceType:'NATIVE_TASK',label:t.label,wbs:t.wbs||'UNMAPPED',
+   milestoneId:null,role:t.role||'Builder',recipientLabel:'NOT_VERIFIED',
+   state:'PREPARED / READ_ONLY FIRST',recordedNext:t.next||'NOT_RECORDED',
+   nextActor:'Assigned agent / UNKNOWN recipient',
+   source,sourceRevision:matched?.revision||null,sourceOccurrence:matched?.occurrenceId||null,
+   recipientIdKnown:!!t.chatId8,privateUrl,
+   status:matched?'REVIEW_NATIVE_AUTHORITY':'SOURCE_NOT_VERIFIED',
+   delivery:'NOT_VERIFIED',acknowledgment:'NOT_VERIFIED',returnState:'NOT_VERIFIED',
+   returnUrl:null,instructions:lines.join('\n'),smartBadges:[]
+  };
+ });
+}
+
+export function continuationBridgeModel(project,{key=null,chatLinks={},nativeTasks=null,
+  observations=null,wbs=null,historical=false}={}){
+ const projectKey=key||project?.index?.project?.key||'UNKNOWN';
+ const taskMode=Array.isArray(nativeTasks);
+ const rows=historical?[]:taskMode?nativeRows(nativeTasks,chatLinks,observations):
+   project?.index?.project?.key===projectKey?
+     pageRows(project,projectKey,chatLinks,observations,wbs):[];
+ return {
+  schema:'cycle-board.ct5-continuation/v1',project:projectKey,
+  scope:taskMode?'NATIVE_EXISTING_TASKS':'PUBLISHED_PAGE_CARDS',
+  state:historical?'HISTORICAL_NO_CONTINUATION':
+    !taskMode&&project?.index?.project?.key!==projectKey?'SOURCE_UNKNOWN':
+    rows.length?'REVIEW_REQUIRED':'NO_MATCHED_TASKS',
+  rows,records:rows.length,
+  privateLinksCount:rows.filter(r=>r.privateUrl).length,
+  canDispatch:false,canAuthenticate:false,hasVerifiedAck:false,
+  publication:'NOT_PUBLISHED_BY_CT5',
+  note:'Browser shortcuts are not verified recipients; GitHub issue/PR and Page cards are not delivery, acknowledgment or accepted return evidence.'
+ };
+}
+export function continuationText(row,projectKey){
+ if(!row?.instructions)return null;
+ const header='CYCLE NOW — changed-only continuation (copy only; NOT SENT)\n'+
+   'Project: '+projectKey+' · Task: '+row.id+' · WBS: '+row.wbs+'\n'+
+   'Original task/record: '+(row.source||'NOT_VERIFIED')+'\n'+
+   'Observed native occurrence: '+(row.sourceOccurrence||'NOT_VERIFIED')+'\n'+
+   'This is not a new canonical Oracle Cycle or dispatch. Agent must verify current recipient, role,\n'+
+   'source SHA/fixture receipt, prior return, HOLD and active native assignment before any work.\n'+
+   'Do not re-run an already returned task. Use one existing native return, never a second Board report.\n';
+ return header+'\n'+row.instructions+'\n\nDELIVERY NOT_VERIFIED; ACKNOWLEDGMENT NOT_VERIFIED; '+
+   'COPY/OPEN IS NOT A SEND OR ACK.';
+}
+
+export function renderContinuationBridge(root,project,options={}){
+ const m=continuationBridgeModel(project,options);
+ const panel=el('section','ct5-continuation');
+ panel.setAttribute('aria-label','Agent continuation and acknowledgment bridge');
+ panel.append(el('h3',null,'Agent continuation · CT-5'),
+   el('p','muted','One existing task, one native return. Copy a changed-only Cycle now instruction and open its privately linked conversation; no delivery/ACK is reported without actual evidence.'));
+ const summary=el('div','ct5-summary');
+ summary.append(el('strong',null,m.records+' source-scoped task(s) · '+m.privateLinksCount+' local conversation shortcut(s)'),
+  el('p','muted','Delivery NOT_VERIFIED · Agent ACK NOT_VERIFIED · return NOT_VERIFIED unless linked to an exact Page audit pointer. No automatic send, assignment, Cycle activation, Page publication or PASS.'));
+ panel.append(summary);
+ if(m.state==='HISTORICAL_NO_CONTINUATION')panel.append(el('p','banner',
+  'Historical revision: no continuation packet or delivery action is available.'));
+ if(m.state==='SOURCE_UNKNOWN')panel.append(el('p','banner',
+  'Current project WBS/cards unavailable or mismatched. Do not infer an existing agent assignment.'));
+ if(m.state==='NO_MATCHED_TASKS')panel.append(el('p','muted',
+  'No scoped existing task was found in the published Page. Choose a specific WBS/Agent Start task or inspect original native issue.'));
+ const grouped=new Map();
+ for(const row of m.rows){
+  if(!grouped.has(row.wbs))grouped.set(row.wbs,[]);
+  grouped.get(row.wbs).push(row);
+ }
+ for(const [wbs,rows] of grouped){
+  const group=el('div','ct5-group');
+  group.append(el('h4',null,'WBS '+wbs+' · '+rows.length+' recorded task(s)'));
+  for(const row of rows){
+   const details=el('details','ct5-task');
+   const title=el('summary');
+   title.append(el('b',null,row.label),' · '+row.state+
+     ' · '+row.status);
+   details.append(title);
+   const info=el('div','ct5-task-body');
+   info.append(el('p','muted','Original task '+row.id+
+     ' · recorded role: '+row.role+
+     ' · recipient: '+row.recipientLabel+' (NOT authenticated)'));
+   info.append(el('p','ct-next','Recorded next (may be stale): '+row.recordedNext+
+     ' · next actor: '+row.nextActor));
+   const statuses=el('p','muted');
+   statuses.append('Issue/record: '+(row.source?'LINKED':'NOT_RECORDED')+
+     ' · instruction delivery: '+row.delivery+' · ACK: '+row.acknowledgment+
+     ' · native return: '+row.returnState);
+   info.append(statuses);
+   if(row.sourceOccurrence)info.append(el('p','muted',
+     'Observed source occurrence: '+row.sourceOccurrence+' · not an acknowledgment.'));
+   if(row.smartBadges.length)renderSmartBadges(info,row.smartBadges);
+   const actions=el('div','ct5-actions');
+   if(row.source)actions.append(link(row.source,'Open original native evidence','btn small'));
+   if(row.returnUrl)actions.append(link(row.returnUrl,'Inspect return pointer','btn small'));
+   const copy=el('button','btn small','Copy Cycle now · not sent');
+   copy.type='button';copy.disabled=!row.instructions;
+   if(row.instructions)copy.addEventListener('click',()=>copyText(continuationText(row,m.project),copy));
+   actions.append(copy);
+   if(row.privateUrl)actions.append(link(row.privateUrl,'Open existing conversation (private shortcut)','btn small'));
+   else actions.append(el('span','muted','Conversation not linked · add recipient under My links (id8 or task key); do not infer delivery.'));
+   info.append(actions);
+   if(row.status==='RECONCILE_FIRST'||row.status==='ACTOR_REVIEW_REQUIRED')info.append(el('p','banner',
+     'Task state/next actor requires Oracle reconciliation; copying the packet does not authorize replay.'));
+   details.append(info);group.append(details);
+  }
+  panel.append(group);
+ }
+ panel.append(el('p','muted','Bridge status: prepared instructions and source-linked records only. A native GitHub post is not a message delivered into a ChatGPT conversation; a private shortcut is not recipient authentication. The Oracle verifies actual ACK and source-bound return in the original channel before Page reconciliation.'));
+ root.append(panel);
+ return m;
+}
