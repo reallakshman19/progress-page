@@ -86,7 +86,7 @@ test('CIIFR R4 WBS 5 CIIFR-MAP groups only M8–M11; seven others stay separate'
   assert.deepEqual(groups[2].steps.map(s=>s.wbs),['5','5.1','5.2','5.3']);
   assert.equal(groups[2].steps.find(s=>s.key==='M11').name,'Authorized mapped transfer');
   assert.equal(ciifr.milestones.M11.cap,'NOT_DEMONSTRATED');
-  assert.deepEqual(groups[3].steps.map(s=>s.wbs),['6','6.1','6.2','6.3','6.4','6.5','6.6','6.7']);
+  assert.deepEqual(groups[3].steps.map(s=>s.wbs),['6','6.1','6.2','6.3','6.4','6.5','6.6','6.7','6.8','6.9']);
   assert.equal(ciifr.milestones.M24.name,'Restraint fallback and Datum placement');
   assert.equal(ciifr.milestones.M28.name,'BM2 OLET connectivity and support preservation');
   assert.equal(cards['bm2-olet-route'].milestone,'M28');
