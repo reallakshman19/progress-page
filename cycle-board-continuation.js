@@ -250,6 +250,8 @@ export function decideNextAction(facts={}){
  });
  if(!fastNativeIssue.test(issue||''))return result('BLOCKED','NATIVE_ISSUE_NOT_VERIFIED');
  if(f.criticalFalsifierFailed===true)return result('HOLD_AFFECTED_SCOPE','CRITICAL_FALSIFIER_FAILED');
+ if(f.stopTriggered===true)return result('HOLD_AFFECTED_SCOPE','EXPLICIT_STOP_CONDITION_TRIGGERED');
+ if(f.envelopeExhausted===true)return result('DECIDE_NEXT_ASSIGNMENT','ENVELOPE_EXHAUSTED_NO_AGENT_REPLAY');
  if(f.sourceChanged===true||f.authorityChanged===true||f.materialScopeChanged===true)
   return result('REQUALIFY_AFFECTED_SCOPE','SOURCE_OR_AUTHORITY_CHANGED');
  if(f.latestReturnNeedsReconciliation===true)
