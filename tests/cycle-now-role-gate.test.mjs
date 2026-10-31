@@ -128,7 +128,7 @@ test('Existing Board retains agent evidence; Oracle copy control only for explic
   assert.equal(collect(root,x=>x.tag==='p'&&x.className==='te-line').length,5);
   const buttons=collect(root,x=>x.tag==='button');
   assert.equal(buttons.filter(x=>x.textContent.includes('Copy Oracle Cycle now')).length,1);
-  assert.equal(buttons.filter(x=>x.textContent.includes('Copy Cycle now')).length,1);
+  assert.equal(buttons.filter(x=>x.textContent==='Copy Cycle now · not sent').length,1);
   assert.doesNotMatch(root.textContent,/chatgpt\.com\/c\//);
   assert.match(root.textContent,/Oracle Cycle now/);
   const agentOnly=node('main');
