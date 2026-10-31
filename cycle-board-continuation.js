@@ -74,6 +74,8 @@ export function cycleNowRoleText(rows,{projectKey='UNKNOWN',actingRole='UNKNOWN'
   selected.role==='ORACLE'? 
    'Oracle output: ONE five-line Task Evidence v2 card for your OWN existing coordination responsibility, referencing subordinate evidence, NOT two agent cards. Do not invent an Oracle task when native provenance is unavailable.':
    'Actor output: one five-line Task Evidence v2 card for YOUR assigned task only; not a coordinator card.',
+  'Fast Lane: inspect original native Execution Envelope. In THIS active invocation execute all explicitly permitted related substeps only when task/recipient/pinned SHA, authority, permission and STOP conditions still match. The Agent cannot enlarge the envelope or run after conversation ends.',
+  'Oracle Fast Lane: resolve feasible source decisions in this invoked turn; return only changed native evidence. Do not generate an Owner relay for routine microsteps or an inert Action to Owner.',
   'Current instruction: PREPARED / POSTED / DELIVERED / ACKNOWLEDGED / EVIDENCE_RETURNED / ORACLE_RECONCILED are distinct observations.',
   'Close coordination CONTINUED only on actual current-instruction ACK or source-backed continuation; otherwise AWAITING_RELAY with named relay actor, or BLOCKED on authority.',
   'If only manual Owner relay can reach an existing agent chat, identify one minimum copy-ready Owner handoff; Oracle retains coordination.',
@@ -208,6 +210,7 @@ export function continuationText(row,projectKey){
    'This is not a new canonical Oracle Cycle or dispatch. Agent must verify current recipient, role,\n'+
    'source SHA/fixture receipt, prior return, HOLD and active native assignment before any work.\n'+
    'Do not re-run an already returned task. Use one existing native return, never a second Board report.\n'+
+   'Fast Lane: check the original Oracle-authorized Execution Envelope; perform related expressly permitted substeps in this ACTIVE invocation only, with source/recipient/STOP verification. No NEW authorization from the Board or background run.\n'+
    'TE2-ROLE: acting Agent/Reviewer reports only its OWN five-line task card; an Oracle reports its own coordination task, not this agent card.\n'+
    'After five lines, Action to Owner: copy-ready Cycle now to Oracle only for real manual relay, otherwise NONE; include source-linked other issues, not a sixth card line.\n';
  if(row.status==='RECONCILE_FIRST'||row.status==='ACTOR_REVIEW_REQUIRED'){
