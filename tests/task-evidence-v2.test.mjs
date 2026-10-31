@@ -35,6 +35,7 @@ test('TOPO-A source-linked return is exactly five lines; 1/1 accepted scope, 0/3
   observations:[{source:A,revision:r.sourceRevision}]});
  assert.equal(m.lines.length,5);
  assert.equal(m.sourceStatus,'CURRENT');
+ assert.match(m.lastReconciled,/^ORACLE_REPORTED /,'GitHub actor claims must not look authenticated');
  const t=taskEvidenceV2Text(m);
  assert.match(t,/1\/1 read-only deliverable returned/);
  assert.match(t,/0\/3 executed falsifiers returned/);
