@@ -203,15 +203,15 @@
     "order": 32,
     "group": "repair",
     "milestone": "M32",
-    "label": "3.2 Precise manual-review and repair d",
+    "label": "3.2 Manual Fix by rule + second pass",
     "who": {
-      "role": "Unassigned future builder"
+      "role": "Oracle 6ae1b0f7 (author-side)"
     },
-    "state": "NOT_STARTED",
-    "now": "Draft PR #5 implements precise directions for preservation-review proposals only: original source/owner, reason, actual reference/name/OD/wall values, design-authority decision and re-export/full recheck. The complete case-level manual repair workflow remains unfinished and browser behavior is NOT_RUN. Remaining implementation is unassigned.",
+    "state": "SUBMITTED",
+    "now": "Preview PRs 7, 8 and 9 are MERGED to main; PR9 merge fb92be7bd8dba997d71d2028b0b36b0d3fe2c24c, tested head 94374b41b499c06baa158f65de4fe5cddae4b417. Author checks: 68 Python / 36 Node and full Chromium/Pyodide/download PASS. Rule/case expansion, partner-edit invalidation, Cancel, exact-key search and replacement-source invalidation pass. Two 75 mm cases each reduce manual findings 3 -> 1. Preview integration is complete; engineering/native/physical Weight acceptance remains HOLD.",
     "next": {
-      "actor": "-",
-      "text": "Unassigned. Release one bounded implementation slice after the preceding reviewed frontier."
+      "actor": "Owner / IR 6ae2d5ac",
+      "text": "Try the merged preview and independently assess connection semantics. Keep protected PR346 and engineering release on HOLD until their separate evidence gates are met."
     },
     "refs": [
       {
@@ -224,6 +224,12 @@
         "l": "Partial preservation-case directions",
         "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/pull/5",
         "s": "partial; browser NOT_RUN"
+      },
+      {
+        "k": "pr",
+        "l": "Manual Fix by rule and selected second pass",
+        "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/pull/9",
+        "s": "SELF_ASSESSED; exact-head full browser CI PASS; engineering HOLD"
       }
     ],
     "edges": [
@@ -232,8 +238,8 @@
         "k": "to"
       }
     ],
-    "updatedAt": "2026-10-28T20:27:36Z",
-    "src": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/4#issuecomment-6479886178"
+    "updatedAt": "2026-10-30T11:38:36Z",
+    "src": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/pull/9"
   },
   "topo-3-1": {
     "order": 31,
