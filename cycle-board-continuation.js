@@ -111,13 +111,14 @@ export function continuationBridgeModel(project,{key=null,chatLinks={},nativeTas
   observations=null,wbs=null,historical=false}={}){
  const projectKey=key||project?.index?.project?.key||'UNKNOWN';
  const taskMode=Array.isArray(nativeTasks);
- const rows=historical?[]:taskMode?ct5NativeRows(nativeTasks,chatLinks,observations):
+ const notCurrent=historical||!!(project?.status&&project.status!=='active');
+ const rows=notCurrent?[]:taskMode?ct5NativeRows(nativeTasks,chatLinks,observations):
    project?.index?.project?.key===projectKey?
      ct5PageRows(project,projectKey,chatLinks,observations,wbs):[];
  return {
   schema:'cycle-board.ct5-continuation/v1',project:projectKey,
   scope:taskMode?'NATIVE_EXISTING_TASKS':'PUBLISHED_PAGE_CARDS',
-  state:historical?'HISTORICAL_NO_CONTINUATION':
+  state:notCurrent?'HISTORICAL_NO_CONTINUATION':
     !taskMode&&project?.index?.project?.key!==projectKey?'SOURCE_UNKNOWN':
     rows.length?'REVIEW_REQUIRED':'NO_MATCHED_TASKS',
   rows,records:rows.length,
@@ -159,7 +160,7 @@ export function renderContinuationBridge(root,project,options={}){
   el('p','muted','Delivery NOT_VERIFIED · Agent ACK NOT_VERIFIED · return NOT_VERIFIED unless linked to an exact Page audit pointer. No automatic send, assignment, Cycle activation, Page publication or PASS.'));
  panel.append(summary);
  if(m.state==='HISTORICAL_NO_CONTINUATION')panel.append(el('p','banner',
-  'Historical revision: no continuation packet or delivery action is available.'));
+  'Historical/archived project: no continuation packet or delivery action is available.'));
  if(m.state==='SOURCE_UNKNOWN')panel.append(el('p','banner',
   'Current project WBS/cards unavailable or mismatched. Do not infer an existing agent assignment.'));
  if(m.state==='NO_MATCHED_TASKS')panel.append(el('p','muted',
