@@ -419,7 +419,7 @@ function render() {
       archivedOpen:state.archivedOpen,
       toggleArchived:()=>{state.archivedOpen=!state.archivedOpen;render();}}));
     if(state.archivedOpen)root.append(archivedPanel({closed,nav:navLink}));
-    renderAdhocProjects(root,adhocRoute,navLink);
+    renderAdhocProjects(root,adhocRoute,navLink,{topofixProject:state.data.topofix||null,pageFetch:state.pageFetch});
     return;
   }
   const { key, v, rev, family: routedFamily, step: routedStep, cardId: routedCard, routeError } = route();
