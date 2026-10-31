@@ -220,6 +220,67 @@ export function continuationText(row,projectKey){
    'COPY/OPEN IS NOT A SEND OR ACK.';
 }
 
+// TE2 companion: one copy/paste transaction for the Owner, never a sixth card
+// line, source mutation, delivery receipt or independent work authorization.
+export function cycleNowOwnerActionModel(row,{projectKey='UNKNOWN',evidence=null,
+ actingRole='UNKNOWN',transport='NATIVE_CONTINUATION'}={}){
+ const result=(kind,reason,text=null,target=null)=>({
+  kind,reason,text,target,status:text?'AWAITING_RELAY':'NOT_VERIFIED',
+  copied:false,delivered:false,acknowledged:false
+ });
+ if(!row||!ct5SafeSource(row.source))
+  return result('NONE','Original native task NOT_VERIFIED; no safe Owner transaction.');
+ const role=ct5RoleKind(actingRole);
+ // A Board field saying "Oracle" is not enough to impersonate the real Oracle.
+ if(role==='UNKNOWN')return result('NONE',
+  'Acting role NOT_VERIFIED; verify current participant before preparing an Owner message.');
+ const shortProject=ct5Safe(projectKey)?.replace(/[\r\n]/g,' ').slice(0,50)||'UNKNOWN';
+ const board=CT5_BROWSER_SITE+'#/'+(row.sourceType==='NATIVE_TASK'&&/^topo-[ab]$/.test(row.key||'')?
+  'adhoc/'+row.key:'')+(row.sourceType==='NATIVE_TASK'&&/^topo-[ab]$/.test(row.key||'')?
+  '/cycle-board':'');
+ const boardUrl=board.endsWith('#/')?pageHref(shortProject):board;
+ const source=row.source;
+ const roleName=role==='AGENT'?'Agent':role==='IR'?'Independent reviewer':'Oracle';
+ const head=role==='ORACLE'&&row.sourceType==='NATIVE_TASK'?'Oracle coordination':'Existing '+roleName+' task';
+ const pending= ['RECONCILE_FIRST','ACTOR_REVIEW_REQUIRED'].includes(row.status);
+ const nativeReady=row.sourceType==='NATIVE_TASK'&&!pending&&
+  row.status==='REVIEW_NATIVE_AUTHORITY'&&
+  evidence?.sourceStatus==='CURRENT'&&ct5Safe(evidence?.nativeNext)&&
+  ct5SafeSource(evidence?.nextSourceUrl);
+ const readOnly='READ_ONLY. Verify current authority and HOLD; no production writes, new PR, merge or engineering acceptance.';
+ const shared=['Read the current Cycle Board: '+boardUrl,
+  'Original native task: '+source];
+ // No candidate from Page NEXT labels or a stale return may be an executable
+ // Agent dispatch. A source-anchored next step still requires recipient readback.
+ if(role==='ORACLE'&&nativeReady){
+  const next=ct5Safe(evidence.nativeNext).replace(/[\r\n]/g,' ').slice(0,220);
+  return result('CYCLE_NOW_TO_AGENT','Source-linked next Agent action; delivery/ACK NOT_VERIFIED.',
+   ['Cycle now — '+shortProject+' / existing '+row.key.toUpperCase()+' Agent.',
+    ...shared,
+    'Latest Oracle-reported instruction: '+evidence.nextSourceUrl,
+    'Continue ONLY after verifying the current authorized assignment: '+next,
+    'Return actual commands, outcomes and witnesses to '+source+'.',
+    readOnly,
+    'This is an Owner relay; NOT SENT, no ACK assumed.'].join('\n'),
+   'Existing '+row.key.toUpperCase()+' Agent conversation (verify recipient)');
+ }
+ // An agent/IR return or a stale/blocked source requires Oracle reconciliation.
+ // The coordinator remains accountable; do not ask the Owner to create a task.
+ return result('CYCLE_NOW_TO_ORACLE',role==='ORACLE'?
+   'Review authoritative next actor/status before Agent continuation.':
+   'Return or review needs Oracle coordination; do not replay work.',
+  ['Cycle now — '+shortProject+' / existing Oracle coordination.',
+   ...shared,
+   'Reconcile the latest native return, current next actor, original instruction and HOLD.',
+   'Do not repeat completed tests or turn Page NEXT into Agent dispatch.',
+   'Return ONE Oracle-owned five-line Task Evidence v2 card, then identify the next authorized action.',
+   'If chat relay/Owner decision is needed, provide its exact source-linked copy-ready Action to Owner.',
+   'Original evidence and next return remain at '+source+'.',
+   readOnly,
+   'Copy/paste only; NOT SENT and recipient ACK NOT_VERIFIED.'].join('\n'),
+  'Existing Oracle conversation (verify recipient)');
+}
+
 export function renderContinuationBridge(root,project,options={}){
  const m=continuationBridgeModel(project,options);
  const panel=el('section','ct5-continuation');
@@ -262,6 +323,28 @@ export function renderContinuationBridge(root,project,options={}){
    const evidence=taskEvidenceV2Model(row,{projectKey:m.project,project,feed,
     observations:options.observations||[],pageFetch:options.pageFetch||null});
    renderTaskEvidenceV2(group,evidence);
+   // Action to Owner is a separate copy-only transaction, not a 6th TE2 line.
+   // The Board remains multi-task; the acting Oracle still reports its own card.
+   const ownerAction=cycleNowOwnerActionModel(row,{projectKey:m.project,evidence,
+    actingRole:options.actingRole||'UNKNOWN',transport:options.transport||'NATIVE_CONTINUATION'});
+   const ownerBox=el('section','ct5-owner-action');
+   ownerBox.setAttribute('aria-label','Action to Owner');
+   ownerBox.append(el('h5',null,'Action to Owner'),
+    el('p','muted','Current transaction: '+ownerAction.kind+
+     ' · '+ownerAction.reason+' · No automatic send/ACK.'));
+   if(ownerAction.text){
+    const ownerBtn=el('button','btn small','Copy '+(
+      ownerAction.kind==='CYCLE_NOW_TO_AGENT'?'Cycle now to Agent':'Cycle now to Oracle'
+    )+' · NOT SENT');
+    ownerBtn.type='button';
+    ownerBtn.addEventListener('click',()=>copyText(ownerAction.text,ownerBtn));
+    ownerBox.append(ownerBtn);
+    const preview=el('details','ct5-owner-copy-preview');
+    preview.append(el('summary',null,'View copy/paste message · '+ownerAction.target));
+    preview.append(el('pre','ct5-owner-copy-block',ownerAction.text));
+    ownerBox.append(preview);
+   }
+   group.append(ownerBox);
    // A newer source-backed Oracle next action supersedes a stale prepared
    // native packet, but does not confer message delivery or write permission.
    const sourceNext=evidence?.nativeNext&&evidence?.nextSourceUrl?
