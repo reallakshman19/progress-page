@@ -86,14 +86,12 @@ function nativeRows(nativeTasks,chatLinks,observations){
    'Source observation revision: '+(matched?.revision||'NOT_VERIFIED'),
    'Source occurrence: '+(matched?.occurrenceId||'NOT_VERIFIED'),
    'Recorded next action: '+(t.next||'NOT_RECORDED'),
-   'Read current Board: '+pageHref('adhoc/'+t.key).replace('/cycle-board','/cycle-board'),
+   'Read current Board: '+BROWSER_SITE+'#/adhoc/'+t.key+'/cycle-board',
    'Continue only the existing authorized READ_ONLY task. Read original sources and earlier native return;',
    'do NOT redo completed work, edit engineering models, treat CLOS/unsupported XML as approved, or assert PASS.',
    'Return once to the existing native task; otherwise AWAIT_ORACLE_RECONCILIATION.',
    'Delivery/recipient acknowledgment: NOT_VERIFIED. Copying this instruction does not send it.'
   ];
-  // Adhoc route is different from real project routes.
-  lines[6]='Read current Board: '+BROWSER_SITE+'#/adhoc/'+t.key+'/cycle-board';
   return {
    key:t.key,id:t.id||t.key,sourceType:'NATIVE_TASK',label:t.label,wbs:t.wbs||'UNMAPPED',
    milestoneId:null,role:t.role||'Builder',recipientLabel:'NOT_VERIFIED',
