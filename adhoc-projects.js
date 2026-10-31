@@ -351,13 +351,14 @@ export function renderAdhocProjects(root,route,nav,options={}) {
       card('Existing Page data contract','The governing project WBS and append-only audit remain in the original Progress Page records.',[['Read portable data contract',C+'/blob/main/skills/agent-work/progress-page/references/DATA_CONTRACT.md']])
     ]);
   } else if(route.section==='delivery'){
-    const s=section(body,'Four bounded vertical delivery slices',
+    const s=section(body,'Four original delivery slices + focused CT-5 continuation',
       'These are implementation contracts, not a new project WBS. Their status must be checked in actual downstream native evidence; no completion is implied here.');
     addCards(s,[
       card('CT-1 · Current context','One working URL displays the native evidence, current WBS, optional Cycle and original Page audit; no new agent report.',[['Acceptance and handoff',DOC+'CYCLE_BOARD_VERTICAL_SLICES.md']]),
       card('CT-2 · Changed-only delta','Recheck source changes, wrong recipient, already returned, Page drift and UNKNOWN. No invented Cycle authorization.',[['Acceptance and handoff',DOC+'CYCLE_BOARD_VERTICAL_SLICES.md']]),
       card('CT-3 · Reviewed Page proposal','The Page writer reuses native source identity through existing propose/dry-run tools; no automatic publication.',[['Existing writer rules',P+'/blob/main/README.md']]),
-      card('CT-4 · Owner trial and falsification','Independent negative tests plus baseline-vs-pilot active effort for Coder, IR, Oracle, Owner, Page writer and maintenance.',[['Test contract',DOC+'CYCLE_BOARD_VERTICAL_SLICES.md']])
+      card('CT-4 · Owner trial and falsification','Independent negative tests plus baseline-vs-pilot active effort for Coder, IR, Oracle, Owner, Page writer and maintenance.',[['Test contract',DOC+'CYCLE_BOARD_VERTICAL_SLICES.md']]),
+      card('CT-5 · Agent continuation & ACK bridge','Shared copy/open continuation for all existing Page Cycle Boards and TOPO-A/B. Delivery, ACK and native return stay unverified until sourced; no direct messaging or new report.',[['Read CT-5 trial and limitations',P+'/blob/main/docs/CYCLE_BOARD_CT5_AGENT_CONTINUATION.md'],['Open example',LIVE+'#/topofix/cycle-board']])
     ]);
   } else if(route.section==='tests'){
     const s=section(body,'Project-specific Test Lab',
