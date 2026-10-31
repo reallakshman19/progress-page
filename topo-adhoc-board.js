@@ -10,11 +10,14 @@ const TOPO_XML='https://github.com/reallakshman19/XML_Compare_Utilities';
 const TOPO_PAGE_REPO='https://github.com/reallakshman19/progress-page';
 const TOPO_XML_PIN='/blob/417bf6a954c5a6de72237537e94b05b285191350/';
 const TOPO_WBS_URL=TOPO_REPO+'/issues/3', TOPO_RELAY_URL=TOPO_COMMON+'/pull/572', TOPO_PAGE_URL=TOPO_PAGE_REPO+'/pull/95';
+const TOPO_CONCEPT_A=TOPO_PAGE_REPO+'/blob/main/docs/TOPO_A_ASSISTED_CONNECTION_CONCEPT_SPEC_R1.md';
+const TOPO_CONCEPT_B=TOPO_PAGE_REPO+'/blob/main/docs/TOPO_B_UNIVERSAL_XML_TOPOLOGY_CONCEPT_SPEC_R1.md';
 
 export const TOPO_ADHOC_INFO=Object.freeze({
  'topo-a':Object.freeze({
    key:'topo-a',label:'TOPO-A · Assisted Connection Repair',
    issue:TOPO_REPO+'/issues/12',issueNumber:12,wbs:'3.2 / 4.1',
+   concept:TOPO_CONCEPT_A,
    wbsNote:'Existing TopoFix WBS R1: manual review and evidence-qualified connections',
    objective:'Make intended connection vs declared closure discoverable and auditable without automatic unsafe repair.',
    case:'Node 6880 / Node 6450 · 240.6 mm apart · 114.3 mm OD · declared CLOS. Connection intent remains UNVERIFIED.',
@@ -22,6 +25,7 @@ export const TOPO_ADHOC_INFO=Object.freeze({
    boundary:'Never remove CLOS or bridge 240.6 mm by distance alone. ≤25 mm is the automatic threshold; any larger repair needs evidence and authority.',
    ownership:'PSI116 connection review, source port graph, manual second pass and Manual Fix Queue; no shared format-adapter edits.',
    sources:Object.freeze([
+    Object.freeze({label:'Concept note and detailed engineering specification · R1',url:TOPO_CONCEPT_A,detail:'Owner outcome, CLOS/remote-port review, exact-source identity, assisted queue, safety gates, acceptance and Board onboarding contract. PROPOSED; not authority.'}),
     Object.freeze({label:'Native task and actual 6880/6450 witnesses',url:TOPO_REPO+'/issues/12',detail:'Original private XML is not copied to the Page. Receiver byte access NOT_RUN.'}),
     Object.freeze({label:'Governing TopoFix WBS R1',url:TOPO_WBS_URL,detail:'WBS 3.2/4.1 is already governed here.'}),
     Object.freeze({label:'Manual Fix Queue draft',url:TOPO_REPO+'/pull/11',detail:'Check ownership before changing queue/replay.'}),
@@ -36,6 +40,7 @@ export const TOPO_ADHOC_INFO=Object.freeze({
  'topo-b':Object.freeze({
    key:'topo-b',label:'TOPO-B · Universal XML Topology Adapter',
    issue:TOPO_XML+'/issues/239',issueNumber:239,wbs:'2.1 → 4.1',
+   concept:TOPO_CONCEPT_B,
    wbsNote:'Existing TopoFix WBS R1. Universal format extension is PROPOSED, not published acceptance.',
    objective:'Reuse the InputXML workspace and CIIFR adapters for a source-traceable, read-only multi-format topology graph.',
    case:'F05/R4: 56 elements each; GLRD: 521 elements. Unsupported XML must report UNSUPPORTED_INPUT, not zero-findings PASS.',
@@ -43,6 +48,7 @@ export const TOPO_ADHOC_INFO=Object.freeze({
    boundary:'Never construct a CII writer, change Weight/Final, coerce unsupported profiles or fabricate geometry from missing coordinate seeds.',
    ownership:'InputXML format routing and normalized read-only evidence adapters; no PSI116 connection-review writes.',
    sources:Object.freeze([
+    Object.freeze({label:'Concept note and detailed XML topology specification · R1',url:TOPO_CONCEPT_B,detail:'Format matrix, InputXML/CIIFR reuse, typed read-only evidence graph, source provenance, qualification cases and Cycle Board contract. PROPOSED; no writer.'}),
     Object.freeze({label:'Native task and source expectations',url:TOPO_XML+'/issues/239',detail:'Original XML files are private. Access and digest receipt NOT_RUN.'}),
     Object.freeze({label:'Pinned InputXML Workspace',url:TOPO_XML+TOPO_XML_PIN+'tabs/inputxml-workspace/inputxml-workspace-tab.js',detail:'Existing clean→5C→InputXML conversion and diagnostics.'}),
     Object.freeze({label:'Pinned F05/R4 profile parser',url:TOPO_XML+TOPO_XML_PIN+'prototypes/ciifr-map/xml-profiles.js',detail:'Native-mm source fields and coordinates are authority boundaries.'}),
