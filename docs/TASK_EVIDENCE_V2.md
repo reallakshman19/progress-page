@@ -2,7 +2,7 @@
 
 **Scope:** every existing Agent/Oracle task on registered Progress Page Cycle Boards and TOPO-A/B Adhoc tasks. One **read-only projection**, never a new WBS, assignment, receipt store, messaging action or approval channel. Owner-facing during **Cycle now**.
 
-The card title is **TASK EVIDENCE v2 · Project / Agent / Task**. Metadata: **Last reconciled: actual reviewed event or NOT_VERIFIED · Source status: CURRENT / PARTIAL / UNKNOWN · Source observed: time of original source read or NOT_VERIFIED.** Metadata is not an information line.
+The card title is **TASK EVIDENCE v2 · Project / Agent / Task**. Metadata: **Last reconciled: actual reviewed event or NOT_VERIFIED · Source status: CURRENT / PARTIAL / UNKNOWN.** Source read timestamps remain in provenance, not an extra Owner line. Metadata is not an information line.
 
 Exactly five information lines:
 
