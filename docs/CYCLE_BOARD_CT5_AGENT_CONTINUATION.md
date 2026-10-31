@@ -14,6 +14,14 @@ For the **current** next instruction, `PREPARED`, `POSTED`, `DELIVERED`, `ACKNOW
 
 An Oracle posted a bounded instruction on a native GitHub issue, but the existing ChatGPT agent conversation did not receive or acknowledge it. The old Cycle Board could see the GitHub occurrence yet could not distinguish **posted**, **delivered**, **acknowledged**, **returned**, and **reconciled**. It must not call a posted issue message an agent continuation.
 
+## Action to Owner — compact copy/paste transaction
+
+Each existing Task Evidence v2 card can expose a **small Action to Owner** section directly beneath the five information lines. It is **not a sixth line** or a second task ledger. The Board offers a **Copy Cycle now to Agent · NOT SENT** message only when a current native task has a source-linked, Oracle-reported bounded next action and the review comment belongs to that same issue. For a completed/review-gated, stale, wrong-source, unverified-role or unsupported task, the surface fails closed to **Copy Cycle now to Oracle** for reconciliation, or **NONE** if no original task/acting role is verified.
+
+All Board-generated copy blocks have status **PREPARED_NOT_SENT** and are *options*, not proof of a required Owner action; the acting Oracle decides `AWAITING_RELAY` separately from authenticated coordination evidence. The block uses the original native issue, current Board link, expected native return and unchanged READ_ONLY/HOLD restriction. It includes **no private conversation URL**; the Owner pastes it into the **existing and manually verified** Agent or Oracle conversation. Copying does not imply delivery, ACK or approval. The acting Agent/Oracle may separately report one **actual Owner-only decision or source/custody input** with its own link, rather than fabricating a Board task. If there is no genuine Owner dependency, say `Action to Owner: NONE`.
+
+**Other issues needing Owner attention** are concise, source-linked exceptions written by the acting Agent/Oracle. The Board does not manufacture them from Page labels; when not observed it says NOT_VERIFIED and points to the original issue.
+
 ## User workflow
 
 1. Open the **Cycle Board** in any registered project: `#/ciifr/cycle-board`, `#/ciifr-node/cycle-board`, `#/g9v35/cycle-board`, `#/topofix/cycle-board`, `#/doc2table/cycle-board` and other active project tabs; or one of `#/adhoc/topo-a/cycle-board`, `#/adhoc/topo-b/cycle-board`.

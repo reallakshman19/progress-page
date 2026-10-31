@@ -151,6 +151,8 @@ def main():
                               "Task Evidence v2 must project each existing CT-5 task in "+route)
                         check(all(v2.nth(i).locator(".te-line").count()==5 for i in range(v2.count())),
                               "Every Task Evidence v2 card must have exactly 5 lines")
+                        check(panel.locator(".ct5-owner-action").count()==v2.count(),
+                              "Each Board task must expose one separate Action to Owner transaction")
                         check(all("Source status:" in v2.nth(i).inner_text() for i in range(v2.count())),
                               "Task Evidence v2 source freshness missing")
                         check("instruction delivery: NOT_VERIFIED" in panel.text_content(),
@@ -256,6 +258,10 @@ def main():
                                       "TOPO Board must show one native Task Evidence v2 card")
                                 check(page.locator(".topo-ct5-slot .task-evidence-v2 .te-line").count()==5,
                                       "TOPO native Task Evidence v2 must have five information lines")
+                                check(page.locator(".topo-ct5-slot .ct5-owner-action").count()==1,
+                                      "TOPO native task must expose Action to Owner separately")
+                                check("Action to Owner" in page.locator(".topo-ct5-slot .ct5-owner-action").inner_text(),
+                                      "Owner transaction heading missing")
                                 check("Engineering HOLD" in page.locator(".topo-ct5-slot .task-evidence-v2").inner_text(),
                                       "Native engineering HOLD must survive evidence projection")
                                 check(page.locator(".topo-ct5-slot .ct5-actions button").count()==1,

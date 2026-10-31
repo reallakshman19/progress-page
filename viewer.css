@@ -717,3 +717,12 @@ main{width:100%;min-width:0}
 .task-evidence-v2 .te-line b{font-size:12px;white-space:normal}
 .task-evidence-v2 a{overflow-wrap:anywhere}
 @media(max-width:620px){.task-evidence-v2{padding:10px}.task-evidence-v2 .te-line{font-size:12px}}
+
+/* Small copy-only Owner transaction below the frozen five-line card. */
+.ct5-owner-action{padding:9px 11px;border:1px dashed var(--bd);border-radius:8px;min-width:0;overflow-wrap:anywhere;display:grid;gap:5px}
+.ct5-owner-action h5,.ct5-owner-action p{margin:0}
+.ct5-owner-action h5{font-size:12px}
+.ct5-owner-action>.btn{justify-self:start;white-space:normal}
+.ct5-owner-copy-preview>summary{cursor:pointer;font-size:12px}
+.ct5-owner-copy-block{font:12px/1.5 ui-monospace,SFMono-Regular,Consolas,monospace;white-space:pre-wrap;overflow-wrap:anywhere;padding:10px;background:var(--panel);border-radius:6px;max-width:100%;overflow-x:auto}
+@media(max-width:620px){.ct5-owner-action{padding:8px}.ct5-owner-action>.btn{width:100%}}

@@ -2,7 +2,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {cycleNowRoleSelection,cycleNowRelayDisposition,cycleNowRoleText,
- renderContinuationBridge} from '../cycle-board-continuation.js';
+ cycleNowOwnerActionModel,renderContinuationBridge} from '../cycle-board-continuation.js';
 
 const A='https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/12';
 const B='https://github.com/reallakshman19/XML_Compare_Utilities/issues/239';
@@ -128,7 +128,7 @@ test('Existing Board retains agent evidence; Oracle copy control only for explic
   assert.equal(collect(root,x=>x.tag==='p'&&x.className==='te-line').length,5);
   const buttons=collect(root,x=>x.tag==='button');
   assert.equal(buttons.filter(x=>x.textContent.includes('Copy Oracle Cycle now')).length,1);
-  assert.equal(buttons.filter(x=>x.textContent.includes('Copy Cycle now')).length,1);
+  assert.equal(buttons.filter(x=>x.textContent==='Copy Cycle now · not sent').length,1);
   assert.doesNotMatch(root.textContent,/chatgpt\.com\/c\//);
   assert.match(root.textContent,/Oracle Cycle now/);
   const agentOnly=node('main');
@@ -136,4 +136,83 @@ test('Existing Board retains agent evidence; Oracle copy control only for explic
   assert.equal(collect(agentOnly,x=>x.tag==='button')
    .filter(x=>x.textContent.includes('Copy Oracle Cycle now')).length,0);
  }finally{globalThis.document=original;}
+});
+
+
+test('Action to Owner: source-anchored current TOPO next step yields one Agent copy block, never delivered',()=>{
+ const row={...tasks[1],key:'topo-a',sourceType:'NATIVE_TASK',
+  status:'REVIEW_NATIVE_AUTHORITY',state:'READ_ONLY FIRST'};
+ const evidence={sourceStatus:'CURRENT',
+  nativeNext:'Run exactly 3 synthetic CLOS checks in scratch',
+  nextSourceUrl:A+'#issuecomment-6540556158'};
+ const action=cycleNowOwnerActionModel(row,{projectKey:'topo-a',
+  actingRole:'ORACLE',evidence});
+ assert.equal(action.kind,'CYCLE_NOW_TO_AGENT');
+ assert.equal(action.status,'PREPARED_NOT_SENT','copying never proves a coordination obligation');
+ assert.equal(action.target,'Existing TOPO-A Agent conversation (verify recipient)');
+ assert.match(action.text,/Run exactly 3 synthetic CLOS checks in scratch/);
+ assert.match(action.text,/issuecomment-6540556158/);
+ assert.match(action.text,/No production writes|no production writes/);
+ assert.match(action.text,/NOT SENT/);
+ assert.equal(action.delivered,false);
+ assert.equal(action.acknowledged,false);
+ assert.doesNotMatch(action.text,/chatgpt\.com\/c\//);
+ assert.doesNotMatch(action.text,/CURRENT\.json/);
+});
+
+test('Action to Owner: Agent return, stale Page task, unknown or wrong-issue source cannot dispatch',()=>{
+ const row={...tasks[1],key:'topo-a',sourceType:'NATIVE_TASK',
+  status:'REVIEW_NATIVE_AUTHORITY'};
+ const good={sourceStatus:'CURRENT',nativeNext:'Authorized read-only source check',
+  nextSourceUrl:A+'#issuecomment-6540556158'};
+ const agent=cycleNowOwnerActionModel(row,{projectKey:'topo-a',actingRole:'AGENT',evidence:good});
+ assert.equal(agent.kind,'CYCLE_NOW_TO_ORACLE');
+ assert.match(agent.text,/existing Oracle coordination/);
+ assert.doesNotMatch(agent.text,/Continue ONLY after/);
+ const stale=cycleNowOwnerActionModel({...row,status:'RECONCILE_FIRST'},
+  {projectKey:'topo-a',actingRole:'ORACLE',evidence:good});
+ assert.equal(stale.kind,'CYCLE_NOW_TO_ORACLE','returned/completed work routes to Oracle');
+ for(const bad of [
+  {...good,nextSourceUrl:B+'#issuecomment-6540556158'},
+  {...good,sourceStatus:'PARTIAL'},
+  {...good,nextSourceUrl:'https://evil.example/'},
+  {...good,nextSourceUrl:undefined}
+ ]){
+  const x=cycleNowOwnerActionModel(row,{projectKey:'topo-a',actingRole:'ORACLE',evidence:bad});
+  assert.equal(x.kind,'CYCLE_NOW_TO_ORACLE','no untrusted executable Agent handoff');
+ }
+ const unknown=cycleNowOwnerActionModel(row,{projectKey:'topo-a',actingRole:'UNKNOWN',evidence:good});
+ assert.equal(unknown.kind,'NONE');
+ assert.equal(unknown.text,null);
+ const noTask=cycleNowOwnerActionModel({...row,source:'https://evil.example/'},
+  {actingRole:'ORACLE',evidence:good});
+ assert.equal(noTask.kind,'NONE');
+});
+
+test('Action to Owner is separate from exactly five lines and offers copyable plaintext in existing CT-5',()=>{
+ const old=globalThis.document;
+ globalThis.document={createElement:node};
+ try{
+  const row={key:'topo-a',id:'topo-a',label:'TOPO-A',
+   issue:A,wbs:'3.2 / 4.1',next:'Review original CLOS evidence',role:'Builder'};
+  const root=node('main');
+  renderContinuationBridge(root,null,{key:'topo-a',nativeTasks:[row],actingRole:'ORACLE'});
+  const te=collect(root,x=>x.tag==='article'&&x.className==='task-evidence-v2');
+  const actions=collect(root,x=>x.tag==='section'&&x.className==='ct5-owner-action');
+  assert.equal(te.length,1);
+  assert.equal(actions.length,1);
+  assert.equal(collect(te[0],x=>x.tag==='p'&&x.className==='te-line').length,5);
+  const btn=collect(actions[0],x=>x.tag==='button');
+  assert.equal(btn.length,1);
+  assert.match(btn[0].textContent,/Copy Cycle now to Oracle/);
+  assert.match(actions[0].textContent,/NOT SENT/);
+  const preview=collect(actions[0],x=>x.tag==='pre'&&x.className==='ct5-owner-copy-block');
+  assert.equal(preview.length,1);
+  assert.match(preview[0].textContent,/Cycle now — topo-a/);
+  assert.match(preview[0].textContent,/issues\/12/);
+  const noRole=node('main');
+  renderContinuationBridge(noRole,null,{key:'topo-a',nativeTasks:[row]});
+  assert.equal(collect(noRole,x=>x.tag==='section'&&x.className==='ct5-owner-action').length,1);
+  assert.equal(collect(noRole,x=>x.tag==='pre'&&x.className==='ct5-owner-copy-block').length,0);
+ }finally{globalThis.document=old;}
 });
