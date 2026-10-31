@@ -12,11 +12,17 @@ Exactly five information lines:
 4. **BLOCKERS & RELAY:** actual original agent return, review and authority level, source/recipient/file/writer blockers and engineering/release HOLD.
 5. **NEXT → ONE ACTOR:** one bounded authorized action, expected evidence and original return destination, plus read-only/no-production-write restriction.
 
+## Action to Owner — copy/paste after the five lines
+
+A **small separate transaction section** may appear under a five-line Task Evidence v2 card. It offers a source-bound, plain-text **Copy Cycle now to Agent** or **Copy Cycle now to Oracle** message for the *existing* conversation, or an exact Owner-only decision/input where the acting Agent/Oracle has established one. It is **not** line six, a native return, a new WBS, message transport or acknowledgment. Show **NONE** if no Owner handoff is justified. Other Owner issues need explicit source-linked actor reporting; Page summaries cannot invent them.
+
+The Board CT-5 control uses the current original issue and same-issue scoped acceptance. Missing/older/foreign-issue authorization routes to Oracle reconciliation rather than an executable Agent instruction. Copy means **NOT SENT**; recipient ACK remains independent. The authoritative [Common Action to Owner contract](https://github.com/reallakshman19/Common/blob/main/skills/agent-work/TASK_EVIDENCE_V2.md) governs both chat and Page presentation.
+
 ## When an established agent or Oracle receives Cycle now
 
 1. Read the **Cycle Board first** as operational start: current WBS, task, INFO-Auto, native delta, agent return, authority and blockers.
 2. Read original native issue/PR and relay sources to resolve stale Board labels or source gaps; do not assume the Board is authoritative.
-3. Present **one five-line Task Evidence v2 card per relevant existing task**. If the Board cannot be rendered, use original native sources and report BOARD_NOT_OBSERVED with PARTIAL/UNKNOWN instead of claiming success.
+3. Apply acting-role ownership: **Oracle chat defaults to one own coordination card**, Agent/IR chat to its own task, while the Board may show all existing source-backed role-owned cards. Include Action to Owner only for a genuinely needed copy/paste transaction. If the Board cannot be rendered, use original native sources and report BOARD_NOT_OBSERVED with PARTIAL/UNKNOWN.
 4. Continue only the existing authorized native task, or for an explicitly activated canonical Oracle Cycle verify actual CURRENT.json on main, assignment/generation and receipt gates.
 5. Keep evidence in the original issue and Common relay. Oracle reconciles before reviewed Progress Page publication. Never create a duplicate Board report.
 
