@@ -136,7 +136,7 @@ export function taskEvidenceV2Model(row,{projectKey=row?.key||'UNKNOWN',
  const pageOK=native||pageFetch?.status==='ok';
  const current=native&&feed?.status==='ok'&&sourceOK?'CURRENT':
    (sourceOK||pageOK||feed?.status==='partial')?'PARTIAL':'UNKNOWN';
- const last=native&&claim.acceptance?claim.acceptance.createdAt||'UNKNOWN':'NOT_VERIFIED';
+ const last=native&&claim.acceptance?'ORACLE_REPORTED '+(claim.acceptance.createdAt||'TIME_UNKNOWN'):'NOT_VERIFIED';
  const observed=native?feed?.observedAt||'NOT_VERIFIED':pageFetch?.observedAt||'NOT_VERIFIED';
  const state=te2Safe(row.state||'UNKNOWN');
  const progress=native?claim.readOnly+' · Current task: '+claim.current:
