@@ -5,6 +5,7 @@ import { el, link, copyText } from './util.js?v=34';
 import { wbsGroups } from './progress.js?v=34';
 import { agentStartModel, agentStartTaskText } from './agent-start.js?v=34';
 import { smartBadgesForScope, renderSmartBadges } from './smart-badges.js?v=34';
+import {taskEvidenceV2Model,renderTaskEvidenceV2} from './task-evidence-v2.js?v=34';
 
 const CT5_PUBLIC_SOURCE=/^https:\/\/github\.com\/[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+\/(?:issues\/[1-9]\d*|pull\/[1-9]\d*|commit\/[a-fA-F0-9]{40})(?:#issuecomment-[1-9]\d*)?$/;
 const CT5_CHATGPT=/^https:\/\/chatgpt\.com\/(?:c\/|g\/[^/?#]+\/c\/)[A-Za-z0-9_-]+(?:[/?#].*)?$/;
@@ -62,6 +63,9 @@ function ct5PageRows(project,key,chatLinks,observations,scope){
    role:ct5Safe(c.who?.role)||'UNKNOWN',recipientLabel:ct5Safe(chat.label)||'NOT_RECORDED',
    source:nativeSource,sourceRevision:observation?.revision||null,sourceOccurrence:observation?.occurrenceId||null,
    state,recordedNext:ct5Safe(c.next?.text)||'NOT_RECORDED',nextActor,
+   recordedNow:ct5Safe(c.now)||null,
+   prRefs:(c.refs||[]).filter(r=>/^https:\/\/github\.com\/[^/]+\/[^/]+\/pull\/\d+$/.test(r.u||''))
+    .map(r=>({url:r.u,status:'STATUS UNKNOWN'})),
    recipientIdKnown:!!id8,privateUrl:ct5PickPrivate(chatLinks,[id8]),
    status:status==='RECONCILE_FIRST'?'RECONCILE_FIRST':
     !instruction?'TASK_PACKET_UNAVAILABLE':notAgent?'ACTOR_REVIEW_REQUIRED':status,
@@ -99,7 +103,7 @@ function ct5NativeRows(nativeTasks,chatLinks,observations){
    state:'PREPARED / READ_ONLY FIRST',recordedNext:t.next||'NOT_RECORDED',
    nextActor:'Assigned agent / UNKNOWN recipient',
    source,sourceRevision:matched?.revision||null,sourceOccurrence:matched?.occurrenceId||null,
-   recipientIdKnown:!!t.chatId8,privateUrl,
+   relatedPRs:t.relatedPRs||[],recipientIdKnown:!!t.chatId8,privateUrl,
    status:matched?'REVIEW_NATIVE_AUTHORITY':'SOURCE_NOT_VERIFIED',
    delivery:'NOT_VERIFIED',acknowledgment:'NOT_VERIFIED',returnState:'NOT_VERIFIED',
    returnUrl:null,instructions:lines.join('\n'),smartBadges:[]
@@ -174,6 +178,20 @@ export function renderContinuationBridge(root,project,options={}){
   const group=el('div','ct5-group');
   group.append(el('h4',null,'WBS '+wbs+' · '+rows.length+' recorded task(s)'));
   for(const row of rows){
+   const feed=options.evidenceFeeds?.[row.source]||null;
+   const evidence=taskEvidenceV2Model(row,{projectKey:m.project,project,feed,
+    observations:options.observations||[],pageFetch:options.pageFetch||null});
+   renderTaskEvidenceV2(group,evidence);
+   // A newer source-backed Oracle next action supersedes a stale prepared
+   // native packet, but does not confer message delivery or write permission.
+   const sourceNext=evidence?.nativeNext&&evidence?.nextSourceUrl?
+     'Cycle now — existing native task, no new Cycle or onboarding.\n'+
+     'Native source: '+row.source+'\n'+
+     'Latest Oracle-reported next action: '+evidence.nativeNext+'\n'+
+     'Reconcile original instruction: '+evidence.nextSourceUrl+'\n'+
+     'Return to original issue with executed raw receipts; no production writes or engineering PASS.\n'+
+     'Delivery and recipient ACK NOT_VERIFIED.':null;
+   const copyRow=sourceNext?{...row,instructions:sourceNext}:row;
    const details=el('details','ct5-task');
    const title=el('summary');
    title.append(el('b',null,row.label),' · '+row.state+
@@ -198,7 +216,7 @@ export function renderContinuationBridge(root,project,options={}){
    if(row.returnUrl)actions.append(link(row.returnUrl,'Inspect return pointer','btn small'));
    const copy=el('button','btn small','Copy Cycle now · not sent');
    copy.type='button';copy.disabled=!row.instructions;
-   if(row.instructions)copy.addEventListener('click',()=>copyText(continuationText(row,m.project),copy));
+   if(copyRow.instructions)copy.addEventListener('click',()=>copyText(continuationText(copyRow,m.project),copy));
    actions.append(copy);
    if(row.privateUrl)actions.append(link(row.privateUrl,
     row.status==='RECONCILE_FIRST'||row.status==='ACTOR_REVIEW_REQUIRED'?

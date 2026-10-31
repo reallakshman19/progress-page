@@ -707,3 +707,13 @@ main{width:100%;min-width:0}
  .ct5-actions{align-items:stretch}
  .ct5-actions .btn{min-width:0}
 }
+
+
+/* Task Evidence v2: one read-only five-line owner card per existing CT-5 task. */
+.task-evidence-v2{border:1px solid var(--bd);border-radius:9px;background:var(--card);padding:12px 14px;margin:9px 0;min-width:0;max-width:100%;overflow-wrap:anywhere}
+.task-evidence-v2 h5{font-size:13px;font-weight:700;margin:0 0 3px}
+.task-evidence-v2 .te-meta{font-size:11px;margin:0 0 7px}
+.task-evidence-v2 .te-line{font-size:12px;line-height:1.5;margin:4px 0;min-width:0}
+.task-evidence-v2 .te-line b{font-size:12px;white-space:normal}
+.task-evidence-v2 a{overflow-wrap:anywhere}
+@media(max-width:620px){.task-evidence-v2{padding:10px}.task-evidence-v2 .te-line{font-size:12px}}
