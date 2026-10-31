@@ -53,7 +53,7 @@ function ct5PageRows(project,key,chatLinks,observations,scope){
   const observation=(observations||[]).find(s=>s.source===nativeSource)||null;
   const state=ct5Safe(c.state)||'UNKNOWN';
   const returned=ct5LinkedReturn(project,id,nativeSource);
-  const status=ct5Ended(state)?'RECONCILE_FIRST':'REVIEW_NATIVE_AUTHORITY';
+  const status=ct5Ended(state)||returned?'RECONCILE_FIRST':'REVIEW_NATIVE_AUTHORITY';
   const nextActor=ct5Safe(c.next?.actor)||'UNKNOWN';
   const notAgent=/(?:^|\b)(?:owner|oracle|reviewer_ir|reviewer|ir)(?:\b|$)/i.test(nextActor);
   const instruction=packetModel?agentStartTaskText(packetModel):null;
@@ -135,6 +135,14 @@ export function continuationText(row,projectKey){
    'This is not a new canonical Oracle Cycle or dispatch. Agent must verify current recipient, role,\n'+
    'source SHA/fixture receipt, prior return, HOLD and active native assignment before any work.\n'+
    'Do not re-run an already returned task. Use one existing native return, never a second Board report.\n';
+ if(row.status==='RECONCILE_FIRST'||row.status==='ACTOR_REVIEW_REQUIRED'){
+  return header+'\nSTOP — '+row.status+
+    '. Prior return or next-actor role requires Oracle reconciliation first.\n'+
+    'Do not re-run, dispatch, edit, merge or publish. AWAIT_ORACLE_RECONCILIATION.\n'+
+    'Inspect original task: '+(row.source||'NOT_VERIFIED')+'\n'+
+    'Return pointer: '+(row.returnUrl||'NOT_VERIFIED')+'\n'+
+    'DELIVERY NOT_VERIFIED; ACKNOWLEDGMENT NOT_VERIFIED; COPY/OPEN IS NOT A SEND OR ACK.';
+ }
  return header+'\n'+row.instructions+'\n\nDELIVERY NOT_VERIFIED; ACKNOWLEDGMENT NOT_VERIFIED; '+
    'COPY/OPEN IS NOT A SEND OR ACK.';
 }
@@ -190,7 +198,9 @@ export function renderContinuationBridge(root,project,options={}){
    copy.type='button';copy.disabled=!row.instructions;
    if(row.instructions)copy.addEventListener('click',()=>copyText(continuationText(row,m.project),copy));
    actions.append(copy);
-   if(row.privateUrl)actions.append(link(row.privateUrl,'Resume Agent · open existing conversation (not sent)','btn small'));
+   if(row.privateUrl)actions.append(link(row.privateUrl,
+    row.status==='RECONCILE_FIRST'||row.status==='ACTOR_REVIEW_REQUIRED'?
+     'Review existing conversation · do not replay':'Resume Agent · open existing conversation (not sent)','btn small'));
    else actions.append(el('span','muted','Conversation not linked · add recipient under My links (id8 or task key); do not infer delivery.'));
    info.append(actions);
    if(row.status==='RECONCILE_FIRST'||row.status==='ACTOR_REVIEW_REQUIRED')info.append(el('p','banner',
