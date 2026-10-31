@@ -156,7 +156,7 @@ function renderTopoOperational(root,key,project,pageFetch){
        'Recorded Page next step (may be stale): '+w.recordedNext));
      const refs=el('div','ct-tools');
      if(w.source)refs.append(link(w.source,'Original Page evidence','btn small'),' ');
-     refs.append(link('#/topofix/progress','Open project WBS','btn small'));
+     refs.append(link('https://reallakshman19.github.io/progress-page/#/topofix/progress','Open project WBS','btn small'));
      card.append(refs);
      if(w.milestoneId)renderSmartBadges(card,smartBadgesForScope(project,{milestoneId:w.milestoneId}));
      list.append(card);
