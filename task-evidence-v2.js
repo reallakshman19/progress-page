@@ -11,6 +11,7 @@ const safe=x=>typeof x==='string'?x.replace(/[\r\n\t]/g,' ').replace(/\s+/g,' ')
 const part=text=>({text:String(text)});
 const href=(text,url)=>({text,url});
 const isSafeLink=u=>ISSUE.test(u||'')||PR.test(u||'')||COMMENT.test(u||'')||
+  /^https:\/\/github\.com\/[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+$/.test(u||'')||
   /^https:\/\/reallakshman19\.github\.io\/progress-page\/#\/[a-z0-9-]+\/cycle-board$/.test(u||'')||
   /^https:\/\/reallakshman19\.github\.io\/progress-page\/#\/adhoc\/topo-[ab]\/cycle-board$/.test(u||'');
 const titlePart=(label,url)=>isSafeLink(url)?href(label,url):part(label);
@@ -160,7 +161,9 @@ export function taskEvidenceV2Model(row,{projectKey=row?.key||'UNKNOWN',
  const lines=[
   line('1. TASK',titlePart(repo,repoUrl),part(' · WBS '+(row.wbs||'UNKNOWN')+' · '),
    titlePart(match&&ISSUE.test(row.source)?'Issue #'+match[3]:'Native task',row.source),
-   part(' · PR: '+prText+' · '),titlePart('Progress Page',pageUrl)),
+   part(' · PR: '+(prs.length?'':'NONE VERIFIED')),
+   ...prs.flatMap((p,i)=>[...(i?[part(' / ')]:[]),titlePart('#'+PR.exec(p.url)[3]+' '+(p.status||'STATUS UNKNOWN'),p.url)]),
+   part(' · '),titlePart('Progress Page',pageUrl)),
   line('2. PROGRESS',part(progress+' · '+authority)),
   line('3. WORK & PROOF',part(work+' · '),
    ...(returnUrl&&isSafeLink(returnUrl)?[href('Agent evidence',returnUrl),part(' · ')]:[]),
@@ -179,7 +182,8 @@ export function taskEvidenceV2Model(row,{projectKey=row?.key||'UNKNOWN',
  return {schema:'task-evidence.v2/read-only',title:(native?row.key.toUpperCase():projectKey)+' / '+safe(row.label||row.id||'TASK'),
   lastReconciled:last,observedAt:observed,sourceStatus:current,lines,
   nativeReturn:reportedReturn,acceptance:authority,canAuthorize:false,
-  sourceRevision:sourceRevision||null,readOnly:true};
+  sourceRevision:sourceRevision||null,readOnly:true,
+  nativeNext:native?claim.next:null,nextSourceUrl:reviewUrl||null};
 }
 
 export function taskEvidenceV2Text(model){
