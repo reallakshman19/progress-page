@@ -135,6 +135,34 @@ def main():
                         return {"documentWidth":g["documentWidth"],
                                 "mainWidth":round(g["main"]["width"]), "wbsCards":len(g["cards"])}
                     run_case(str(width)+"px "+route,run_one)
+            # CT-5 is the same read-only bridge across all registered active
+            # engineering/education projects, not a TOPO-only status page.
+            if width in (1440,390):
+                for ct5_project in ("ciifr","ciifr-node","g9v35","topofix","doc2table"):
+                    def ct5_cross_project():
+                        route=ct5_project+"/cycle-board"
+                        load(page,route)
+                        panel=page.locator(".ct5-continuation")
+                        check(panel.count()==1,"Missing shared CT-5 on "+route)
+                        check(panel.locator(".ct5-task").count()>=1,
+                              "No scoped existing WBS tasks in "+route)
+                        check("instruction delivery: NOT_VERIFIED" in panel.text_content(),
+                              "Cannot mark an issue/URL as delivered")
+                        check("ACK: NOT_VERIFIED" in panel.text_content(),
+                              "Cannot infer acknowledgment from Page state")
+                        check("Copy Cycle now" in panel.text_content(),
+                              "Copy-only continuation instruction missing")
+                        check(panel.locator("button").count()>=1,
+                              "CT-5 has no enabled copy interaction")
+                        check(panel.locator("button").filter(has_text="Send").count()==0,
+                              "CT-5 falsely promises direct message delivery")
+                        check(panel.locator('a[href*="chatgpt.com/c/"]').count()==0,
+                              "Private chat link must not be bundled in the public Page")
+                        g=geometry(page)
+                        check(g["documentWidth"]<=width+3,route+" overflow: "+str(g["documentWidth"]))
+                        return {"project":ct5_project,"ct5Tasks":panel.locator(".ct5-task").count(),
+                                "documentWidth":g["documentWidth"]}
+                    run_case(str(width)+"px CT-5 "+ct5_project,ct5_cross_project)
             # Adhoc is a top-level navigation workspace, never a project-data/WBS tab.
             for section in ("overview","cycle-board","contracts","delivery","tests"):
                 def run_adhoc():
@@ -209,6 +237,14 @@ def main():
                                       "Must show exactly the two existing WBS milestones")
                                 check(page.locator(".topo-page-grounding .ct-auto-section").count()==1,
                                       "Missing reused INFO-Auto section")
+                                check(page.locator(".topo-ct5-slot .ct5-continuation").count()==1,
+                                      "TOPO Board missing shared CT-5 continuation bridge")
+                                check(page.locator(".topo-ct5-slot .ct5-task").count()==1,
+                                      "TOPO bridge must scope to its one original native issue")
+                                check(page.locator(".topo-ct5-slot .ct5-actions button").count()==1,
+                                      "Copy-only native continuation action missing")
+                                check("ACK NOT_VERIFIED" in page.locator(".topo-ct5-slot").text_content(),
+                                      "TOPO bridge promoted unknown recipient acknowledgment")
                                 check(page.locator(".topo-page-grounding .ct-card.ct-auto").count()>=1,
                                       "No real published Page audit evidence rendered")
                                 check(page.locator(".topo-page-grounding button").filter(
@@ -257,6 +293,12 @@ def main():
                     page.locator(".cb-context").wait_for(timeout=30000)
                     check(page.locator(".ct-auto-section").count()==1,
                           "Page audit INFO-Auto must be present without live intake")
+                    check(page.locator(".ct5-continuation").count()==1,
+                          "Shared CT-5 continuation must exist on canonical Board")
+                    check(page.locator(".ct5-task").count()>=1,
+                          "Existing Page card tasks are not reusable in CT-5")
+                    check("ACK NOT_VERIFIED" in page.locator(".ct5-continuation").text_content(),
+                          "A Page record must never invent agent acknowledgment")
                     check("Cycle Board" in page.locator(".body").inner_text(),
                           "Canonical Cycle Board route did not render")
                     check("UNMAPPED" in page.locator(".cb-context").inner_text(),
