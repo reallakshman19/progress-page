@@ -190,7 +190,7 @@ export function renderContinuationBridge(root,project,options={}){
    copy.type='button';copy.disabled=!row.instructions;
    if(row.instructions)copy.addEventListener('click',()=>copyText(continuationText(row,m.project),copy));
    actions.append(copy);
-   if(row.privateUrl)actions.append(link(row.privateUrl,'Open existing conversation (private shortcut)','btn small'));
+   if(row.privateUrl)actions.append(link(row.privateUrl,'Resume Agent · open existing conversation (not sent)','btn small'));
    else actions.append(el('span','muted','Conversation not linked · add recipient under My links (id8 or task key); do not infer delivery.'));
    info.append(actions);
    if(row.status==='RECONCILE_FIRST'||row.status==='ACTOR_REVIEW_REQUIRED')info.append(el('p','banner',
