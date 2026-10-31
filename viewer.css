@@ -683,3 +683,27 @@ main{width:100%;min-width:0}
  .topo-wbs-grid{grid-template-columns:minmax(0,1fr)}
  .topo-operational .ct-tools{flex-wrap:wrap}
 }
+
+/* CT-5 is a shared read-only handoff surface; inherited WBS/INFO-Auto remain
+   primary, native source and private conversation data stay separate. */
+.ct5-continuation{min-width:0;max-width:100%;margin:14px 0;padding:14px;
+  border:1px solid var(--bd,#41444b);border-radius:10px;display:grid;gap:10px}
+.ct5-continuation>h3,.ct5-continuation>p{margin:0}
+.ct5-summary{min-width:0;padding:10px 12px;border-radius:7px;
+  background:var(--panel,#171b21)}
+.ct5-summary p{margin:4px 0 0}
+.ct5-group{display:grid;gap:8px;min-width:0}
+.ct5-group h4{margin:4px 0}
+.ct5-task{border:1px solid var(--bd,#41444b);border-radius:7px;
+  padding:10px;min-width:0;max-width:100%;overflow-wrap:anywhere}
+.ct5-task summary{cursor:pointer;overflow-wrap:anywhere;line-height:1.5}
+.ct5-task-body{display:grid;gap:8px;min-width:0;padding-top:10px}
+.ct5-task-body p{margin:0;overflow-wrap:anywhere}
+.ct5-actions{display:flex;flex-wrap:wrap;align-items:center;gap:8px;min-width:0}
+.ct5-actions .btn{white-space:normal;max-width:100%;overflow-wrap:anywhere}
+.topo-ct5-slot{min-width:0;max-width:100%}
+@media(max-width:720px){
+ .ct5-continuation{padding:10px}
+ .ct5-actions{align-items:stretch}
+ .ct5-actions .btn{min-width:0}
+}
