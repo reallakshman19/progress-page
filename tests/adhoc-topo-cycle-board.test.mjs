@@ -265,7 +265,7 @@ test('Adhoc boards show the CIIFR writer INFO-Auto cards, original WBS, groundin
    const links=findAll(sections[0],x=>x.tag==='a').map(x=>x.href);
    assert.ok(links.includes(TOPO_ADHOC_INFO[key].issue));
    assert.ok(links.includes(TOPO_ADHOC_INFO[key].concept));
-   assert.ok(links.some(x=>x.startsWith('#/topofix/progress')));
+   assert.ok(links.some(x=>x.endsWith('#/topofix/progress')));
    assert.ok(findAll(sections[0],x=>x.attributes?.['data-badge-id']?.startsWith('topofix/')).length>=1);
    const provenance=findAll(root,x=>x.tag==='details'&&x.className==='topo-board-sources');
    assert.equal(provenance.length,1,'source occurrences must be a disclosure');
