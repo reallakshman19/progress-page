@@ -218,3 +218,175 @@ test('Action to Owner is separate from exactly five lines and offers copyable pl
   assert.equal(collect(noRole,x=>x.tag==='pre'&&x.className==='ct5-owner-copy-block').length,0);
  }finally{globalThis.document=old;}
 });
+
+
+// Fast Lane F2: all facts below are *synthetic*, not new TOPO-A/B authorization.
+// The Board can recommend; it never authenticates source, dispatches or grants PASS.
+const pinned='a'.repeat(40);
+const baseFast=()=>{
+ const envelope={sourceIssue:A,taskId:'TOPO-A-12',recipientId:'agent-a',
+  sourceSha:pinned,permission:'READ_ONLY',
+  authorityRef:A+'#issuecomment-333',permittedStepIds:['trace','lookup','sidecar']};
+ const step={id:'lookup',taskId:'TOPO-A-12',recipientId:'agent-a',
+  sourceSha:pinned,permission:'READ_ONLY'};
+ return {sourceIssue:A,taskId:'TOPO-A-12',recipientId:'agent-a',
+  sourceSha:pinned,authorityVerified:true,envelopeSourceVerified:true,
+  sourceStatus:'CURRENT',boardObserved:true,executionEnvelope:envelope,nextStep:step};
+};
+
+test('F2-01: completed authorized substep may continue the next exact read-only envelope step',()=>{
+ const d=decideNextAction(baseFast());
+ assert.equal(d.action,'CONTINUE_EXISTING_SCOPE');
+ assert.equal(d.nextActor,'AGENT');
+ assert.equal(d.withinAuthorizedEnvelope,true);
+ assert.equal(d.canDispatch,false,'pure UI recommendation does not send');
+ assert.equal(d.canAuthorizeWrite,false);
+});
+
+test('F2-02: completed assignment never dispatches another Agent microtest',()=>{
+ const d=decideNextAction({...baseFast(),scopeCompleted:true,scopeCompletionVerified:true});
+ assert.equal(d.action,'DECIDE_NEXT_ASSIGNMENT');
+ assert.equal(d.nextActor,'ORACLE');
+ assert.equal(d.canDispatch,false);
+ const unreviewed=decideNextAction({...baseFast(),scopeCompleted:true});
+ assert.equal(unreviewed.action,'ORACLE_RECONCILE');
+});
+
+test('F2-03: new source-bound Agent return routes to Oracle rather than back to Agent',()=>{
+ const d=decideNextAction({...baseFast(),latestReturnNeedsReconciliation:true});
+ assert.equal(d.action,'ORACLE_RECONCILE');
+ const feed={issue:A,status:'ok',comments:[
+  {url:A+'#issuecomment-100',body:'Prior Oracle next instruction'},
+  {url:A+'#issuecomment-101',body:'Actual Agent return'},
+  {url:A+'#issuecomment-102',body:'New Oracle decision'}
+ ]};
+ const row={source:A,sourceType:'NATIVE_TASK',key:'topo-a',
+  status:'REVIEW_NATIVE_AUTHORITY'};
+ const evidence={sourceStatus:'CURRENT',nativeNext:'OLD NEXT: synthetic tests',
+  nextSourceUrl:A+'#issuecomment-100'};
+ const latest=cycleNowBoardDecision(row,evidence,feed,{boardObserved:true});
+ assert.equal(latest.action,'ORACLE_RECONCILE');
+ assert.equal(latest.newNativeCommentsObserved,true);
+ const action=cycleNowOwnerActionModel(row,{projectKey:'topo-a',
+  actingRole:'ORACLE',evidence,decision:latest,ownerRelayRequired:true});
+ assert.equal(action.kind,'NONE','new native delta invalidates stale Agent continuation');
+});
+
+test('F2-04: unverified writer custody blocks production write, not exact authorized read-only step',()=>{
+ const w=decideNextAction({...baseFast(),
+  nextStep:{...baseFast().nextStep,permission:'PRODUCT_WRITE'},
+  writerCustodyVerified:false});
+ assert.equal(w.action,'HOLD_AFFECTED_SCOPE');
+ assert.equal(w.reason,'WRITER_CUSTODY_UNVERIFIED');
+ const ro=decideNextAction({...baseFast(),writerCustodyVerified:false});
+ assert.equal(ro.action,'CONTINUE_EXISTING_SCOPE');
+ assert.equal(ro.canAuthorizeWrite,false);
+});
+
+test('F2-05: changed SHA/authority stops affected scope; forged envelope mismatch cannot continue',()=>{
+ for(const change of [{sourceChanged:true},{authorityChanged:true},
+  {materialScopeChanged:true}]){
+  assert.equal(decideNextAction({...baseFast(),...change}).action,
+   'REQUALIFY_AFFECTED_SCOPE');
+ }
+ const b=baseFast();
+ assert.equal(decideNextAction({...b,sourceSha:'b'.repeat(40)}).action,
+  'ORACLE_QUALIFY_SCOPE');
+ assert.equal(decideNextAction({...b,recipientId:'some-other-agent'}).action,
+  'ORACLE_QUALIFY_SCOPE');
+ assert.equal(decideNextAction({...b,executionEnvelope:{
+  ...b.executionEnvelope,authorityRef:B+'#issuecomment-333'}}).action,
+  'ORACLE_QUALIFY_SCOPE');
+ assert.equal(decideNextAction({...b,executionEnvelope:{
+  ...b.executionEnvelope,permittedStepIds:['trace']}}).action,
+  'ORACLE_QUALIFY_SCOPE');
+});
+
+test('F2-06: critical falsifier HOLD is scoped; separate read-only eligibility needs real separate source',()=>{
+ const fail=decideNextAction({...baseFast(),criticalFalsifierFailed:true});
+ assert.equal(fail.action,'HOLD_AFFECTED_SCOPE');
+ assert.equal(fail.unrelatedReadOnlyEligible,false);
+ const separate=decideNextAction({...baseFast(),criticalFalsifierFailed:true,
+  unrelatedReadOnlyAuthorized:true,unrelatedReadOnlyIssue:B,
+  unrelatedTaskId:'TOPO-B-239',
+  unrelatedAuthorityRef:B+'#issuecomment-789'});
+ assert.equal(separate.action,'HOLD_AFFECTED_SCOPE');
+ assert.equal(separate.unrelatedReadOnlyEligible,true,'separate source evidence is required');
+ assert.equal(decideNextAction({...baseFast(),criticalFalsifierFailed:true,
+  unrelatedReadOnlyAuthorized:true,unrelatedReadOnlyIssue:B}).unrelatedReadOnlyEligible,false);
+});
+
+test('F2-07: Board inaccessible continues from independently verified native envelope',()=>{
+ const d=decideNextAction({...baseFast(),boardObserved:false});
+ assert.equal(d.action,'CONTINUE_EXISTING_SCOPE');
+ assert.equal(d.boardStatus,'NOT_OBSERVED');
+ assert.equal(d.canDispatch,false);
+ assert.equal(decideNextAction({sourceIssue:A,boardObserved:false}).action,
+  'ORACLE_QUALIFY_SCOPE','Board unobserved cannot manufacture native authority');
+});
+
+test('F2-08: CT-5 copy/open never proves delivery or recipient ACK',()=>{
+ const current='TOPO-A-12#lookup';
+ const posted={assignmentRef:current,verified:true,ref:A+'#issuecomment-333'};
+ const d=cycleNowRelayDisposition({assignmentRef:current,posted});
+ assert.equal(d.status,'AWAITING_RELAY');
+ assert.equal(d.ownerActionRequired,false);
+ const other={assignmentRef:'other',verified:true,ref:'recipient-ack'};
+ assert.equal(cycleNowRelayDisposition({assignmentRef:current,posted,
+  acknowledged:other}).status,'AWAITING_RELAY');
+});
+
+test('F2-09: independent review cannot be replaced by agent self-score or product PASS',()=>{
+ const d=decideNextAction({...baseFast(),independentReviewRequired:true});
+ assert.equal(d.action,'ORACLE_QUALIFY_REVIEW');
+ assert.equal(d.nextActor,'ORACLE');
+ assert.equal(d.canAuthorizeWrite,false);
+ assert.equal(d.canGrantAuthority,false);
+});
+
+test('F2-10: no verified Owner dependency means Action to Owner NONE with no inert copy',()=>{
+ const row={source:A,sourceType:'NATIVE_TASK',key:'topo-a',
+  status:'REVIEW_NATIVE_AUTHORITY'};
+ const evidence={nativeNext:'Old check',nextSourceUrl:A+'#issuecomment-333',
+  sourceStatus:'CURRENT'};
+ const noAction=cycleNowOwnerActionModel(row,{actingRole:'ORACLE',
+  evidence,decision:decideNextAction({...baseFast(),latestReturnNeedsReconciliation:true})});
+ assert.equal(noAction.kind,'NONE');
+ assert.equal(noAction.text,null);
+ const review=cycleNowOwnerActionModel(row,{actingRole:'ORACLE',
+  evidence,ownerRelayRequired:true,decision:{action:'ORACLE_RECONCILE'}});
+ assert.equal(review.kind,'NONE','Oracle does not ask Owner to ping Oracle again');
+});
+
+test('F2-11: exact Owner-only decision must have matching native source',()=>{
+ const row={source:A,sourceType:'NATIVE_TASK',key:'topo-a',
+  status:'RECONCILE_FIRST'};
+ const decision=decideNextAction({...baseFast(),
+  ownerOnlyDecisionRequired:true,ownerDecisionSourceVerified:true,
+  ownerDecisionSource:A+'#issuecomment-333'});
+ assert.equal(decision.action,'OWNER_DECISION');
+ assert.equal(decision.ownerActionRequired,true);
+ const legit=cycleNowOwnerActionModel(row,{actingRole:'ORACLE',decision,
+  ownerDecision:{required:true,verified:true,source:A+'#issuecomment-333',
+   question:'Who holds exclusive P0 writer custody?'}});
+ assert.equal(legit.kind,'OWNER_DECISION');
+ assert.match(legit.text,/exclusive P0 writer custody/);
+ assert.equal(legit.status,'PREPARED_NOT_SENT');
+ const spoof=cycleNowOwnerActionModel(row,{actingRole:'ORACLE',decision,
+  ownerDecision:{required:true,verified:true,source:B+'#issuecomment-333',
+   question:'Approve merge'}});
+ assert.equal(spoof.kind,'NONE');
+ assert.equal(decideNextAction({...baseFast(),ownerOnlyDecisionRequired:true,
+  ownerDecisionSourceVerified:true,ownerDecisionSource:B+'#issuecomment-333'}).action,
+  'ORACLE_QUALIFY_SCOPE');
+});
+
+test('F2-12: no material delta means no substantive native status report',()=>{
+ const f={...baseFast(),nextStep:null,noMaterialDelta:true};
+ const d=decideNextAction(f);
+ assert.equal(d.action,'NO_MATERIAL_DELTA');
+ assert.equal(d.ownerActionRequired,false);
+ assert.equal(d.canDispatch,false);
+ const noSource=decideNextAction({...f,authorityVerified:false});
+ assert.equal(noSource.action,'ORACLE_QUALIFY_SCOPE');
+});
