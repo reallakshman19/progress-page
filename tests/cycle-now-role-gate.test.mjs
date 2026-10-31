@@ -2,7 +2,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {cycleNowRoleSelection,cycleNowRelayDisposition,cycleNowRoleText,
- cycleNowOwnerActionModel,renderContinuationBridge} from '../cycle-board-continuation.js';
+ cycleNowOwnerActionModel,decideNextAction,cycleNowBoardDecision,
+ renderContinuationBridge} from '../cycle-board-continuation.js';
 
 const A='https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/12';
 const B='https://github.com/reallakshman19/XML_Compare_Utilities/issues/239';
@@ -146,7 +147,7 @@ test('Action to Owner: source-anchored current TOPO next step yields one Agent c
   nativeNext:'Run exactly 3 synthetic CLOS checks in scratch',
   nextSourceUrl:A+'#issuecomment-6540556158'};
  const action=cycleNowOwnerActionModel(row,{projectKey:'topo-a',
-  actingRole:'ORACLE',evidence});
+  actingRole:'ORACLE',evidence,ownerRelayRequired:true});
  assert.equal(action.kind,'CYCLE_NOW_TO_AGENT');
  assert.equal(action.status,'PREPARED_NOT_SENT','copying never proves a coordination obligation');
  assert.equal(action.target,'Existing TOPO-A Agent conversation (verify recipient)');
@@ -165,13 +166,14 @@ test('Action to Owner: Agent return, stale Page task, unknown or wrong-issue sou
   status:'REVIEW_NATIVE_AUTHORITY'};
  const good={sourceStatus:'CURRENT',nativeNext:'Authorized read-only source check',
   nextSourceUrl:A+'#issuecomment-6540556158'};
- const agent=cycleNowOwnerActionModel(row,{projectKey:'topo-a',actingRole:'AGENT',evidence:good});
+ const agent=cycleNowOwnerActionModel(row,{projectKey:'topo-a',actingRole:'AGENT',
+  evidence:good,ownerRelayRequired:true});
  assert.equal(agent.kind,'CYCLE_NOW_TO_ORACLE');
  assert.match(agent.text,/existing Oracle coordination/);
  assert.doesNotMatch(agent.text,/Continue ONLY after/);
  const stale=cycleNowOwnerActionModel({...row,status:'RECONCILE_FIRST'},
   {projectKey:'topo-a',actingRole:'ORACLE',evidence:good});
- assert.equal(stale.kind,'CYCLE_NOW_TO_ORACLE','returned/completed work routes to Oracle');
+ assert.equal(stale.kind,'NONE','acting Oracle performs completed-return review in the same cycle');
  for(const bad of [
   {...good,nextSourceUrl:B+'#issuecomment-6540556158'},
   {...good,sourceStatus:'PARTIAL'},
@@ -179,7 +181,7 @@ test('Action to Owner: Agent return, stale Page task, unknown or wrong-issue sou
   {...good,nextSourceUrl:undefined}
  ]){
   const x=cycleNowOwnerActionModel(row,{projectKey:'topo-a',actingRole:'ORACLE',evidence:bad});
-  assert.equal(x.kind,'CYCLE_NOW_TO_ORACLE','no untrusted executable Agent handoff');
+  assert.equal(x.kind,'NONE','no untrusted executable Agent handoff or needless Oracle self-relay');
  }
  const unknown=cycleNowOwnerActionModel(row,{projectKey:'topo-a',actingRole:'UNKNOWN',evidence:good});
  assert.equal(unknown.kind,'NONE');
@@ -203,13 +205,13 @@ test('Action to Owner is separate from exactly five lines and offers copyable pl
   assert.equal(actions.length,1);
   assert.equal(collect(te[0],x=>x.tag==='p'&&x.className==='te-line').length,5);
   const btn=collect(actions[0],x=>x.tag==='button');
-  assert.equal(btn.length,1);
-  assert.match(btn[0].textContent,/Copy Cycle now to Oracle/);
-  assert.match(actions[0].textContent,/NOT SENT/);
+  assert.equal(btn.length,0,'no real Owner dependency means no inert copy instruction');
+  assert.match(actions[0].textContent,/NONE/);
   const preview=collect(actions[0],x=>x.tag==='pre'&&x.className==='ct5-owner-copy-block');
-  assert.equal(preview.length,1);
-  assert.match(preview[0].textContent,/Cycle now — topo-a/);
-  assert.match(preview[0].textContent,/issues\/12/);
+  assert.equal(preview.length,0);
+  const fast=collect(root,x=>x.tag==='section'&&x.className==='ct5-fastlane-decision');
+  assert.equal(fast.length,1,'existing CT-5 shows one next-action decision aid');
+  assert.match(fast[0].textContent,/ORACLE_QUALIFY_SCOPE/);
   const noRole=node('main');
   renderContinuationBridge(noRole,null,{key:'topo-a',nativeTasks:[row]});
   assert.equal(collect(noRole,x=>x.tag==='section'&&x.className==='ct5-owner-action').length,1);
