@@ -44,9 +44,9 @@ export const TOPO_ADHOC_INFO=Object.freeze({
    ownership:'InputXML format routing and normalized read-only evidence adapters; no PSI116 connection-review writes.',
    sources:Object.freeze([
     Object.freeze({label:'Native task and source expectations',url:TOPO_XML+'/issues/239',detail:'Original XML files are private. Access and digest receipt NOT_RUN.'}),
-    Object.freeze({label:'Pinned InputXML Workspace',url:X+pin+'tabs/inputxml-workspace/inputxml-workspace-tab.js',detail:'Existing clean→5C→InputXML conversion and diagnostics.'}),
-    Object.freeze({label:'Pinned F05/R4 profile parser',url:X+pin+'prototypes/ciifr-map/xml-profiles.js',detail:'Native-mm source fields and coordinates are authority boundaries.'}),
-    Object.freeze({label:'Pinned graph builder',url:X+pin+'workbench3d/adapters/canonical-graph-builder.js',detail:'Read-only topology evidence, not physical engineering sign-off.'}),
+    Object.freeze({label:'Pinned InputXML Workspace',url:TOPO_XML+TOPO_XML_PIN+'tabs/inputxml-workspace/inputxml-workspace-tab.js',detail:'Existing clean→5C→InputXML conversion and diagnostics.'}),
+    Object.freeze({label:'Pinned F05/R4 profile parser',url:TOPO_XML+TOPO_XML_PIN+'prototypes/ciifr-map/xml-profiles.js',detail:'Native-mm source fields and coordinates are authority boundaries.'}),
+    Object.freeze({label:'Pinned graph builder',url:TOPO_XML+TOPO_XML_PIN+'workbench3d/adapters/canonical-graph-builder.js',detail:'Read-only topology evidence, not physical engineering sign-off.'}),
     Object.freeze({label:'Governing WBS R1',url:TOPO_WBS_URL,detail:'No competing CIIFR or TopoFix WBS.'})
    ]),
    tests:Object.freeze([
