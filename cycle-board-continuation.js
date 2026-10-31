@@ -16,6 +16,69 @@ const ct5SafeSource=u=>typeof u==='string'&&CT5_PUBLIC_SOURCE.test(u);
 const ct5CurrentRevision=p=>(p?.index?.revisions||[]).find(r=>r.status==='current')?.id||'UNKNOWN';
 const ct5Safe=x=>typeof x==='string'&&x.trim()?x.trim():null;
 const ct5Ended=x=>/^(?:DONE|VERIFIED|COMPLETE|COMPLETED|CLOSED|RETURNED|FULFILLED)$/i.test(x||'');
+// TE2-ROLE: role ownership is a presentation selector, never a role grant.
+const ct5RoleKind=x=>{
+ const a=typeof x==='string'?x.trim():'';
+ if(/^(?:oracle|otm|coordinator)(?:\b|\W|$)/i.test(a))return 'ORACLE';
+ if(/^(?:ir|independent reviewer|reviewer)(?:\b|\W|$)/i.test(a))return 'IR';
+ if(/^(?:agent|builder|coder|specialist)(?:\b|\W|$)/i.test(a))return 'AGENT';
+ return 'UNKNOWN';
+};
+
+// The Board exposes every existing task; the actor's chat reports only own work.
+// There is deliberately no automatic Oracle card if no source-owned Oracle task exists.
+export function cycleNowRoleSelection(rows,{actingRole='UNKNOWN',view='response',ownerRequestedTeam=false}={}){
+ const items=Array.isArray(rows)?rows.filter(x=>x&&typeof x==='object'&&x.id):[];
+ const role=ct5RoleKind(actingRole);
+ if(view==='board')return {scope:'BOARD_ALL_EXISTING',cards:items,role};
+ if(role==='UNKNOWN')return {scope:'ACTING_ROLE_NOT_VERIFIED',cards:[],role};
+ if(ownerRequestedTeam)return {scope:'OWNER_REQUESTED_TEAM',cards:items,role};
+ const cards=items.filter(x=>ct5RoleKind(x.role)===role&&ct5SafeSource(x.source));
+ return {scope:cards.length?'ACTOR_OWN_TASK':'ROLE_OWN_TASK_SOURCE_UNVERIFIED',cards,role};
+}
+
+// Every fact must be attached to the *current* assignment; a previous agent
+// return or an issue-posted instruction is not proof the newer one was received.
+export function cycleNowRelayDisposition({assignmentRef=null,posted=null,delivered=null,
+ acknowledged=null,subsequentReturn=null,authorityBlocked=false,ownerRelayRequired=false}={}){
+ const exact=x=>!!assignmentRef&&!!x&&x.assignmentRef===assignmentRef&&
+  x.verified===true&&typeof x.ref==='string'&&x.ref.length>0;
+ if(authorityBlocked||!assignmentRef)return {status:'BLOCKED',
+  nextActor:'ORACLE',ownerActionRequired:false,reason:authorityBlocked?'AUTHORITY_BLOCKED':'ASSIGNMENT_UNKNOWN'};
+ if(exact(acknowledged)||exact(subsequentReturn))return {status:'CONTINUED',
+  nextActor:'ORACLE',ownerActionRequired:false,reason:exact(acknowledged)?'RECIPIENT_ACK':'SOURCE_BACKED_CONTINUATION'};
+ // POSTED / DELIVERED without ACK may be real but does not establish
+ // recipient acknowledgment. These facts remain separate observations.
+ return {status:'AWAITING_RELAY',nextActor:ownerRelayRequired?'OWNER_ONE_TIME_RELAY':'ORACLE',
+  ownerActionRequired:!!ownerRelayRequired,
+  reason:exact(delivered)?'DELIVERED_ACK_UNVERIFIED':exact(posted)?'POSTED_DELIVERY_UNVERIFIED':'DELIVERY_NOT_VERIFIED'};
+}
+
+export function cycleNowRoleText(rows,{projectKey='UNKNOWN',actingRole='UNKNOWN',
+ transport='NATIVE_CONTINUATION',coordinationSources=[]}={}){
+ const selected=cycleNowRoleSelection(rows,{actingRole});
+ const sources=[...(rows||[]).map(r=>r?.source),...coordinationSources]
+  .filter(ct5SafeSource).filter((x,i,a)=>a.indexOf(x)===i).slice(0,12);
+ const formal=transport==='FORMAL_CANONICAL';
+ return [
+  'CYCLE NOW — ACTING-ROLE CONTINUATION (copy only; NOT SENT)',
+  'Project: '+projectKey+' · Acting role: '+selected.role+' (assignment/identity must be verified)',
+  'Mode: '+(formal?'FORMAL_CANONICAL — verify main CURRENT.json, ACTIVE assignment, generation and receipt gates':
+   'NATIVE_CONTINUATION — read native issue/authority; do not require an activated formal Cycle'),
+  'Read current Cycle Board as context, then latest native sources; Board is not execution authority.',
+  'Original native sources: '+(sources.length?sources.join(' ; '):'NOT_VERIFIED'),
+  'Board may display all source-backed role-owned task cards.',
+  selected.role==='ORACLE'? 
+   'Oracle output: ONE five-line Task Evidence v2 card for your OWN existing coordination responsibility, referencing subordinate evidence, NOT two agent cards. Do not invent an Oracle task when native provenance is unavailable.':
+   'Actor output: one five-line Task Evidence v2 card for YOUR assigned task only; not a coordinator card.',
+  'Current instruction: PREPARED / POSTED / DELIVERED / ACKNOWLEDGED / EVIDENCE_RETURNED / ORACLE_RECONCILED are distinct observations.',
+  'Close coordination CONTINUED only on actual current-instruction ACK or source-backed continuation; otherwise AWAITING_RELAY with named relay actor, or BLOCKED on authority.',
+  'If only manual Owner relay can reach an existing agent chat, identify one minimum copy-ready Owner handoff; Oracle retains coordination.',
+  'No new WBS, task, canonical Cycle, duplicate report, source mutation, engineering PASS or merge.',
+  'Delivery and recipient ACK NOT_VERIFIED by this copy/open action.'
+ ].join('\n');
+}
+
 
 // An audit can *identify* an explicitly linked agent return without proving
 // that the intended recipient authored it, acknowledged the task or owns it.
@@ -140,7 +203,8 @@ export function continuationText(row,projectKey){
    'Observed native occurrence: '+(row.sourceOccurrence||'NOT_VERIFIED')+'\n'+
    'This is not a new canonical Oracle Cycle or dispatch. Agent must verify current recipient, role,\n'+
    'source SHA/fixture receipt, prior return, HOLD and active native assignment before any work.\n'+
-   'Do not re-run an already returned task. Use one existing native return, never a second Board report.\n';
+   'Do not re-run an already returned task. Use one existing native return, never a second Board report.\n'+
+   'TE2-ROLE: acting Agent/Reviewer reports only its OWN five-line task card; an Oracle reports its own coordination task, not this agent card.\n';
  if(row.status==='RECONCILE_FIRST'||row.status==='ACTOR_REVIEW_REQUIRED'){
   return header+'\nSTOP — '+row.status+
     '. Prior return or next-actor role requires Oracle reconciliation first.\n'+
@@ -163,6 +227,19 @@ export function renderContinuationBridge(root,project,options={}){
  summary.append(el('strong',null,m.records+' source-scoped task(s) · '+m.privateLinksCount+' local conversation shortcut(s)'),
   el('p','muted','Delivery NOT_VERIFIED · Agent ACK NOT_VERIFIED · return NOT_VERIFIED unless linked to an exact Page audit pointer. No automatic send, assignment, Cycle activation, Page publication or PASS.'));
  panel.append(summary);
+ // This is a copy-only Oracle coordination aid for an explicitly selected
+ // existing Oracle. It never creates an Oracle task card or claims delivery.
+ if(ct5RoleKind(options.actingRole)==='ORACLE'&&m.state==='REVIEW_REQUIRED'){
+  const roleControl=el('div','ct5-role-control');
+  roleControl.append(el('p','muted','Oracle Cycle now → one OWN coordination card; subordinate task cards remain on the Board. Role/recipient not authenticated by this view.'));
+  const roleButton=el('button','btn small','Copy Oracle Cycle now · not sent');
+  roleButton.type='button';
+  roleButton.addEventListener('click',()=>copyText(cycleNowRoleText(m.rows,{
+   projectKey:m.project,actingRole:'ORACLE',transport:options.transport||'NATIVE_CONTINUATION',
+   coordinationSources:options.coordinationSources||[]
+  }),roleButton));
+  roleControl.append(roleButton);panel.append(roleControl);
+ }
  if(m.state==='HISTORICAL_NO_CONTINUATION')panel.append(el('p','banner',
   'Historical/archived project: no continuation packet or delivery action is available.'));
  if(m.state==='SOURCE_UNKNOWN')panel.append(el('p','banner',
