@@ -7111,6 +7111,45 @@
       "before": "SUBMITTED",
       "after": "SUBMITTED",
       "rev": "R4"
+    },
+    {
+      "seq": 543,
+      "id": "CIIFR-R-0543",
+      "previous_id": "CIIFR-R-0542",
+      "at": "2026-10-31T09:56:24Z",
+      "kind": "PLAN",
+      "actor": "6ae1bed6 (Owner-directed builder/recorder)",
+      "summary": "Record working instrument-source to CII download candidate",
+      "source": "https://github.com/reallakshman19/3D_Converters/pull/360",
+      "scope": "milestone:M33",
+      "rev": "R4"
+    },
+    {
+      "seq": 544,
+      "id": "CIIFR-R-0544",
+      "previous_id": "CIIFR-R-0543",
+      "at": "2026-10-31T09:56:25Z",
+      "kind": "UPDATE",
+      "actor": "6ae1bed6 (Owner-directed builder/recorder)",
+      "summary": "Return reproduced and repaired Download CII interaction",
+      "source": "https://github.com/reallakshman19/3D_Converters/pull/360",
+      "card": "instrument-source-hold",
+      "before": "SUBMITTED",
+      "after": "SUBMITTED",
+      "rev": "R4"
+    },
+    {
+      "seq": 545,
+      "id": "CIIFR-R-0545",
+      "previous_id": "CIIFR-R-0544",
+      "at": "2026-10-31T09:56:25Z",
+      "kind": "FIXTURE",
+      "actor": "6ae1bed6 (Owner-directed builder/recorder)",
+      "summary": "Link real native CII download evidence and repair",
+      "source": "https://github.com/reallakshman19/3D_Converters/pull/360",
+      "list": "pullRequests",
+      "op": "add",
+      "rev": "R4"
     }
   ]
 }

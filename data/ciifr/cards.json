@@ -1503,16 +1503,16 @@
     "order": 56,
     "group": "r4-restraint-audit",
     "milestone": "M33",
-    "label": "EF05 instrument source HOLD",
+    "label": "Instrument review and CII download",
     "who": {
       "chat": "restraint-6ae1bed6",
       "role": "Owner-directed builder; self-checks disclosed"
     },
     "state": "SUBMITTED",
-    "now": "PR359 at3295444f: real Chromium source File/BOM/XML/receipt downloads and stale file/text/hash refusals PASS;99native custody cases PASS on Node22/24.14uploaded anchors verified without classification. Active source and oldFinal untouched; draft not deployed;16historical CI preflight failures disclosed.",
+    "now": "PR360 reproduced a second bug: async verified Run repaint replaced Download CII controls after click binding. Candidate binds every repaint and challenges current Final before download.14controlled instruments: genuine fresh O1/Worker, new1.25kg Final each, actual native CII and auto/manual downloads PASS; stale Final refuses old CII.",
     "next": {
       "actor": "Owner / engineering reviewer",
-      "text": "Review PR359; after merge/deploy use explicit justified RIGID choices, download/reopen NEW XML and complete fresh Preview/Final. No old Final migration or automatic CII release."
+      "text": "Review PR360. After merge/deploy use revised XML in-session when needed, complete fresh Final decisions and download verified CII. Private source/Owner engineering acceptance remains separate."
     },
     "refs": [
       {
@@ -1525,9 +1525,14 @@
         "k": "pr",
         "l": "Browser instrument source review",
         "u": "https://github.com/reallakshman19/3D_Converters/pull/359"
+      },
+      {
+        "k": "pr",
+        "l": "Source activation and manual CII download repair",
+        "u": "https://github.com/reallakshman19/3D_Converters/pull/360"
       }
     ],
-    "updatedAt": "2026-10-31T05:26:53Z",
-    "src": "https://github.com/reallakshman19/3D_Converters/commit/3295444f208cf3cb1fbd5966ea1a3d1570c194fd"
+    "updatedAt": "2026-10-31T09:56:25Z",
+    "src": "https://github.com/reallakshman19/3D_Converters/pull/360"
   }
 }

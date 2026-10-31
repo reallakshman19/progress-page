@@ -4,7 +4,7 @@
     "key": "ciifr",
     "title": "CII Find & Replace VNext",
     "subtitle": "R4 current: Geometry WBS3 read-only G1/G2; Element WBS4 source/config qualification; VNext integration held pending independent evidence.",
-    "updatedAt": "2026-10-31T05:26:54Z",
+    "updatedAt": "2026-10-31T09:56:25Z",
     "updatedBy": "6ae1bed6 (Owner-directed builder/recorder)",
     "staleAfterMin": 120,
     "aim": "Extend CIIFR NodeName VNext into typed ELEMENTS real-value/Line Number edits plus pointer-resolved RIGID Weight/Type. Preserve original bytes, v14 units/sentinels, node/pointer/branch relations, per-span approvals, new-copy export and native import review. Retain R3 Geometry WBS3 review-only, frozen P2/P2.1 and XML custody; defer structural graph/pointer edits and P3.",
@@ -470,12 +470,12 @@
       "bench": "INSTRUMENT-SOURCE-HOLD",
       "keeps": "Source/classification; accepted Final; scorer; native guards",
       "cap": "CANDIDATE",
-      "canDo": "Review PR359: explicit per-instrument modeling choices and NEW XML/receipt downloads in Run. No automatic classification or old Final migration.",
-      "capSrc": "https://github.com/reallakshman19/3D_Converters/pull/359",
+      "canDo": "Review PR360: explicit revised-source activation and repaired manual CII download after async Run repaint. Actual14instrument auto/manual downloads and stale-Final refusal pass.",
+      "capSrc": "https://github.com/reallakshman19/3D_Converters/pull/360",
       "repo": "reallakshman19/3D_Converters",
       "branch": "fix/xml229-suggestion-basis-instrument-rca-6ae1bed6",
-      "commit": "3295444f208cf3cb1fbd5966ea1a3d1570c194fd",
-      "activity": "PR359: File/XML downloads and stale-source guards PASS;99native custody cases PASS Node22/24. Draft;16historical CI gates held."
+      "commit": "55554b4227d622c21152990522dee74d0328823a",
+      "activity": "PR360:14instrument source/O1/Worker/native/manual-download proof PASS;105native custody cases PASS Node22/24. Draft;historical CI gates remain."
     }
   },
   "groups": {
