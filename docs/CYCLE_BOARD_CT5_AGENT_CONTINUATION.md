@@ -2,6 +2,14 @@
 
 **Mode:** shared, read-only Cycle Board functionality for all registered Progress Page projects and the existing TOPO-A / TOPO-B Adhoc native tasks. **No second WBS, no standalone Cycle activation, no automated message delivery and no new agent report.** The native engineering task, original evidence and existing Common instructions remain authoritative.
 
+## TE2-ROLE — "Cycle now" acting-role gate (O4)
+
+The **Cycle Board** remains a comprehensive read-only source view: its existing Agent/IR/Oracle task cards retain their own ownership. When an **existing Oracle** receives `Cycle now`, the Oracle normally reports **one five-line Oracle coordination Task Evidence v2 card**, referencing subordinate original issue evidence rather than reprinting each agent card. An Agent/IR reports its own task. Expand subordinate cards in the Oracle response only at explicit Owner request. Never add a fictitious Oracle WBS/task merely to show an extra card.
+
+For TOPO-A/B Adhoc Boards the explicit **Copy Oracle Cycle now · not sent** control creates a role-scoped coordination prompt with the two known native source issue links, reminding the Oracle to check actual assignment, latest native returns and current-instruction relay status. The button is a copy operation, **not an authenticated send or ACK**. A non-Oracle Board has no implied Oracle copy control unless acting role is supplied by its existing approved assignment.
+
+For the **current** next instruction, `PREPARED`, `POSTED`, `DELIVERED`, `ACKNOWLEDGED`, `EVIDENCE_RETURNED` and `ORACLE_RECONCILED` are separate observations. An earlier agent return does not acknowledge a later task. Declare `CONTINUED` only on current-instruction recipient ACK or source-backed subsequent execution; otherwise `AWAITING_RELAY` with named necessary actor or `BLOCKED` with an actual authority/custody barrier. One-time Owner relay does not transfer Oracle coordination. An existing native task does **not** require formal `oracle-cycles/CURRENT.json` unless the formal transport was expressly selected.
+
 ## Owner problem
 
 An Oracle posted a bounded instruction on a native GitHub issue, but the existing ChatGPT agent conversation did not receive or acknowledge it. The old Cycle Board could see the GitHub occurrence yet could not distinguish **posted**, **delivered**, **acknowledged**, **returned**, and **reconciled**. It must not call a posted issue message an agent continuation.

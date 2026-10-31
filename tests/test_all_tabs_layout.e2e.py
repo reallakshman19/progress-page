@@ -248,6 +248,10 @@ def main():
                                       "TOPO Board missing shared CT-5 continuation bridge")
                                 check(page.locator(".topo-ct5-slot .ct5-task").count()==1,
                                       "TOPO bridge must scope to its one original native issue")
+                                check(page.locator(".topo-ct5-slot .ct5-role-control button").count()==1,
+                                      "Oracle role-owned Cycle now copy control missing")
+                                check("Copy Oracle Cycle now" in page.locator(".topo-ct5-slot .ct5-role-control button").inner_text(),
+                                      "TOPO Cycle now control could misattribute Agent work to Oracle")
                                 check(page.locator(".topo-ct5-slot .task-evidence-v2").count()==1,
                                       "TOPO Board must show one native Task Evidence v2 card")
                                 check(page.locator(".topo-ct5-slot .task-evidence-v2 .te-line").count()==5,
