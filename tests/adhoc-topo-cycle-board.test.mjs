@@ -52,6 +52,31 @@ test('Both Adhoc Cycle Boards bind two distinct original tasks plus one existing
  assert.equal(TOPO_ADHOC_INFO['topo-a'].issue.includes('/issues/239'),false);
  assert.equal(readFileSync(new URL('../data/projects.json',import.meta.url),'utf8'),SNAP);
 });
+test('Each Adhoc workspace exposes its own source-grounded concept specification as a read-only fixture',()=>{
+ const paths={
+  'topo-a':'TOPO_A_ASSISTED_CONNECTION_CONCEPT_SPEC_R1.md',
+  'topo-b':'TOPO_B_UNIVERSAL_XML_TOPOLOGY_CONCEPT_SPEC_R1.md'
+ };
+ for(const key of ['topo-a','topo-b']){
+  const info=TOPO_ADHOC_INFO[key];
+  const filename=paths[key];
+  const spec=readFileSync(new URL('../docs/'+filename,import.meta.url),'utf8');
+  assert.equal(info.concept,'https://github.com/reallakshman19/progress-page/blob/main/docs/'+filename);
+  assert.equal(info.sources[0].url,info.concept);
+  assert.match(info.sources[0].label,/Concept note/);
+  assert.match(spec,/Governing|Governed by/);
+  assert.match(spec,/HOLD|NOT_RUN/);
+  assert.match(spec,/Cycle Board/);
+  assert.ok(spec.length>8000,'Detailed fixture is a substantive source-grounding specification');
+ }
+ const a=readFileSync(new URL('../docs/'+paths['topo-a'],import.meta.url),'utf8');
+ const b=readFileSync(new URL('../docs/'+paths['topo-b'],import.meta.url),'utf8');
+ assert.match(a,/6880/);assert.match(a,/6450/);assert.match(a,/240\.6 mm/);
+ assert.match(a,/Source Review Queue/);assert.match(a,/Executable Approved Fix Queue/);
+ assert.match(b,/InputXML Workspace/);assert.match(b,/RichInputXMLv2\.1/);assert.match(b,/521 elements/);
+ assert.doesNotMatch(a+b,/private original XML contents:|recipient-verified private bytes: yes/i);
+ assert.equal(readFileSync(new URL('../data/projects.json',import.meta.url),'utf8'),SNAP,'No duplicate Page project');
+});
 test('First complete read: exact source occurrence, UNKNOWN prior delta, no Cycle dispatch or Page publication',async()=>{
  for(const key of ['topo-a','topo-b']){
   const {native,calls}=await observe(key);
