@@ -227,7 +227,7 @@ export function continuationText(row,projectKey){
 export function cycleNowOwnerActionModel(row,{projectKey='UNKNOWN',evidence=null,
  actingRole='UNKNOWN',transport='NATIVE_CONTINUATION'}={}){
  const result=(kind,reason,text=null,target=null)=>({
-  kind,reason,text,target,status:text?'AWAITING_RELAY':'NOT_VERIFIED',
+  kind,reason,text,target,status:text?'PREPARED_NOT_SENT':'NOT_VERIFIED',
   copied:false,delivered:false,acknowledged:false
  });
  if(!row||!ct5SafeSource(row.source))
@@ -333,7 +333,7 @@ export function renderContinuationBridge(root,project,options={}){
    const ownerBox=el('section','ct5-owner-action');
    ownerBox.setAttribute('aria-label','Action to Owner');
    ownerBox.append(el('h5',null,'Action to Owner'),
-    el('p','muted','Current transaction: '+ownerAction.kind+
+    el('p','muted','Copy-ready option (not a verified Owner obligation): '+ownerAction.kind+
      ' · '+ownerAction.reason+' · No automatic send/ACK. Other Owner issues: NOT_VERIFIED; see original task.'));
    if(ownerAction.text){
     const ownerBtn=el('button','btn small','Copy '+(
