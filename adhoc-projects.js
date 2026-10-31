@@ -206,6 +206,9 @@ function renderTopoWorkspace(root,key,view,{nativeFetcher,clock}={}) {
   addCards(s,[
    card('Original native task #'+i.issueNumber,i.next,
      [['Open task',i.issue],['Open Cycle Board',adhocHref(key,'cycle-board')]]),
+   card('Concept Note + detailed specification',
+    'Source-qualified problem, architecture, accepted boundaries, proposed operator workflow, test cases and first agent grounding return. A concept is not a mutation approval.',
+    [['Read full concept / spec',i.concept],['Source fixtures',adhocHref(key,'sources')]]),
    card('Source-grounded discriminating case',i.case,[['Check original source claim',i.issue]]),
    card('WBS and allowed authority',i.wbsNote,[['Existing TopoFix WBS',TOPO_GOVERNANCE.wbs]]),
    card('Concept and source relationship',
@@ -216,22 +219,25 @@ function renderTopoWorkspace(root,key,view,{nativeFetcher,clock}={}) {
   renderTopoAdhocBoard(body,key,{fetcher:nativeFetcher,clock});
  } else if(view==='sources') {
   const s=section(body,'Original sources and Grounding Fixtures',
-   'Native issue or pinned file references are pointers, not authenticated private original XML or an engineering acceptance.');
+   'The concept/specification and pinned files are read-only grounding fixtures; links do not authenticate private original XML, qualify engineering semantics or grant a product write.');
   addCards(s,i.sources.map(x=>card(x.label,x.detail,[['Open original / pinned source',x.url]])));
   const concept=section(body,'Concept map and source-lineage chain',
    'Read the native WBS, exact task, source custody, relay and Page record in that order. This graph is guidance, not a new source of authority.');
   addCards(concept,[
    card('1 · Owner and WBS','Owner objective and WBS 3.2/4.1 or 2.1/4.1 govern the work.',[['Read WBS',TOPO_GOVERNANCE.wbs]]),
-   card('2 · Task and source',i.case,[['Original task',i.issue]]),
+   card('2 · Concept, task and source',i.case,[['Read concept/spec',i.concept],['Original task',i.issue]]),
    card('3 · Artifact and custody','Common PR #572 holds a public-safe draft handoff register. Agent access/bytes, Oracle epoch and writer lease are NOT_VERIFIED.',
      [['Read Common relay PR',TOPO_GOVERNANCE.relay],['Relay protocol',TOPO_GOVERNANCE.relayProtocol]]),
-   card('4 · Published Page evidence','Draft Page PR #95 is not a published WBS R2. Writer and audit must be checked separately after review.',
+   card('4 · Published Page evidence','PR #95 was merged; the documented governing TopoFix WBS is R1. Source publication and Page audit must still be checked separately; a merge does not create R2.',
      [['Open Page PR',TOPO_GOVERNANCE.page]])
   ]);
  } else if(view==='continuity') {
   const s=section(body,'Oracle and agent continuity — without repeat onboarding',
    'The native task remains the assignment source. A short recipient ID or a Board card is not a dispatch.');
   addCards(s,[
+   card('Read governing concept / detailed spec',
+    'Read problem, source authority, code reuse, falsifiers and proposed workflow before reporting the initial source trace; the native task and WBS retain authority.',
+    [['Concept/spec',i.concept],['Original task',i.issue]]),
    card('Agent eligibility and identity',
     'The task reports PREPARED / READ_ONLY FIRST; chat recipient, acknowledgment, original-file access and exclusive write lease are NOT_VERIFIED.',
     [['Task issue',i.issue],['Common START_HERE',TOPO_GOVERNANCE.start]]),
@@ -239,7 +245,7 @@ function renderTopoWorkspace(root,key,view,{nativeFetcher,clock}={}) {
    card('Writer-surface separation',i.ownership,[['Governing WBS',TOPO_GOVERNANCE.wbs]]),
    card('Common artifact relay','PR #572 is a draft public-safe register, not proof that private XML or receipts were received.',
     [['Common relay PR',TOPO_GOVERNANCE.relay]]),
-   card('Page reconciliation','Existing Page PR #95 remains a separately reviewed publisher proposal; the Board cannot update Page data.',
+   card('Page reconciliation','Page PR #95 is merged; TopoFix WBS remains documented as R1. This Board cannot alter Page data, accept engineering work or claim a new revision.',
     [['Page PR #95',TOPO_GOVERNANCE.page]])
   ]);
  } else if(view==='tests') {
@@ -251,10 +257,10 @@ function renderTopoWorkspace(root,key,view,{nativeFetcher,clock}={}) {
     [['Run Board view',adhocHref(key,'cycle-board')]]),
    card('Source authority separation',
     'No implicit Canonical Cycle, owner-verified agent identity, protected write, duplicate Page WBS, or approval from source/status labels.',
-    [['Original WBS',TOPO_GOVERNANCE.wbs],['Page publisher proposal',TOPO_GOVERNANCE.page]])
+    [['Original WBS',TOPO_GOVERNANCE.wbs],['Historical Page PR #95',TOPO_GOVERNANCE.page]])
   ]);
  }
- root.append(body,el('p','foot muted','Adhoc '+key.toUpperCase()+': original-native-source Cycle Board test view. No Cycle activation, fresh dispatch, source-byte receipt, Page merge, engineering PASS or Owner acceptance.'));
+ root.append(body,el('p','foot muted','Adhoc '+key.toUpperCase()+': original-native-source Cycle Board test view. No Cycle activation, fresh dispatch, source-byte receipt, new Page WBS publication, engineering PASS or Owner acceptance.'));
 }
 
 export function renderAdhocProjects(root,route,nav,options={}) {
