@@ -1509,10 +1509,10 @@
       "role": "Owner-directed builder; self-checks disclosed"
     },
     "state": "SUBMITTED",
-    "now": "PR360 reproduced a second bug: async verified Run repaint replaced Download CII controls after click binding. Candidate binds every repaint and challenges current Final before download.14controlled instruments: genuine fresh O1/Worker, new1.25kg Final each, actual native CII and auto/manual downloads PASS; stale Final refuses old CII.",
+    "now": "PR360 externally merged asd9872360 and deployed. Controlled14instrument fresh O1/Worker/native auto/manual downloads PASS. New Owner audit accepts195Final but Run has not attempted a candidate because41branch format identities conflict; tracked in WBS6.10/PR361.",
     "next": {
-      "actor": "Owner / engineering reviewer",
-      "text": "Review PR360. After merge/deploy use revised XML in-session when needed, complete fresh Final decisions and download verified CII. Private source/Owner engineering acceptance remains separate."
+      "actor": "Owner / reviewer",
+      "text": "Review the separate PR361 format participation repair; source-model and mass acceptance remain explicit and native output must still reconcile."
     },
     "refs": [
       {
@@ -1530,9 +1530,39 @@
         "k": "pr",
         "l": "Source activation and manual CII download repair",
         "u": "https://github.com/reallakshman19/3D_Converters/pull/360"
+      },
+      {
+        "k": "pr",
+        "l": "Separate current configured-format blocker",
+        "u": "https://github.com/reallakshman19/3D_Converters/pull/361"
       }
     ],
-    "updatedAt": "2026-10-31T09:56:25Z",
-    "src": "https://github.com/reallakshman19/3D_Converters/pull/360"
+    "updatedAt": "2026-10-31T11:22:47Z",
+    "src": "https://github.com/reallakshman19/3D_Converters/pull/361"
+  },
+  "explicit-branch-format": {
+    "order": 57,
+    "group": "r4-restraint-audit",
+    "milestone": "M34",
+    "label": "Configured Format 1 / 2 conflict",
+    "who": {
+      "chat": "restraint-6ae1bed6",
+      "role": "Owner-directed builder"
+    },
+    "state": "SUBMITTED",
+    "now": "All195Final masses accepted; Run stops before candidate on41AMBIGUOUS identities. Format1 P8810021/31441C4 competes with Format2 31441C4/PP. Repair adds explicit exclusion, preserves enabled on save and honors disabled first slot. Real Chromium root/docs41resolved; re-enable conflicts and all-disabled hold.",
+    "next": {
+      "actor": "Owner / reviewer",
+      "text": "Review PR361. After merge/deploy explicitly disable unused Format2, save, rebuild Preview and follow current Weight basis readiness before native Run. No release proof claimed."
+    },
+    "refs": [
+      {
+        "k": "pr",
+        "l": "Explicit format selection and browser evidence",
+        "u": "https://github.com/reallakshman19/3D_Converters/pull/361"
+      }
+    ],
+    "updatedAt": "2026-10-31T11:22:45Z",
+    "src": "https://github.com/reallakshman19/3D_Converters/pull/361"
   }
 }

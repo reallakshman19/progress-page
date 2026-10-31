@@ -9,6 +9,18 @@ export const RCA_SOURCE = Object.freeze({
 const rcaIssue = n => 'https://github.com/reallakshman19/3D_Converters/issues/' + n;
 const SUGGESTION_EXAMPLE=Object.freeze({"label": "Controlled 77 kg suggestion \u00b7 hover or focus", "tooltip": "Source-qualified suggestion: 77 kg (largest suggestion)\nBasis: Weight master lookup\nCurrent component: DN100 \u00b7 Rating 300 \u00b7 Length 305 mm\nWeight master: ID CONTROL-1 \u00b7 record 1 | GATE \u00b7 Controlled gate-valve analogue | DN100 \u00b7 Rating 300 \u00b7 Length 305 mm \u00b7 Weight 77 kg\nMatch score: 100%\nLength difference: 0 mm \u00b7 tolerance 1 mm\nQualification: Exact bore, rating and length\nInstrument: selecting kg does not establish RIGID classification. Governed CII also checks the source model.\nSelecting this suggestion fills the input only. Confirm Final separately."});
 const RCA_CASES = Object.freeze({
+  formats: {
+    title: 'PR361 · Explicit branch format participation',
+    source: 'https://github.com/reallakshman19/3D_Converters/pull/361',
+    columns: ['Configuration', '41-branch result', 'Evidence / boundary'],
+    rows: [
+      ['Both configured formats enabled', '41 AMBIGUOUS; native candidate not reached', 'Format1: P8810021 / 31441C4 / 300 / 8. Format2: 31441C4 / PP / blank / 8.'],
+      ['Explicitly disable shifted Format2', '41 resolved through Format1', 'Root/docs Chromium: committed config and local reload preserve enabled=false'],
+      ['Re-enable competing Format2', '41 conflicts retained', 'No automatic preference or inferred engineering identity'],
+      ['Disable both formats', 'All UNMATCHED; Run held', 'No release bypass'],
+    ],
+    note: 'Tested81080af8: actual Chromium root/docs UI and persistence PASS;59regex regressions PASS. Current Owner audit reports195Final and zero unresolved; accepted mass does not resolve branch identity. PR361 is a draft, not deployed. After deployment, disable the unused format, save, rebuild Preview and follow current Weight-basis readiness. This frozen evidence view does not change production config or authorize CII.',
+  },
   suggestion: {
     title: 'PR358–360 · Suggestions, instrument source and CII download',
     source: 'https://github.com/reallakshman19/3D_Converters/pull/360',
@@ -23,7 +35,7 @@ const RCA_CASES = Object.freeze({
       ['PR360 working candidate', 'Explicit revised-source activation; genuine fresh O1/Worker;14new controlled Final values', 'Actual native CII auto/manual downloads pass; changed Final refuses old CII'],
       ['TopoFix / revision-14 filename', 'Original public EF05 also has28unclassified INST endpoints', 'No lost-classification proof without actual intermediate source/receipt'],
     ],
-    note: 'PR358/359 were merged; PR360 is the draft follow-up. At55554b42, real O1/Weight Workers and production Run UI use actual native Python CII and independent browser reconciliation:14controlled instruments, fresh1.25kg each, auto/manual downloads pass and stale Final refuses old output.105native custody cases pass on Node22/24;16historical CI gates remain. Controlled examples are not Owner engineering masses. Private inputs are not hosted; this Page draft is unpublished.',
+    note: 'PR358–360 were merged; PR360 deployed asd9872360. At55554b42, real O1/Weight Workers and production Run UI use actual native Python CII and independent browser reconciliation:14controlled instruments, fresh1.25kg each, auto/manual downloads pass and stale Final refuses old output.105native custody cases pass on Node22/24. The current Owner Run has a separate configured-format blocker, tracked in PR361. Controlled examples are not Owner engineering masses. Private inputs are not hosted; this Page draft is unpublished.',
   },
   transfer: {
     title: 'PR357 · JSON restraints through native export',
@@ -174,7 +186,7 @@ export function renderRcaBench(root, project, { historical = false } = {}) {
     }
     for (const [id, button] of buttons) button.setAttribute('aria-pressed', String(id === key));
   };
-  for (const [key, title] of [['suggestion', 'Suggestion basis / INST hold'], ['transfer', 'JSON transfer fix'], ['body', 'Flange body fix'], ['bore', 'Original bore RCA'], ['restraint', 'Original REST RCA'], ['defaults', 'Original defaults RCA']]) {
+  for (const [key, title] of [['formats', 'Format 1 / 2 conflict'], ['suggestion', 'Suggestion basis / INST hold'], ['transfer', 'JSON transfer fix'], ['body', 'Flange body fix'], ['bore', 'Original bore RCA'], ['restraint', 'Original REST RCA'], ['defaults', 'Original defaults RCA']]) {
     const button = el('button', 'btn', title); button.type = 'button';
     button.addEventListener('click', () => show(key)); controls.append(button); buttons.push([key, button]);
   }

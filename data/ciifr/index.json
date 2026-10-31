@@ -4,7 +4,7 @@
     "key": "ciifr",
     "title": "CII Find & Replace VNext",
     "subtitle": "R4 current: Geometry WBS3 read-only G1/G2; Element WBS4 source/config qualification; VNext integration held pending independent evidence.",
-    "updatedAt": "2026-10-31T09:56:25Z",
+    "updatedAt": "2026-10-31T11:22:47Z",
     "updatedBy": "6ae1bed6 (Owner-directed builder/recorder)",
     "staleAfterMin": 120,
     "aim": "Extend CIIFR NodeName VNext into typed ELEMENTS real-value/Line Number edits plus pointer-resolved RIGID Weight/Type. Preserve original bytes, v14 units/sentinels, node/pointer/branch relations, per-span approvals, new-copy export and native import review. Retain R3 Geometry WBS3 review-only, frozen P2/P2.1 and XML custody; defer structural graph/pointer edits and P3.",
@@ -474,8 +474,23 @@
       "capSrc": "https://github.com/reallakshman19/3D_Converters/pull/360",
       "repo": "reallakshman19/3D_Converters",
       "branch": "fix/xml229-suggestion-basis-instrument-rca-6ae1bed6",
-      "commit": "55554b4227d622c21152990522dee74d0328823a",
-      "activity": "PR360:14instrument source/O1/Worker/native/manual-download proof PASS;105native custody cases PASS Node22/24. Draft;historical CI gates remain."
+      "commit": "d98723600c11df8fa13f010cb1080b9eb76d2749",
+      "activity": "PR360 externally merged/deployed. Controlled native auto/manual proof PASS; Owner current Run stops on separate41branch format conflict."
+    },
+    "M34": {
+      "name": "Explicit branch format participation",
+      "full": "Repair an unused competing Format 2 blocking41 selected branches; expose explicit format enable/disable and preserve it through Save Config, shared extraction and Run. Genuine ambiguity, all-disabled and native output proof remain held. No automatic engineering preference or Final transfer.",
+      "order": 50,
+      "wbs": "6.10",
+      "bench": "EF05-41-FORMAT-PARTICIPATION",
+      "keeps": "Multi-format Preview and Run custody; native output reconciliation",
+      "cap": "CANDIDATE",
+      "canDo": "Review PR361: disable the shifted Format 2 explicitly;41identities resolve, choice persists on root/docs and genuine conflicts remain held.",
+      "capSrc": "https://github.com/reallakshman19/3D_Converters/pull/361",
+      "repo": "reallakshman19/3D_Converters",
+      "branch": "fix/xml229-explicit-format-enable-6ae1bed6",
+      "commit": "81080af8569057a08f1fa6d4dddadc4ae7ca6313",
+      "activity": "PR361 Chromium root/docs41branch selection/persistence PASS;59regex regressions PASS. Owner CII release separate; draft not deployed."
     }
   },
   "groups": {

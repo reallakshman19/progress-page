@@ -7150,6 +7150,71 @@
       "list": "pullRequests",
       "op": "add",
       "rev": "R4"
+    },
+    {
+      "seq": 546,
+      "id": "CIIFR-R-0546",
+      "previous_id": "CIIFR-R-0545",
+      "at": "2026-10-31T11:22:44Z",
+      "kind": "PLAN",
+      "actor": "6ae1bed6 (Owner-directed builder/recorder)",
+      "summary": "Extend existing WBS6 with bounded format participation repair",
+      "source": "https://github.com/reallakshman19/3D_Converters/pull/361",
+      "scope": "milestone:M34",
+      "rev": "R4"
+    },
+    {
+      "seq": 547,
+      "id": "CIIFR-R-0547",
+      "previous_id": "CIIFR-R-0546",
+      "at": "2026-10-31T11:22:45Z",
+      "kind": "BASELINE",
+      "actor": "6ae1bed6 (Owner-directed builder/recorder)",
+      "summary": "Record distinct configured-format blocker and tested fix",
+      "source": "https://github.com/reallakshman19/3D_Converters/pull/361",
+      "card": "explicit-branch-format",
+      "before": null,
+      "after": "SUBMITTED",
+      "rev": "R4"
+    },
+    {
+      "seq": 548,
+      "id": "CIIFR-R-0548",
+      "previous_id": "CIIFR-R-0547",
+      "at": "2026-10-31T11:22:46Z",
+      "kind": "FIXTURE",
+      "actor": "6ae1bed6 (Owner-directed builder/recorder)",
+      "summary": "Pin actual browser format participation evidence",
+      "source": "https://github.com/reallakshman19/3D_Converters/pull/361",
+      "list": "pullRequests",
+      "op": "add",
+      "rev": "R4"
+    },
+    {
+      "seq": 549,
+      "id": "CIIFR-R-0549",
+      "previous_id": "CIIFR-R-0548",
+      "at": "2026-10-31T11:22:46Z",
+      "kind": "PLAN",
+      "actor": "6ae1bed6 (Owner-directed builder/recorder)",
+      "summary": "Reconcile deployed predecessor with new format blocker",
+      "source": "https://github.com/reallakshman19/3D_Converters/pull/361",
+      "scope": "milestone:M33",
+      "rev": "R4"
+    },
+    {
+      "seq": 550,
+      "id": "CIIFR-R-0550",
+      "previous_id": "CIIFR-R-0549",
+      "at": "2026-10-31T11:22:47Z",
+      "kind": "UPDATE",
+      "actor": "6ae1bed6 (Owner-directed builder/recorder)",
+      "summary": "Distinguish deployed download repair from current format HOLD",
+      "source": "https://github.com/reallakshman19/3D_Converters/pull/361",
+      "card": "instrument-source-hold",
+      "before": "SUBMITTED",
+      "after": "SUBMITTED",
+      "rev": "R4"
     }
   ]
 }
