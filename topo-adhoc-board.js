@@ -260,7 +260,10 @@ export function renderTopoAdhocBoard(root,key,{fetcher,clock,topofixProject=null
  renderTopoOperational(box,key,topofixProject,pageFetch);
  const button=el('button','btn small','Recheck native sources');button.type='button';
  const result=el('section','topo-board-results');
- result.append(el('p','muted','Source observation pending · authority NOT_ESTABLISHED.'));
+ result.append(el('p','muted','Native source observation pending; Page WBS and INFO-Auto above do not depend on a successful GitHub API read.'));
+ const pendingSources=el('details','topo-board-sources');
+ pendingSources.append(el('summary',null,'Source provenance · not yet observed (expand after source read)'));
+ result.append(pendingSources);
  box.append(button,result);root.append(box);
  let prior=null,busy=false;
  const run=async()=>{
