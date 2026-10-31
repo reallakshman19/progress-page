@@ -1,5 +1,5 @@
 // Read-only Adhoc TOPO-A/TOPO-B Cycle Board. The original GitHub issue,
-// governing TOPO_WBS_URL, Common relay and Page PR own evidence/authority.
+// governing WBS, Common relay and Page PR own evidence/authority.
 import { el, link } from './util.js?v=34';
 import { loadBoardNative, BOARD_NATIVE_SOURCES } from './cycle-board-context.js?v=34';
 import { classifyNativeDelta } from './cycle-board-delta.js?v=34';
@@ -15,17 +15,17 @@ export const TOPO_ADHOC_INFO=Object.freeze({
  'topo-a':Object.freeze({
    key:'topo-a',label:'TOPO-A · Assisted Connection Repair',
    issue:TOPO_REPO+'/issues/12',issueNumber:12,wbs:'3.2 / 4.1',
-   wbsNote:'Existing TopoFix TOPO_WBS_URL R1: manual review and evidence-qualified connections',
+   wbsNote:'Existing TopoFix WBS R1: manual review and evidence-qualified connections',
    objective:'Make intended connection vs declared closure discoverable and auditable without automatic unsafe repair.',
    case:'Node 6880 / Node 6450 · 240.6 mm apart · 114.3 mm OD · declared CLOS. Connection intent remains UNVERIFIED.',
    next:'Read-only explanation of the CLOS suppression path and source/overlap report on issue #12.',
    boundary:'Never remove CLOS or bridge 240.6 mm by distance alone. ≤25 mm is the automatic threshold; any larger repair needs evidence and authority.',
    ownership:'PSI116 connection review, source port graph, manual second pass and Manual Fix Queue; no shared format-adapter edits.',
    sources:Object.freeze([
-    Object.freeze({label:'Native task and actual 6880/6450 witnesses',url:TOPO_REPO+'/issues/12',topoDetail:'Original private XML is not copied to the Page. Receiver byte access NOT_RUN.'}),
-    Object.freeze({label:'Governing TopoFix TOPO_WBS_URL R1',url:TOPO_WBS_URL,topoDetail:'TOPO_WBS_URL 3.2/4.1 is already governed here.'}),
-    Object.freeze({label:'Manual Fix Queue draft',url:TOPO_REPO+'/pull/11',topoDetail:'Check ownership before changing queue/replay.'}),
-    Object.freeze({label:'Preview repair draft',url:TOPO_REPO+'/pull/10',topoDetail:'Do not infer integrated release or current head from a historical TOPO_XML_PIN.'})
+    Object.freeze({label:'Native task and actual 6880/6450 witnesses',url:TOPO_REPO+'/issues/12',detail:'Original private XML is not copied to the Page. Receiver byte access NOT_RUN.'}),
+    Object.freeze({label:'Governing TopoFix WBS R1',url:TOPO_WBS_URL,detail:'WBS 3.2/4.1 is already governed here.'}),
+    Object.freeze({label:'Manual Fix Queue draft',url:TOPO_REPO+'/pull/11',detail:'Check ownership before changing queue/replay.'}),
+    Object.freeze({label:'Preview repair draft',url:TOPO_REPO+'/pull/10',detail:'Do not infer integrated release or current head from a historical pin.'})
    ]),
    tests:Object.freeze([
     'Source CLOS around 6880↔6450 still appears in discovery/review, not an automatic repair.',
@@ -36,18 +36,18 @@ export const TOPO_ADHOC_INFO=Object.freeze({
  'topo-b':Object.freeze({
    key:'topo-b',label:'TOPO-B · Universal XML Topology Adapter',
    issue:TOPO_XML+'/issues/239',issueNumber:239,wbs:'2.1 → 4.1',
-   wbsNote:'Existing TopoFix TOPO_WBS_URL R1. Universal format extension is PROPOSED, not published acceptance.',
+   wbsNote:'Existing TopoFix WBS R1. Universal format extension is PROPOSED, not published acceptance.',
    objective:'Reuse the InputXML workspace and CIIFR adapters for a source-traceable, read-only multi-format topology graph.',
    case:'F05/R4: 56 elements each; GLRD: 521 elements. Unsupported XML must report UNSUPPORTED_INPUT, not zero-findings PASS.',
    next:'Source-grounded format matrix, F05 element→graph trace, reusable seam and active-writer overlap report on issue #239.',
    boundary:'Never construct a CII writer, change Weight/Final, coerce unsupported profiles or fabricate geometry from missing coordinate seeds.',
    ownership:'InputXML format routing and normalized read-only evidence adapters; no PSI116 connection-review writes.',
    sources:Object.freeze([
-    Object.freeze({label:'Native task and source expectations',url:TOPO_XML+'/issues/239',topoDetail:'Original XML files are private. Access and digest receipt NOT_RUN.'}),
-    Object.freeze({label:'Pinned InputXML Workspace',url:TOPO_XML+TOPO_XML_PIN+'tabs/inputxml-workspace/inputxml-workspace-tab.js',topoDetail:'Existing clean→5C→InputXML conversion and diagnostics.'}),
-    Object.freeze({label:'Pinned F05/R4 profile parser',url:TOPO_XML+TOPO_XML_PIN+'prototypes/ciifr-map/xml-profiles.js',topoDetail:'Native-mm source fields and coordinates are authority boundaries.'}),
-    Object.freeze({label:'Pinned graph builder',url:TOPO_XML+TOPO_XML_PIN+'workbench3d/adapters/canonical-graph-builder.js',topoDetail:'Read-only topology evidence, not physical engineering sign-off.'}),
-    Object.freeze({label:'Governing TOPO_WBS_URL R1',url:TOPO_WBS_URL,topoDetail:'No competing CIIFR or TopoFix TOPO_WBS_URL.'})
+    Object.freeze({label:'Native task and source expectations',url:TOPO_XML+'/issues/239',detail:'Original XML files are private. Access and digest receipt NOT_RUN.'}),
+    Object.freeze({label:'Pinned InputXML Workspace',url:X+pin+'tabs/inputxml-workspace/inputxml-workspace-tab.js',detail:'Existing clean→5C→InputXML conversion and diagnostics.'}),
+    Object.freeze({label:'Pinned F05/R4 profile parser',url:X+pin+'prototypes/ciifr-map/xml-profiles.js',detail:'Native-mm source fields and coordinates are authority boundaries.'}),
+    Object.freeze({label:'Pinned graph builder',url:X+pin+'workbench3d/adapters/canonical-graph-builder.js',detail:'Read-only topology evidence, not physical engineering sign-off.'}),
+    Object.freeze({label:'Governing WBS R1',url:TOPO_WBS_URL,detail:'No competing CIIFR or TopoFix WBS.'})
    ]),
    tests:Object.freeze([
     'F05/R4 56 elements → expected 56 graph edges / 57 node witnesses on supported fixture, without physical-certification claim.',
@@ -74,21 +74,21 @@ export function topoAdhocBoardModel(key,native,previous=null){
  })).sort((a,b)=>a.source.localeCompare(b.source));
  const complete=topoCoverage(native)==='COMPLETE'&&sources.length===expected.length&&
    new Set(sources.map(e=>e.source)).size===expected.length;
- const current={project:key,native:{topoCoverage:complete?'COMPLETE':
+ const current={project:key,native:{coverage:complete?'COMPLETE':
    topoCoverage(native)==='PARTIAL'?'PARTIAL':'UNKNOWN'},sources};
  const delta=classifyNativeDelta(previous,current);
- const advice=current.native.topoCoverage!=='COMPLETE'?'UNKNOWN_STOP':
+ const advice=current.native.coverage!=='COMPLETE'?'UNKNOWN_STOP':
    !previous?'REVIEW_NATIVE_TASK':delta.status==='CHANGED'?'REVIEW_CHANGED_SOURCES':'NO_NEW_EVIDENCE';
  return {
   schema:'cycle-board.adhoc-context/v1',project:key,
-  native:{status:native?.status||'unknown',topoCoverage:current.native.topoCoverage,
+  native:{status:native?.status||'unknown',coverage:current.native.coverage,
    observedAt:native?.observedAt||null,failures:native?.failures||[]},
   sources,delta,comparable:current,task:sources.find(e=>e.source===info.issue)||null,
   cycle:{status:'NOT_VERIFIED',authority:'NOT_ESTABLISHED'},
   assignment:{recipient:'UNBOUND',acknowledgement:'NOT_VERIFIED',writeLease:'NOT_VERIFIED'},
   publication:{status:'NOT_RECONCILED',source:TOPO_PAGE_URL},
   relay:{status:'RECEIPT_NOT_VERIFIED',source:TOPO_RELAY_URL},
-  next:{advice,reason:current.native.topoCoverage!=='COMPLETE'?
+  next:{advice,reason:current.native.coverage!=='COMPLETE'?
    'Some configured originals are inaccessible or invalid. Preserve HOLD; never infer an empty workflow.':
    !previous?'First successful native read. Verify current source, recipient, holds and owner intent before any action.':
    delta.status==='CHANGED'?'A source revision changed: Oracle must inspect the actual changed issue or PR.':
@@ -96,7 +96,7 @@ export function topoAdhocBoardModel(key,native,previous=null){
  };
 }
 function topoFact(root,label,value){
- const f=el('div','cb-topoFact');f.append(el('span','muted',label),el('strong',null,String(value)));root.append(f);
+ const f=el('div','cb-fact');f.append(el('span','muted',label),el('strong',null,String(value)));root.append(f);
 }
 function topoDetail(root,name,value){
  const p=el('p','muted');p.append(el('b',null,name+': '),String(value));root.append(p);
@@ -104,7 +104,7 @@ function topoDetail(root,name,value){
 function topoDraw(root,model){
  root.textContent='';
  const facts=el('div','cb-facts');
- topoFact(facts,'Native topoCoverage',model.native.topoCoverage);
+ topoFact(facts,'Native coverage',model.native.coverage);
  topoFact(facts,'Canonical Cycle',model.cycle.status+' / '+model.cycle.authority);
  topoFact(facts,'Agent recipient',model.assignment.recipient+' / '+model.assignment.acknowledgement);
  topoFact(facts,'Page publication',model.publication.status);
@@ -148,7 +148,7 @@ export function renderTopoAdhocBoard(root,key,{fetcher,clock}={}){
  const box=el('section','topo-cycle-board');
  box.setAttribute('aria-label','TOPO source-bound Cycle Board');
  box.append(el('h3',null,'Cycle Board · source-backed review'),
-  el('p','muted','Read-only. Never creates Page TOPO_WBS_URL, new assignment, protected write, Cycle activation or engineering acceptance.'));
+  el('p','muted','Read-only. Never creates Page WBS, new assignment, protected write, Cycle activation or engineering acceptance.'));
  const button=el('button','btn small','Recheck native sources');button.type='button';
  const result=el('section','topo-board-results');
  result.append(el('p','muted','Source observation pending · authority NOT_ESTABLISHED.'));
@@ -161,7 +161,7 @@ export function renderTopoAdhocBoard(root,key,{fetcher,clock}={}){
    const observation=await loadBoardNative(key,fetcher||fetch,clock||(()=>new Date().toISOString()));
    const model=topoAdhocBoardModel(key,observation,prior);
    topoDraw(result,model);
-   if(model.native.topoCoverage==='COMPLETE')prior=model.comparable;
+   if(model.native.coverage==='COMPLETE')prior=model.comparable;
   }catch(error){
    result.textContent='';
    result.append(el('p','banner','Native observation UNKNOWN: '+
