@@ -63,7 +63,8 @@ function ct5PageRows(project,key,chatLinks,observations,scope){
    source:nativeSource,sourceRevision:observation?.revision||null,sourceOccurrence:observation?.occurrenceId||null,
    state,recordedNext:ct5Safe(c.next?.text)||'NOT_RECORDED',nextActor,
    recipientIdKnown:!!id8,privateUrl:ct5PickPrivate(chatLinks,[id8]),
-   status:!instruction?'TASK_PACKET_UNAVAILABLE':notAgent?'ACTOR_REVIEW_REQUIRED':status,
+   status:status==='RECONCILE_FIRST'?'RECONCILE_FIRST':
+    !instruction?'TASK_PACKET_UNAVAILABLE':notAgent?'ACTOR_REVIEW_REQUIRED':status,
    delivery:'NOT_VERIFIED',acknowledgment:'NOT_VERIFIED',
    returnState:returned?'PAGE_AUDIT_RETURN_POINTER_ONLY':'NOT_VERIFIED',
    returnUrl:returned?.source||null,
