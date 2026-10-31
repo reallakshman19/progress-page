@@ -27,14 +27,17 @@ const ct5RoleKind=x=>{
 
 // The Board exposes every existing task; the actor's chat reports only own work.
 // There is deliberately no automatic Oracle card if no source-owned Oracle task exists.
-export function cycleNowRoleSelection(rows,{actingRole='UNKNOWN',view='response',ownerRequestedTeam=false}={}){
+export function cycleNowRoleSelection(rows,{actingRole='UNKNOWN',view='response',ownerRequestedTeam=false,actorTaskId=null}={}){
  const items=Array.isArray(rows)?rows.filter(x=>x&&typeof x==='object'&&x.id):[];
  const role=ct5RoleKind(actingRole);
  if(view==='board')return {scope:'BOARD_ALL_EXISTING',cards:items,role};
  if(role==='UNKNOWN')return {scope:'ACTING_ROLE_NOT_VERIFIED',cards:[],role};
  if(ownerRequestedTeam)return {scope:'OWNER_REQUESTED_TEAM',cards:items,role};
- const cards=items.filter(x=>ct5RoleKind(x.role)===role&&ct5SafeSource(x.source));
- return {scope:cards.length?'ACTOR_OWN_TASK':'ROLE_OWN_TASK_SOURCE_UNVERIFIED',cards,role};
+ const candidates=items.filter(x=>ct5RoleKind(x.role)===role&&ct5SafeSource(x.source));
+ const cards=actorTaskId?candidates.filter(x=>x.id===actorTaskId):
+  candidates.length===1?candidates:[];
+ return {scope:cards.length?'ACTOR_OWN_TASK':
+   candidates.length>1&&!actorTaskId?'ACTOR_TASK_AMBIGUOUS':'ROLE_OWN_TASK_SOURCE_UNVERIFIED',cards,role};
 }
 
 // Every fact must be attached to the *current* assignment; a previous agent
