@@ -184,7 +184,7 @@ export function renderContinuationBridge(root,project,options={}){
      'Observed source occurrence: '+row.sourceOccurrence+' · not an acknowledgment.'));
    if(row.smartBadges.length)renderSmartBadges(info,row.smartBadges);
    const actions=el('div','ct5-actions');
-   if(row.source)actions.append(link(row.source,'Open original native evidence','btn small'));
+   if(row.source)actions.append(link(row.source,'Review original task / check agent return','btn small'));
    if(row.returnUrl)actions.append(link(row.returnUrl,'Inspect return pointer','btn small'));
    const copy=el('button','btn small','Copy Cycle now · not sent');
    copy.type='button';copy.disabled=!row.instructions;
