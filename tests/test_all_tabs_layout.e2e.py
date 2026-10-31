@@ -171,6 +171,62 @@ def main():
                     if width==390 and section=="tests":picture(page,"adhoc-progress-page-tests-mobile")
                     return {"documentWidth":g["documentWidth"],"section":section}
                 run_case(str(width)+"px adhoc/progress-page/"+section,run_adhoc)
+            # Two independent TOPO Adhoc boards, never additional Page projects/WBS.
+            # Native public GitHub may rate-limit; the Board must render UNKNOWN
+            # without asserting complete source intake or engineering authority.
+            if width in (1440,390):
+                for topo in ("topo-a","topo-b"):
+                    for section_name in ("overview","cycle-board","sources","continuity","tests"):
+                        def topo_adhoc_case():
+                            route="adhoc/"+topo+"/"+section_name
+                            load(page,route)
+                            check(page.locator("nav.tabs a.on").count()==1 and
+                                  page.locator("nav.tabs a.on").inner_text()=="Adhoc Projects",
+                                  "TOPO Adhoc left the governing navigation")
+                            check(page.locator("nav.adhoc-project-subtabs a.on").count()==1,
+                                  "TOPO did not select exactly one Adhoc project")
+                            check(page.locator("nav.adhoc-section-subtabs a.on").count()==1,
+                                  "TOPO did not select exactly one nested view")
+                            check(page.locator(".adhoc-body").count()==1,
+                                  "TOPO missing source-linked content")
+                            check("Existing governing WBS" in page.locator(".adhoc-body").inner_text(),
+                                  "No existing WBS scope or source disclaimer")
+                            if section_name=="cycle-board":
+                                check(page.locator(".topo-cycle-board").count()==1,
+                                      "TOPO has no independent read-only Cycle Board")
+                                check(page.locator(".topo-board-results").count()==1,
+                                      "TOPO Board did not expose source observation")
+                                check(page.locator(".topo-cycle-board button").count()==1,
+                                      "On-demand recheck absent")
+                                check(page.locator(".topo-cycle-board").get_attribute("aria-label")==
+                                      "TOPO source-bound Cycle Board",
+                                      "Wrong Board type")
+                            if section_name=="sources":
+                                check(page.locator(".adhoc-body a[href*='/issues/3']").count()>=1,
+                                      "Governing original WBS source is missing")
+                                check(page.locator(".adhoc-body a[href*='/pull/572']").count()>=1,
+                                      "Common relay provenance missing")
+                                check(page.locator(".adhoc-body a[href*='/pull/95']").count()>=1,
+                                      "Page writer source missing")
+                            if section_name=="continuity":
+                                check("NOT_VERIFIED" in page.locator(".adhoc-body").inner_text(),
+                                      "Agent / Oracle authority unknown was suppressed")
+                            g=geometry(page)
+                            check(g["documentWidth"]<=width+3,
+                                  route+" horizontal overflow "+str(g["documentWidth"]))
+                            if section_name=="cycle-board":
+                                picture(page,"adhoc-"+topo+"-board-"+str(width))
+                            return {"workspace":topo,"view":section_name,
+                                    "documentWidth":g["documentWidth"]}
+                        run_case(str(width)+"px adhoc/"+topo+"/"+section_name,topo_adhoc_case)
+                def topo_unknown_route():
+                    load(page,"adhoc/topo-a/unknown")
+                    check(page.locator('[role="alert"]').count()==1,
+                          "Unknown TOPO section must fail closed")
+                    check(page.locator(".adhoc-body").count()==0,
+                          "Wrong fallback Adhoc content shown")
+                    return {"route":"adhoc/topo-a/unknown","failClosed":True}
+                run_case(str(width)+"px invalid TOPO Adhoc route",topo_unknown_route)
             # Source-bound Board: rendered Page WBS and INFO-Auto must not need
             # a live comment feed or an activated Oracle Cycle.
             if width in (1440,390):
