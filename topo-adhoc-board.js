@@ -265,7 +265,8 @@ export function renderTopoAdhocBoard(root,key,{fetcher,clock,topofixProject=null
  const relatedPRs=key==='topo-a'?[TOPO_REPO+'/pull/10',TOPO_REPO+'/pull/11']:[];
  const nativeTasks=[{key,id:key,label:info.label,issue:info.issue,wbs:info.wbs,
    next:info.next,relatedPRs,role:'Builder'}];
- renderContinuationBridge(ct5,null,{key,nativeTasks,chatLinks});
+ renderContinuationBridge(ct5,null,{key,nativeTasks,chatLinks,actingRole:'ORACLE',
+  coordinationSources:[TOPO_ADHOC_INFO['topo-a'].issue,TOPO_ADHOC_INFO['topo-b'].issue]});
  box.append(ct5);
  const button=el('button','btn small','Recheck native sources');button.type='button';
  const result=el('section','topo-board-results');
@@ -291,7 +292,8 @@ export function renderTopoAdhocBoard(root,key,{fetcher,clock,topofixProject=null
    topoDraw(result,model);
    ct5.textContent='';
    renderContinuationBridge(ct5,null,{key,nativeTasks,chatLinks,observations:model.sources,
-     evidenceFeeds:{[info.issue]:feed},pageFetch});
+     evidenceFeeds:{[info.issue]:feed},pageFetch,actingRole:'ORACLE',
+     coordinationSources:[TOPO_ADHOC_INFO['topo-a'].issue,TOPO_ADHOC_INFO['topo-b'].issue]});
    if(model.native.coverage==='COMPLETE')prior=model.comparable;
   }catch(error){
    result.textContent='';
