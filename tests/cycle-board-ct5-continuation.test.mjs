@@ -147,6 +147,10 @@ test('Historical Cycle Board never copies or opens a continuation; empty source 
  const hist=continuationBridgeModel(p,{key:'g9v35',historical:true});
  assert.equal(hist.state,'HISTORICAL_NO_CONTINUATION');
  assert.equal(hist.records,0);
+ const archived=structuredClone(p);archived.status='archived';
+ const closed=continuationBridgeModel(archived,{key:'g9v35'});
+ assert.equal(closed.state,'HISTORICAL_NO_CONTINUATION');
+ assert.equal(closed.records,0,'Archived project must not get copied Cycle now work');
  const empty=continuationBridgeModel(null,{key:'topofix'});
  assert.equal(empty.state,'SOURCE_UNKNOWN');
  assert.equal(empty.rows.length,0);
