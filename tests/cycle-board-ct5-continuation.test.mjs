@@ -86,11 +86,13 @@ test('A recorded DONE card stops replay and an Owner next actor requires review,
  let m=continuationBridgeModel(copy,{key:'ciifr'}).rows.find(x=>x.id===id);
  assert.equal(m.status,'RECONCILE_FIRST');
  assert.match(continuationText(m,'ciifr'),/Do not re-run/);
+ assert.doesNotMatch(continuationText(m,'ciifr'),/AGENT TASK PACKET/,'finished work must yield reconciliation-only guidance');
  copy.cards[id].state='IN_PROGRESS';
  copy.cards[id].next={actor:'Owner',text:'Approve protected write'};
  m=continuationBridgeModel(copy,{key:'ciifr'}).rows.find(x=>x.id===id);
  assert.equal(m.status,'ACTOR_REVIEW_REQUIRED');
  assert.equal(m.acknowledgment,'NOT_VERIFIED');
+ assert.doesNotMatch(continuationText(m,'ciifr'),/AGENT TASK PACKET/,'Owner-directed step cannot be an agent execution packet');
 });
 
 test('Claimed AGENT_RETURN alone never establishes recipient delivery/ACK, even with source-bound audit pointer',()=>{
@@ -106,6 +108,8 @@ test('Claimed AGENT_RETURN alone never establishes recipient delivery/ACK, even 
  bad.audit.events.at(-1).nativeOccurrenceId='github:valid-seeming-source';
  actual=continuationBridgeModel(bad,{key:'topofix'}).rows.find(x=>x.id===id);
  assert.equal(actual.returnState,'PAGE_AUDIT_RETURN_POINTER_ONLY');
+ assert.equal(actual.status,'RECONCILE_FIRST','source pointer must block duplicate task replay');
+ assert.doesNotMatch(continuationText(actual,'topofix'),/AGENT TASK PACKET/);
  assert.equal(actual.acknowledgment,'NOT_VERIFIED');
  assert.equal(actual.delivery,'NOT_VERIFIED');
  assert.equal(actual.status!=='ACKNOWLEDGED',true);
