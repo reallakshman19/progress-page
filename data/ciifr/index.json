@@ -4,7 +4,7 @@
     "key": "ciifr",
     "title": "CII Find & Replace VNext",
     "subtitle": "R4 current: Geometry WBS3 read-only G1/G2; Element WBS4 source/config qualification; VNext integration held pending independent evidence.",
-    "updatedAt": "2026-10-31T03:03:18Z",
+    "updatedAt": "2026-10-31T03:40:01Z",
     "updatedBy": "Builder6ae1bed6 (direct Owner)",
     "staleAfterMin": 120,
     "aim": "Extend CIIFR NodeName VNext into typed ELEMENTS real-value/Line Number edits plus pointer-resolved RIGID Weight/Type. Preserve original bytes, v14 units/sentinels, node/pointer/branch relations, per-span approvals, new-copy export and native import review. Retain R3 Geometry WBS3 review-only, frozen P2/P2.1 and XML custody; defer structural graph/pointer edits and P3.",
@@ -446,6 +446,36 @@
       "commit": "e754779ff4f6155021b8fa312cec5151be8338c9",
       "activity": "Actual BM2785elements/139owners/78restraints. Accepted Final unchanged; no Owner mass guessed.",
       "capSrc": "https://github.com/reallakshman19/3D_Converters/issues/350#issuecomment-6538131761"
+    },
+    "M32": {
+      "name": "Weight suggestion basis tooltips",
+      "full": "Carry existing Worker candidate evidence into each Run tooltip; preserve kg/rank/qualification and Final behavior.",
+      "order": 48,
+      "wbs": "6.8",
+      "bench": "SUGGESTION-BASIS",
+      "keeps": "Source/classification; accepted Final; scorer; native guards",
+      "cap": "CANDIDATE",
+      "canDo": "Master/source dimensions, reference kg/method/score/warnings;7local cases and remote4-chip hover/focus PASS.",
+      "capSrc": "https://github.com/reallakshman19/3D_Converters/pull/358",
+      "repo": "reallakshman19/3D_Converters",
+      "branch": "fix/xml229-suggestion-basis-instrument-rca-6ae1bed6",
+      "commit": "dd76d9a86d344a0ee357418676297118ad51af80",
+      "activity": "Owner-scoped presentation/RCA. Actual Worker extra transport assertion CI pending."
+    },
+    "M33": {
+      "name": "Instrument mass hold source RCA",
+      "full": "Compare exact uploaded source and14native blockers; no invented Rigid choices or oldFinal migration.",
+      "order": 49,
+      "wbs": "6.9",
+      "bench": "INSTRUMENT-SOURCE-HOLD",
+      "keeps": "Source/classification; accepted Final; scorer; native guards",
+      "cap": "CANDIDATE",
+      "canDo": "Source SHA and14/14anchors match;28INST endpoints lackRigid.14PENDING; native positive-mass hold correct.",
+      "capSrc": "https://github.com/reallakshman19/3D_Converters/pull/358",
+      "repo": "reallakshman19/3D_Converters",
+      "branch": "fix/xml229-suggestion-basis-instrument-rca-6ae1bed6",
+      "commit": "dd76d9a86d344a0ee357418676297118ad51af80",
+      "activity": "Owner-scoped presentation/RCA. Actual Worker extra transport assertion CI pending."
     }
   },
   "groups": {

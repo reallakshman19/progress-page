@@ -1466,5 +1466,57 @@
     ],
     "updatedAt": "2026-10-31T03:03:16Z",
     "src": "https://github.com/reallakshman19/3D_Converters/issues/350#issuecomment-6538131761"
+  },
+  "suggestion-basis": {
+    "order": 55,
+    "group": "r4-restraint-audit",
+    "milestone": "M32",
+    "label": "Suggestion basis tooltips",
+    "who": {
+      "chat": "restraint-6ae1bed6",
+      "role": "Owner-directed builder; self-checks disclosed"
+    },
+    "state": "SUBMITTED",
+    "now": "PR358 carries each chip master/source dimensions, reference weight/method/score and qualification reasons; hover/focus changes no mass.",
+    "next": {
+      "actor": "Owner / engineering reviewer",
+      "text": "Review PR358 and source diagnosis; establish any instrument classification separately before fresh Final decisions. No native guard bypass."
+    },
+    "refs": [
+      {
+        "k": "pr",
+        "l": "Suggestion basis and exact source RCA",
+        "u": "https://github.com/reallakshman19/3D_Converters/pull/358",
+        "s": "DRAFT_NOT_MERGED"
+      }
+    ],
+    "updatedAt": "2026-10-31T03:39:59Z",
+    "src": "https://github.com/reallakshman19/3D_Converters/pull/358"
+  },
+  "instrument-source-hold": {
+    "order": 56,
+    "group": "r4-restraint-audit",
+    "milestone": "M33",
+    "label": "EF05 instrument source HOLD",
+    "who": {
+      "chat": "restraint-6ae1bed6",
+      "role": "Owner-directed builder; self-checks disclosed"
+    },
+    "state": "SUBMITTED",
+    "now": "Exact source SHA/locations match; all14pairs remain unclassified. Positive Final kg is notRigid classification. Source and oldFinal unchanged; private files excluded.",
+    "next": {
+      "actor": "Owner / engineering reviewer",
+      "text": "Review PR358 and source diagnosis; establish any instrument classification separately before fresh Final decisions. No native guard bypass."
+    },
+    "refs": [
+      {
+        "k": "pr",
+        "l": "Suggestion basis and exact source RCA",
+        "u": "https://github.com/reallakshman19/3D_Converters/pull/358",
+        "s": "DRAFT_NOT_MERGED"
+      }
+    ],
+    "updatedAt": "2026-10-31T03:40:00Z",
+    "src": "https://github.com/reallakshman19/3D_Converters/pull/358"
   }
 }

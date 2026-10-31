@@ -166,6 +166,12 @@
       "u": "https://github.com/reallakshman19/progress-page/blob/pp/ciifr-production-return-6ae1bed6/data/ciifr/test/xml229-pr357-transfer-evidence.zip",
       "s": "DRAFT_ARTIFACT",
       "milestone": "M30"
+    },
+    {
+      "t": "Controlled77kg tooltip replay from PR358 formatter at53337245.7local cases and actual remote4-chip hover/focus PASS. No acceptance on hover/focus; no deployed or engineering approval claim.",
+      "u": "https://github.com/reallakshman19/3D_Converters/pull/358",
+      "s": "AUTHOR_EXECUTED_CANDIDATE",
+      "milestone": "M32"
     }
   ],
   "issues": [
@@ -1127,6 +1133,12 @@
       "u": "https://github.com/reallakshman19/3D_Converters/pull/357",
       "s": "AUTHOR_EXECUTED_NOT_ENGINEERING_APPROVAL",
       "milestone": "M31"
+    },
+    {
+      "t": "Attachment SHA2560d403a5532c8cac7f2fb0f0c2b2fb4e140de9961c879f72bffc425ebd9eae4ae matches blocker report.41branches/1476nodes,14same-ref305mmINST pairs,28unclassified endpoints;14PENDING choices; no source writes.",
+      "u": "https://github.com/reallakshman19/3D_Converters/pull/358",
+      "s": "SOURCE_INSPECTION_NOT_APPROVAL",
+      "milestone": "M33"
     }
   ],
   "knownIssues": [

@@ -79,7 +79,7 @@ test('CIIFR R4 WBS 5 CIIFR-MAP groups only M8–M11; seven others stay separate'
     ['M12','M13','M14','M15','M16'],
     ['M17','M18','M19','M20','M21','M22','M23'],
     ['M8','M9','M10','M11'],
-    ['M24','M25','M26','M27','M28','M29','M30','M31'],
+    ['M24','M25','M26','M27','M28','M29','M30','M31','M32','M33'],
     ['M6','M7','M4','M5','M1','M2','M3']
   ]);
   assert.deepEqual(groups[2].steps.map(s=>s.short),['5.0','5.1','5.2','5.3']);
@@ -94,6 +94,8 @@ test('CIIFR R4 WBS 5 CIIFR-MAP groups only M8–M11; seven others stay separate'
   assert.equal(cards['bm2-tee-route'].milestone,'M29');
   assert.equal(cards['json-restraint-transfer'].milestone,'M30');
   assert.equal(cards['component-body-bore'].milestone,'M31');
+  assert.equal(cards['suggestion-basis'].milestone,'M32');
+  assert.equal(cards['instrument-source-hold'].milestone,'M33');
   const ids=groups.flatMap(g=>g.steps.map(s=>s.key));
   assert.equal(new Set(ids).size,ids.length,'no duplicate milestone IDs');
   assert.deepEqual([...ids].sort(),Object.keys(ciifr.milestones).sort(),'no milestone lost');

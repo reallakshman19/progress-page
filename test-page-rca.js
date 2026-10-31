@@ -7,7 +7,20 @@ export const RCA_SOURCE = Object.freeze({
   url: 'https://raw.githubusercontent.com/reallakshman19/3D_Converters/9ad61417dbd3c473b4e6c0f6fa1aa8eb6005221b/Benchmarks/XML-CII-2019/revamped/PL-BM1.xml',
 });
 const rcaIssue = n => 'https://github.com/reallakshman19/3D_Converters/issues/' + n;
+const SUGGESTION_EXAMPLE=Object.freeze({"label": "Controlled 77 kg suggestion \u00b7 hover or focus", "tooltip": "Source-qualified suggestion: 77 kg (largest suggestion)\nBasis: Weight master lookup\nCurrent component: DN100 \u00b7 Rating 300 \u00b7 Length 305 mm\nWeight master: ID CONTROL-1 \u00b7 record 1 | GATE \u00b7 Controlled gate-valve analogue | DN100 \u00b7 Rating 300 \u00b7 Length 305 mm \u00b7 Weight 77 kg\nMatch score: 100%\nLength difference: 0 mm \u00b7 tolerance 1 mm\nQualification: Exact bore, rating and length\nInstrument: selecting kg does not establish RIGID classification. Governed CII also checks the source model.\nSelecting this suggestion fills the input only. Confirm Final separately."});
 const RCA_CASES = Object.freeze({
+  suggestion: {
+    title: 'PR358 · Weight suggestion basis and instrument hold',
+    source: 'https://github.com/reallakshman19/3D_Converters/pull/358',
+    columns: ['Check', 'Observation', 'Boundary'],
+    rows: [
+      ['Suggestion tooltip', 'Actual Worker method/master, DN/rating/reference length/kg, score, ratio/warnings and review reasons', 'Read-only display; kg, rank and Final behavior unchanged'],
+      ['Supplied EF05 source', '41branches/1476nodes;14INST pairs,305mm; all28endpoints lackRigid', 'Blocker SHA and14locations independently match'],
+      ['Accepted positive instrument kg', 'Source model remains unclassified', 'Correct native HOLD; selecting kg does not classify rigidity'],
+      ['TopoFix / revision-14 filename', 'Original public EF05 also has28unclassified INST endpoints', 'No lost-classification proof without actual intermediate source/receipt'],
+    ],
+    note: 'Controlled replay below uses the PR358 formatter; it is not an Owner engineering suggestion.7local cases and remote4-chip hover/focus checks pass. Extra actual Worker transport assertions tracked in PR358. No classification or accepted mass changed; private files are not hosted.',
+  },
   transfer: {
     title: 'PR357 · JSON restraints through native export',
     source: 'https://github.com/reallakshman19/3D_Converters/pull/357',
@@ -149,9 +162,15 @@ export function renderRcaBench(root, project, { historical = false } = {}) {
     const record = RCA_CASES[key]; body.replaceChildren(el('h4', null, record.title));
     body.append(rcaTable(record.columns, record.rows), el('p', null, record.note), link(record.source, 'Open native RCA evidence'));
     if (key === 'bore') rcaSourceInspector(body);
+    if (key === 'suggestion') {
+      const sample=el('button','btn',SUGGESTION_EXAMPLE.label); sample.type='button';
+      sample.title=SUGGESTION_EXAMPLE.tooltip;sample.setAttribute('aria-description',sample.title);
+      const proof=el('details');proof.append(el('summary',null,'Read the example tooltip text'));
+      proof.append(el('pre',null,SUGGESTION_EXAMPLE.tooltip));body.append(sample,proof);
+    }
     for (const [id, button] of buttons) button.setAttribute('aria-pressed', String(id === key));
   };
-  for (const [key, title] of [['transfer', 'JSON transfer fix'], ['body', 'Flange body fix'], ['bore', 'Original bore RCA'], ['restraint', 'Original REST RCA'], ['defaults', 'Original defaults RCA']]) {
+  for (const [key, title] of [['suggestion', 'Suggestion basis / INST hold'], ['transfer', 'JSON transfer fix'], ['body', 'Flange body fix'], ['bore', 'Original bore RCA'], ['restraint', 'Original REST RCA'], ['defaults', 'Original defaults RCA']]) {
     const button = el('button', 'btn', title); button.type = 'button';
     button.addEventListener('click', () => show(key)); controls.append(button); buttons.push([key, button]);
   }
@@ -166,5 +185,5 @@ export function renderRcaBench(root, project, { historical = false } = {}) {
   enriched.download = 'pr357-controlled-enriched.xml';
   section.append(controls, body, candidate, enriched, download,
     el('p', 'muted', 'Bore source: 9ad61417dbd3. Restraint comparison: 57710dd74466 → 25db94769994. Browser controls are local and do not change masses, config, tasks or release status.'));
-  root.append(section); show('transfer');
+  root.append(section); show('suggestion');
 }
