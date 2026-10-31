@@ -1,0 +1,75 @@
+{
+  "schema": "XML229.PR357.AuthorEvidence.v1",
+  "productionCommit": "9132e3160ade34de79a0f87c52d7f1aa0f0814cc",
+  "pr": "https://github.com/reallakshman19/3D_Converters/pull/357",
+  "releaseAuthorized": false,
+  "ownerLiveSessionVerified": false,
+  "controlledNative": {
+    "elements": 5,
+    "massOwners": 1,
+    "finalKg": 12.5,
+    "restraints": [
+      {
+        "node": 30,
+        "typeCode": 14,
+        "gapMm": 7,
+        "friction": 0
+      },
+      {
+        "node": 40,
+        "typeCode": 8,
+        "gapMm": 6
+      },
+      {
+        "node": 50,
+        "typeCode": 9,
+        "gapMm": 8
+      },
+      {
+        "node": 60,
+        "typeCode": 14,
+        "gapMm": 7,
+        "friction": 0
+      }
+    ],
+    "stiffness": 123456
+  },
+  "bm2": {
+    "sourceGitBlob": "2008bbcc344ef48dde95addd6a72dc9e08aee56c",
+    "elements": 785,
+    "massOwners": 139,
+    "restraintAssignments": 78,
+    "componentRef": "=134234934/26032",
+    "bodyOutsideDiameterMm": 60.3,
+    "bodyBoreMm": 50,
+    "endpointOutsideDiameterMm": 26.7,
+    "endpointBoreMm": 20,
+    "suggestionKg": 15,
+    "confidence": 1,
+    "autoQualified": false,
+    "reason": "COMPONENT_PORT_DIMENSIONS_DIFFER_REVIEW_REQUIRED",
+    "acceptedOwnerMassChanged": false
+  },
+  "firstpass": {
+    "originalXmlBlob": "9baed223d1fe10644bc4ea6be1b9e36b10eb3e1f",
+    "originalJsonBlob": "f3400dc9cbffa079d89ad850f0acc7a3709a21d9",
+    "nativeSourceRestraintReplay": "PASS",
+    "lateCiiGuard": "CII_NATIVE_PHYSICAL_OWNER_MISSING",
+    "exactMainBinderRuntimeControl": "SAME_HOLD",
+    "ciiReleaseAuthorized": false
+  },
+  "checks": {
+    "newNodeTransferCases": 7,
+    "existingSupportCases": 21,
+    "existingNativeMassCases": 24,
+    "existingEnrichedExportCases": 4,
+    "broadP4ProducerCases": 70,
+    "independentTamperNegatives": 11
+  },
+  "limits": [
+    "Author execution, not independent engineering acceptance",
+    "No production merge/deployment",
+    "Owner live source JSON/session not available",
+    "No native CAESAR import"
+  ]
+}

@@ -4,7 +4,7 @@
     "key": "ciifr",
     "title": "CII Find & Replace VNext",
     "subtitle": "R4 current: Geometry WBS3 read-only G1/G2; Element WBS4 source/config qualification; VNext integration held pending independent evidence.",
-    "updatedAt": "2026-10-30T18:09:27Z",
+    "updatedAt": "2026-10-31T03:03:18Z",
     "updatedBy": "Builder6ae1bed6 (direct Owner)",
     "staleAfterMin": 120,
     "aim": "Extend CIIFR NodeName VNext into typed ELEMENTS real-value/Line Number edits plus pointer-resolved RIGID Weight/Type. Preserve original bytes, v14 units/sentinels, node/pointer/branch relations, per-span approvals, new-copy export and native import review. Retain R3 Geometry WBS3 review-only, frozen P2/P2.1 and XML custody; defer structural graph/pointer edits and P3.",
@@ -424,12 +424,13 @@
       "wbs": "6.6",
       "bench": "JSON-RESTRAINT-TRANSFER",
       "keeps": "BM2-OLET-ROUTE; BM2-TEE-ROUTE; explicit XML/Final mass custody",
-      "cap": "NOT_DEMONSTRATED",
-      "canDo": "Exact-current-source reproduction confirms JSON types/gaps lost before Final; repair in progress.",
+      "cap": "CANDIDATE",
+      "canDo": "Controlled actual native XML/CII preserves REST/GUIDE/LINESTOP,gaps7/6/8,friction0 andstiffness123456. Firstpass source replay passes; separate late owner guard held.",
       "repo": "reallakshman19/3D_Converters",
       "branch": "fix/xml229-json-restraints-body-bore-6ae1bed6",
-      "commit": "7ac4f00a9fedb23952611ddc9be0465289813f20",
-      "activity": "JSON closure resolves +Y/GUI6/LIM8; finalized Worker XML omits all three. Owner requests correction."
+      "commit": "e754779ff4f6155021b8fa312cec5151be8338c9",
+      "activity": "PR3579132e316 ande754779f;7new+21support+24native+4enriched+70producer cases PASS. Browser source-handoff rerun pending.",
+      "capSrc": "https://github.com/reallakshman19/3D_Converters/issues/350#issuecomment-6538131761"
     },
     "M31": {
       "name": "Physical component bore matches native body",
@@ -438,12 +439,13 @@
       "wbs": "6.7",
       "bench": "COMPONENT-BODY-BORE",
       "keeps": "PL-BM1 DN250/DN50; physical owner and source port custody",
-      "cap": "NOT_DEMONSTRATED",
-      "canDo": "Flange DN20 endpoint lookup versus DN50 native body reproduced; original port dimensions unchanged.",
+      "cap": "BENCHMARK_SUPPORTED",
+      "canDo": "Original BM2 bodyDN50 lookup gives15kg100%proposal, source endportDN20/OD26.7 retained; proposal requires explicit review.",
       "repo": "reallakshman19/3D_Converters",
       "branch": "fix/xml229-json-restraints-body-bore-6ae1bed6",
-      "commit": "7ac4f00a9fedb23952611ddc9be0465289813f20",
-      "activity": "RCA-only flange finding still unresolved; scoped component-body repair in progress."
+      "commit": "e754779ff4f6155021b8fa312cec5151be8338c9",
+      "activity": "Actual BM2785elements/139owners/78restraints. Accepted Final unchanged; no Owner mass guessed.",
+      "capSrc": "https://github.com/reallakshman19/3D_Converters/issues/350#issuecomment-6538131761"
     }
   },
   "groups": {

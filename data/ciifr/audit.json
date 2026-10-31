@@ -6850,6 +6850,97 @@
       "list": "intent",
       "op": "add",
       "rev": "R4"
+    },
+    {
+      "seq": 523,
+      "id": "CIIFR-R-0523",
+      "previous_id": "CIIFR-R-0522",
+      "at": "2026-10-31T03:03:15Z",
+      "kind": "PLAN",
+      "actor": "Builder6ae1bed6 (direct Owner)",
+      "summary": "Record bounded PR357 candidate execution and explicit acceptance limits.",
+      "source": "https://github.com/reallakshman19/3D_Converters/issues/350#issuecomment-6538131761",
+      "scope": "milestone:M30",
+      "rev": "R4"
+    },
+    {
+      "seq": 524,
+      "id": "CIIFR-R-0524",
+      "previous_id": "CIIFR-R-0523",
+      "at": "2026-10-31T03:03:15Z",
+      "kind": "PLAN",
+      "actor": "Builder6ae1bed6 (direct Owner)",
+      "summary": "Record bounded PR357 candidate execution and explicit acceptance limits.",
+      "source": "https://github.com/reallakshman19/3D_Converters/issues/350#issuecomment-6538131761",
+      "scope": "milestone:M31",
+      "rev": "R4"
+    },
+    {
+      "seq": 525,
+      "id": "CIIFR-R-0525",
+      "previous_id": "CIIFR-R-0524",
+      "at": "2026-10-31T03:03:16Z",
+      "kind": "STATE",
+      "actor": "Builder6ae1bed6 (direct Owner)",
+      "summary": "Return candidate behavior and preserved authority to the governing WBS.",
+      "source": "https://github.com/reallakshman19/3D_Converters/issues/350#issuecomment-6538131761",
+      "card": "json-restraint-transfer",
+      "before": "IN_PROGRESS",
+      "after": "SUBMITTED",
+      "rev": "R4"
+    },
+    {
+      "seq": 526,
+      "id": "CIIFR-R-0526",
+      "previous_id": "CIIFR-R-0525",
+      "at": "2026-10-31T03:03:16Z",
+      "kind": "STATE",
+      "actor": "Builder6ae1bed6 (direct Owner)",
+      "summary": "Return candidate behavior and preserved authority to the governing WBS.",
+      "source": "https://github.com/reallakshman19/3D_Converters/issues/350#issuecomment-6538131761",
+      "card": "component-body-bore",
+      "before": "IN_PROGRESS",
+      "after": "SUBMITTED",
+      "rev": "R4"
+    },
+    {
+      "seq": 527,
+      "id": "CIIFR-R-0527",
+      "previous_id": "CIIFR-R-0526",
+      "at": "2026-10-31T03:03:17Z",
+      "kind": "FIXTURE",
+      "actor": "Builder6ae1bed6 (direct Owner)",
+      "summary": "Record source/native transfer evidence with Firstpass limit.",
+      "source": "https://github.com/reallakshman19/3D_Converters/issues/350#issuecomment-6538131761",
+      "list": "inputs",
+      "op": "add",
+      "rev": "R4"
+    },
+    {
+      "seq": 528,
+      "id": "CIIFR-R-0528",
+      "previous_id": "CIIFR-R-0527",
+      "at": "2026-10-31T03:03:18Z",
+      "kind": "FIXTURE",
+      "actor": "Builder6ae1bed6 (direct Owner)",
+      "summary": "Record component-body versus endpoint port evidence.",
+      "source": "https://github.com/reallakshman19/3D_Converters/issues/350#issuecomment-6538131761",
+      "list": "inputs",
+      "op": "add",
+      "rev": "R4"
+    },
+    {
+      "seq": 529,
+      "id": "CIIFR-R-0529",
+      "previous_id": "CIIFR-R-0528",
+      "at": "2026-10-31T03:03:18Z",
+      "kind": "FIXTURE",
+      "actor": "Builder6ae1bed6 (direct Owner)",
+      "summary": "Expose downloadable enriched XML and bounded native test evidence in Test page.",
+      "source": "https://github.com/reallakshman19/3D_Converters/issues/350#issuecomment-6538131761",
+      "list": "repository",
+      "op": "add",
+      "rev": "R4"
     }
   ]
 }

@@ -1414,21 +1414,27 @@
       "chat": "restraint-6ae1bed6",
       "role": "Owner-directed builder; self-checks disclosed"
     },
-    "state": "IN_PROGRESS",
-    "now": "Exact main7ac4f00a reproduction: source-bound JSON resolves REST/GUI6/LIM8; raw-source finalizedGeometry loses the restraints. PR353 did not reach main; PR354/356 are merged.",
+    "state": "SUBMITTED",
+    "now": "PR357 resolves original JSON restraints before Final and independently replays raw source/config in native validation. Consumed XML/CII retain controlled GUI6/LIM8 and REST7/friction0. Owner live session/CAESAR and independent acceptance pending; Firstpass late owner hold persists on exact-main control.",
     "next": {
-      "actor": "Builder6ae1bed6",
-      "text": "Implement pre-Final JSON restraint transfer before fallback and verify actual enriched XML/native CII plus contrary cases."
+      "actor": "Owner / engineering reviewer",
+      "text": "Review PR357 and source-bound tests, complete remote CI reconciliation; after separately authorized deployment run fresh Preview/Final/native import on Owner source."
     },
     "refs": [
       {
         "k": "comment",
         "l": "Owner continuation and source reproduction",
         "u": "https://github.com/reallakshman19/3D_Converters/issues/350#issuecomment-6530010922"
+      },
+      {
+        "k": "pr",
+        "l": "Source transfer and body-bore fix",
+        "u": "https://github.com/reallakshman19/3D_Converters/pull/357",
+        "s": "DRAFT_NOT_MERGED"
       }
     ],
-    "updatedAt": "2026-10-30T18:09:25Z",
-    "src": "https://github.com/reallakshman19/3D_Converters/issues/350#issuecomment-6530010922"
+    "updatedAt": "2026-10-31T03:03:16Z",
+    "src": "https://github.com/reallakshman19/3D_Converters/issues/350#issuecomment-6538131761"
   },
   "component-body-bore": {
     "order": 54,
@@ -1439,20 +1445,26 @@
       "chat": "restraint-6ae1bed6",
       "role": "Owner-directed builder; self-checks disclosed"
     },
-    "state": "IN_PROGRESS",
-    "now": "BM2 flange source inletOD60.3/native bodyDN50 conflicts with owner endpointOD26.7/DN20 weight lookup. Previous work was RCA only; no mass correction has been applied.",
+    "state": "SUBMITTED",
+    "now": "PR357 corrects ref26032 body lookup toDN50/15kg100%; endpointOD26.7/DN20 stays intact and proposal remains review-only. BM2785elements/139owners/78restraints. No accepted Final or source geometry changed.",
     "next": {
-      "actor": "Builder6ae1bed6",
-      "text": "Bind physical lookup to the witnessed component span, preserve port dimensions/Final decisions and verify native/Preview consistency."
+      "actor": "Owner / engineering reviewer",
+      "text": "Review PR357 and source-bound tests, complete remote CI reconciliation; after separately authorized deployment run fresh Preview/Final/native import on Owner source."
     },
     "refs": [
       {
         "k": "comment",
         "l": "Surviving finding and bounded continuation",
         "u": "https://github.com/reallakshman19/3D_Converters/issues/350#issuecomment-6530010922"
+      },
+      {
+        "k": "pr",
+        "l": "Source transfer and body-bore fix",
+        "u": "https://github.com/reallakshman19/3D_Converters/pull/357",
+        "s": "DRAFT_NOT_MERGED"
       }
     ],
-    "updatedAt": "2026-10-30T18:09:26Z",
-    "src": "https://github.com/reallakshman19/3D_Converters/issues/350#issuecomment-6530010922"
+    "updatedAt": "2026-10-31T03:03:16Z",
+    "src": "https://github.com/reallakshman19/3D_Converters/issues/350#issuecomment-6538131761"
   }
 }

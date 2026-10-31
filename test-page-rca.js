@@ -1,5 +1,5 @@
 // Frozen RCA observations. This view never writes project or engineering state.
-import { el, link } from './util.js?v=34';
+import { el, link } from './util.js?v=33';
 
 export const RCA_SOURCE = Object.freeze({
   revision: '9ad61417dbd3c473b4e6c0f6fa1aa8eb6005221b',
@@ -8,6 +8,29 @@ export const RCA_SOURCE = Object.freeze({
 });
 const rcaIssue = n => 'https://github.com/reallakshman19/3D_Converters/issues/' + n;
 const RCA_CASES = Object.freeze({
+  transfer: {
+    title: 'PR357 · JSON restraints through native export',
+    source: 'https://github.com/reallakshman19/3D_Converters/pull/357',
+    columns: ['Controlled source/config', 'Before: Worker Final snapshot', 'Candidate: actual enriched XML / CII'],
+    rows: [
+      ['REST; default gap7, friction0, stiffness123456', 'No source restraint materialized', '+Y / type14; gap7; friction0; stiffness123456'],
+      ['GUIDE / GT500; CMPSUPGAP6', 'Lost before Final; fallback REST downstream', 'GUI / type8; gap6'],
+      ['LINE STOP / ST501; CMPSUPGAP8', 'Lost before Final; fallback REST downstream', 'LIM / type9; gap8'],
+      ['No matching JSON support', 'Missing governed pre-Final fallback', 'Default +Y / type14; gap7; friction0'],
+      ['Explicit XML / numeric JSON gap0', 'Authority boundary', 'XML retained; JSON0 beats node gap9'],
+    ],
+    note: 'Author execution at9132e316,31Oct2026: actual5-element CII and consumed enriched XML.11 source/config/type/gap/position tamper challenges held; controlled Final12.5 and0 retained. Original Firstpass JSON passes source restraint replay, then remains held at the separate CII mass-owner guard also reproduced with exact-main native binder/runtime. Candidate is not deployed or independently accepted.',
+  },
+  body: {
+    title: 'PR357 · BM2 flange body bore',
+    source: 'https://github.com/reallakshman19/3D_Converters/pull/357',
+    columns: ['Original source component', 'Before weight lookup', 'Candidate weight lookup', 'Preserved / held'],
+    rows: [
+      ['Ref26032; reported2760→6960; FROM OD60.3; end OD26.7', 'DN20;5.662kg;45% fallback', 'Body DN50;15kg;100% master proposal', 'End port remains DN20/OD26.7; differing-port proposal review required'],
+      ['Original BM2 native output', 'Prior TEE correction785elements', '785elements;139massowners;78restraint assignments', 'No coordinate or accepted Final change; no Owner mass guessed'],
+    ],
+    note: 'The body and end-port diameters describe different source evidence.100% scoring does not accept kilograms or qualify a standard flange automatically when the source ports differ. Controlled test artifacts are separate from the Owner model. Native CAESAR import and Owner live session remain pending.',
+  },
   bore: {
     title: 'Bore and takeoff · PL-BM1', source: rcaIssue(351),
     columns: ['Case', 'Source / expected', 'Recorded output', 'First wrong boundary'],
@@ -117,8 +140,8 @@ export function renderRcaBench(root, project, { historical = false } = {}) {
   const section = el('section', 'panel'); section.setAttribute('aria-label', 'XML CII RCA test bench');
   section.style.cssText += 'border-style:solid;margin-bottom:24px;';
   section.append(el('h3', null, 'XML → CII · RCA test bench'),
-    el('p', null, 'Check the two recorded findings before a repair: bore / port sizing and restraint defaults.'),
-    el('p', 'muted', 'Recorded observations, 29 Oct 2026. No fixes applied. Final CII and independent engineering acceptance remain pending.'));
+    el('p', null, 'Compare the original findings with the PR357 JSON-transfer and flange-body candidates.'),
+    el('p', 'muted', 'Original RCA tabs are frozen29Oct observations. PR357 tabs record31Oct candidate execution; no production deployment or independent engineering acceptance is claimed.'));
   const controls = el('div', 'tools'); controls.style.flexWrap = 'wrap';
   controls.setAttribute('aria-label', 'Choose RCA comparison');
   const body = el('div'); const buttons = [];
@@ -128,14 +151,20 @@ export function renderRcaBench(root, project, { historical = false } = {}) {
     if (key === 'bore') rcaSourceInspector(body);
     for (const [id, button] of buttons) button.setAttribute('aria-pressed', String(id === key));
   };
-  for (const [key, title] of [['bore', 'Bore & takeoff'], ['restraint', 'REST & Datum'], ['defaults', 'Config defaults']]) {
+  for (const [key, title] of [['transfer', 'JSON transfer fix'], ['body', 'Flange body fix'], ['bore', 'Original bore RCA'], ['restraint', 'Original REST RCA'], ['defaults', 'Original defaults RCA']]) {
     const button = el('button', 'btn', title); button.type = 'button';
     button.addEventListener('click', () => show(key)); controls.append(button); buttons.push([key, button]);
   }
   const download = el('a', 'btn pri', 'Download XMLs, source witnesses and RCA evidence');
   download.href = 'https://reallakshman19.github.io/progress-page/data/ciifr/test/rca-350-351.zip';
   download.download = 'rca-350-351.zip';
-  section.append(controls, body, download,
+  const candidate = el('a', 'btn pri', 'Download PR357 controlled XML / CII and evidence');
+  candidate.href = 'https://reallakshman19.github.io/progress-page/data/ciifr/test/xml229-pr357-transfer-evidence.zip';
+  candidate.download = 'xml229-pr357-transfer-evidence.zip';
+  const enriched = el('a', 'btn', 'Download controlled enriched XML');
+  enriched.href = 'https://reallakshman19.github.io/progress-page/data/ciifr/test/pr357-controlled-enriched.xml';
+  enriched.download = 'pr357-controlled-enriched.xml';
+  section.append(controls, body, candidate, enriched, download,
     el('p', 'muted', 'Bore source: 9ad61417dbd3. Restraint comparison: 57710dd74466 → 25db94769994. Browser controls are local and do not change masses, config, tasks or release status.'));
-  root.append(section); show('bore');
+  root.append(section); show('transfer');
 }
