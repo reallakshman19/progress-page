@@ -268,7 +268,11 @@ export function renderTopoAdhocBoard(root,key,{fetcher,clock,topofixProject=null
  let prior=null,busy=false;
  const run=async()=>{
   if(busy)return;busy=true;button.disabled=true;
-  result.textContent='';result.append(el('p','muted','Checking configured original GitHub sources…'));
+  result.textContent='';
+  result.append(el('p','muted','Checking configured original GitHub sources…'));
+  const waiting=el('details','topo-board-sources');
+  waiting.append(el('summary',null,'Source provenance pending · exact source revisions NOT_OBSERVED'));
+  result.append(waiting);
   try{
    const observation=await loadBoardNative(key,fetcher||fetch,clock||(()=>new Date().toISOString()));
    const model=topoAdhocBoardModel(key,observation,prior);
