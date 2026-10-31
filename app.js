@@ -419,7 +419,7 @@ function render() {
       archivedOpen:state.archivedOpen,
       toggleArchived:()=>{state.archivedOpen=!state.archivedOpen;render();}}));
     if(state.archivedOpen)root.append(archivedPanel({closed,nav:navLink}));
-    renderAdhocProjects(root,adhocRoute,navLink,{topofixProject:state.data.topofix||null,pageFetch:state.pageFetch});
+    renderAdhocProjects(root,adhocRoute,navLink,{topofixProject:state.data.topofix||null,pageFetch:state.pageFetch,chatLinks:state.links});
     return;
   }
   const { key, v, rev, family: routedFamily, step: routedStep, cardId: routedCard, routeError } = route();
@@ -633,7 +633,7 @@ function render() {
         cycleStatus:checkpointModel(view,checkOptions).cycle.status,
         binding:older?null:p.cycle||null,
         cycleRead:older?null:state.cycles[key]||null,
-        pageFetch:state.pageFetch,
+        pageFetch:state.pageFetch,chatLinks:state.links,
         checking:!!state.boardChecking[key],
         onRecheck:!older&&boardSourceConfigured(key)?()=>recheckBoardNative(key):null});
     }
