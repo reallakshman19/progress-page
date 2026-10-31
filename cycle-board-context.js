@@ -9,6 +9,19 @@ export const BOARD_NATIVE_SOURCES=Object.freeze({
   'ciifr-node':Object.freeze([
     Object.freeze({repo:'reallakshman19/XML_Compare_Utilities',kind:'pull',number:232,milestone:'M3',label:'Repair candidate · PR #232'}),
     Object.freeze({repo:'reallakshman19/XML_Compare_Utilities',kind:'issue',number:231,milestone:'M3',label:'Native repair task · issue #231'})
+  ]),
+  // Only original public source read, not a Progress Page project or Cycle.
+  'topo-a':Object.freeze([
+    Object.freeze({repo:'reallakshman19/xml229-topology-wp1-preview-20261028',kind:'issue',number:12,milestone:null,label:'TOPO-A native task #12'}),
+    Object.freeze({repo:'reallakshman19/xml229-topology-wp1-preview-20261028',kind:'issue',number:3,milestone:null,label:'Existing TopoFix governing WBS R1'}),
+    Object.freeze({repo:'reallakshman19/Common',kind:'pull',number:572,milestone:null,label:'Common artifact-relay proposal PR #572'}),
+    Object.freeze({repo:'reallakshman19/progress-page',kind:'pull',number:95,milestone:null,label:'Progress Page draft PR #95'})
+  ]),
+  'topo-b':Object.freeze([
+    Object.freeze({repo:'reallakshman19/XML_Compare_Utilities',kind:'issue',number:239,milestone:null,label:'TOPO-B native task #239'}),
+    Object.freeze({repo:'reallakshman19/xml229-topology-wp1-preview-20261028',kind:'issue',number:3,milestone:null,label:'Existing TopoFix governing WBS R1'}),
+    Object.freeze({repo:'reallakshman19/Common',kind:'pull',number:572,milestone:null,label:'Common artifact-relay proposal PR #572'}),
+    Object.freeze({repo:'reallakshman19/progress-page',kind:'pull',number:95,milestone:null,label:'Progress Page draft PR #95'})
   ])
 });
 const API='https://api.github.com/repos/';
