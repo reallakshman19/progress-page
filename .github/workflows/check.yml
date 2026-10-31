@@ -62,6 +62,8 @@ jobs:
         run: node --experimental-default-type=module --test tests/cycle-board-writer.test.mjs
       - name: CT-4 three-project adversarial replay (author-only, not independent IR)
         run: node --experimental-default-type=module --test tests/cycle-board-ct4-project-matrix.test.mjs
+      - name: CT-5 cross-project Agent continuation, private-chat and ACK falsifiers
+        run: node --experimental-default-type=module --test tests/cycle-board-ct5-continuation.test.mjs
       - name: Onboarding readiness contrasts
         run: node --experimental-default-type=module --test tests/onboarding.test.mjs
       - name: Project Home navigation and source-retention tests
