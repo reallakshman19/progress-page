@@ -339,6 +339,12 @@
       "u": "https://github.com/reallakshman19/3D_Converters/pull/356",
       "s": "DRAFT_CANDIDATE",
       "milestone": "M29"
+    },
+    {
+      "t": "PR359: Run instrument model review and source-bound lossless XML/receipt downloads. Explicit selections only; old source and Final unchanged; no native guard bypass.",
+      "u": "https://github.com/reallakshman19/3D_Converters/pull/359",
+      "s": "DRAFT_NOT_DEPLOYED",
+      "milestone": "M33"
     }
   ],
   "roadmap": [
@@ -1332,6 +1338,12 @@
       "u": "https://github.com/reallakshman19/3D_Converters/issues/351#issuecomment-6528549194",
       "s": "CI_PREFLIGHT_HOLD",
       "milestone": "M29"
+    },
+    {
+      "t": "Repeated instrument blocker evidence has unchanged XML SHA/basis and14pairs; only Final signature changed. Re-confirming masses cannot establish source rigidity. PR359 supplies the missing browser source revision workflow.",
+      "u": "https://github.com/reallakshman19/3D_Converters/pull/359",
+      "s": "SOURCE_MODEL_REVIEW_REQUIRED",
+      "milestone": "M33"
     }
   ],
   "pending": [

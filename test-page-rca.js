@@ -10,16 +10,18 @@ const rcaIssue = n => 'https://github.com/reallakshman19/3D_Converters/issues/' 
 const SUGGESTION_EXAMPLE=Object.freeze({"label": "Controlled 77 kg suggestion \u00b7 hover or focus", "tooltip": "Source-qualified suggestion: 77 kg (largest suggestion)\nBasis: Weight master lookup\nCurrent component: DN100 \u00b7 Rating 300 \u00b7 Length 305 mm\nWeight master: ID CONTROL-1 \u00b7 record 1 | GATE \u00b7 Controlled gate-valve analogue | DN100 \u00b7 Rating 300 \u00b7 Length 305 mm \u00b7 Weight 77 kg\nMatch score: 100%\nLength difference: 0 mm \u00b7 tolerance 1 mm\nQualification: Exact bore, rating and length\nInstrument: selecting kg does not establish RIGID classification. Governed CII also checks the source model.\nSelecting this suggestion fills the input only. Confirm Final separately."});
 const RCA_CASES = Object.freeze({
   suggestion: {
-    title: 'PR358 · Weight suggestion basis and instrument hold',
-    source: 'https://github.com/reallakshman19/3D_Converters/pull/358',
+    title: 'PR358/359 · Suggestion basis and instrument source review',
+    source: 'https://github.com/reallakshman19/3D_Converters/pull/359',
     columns: ['Check', 'Observation', 'Boundary'],
     rows: [
       ['Suggestion tooltip', 'Actual Worker method/master, DN/rating/reference length/kg, score, ratio/warnings and review reasons', 'Read-only display; kg, rank and Final behavior unchanged'],
       ['Supplied EF05 source', '41branches/1476nodes;14INST pairs,305mm; all28endpoints lackRigid', 'Blocker SHA and14locations independently match'],
       ['Accepted positive instrument kg', 'Source model remains unclassified', 'Correct native HOLD; selecting kg does not classify rigidity'],
+      ['Repeated blocker receipt', 'Only Final signature changed; source SHA/basis and14pairs unchanged', 'Re-confirming masses cannot change source classification'],
+      ['PR359 browser source review', 'Unchecked per-pair choices; selected second endpoints receive Rigid=2 in NEW XML', 'Original source and Final retained; reopen revised XML and complete fresh Preview/Final'],
       ['TopoFix / revision-14 filename', 'Original public EF05 also has28unclassified INST endpoints', 'No lost-classification proof without actual intermediate source/receipt'],
     ],
-    note: 'Controlled replay below uses the PR358 formatter; it is not an Owner engineering suggestion.7local cases and remote4-chip hover/focus checks pass. Extra actual Worker transport assertions tracked in PR358. No classification or accepted mass changed; private files are not hosted.',
+    note: 'Controlled tooltip uses the merged PR358 formatter; it is not an Owner engineering suggestion. PR359 adds the missing browser source-model review/download action. Author Chromium verifies actual XML/receipt downloads, namespace/BOM/comment/CDATA preservation, stale-source refusal and untouched Final masses;99native custody cases pass. Source revision does not release CII. PR359 is a draft candidate, not deployed; private files are not hosted.',
   },
   transfer: {
     title: 'PR357 · JSON restraints through native export',

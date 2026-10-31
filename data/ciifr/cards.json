@@ -1477,7 +1477,7 @@
       "role": "Owner-directed builder; self-checks disclosed"
     },
     "state": "SUBMITTED",
-    "now": "PR358 carries each chip master/source dimensions, reference weight/method/score and qualification reasons; hover/focus changes no mass.",
+    "now": "PR358 was externally merged to main efe57c03; suggestion chips expose master/source basis without changing masses. PR359 separately adds deliberate instrument source-model review. Owner live-page verification and engineering acceptance remain distinct.",
     "next": {
       "actor": "Owner / engineering reviewer",
       "text": "Review PR358 and source diagnosis; establish any instrument classification separately before fresh Final decisions. No native guard bypass."
@@ -1488,10 +1488,16 @@
         "l": "Suggestion basis and exact source RCA",
         "u": "https://github.com/reallakshman19/3D_Converters/pull/358",
         "s": "DRAFT_NOT_MERGED"
+      },
+      {
+        "k": "pr",
+        "l": "Suggestion basis and exact source RCA",
+        "u": "https://github.com/reallakshman19/3D_Converters/pull/358",
+        "s": "MERGED"
       }
     ],
-    "updatedAt": "2026-10-31T03:39:59Z",
-    "src": "https://github.com/reallakshman19/3D_Converters/pull/358"
+    "updatedAt": "2026-10-31T05:26:54Z",
+    "src": "https://github.com/reallakshman19/3D_Converters/commit/3295444f208cf3cb1fbd5966ea1a3d1570c194fd"
   },
   "instrument-source-hold": {
     "order": 56,
@@ -1503,10 +1509,10 @@
       "role": "Owner-directed builder; self-checks disclosed"
     },
     "state": "SUBMITTED",
-    "now": "Exact source SHA/locations match; all14pairs remain unclassified. Positive Final kg is notRigid classification. Source and oldFinal unchanged; private files excluded.",
+    "now": "PR359 at3295444f: real Chromium source File/BOM/XML/receipt downloads and stale file/text/hash refusals PASS;99native custody cases PASS on Node22/24.14uploaded anchors verified without classification. Active source and oldFinal untouched; draft not deployed;16historical CI preflight failures disclosed.",
     "next": {
       "actor": "Owner / engineering reviewer",
-      "text": "Review PR358 and source diagnosis; establish any instrument classification separately before fresh Final decisions. No native guard bypass."
+      "text": "Review PR359; after merge/deploy use explicit justified RIGID choices, download/reopen NEW XML and complete fresh Preview/Final. No old Final migration or automatic CII release."
     },
     "refs": [
       {
@@ -1514,9 +1520,14 @@
         "l": "Suggestion basis and exact source RCA",
         "u": "https://github.com/reallakshman19/3D_Converters/pull/358",
         "s": "DRAFT_NOT_MERGED"
+      },
+      {
+        "k": "pr",
+        "l": "Browser instrument source review",
+        "u": "https://github.com/reallakshman19/3D_Converters/pull/359"
       }
     ],
-    "updatedAt": "2026-10-31T03:40:00Z",
-    "src": "https://github.com/reallakshman19/3D_Converters/pull/358"
+    "updatedAt": "2026-10-31T05:26:53Z",
+    "src": "https://github.com/reallakshman19/3D_Converters/commit/3295444f208cf3cb1fbd5966ea1a3d1570c194fd"
   }
 }
