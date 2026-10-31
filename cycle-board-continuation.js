@@ -55,7 +55,7 @@ function ct5PageRows(project,key,chatLinks,observations,scope){
   const returned=ct5LinkedReturn(project,id,nativeSource);
   const status=ct5Ended(state)?'RECONCILE_FIRST':'REVIEW_NATIVE_AUTHORITY';
   const nextActor=ct5Safe(c.next?.actor)||'UNKNOWN';
-  const notAgent=/^(?:owner|oracle|reviewer|reviewer_ir|ir)$/i.test(nextActor);
+  const notAgent=/(?:^|\b)(?:owner|oracle|reviewer_ir|reviewer|ir)(?:\b|$)/i.test(nextActor);
   const instruction=packetModel?agentStartTaskText(packetModel):null;
   rows.push({
    key,id,sourceType:'PUBLISHED_PAGE_CARD',label:c.label||id,wbs,milestoneId:c.milestone,
