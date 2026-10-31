@@ -277,10 +277,18 @@ export function decideNextAction(facts={}){
   n.taskId===f.taskId&&n.recipientId===f.recipientId&&
   n.sourceSha===f.sourceSha&&fastKnown(n.id)&&
   Array.isArray(e.permittedStepIds)&&e.permittedStepIds.includes(n.id)&&
-  f.stopTriggered!==true&&f.envelopeExhausted!==true;
+  f.sourceChanged===false&&f.authorityChanged===false&&
+  f.materialScopeChanged===false&&f.criticalFalsifierFailed===false&&
+  f.latestReturnNeedsReconciliation===false&&f.scopeCompleted===false&&
+  f.ownerOnlyDecisionRequired===false&&f.independentReviewRequired===false&&
+  f.stopConditionsVerified===true&&f.stopTriggered===false&&
+  f.envelopeExhausted===false;
  if(continuation)return result('CONTINUE_EXISTING_SCOPE',
   'EXACT_READ_ONLY_ENVELOPE_MATCH','AGENT',{withinAuthorizedEnvelope:true});
- if(f.noMaterialDelta===true&&f.authorityVerified===true&&f.nextStep==null)
+ if(f.noMaterialDelta===true&&f.noMaterialDeltaVerified===true&&
+  f.authorityVerified===true&&f.sourceStatus==='CURRENT'&&
+  f.criticalFalsifierFailed===false&&f.sourceChanged===false&&
+  f.latestReturnNeedsReconciliation===false&&f.nextStep==null)
   return result('NO_MATERIAL_DELTA','NO_NEW_NATIVE_REPORT_NEEDED');
  return result('ORACLE_QUALIFY_SCOPE',
   f.authorityVerified===true?'NEXT_STEP_OUTSIDE_VERIFIED_ENVELOPE':
