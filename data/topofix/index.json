@@ -276,18 +276,7 @@
       "why": "Owner requested WBS publication centered on auditable solutions and designated IR 6ae155fe.",
       "ownerWords": "Topo should not burden with finding but provide auditable solution which are auto fixable if not set clear directions for manual review. Owner: yes, now create WBS plan! upload to progress page.",
       "src": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/1#issuecomment-6474563974",
-      "status": "superseded",
-      "commit": "9f82f7dbbfc3ea7bcbea7ff522ac739c2e371d87"
-    },
-    {
-      "id": "R2",
-      "at": "2026-10-31T16:57:00Z",
-      "by": "TopoFix progress-scribe",
-      "why": "Owner chose a Universal XML hub with source-preserving return patches; prior safety WBS stays visible.",
-      "ownerWords": "Every pipe-model format enters one Universal XML hub; TopoFix works there and results are patched back into the same format.",
-      "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/239#issuecomment-6544072702",
-      "status": "current",
-      "supersedes": "R1"
+      "status": "current"
     }
   ],
   "hold": {

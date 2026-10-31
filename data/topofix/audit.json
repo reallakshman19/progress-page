@@ -1174,152 +1174,138 @@
       "seq": 91,
       "id": "TOPOFIX-R-0091",
       "previous_id": "TOPOFIX-R-0090",
-      "at": "2026-10-31T16:57:01Z",
-      "kind": "REVISION",
-      "actor": "TopoFix progress-scribe",
-      "summary": "Owner's Universal XML hub direction; no engineering acceptance granted.",
-      "source": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/239#issuecomment-6544072702",
-      "revision": "R2",
-      "supersedes": "R1",
-      "scope": "project",
-      "rev": "R2"
-    },
-    {
-      "seq": 92,
-      "id": "TOPOFIX-R-0092",
-      "previous_id": "TOPOFIX-R-0091",
       "at": "2026-10-31T16:57:02Z",
       "kind": "PLAN",
       "actor": "TopoFix progress-scribe",
       "summary": "Record the Owner's safe-fix aim, review-only questioned connections and Universal XML hub.",
       "source": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/239#issuecomment-6544072702",
       "scope": "aim",
-      "rev": "R2"
+      "rev": "R1"
     },
     {
-      "seq": 93,
-      "id": "TOPOFIX-R-0093",
-      "previous_id": "TOPOFIX-R-0092",
+      "seq": 92,
+      "id": "TOPOFIX-R-0092",
+      "previous_id": "TOPOFIX-R-0091",
       "at": "2026-10-31T16:57:03Z",
       "kind": "PLAN",
       "actor": "TopoFix progress-scribe",
       "summary": "Show unchanged engineering and privacy HOLDs separately from scoped review PASS.",
       "source": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/12#issuecomment-6546312679",
       "scope": "hold",
-      "rev": "R2"
+      "rev": "R1"
     },
     {
-      "seq": 94,
-      "id": "TOPOFIX-R-0094",
-      "previous_id": "TOPOFIX-R-0093",
+      "seq": 93,
+      "id": "TOPOFIX-R-0093",
+      "previous_id": "TOPOFIX-R-0092",
       "at": "2026-10-31T16:57:04Z",
       "kind": "PLAN",
       "actor": "TopoFix progress-scribe",
       "summary": "PAGE-1: explain Closure witness and Source Review.",
       "source": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/12#issuecomment-6544901216",
       "scope": "milestone:M51",
-      "rev": "R2"
+      "rev": "R1"
     },
     {
-      "seq": 95,
-      "id": "TOPOFIX-R-0095",
-      "previous_id": "TOPOFIX-R-0094",
+      "seq": 94,
+      "id": "TOPOFIX-R-0094",
+      "previous_id": "TOPOFIX-R-0093",
       "at": "2026-10-31T16:57:05Z",
       "kind": "PLAN",
       "actor": "TopoFix progress-scribe",
       "summary": "PAGE-1: explain Format admission and Workspace.",
       "source": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/239#issuecomment-6543866458",
       "scope": "milestone:M52",
-      "rev": "R2"
+      "rev": "R1"
     },
     {
-      "seq": 96,
-      "id": "TOPOFIX-R-0096",
-      "previous_id": "TOPOFIX-R-0095",
+      "seq": 95,
+      "id": "TOPOFIX-R-0095",
+      "previous_id": "TOPOFIX-R-0094",
       "at": "2026-10-31T16:57:06Z",
       "kind": "PLAN",
       "actor": "TopoFix progress-scribe",
       "summary": "PAGE-1: explain Universal XML PSI116 round trip.",
       "source": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/12#issuecomment-6546277586",
       "scope": "milestone:M53",
-      "rev": "R2"
+      "rev": "R1"
     },
     {
-      "seq": 97,
-      "id": "TOPOFIX-R-0097",
-      "previous_id": "TOPOFIX-R-0096",
+      "seq": 96,
+      "id": "TOPOFIX-R-0096",
+      "previous_id": "TOPOFIX-R-0095",
       "at": "2026-10-31T16:57:07Z",
       "kind": "PLAN",
       "actor": "TopoFix progress-scribe",
       "summary": "PAGE-1: explain Universal XML format expansion.",
       "source": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/12#issuecomment-6546312679",
       "scope": "milestone:M54",
-      "rev": "R2"
+      "rev": "R1"
     },
     {
-      "seq": 98,
-      "id": "TOPOFIX-R-0098",
-      "previous_id": "TOPOFIX-R-0097",
+      "seq": 97,
+      "id": "TOPOFIX-R-0097",
+      "previous_id": "TOPOFIX-R-0096",
       "at": "2026-10-31T16:57:08Z",
       "kind": "PLAN",
       "actor": "TopoFix progress-scribe",
       "summary": "PAGE-1: explain Owner merge and safety gates.",
       "source": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/12#issuecomment-6546277586",
       "scope": "milestone:M55",
-      "rev": "R2"
+      "rev": "R1"
     },
     {
-      "seq": 99,
-      "id": "TOPOFIX-R-0099",
-      "previous_id": "TOPOFIX-R-0098",
+      "seq": 98,
+      "id": "TOPOFIX-R-0098",
+      "previous_id": "TOPOFIX-R-0097",
       "at": "2026-10-31T16:57:09Z",
       "kind": "PLAN",
       "actor": "TopoFix progress-scribe",
       "summary": "PAGE-1: group Reviewed deliverables · draft PRs.",
       "source": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/12#issuecomment-6544901216",
       "scope": "group:reviewed",
-      "rev": "R2"
+      "rev": "R1"
     },
     {
-      "seq": 100,
-      "id": "TOPOFIX-R-0100",
-      "previous_id": "TOPOFIX-R-0099",
+      "seq": 99,
+      "id": "TOPOFIX-R-0099",
+      "previous_id": "TOPOFIX-R-0098",
       "at": "2026-10-31T16:57:10Z",
       "kind": "PLAN",
       "actor": "TopoFix progress-scribe",
       "summary": "PAGE-1: group Running · Universal XML handshake.",
       "source": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/12#issuecomment-6546312679",
       "scope": "group:active-hub",
-      "rev": "R2"
+      "rev": "R1"
     },
     {
-      "seq": 101,
-      "id": "TOPOFIX-R-0101",
-      "previous_id": "TOPOFIX-R-0100",
+      "seq": 100,
+      "id": "TOPOFIX-R-0100",
+      "previous_id": "TOPOFIX-R-0099",
       "at": "2026-10-31T16:57:11Z",
       "kind": "PLAN",
       "actor": "TopoFix progress-scribe",
       "summary": "PAGE-1: group Next · format return paths.",
       "source": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/239#issuecomment-6544072702",
       "scope": "group:next-formats",
-      "rev": "R2"
+      "rev": "R1"
     },
     {
-      "seq": 102,
-      "id": "TOPOFIX-R-0102",
-      "previous_id": "TOPOFIX-R-0101",
+      "seq": 101,
+      "id": "TOPOFIX-R-0101",
+      "previous_id": "TOPOFIX-R-0100",
       "at": "2026-10-31T16:57:12Z",
       "kind": "PLAN",
       "actor": "TopoFix progress-scribe",
       "summary": "PAGE-1: group Owner merge queue and HOLDs.",
       "source": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/12#issuecomment-6546277586",
       "scope": "group:owner-gates",
-      "rev": "R2"
+      "rev": "R1"
     },
     {
-      "seq": 103,
-      "id": "TOPOFIX-R-0103",
-      "previous_id": "TOPOFIX-R-0102",
+      "seq": 102,
+      "id": "TOPOFIX-R-0102",
+      "previous_id": "TOPOFIX-R-0101",
       "at": "2026-10-31T16:57:14Z",
       "kind": "BASELINE",
       "actor": "TopoFix progress-scribe",
@@ -1328,12 +1314,12 @@
       "card": "closure-witness",
       "before": null,
       "after": "SUBMITTED",
-      "rev": "R2"
+      "rev": "R1"
     },
     {
-      "seq": 104,
-      "id": "TOPOFIX-R-0104",
-      "previous_id": "TOPOFIX-R-0103",
+      "seq": 103,
+      "id": "TOPOFIX-R-0103",
+      "previous_id": "TOPOFIX-R-0102",
       "at": "2026-10-31T16:57:16Z",
       "kind": "BASELINE",
       "actor": "TopoFix progress-scribe",
@@ -1342,12 +1328,12 @@
       "card": "find-review",
       "before": null,
       "after": "SUBMITTED",
-      "rev": "R2"
+      "rev": "R1"
     },
     {
-      "seq": 105,
-      "id": "TOPOFIX-R-0105",
-      "previous_id": "TOPOFIX-R-0104",
+      "seq": 104,
+      "id": "TOPOFIX-R-0104",
+      "previous_id": "TOPOFIX-R-0103",
       "at": "2026-10-31T16:57:18Z",
       "kind": "BASELINE",
       "actor": "TopoFix progress-scribe",
@@ -1356,12 +1342,12 @@
       "card": "source-review-queue",
       "before": null,
       "after": "SUBMITTED",
-      "rev": "R2"
+      "rev": "R1"
     },
     {
-      "seq": 106,
-      "id": "TOPOFIX-R-0106",
-      "previous_id": "TOPOFIX-R-0105",
+      "seq": 105,
+      "id": "TOPOFIX-R-0105",
+      "previous_id": "TOPOFIX-R-0104",
       "at": "2026-10-31T16:57:20Z",
       "kind": "BASELINE",
       "actor": "TopoFix progress-scribe",
@@ -1370,12 +1356,12 @@
       "card": "queue-usability",
       "before": null,
       "after": "SUBMITTED",
-      "rev": "R2"
+      "rev": "R1"
     },
     {
-      "seq": 107,
-      "id": "TOPOFIX-R-0107",
-      "previous_id": "TOPOFIX-R-0106",
+      "seq": 106,
+      "id": "TOPOFIX-R-0106",
+      "previous_id": "TOPOFIX-R-0105",
       "at": "2026-10-31T16:57:22Z",
       "kind": "BASELINE",
       "actor": "TopoFix progress-scribe",
@@ -1384,12 +1370,12 @@
       "card": "format-admission",
       "before": null,
       "after": "SUBMITTED",
-      "rev": "R2"
+      "rev": "R1"
     },
     {
-      "seq": 108,
-      "id": "TOPOFIX-R-0108",
-      "previous_id": "TOPOFIX-R-0107",
+      "seq": 107,
+      "id": "TOPOFIX-R-0107",
+      "previous_id": "TOPOFIX-R-0106",
       "at": "2026-10-31T16:57:24Z",
       "kind": "BASELINE",
       "actor": "TopoFix progress-scribe",
@@ -1398,12 +1384,12 @@
       "card": "workspace-check",
       "before": null,
       "after": "SUBMITTED",
-      "rev": "R2"
+      "rev": "R1"
     },
     {
-      "seq": 109,
-      "id": "TOPOFIX-R-0109",
-      "previous_id": "TOPOFIX-R-0108",
+      "seq": 108,
+      "id": "TOPOFIX-R-0108",
+      "previous_id": "TOPOFIX-R-0107",
       "at": "2026-10-31T16:57:26Z",
       "kind": "BASELINE",
       "actor": "TopoFix progress-scribe",
@@ -1412,12 +1398,12 @@
       "card": "hub-step-one",
       "before": null,
       "after": "SUBMITTED",
-      "rev": "R2"
+      "rev": "R1"
     },
     {
-      "seq": 110,
-      "id": "TOPOFIX-R-0110",
-      "previous_id": "TOPOFIX-R-0109",
+      "seq": 109,
+      "id": "TOPOFIX-R-0109",
+      "previous_id": "TOPOFIX-R-0108",
       "at": "2026-10-31T16:57:28Z",
       "kind": "BASELINE",
       "actor": "TopoFix progress-scribe",
@@ -1426,12 +1412,12 @@
       "card": "hub-step-two",
       "before": null,
       "after": "SUBMITTED",
-      "rev": "R2"
+      "rev": "R1"
     },
     {
-      "seq": 111,
-      "id": "TOPOFIX-R-0111",
-      "previous_id": "TOPOFIX-R-0110",
+      "seq": 110,
+      "id": "TOPOFIX-R-0110",
+      "previous_id": "TOPOFIX-R-0109",
       "at": "2026-10-31T16:57:30Z",
       "kind": "BASELINE",
       "actor": "TopoFix progress-scribe",
@@ -1440,12 +1426,12 @@
       "card": "hub-step-three",
       "before": null,
       "after": "IN_PROGRESS",
-      "rev": "R2"
+      "rev": "R1"
     },
     {
-      "seq": 112,
-      "id": "TOPOFIX-R-0112",
-      "previous_id": "TOPOFIX-R-0111",
+      "seq": 111,
+      "id": "TOPOFIX-R-0111",
+      "previous_id": "TOPOFIX-R-0110",
       "at": "2026-10-31T16:57:32Z",
       "kind": "BASELINE",
       "actor": "TopoFix progress-scribe",
@@ -1454,12 +1440,12 @@
       "card": "hub-ui-handshake",
       "before": null,
       "after": "IN_PROGRESS",
-      "rev": "R2"
+      "rev": "R1"
     },
     {
-      "seq": 113,
-      "id": "TOPOFIX-R-0113",
-      "previous_id": "TOPOFIX-R-0112",
+      "seq": 112,
+      "id": "TOPOFIX-R-0112",
+      "previous_id": "TOPOFIX-R-0111",
       "at": "2026-10-31T16:57:33Z",
       "kind": "BASELINE",
       "actor": "TopoFix progress-scribe",
@@ -1468,12 +1454,12 @@
       "card": "inputxml-return",
       "before": null,
       "after": "NOT_STARTED",
-      "rev": "R2"
+      "rev": "R1"
     },
     {
-      "seq": 114,
-      "id": "TOPOFIX-R-0114",
-      "previous_id": "TOPOFIX-R-0113",
+      "seq": 113,
+      "id": "TOPOFIX-R-0113",
+      "previous_id": "TOPOFIX-R-0112",
       "at": "2026-10-31T16:57:34Z",
       "kind": "BASELINE",
       "actor": "TopoFix progress-scribe",
@@ -1482,12 +1468,12 @@
       "card": "enriched-converters",
       "before": null,
       "after": "NOT_STARTED",
-      "rev": "R2"
+      "rev": "R1"
     },
     {
-      "seq": 115,
-      "id": "TOPOFIX-R-0115",
-      "previous_id": "TOPOFIX-R-0114",
+      "seq": 114,
+      "id": "TOPOFIX-R-0114",
+      "previous_id": "TOPOFIX-R-0113",
       "at": "2026-10-31T16:57:35Z",
       "kind": "BASELINE",
       "actor": "TopoFix progress-scribe",
@@ -1496,12 +1482,12 @@
       "card": "f05-r4-hub",
       "before": null,
       "after": "NOT_STARTED",
-      "rev": "R2"
+      "rev": "R1"
     },
     {
-      "seq": 116,
-      "id": "TOPOFIX-R-0116",
-      "previous_id": "TOPOFIX-R-0115",
+      "seq": 115,
+      "id": "TOPOFIX-R-0115",
+      "previous_id": "TOPOFIX-R-0114",
       "at": "2026-10-31T16:57:37Z",
       "kind": "BASELINE",
       "actor": "TopoFix progress-scribe",
@@ -1510,12 +1496,12 @@
       "card": "owner-merge-queue",
       "before": null,
       "after": "SUBMITTED",
-      "rev": "R2"
+      "rev": "R1"
     },
     {
-      "seq": 117,
-      "id": "TOPOFIX-R-0117",
-      "previous_id": "TOPOFIX-R-0116",
+      "seq": 116,
+      "id": "TOPOFIX-R-0116",
+      "previous_id": "TOPOFIX-R-0115",
       "at": "2026-10-31T16:57:39Z",
       "kind": "BASELINE",
       "actor": "TopoFix progress-scribe",
@@ -1524,24 +1510,24 @@
       "card": "engineering-holds",
       "before": null,
       "after": "BLOCKED",
-      "rev": "R2"
+      "rev": "R1"
     },
     {
-      "seq": 118,
-      "id": "TOPOFIX-R-0118",
-      "previous_id": "TOPOFIX-R-0117",
+      "seq": 117,
+      "id": "TOPOFIX-R-0117",
+      "previous_id": "TOPOFIX-R-0116",
       "at": "2026-10-31T16:57:40Z",
       "kind": "ACTION",
       "actor": "TopoFix progress-scribe",
       "summary": "Record Owner-only merge queue and options without claiming permission for agent merges.",
       "source": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/12#issuecomment-6546277586",
       "action": "D1",
-      "rev": "R2"
+      "rev": "R1"
     },
     {
-      "seq": 119,
-      "id": "TOPOFIX-R-0119",
-      "previous_id": "TOPOFIX-R-0118",
+      "seq": 118,
+      "id": "TOPOFIX-R-0118",
+      "previous_id": "TOPOFIX-R-0117",
       "at": "2026-10-31T16:57:41Z",
       "kind": "FIXTURE",
       "actor": "TopoFix progress-scribe",
@@ -1549,12 +1535,12 @@
       "source": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/239#issuecomment-6544072702",
       "list": "intent",
       "op": "add",
-      "rev": "R2"
+      "rev": "R1"
     },
     {
-      "seq": 120,
-      "id": "TOPOFIX-R-0120",
-      "previous_id": "TOPOFIX-R-0119",
+      "seq": 119,
+      "id": "TOPOFIX-R-0119",
+      "previous_id": "TOPOFIX-R-0118",
       "at": "2026-10-31T16:57:42Z",
       "kind": "FIXTURE",
       "actor": "TopoFix progress-scribe",
@@ -1562,12 +1548,12 @@
       "source": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/12#issuecomment-6543782658",
       "list": "knownIssues",
       "op": "add",
-      "rev": "R2"
+      "rev": "R1"
     },
     {
-      "seq": 121,
-      "id": "TOPOFIX-R-0121",
-      "previous_id": "TOPOFIX-R-0120",
+      "seq": 120,
+      "id": "TOPOFIX-R-0120",
+      "previous_id": "TOPOFIX-R-0119",
       "at": "2026-10-31T16:57:43Z",
       "kind": "FIXTURE",
       "actor": "TopoFix progress-scribe",
@@ -1575,12 +1561,12 @@
       "source": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/12#issuecomment-6546312679",
       "list": "roadmap",
       "op": "add",
-      "rev": "R2"
+      "rev": "R1"
     },
     {
-      "seq": 122,
-      "id": "TOPOFIX-R-0122",
-      "previous_id": "TOPOFIX-R-0121",
+      "seq": 121,
+      "id": "TOPOFIX-R-0121",
+      "previous_id": "TOPOFIX-R-0120",
       "at": "2026-10-31T16:57:44Z",
       "kind": "FIXTURE",
       "actor": "TopoFix progress-scribe",
@@ -1588,12 +1574,12 @@
       "source": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/12#issuecomment-6546277586",
       "list": "pending",
       "op": "add",
-      "rev": "R2"
+      "rev": "R1"
     },
     {
-      "seq": 123,
-      "id": "TOPOFIX-R-0123",
-      "previous_id": "TOPOFIX-R-0122",
+      "seq": 122,
+      "id": "TOPOFIX-R-0122",
+      "previous_id": "TOPOFIX-R-0121",
       "at": "2026-10-31T16:57:45Z",
       "kind": "FIXTURE",
       "actor": "TopoFix progress-scribe",
@@ -1601,7 +1587,7 @@
       "source": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/12#issuecomment-6546312679",
       "list": "knownIssues",
       "op": "add",
-      "rev": "R2"
+      "rev": "R1"
     }
   ]
 }
