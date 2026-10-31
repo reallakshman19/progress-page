@@ -126,7 +126,7 @@ function renderTopoOperational(root,key,project,pageFetch){
  actions.append(link(info.issue,'Original task','btn small'),' ',
    link(info.concept,'Concept & architecture','btn small'),' ',
    link(TOPO_WBS_URL,'Governing WBS','btn small'),' ',
-   link('#/adhoc/'+key+'/continuity','Agent continuity','btn small'));
+   link('https://reallakshman19.github.io/progress-page/#/adhoc/'+key+'/continuity','Agent continuity','btn small'));
  task.append(actions);main.append(task);
  const page=el('section','topo-page-grounding');
  page.append(el('h4',null,'Published TopoFix WBS and INFO-Auto'),
