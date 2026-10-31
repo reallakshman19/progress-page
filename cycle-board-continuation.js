@@ -182,6 +182,16 @@ export function renderContinuationBridge(root,project,options={}){
    const evidence=taskEvidenceV2Model(row,{projectKey:m.project,project,feed,
     observations:options.observations||[],pageFetch:options.pageFetch||null});
    renderTaskEvidenceV2(group,evidence);
+   // A newer source-backed Oracle next action supersedes a stale prepared
+   // native packet, but does not confer message delivery or write permission.
+   const sourceNext=evidence?.nativeNext&&evidence?.nextSourceUrl?
+     'Cycle now — existing native task, no new Cycle or onboarding.\n'+
+     'Native source: '+row.source+'\n'+
+     'Latest Oracle-reported next action: '+evidence.nativeNext+'\n'+
+     'Reconcile original instruction: '+evidence.nextSourceUrl+'\n'+
+     'Return to original issue with executed raw receipts; no production writes or engineering PASS.\n'+
+     'Delivery and recipient ACK NOT_VERIFIED.':null;
+   const copyRow=sourceNext?{...row,instructions:sourceNext}:row;
    const details=el('details','ct5-task');
    const title=el('summary');
    title.append(el('b',null,row.label),' · '+row.state+
@@ -206,7 +216,7 @@ export function renderContinuationBridge(root,project,options={}){
    if(row.returnUrl)actions.append(link(row.returnUrl,'Inspect return pointer','btn small'));
    const copy=el('button','btn small','Copy Cycle now · not sent');
    copy.type='button';copy.disabled=!row.instructions;
-   if(row.instructions)copy.addEventListener('click',()=>copyText(continuationText(row,m.project),copy));
+   if(copyRow.instructions)copy.addEventListener('click',()=>copyText(continuationText(copyRow,m.project),copy));
    actions.append(copy);
    if(row.privateUrl)actions.append(link(row.privateUrl,
     row.status==='RECONCILE_FIRST'||row.status==='ACTOR_REVIEW_REQUIRED'?
