@@ -222,6 +222,88 @@ export function continuationText(row,projectKey){
    'COPY/OPEN IS NOT A SEND OR ACK.';
 }
 
+// Fast Lane F2 is a PURE read-only decision aid. It cannot grant authority,
+// auto-send a message or change the original issue/Task Evidence card.
+const fastNativeIssue=/^https:\/\/github\.com\/[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+\/issues\/[1-9]\d*$/;
+const fastSourceSha=/^(?:[0-9a-f]{40}|[0-9a-f]{64})$/i;
+const fastSameIssueComment=(issue,url)=>fastNativeIssue.test(issue||'')&&
+ typeof url==='string'&&url.startsWith(issue+'#issuecomment-')&&
+ /^[1-9]\d*$/.test(url.slice((issue+'#issuecomment-').length));
+const fastKnown=x=>typeof x==='string'&&x.trim().length>0;
+
+// Callers must obtain verification from original authority/source, NEVER
+// infer authorization from a Page NEXT label or a passing synthetic test.
+export function decideNextAction(facts={}){
+ const f=facts&&typeof facts==='object'?facts:{};
+ const issue=f.sourceIssue;
+ const boardStatus=f.boardObserved===false?'NOT_OBSERVED':'OBSERVATION_UNVERIFIED';
+ const result=(action,reason,nextActor='ORACLE',more={})=>({
+  action,reason,nextActor,boardStatus,canDispatch:false,canGrantAuthority:false,
+  canAuthorizeWrite:false,ownerActionRequired:action==='OWNER_DECISION',
+  scope:'AFFECTED_TASK_ONLY',unrelatedReadOnlyEligible:f.unrelatedReadOnlyAuthorized===true,
+  ...more
+ });
+ if(!fastNativeIssue.test(issue||''))return result('BLOCKED','NATIVE_ISSUE_NOT_VERIFIED');
+ if(f.criticalFalsifierFailed===true)return result('HOLD_AFFECTED_SCOPE','CRITICAL_FALSIFIER_FAILED');
+ if(f.sourceChanged===true||f.authorityChanged===true||f.materialScopeChanged===true)
+  return result('REQUALIFY_AFFECTED_SCOPE','SOURCE_OR_AUTHORITY_CHANGED');
+ if(f.latestReturnNeedsReconciliation===true)
+  return result('ORACLE_RECONCILE','CURRENT_NATIVE_DELTA_NEEDS_REVIEW');
+ if(f.scopeCompleted===true)
+  return f.scopeCompletionVerified===true?
+   result('DECIDE_NEXT_ASSIGNMENT','SCOPE_RETURNED_NO_AUTOMATIC_AGENT_DISPATCH'):
+   result('ORACLE_RECONCILE','COMPLETION_CLAIM_NEEDS_REVIEW');
+ if(f.ownerOnlyDecisionRequired===true)
+  return f.ownerDecisionSourceVerified===true&&fastSameIssueComment(issue,f.ownerDecisionSource)?
+   result('OWNER_DECISION','EXACT_OWNER_GATE','OWNER'):
+   result('ORACLE_QUALIFY_SCOPE','OWNER_GATE_NOT_VERIFIED');
+ if(f.independentReviewRequired===true)
+  return result('ORACLE_QUALIFY_REVIEW','INDEPENDENT_QUALIFICATION_NOT_AGENT_SELF_PASS');
+ const n=f.nextStep||{},e=f.executionEnvelope||{};
+ if(n.permission==='PRODUCT_WRITE'&&f.writerCustodyVerified!==true)
+  return result('HOLD_AFFECTED_SCOPE','WRITER_CUSTODY_UNVERIFIED');
+ const continuation=f.authorityVerified===true&&f.envelopeSourceVerified===true&&
+  f.sourceStatus==='CURRENT'&&fastKnown(f.taskId)&&fastKnown(f.recipientId)&&
+  fastSourceSha.test(f.sourceSha||'')&&
+  e.taskId===f.taskId&&e.recipientId===f.recipientId&&
+  e.sourceIssue===issue&&e.sourceSha===f.sourceSha&&
+  fastSameIssueComment(issue,e.authorityRef)&&
+  e.permission==='READ_ONLY'&&n.permission==='READ_ONLY'&&
+  n.taskId===f.taskId&&n.recipientId===f.recipientId&&
+  n.sourceSha===f.sourceSha&&fastKnown(n.id)&&
+  Array.isArray(e.permittedStepIds)&&e.permittedStepIds.includes(n.id)&&
+  f.stopTriggered!==true&&f.envelopeExhausted!==true;
+ if(continuation)return result('CONTINUE_EXISTING_SCOPE',
+  'EXACT_READ_ONLY_ENVELOPE_MATCH','AGENT',{withinAuthorizedEnvelope:true});
+ if(f.noMaterialDelta===true&&f.authorityVerified===true&&f.nextStep==null)
+  return result('NO_MATERIAL_DELTA','NO_NEW_NATIVE_REPORT_NEEDED');
+ return result('ORACLE_QUALIFY_SCOPE',
+  f.authorityVerified===true?'NEXT_STEP_OUTSIDE_VERIFIED_ENVELOPE':
+   'AUTHORITY_OR_ENVELOPE_NOT_VERIFIED');
+}
+
+// Original issue comments newer than the source-linked instruction require
+// Oracle review; not an inference that an Agent executed or Owner must relay.
+// Current CT-5 does not read a verified Execution Envelope, so the Board alone
+// NEVER recommends CONTINUE_EXISTING_SCOPE.
+export function cycleNowBoardDecision(row,evidence,feed=null,{boardObserved=false}={}){
+ const sourceIssue=row?.source;
+ if(!fastNativeIssue.test(sourceIssue||''))return decideNextAction({boardObserved});
+ const comments=feed?.issue===sourceIssue&&['ok','partial'].includes(feed?.status)?
+   (feed.comments||[]).filter(c=>fastSameIssueComment(sourceIssue,c?.url)):[];
+ const ref=evidence?.nextSourceUrl;
+ const pos=comments.findIndex(c=>c.url===ref);
+ const later=pos>=0&&comments.length>pos+1;
+ const returnPointer=!!row?.returnUrl||row?.status==='RECONCILE_FIRST'||
+  row?.status==='ACTOR_REVIEW_REQUIRED';
+ const decision=decideNextAction({sourceIssue,boardObserved,
+  latestReturnNeedsReconciliation:later||returnPointer,
+  sourceStatus:evidence?.sourceStatus,authorityVerified:false});
+ return {...decision,sourceLinkedInstruction:pos>=0&&feed?.status==='ok',
+  newNativeCommentsObserved:later,currentIssueObserved:comments.length>0,
+  sourceCoverage:feed?.status||'UNKNOWN'};
+}
+
 // TE2 companion: one copy/paste transaction for the Owner, never a sixth card
 // line, source mutation, delivery receipt or independent work authorization.
 export function cycleNowOwnerActionModel(row,{projectKey='UNKNOWN',evidence=null,
