@@ -665,3 +665,21 @@ main{width:100%;min-width:0}
 .topo-cycle-board .adhoc-card,
 .topo-cycle-board .cb-fact{min-width:0;max-width:100%;overflow-wrap:anywhere}
 .topo-cycle-board .cb-facts{min-width:0;grid-template-columns:repeat(auto-fit,minmax(min(100%,170px),1fr))}
+
+/* TOPO Adhoc Cycle Board reuses CIIFR's audit/WBS task card system. Primary
+   operational cards are first; original SHA observations live in disclosure. */
+.topo-operational{min-width:0;max-width:100%;display:grid;gap:12px}
+.topo-task-card{border-left:3px solid var(--ac,#6c9cff)}
+.topo-page-grounding{display:grid;gap:10px;min-width:0}
+.topo-wbs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:12px;min-width:0}
+.topo-wbs-card,.topo-task-card,.topo-page-grounding .ct-auto-section{min-width:0;max-width:100%;overflow-wrap:anywhere}
+.topo-page-grounding .ct-auto-disclosure{min-width:0}
+.topo-cycle-board .topo-board-results{margin-top:12px}
+.topo-cycle-board .topo-board-sources{margin-top:10px;border:1px solid var(--bd);border-radius:9px;padding:10px;min-width:0}
+.topo-cycle-board .topo-board-sources>summary{cursor:pointer;font-weight:650;overflow-wrap:anywhere}
+.topo-cycle-board .topo-board-sources>.adhoc-card{margin-top:10px}
+.topo-owner-aim{border-left:2px solid var(--bd);padding-left:10px;overflow-wrap:anywhere}
+@media(max-width:720px){
+ .topo-wbs-grid{grid-template-columns:minmax(0,1fr)}
+ .topo-operational .ct-tools{flex-wrap:wrap}
+}

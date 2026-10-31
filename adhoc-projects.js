@@ -193,7 +193,7 @@ function renderXmlCompareWorkspace(body, selected) {
 
 // Two read-only Adhoc test workspaces. These are projections of the native
 // issue and *existing* TopoFix WBS, not new Page project registration.
-function renderTopoWorkspace(root,key,view,{nativeFetcher,clock}={}) {
+function renderTopoWorkspace(root,key,view,{nativeFetcher,clock,topofixProject=null,pageFetch=null}={}) {
  const i=TOPO_ADHOC_INFO[key];
  const body=el('div','body adhoc-body');
  body.append(el('h2',null,i.label),
@@ -216,7 +216,7 @@ function renderTopoWorkspace(root,key,view,{nativeFetcher,clock}={}) {
     [['Inspect source graph',adhocHref(key,'sources')]])
   ]);
  } else if(view==='cycle-board') {
-  renderTopoAdhocBoard(body,key,{fetcher:nativeFetcher,clock});
+  renderTopoAdhocBoard(body,key,{fetcher:nativeFetcher,clock,topofixProject,pageFetch});
  } else if(view==='sources') {
   const s=section(body,'Original sources and Grounding Fixtures',
    'The concept/specification and pinned files are read-only grounding fixtures; links do not authenticate private original XML, qualify engineering semantics or grant a product write.');

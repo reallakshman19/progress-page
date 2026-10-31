@@ -196,11 +196,33 @@ def main():
                                       "TOPO has no independent read-only Cycle Board")
                                 check(page.locator(".topo-board-results").count()==1,
                                       "TOPO Board did not expose source observation")
-                                check(page.locator(".topo-cycle-board button").count()==1,
-                                      "On-demand recheck absent")
+                                check(page.locator(".topo-cycle-board > button").count()==1,
+                                      "On-demand native-source recheck absent")
                                 check(page.locator(".topo-cycle-board").get_attribute("aria-label")==
                                       "TOPO source-bound Cycle Board",
                                       "Wrong Board type")
+                                # Reuse CIIFR writer's audited INFO-Auto presentation
+                                # instead of the prior SHA-only GitHub source list.
+                                check(page.locator(".topo-task-card").count()==1,
+                                      "Task/Owner outcome missing from primary view")
+                                check(page.locator(".topo-wbs-card").count()==2,
+                                      "Must show exactly the two existing WBS milestones")
+                                check(page.locator(".topo-page-grounding .ct-auto-section").count()==1,
+                                      "Missing reused INFO-Auto section")
+                                check(page.locator(".topo-page-grounding .ct-card.ct-auto").count()>=1,
+                                      "No real published Page audit evidence rendered")
+                                check(page.locator(".topo-page-grounding button").filter(
+                                      has_text="Copy grounding / Page brief").count()>=1,
+                                      "Shared CIIFR Page grounding brief was not reused")
+                                check(page.locator(".topo-board-sources").count()==1 and
+                                      page.locator(".topo-board-sources").get_attribute("open") is None,
+                                      "Long raw SHA/source ledger must default collapsed")
+                                check("NOT_VERIFIED" in page.locator(".topo-task-card").inner_text(),
+                                      "Undispatched/unknown actual agent was falsely promoted")
+                                check("WBS 3.2" in page.locator(".topo-page-grounding").inner_text()
+                                      if topo=="topo-a" else
+                                      "WBS 2.1" in page.locator(".topo-page-grounding").inner_text(),
+                                      "Existing, task-specific WBS grouping missing")
                             if section_name=="sources":
                                 check(page.locator(".adhoc-body a[href*='/issues/3']").count()>=1,
                                       "Governing original WBS source is missing")

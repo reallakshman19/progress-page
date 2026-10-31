@@ -198,7 +198,7 @@ test('Adhoc UI does not create another WBS or change project JSON',()=>{
   assert.doesNotMatch(module,/pp_batch\.py|CYCLE_TIMELINE_CARD v2.*post\(/);
   const app=readFileSync(new URL('../app.js',import.meta.url),'utf8');
   assert.match(app,/parseAdhocRoute\(hash\)/);
-  assert.match(app,/renderAdhocProjects\(root,adhocRoute,navLink\)/);
+  assert.match(app,/renderAdhocProjects\(root,adhocRoute,navLink,\{topofixProject:state\.data\.topofix\|\|null,pageFetch:state\.pageFetch\}\)/);
 });
 
 
