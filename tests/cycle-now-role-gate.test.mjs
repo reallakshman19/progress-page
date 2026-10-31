@@ -231,7 +231,11 @@ const baseFast=()=>{
   sourceSha:pinned,permission:'READ_ONLY'};
  return {sourceIssue:A,taskId:'TOPO-A-12',recipientId:'agent-a',
   sourceSha:pinned,authorityVerified:true,envelopeSourceVerified:true,
-  sourceStatus:'CURRENT',boardObserved:true,executionEnvelope:envelope,nextStep:step};
+  sourceStatus:'CURRENT',boardObserved:true,executionEnvelope:envelope,nextStep:step,
+  sourceChanged:false,authorityChanged:false,materialScopeChanged:false,
+  criticalFalsifierFailed:false,latestReturnNeedsReconciliation:false,
+  scopeCompleted:false,ownerOnlyDecisionRequired:false,independentReviewRequired:false,
+  stopConditionsVerified:true,stopTriggered:false,envelopeExhausted:false};
 };
 
 test('F2-01: completed authorized substep may continue the next exact read-only envelope step',()=>{
@@ -382,11 +386,26 @@ test('F2-11: exact Owner-only decision must have matching native source',()=>{
 });
 
 test('F2-12: no material delta means no substantive native status report',()=>{
- const f={...baseFast(),nextStep:null,noMaterialDelta:true};
+ const f={...baseFast(),nextStep:null,noMaterialDelta:true,noMaterialDeltaVerified:true};
  const d=decideNextAction(f);
  assert.equal(d.action,'NO_MATERIAL_DELTA');
  assert.equal(d.ownerActionRequired,false);
  assert.equal(d.canDispatch,false);
  const noSource=decideNextAction({...f,authorityVerified:false});
  assert.equal(noSource.action,'ORACLE_QUALIFY_SCOPE');
+});
+
+
+test('F2-13: unknown STOP/contradiction status is NOT permission to keep executing',()=>{
+ for(const key of ['sourceChanged','authorityChanged','materialScopeChanged',
+  'criticalFalsifierFailed','latestReturnNeedsReconciliation','scopeCompleted',
+  'ownerOnlyDecisionRequired','independentReviewRequired',
+  'stopConditionsVerified','stopTriggered','envelopeExhausted']){
+  const f=baseFast();delete f[key];
+  assert.notEqual(decideNextAction(f).action,'CONTINUE_EXISTING_SCOPE',
+   key+' missing must fail closed');
+ }
+ const noDelta={...baseFast(),nextStep:null,noMaterialDelta:true};
+ assert.notEqual(decideNextAction(noDelta).action,'NO_MATERIAL_DELTA',
+  'missing source-verified no-delta receipt cannot suppress native reporting');
 });
