@@ -12,6 +12,10 @@ Exactly five information lines:
 4. **BLOCKERS & RELAY:** actual original agent return, review and authority level, source/recipient/file/writer blockers and engineering/release HOLD.
 5. **NEXT → ONE ACTOR:** one bounded authorized action, expected evidence and original return destination, plus read-only/no-production-write restriction.
 
+## Fast Lane — execution inside an already authorized native assignment
+
+A native issue may contain one Oracle-approved **Execution Envelope** naming exact recipient, task, pinned source/SHA, enumerated related permitted read-only substeps, stop conditions, HOLD and original return. An established `Cycle now` may execute the still-authorized substeps **during that active invocation** and return one changed-only evidence delta; passing tests never extend authority. Oracle performs feasible scoped decisions immediately, and escalates only genuine change-of-authority, actor, source/risk, independent review or Owner-only dependency. The Cycle Board's new pure next-action hint cannot authenticate the original envelope or send a message. No automatic background work, new WBS or separate receipt.
+
 ## Action to Owner — copy/paste after the five lines
 
 A **small separate transaction section** may appear under a five-line Task Evidence v2 card. It offers a source-bound, plain-text **Copy Cycle now to Agent** or **Copy Cycle now to Oracle** message for the *existing* conversation, or an exact Owner-only decision/input where the acting Agent/Oracle has established one. It is **not** line six, a native return, a new WBS, message transport or acknowledgment. Show **NONE** if no Owner handoff is justified. Other Owner issues need explicit source-linked actor reporting; Page summaries cannot invent them.

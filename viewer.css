@@ -726,3 +726,10 @@ main{width:100%;min-width:0}
 .ct5-owner-copy-preview>summary{cursor:pointer;font-size:12px}
 .ct5-owner-copy-block{font:12px/1.5 ui-monospace,SFMono-Regular,Consolas,monospace;white-space:pre-wrap;overflow-wrap:anywhere;padding:10px;background:var(--panel);border-radius:6px;max-width:100%;overflow-x:auto}
 @media(max-width:620px){.ct5-owner-action{padding:8px}.ct5-owner-action>.btn{width:100%}}
+
+/* Fast Lane: a small read-only next-action recommendation in existing CT-5. */
+.ct5-fastlane-decision{padding:8px 11px;border-left:2px solid var(--bd);border-radius:5px;min-width:0;overflow-wrap:anywhere;display:grid;gap:3px}
+.ct5-fastlane-decision h5,.ct5-fastlane-decision p{margin:0}
+.ct5-fastlane-decision h5{font-size:12px}
+.ct5-fastlane-decision p{font-size:12px;line-height:1.4}
+@media(max-width:620px){.ct5-fastlane-decision{padding:7px 9px}}

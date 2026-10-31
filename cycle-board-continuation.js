@@ -74,6 +74,8 @@ export function cycleNowRoleText(rows,{projectKey='UNKNOWN',actingRole='UNKNOWN'
   selected.role==='ORACLE'? 
    'Oracle output: ONE five-line Task Evidence v2 card for your OWN existing coordination responsibility, referencing subordinate evidence, NOT two agent cards. Do not invent an Oracle task when native provenance is unavailable.':
    'Actor output: one five-line Task Evidence v2 card for YOUR assigned task only; not a coordinator card.',
+  'Fast Lane: inspect original native Execution Envelope. In THIS active invocation execute all explicitly permitted related substeps only when task/recipient/pinned SHA, authority, permission and STOP conditions still match. The Agent cannot enlarge the envelope or run after conversation ends.',
+  'Oracle Fast Lane: resolve feasible source decisions in this invoked turn; return only changed native evidence. Do not generate an Owner relay for routine microsteps or an inert Action to Owner.',
   'Current instruction: PREPARED / POSTED / DELIVERED / ACKNOWLEDGED / EVIDENCE_RETURNED / ORACLE_RECONCILED are distinct observations.',
   'Close coordination CONTINUED only on actual current-instruction ACK or source-backed continuation; otherwise AWAITING_RELAY with named relay actor, or BLOCKED on authority.',
   'If only manual Owner relay can reach an existing agent chat, identify one minimum copy-ready Owner handoff; Oracle retains coordination.',
@@ -208,6 +210,7 @@ export function continuationText(row,projectKey){
    'This is not a new canonical Oracle Cycle or dispatch. Agent must verify current recipient, role,\n'+
    'source SHA/fixture receipt, prior return, HOLD and active native assignment before any work.\n'+
    'Do not re-run an already returned task. Use one existing native return, never a second Board report.\n'+
+   'Fast Lane: check the original Oracle-authorized Execution Envelope; perform related expressly permitted substeps in this ACTIVE invocation only, with source/recipient/STOP verification. No NEW authorization from the Board or background run.\n'+
    'TE2-ROLE: acting Agent/Reviewer reports only its OWN five-line task card; an Oracle reports its own coordination task, not this agent card.\n'+
    'After five lines, Action to Owner: copy-ready Cycle now to Oracle only for real manual relay, otherwise NONE; include source-linked other issues, not a sixth card line.\n';
  if(row.status==='RECONCILE_FIRST'||row.status==='ACTOR_REVIEW_REQUIRED'){
@@ -222,10 +225,105 @@ export function continuationText(row,projectKey){
    'COPY/OPEN IS NOT A SEND OR ACK.';
 }
 
+// Fast Lane F2 is a PURE read-only decision aid. It cannot grant authority,
+// auto-send a message or change the original issue/Task Evidence card.
+const fastNativeIssue=/^https:\/\/github\.com\/[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+\/issues\/[1-9]\d*$/;
+const fastSourceSha=/^(?:[0-9a-f]{40}|[0-9a-f]{64})$/i;
+const fastSameIssueComment=(issue,url)=>fastNativeIssue.test(issue||'')&&
+ typeof url==='string'&&url.startsWith(issue+'#issuecomment-')&&
+ /^[1-9]\d*$/.test(url.slice((issue+'#issuecomment-').length));
+const fastKnown=x=>typeof x==='string'&&x.trim().length>0;
+
+// Callers must obtain verification from original authority/source, NEVER
+// infer authorization from a Page NEXT label or a passing synthetic test.
+export function decideNextAction(facts={}){
+ const f=facts&&typeof facts==='object'?facts:{};
+ const issue=f.sourceIssue;
+ const boardStatus=f.boardObserved===false?'NOT_OBSERVED':'OBSERVATION_UNVERIFIED';
+ const result=(action,reason,nextActor='ORACLE',more={})=>({
+  action,reason,nextActor,boardStatus,canDispatch:false,canGrantAuthority:false,
+  canAuthorizeWrite:false,ownerActionRequired:action==='OWNER_DECISION',
+  scope:'AFFECTED_TASK_ONLY',unrelatedReadOnlyEligible:f.unrelatedReadOnlyAuthorized===true&&
+   fastNativeIssue.test(f.unrelatedReadOnlyIssue||'')&&f.unrelatedReadOnlyIssue!==issue&&
+   fastKnown(f.unrelatedTaskId)&&fastSameIssueComment(f.unrelatedReadOnlyIssue,f.unrelatedAuthorityRef),
+  ...more
+ });
+ if(!fastNativeIssue.test(issue||''))return result('BLOCKED','NATIVE_ISSUE_NOT_VERIFIED');
+ if(f.criticalFalsifierFailed===true)return result('HOLD_AFFECTED_SCOPE','CRITICAL_FALSIFIER_FAILED');
+ if(f.stopTriggered===true)return result('HOLD_AFFECTED_SCOPE','EXPLICIT_STOP_CONDITION_TRIGGERED');
+ if(f.envelopeExhausted===true)return result('DECIDE_NEXT_ASSIGNMENT','ENVELOPE_EXHAUSTED_NO_AGENT_REPLAY');
+ if(f.sourceChanged===true||f.authorityChanged===true||f.materialScopeChanged===true)
+  return result('REQUALIFY_AFFECTED_SCOPE','SOURCE_OR_AUTHORITY_CHANGED');
+ if(f.latestReturnNeedsReconciliation===true)
+  return result('ORACLE_RECONCILE','CURRENT_NATIVE_DELTA_NEEDS_REVIEW');
+ if(f.scopeCompleted===true)
+  return f.scopeCompletionVerified===true?
+   result('DECIDE_NEXT_ASSIGNMENT','SCOPE_RETURNED_NO_AUTOMATIC_AGENT_DISPATCH'):
+   result('ORACLE_RECONCILE','COMPLETION_CLAIM_NEEDS_REVIEW');
+ if(f.ownerOnlyDecisionRequired===true)
+  return f.ownerDecisionSourceVerified===true&&fastSameIssueComment(issue,f.ownerDecisionSource)?
+   result('OWNER_DECISION','EXACT_OWNER_GATE','OWNER'):
+   result('ORACLE_QUALIFY_SCOPE','OWNER_GATE_NOT_VERIFIED');
+ if(f.independentReviewRequired===true)
+  return result('ORACLE_QUALIFY_REVIEW','INDEPENDENT_QUALIFICATION_NOT_AGENT_SELF_PASS');
+ const n=f.nextStep||{},e=f.executionEnvelope||{};
+ if(n.permission==='PRODUCT_WRITE'&&f.writerCustodyVerified!==true)
+  return result('HOLD_AFFECTED_SCOPE','WRITER_CUSTODY_UNVERIFIED');
+ const continuation=f.authorityVerified===true&&f.envelopeSourceVerified===true&&
+  f.sourceStatus==='CURRENT'&&fastKnown(f.taskId)&&fastKnown(f.recipientId)&&
+  fastSourceSha.test(f.sourceSha||'')&&
+  e.taskId===f.taskId&&e.recipientId===f.recipientId&&
+  e.sourceIssue===issue&&e.sourceSha===f.sourceSha&&
+  fastSameIssueComment(issue,e.authorityRef)&&
+  e.permission==='READ_ONLY'&&n.permission==='READ_ONLY'&&
+  n.taskId===f.taskId&&n.recipientId===f.recipientId&&
+  n.sourceSha===f.sourceSha&&fastKnown(n.id)&&
+  Array.isArray(e.permittedStepIds)&&e.permittedStepIds.includes(n.id)&&
+  f.sourceChanged===false&&f.authorityChanged===false&&
+  f.materialScopeChanged===false&&f.criticalFalsifierFailed===false&&
+  f.latestReturnNeedsReconciliation===false&&f.scopeCompleted===false&&
+  f.ownerOnlyDecisionRequired===false&&f.independentReviewRequired===false&&
+  f.stopConditionsVerified===true&&f.stopTriggered===false&&
+  f.envelopeExhausted===false;
+ if(continuation)return result('CONTINUE_EXISTING_SCOPE',
+  'EXACT_READ_ONLY_ENVELOPE_MATCH','AGENT',{withinAuthorizedEnvelope:true});
+ if(f.noMaterialDelta===true&&f.noMaterialDeltaVerified===true&&
+  f.authorityVerified===true&&f.sourceStatus==='CURRENT'&&
+  f.criticalFalsifierFailed===false&&f.sourceChanged===false&&
+  f.latestReturnNeedsReconciliation===false&&f.nextStep==null)
+  return result('NO_MATERIAL_DELTA','NO_NEW_NATIVE_REPORT_NEEDED');
+ return result('ORACLE_QUALIFY_SCOPE',
+  f.authorityVerified===true?'NEXT_STEP_OUTSIDE_VERIFIED_ENVELOPE':
+   'AUTHORITY_OR_ENVELOPE_NOT_VERIFIED');
+}
+
+// Original issue comments newer than the source-linked instruction require
+// Oracle review; not an inference that an Agent executed or Owner must relay.
+// Current CT-5 does not read a verified Execution Envelope, so the Board alone
+// NEVER recommends CONTINUE_EXISTING_SCOPE.
+export function cycleNowBoardDecision(row,evidence,feed=null,{boardObserved=false}={}){
+ const sourceIssue=row?.source;
+ if(!fastNativeIssue.test(sourceIssue||''))return decideNextAction({boardObserved});
+ const comments=feed?.issue===sourceIssue&&['ok','partial'].includes(feed?.status)?
+   (feed.comments||[]).filter(c=>fastSameIssueComment(sourceIssue,c?.url)):[];
+ const ref=evidence?.nextSourceUrl;
+ const pos=comments.findIndex(c=>c.url===ref);
+ const later=pos>=0&&comments.length>pos+1;
+ const returnPointer=!!row?.returnUrl||row?.status==='RECONCILE_FIRST'||
+  row?.status==='ACTOR_REVIEW_REQUIRED';
+ const decision=decideNextAction({sourceIssue,boardObserved,
+  latestReturnNeedsReconciliation:later||returnPointer,
+  sourceStatus:evidence?.sourceStatus,authorityVerified:false});
+ return {...decision,sourceLinkedInstruction:pos>=0&&feed?.status==='ok',
+  newNativeCommentsObserved:later,currentIssueObserved:comments.length>0,
+  sourceCoverage:feed?.status||'UNKNOWN'};
+}
+
 // TE2 companion: one copy/paste transaction for the Owner, never a sixth card
 // line, source mutation, delivery receipt or independent work authorization.
 export function cycleNowOwnerActionModel(row,{projectKey='UNKNOWN',evidence=null,
- actingRole='UNKNOWN',transport='NATIVE_CONTINUATION'}={}){
+ actingRole='UNKNOWN',transport='NATIVE_CONTINUATION',decision=null,
+ ownerRelayRequired=false,ownerDecision=null}={}){
  const result=(kind,reason,text=null,target=null)=>({
   kind,reason,text,target,status:text?'PREPARED_NOT_SENT':'NOT_VERIFIED',
   copied:false,delivered:false,acknowledged:false
@@ -236,6 +334,24 @@ export function cycleNowOwnerActionModel(row,{projectKey='UNKNOWN',evidence=null
  // A Board field saying "Oracle" is not enough to impersonate the real Oracle.
  if(role==='UNKNOWN')return result('NONE',
   'Acting role NOT_VERIFIED; verify current participant before preparing an Owner message.');
+ // A prepared Board option is NOT proof that the Owner must relay it.
+ // An acting Oracle performs feasible review in this turn; no inert ping to itself.
+ if(decision?.action==='CONTINUE_EXISTING_SCOPE')
+  return result('NONE','Existing authorized substep remains with the same actor; no Owner relay.');
+ if(ownerDecision?.required===true&&ownerDecision?.verified===true&&
+    fastSameIssueComment(row.source,ownerDecision.source)&&
+    fastKnown(ownerDecision.question)){
+  return result('OWNER_DECISION','Exact source-linked Owner-only decision required.',
+    ['Owner decision — '+row.source,
+     'Source: '+ownerDecision.source,
+     'Decision needed: '+ownerDecision.question.trim().slice(0,300),
+     'No implied engineering acceptance, writer lease or merge.'].join('\n'),
+    'Owner (read native source and authorize only the requested scope)');
+ }
+ if(ownerRelayRequired!==true)
+  return result('NONE',role==='ORACLE'?
+   'Oracle can reconcile/qualify the current issue now; no verified Owner relay need.':
+   'Owner-dependent cross-chat delivery NOT_VERIFIED; no automatic relay obligation inferred.');
  const shortProject=ct5Safe(projectKey)?.replace(/[\r\n]/g,' ').slice(0,50)||'UNKNOWN';
  const board=CT5_BROWSER_SITE+'#/'+(row.sourceType==='NATIVE_TASK'&&/^topo-[ab]$/.test(row.key||'')?
   'adhoc/'+row.key:'')+(row.sourceType==='NATIVE_TASK'&&/^topo-[ab]$/.test(row.key||'')?
@@ -249,7 +365,9 @@ export function cycleNowOwnerActionModel(row,{projectKey='UNKNOWN',evidence=null
   row.status==='REVIEW_NATIVE_AUTHORITY'&&
   evidence?.sourceStatus==='CURRENT'&&ct5Safe(evidence?.nativeNext)&&
   ct5SafeSource(evidence?.nextSourceUrl)&&
-  evidence.nextSourceUrl.startsWith(row.source+'#issuecomment-');
+  evidence.nextSourceUrl.startsWith(row.source+'#issuecomment-')&&
+  decision?.newNativeCommentsObserved!==true&&
+  !['ORACLE_RECONCILE','DECIDE_NEXT_ASSIGNMENT','HOLD_AFFECTED_SCOPE','BLOCKED'].includes(decision?.action);
  const readOnly='READ_ONLY. Verify current authority and HOLD; no production writes, new PR, merge or engineering acceptance.';
  const shared=['Read the current Cycle Board: '+boardUrl,
   'Original native task: '+source];
@@ -267,6 +385,10 @@ export function cycleNowOwnerActionModel(row,{projectKey='UNKNOWN',evidence=null
     'This is an Owner relay; NOT SENT, no ACK assumed.'].join('\n'),
    'Existing '+row.key.toUpperCase()+' Agent conversation (verify recipient)');
  }
+ // An Oracle does not ask the Owner to paste a new message to this same Oracle
+ // for a decision already within its current scope.
+ if(role==='ORACLE')return result('NONE',
+  'Current scope is Oracle review/qualification; perform it in this cycle.');
  // An agent/IR return or a stale/blocked source requires Oracle reconciliation.
  // The coordinator remains accountable; do not ask the Owner to create a task.
  return result('CYCLE_NOW_TO_ORACLE',role==='ORACLE'?
@@ -328,8 +450,19 @@ export function renderContinuationBridge(root,project,options={}){
    renderTaskEvidenceV2(group,evidence);
    // Action to Owner is a separate copy-only transaction, not a 6th TE2 line.
    // The Board remains multi-task; the acting Oracle still reports its own card.
+   const fastLane=cycleNowBoardDecision(row,evidence,feed,{
+    boardObserved:!!(options.observations||[]).length});
+   const fastBox=el('section','ct5-fastlane-decision');
+   fastBox.setAttribute('aria-label','Cycle now next-action decision');
+   fastBox.append(el('h5',null,'Cycle now · Next-action decision'),
+    el('p','muted',fastLane.action+' · '+fastLane.reason+
+     ' · source '+fastLane.sourceCoverage+' · Board '+fastLane.boardStatus));
+   fastBox.append(el('p','muted','Source-derived recommendation only; not a dispatch, Owner-only decision, engineering acceptance or acknowledgment.'));
+   group.append(fastBox);
    const ownerAction=cycleNowOwnerActionModel(row,{projectKey:m.project,evidence,
-    actingRole:options.actingRole||'UNKNOWN',transport:options.transport||'NATIVE_CONTINUATION'});
+    actingRole:options.actingRole||'UNKNOWN',transport:options.transport||'NATIVE_CONTINUATION',
+    decision:fastLane,ownerRelayRequired:options.ownerRelayRequired===true,
+    ownerDecision:options.ownerDecision||null});
    const ownerBox=el('section','ct5-owner-action');
    ownerBox.setAttribute('aria-label','Action to Owner');
    ownerBox.append(el('h5',null,'Action to Owner'),
@@ -350,18 +483,19 @@ export function renderContinuationBridge(root,project,options={}){
    group.append(ownerBox);
    // A newer source-backed Oracle next action supersedes a stale prepared
    // native packet, but does not confer message delivery or write permission.
-   const sourceNext=evidence?.nativeNext&&evidence?.nextSourceUrl?
+   const sourceNext=!fastLane.newNativeCommentsObserved&&evidence?.nativeNext&&evidence?.nextSourceUrl?
      'Cycle now — existing native task, no new Cycle or onboarding.\n'+
      'Native source: '+row.source+'\n'+
      'Latest Oracle-reported next action: '+evidence.nativeNext+'\n'+
      'Reconcile original instruction: '+evidence.nextSourceUrl+'\n'+
      'Return to original issue with executed raw receipts; no production writes or engineering PASS.\n'+
      'Delivery and recipient ACK NOT_VERIFIED.':null;
-   const copyRow=sourceNext?{...row,instructions:sourceNext}:row;
+   const currentRow=fastLane.newNativeCommentsObserved?{...row,status:'RECONCILE_FIRST'}:row;
+   const copyRow=sourceNext?{...currentRow,instructions:sourceNext}:currentRow;
    const details=el('details','ct5-task');
    const title=el('summary');
    title.append(el('b',null,row.label),' · '+row.state+
-     ' · '+row.status);
+     ' · '+currentRow.status);
    details.append(title);
    const info=el('div','ct5-task-body');
    info.append(el('p','muted','Original task '+row.id+
@@ -381,15 +515,15 @@ export function renderContinuationBridge(root,project,options={}){
    if(row.source)actions.append(link(row.source,'Review original task / check agent return','btn small'));
    if(row.returnUrl)actions.append(link(row.returnUrl,'Inspect return pointer','btn small'));
    const copy=el('button','btn small','Copy Cycle now · not sent');
-   copy.type='button';copy.disabled=!row.instructions;
+   copy.type='button';copy.disabled=!copyRow.instructions;
    if(copyRow.instructions)copy.addEventListener('click',()=>copyText(continuationText(copyRow,m.project),copy));
    actions.append(copy);
    if(row.privateUrl)actions.append(link(row.privateUrl,
-    row.status==='RECONCILE_FIRST'||row.status==='ACTOR_REVIEW_REQUIRED'?
+    currentRow.status==='RECONCILE_FIRST'||currentRow.status==='ACTOR_REVIEW_REQUIRED'?
      'Review existing conversation · do not replay':'Resume Agent · open existing conversation (not sent)','btn small'));
    else actions.append(el('span','muted','Conversation not linked · add recipient under My links (id8 or task key); do not infer delivery.'));
    info.append(actions);
-   if(row.status==='RECONCILE_FIRST'||row.status==='ACTOR_REVIEW_REQUIRED')info.append(el('p','banner',
+   if(currentRow.status==='RECONCILE_FIRST'||currentRow.status==='ACTOR_REVIEW_REQUIRED')info.append(el('p','banner',
      'Task state/next actor requires Oracle reconciliation; copying the packet does not authorize replay.'));
    details.append(info);group.append(details);
   }

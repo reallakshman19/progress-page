@@ -2,7 +2,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {cycleNowRoleSelection,cycleNowRelayDisposition,cycleNowRoleText,
- cycleNowOwnerActionModel,renderContinuationBridge} from '../cycle-board-continuation.js';
+ cycleNowOwnerActionModel,decideNextAction,cycleNowBoardDecision,
+ renderContinuationBridge} from '../cycle-board-continuation.js';
 
 const A='https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/12';
 const B='https://github.com/reallakshman19/XML_Compare_Utilities/issues/239';
@@ -146,7 +147,7 @@ test('Action to Owner: source-anchored current TOPO next step yields one Agent c
   nativeNext:'Run exactly 3 synthetic CLOS checks in scratch',
   nextSourceUrl:A+'#issuecomment-6540556158'};
  const action=cycleNowOwnerActionModel(row,{projectKey:'topo-a',
-  actingRole:'ORACLE',evidence});
+  actingRole:'ORACLE',evidence,ownerRelayRequired:true});
  assert.equal(action.kind,'CYCLE_NOW_TO_AGENT');
  assert.equal(action.status,'PREPARED_NOT_SENT','copying never proves a coordination obligation');
  assert.equal(action.target,'Existing TOPO-A Agent conversation (verify recipient)');
@@ -165,13 +166,14 @@ test('Action to Owner: Agent return, stale Page task, unknown or wrong-issue sou
   status:'REVIEW_NATIVE_AUTHORITY'};
  const good={sourceStatus:'CURRENT',nativeNext:'Authorized read-only source check',
   nextSourceUrl:A+'#issuecomment-6540556158'};
- const agent=cycleNowOwnerActionModel(row,{projectKey:'topo-a',actingRole:'AGENT',evidence:good});
+ const agent=cycleNowOwnerActionModel(row,{projectKey:'topo-a',actingRole:'AGENT',
+  evidence:good,ownerRelayRequired:true});
  assert.equal(agent.kind,'CYCLE_NOW_TO_ORACLE');
  assert.match(agent.text,/existing Oracle coordination/);
  assert.doesNotMatch(agent.text,/Continue ONLY after/);
  const stale=cycleNowOwnerActionModel({...row,status:'RECONCILE_FIRST'},
   {projectKey:'topo-a',actingRole:'ORACLE',evidence:good});
- assert.equal(stale.kind,'CYCLE_NOW_TO_ORACLE','returned/completed work routes to Oracle');
+ assert.equal(stale.kind,'NONE','acting Oracle performs completed-return review in the same cycle');
  for(const bad of [
   {...good,nextSourceUrl:B+'#issuecomment-6540556158'},
   {...good,sourceStatus:'PARTIAL'},
@@ -179,7 +181,7 @@ test('Action to Owner: Agent return, stale Page task, unknown or wrong-issue sou
   {...good,nextSourceUrl:undefined}
  ]){
   const x=cycleNowOwnerActionModel(row,{projectKey:'topo-a',actingRole:'ORACLE',evidence:bad});
-  assert.equal(x.kind,'CYCLE_NOW_TO_ORACLE','no untrusted executable Agent handoff');
+  assert.equal(x.kind,'NONE','no untrusted executable Agent handoff or needless Oracle self-relay');
  }
  const unknown=cycleNowOwnerActionModel(row,{projectKey:'topo-a',actingRole:'UNKNOWN',evidence:good});
  assert.equal(unknown.kind,'NONE');
@@ -203,16 +205,221 @@ test('Action to Owner is separate from exactly five lines and offers copyable pl
   assert.equal(actions.length,1);
   assert.equal(collect(te[0],x=>x.tag==='p'&&x.className==='te-line').length,5);
   const btn=collect(actions[0],x=>x.tag==='button');
-  assert.equal(btn.length,1);
-  assert.match(btn[0].textContent,/Copy Cycle now to Oracle/);
-  assert.match(actions[0].textContent,/NOT SENT/);
+  assert.equal(btn.length,0,'no real Owner dependency means no inert copy instruction');
+  assert.match(actions[0].textContent,/NONE/);
   const preview=collect(actions[0],x=>x.tag==='pre'&&x.className==='ct5-owner-copy-block');
-  assert.equal(preview.length,1);
-  assert.match(preview[0].textContent,/Cycle now — topo-a/);
-  assert.match(preview[0].textContent,/issues\/12/);
+  assert.equal(preview.length,0);
+  const fast=collect(root,x=>x.tag==='section'&&x.className==='ct5-fastlane-decision');
+  assert.equal(fast.length,1,'existing CT-5 shows one next-action decision aid');
+  assert.match(fast[0].textContent,/ORACLE_QUALIFY_SCOPE/);
   const noRole=node('main');
   renderContinuationBridge(noRole,null,{key:'topo-a',nativeTasks:[row]});
   assert.equal(collect(noRole,x=>x.tag==='section'&&x.className==='ct5-owner-action').length,1);
   assert.equal(collect(noRole,x=>x.tag==='pre'&&x.className==='ct5-owner-copy-block').length,0);
  }finally{globalThis.document=old;}
+});
+
+
+// Fast Lane F2: all facts below are *synthetic*, not new TOPO-A/B authorization.
+// The Board can recommend; it never authenticates source, dispatches or grants PASS.
+const pinned='a'.repeat(40);
+const baseFast=()=>{
+ const envelope={sourceIssue:A,taskId:'TOPO-A-12',recipientId:'agent-a',
+  sourceSha:pinned,permission:'READ_ONLY',
+  authorityRef:A+'#issuecomment-333',permittedStepIds:['trace','lookup','sidecar']};
+ const step={id:'lookup',taskId:'TOPO-A-12',recipientId:'agent-a',
+  sourceSha:pinned,permission:'READ_ONLY'};
+ return {sourceIssue:A,taskId:'TOPO-A-12',recipientId:'agent-a',
+  sourceSha:pinned,authorityVerified:true,envelopeSourceVerified:true,
+  sourceStatus:'CURRENT',boardObserved:true,executionEnvelope:envelope,nextStep:step,
+  sourceChanged:false,authorityChanged:false,materialScopeChanged:false,
+  criticalFalsifierFailed:false,latestReturnNeedsReconciliation:false,
+  scopeCompleted:false,ownerOnlyDecisionRequired:false,independentReviewRequired:false,
+  stopConditionsVerified:true,stopTriggered:false,envelopeExhausted:false};
+};
+
+test('F2-01: completed authorized substep may continue the next exact read-only envelope step',()=>{
+ const d=decideNextAction(baseFast());
+ assert.equal(d.action,'CONTINUE_EXISTING_SCOPE');
+ assert.equal(d.nextActor,'AGENT');
+ assert.equal(d.withinAuthorizedEnvelope,true);
+ assert.equal(d.canDispatch,false,'pure UI recommendation does not send');
+ assert.equal(d.canAuthorizeWrite,false);
+});
+
+test('F2-02: completed assignment never dispatches another Agent microtest',()=>{
+ const d=decideNextAction({...baseFast(),scopeCompleted:true,scopeCompletionVerified:true});
+ assert.equal(d.action,'DECIDE_NEXT_ASSIGNMENT');
+ assert.equal(d.nextActor,'ORACLE');
+ assert.equal(d.canDispatch,false);
+ const unreviewed=decideNextAction({...baseFast(),scopeCompleted:true});
+ assert.equal(unreviewed.action,'ORACLE_RECONCILE');
+});
+
+test('F2-03: new source-bound Agent return routes to Oracle rather than back to Agent',()=>{
+ const d=decideNextAction({...baseFast(),latestReturnNeedsReconciliation:true});
+ assert.equal(d.action,'ORACLE_RECONCILE');
+ const feed={issue:A,status:'ok',comments:[
+  {url:A+'#issuecomment-100',body:'Prior Oracle next instruction'},
+  {url:A+'#issuecomment-101',body:'Actual Agent return'},
+  {url:A+'#issuecomment-102',body:'New Oracle decision'}
+ ]};
+ const row={source:A,sourceType:'NATIVE_TASK',key:'topo-a',
+  status:'REVIEW_NATIVE_AUTHORITY'};
+ const evidence={sourceStatus:'CURRENT',nativeNext:'OLD NEXT: synthetic tests',
+  nextSourceUrl:A+'#issuecomment-100'};
+ const latest=cycleNowBoardDecision(row,evidence,feed,{boardObserved:true});
+ assert.equal(latest.action,'ORACLE_RECONCILE');
+ assert.equal(latest.newNativeCommentsObserved,true);
+ const action=cycleNowOwnerActionModel(row,{projectKey:'topo-a',
+  actingRole:'ORACLE',evidence,decision:latest,ownerRelayRequired:true});
+ assert.equal(action.kind,'NONE','new native delta invalidates stale Agent continuation');
+});
+
+test('F2-04: unverified writer custody blocks production write, not exact authorized read-only step',()=>{
+ const w=decideNextAction({...baseFast(),
+  nextStep:{...baseFast().nextStep,permission:'PRODUCT_WRITE'},
+  writerCustodyVerified:false});
+ assert.equal(w.action,'HOLD_AFFECTED_SCOPE');
+ assert.equal(w.reason,'WRITER_CUSTODY_UNVERIFIED');
+ const ro=decideNextAction({...baseFast(),writerCustodyVerified:false});
+ assert.equal(ro.action,'CONTINUE_EXISTING_SCOPE');
+ assert.equal(ro.canAuthorizeWrite,false);
+});
+
+test('F2-05: changed SHA/authority stops affected scope; forged envelope mismatch cannot continue',()=>{
+ for(const change of [{sourceChanged:true},{authorityChanged:true},
+  {materialScopeChanged:true}]){
+  assert.equal(decideNextAction({...baseFast(),...change}).action,
+   'REQUALIFY_AFFECTED_SCOPE');
+ }
+ const b=baseFast();
+ assert.equal(decideNextAction({...b,sourceSha:'b'.repeat(40)}).action,
+  'ORACLE_QUALIFY_SCOPE');
+ assert.equal(decideNextAction({...b,recipientId:'some-other-agent'}).action,
+  'ORACLE_QUALIFY_SCOPE');
+ assert.equal(decideNextAction({...b,executionEnvelope:{
+  ...b.executionEnvelope,authorityRef:B+'#issuecomment-333'}}).action,
+  'ORACLE_QUALIFY_SCOPE');
+ assert.equal(decideNextAction({...b,executionEnvelope:{
+  ...b.executionEnvelope,permittedStepIds:['trace']}}).action,
+  'ORACLE_QUALIFY_SCOPE');
+});
+
+test('F2-06: critical falsifier HOLD is scoped; separate read-only eligibility needs real separate source',()=>{
+ const fail=decideNextAction({...baseFast(),criticalFalsifierFailed:true});
+ assert.equal(fail.action,'HOLD_AFFECTED_SCOPE');
+ assert.equal(fail.unrelatedReadOnlyEligible,false);
+ const separate=decideNextAction({...baseFast(),criticalFalsifierFailed:true,
+  unrelatedReadOnlyAuthorized:true,unrelatedReadOnlyIssue:B,
+  unrelatedTaskId:'TOPO-B-239',
+  unrelatedAuthorityRef:B+'#issuecomment-789'});
+ assert.equal(separate.action,'HOLD_AFFECTED_SCOPE');
+ assert.equal(separate.unrelatedReadOnlyEligible,true,'separate source evidence is required');
+ assert.equal(decideNextAction({...baseFast(),criticalFalsifierFailed:true,
+  unrelatedReadOnlyAuthorized:true,unrelatedReadOnlyIssue:B}).unrelatedReadOnlyEligible,false);
+});
+
+test('F2-07: Board inaccessible continues from independently verified native envelope',()=>{
+ const d=decideNextAction({...baseFast(),boardObserved:false});
+ assert.equal(d.action,'CONTINUE_EXISTING_SCOPE');
+ assert.equal(d.boardStatus,'NOT_OBSERVED');
+ assert.equal(d.canDispatch,false);
+ assert.equal(decideNextAction({sourceIssue:A,boardObserved:false}).action,
+  'ORACLE_QUALIFY_SCOPE','Board unobserved cannot manufacture native authority');
+});
+
+test('F2-08: CT-5 copy/open never proves delivery or recipient ACK',()=>{
+ const current='TOPO-A-12#lookup';
+ const posted={assignmentRef:current,verified:true,ref:A+'#issuecomment-333'};
+ const d=cycleNowRelayDisposition({assignmentRef:current,posted});
+ assert.equal(d.status,'AWAITING_RELAY');
+ assert.equal(d.ownerActionRequired,false);
+ const other={assignmentRef:'other',verified:true,ref:'recipient-ack'};
+ assert.equal(cycleNowRelayDisposition({assignmentRef:current,posted,
+  acknowledged:other}).status,'AWAITING_RELAY');
+});
+
+test('F2-09: independent review cannot be replaced by agent self-score or product PASS',()=>{
+ const d=decideNextAction({...baseFast(),independentReviewRequired:true});
+ assert.equal(d.action,'ORACLE_QUALIFY_REVIEW');
+ assert.equal(d.nextActor,'ORACLE');
+ assert.equal(d.canAuthorizeWrite,false);
+ assert.equal(d.canGrantAuthority,false);
+});
+
+test('F2-10: no verified Owner dependency means Action to Owner NONE with no inert copy',()=>{
+ const row={source:A,sourceType:'NATIVE_TASK',key:'topo-a',
+  status:'REVIEW_NATIVE_AUTHORITY'};
+ const evidence={nativeNext:'Old check',nextSourceUrl:A+'#issuecomment-333',
+  sourceStatus:'CURRENT'};
+ const noAction=cycleNowOwnerActionModel(row,{actingRole:'ORACLE',
+  evidence,decision:decideNextAction({...baseFast(),latestReturnNeedsReconciliation:true})});
+ assert.equal(noAction.kind,'NONE');
+ assert.equal(noAction.text,null);
+ const review=cycleNowOwnerActionModel(row,{actingRole:'ORACLE',
+  evidence,ownerRelayRequired:true,decision:{action:'ORACLE_RECONCILE'}});
+ assert.equal(review.kind,'NONE','Oracle does not ask Owner to ping Oracle again');
+});
+
+test('F2-11: exact Owner-only decision must have matching native source',()=>{
+ const row={source:A,sourceType:'NATIVE_TASK',key:'topo-a',
+  status:'RECONCILE_FIRST'};
+ const decision=decideNextAction({...baseFast(),
+  ownerOnlyDecisionRequired:true,ownerDecisionSourceVerified:true,
+  ownerDecisionSource:A+'#issuecomment-333'});
+ assert.equal(decision.action,'OWNER_DECISION');
+ assert.equal(decision.ownerActionRequired,true);
+ const legit=cycleNowOwnerActionModel(row,{actingRole:'ORACLE',decision,
+  ownerDecision:{required:true,verified:true,source:A+'#issuecomment-333',
+   question:'Who holds exclusive P0 writer custody?'}});
+ assert.equal(legit.kind,'OWNER_DECISION');
+ assert.match(legit.text,/exclusive P0 writer custody/);
+ assert.equal(legit.status,'PREPARED_NOT_SENT');
+ const spoof=cycleNowOwnerActionModel(row,{actingRole:'ORACLE',decision,
+  ownerDecision:{required:true,verified:true,source:B+'#issuecomment-333',
+   question:'Approve merge'}});
+ assert.equal(spoof.kind,'NONE');
+ assert.equal(decideNextAction({...baseFast(),ownerOnlyDecisionRequired:true,
+  ownerDecisionSourceVerified:true,ownerDecisionSource:B+'#issuecomment-333'}).action,
+  'ORACLE_QUALIFY_SCOPE');
+});
+
+test('F2-12: no material delta means no substantive native status report',()=>{
+ const f={...baseFast(),nextStep:null,noMaterialDelta:true,noMaterialDeltaVerified:true};
+ const d=decideNextAction(f);
+ assert.equal(d.action,'NO_MATERIAL_DELTA');
+ assert.equal(d.ownerActionRequired,false);
+ assert.equal(d.canDispatch,false);
+ const noSource=decideNextAction({...f,authorityVerified:false});
+ assert.equal(noSource.action,'ORACLE_QUALIFY_SCOPE');
+});
+
+
+test('F2-13: unknown STOP/contradiction status is NOT permission to keep executing',()=>{
+ for(const key of ['sourceChanged','authorityChanged','materialScopeChanged',
+  'criticalFalsifierFailed','latestReturnNeedsReconciliation','scopeCompleted',
+  'ownerOnlyDecisionRequired','independentReviewRequired',
+  'stopConditionsVerified','stopTriggered','envelopeExhausted']){
+  const f=baseFast();delete f[key];
+  assert.notEqual(decideNextAction(f).action,'CONTINUE_EXISTING_SCOPE',
+   key+' missing must fail closed');
+ }
+ const noDelta={...baseFast(),nextStep:null,noMaterialDelta:true};
+ assert.notEqual(decideNextAction(noDelta).action,'NO_MATERIAL_DELTA',
+  'missing source-verified no-delta receipt cannot suppress native reporting');
+});
+
+
+test('F2-14: triggered STOP and exhausted envelope never silently become another Agent task',()=>{
+ const stopped=decideNextAction({...baseFast(),stopTriggered:true});
+ assert.equal(stopped.action,'HOLD_AFFECTED_SCOPE');
+ assert.equal(stopped.reason,'EXPLICIT_STOP_CONDITION_TRIGGERED');
+ assert.equal(stopped.nextActor,'ORACLE');
+ assert.equal(stopped.canDispatch,false);
+ const exhausted=decideNextAction({...baseFast(),envelopeExhausted:true});
+ assert.equal(exhausted.action,'DECIDE_NEXT_ASSIGNMENT');
+ assert.equal(exhausted.reason,'ENVELOPE_EXHAUSTED_NO_AGENT_REPLAY');
+ assert.equal(exhausted.nextActor,'ORACLE');
+ assert.equal(exhausted.canDispatch,false);
 });

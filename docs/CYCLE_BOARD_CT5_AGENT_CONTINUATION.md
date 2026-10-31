@@ -22,6 +22,16 @@ All Board-generated copy blocks have status **PREPARED_NOT_SENT** and are *optio
 
 **Other issues needing Owner attention** are concise, source-linked exceptions written by the acting Agent/Oracle. The Board does not manufacture them from Page labels; when not observed it says NOT_VERIFIED and points to the original issue.
 
+## Fast Lane F2 — source-derived next-action decision (no second tracker)
+
+The existing CT-5 task row now displays a **Cycle now · Next-action decision** hint derived from the original native issue read. `decideNextAction(facts)` is a pure, non-dispatching decision aid. `CONTINUE_EXISTING_SCOPE` requires an **exact original Execution Envelope** (verified task and recipient, source SHA, same-issue native authorization permalink, current source, named permitted read-only substep, untriggered STOP conditions). An ordinary Board NEXT label, old Oracle-reported instruction, passed synthetic test, or a copied packet never supplies that authorization.
+
+Current CT-5 is deliberately **not** an envelope verifier. It will **not** auto-promote a Board row into `CONTINUE_EXISTING_SCOPE`. If a native comment follows the source-linked Oracle instruction, the row instead recommends `ORACLE_RECONCILE`, marks the changed evidence and suppresses replay of the older next-action copy packet. Without verified authority it recommends `ORACLE_QUALIFY_SCOPE`; no new agent work is authorized.
+
+A completed scoped return → `DECIDE_NEXT_ASSIGNMENT`, a critical falsifier → affected-scope HOLD, changed source/authority → requalify affected scope, unknown writer custody → block production writes while separately authorized read-only work remains eligible, required independent qualification → Oracle/reviewer gate, and verified Owner-only decision → exact source-linked Owner action. **`Action to Owner: NONE`** and no copy button when the acting Oracle has no genuine Owner dependency. The five-line card and original issue/relay remain unchanged.
+
+No background execution, automatic chat messaging, fabricated ACK, engineering PASS, private-source transfer, new WBS or extra data ledger. The Oracle makes available authorized decisions in the same invoked `Cycle now`; agent continuation means only related substeps within its previously approved envelope in that *same active turn*. F1 source of truth: [Common TASK_EVIDENCE_V2.md](https://github.com/reallakshman19/Common/blob/main/skills/agent-work/TASK_EVIDENCE_V2.md) after F1 authorized merge.
+
 ## User workflow
 
 1. Open the **Cycle Board** in any registered project: `#/ciifr/cycle-board`, `#/ciifr-node/cycle-board`, `#/g9v35/cycle-board`, `#/topofix/cycle-board`, `#/doc2table/cycle-board` and other active project tabs; or one of `#/adhoc/topo-a/cycle-board`, `#/adhoc/topo-b/cycle-board`.
