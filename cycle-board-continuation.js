@@ -240,7 +240,9 @@ export function decideNextAction(facts={}){
  const result=(action,reason,nextActor='ORACLE',more={})=>({
   action,reason,nextActor,boardStatus,canDispatch:false,canGrantAuthority:false,
   canAuthorizeWrite:false,ownerActionRequired:action==='OWNER_DECISION',
-  scope:'AFFECTED_TASK_ONLY',unrelatedReadOnlyEligible:f.unrelatedReadOnlyAuthorized===true,
+  scope:'AFFECTED_TASK_ONLY',unrelatedReadOnlyEligible:f.unrelatedReadOnlyAuthorized===true&&
+   fastNativeIssue.test(f.unrelatedReadOnlyIssue||'')&&f.unrelatedReadOnlyIssue!==issue&&
+   fastKnown(f.unrelatedTaskId)&&fastSameIssueComment(f.unrelatedReadOnlyIssue,f.unrelatedAuthorityRef),
   ...more
  });
  if(!fastNativeIssue.test(issue||''))return result('BLOCKED','NATIVE_ISSUE_NOT_VERIFIED');
