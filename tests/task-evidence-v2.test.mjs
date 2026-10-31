@@ -66,7 +66,7 @@ test('Wrong issue, forged acceptance, missing source and later return cannot man
  const fake=feed(B,commentsA);
  let m=taskEvidenceV2Model(r,{projectKey:'topo-a',feed:fake});
  assert.match(taskEvidenceV2Text(m),/TOTAL UNKNOWN/);
- assert.equal(m.sourceStatus,'UNKNOWN');
+ assert.equal(m.sourceStatus,'PARTIAL'); // Only the earlier native revision is known.
  const spoof=[reply(A,1,'## TOPO-A — Cycle now / read-only evidence return'),
   reply(A,2,'Accepted as READ_ONLY_SOURCE_TRACE for #issuecomment-999 and 3-case closure falsifier')];
  m=taskEvidenceV2Model(r,{projectKey:'topo-a',feed:feed(A,spoof)});
