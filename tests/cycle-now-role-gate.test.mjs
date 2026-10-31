@@ -148,7 +148,7 @@ test('Action to Owner: source-anchored current TOPO next step yields one Agent c
  const action=cycleNowOwnerActionModel(row,{projectKey:'topo-a',
   actingRole:'ORACLE',evidence});
  assert.equal(action.kind,'CYCLE_NOW_TO_AGENT');
- assert.equal(action.status,'AWAITING_RELAY');
+ assert.equal(action.status,'PREPARED_NOT_SENT','copying never proves a coordination obligation');
  assert.equal(action.target,'Existing TOPO-A Agent conversation (verify recipient)');
  assert.match(action.text,/Run exactly 3 synthetic CLOS checks in scratch/);
  assert.match(action.text,/issuecomment-6540556158/);
