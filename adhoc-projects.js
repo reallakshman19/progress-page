@@ -216,7 +216,7 @@ function renderTopoWorkspace(root,key,view,{nativeFetcher,clock,topofixProject=n
     [['Inspect source graph',adhocHref(key,'sources')]])
   ]);
  } else if(view==='cycle-board') {
-  renderTopoAdhocBoard(body,key,{fetcher:nativeFetcher,clock});
+  renderTopoAdhocBoard(body,key,{fetcher:nativeFetcher,clock,topofixProject,pageFetch});
  } else if(view==='sources') {
   const s=section(body,'Original sources and Grounding Fixtures',
    'The concept/specification and pinned files are read-only grounding fixtures; links do not authenticate private original XML, qualify engineering semantics or grant a product write.');
