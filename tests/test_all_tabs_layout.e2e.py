@@ -153,6 +153,10 @@ def main():
                               "Every Task Evidence v2 card must have exactly 5 lines")
                         check(panel.locator(".ct5-owner-action").count()==v2.count(),
                               "Each Board task must expose one separate Action to Owner transaction")
+                        check(panel.locator(".ct5-fastlane-decision").count()==v2.count(),
+                              "Each CT-5 task must show one read-only Fast Lane decision")
+                        check("No automatic send" in panel.text_content(),
+                              "Copy-only delivery restriction must remain visible")
                         check(all("Source status:" in v2.nth(i).inner_text() for i in range(v2.count())),
                               "Task Evidence v2 source freshness missing")
                         check("instruction delivery: NOT_VERIFIED" in panel.text_content(),
@@ -260,6 +264,10 @@ def main():
                                       "TOPO native Task Evidence v2 must have five information lines")
                                 check(page.locator(".topo-ct5-slot .ct5-owner-action").count()==1,
                                       "TOPO native task must expose Action to Owner separately")
+                                check(page.locator(".topo-ct5-slot .ct5-fastlane-decision").count()==1,
+                                      "TOPO native task must show its conservative Fast Lane decision")
+                                check("not a dispatch" in page.locator(".topo-ct5-slot .ct5-fastlane-decision").inner_text(),
+                                      "Board Fast Lane must not claim native dispatch authority")
                                 check("Action to Owner" in page.locator(".topo-ct5-slot .ct5-owner-action").inner_text(),
                                       "Owner transaction heading missing")
                                 check("Engineering HOLD" in page.locator(".topo-ct5-slot .task-evidence-v2").inner_text(),
