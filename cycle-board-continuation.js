@@ -6,37 +6,37 @@ import { wbsGroups } from './progress.js?v=34';
 import { agentStartModel, agentStartTaskText } from './agent-start.js?v=34';
 import { smartBadgesForScope, renderSmartBadges } from './smart-badges.js?v=34';
 
-const PUBLIC_SOURCE=/^https:\/\/github\.com\/[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+\/(?:issues\/[1-9]\d*|pull\/[1-9]\d*|commit\/[a-fA-F0-9]{40})(?:#issuecomment-[1-9]\d*)?$/;
-const CHATGPT=/^https:\/\/chatgpt\.com\/(?:c\/|g\/[^/?#]+\/c\/)[A-Za-z0-9_-]+(?:[/?#].*)?$/;
-const CLAUDE=/^https:\/\/claude\.ai\/chat\/[A-Za-z0-9_-]+(?:[/?#].*)?$/;
-const BROWSER_SITE='https://reallakshman19.github.io/progress-page/';
-const knownChat=u=>typeof u==='string'&&(CHATGPT.test(u)||CLAUDE.test(u));
-const safeSource=u=>typeof u==='string'&&PUBLIC_SOURCE.test(u);
-const currentRevision=p=>(p?.index?.revisions||[]).find(r=>r.status==='current')?.id||'UNKNOWN';
-const safe=x=>typeof x==='string'&&x.trim()?x.trim():null;
-const ended=x=>/^(?:DONE|VERIFIED|COMPLETE|COMPLETED|CLOSED|RETURNED|FULFILLED)$/i.test(x||'');
+const CT5_PUBLIC_SOURCE=/^https:\/\/github\.com\/[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+\/(?:issues\/[1-9]\d*|pull\/[1-9]\d*|commit\/[a-fA-F0-9]{40})(?:#issuecomment-[1-9]\d*)?$/;
+const CT5_CHATGPT=/^https:\/\/chatgpt\.com\/(?:c\/|g\/[^/?#]+\/c\/)[A-Za-z0-9_-]+(?:[/?#].*)?$/;
+const CT5_CLAUDE=/^https:\/\/claude\.ai\/chat\/[A-Za-z0-9_-]+(?:[/?#].*)?$/;
+const CT5_BROWSER_SITE='https://reallakshman19.github.io/progress-page/';
+const ct5KnownChat=u=>typeof u==='string'&&(CT5_CHATGPT.test(u)||CT5_CLAUDE.test(u));
+const ct5SafeSource=u=>typeof u==='string'&&CT5_PUBLIC_SOURCE.test(u);
+const ct5CurrentRevision=p=>(p?.index?.revisions||[]).find(r=>r.status==='current')?.id||'UNKNOWN';
+const ct5Safe=x=>typeof x==='string'&&x.trim()?x.trim():null;
+const ct5Ended=x=>/^(?:DONE|VERIFIED|COMPLETE|COMPLETED|CLOSED|RETURNED|FULFILLED)$/i.test(x||'');
 
 // An audit can *identify* an explicitly linked agent return without proving
 // that the intended recipient authored it, acknowledged the task or owns it.
-function linkedReturn(project,id,source){
+function ct5LinkedReturn(project,id,source){
  const events=project?.audit?.events||[];
  const candidates=events.filter(e=>e.card===id&&
    ['AGENT_RETURN','RETURN','REVIEW_RETURN'].includes(e.kind)&&
-   safeSource(e.source)&&safe(e.nativeOccurrenceId)&&
+   ct5SafeSource(e.source)&&ct5Safe(e.nativeOccurrenceId)&&
    (e.source===source||e.source.includes('#issuecomment-')));
  return candidates.length?candidates.at(-1):null;
 }
-const pageHref=(key,view='cycle-board')=>BROWSER_SITE+'#/'+encodeURIComponent(key)+'/'+view;
-function pickPrivate(chatLinks,keys){
+const pageHref=(key,view='cycle-board')=>CT5_BROWSER_SITE+'#/'+encodeURIComponent(key)+'/'+view;
+function ct5PickPrivate(chatLinks,keys){
  // Browsing convenience only: the map is private to the current browser;
  // it is not proof that the URL belongs to the authentic recipient.
  for(const key of keys){
-  if(key&&knownChat(chatLinks?.[key]))return chatLinks[key];
+  if(key&&ct5KnownChat(chatLinks?.[key]))return chatLinks[key];
  }
  return null;
 }
 
-function pageRows(project,key,chatLinks,observations,scope){
+function ct5PageRows(project,key,chatLinks,observations,scope){
  const idx=project.index||{}, milestones=idx.milestones||{},groups=wbsGroups(idx);
  const chats=idx.chats||{};
  const rows=[];
@@ -46,23 +46,23 @@ function pageRows(project,key,chatLinks,observations,scope){
   if(!m||!wbs||(Array.isArray(scope)&&!scope.includes(wbs)))continue;
   const family=groups.find(g=>g.steps.some(s=>s.key===c.milestone));
   const packetModel=family?agentStartModel(project,{family,step:c.milestone,
-    revision:currentRevision(project),cardId:id}):null;
+    revision:ct5CurrentRevision(project),cardId:id}):null;
   const chat=chats[c?.who?.chat]||{};
-  const id8=safe(chat.id8)||null;
-  const nativeSource=[c.src,...(c.refs||[]).map(r=>r.u)].find(safeSource)||null;
+  const id8=ct5Safe(chat.id8)||null;
+  const nativeSource=[c.src,...(c.refs||[]).map(r=>r.u)].find(ct5SafeSource)||null;
   const observation=(observations||[]).find(s=>s.source===nativeSource)||null;
-  const state=safe(c.state)||'UNKNOWN';
-  const returned=linkedReturn(project,id,nativeSource);
-  const status=ended(state)?'RECONCILE_FIRST':'REVIEW_NATIVE_AUTHORITY';
-  const nextActor=safe(c.next?.actor)||'UNKNOWN';
+  const state=ct5Safe(c.state)||'UNKNOWN';
+  const returned=ct5LinkedReturn(project,id,nativeSource);
+  const status=ct5Ended(state)?'RECONCILE_FIRST':'REVIEW_NATIVE_AUTHORITY';
+  const nextActor=ct5Safe(c.next?.actor)||'UNKNOWN';
   const notAgent=/^(?:owner|oracle|reviewer|reviewer_ir|ir)$/i.test(nextActor);
   const instruction=packetModel?agentStartTaskText(packetModel):null;
   rows.push({
    key,id,sourceType:'PUBLISHED_PAGE_CARD',label:c.label||id,wbs,milestoneId:c.milestone,
-   role:safe(c.who?.role)||'UNKNOWN',recipientLabel:safe(chat.label)||'NOT_RECORDED',
+   role:ct5Safe(c.who?.role)||'UNKNOWN',recipientLabel:ct5Safe(chat.label)||'NOT_RECORDED',
    source:nativeSource,sourceRevision:observation?.revision||null,sourceOccurrence:observation?.occurrenceId||null,
-   state,recordedNext:safe(c.next?.text)||'NOT_RECORDED',nextActor,
-   recipientIdKnown:!!id8,privateUrl:pickPrivate(chatLinks,[id8]),
+   state,recordedNext:ct5Safe(c.next?.text)||'NOT_RECORDED',nextActor,
+   recipientIdKnown:!!id8,privateUrl:ct5PickPrivate(chatLinks,[id8]),
    status:!instruction?'TASK_PACKET_UNAVAILABLE':notAgent?'ACTOR_REVIEW_REQUIRED':status,
    delivery:'NOT_VERIFIED',acknowledgment:'NOT_VERIFIED',
    returnState:returned?'PAGE_AUDIT_RETURN_POINTER_ONLY':'NOT_VERIFIED',
@@ -73,11 +73,11 @@ function pageRows(project,key,chatLinks,observations,scope){
  return rows.sort((a,b)=>a.wbs.localeCompare(b.wbs,undefined,{numeric:true})||
    a.id.localeCompare(b.id));
 }
-function nativeRows(nativeTasks,chatLinks,observations){
+function ct5NativeRows(nativeTasks,chatLinks,observations){
  return (nativeTasks||[]).map(t=>{
-  const source=safeSource(t.issue)?t.issue:null;
+  const source=ct5SafeSource(t.issue)?t.issue:null;
   const matched=(observations||[]).find(x=>x.source===source)||null;
-  const privateUrl=pickPrivate(chatLinks,[t.chatId8,t.key,t.id]);
+  const privateUrl=ct5PickPrivate(chatLinks,[t.chatId8,t.key,t.id]);
   const lines=[
    'Cycle now — '+t.key.toUpperCase()+' (existing native task; NOT a canonical Cycle activation)',
    'Native task: '+(source||'NOT_VERIFIED'),
@@ -86,7 +86,7 @@ function nativeRows(nativeTasks,chatLinks,observations){
    'Source observation revision: '+(matched?.revision||'NOT_VERIFIED'),
    'Source occurrence: '+(matched?.occurrenceId||'NOT_VERIFIED'),
    'Recorded next action: '+(t.next||'NOT_RECORDED'),
-   'Read current Board: '+BROWSER_SITE+'#/adhoc/'+t.key+'/cycle-board',
+   'Read current Board: '+CT5_BROWSER_SITE+'#/adhoc/'+t.key+'/cycle-board',
    'Continue only the existing authorized READ_ONLY task. Read original sources and earlier native return;',
    'do NOT redo completed work, edit engineering models, treat CLOS/unsupported XML as approved, or assert PASS.',
    'Return once to the existing native task; otherwise AWAIT_ORACLE_RECONCILIATION.',
@@ -110,9 +110,9 @@ export function continuationBridgeModel(project,{key=null,chatLinks={},nativeTas
   observations=null,wbs=null,historical=false}={}){
  const projectKey=key||project?.index?.project?.key||'UNKNOWN';
  const taskMode=Array.isArray(nativeTasks);
- const rows=historical?[]:taskMode?nativeRows(nativeTasks,chatLinks,observations):
+ const rows=historical?[]:taskMode?ct5NativeRows(nativeTasks,chatLinks,observations):
    project?.index?.project?.key===projectKey?
-     pageRows(project,projectKey,chatLinks,observations,wbs):[];
+     ct5PageRows(project,projectKey,chatLinks,observations,wbs):[];
  return {
   schema:'cycle-board.ct5-continuation/v1',project:projectKey,
   scope:taskMode?'NATIVE_EXISTING_TASKS':'PUBLISHED_PAGE_CARDS',
