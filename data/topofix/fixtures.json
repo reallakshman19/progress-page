@@ -52,6 +52,11 @@
       "t": "WBS R1: 1 current-case disposition/safety -> 2 admission and case continuity -> 3 automatic/manual repair and S1 recheck -> 4 connection/repair proof and Owner trial.",
       "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/3",
       "s": "PLAN_R1"
+    },
+    {
+      "t": "Closure review → Workspace admission → PSI116 hub read/patch → InputXML read and UI handshake → InputXML patch → Enriched/Categorised → F05/R4 hub.",
+      "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/12#issuecomment-6546312679",
+      "s": "OWNER_SEQUENCE"
     }
   ],
   "highRoi": [
@@ -74,6 +79,11 @@
       "t": "Topo should not burden with finding but provide auditable solution which are auto fixable if not set clear directions for manual review.",
       "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/3",
       "s": "OWNER_INTENT"
+    },
+    {
+      "t": "One Universal XML hub; TopoFix runs on the hub, and qualified changes return as patches of the original format.",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/239#issuecomment-6544072702",
+      "s": "OWNER_DIRECTION"
     }
   ],
   "inputs": [
@@ -108,6 +118,16 @@
       "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/3",
       "s": "RESIDUAL_CASE_OPEN",
       "milestone": "M12"
+    },
+    {
+      "t": "A CLOS-declared end 240.6 mm away is explainable review evidence, not an automatic connection. Owner trial made no edit.",
+      "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/12#issuecomment-6543782658",
+      "s": "REVIEW_ONLY"
+    },
+    {
+      "t": "HOLD: no CLOS edit or 240.6 mm join; no tolerance shift, review Apply, GLRD, CII Writer/Weight/Final, engineering acceptance, agent merge or private GitHub files.",
+      "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/12#issuecomment-6546312679",
+      "s": "HOLD"
     }
   ],
   "pending": [
@@ -117,6 +137,11 @@
       "s": "PARTIAL_ENGINEERING_HOLD",
       "n": "No overall engineering acceptance",
       "milestone": "M13"
+    },
+    {
+      "t": "Owner merges: TopoFix #13 → #14 → #15 and #13 → #16 → #17; XML_Compare_Utilities #240 → #241 and #242; Common #584/#585.",
+      "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/12#issuecomment-6546277586",
+      "s": "OWNER_MERGE"
     }
   ]
 }

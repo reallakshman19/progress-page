@@ -1,1 +1,43 @@
-{}
+{
+  "D1": {
+    "order": 1,
+    "status": "open",
+    "title": "Owner-only merges of the reviewed draft stacks",
+    "lead": "Waiting for Owner: TopoFix #13 → #14 → #15; separately #13 → #16 → #17. XML_Compare_Utilities #240 → #241, plus #242. Common #584/#585. Oracle must recheck exact heads, CI and dependencies first. These merges do not confer engineering acceptance.",
+    "options": [
+      {
+        "key": "owner-merge",
+        "label": "Owner merges in reviewed order (suggested)",
+        "suggested": true,
+        "body": "Preserve dependency order; require Oracle exact-head and CI verification before each merge.",
+        "reply": "Owner will merge the reviewed draft stacks in order; maintain every engineering HOLD."
+      },
+      {
+        "key": "defer",
+        "label": "Keep all drafts open",
+        "suggested": false,
+        "body": "Choose this if further original-file trials or independent checks are required.",
+        "reply": "Defer all listed merges; keep the drafts and HOLDs unchanged."
+      }
+    ],
+    "links": [
+      {
+        "l": "TopoFix source",
+        "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/12"
+      },
+      {
+        "l": "XML source",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/239"
+      },
+      {
+        "l": "Common #584",
+        "u": "https://github.com/reallakshman19/Common/pull/584"
+      },
+      {
+        "l": "Common #585",
+        "u": "https://github.com/reallakshman19/Common/pull/585"
+      }
+    ],
+    "milestone": "M55"
+  }
+}

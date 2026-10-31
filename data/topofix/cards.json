@@ -547,5 +547,449 @@
         "k": "to"
       }
     ]
+  },
+  "closure-witness": {
+    "order": 51,
+    "group": "reviewed",
+    "milestone": "M51",
+    "label": "Closure witness",
+    "who": {
+      "role": "Owner"
+    },
+    "state": "SUBMITTED",
+    "now": "TopoFix draft #13; independent scoped review 92/100 PASS. Owner real-file trial: not yet reported. CLOS declarations are witnessed and explained, never joined.",
+    "next": {
+      "actor": "Owner",
+      "text": "Review #13 first; retain engineering HOLD."
+    },
+    "refs": [
+      {
+        "k": "pr",
+        "l": "Closure witness draft",
+        "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/pull/13",
+        "s": "DRAFT 92/100"
+      }
+    ],
+    "updatedAt": "2026-10-31T16:57:13Z",
+    "src": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/12#issuecomment-6542050413"
+  },
+  "find-review": {
+    "order": 52,
+    "group": "reviewed",
+    "milestone": "M51",
+    "label": "Find / Review connection",
+    "who": {
+      "role": "Owner"
+    },
+    "state": "SUBMITTED",
+    "now": "TopoFix draft #14; independent scoped review 93/100 PASS. Dedicated Owner trial: not yet reported; its review-only panel appeared in the later #15 Owner trial. No Apply path.",
+    "next": {
+      "actor": "Owner",
+      "text": "Review #14 after #13; no source edit."
+    },
+    "refs": [
+      {
+        "k": "pr",
+        "l": "Find / Review draft",
+        "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/pull/14",
+        "s": "DRAFT 93/100"
+      },
+      {
+        "k": "comment",
+        "l": "Later Owner trial",
+        "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/12#issuecomment-6543633822",
+        "s": "PARTIAL"
+      }
+    ],
+    "updatedAt": "2026-10-31T16:57:15Z",
+    "src": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/12#issuecomment-6542532796"
+  },
+  "source-review-queue": {
+    "order": 53,
+    "group": "reviewed",
+    "milestone": "M51",
+    "label": "Source Review Queue",
+    "who": {
+      "role": "Owner"
+    },
+    "state": "SUBMITTED",
+    "now": "TopoFix draft #15; independent scoped review 92/100 PASS. Owner partial trial found a CLOS end 240.6 mm away and, after Analyze, CONFLICTS_WITH_CLOS; exported review evidence, applied nothing. Initial UX gaps were separately repaired.",
+    "next": {
+      "actor": "Owner",
+      "text": "Review #15 after #14; retain review-only boundary."
+    },
+    "refs": [
+      {
+        "k": "pr",
+        "l": "Source Review Queue draft",
+        "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/pull/15",
+        "s": "DRAFT 92/100"
+      },
+      {
+        "k": "comment",
+        "l": "Owner trial after Analyze",
+        "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/12#issuecomment-6543782658",
+        "s": "PARTIAL PASS"
+      }
+    ],
+    "updatedAt": "2026-10-31T16:57:17Z",
+    "src": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/12#issuecomment-6543782658"
+  },
+  "queue-usability": {
+    "order": 54,
+    "group": "reviewed",
+    "milestone": "M51",
+    "label": "Queue usability fixes",
+    "who": {
+      "role": "Owner"
+    },
+    "state": "SUBMITTED",
+    "now": "Same draft #15; independent usability-delta review 92/100 PASS. Autosave, source-specific persistence, missing-engine error, rounded export and label separation verified. Owner re-trial after fixes: not yet reported.",
+    "next": {
+      "actor": "Owner",
+      "text": "Try the corrected queue before merging #15."
+    },
+    "refs": [
+      {
+        "k": "pr",
+        "l": "Queue usability on #15",
+        "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/pull/15",
+        "s": "DRAFT UX 92/100"
+      },
+      {
+        "k": "comment",
+        "l": "Independent UX receipt",
+        "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/12#issuecomment-6544901216",
+        "s": "PASS"
+      }
+    ],
+    "updatedAt": "2026-10-31T16:57:19Z",
+    "src": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/12#issuecomment-6544901216"
+  },
+  "format-admission": {
+    "order": 55,
+    "group": "reviewed",
+    "milestone": "M52",
+    "label": "Format admission",
+    "who": {
+      "role": "Owner"
+    },
+    "state": "SUBMITTED",
+    "now": "XML_Compare_Utilities draft #240; independent scoped review 93/100 PASS. Specific Owner trial of #240: not yet reported. F05/R4 admitted only at qualified identities; unsupported inputs fail closed.",
+    "next": {
+      "actor": "Owner",
+      "text": "Review #240 before #241; no GLRD support."
+    },
+    "refs": [
+      {
+        "k": "pr",
+        "l": "Format admission draft",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/240",
+        "s": "DRAFT 93/100"
+      }
+    ],
+    "updatedAt": "2026-10-31T16:57:21Z",
+    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/239#issuecomment-6542048207"
+  },
+  "workspace-check": {
+    "order": 56,
+    "group": "reviewed",
+    "milestone": "M52",
+    "label": "Workspace check and 5B view",
+    "who": {
+      "role": "Owner"
+    },
+    "state": "SUBMITTED",
+    "now": "XML_Compare_Utilities draft #241; independent scoped review 92/100 PASS. Owner Windows trial reported 6/6 PASS for Workspace F05/R4 and PSI116 legacy 5B. The GLRD-shaped check was only a relabelled F05 sample; genuine GLRD NOT_RUN.",
+    "next": {
+      "actor": "Owner",
+      "text": "Review #241 after #240, preserving GLRD HOLD."
+    },
+    "refs": [
+      {
+        "k": "pr",
+        "l": "Workspace gate draft",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/241",
+        "s": "DRAFT 92/100"
+      },
+      {
+        "k": "comment",
+        "l": "Owner 6-check trial",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/239#issuecomment-6543866458",
+        "s": "6/6"
+      },
+      {
+        "k": "comment",
+        "l": "GLRD correction",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/239#issuecomment-6543892874",
+        "s": "real NOT_RUN"
+      }
+    ],
+    "updatedAt": "2026-10-31T16:57:23Z",
+    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/239#issuecomment-6543892874"
+  },
+  "hub-step-one": {
+    "order": 57,
+    "group": "reviewed",
+    "milestone": "M53",
+    "label": "Universal XML step 1 · read",
+    "who": {
+      "role": "Owner"
+    },
+    "state": "SUBMITTED",
+    "now": "XML_Compare_Utilities draft #242 and TopoFix draft #16; independent follow-up review 93/100 PASS. Owner real PSI116 file read through Universal XML: EQUAL. Reader belongs to XML_Compare_Utilities and is pinned, not copied.",
+    "next": {
+      "actor": "Owner",
+      "text": "Review #242 and #16 with exact reader dependency."
+    },
+    "refs": [
+      {
+        "k": "pr",
+        "l": "Hub reader #242",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/242",
+        "s": "DRAFT 93/100"
+      },
+      {
+        "k": "pr",
+        "l": "TopoFix adapter #16",
+        "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/pull/16",
+        "s": "DRAFT 93/100"
+      },
+      {
+        "k": "comment",
+        "l": "Owner real-file EQUAL",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/239#issuecomment-6545624328",
+        "s": "PASS"
+      }
+    ],
+    "updatedAt": "2026-10-31T16:57:25Z",
+    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/239#issuecomment-6546172539"
+  },
+  "hub-step-two": {
+    "order": 58,
+    "group": "reviewed",
+    "milestone": "M53",
+    "label": "Universal XML step 2 · patch",
+    "who": {
+      "role": "Owner"
+    },
+    "state": "SUBMITTED",
+    "now": "TopoFix draft #17; independent scoped review 93/100 PASS, carried over after a verified rebase onto #16. Owner real PSI116 trial: 101 edit operations; original-record patch EQUAL to direct route. No engineering acceptance.",
+    "next": {
+      "actor": "Owner",
+      "text": "Review #17 after #16; retain transaction policy."
+    },
+    "refs": [
+      {
+        "k": "pr",
+        "l": "PSI116 patch-back draft",
+        "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/pull/17",
+        "s": "DRAFT 93/100"
+      },
+      {
+        "k": "comment",
+        "l": "Rebase and Owner trial",
+        "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/12#issuecomment-6546277586",
+        "s": "101 ops EQUAL"
+      }
+    ],
+    "updatedAt": "2026-10-31T16:57:27Z",
+    "src": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/12#issuecomment-6546277586"
+  },
+  "hub-step-three": {
+    "order": 59,
+    "group": "active-hub",
+    "milestone": "M54",
+    "label": "Universal XML step 3 · InputXML",
+    "who": {
+      "role": "Coder-b"
+    },
+    "state": "IN_PROGRESS",
+    "now": "Coder-b is assigned to read CAESAR II InputXML into the Universal XML hub after step 2 review. Draft PR, independent score and Owner trial: not yet reported.",
+    "next": {
+      "actor": "coder-b",
+      "text": "Return reader draft and evidence on issue #239."
+    },
+    "refs": [
+      {
+        "k": "issue",
+        "l": "Hub format work",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/239",
+        "s": "IN_PROGRESS"
+      }
+    ],
+    "updatedAt": "2026-10-31T16:57:29Z",
+    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/239#issuecomment-6546182463"
+  },
+  "hub-ui-handshake": {
+    "order": 60,
+    "group": "active-hub",
+    "milestone": "M54",
+    "label": "Hub route in TopoFix screen",
+    "who": {
+      "role": "Coder-a"
+    },
+    "state": "IN_PROGRESS",
+    "now": "Coder-a is assigned to show the opt-in hub route in TopoFix with a pinned, hash-checked reader. Compare direct and hub routes; download only on EQUAL and refuse tampering. Draft PR, score and Owner trial: not yet reported.",
+    "next": {
+      "actor": "coder-a",
+      "text": "Return draft UI route and parity proof on issue #12."
+    },
+    "refs": [
+      {
+        "k": "issue",
+        "l": "UI handshake assignment",
+        "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/12",
+        "s": "IN_PROGRESS"
+      }
+    ],
+    "updatedAt": "2026-10-31T16:57:31Z",
+    "src": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/12#issuecomment-6546312679"
+  },
+  "inputxml-return": {
+    "order": 61,
+    "group": "next-formats",
+    "milestone": "M54",
+    "label": "InputXML patched back",
+    "who": {
+      "role": "Oracle"
+    },
+    "state": "NOT_STARTED",
+    "now": "Planned next: patch qualified changes into original InputXML records, not a rebuild. Draft PR, score and Owner trial: not yet reported.",
+    "next": {
+      "actor": "Oracle",
+      "text": "Assign after the InputXML reader contract is reviewed."
+    },
+    "refs": [
+      {
+        "k": "issue",
+        "l": "Universal XML direction",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/239",
+        "s": "PLANNED"
+      }
+    ]
+  },
+  "enriched-converters": {
+    "order": 62,
+    "group": "next-formats",
+    "milestone": "M54",
+    "label": "Enriched / Categorised converters",
+    "who": {
+      "role": "Oracle"
+    },
+    "state": "NOT_STARTED",
+    "now": "Planned next: use the existing Workspace converters to get Enriched and Categorised forms through the hub. Draft PR, score and Owner trial: not yet reported.",
+    "next": {
+      "actor": "Oracle",
+      "text": "Scope converter reuse after InputXML round trip."
+    },
+    "refs": [
+      {
+        "k": "issue",
+        "l": "Universal XML direction",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/239",
+        "s": "PLANNED"
+      }
+    ]
+  },
+  "f05-r4-hub": {
+    "order": 63,
+    "group": "next-formats",
+    "milestone": "M54",
+    "label": "F05 / R4 into Universal XML",
+    "who": {
+      "role": "Oracle"
+    },
+    "state": "NOT_STARTED",
+    "now": "Planned next: F05 and R4 into the hub, distinct from earlier Workspace format admission. Draft PR, score and Owner trial for this conversion: not yet reported.",
+    "next": {
+      "actor": "Oracle",
+      "text": "Plan adapters only after earlier conversions are reviewed."
+    },
+    "refs": [
+      {
+        "k": "issue",
+        "l": "Universal XML direction",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/239",
+        "s": "PLANNED"
+      }
+    ]
+  },
+  "owner-merge-queue": {
+    "order": 64,
+    "group": "owner-gates",
+    "milestone": "M55",
+    "label": "Owner's merge queue",
+    "who": {
+      "role": "Owner"
+    },
+    "state": "SUBMITTED",
+    "now": "Waiting on Owner only: TopoFix #13 → #14 → #15 and #13 → #16 → #17; XML_Compare_Utilities #240 → #241 and #242; Common #584/#585. Drafts unmerged. Oracle verifies exact heads and dependencies before Owner action.",
+    "next": {
+      "actor": "Owner",
+      "text": "Merge only after Oracle exact-head review; agents never merge."
+    },
+    "refs": [
+      {
+        "k": "issue",
+        "l": "TopoFix draft stack",
+        "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/12",
+        "s": "OWNER"
+      },
+      {
+        "k": "issue",
+        "l": "XML draft stack",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/239",
+        "s": "OWNER"
+      },
+      {
+        "k": "pr",
+        "l": "Common #584",
+        "u": "https://github.com/reallakshman19/Common/pull/584",
+        "s": "OWNER"
+      },
+      {
+        "k": "pr",
+        "l": "Common #585",
+        "u": "https://github.com/reallakshman19/Common/pull/585",
+        "s": "OWNER"
+      }
+    ],
+    "updatedAt": "2026-10-31T16:57:36Z",
+    "src": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/12#issuecomment-6546277586",
+    "flags": [
+      "needs-you"
+    ]
+  },
+  "engineering-holds": {
+    "order": 65,
+    "group": "owner-gates",
+    "milestone": "M55",
+    "label": "Safety and engineering HOLDs",
+    "who": {
+      "role": "Oracle"
+    },
+    "state": "BLOCKED",
+    "now": "No CLOS edits, 240.6 mm join, tolerance change or Apply for review cases. No GLRD support, CII Writer/Weight/Final, engineering acceptance, agent merges or private models on GitHub. Scoped PASS and EQUAL do not lift HOLDs.",
+    "next": {
+      "actor": "Oracle",
+      "text": "Maintain HOLD until explicit Owner release decision with evidence."
+    },
+    "refs": [
+      {
+        "k": "comment",
+        "l": "No CLOS join",
+        "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/12#issuecomment-6542050413",
+        "s": "HOLD"
+      },
+      {
+        "k": "comment",
+        "l": "No GLRD/writers",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/239#issuecomment-6543881167",
+        "s": "HOLD"
+      }
+    ],
+    "updatedAt": "2026-10-31T16:57:38Z",
+    "src": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/12#issuecomment-6546312679"
   }
 }
