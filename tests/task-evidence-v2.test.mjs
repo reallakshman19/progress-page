@@ -38,7 +38,7 @@ test('TOPO-A source-linked return is exactly five lines; 1/1 accepted scope, 0/3
  const t=taskEvidenceV2Text(m);
  assert.match(t,/1\/1 read-only deliverable returned/);
  assert.match(t,/0\/3 executed falsifiers returned/);
- assert.match(t,/Tests: NOT_RUN \/ 3 assigned/);
+ assert.match(t,/Tests: UNKNOWN \(0\/3 source-backed test returns\)/);
  assert.match(t,/Oracle-reported READ_ONLY_SOURCE_TRACE/);
  assert.match(t,/41 branches \/ 1,654 nodes, 240\.6 mm/);
  assert.match(t,/Engineering HOLD/);
