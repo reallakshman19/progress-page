@@ -146,6 +146,13 @@ def main():
                         check(panel.count()==1,"Missing shared CT-5 on "+route)
                         check(panel.locator(".ct5-task").count()>=1,
                               "No scoped existing WBS tasks in "+route)
+                        v2=panel.locator(".task-evidence-v2")
+                        check(v2.count()==panel.locator(".ct5-task").count(),
+                              "Task Evidence v2 must project each existing CT-5 task in "+route)
+                        check(all(v2.nth(i).locator(".te-line").count()==5 for i in range(v2.count())),
+                              "Every Task Evidence v2 card must have exactly 5 lines")
+                        check(all("Source status:" in v2.nth(i).inner_text() for i in range(v2.count())),
+                              "Task Evidence v2 source freshness missing")
                         check("instruction delivery: NOT_VERIFIED" in panel.text_content(),
                               "Cannot mark an issue/URL as delivered")
                         check("ACK: NOT_VERIFIED" in panel.text_content(),
@@ -241,6 +248,12 @@ def main():
                                       "TOPO Board missing shared CT-5 continuation bridge")
                                 check(page.locator(".topo-ct5-slot .ct5-task").count()==1,
                                       "TOPO bridge must scope to its one original native issue")
+                                check(page.locator(".topo-ct5-slot .task-evidence-v2").count()==1,
+                                      "TOPO Board must show one native Task Evidence v2 card")
+                                check(page.locator(".topo-ct5-slot .task-evidence-v2 .te-line").count()==5,
+                                      "TOPO native Task Evidence v2 must have five information lines")
+                                check("Engineering HOLD" in page.locator(".topo-ct5-slot .task-evidence-v2").inner_text(),
+                                      "Native engineering HOLD must survive evidence projection")
                                 check(page.locator(".topo-ct5-slot .ct5-actions button").count()==1,
                                       "Copy-only native continuation action missing")
                                 check("ACK NOT_VERIFIED" in page.locator(".topo-ct5-slot").text_content(),
