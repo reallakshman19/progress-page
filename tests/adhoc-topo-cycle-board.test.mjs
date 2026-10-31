@@ -259,7 +259,7 @@ test('Adhoc boards show the CIIFR writer INFO-Auto cards, original WBS, groundin
    assert.match(sections[0].textContent,/native Adhoc agent task is not mapped/i);
    assert.match(sections[0].textContent,/Recorded Page next step \(may be stale\)/);
    assert.match(sections[0].textContent,/PREPARED \/ READ_ONLY FIRST/);
-   assert.equal(findAll(sections[0],x=>x.className==='topo-wbs-card').length,2);
+   assert.equal(findAll(sections[0],x=>x.className?.split(/\s+/).includes('topo-wbs-card')).length,2);
    assert.ok(findAll(sections[0],x=>x.className==='ct-card ct-auto').length>=1);
    assert.ok(findAll(sections[0],x=>x.tag==='button'&&x.textContent==='Copy grounding / Page brief').length>=1);
    const links=findAll(sections[0],x=>x.tag==='a').map(x=>x.href);
