@@ -49,6 +49,9 @@ jobs:
           cp -R data _site/data
           cp -R reviews _site/reviews
           touch _site/.nojekyll
+      - name: Prevent stale Adhoc and Cycle Board modules in browser caches
+        if: github.event_name != 'pull_request'
+        run: python tools/stamp_site_assets.py _site --sha ${{ github.sha }}
       - name: Set up GitHub Pages
         if: github.event_name != 'pull_request'
         uses: actions/configure-pages@v5
