@@ -193,7 +193,7 @@ function renderXmlCompareWorkspace(body, selected) {
 
 // Two read-only Adhoc test workspaces. These are projections of the native
 // issue and *existing* TopoFix WBS, not new Page project registration.
-function renderTopoWorkspace(root,key,view,{nativeFetcher,clock}={}) {
+function renderTopoWorkspace(root,key,view,{nativeFetcher,clock,topofixProject=null,pageFetch=null}={}) {
  const i=TOPO_ADHOC_INFO[key];
  const body=el('div','body adhoc-body');
  body.append(el('h2',null,i.label),
