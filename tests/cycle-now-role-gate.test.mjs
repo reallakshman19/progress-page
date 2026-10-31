@@ -409,3 +409,17 @@ test('F2-13: unknown STOP/contradiction status is NOT permission to keep executi
  assert.notEqual(decideNextAction(noDelta).action,'NO_MATERIAL_DELTA',
   'missing source-verified no-delta receipt cannot suppress native reporting');
 });
+
+
+test('F2-14: triggered STOP and exhausted envelope never silently become another Agent task',()=>{
+ const stopped=decideNextAction({...baseFast(),stopTriggered:true});
+ assert.equal(stopped.action,'HOLD_AFFECTED_SCOPE');
+ assert.equal(stopped.reason,'EXPLICIT_STOP_CONDITION_TRIGGERED');
+ assert.equal(stopped.nextActor,'ORACLE');
+ assert.equal(stopped.canDispatch,false);
+ const exhausted=decideNextAction({...baseFast(),envelopeExhausted:true});
+ assert.equal(exhausted.action,'DECIDE_NEXT_ASSIGNMENT');
+ assert.equal(exhausted.reason,'ENVELOPE_EXHAUSTED_NO_AGENT_REPLAY');
+ assert.equal(exhausted.nextActor,'ORACLE');
+ assert.equal(exhausted.canDispatch,false);
+});
