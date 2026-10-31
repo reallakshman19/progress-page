@@ -179,7 +179,11 @@ export function taskEvidenceV2Model(row,{projectKey=row?.key||'UNKNOWN',
    te2TitlePart('Return to original task',row.source),
    te2Part(' · '+perm))
  ];
- return {schema:'task-evidence.v2/read-only',title:(native?row.key.toUpperCase():projectKey)+' / '+te2Safe(row.label||row.id||'TASK'),
+ const who=/\bUnassigned\b/i.test(row.role||'')?'Unassigned':
+   /\bOracle\b/i.test(row.role||'')?'Oracle':
+   /\b(?:IR|Reviewer)\b/i.test(row.role||'')?'Reviewer':
+   /\b(?:Builder|Agent|Coder|Specialist)\b/i.test(row.role||'')?'Agent':'Role UNKNOWN';
+ return {schema:'task-evidence.v2/read-only',title:(native?row.key.toUpperCase():projectKey)+' / '+who+' / '+te2Safe(row.label||row.id||'TASK'),
   lastReconciled:last,observedAt:observed,sourceStatus:current,lines,
   nativeReturn:nativeReturnStatus,acceptance:authority,canAuthorize:false,
   sourceRevision:sourceRevision||null,readOnly:true,
@@ -189,8 +193,7 @@ export function taskEvidenceV2Model(row,{projectKey=row?.key||'UNKNOWN',
 export function taskEvidenceV2Text(model){
  if(!model)return '';
  return 'TASK EVIDENCE v2 · '+model.title+'\n'+
-  'Last reconciled: '+model.lastReconciled+' · Source status: '+model.sourceStatus+
-  ' · Source observed: '+model.observedAt+'\n'+
+  'Last reconciled: '+model.lastReconciled+' · Source status: '+model.sourceStatus+'\n'+
   model.lines.map(l=>l.name+': '+l.parts.map(p=>p.text).join('')).join('\n');
 }
 export function renderTaskEvidenceV2(root,model){
@@ -199,7 +202,7 @@ export function renderTaskEvidenceV2(root,model){
  box.setAttribute('aria-label','Task Evidence v2 · '+model.title);
  box.append(el('h5',null,'TASK EVIDENCE v2 · '+model.title),
   el('p','muted te-meta','Last reconciled: '+model.lastReconciled+
-  ' · Source status: '+model.sourceStatus+' · Source observed: '+model.observedAt));
+  ' · Source status: '+model.sourceStatus));
  if(model.lines.length!==5)throw Error('Task Evidence v2 requires exactly five information lines');
  for(const item of model.lines){
   const p=el('p','te-line');
