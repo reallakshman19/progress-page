@@ -330,7 +330,7 @@ export function cycleNowOwnerActionModel(row,{projectKey='UNKNOWN',evidence=null
     ['Owner decision — '+row.source,
      'Source: '+ownerDecision.source,
      'Decision needed: '+ownerDecision.question.trim().slice(0,300),
-     'No implied engineering acceptance, writer lease or merge.'].join('\\n'),
+     'No implied engineering acceptance, writer lease or merge.'].join('\n'),
     'Owner (read native source and authorize only the requested scope)');
  }
  if(ownerRelayRequired!==true)
@@ -350,7 +350,9 @@ export function cycleNowOwnerActionModel(row,{projectKey='UNKNOWN',evidence=null
   row.status==='REVIEW_NATIVE_AUTHORITY'&&
   evidence?.sourceStatus==='CURRENT'&&ct5Safe(evidence?.nativeNext)&&
   ct5SafeSource(evidence?.nextSourceUrl)&&
-  evidence.nextSourceUrl.startsWith(row.source+'#issuecomment-');
+  evidence.nextSourceUrl.startsWith(row.source+'#issuecomment-')&&
+  decision?.newNativeCommentsObserved!==true&&
+  !['ORACLE_RECONCILE','DECIDE_NEXT_ASSIGNMENT','HOLD_AFFECTED_SCOPE','BLOCKED'].includes(decision?.action);
  const readOnly='READ_ONLY. Verify current authority and HOLD; no production writes, new PR, merge or engineering acceptance.';
  const shared=['Read the current Cycle Board: '+boardUrl,
   'Original native task: '+source];
@@ -368,6 +370,10 @@ export function cycleNowOwnerActionModel(row,{projectKey='UNKNOWN',evidence=null
     'This is an Owner relay; NOT SENT, no ACK assumed.'].join('\n'),
    'Existing '+row.key.toUpperCase()+' Agent conversation (verify recipient)');
  }
+ // An Oracle does not ask the Owner to paste a new message to this same Oracle
+ // for a decision already within its current scope.
+ if(role==='ORACLE')return result('NONE',
+  'Current scope is Oracle review/qualification; perform it in this cycle.');
  // An agent/IR return or a stale/blocked source requires Oracle reconciliation.
  // The coordinator remains accountable; do not ask the Owner to create a task.
  return result('CYCLE_NOW_TO_ORACLE',role==='ORACLE'?
