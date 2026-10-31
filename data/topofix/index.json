@@ -3,10 +3,10 @@
   "project": {
     "key": "topofix",
     "title": "TopoFix — auditable repair solutions",
-    "subtitle": "Reviewed deliverables, live Universal XML work, Owner merge queue and explicit engineering HOLDs.",
+    "subtitle": "Reviewed work, InputXML repair, hub-screen review, Owner merge decisions and safety holds.",
     "aim": "TopoFix gives safe automatic fixes and clear, auditable review directions otherwise. A questioned CLOS-declared end about 240 mm away can be explained but never auto-joined. Every pipe-model format enters one Universal XML hub; TopoFix works there, then qualified results are patched into the original format.",
     "aimSrc": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/239#issuecomment-6544072702",
-    "updatedAt": "2026-10-31T16:57:45Z",
+    "updatedAt": "2026-10-31T17:49:22Z",
     "updatedBy": "TopoFix progress-scribe",
     "staleAfterMin": 120
   },
@@ -255,7 +255,7 @@
     "active-hub": {
       "order": 6,
       "title": "Running · Universal XML handshake",
-      "sub": "Coder-b reads InputXML; coder-a exposes the checked hub route in TopoFix."
+      "sub": "Coder-b is repairing the InputXML reader after review; coder-a's screen route is awaiting independent review."
     },
     "next-formats": {
       "order": 7,
@@ -281,7 +281,7 @@
   ],
   "hold": {
     "active": true,
-    "reason": "Scope PASS does not mean release. No CLOS edits, unapproved Apply, unsupported formats, writer functions, engineering acceptance, agent merges or private files.",
+    "reason": "Scoped scores do not grant release: no declared-end edits or about 240 mm join, review-case Apply, tolerance changes, unsupported formats, engineering acceptance, agent merges or private files.",
     "src": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/12#issuecomment-6546312679"
   }
 }

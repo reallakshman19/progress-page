@@ -9,7 +9,7 @@
       "role": "Owner-designated independent reviewer; qualification pending"
     },
     "state": "SUBMITTED",
-    "now": "IR R2 on a5491cd verifies the narrow P1 missing-map fix, candidate Python 13/13 and Node 20/20, additional transaction/client/stub checks, Chromium-module 8/8 and Common R2 input receipt. Full engineering independence remains unestablished; IR authentic-source replay and full browser qualification remain open. IR output ZIP is LOCAL_ONLY / NOT_TRANSFERRED. Preview PR #5 is now MERGED; old Draft refs are historical. Exact-merge CI subsequently passed the full author browser/download harness; this is not independent engineering qualification.",
+    "now": "The Owner-designated independent reviewer checked the bounded source-map repair in a second review: 13 Python tests, 20 JavaScript tests and eight browser-module checks, plus the Common input receipt. An authentic-source replay and full independent browser qualification remain open. The review package was kept locally and not transferred. The Owner merged preview draft #5; later author-run browser checks do not establish engineering acceptance.",
     "next": {
       "actor": "IR 6ae2d5ac",
       "text": "Inspect exact-merge CI artifact/actual report; independently execute authentic S0 replay and qualify full browser/Pyodide/download in a capable authorized environment; transfer existing IR evidence and return #2."
@@ -19,70 +19,70 @@
         "k": "issue",
         "l": "Native safety review",
         "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/2",
-        "s": "ACK_PENDING"
+        "s": "acknowledgment pending"
       },
       {
         "k": "pr",
         "l": "Review-input relay (unmerged)",
         "u": "https://github.com/reallakshman19/Common/pull/558",
-        "s": "PROPOSED"
+        "s": "proposed"
       },
       {
         "k": "pr",
         "l": "Changed source-preservation candidate",
         "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/pull/5",
-        "s": "OPEN/DRAFT; qualification pending"
+        "s": "open/draft; qualification pending"
       },
       {
         "k": "pr",
         "l": "Changed-candidate transfer",
         "u": "https://github.com/reallakshman19/Common/pull/563",
-        "s": "OPEN/DRAFT; outgoing integrity only"
+        "s": "open/draft; outgoing integrity only"
       },
       {
         "k": "comment",
         "l": "Changed-candidate handoff",
         "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/4#issuecomment-6479886178",
-        "s": "SELF_ASSESSED"
+        "s": "author-reported; not independently reviewed"
       },
       {
         "k": "comment",
         "l": "Owner routing correction",
         "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/2#issuecomment-6489595593",
-        "s": "DESIGNATED; ACK_PENDING"
+        "s": "reviewer designated; acknowledgment pending"
       },
       {
         "k": "comment",
         "l": "IR partial source/client return",
         "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/2#issuecomment-6494348817",
-        "s": "PARTIAL; independence unestablished"
+        "s": "partially checked; independence unestablished"
       },
       {
         "k": "pr",
         "l": "P1 changed-candidate artifact",
         "u": "https://github.com/reallakshman19/Common/pull/568",
-        "s": "OPEN/DRAFT; outgoing integrity only"
+        "s": "open/draft; outgoing integrity only"
       },
       {
         "k": "comment",
         "l": "IR R2 bounded P1 verified",
         "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/2#issuecomment-6495609071",
-        "s": "P1 VERIFIED; engineering PARTIAL"
+        "s": "bounded first repair verified; engineering partially checked"
       },
       {
         "k": "comment",
         "l": "IR merge-state correction",
         "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/2#issuecomment-6498009901",
-        "s": "Preview MERGED; engineering HOLD"
+        "s": "Preview merged; engineering on hold"
       },
       {
         "k": "pr",
         "l": "CURRENT preview lifecycle",
         "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/pull/5",
-        "s": "MERGED fb9ef50; NOT engineering acceptance"
+        "s": "merged fb9ef50; NOT engineering acceptance"
       }
     ],
-    "updatedAt": "2026-10-29T13:49:09Z",
+    "updatedAt": "2026-10-31T17:49:00Z",
     "src": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/2#issuecomment-6498396209"
   },
   "topo-4-3": {
@@ -94,7 +94,7 @@
       "role": "Unassigned future builder"
     },
     "state": "NOT_STARTED",
-    "now": "The complete usable repair cycle remains unfinished; protected PR #346 remains Draft/HOLD. Future implementation is unassigned; publication of this plan grants no product write or merge authority.",
+    "now": "The complete Owner-usable engineering repair trial is unfinished; protected draft #346 remains on hold. A future implementation agent has not been assigned, and this plan grants no product write or merge authority.",
     "next": {
       "actor": "-",
       "text": "Unassigned. Release one bounded implementation slice after the preceding reviewed frontier."
@@ -112,7 +112,7 @@
         "s": "observed head cba348152faa; not verified"
       }
     ],
-    "updatedAt": "2026-10-28T16:32:14Z",
+    "updatedAt": "2026-10-31T17:49:01Z",
     "src": "https://github.com/reallakshman19/3D_Converters/pull/346"
   },
   "topo-4-2": {
@@ -208,7 +208,7 @@
       "role": "Oracle 6ae1b0f7 (author-side)"
     },
     "state": "SUBMITTED",
-    "now": "Preview PRs 7, 8 and 9 are MERGED to main; PR9 merge fb92be7bd8dba997d71d2028b0b36b0d3fe2c24c, tested head 94374b41b499c06baa158f65de4fe5cddae4b417. Author checks: 68 Python / 36 Node and full Chromium/Pyodide/download PASS. Rule/case expansion, partner-edit invalidation, Cancel, exact-key search and replacement-source invalidation pass. Two 75 mm cases each reduce manual findings 3 -> 1. Preview integration is complete; engineering/native/physical Weight acceptance remains HOLD.",
+    "now": "The Owner merged preview drafts #7, #8 and #9. The author reported 68 Python and 36 JavaScript checks, plus a full browser and download trial. Rules, partner-selection invalidation, cancellation, search and replacement-source invalidation passed. Two 75 mm test cases each reduced findings from three to one. Preview integration is complete; physical engineering and Weight acceptance remain on hold.",
     "next": {
       "actor": "Owner / IR 6ae2d5ac",
       "text": "Try the merged preview and independently assess connection semantics. Keep protected PR346 and engineering release on HOLD until their separate evidence gates are met."
@@ -223,13 +223,13 @@
         "k": "pr",
         "l": "Partial preservation-case directions",
         "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/pull/5",
-        "s": "partial; browser NOT_RUN"
+        "s": "partial; browser not run yet"
       },
       {
         "k": "pr",
         "l": "Manual Fix by rule and selected second pass",
         "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/pull/9",
-        "s": "SELF_ASSESSED; exact-head full browser CI PASS; engineering HOLD"
+        "s": "author-reported; not independently reviewed; exact-head full browser automated checks passed; engineering on hold"
       }
     ],
     "edges": [
@@ -238,7 +238,7 @@
         "k": "to"
       }
     ],
-    "updatedAt": "2026-10-30T11:38:36Z",
+    "updatedAt": "2026-10-31T17:49:02Z",
     "src": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/pull/9"
   },
   "topo-3-1": {
@@ -338,7 +338,7 @@
       "role": "Unassigned future builder"
     },
     "state": "NOT_STARTED",
-    "now": "Strict admission is not implemented; Python negative controls currently accept invalid profiles. Future implementation is unassigned; publication of this plan grants no product write or merge authority.",
+    "now": "Strict source admission is not yet implemented for the Pipe Stress Export (PSI116) format in this original workstream; earlier Python negative tests accepted invalid profiles. Future completion of this workstream is unassigned; the plan grants no new write or merge authority.",
     "next": {
       "actor": "-",
       "text": "Unassigned. Release one bounded implementation slice after the preceding reviewed frontier."
@@ -355,7 +355,9 @@
         "to": "topo-2-2",
         "k": "to"
       }
-    ]
+    ],
+    "updatedAt": "2026-10-31T17:49:03Z",
+    "src": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/12#issuecomment-6546629295"
   },
   "topo-1-3": {
     "order": 13,
@@ -367,7 +369,7 @@
       "chat": "oracle"
     },
     "state": "SUBMITTED",
-    "now": "Preview PR #5 MERGED by Owner at fb9ef50, with full Git tree identical to reviewed a5491cd. P1 missing-map fix VERIFIED in bounded IR R2 checks. Overall WBS 1.3 remains SUBMITTED / NOT_VERIFIED / ENGINEERING HOLD. Exact-merge CI full Chromium/Pyodide/download audit PASS: actual report recovered, 39 applied, 17 excluded, 9 checks, 216 retained records/fields and expected output SHA. This is author-harness CI evidence; IR authentic replay and full engineering/browser qualification remain open. Earlier Draft source statuses are historical.",
+    "now": "The Owner merged preview draft #5, with its code unchanged from the reviewed head. The bounded source-map fix was verified in the independent review. Overall preservation safety remains partially qualified and engineering approval is on hold. The author-run full browser/download check reported 39 fixes applied, 17 excluded, nine checks and 216 retained records/fields. Independent authentic-source replay and full engineering/browser qualification remain open.",
     "next": {
       "actor": "IR 6ae2d5ac",
       "text": "Complete independent authentic S0/engineering replay and browser qualification using the new CI evidence; retain residual-case and design-intent limits."
@@ -382,13 +384,13 @@
         "k": "comment",
         "l": "Full-transaction preservation falsifier",
         "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/1#issuecomment-6464378974",
-        "s": "SELF_ASSESSED"
+        "s": "author-reported; not independently reviewed"
       },
       {
         "k": "issue",
         "l": "Bounded safety review",
         "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/2",
-        "s": "ACK_PENDING"
+        "s": "acknowledgment pending"
       },
       {
         "k": "issue",
@@ -399,55 +401,55 @@
         "k": "pr",
         "l": "Source-preservation code candidate",
         "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/pull/5",
-        "s": "OPEN/DRAFT; SELF_ASSESSED"
+        "s": "open/draft; author-reported; not independently reviewed"
       },
       {
         "k": "pr",
         "l": "Candidate evidence archive",
         "u": "https://github.com/reallakshman19/Common/pull/563",
-        "s": "OPEN/DRAFT; remote bytes verified"
+        "s": "open/draft; remote bytes verified"
       },
       {
         "k": "comment",
         "l": "Owner routing correction",
         "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/2#issuecomment-6489595593",
-        "s": "DESIGNATED; ACK_PENDING"
+        "s": "reviewer designated; acknowledgment pending"
       },
       {
         "k": "comment",
         "l": "IR partial on previous head",
         "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/2#issuecomment-6494348817",
-        "s": "PARTIAL; not rebound to new head"
+        "s": "partially checked; not rebound to new head"
       },
       {
         "k": "comment",
         "l": "P1 code and evidence handoff",
         "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/4#issuecomment-6494521640",
-        "s": "SELF_ASSESSED; new head a5491cd"
+        "s": "author-reported; not independently reviewed; new head a5491cd"
       },
       {
         "k": "pr",
         "l": "P1 evidence archive",
         "u": "https://github.com/reallakshman19/Common/pull/568",
-        "s": "OPEN/DRAFT"
+        "s": "open/draft"
       },
       {
         "k": "pr",
         "l": "CURRENT code MERGED",
         "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/pull/5",
-        "s": "MERGED fb9ef50; engineering NOT_VERIFIED"
+        "s": "merged fb9ef50; engineering not independently verified"
       },
       {
         "k": "comment",
         "l": "IR R2 on reviewed head",
         "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/2#issuecomment-6495609071",
-        "s": "P1 VERIFIED; WP-A PARTIAL"
+        "s": "bounded first repair verified; case-review workstream partially checked"
       },
       {
         "k": "comment",
         "l": "Current lifecycle and CI receipt",
         "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/2#issuecomment-6498396209",
-        "s": "MERGED / ENGINEERING HOLD"
+        "s": "merged / engineering approval withheld"
       }
     ],
     "edges": [
@@ -456,7 +458,7 @@
         "k": "to"
       }
     ],
-    "updatedAt": "2026-10-29T13:49:09Z",
+    "updatedAt": "2026-10-31T17:49:04Z",
     "src": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/2#issuecomment-6498396209"
   },
   "topo-1-2": {
@@ -469,7 +471,7 @@
       "chat": "oracle"
     },
     "state": "SUBMITTED",
-    "now": "Full original 66/40/26 engineering disposition remains incomplete. IR R2 executed synthetic full transactions and client falsifiers, but not authentic 39-action S0 replay. Newly recovered real CI export accounts for 56 mutating candidates as 39 applied / 17 excluded; ten original proposals remain preservation reviews. This is current author-harness execution evidence, not the old historical export or independent all-66 engineering disposition.",
+    "now": "Full engineering disposition of the original 66 proposed changes is incomplete. The independent reviewer ran synthetic transactions and client challenges, but did not run an authentic 39-action original-source replay. The author-run export shows 39 applied and 17 excluded from 56 changing candidates; ten original proposals still need preservation review. This is not independent acceptance of all 66 proposals.",
     "next": {
       "actor": "IR 6ae2d5ac",
       "text": "Complete original and current source-qualified engineering dispositions and independent authentic replay; preserve the distinct historical/current receipts."
@@ -484,31 +486,31 @@
         "k": "comment",
         "l": "Reconstructed exclusion ledger",
         "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/1#issuecomment-6463260954",
-        "s": "SELF_ASSESSED"
+        "s": "author-reported; not independently reviewed"
       },
       {
         "k": "pr",
         "l": "Compare changed safety candidate",
         "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/pull/5",
-        "s": "SELF_ASSESSED"
+        "s": "author-reported; not independently reviewed"
       },
       {
         "k": "comment",
         "l": "Owner routing correction",
         "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/2#issuecomment-6489595593",
-        "s": "DESIGNATED; ACK_PENDING"
+        "s": "reviewer designated; acknowledgment pending"
       },
       {
         "k": "comment",
         "l": "IR disposition coverage limits",
         "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/2#issuecomment-6494348817",
-        "s": "PARTIAL; full partition NOT_RUN"
+        "s": "partially checked; full partition not run yet"
       },
       {
         "k": "comment",
         "l": "Actual current CI receipt and limits",
         "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/2#issuecomment-6498396209",
-        "s": "CI observed; engineering open"
+        "s": "automated checks observed; engineering open"
       }
     ],
     "edges": [
@@ -517,7 +519,7 @@
         "k": "to"
       }
     ],
-    "updatedAt": "2026-10-29T13:49:10Z",
+    "updatedAt": "2026-10-31T17:49:05Z",
     "src": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/2#issuecomment-6498396209"
   },
   "topo-1-1": {
@@ -557,7 +559,7 @@
       "role": "Owner"
     },
     "state": "SUBMITTED",
-    "now": "TopoFix draft #13; independent scoped review 92/100 PASS. Owner real-file trial: not yet reported. CLOS declarations are witnessed and explained, never joined.",
+    "now": "Draft TopoFix #13 passed independent scoped review at 92/100. The closure witness shows a source-declared closed pipe end (CLOS) without joining it. Owner trial on a real file: not yet reported.",
     "next": {
       "actor": "Owner",
       "text": "Review #13 first; retain engineering HOLD."
@@ -567,10 +569,10 @@
         "k": "pr",
         "l": "Closure witness draft",
         "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/pull/13",
-        "s": "DRAFT 92/100"
+        "s": "draft 92/100"
       }
     ],
-    "updatedAt": "2026-10-31T16:57:13Z",
+    "updatedAt": "2026-10-31T17:49:06Z",
     "src": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/12#issuecomment-6542050413"
   },
   "find-review": {
@@ -582,7 +584,7 @@
       "role": "Owner"
     },
     "state": "SUBMITTED",
-    "now": "TopoFix draft #14; independent scoped review 93/100 PASS. Dedicated Owner trial: not yet reported; its review-only panel appeared in the later #15 Owner trial. No Apply path.",
+    "now": "Draft TopoFix #14 adds the read-only Find/Review panel for declared closed pipe ends (CLOS). Independent scoped review: 93/100. The Owner later used this panel while trying draft #15; a separate #14 trial is not yet reported. No Apply action.",
     "next": {
       "actor": "Owner",
       "text": "Review #14 after #13; no source edit."
@@ -592,16 +594,16 @@
         "k": "pr",
         "l": "Find / Review draft",
         "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/pull/14",
-        "s": "DRAFT 93/100"
+        "s": "draft 93/100"
       },
       {
         "k": "comment",
         "l": "Later Owner trial",
         "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/12#issuecomment-6543633822",
-        "s": "PARTIAL"
+        "s": "partially checked"
       }
     ],
-    "updatedAt": "2026-10-31T16:57:15Z",
+    "updatedAt": "2026-10-31T17:49:07Z",
     "src": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/12#issuecomment-6542532796"
   },
   "source-review-queue": {
@@ -613,7 +615,7 @@
       "role": "Owner"
     },
     "state": "SUBMITTED",
-    "now": "TopoFix draft #15; independent scoped review 92/100 PASS. Owner partial trial found a CLOS end 240.6 mm away and, after Analyze, CONFLICTS_WITH_CLOS; exported review evidence, applied nothing. Initial UX gaps were separately repaired.",
+    "now": "Draft TopoFix #15 passed independent scoped review at 92/100. During a partial Owner trial, a declared closed pipe end (CLOS) about 240 mm away was flagged as conflicting with the declared closed end after analysis. Review evidence was exported; nothing was applied.",
     "next": {
       "actor": "Owner",
       "text": "Review #15 after #14; retain review-only boundary."
@@ -623,16 +625,16 @@
         "k": "pr",
         "l": "Source Review Queue draft",
         "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/pull/15",
-        "s": "DRAFT 92/100"
+        "s": "draft 92/100"
       },
       {
         "k": "comment",
         "l": "Owner trial after Analyze",
         "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/12#issuecomment-6543782658",
-        "s": "PARTIAL PASS"
+        "s": "partially checked passed"
       }
     ],
-    "updatedAt": "2026-10-31T16:57:17Z",
+    "updatedAt": "2026-10-31T17:49:08Z",
     "src": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/12#issuecomment-6543782658"
   },
   "queue-usability": {
@@ -644,7 +646,7 @@
       "role": "Owner"
     },
     "state": "SUBMITTED",
-    "now": "Same draft #15; independent usability-delta review 92/100 PASS. Autosave, source-specific persistence, missing-engine error, rounded export and label separation verified. Owner re-trial after fixes: not yet reported.",
+    "now": "The same draft #15 passed independent usability review at 92/100. Notes and decisions save automatically, the queue persists per source, missing engine files show an error, distances are rounded on export, and labels no longer overlap. Owner re-trial: not yet reported.",
     "next": {
       "actor": "Owner",
       "text": "Try the corrected queue before merging #15."
@@ -654,16 +656,16 @@
         "k": "pr",
         "l": "Queue usability on #15",
         "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/pull/15",
-        "s": "DRAFT UX 92/100"
+        "s": "draft usability 92/100"
       },
       {
         "k": "comment",
         "l": "Independent UX receipt",
         "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/12#issuecomment-6544901216",
-        "s": "PASS"
+        "s": "passed"
       }
     ],
-    "updatedAt": "2026-10-31T16:57:19Z",
+    "updatedAt": "2026-10-31T17:49:09Z",
     "src": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/12#issuecomment-6544901216"
   },
   "format-admission": {
@@ -675,7 +677,7 @@
       "role": "Owner"
     },
     "state": "SUBMITTED",
-    "now": "XML_Compare_Utilities draft #240; independent scoped review 93/100 PASS. Specific Owner trial of #240: not yet reported. F05/R4 admitted only at qualified identities; unsupported inputs fail closed.",
+    "now": "Draft XML_Compare_Utilities #240 passed independent scoped review at 93/100. The gate admits supported CAESAR RichInput files (F05 and R4) and refuses unsupported files. An individual Owner trial of #240 is not yet reported.",
     "next": {
       "actor": "Owner",
       "text": "Review #240 before #241; no GLRD support."
@@ -685,10 +687,10 @@
         "k": "pr",
         "l": "Format admission draft",
         "u": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/240",
-        "s": "DRAFT 93/100"
+        "s": "draft 93/100"
       }
     ],
-    "updatedAt": "2026-10-31T16:57:21Z",
+    "updatedAt": "2026-10-31T17:49:10Z",
     "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/239#issuecomment-6542048207"
   },
   "workspace-check": {
@@ -700,7 +702,7 @@
       "role": "Owner"
     },
     "state": "SUBMITTED",
-    "now": "XML_Compare_Utilities draft #241; independent scoped review 92/100 PASS. Owner Windows trial reported 6/6 PASS for Workspace F05/R4 and PSI116 legacy 5B. The GLRD-shaped check was only a relabelled F05 sample; genuine GLRD NOT_RUN.",
+    "now": "Draft XML_Compare_Utilities #241 passed independent scoped review at 92/100. The Owner reported six Windows trial checks passed, including CAESAR RichInput files (F05 and R4) and a legacy 5B view for the Pipe Stress Export (PSI116) format. A true GLRD rich-input file was not run; only a relabelled F05 sample was refused.",
     "next": {
       "actor": "Owner",
       "text": "Review #241 after #240, preserving GLRD HOLD."
@@ -710,7 +712,7 @@
         "k": "pr",
         "l": "Workspace gate draft",
         "u": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/241",
-        "s": "DRAFT 92/100"
+        "s": "draft 92/100"
       },
       {
         "k": "comment",
@@ -722,10 +724,10 @@
         "k": "comment",
         "l": "GLRD correction",
         "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/239#issuecomment-6543892874",
-        "s": "real NOT_RUN"
+        "s": "real not run yet"
       }
     ],
-    "updatedAt": "2026-10-31T16:57:23Z",
+    "updatedAt": "2026-10-31T17:49:11Z",
     "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/239#issuecomment-6543892874"
   },
   "hub-step-one": {
@@ -737,7 +739,7 @@
       "role": "Owner"
     },
     "state": "SUBMITTED",
-    "now": "XML_Compare_Utilities draft #242 and TopoFix draft #16; independent follow-up review 93/100 PASS. Owner real PSI116 file read through Universal XML: EQUAL. Reader belongs to XML_Compare_Utilities and is pinned, not copied.",
+    "now": "For the Pipe Stress Export (PSI116) format, TopoFix draft #16 and XML_Compare_Utilities draft #242 scored 92/100 after their repair round; the follow-up scored 93/100. Conversion into Universal XML was EQUAL on a real Owner file. The reader remains owned and pinned in XML_Compare_Utilities.",
     "next": {
       "actor": "Owner",
       "text": "Review #242 and #16 with exact reader dependency."
@@ -747,22 +749,28 @@
         "k": "pr",
         "l": "Hub reader #242",
         "u": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/242",
-        "s": "DRAFT 93/100"
+        "s": "Draft; 92/100 after repair, 93/100 after follow-up"
       },
       {
         "k": "pr",
         "l": "TopoFix adapter #16",
         "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/pull/16",
-        "s": "DRAFT 93/100"
+        "s": "Draft; 92/100 after repair, 93/100 after follow-up"
       },
       {
         "k": "comment",
         "l": "Owner real-file EQUAL",
         "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/239#issuecomment-6545624328",
-        "s": "PASS"
+        "s": "Confirmed equal on a real Owner file"
+      },
+      {
+        "k": "pr",
+        "l": "Independent follow-up review",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/239#issuecomment-6546172539",
+        "s": "93/100 after follow-up"
       }
     ],
-    "updatedAt": "2026-10-31T16:57:25Z",
+    "updatedAt": "2026-10-31T17:49:12Z",
     "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/239#issuecomment-6546172539"
   },
   "hub-step-two": {
@@ -774,7 +782,7 @@
       "role": "Owner"
     },
     "state": "SUBMITTED",
-    "now": "TopoFix draft #17; independent scoped review 93/100 PASS, carried over after a verified rebase onto #16. Owner real PSI116 trial: 101 edit operations; original-record patch EQUAL to direct route. No engineering acceptance.",
+    "now": "TopoFix draft #17 scored 93/100 after its repair round. On a real Owner Pipe Stress Export (PSI116) file, 101 automatic fixes were patched back EQUAL to today's direct result. Its verified rebase preserved the review. Engineering acceptance remains on hold.",
     "next": {
       "actor": "Owner",
       "text": "Review #17 after #16; retain transaction policy."
@@ -784,16 +792,16 @@
         "k": "pr",
         "l": "PSI116 patch-back draft",
         "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/pull/17",
-        "s": "DRAFT 93/100"
+        "s": "Draft; 93/100 after its repair round"
       },
       {
         "k": "comment",
         "l": "Rebase and Owner trial",
         "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/12#issuecomment-6546277586",
-        "s": "101 ops EQUAL"
+        "s": "101 automatic fixes; equal to direct result"
       }
     ],
-    "updatedAt": "2026-10-31T16:57:27Z",
+    "updatedAt": "2026-10-31T17:49:13Z",
     "src": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/12#issuecomment-6546277586"
   },
   "hub-step-three": {
@@ -805,21 +813,33 @@
       "role": "Coder-b"
     },
     "state": "IN_PROGRESS",
-    "now": "Coder-b is assigned to read CAESAR II InputXML into the Universal XML hub after step 2 review. Draft PR, independent score and Owner trial: not yet reported.",
+    "now": "Coder-b's InputXML reader is in its one repair round after an independent 78/100 review required repair. Real CAESAR InputXML files carry position offsets, not absolute end coordinates; two genuine files were rejected by the first reader. The Owner chose to rebuild positions from those offsets. Drafts XML_Compare_Utilities #244 and TopoFix #18 await repaired evidence and a new review.",
     "next": {
       "actor": "coder-b",
-      "text": "Return reader draft and evidence on issue #239."
+      "text": "Repair the two existing InputXML drafts by rebuilding coordinates from offsets, with fail-closed differences; return new exact-head evidence on issue #239."
     },
     "refs": [
       {
         "k": "issue",
         "l": "Hub format work",
         "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/239",
-        "s": "IN_PROGRESS"
+        "s": "Repair underway following a 78/100 independent review"
+      },
+      {
+        "k": "pr",
+        "l": "InputXML reader correction",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/244",
+        "s": "Draft; repair round underway after 78/100"
+      },
+      {
+        "k": "pr",
+        "l": "TopoFix InputXML bridge",
+        "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/pull/18",
+        "s": "Draft; repair round underway after 78/100"
       }
     ],
-    "updatedAt": "2026-10-31T16:57:29Z",
-    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/239#issuecomment-6546182463"
+    "updatedAt": "2026-10-31T17:49:14Z",
+    "src": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/239#issuecomment-6546745198"
   },
   "hub-ui-handshake": {
     "order": 60,
@@ -830,21 +850,27 @@
       "role": "Coder-a"
     },
     "state": "IN_PROGRESS",
-    "now": "Coder-a is assigned to show the opt-in hub route in TopoFix with a pinned, hash-checked reader. Compare direct and hub routes; download only on EQUAL and refuse tampering. Draft PR, score and Owner trial: not yet reported.",
+    "now": "Coder-a's opt-in Universal XML route in TopoFix draft #19 is in independent review. Author checks passed: direct and hub output match, and a tampered reader is refused. Download remains available only when results are equal. Independent review score and Owner real-file screen trial: not yet reported.",
     "next": {
-      "actor": "coder-a",
-      "text": "Return draft UI route and parity proof on issue #12."
+      "actor": "Oracle",
+      "text": "Review TopoFix draft #19 at its exact current head; record an independent verdict on issue #12."
     },
     "refs": [
       {
         "k": "issue",
         "l": "UI handshake assignment",
         "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/12",
-        "s": "IN_PROGRESS"
+        "s": "Independent review pending on draft #19"
+      },
+      {
+        "k": "pr",
+        "l": "Optional hub route in TopoFix",
+        "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/pull/19",
+        "s": "Draft; author checks passed, independent review pending"
       }
     ],
-    "updatedAt": "2026-10-31T16:57:31Z",
-    "src": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/12#issuecomment-6546312679"
+    "updatedAt": "2026-10-31T17:49:15Z",
+    "src": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/12#issuecomment-6546651615"
   },
   "inputxml-return": {
     "order": 61,
@@ -855,7 +881,7 @@
       "role": "Oracle"
     },
     "state": "NOT_STARTED",
-    "now": "Planned next: patch qualified changes into original InputXML records, not a rebuild. Draft PR, score and Owner trial: not yet reported.",
+    "now": "Planned next: patch qualified fixes back into the original CAESAR InputXML records rather than rebuilding the whole file. Draft, independent score and Owner trial: not yet reported.",
     "next": {
       "actor": "Oracle",
       "text": "Assign after the InputXML reader contract is reviewed."
@@ -865,9 +891,11 @@
         "k": "issue",
         "l": "Universal XML direction",
         "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/239",
-        "s": "PLANNED"
+        "s": "planned, not started"
       }
-    ]
+    ],
+    "updatedAt": "2026-10-31T17:49:16Z",
+    "src": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/12#issuecomment-6546629295"
   },
   "enriched-converters": {
     "order": 62,
@@ -878,7 +906,7 @@
       "role": "Oracle"
     },
     "state": "NOT_STARTED",
-    "now": "Planned next: use the existing Workspace converters to get Enriched and Categorised forms through the hub. Draft PR, score and Owner trial: not yet reported.",
+    "now": "Planned next: reuse the Workspace converters to route Enriched and Categorised formats through Universal XML. Draft, independent score and Owner trial: not yet reported.",
     "next": {
       "actor": "Oracle",
       "text": "Scope converter reuse after InputXML round trip."
@@ -888,9 +916,11 @@
         "k": "issue",
         "l": "Universal XML direction",
         "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/239",
-        "s": "PLANNED"
+        "s": "planned, not started"
       }
-    ]
+    ],
+    "updatedAt": "2026-10-31T17:49:17Z",
+    "src": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/12#issuecomment-6546629295"
   },
   "f05-r4-hub": {
     "order": 63,
@@ -901,7 +931,7 @@
       "role": "Oracle"
     },
     "state": "NOT_STARTED",
-    "now": "Planned next: F05 and R4 into the hub, distinct from earlier Workspace format admission. Draft PR, score and Owner trial for this conversion: not yet reported.",
+    "now": "Planned next: support CAESAR RichInput files (F05 and R4) in the Universal XML hub, separately from the existing Workspace admission gate. Draft, independent score and Owner trial for this step: not yet reported.",
     "next": {
       "actor": "Oracle",
       "text": "Plan adapters only after earlier conversions are reviewed."
@@ -911,9 +941,11 @@
         "k": "issue",
         "l": "Universal XML direction",
         "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/239",
-        "s": "PLANNED"
+        "s": "planned, not started"
       }
-    ]
+    ],
+    "updatedAt": "2026-10-31T17:49:18Z",
+    "src": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/12#issuecomment-6546629295"
   },
   "owner-merge-queue": {
     "order": 64,
@@ -924,7 +956,7 @@
       "role": "Owner"
     },
     "state": "SUBMITTED",
-    "now": "Waiting on Owner only: TopoFix #13 → #14 → #15 and #13 → #16 → #17; XML_Compare_Utilities #240 → #241 and #242; Common #584/#585. Drafts unmerged. Oracle verifies exact heads and dependencies before Owner action.",
+    "now": "Waiting for Owner decisions on draft merges: TopoFix #13 → #14 → #15 and #13 → #16 → #17; XML_Compare_Utilities #240 → #241 and #242; Common #584 and #585. None of these merges is assigned to an agent. The Oracle checks exact versions and dependencies before Owner action.",
     "next": {
       "actor": "Owner",
       "text": "Merge only after Oracle exact-head review; agents never merge."
@@ -934,28 +966,28 @@
         "k": "issue",
         "l": "TopoFix draft stack",
         "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/12",
-        "s": "OWNER"
+        "s": "Owner decision pending"
       },
       {
         "k": "issue",
         "l": "XML draft stack",
         "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/239",
-        "s": "OWNER"
+        "s": "Owner decision pending"
       },
       {
         "k": "pr",
         "l": "Common #584",
         "u": "https://github.com/reallakshman19/Common/pull/584",
-        "s": "OWNER"
+        "s": "Owner decision pending"
       },
       {
         "k": "pr",
         "l": "Common #585",
         "u": "https://github.com/reallakshman19/Common/pull/585",
-        "s": "OWNER"
+        "s": "Owner decision pending"
       }
     ],
-    "updatedAt": "2026-10-31T16:57:36Z",
+    "updatedAt": "2026-10-31T17:49:19Z",
     "src": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/12#issuecomment-6546277586",
     "flags": [
       "needs-you"
@@ -970,7 +1002,7 @@
       "role": "Oracle"
     },
     "state": "BLOCKED",
-    "now": "No CLOS edits, 240.6 mm join, tolerance change or Apply for review cases. No GLRD support, CII Writer/Weight/Final, engineering acceptance, agent merges or private models on GitHub. Scoped PASS and EQUAL do not lift HOLDs.",
+    "now": "No changes to declared closed pipe ends (CLOS), no joining a questioned connection about 240 mm away, no tolerance change, and no Apply for review-only cases. No support for GLRD rich-input, CII writing, Weight or Final, engineering acceptance, agent merges, or private model files on GitHub. Scoped review scores and equal outputs do not lift these holds.",
     "next": {
       "actor": "Oracle",
       "text": "Maintain HOLD until explicit Owner release decision with evidence."
@@ -980,16 +1012,16 @@
         "k": "comment",
         "l": "No CLOS join",
         "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/12#issuecomment-6542050413",
-        "s": "HOLD"
+        "s": "on hold"
       },
       {
         "k": "comment",
         "l": "No GLRD/writers",
         "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/239#issuecomment-6543881167",
-        "s": "HOLD"
+        "s": "on hold"
       }
     ],
-    "updatedAt": "2026-10-31T16:57:38Z",
-    "src": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/12#issuecomment-6546312679"
+    "updatedAt": "2026-10-31T17:49:20Z",
+    "src": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/12#issuecomment-6546629295"
   }
 }
