@@ -2,14 +2,16 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import { readFileSync } from 'node:fs';
 import { adhocHref, parseAdhocRoute, ADHOC_PROJECTS, ADHOC_SECTIONS,
-  XML_PS_MAPPING_SECTIONS, XML_COMPARE_SECTIONS, sectionsForAdhocProject, renderAdhocProjects } from '../adhoc-projects.js';
+  XML_PS_MAPPING_SECTIONS, XML_COMPARE_SECTIONS, TOPO_ADHOC_SECTIONS,
+  sectionsForAdhocProject, renderAdhocProjects } from '../adhoc-projects.js';
 
 function fakeEl(tag) {
   const node={tag,className:'',children:[],attributes:{},href:'',
     set textContent(text){this.text=String(text);this.children=[];},
     get textContent(){return (this.text||'')+this.children.map(c=>typeof c==='string'?c:c.textContent).join('');},
     append(...children){this.children.push(...children);},
-    setAttribute(k,v){this.attributes[k]=v;}
+    setAttribute(k,v){this.attributes[k]=v;},
+    addEventListener(k,fn){this['on'+k]=fn;}
   };
   return node;
 }
@@ -24,14 +26,14 @@ function withDom(fn) {
   const old=globalThis.document;globalThis.document={createElement:fakeEl};
   try{return fn();}finally{globalThis.document=old;}
 }
-function render(hash) {
+function render(hash, options={}) {
   return withDom(()=>{
     const root=fakeEl('main');
     const nav=(href,title,cls)=>{
       const a=fakeEl('a');a.href=href;a.className=cls;a.textContent=title;
       return a;
     };
-    renderAdhocProjects(root,parseAdhocRoute(hash),nav);
+    renderAdhocProjects(root,parseAdhocRoute(hash),nav,options);
     return root;
   });
 }
@@ -47,7 +49,7 @@ test('Adhoc Projects and Progress Page have stable nested hash routes',()=>{
   assert.equal(parseAdhocRoute('#/adhoc/progress-page/unknown').valid,false);
   assert.equal(parseAdhocRoute('#/adhoc/progress-page/tests/extra').valid,false);
   assert.equal(adhocHref(), '#/adhoc/progress-page/overview');
-  assert.deepEqual(ADHOC_PROJECTS.map(x=>x.label),['Progress Page','XML-PS Mapping','XML-Compare']);
+  assert.deepEqual(ADHOC_PROJECTS.map(x=>x.label),['Progress Page','XML-PS Mapping','XML-Compare','TOPO-A','TOPO-B']);
   assert.deepEqual(parseAdhocRoute('#/adhoc/xml-ps-mapping'),
     {project:'xml-ps-mapping',section:'overview',valid:true});
   assert.deepEqual(parseAdhocRoute('#/adhoc/xml-ps-mapping/candidate-matrix'),
@@ -112,7 +114,7 @@ test('XML-PS Mapping Adhoc tab has distinct sections and direct evidence, not an
   const mainNav=find(page,n=>n.tag==='nav'&&n.attributes['aria-label']==='Adhoc Projects');
   assert.equal(mainNav.length,1);
   assert.deepEqual(mainNav[0].children.map(n=>n.href),
-    ['#/adhoc/progress-page/overview','#/adhoc/xml-ps-mapping/overview','#/adhoc/xml-compare/overview']);
+    ['#/adhoc/progress-page/overview','#/adhoc/xml-ps-mapping/overview','#/adhoc/xml-compare/overview','#/adhoc/topo-a/overview','#/adhoc/topo-b/overview']);
   const current=mainNav[0].children.filter(n=>n.attributes['aria-current']==='page');
   assert.equal(current.length,1);
   assert.equal(current[0].textContent,'XML-PS Mapping');
@@ -162,7 +164,7 @@ test('XML-Compare has its own project tab, source sections and exact hash links'
   assert.ok(hubLinks.includes('#/adhoc/xml-compare/overview'));
   const xml=render('#/adhoc/xml-compare/validation');
   const projects=find(xml,n=>n.tag==='nav'&&n.attributes['aria-label']==='Adhoc Projects');
-  assert.deepEqual(projects[0].children.map(n=>n.textContent),['Progress Page','XML-PS Mapping','XML-Compare']);
+  assert.deepEqual(projects[0].children.map(n=>n.textContent),['Progress Page','XML-PS Mapping','XML-Compare','TOPO-A','TOPO-B']);
   assert.equal(projects[0].children.find(n=>n.attributes['aria-current']==='page').href,
     '#/adhoc/xml-compare/overview');
   const tabs=find(xml,n=>n.tag==='nav'&&n.attributes['aria-label']==='XML-Compare workspace sections');
@@ -197,4 +199,36 @@ test('Adhoc UI does not create another WBS or change project JSON',()=>{
   const app=readFileSync(new URL('../app.js',import.meta.url),'utf8');
   assert.match(app,/parseAdhocRoute\(hash\)/);
   assert.match(app,/renderAdhocProjects\(root,adhocRoute,navLink\)/);
+});
+
+
+test('Two new Adhoc spaces use native tasks, distinct Cycle Boards and the existing TopoFix WBS',()=>{
+  assert.deepEqual(TOPO_ADHOC_SECTIONS.map(([id])=>id),
+    ['overview','cycle-board','sources','continuity','tests']);
+  for(const [key,id] of [['topo-a',12],['topo-b',239]]){
+    const link='#/adhoc/'+key;
+    assert.equal(parseAdhocRoute(link+'/cycle-board').valid,true);
+    assert.equal(parseAdhocRoute(link+'/sources').valid,true);
+    assert.equal(parseAdhocRoute(link+'/continuity').valid,true);
+    const page=render(link+'/overview');
+    assert.match(page.textContent,/governing WBS/i);
+    assert.match(page.textContent,/No|not.*assign|read-only/i);
+    const hrefs=find(page,n=>n.tag==='a').map(n=>n.href);
+    assert.ok(hrefs.includes(link+'/cycle-board'));
+    assert.ok(hrefs.some(u=>u.includes('/issues/'+id)));
+    const sources=render(link+'/sources');
+    const sourceLinks=find(sources,n=>n.tag==='a').map(n=>n.href);
+    assert.ok(sourceLinks.includes('https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/3'));
+    assert.ok(sourceLinks.includes('https://github.com/reallakshman19/Common/pull/572'));
+    assert.ok(sourceLinks.includes('https://github.com/reallakshman19/progress-page/pull/95'));
+    assert.match(sources.textContent,/Concept map and source-lineage/i);
+    const cont=render(link+'/continuity');
+    assert.match(cont.textContent,/NOT_VERIFIED/);
+    assert.match(cont.textContent,/PREPARED/);
+    const cases=render(link+'/tests');
+    assert.match(cases.textContent,/UNKNOWN/);
+    assert.equal(parseAdhocRoute(link+'/unselected').valid,false);
+  }
+  assert.equal(parseAdhocRoute('#/adhoc/topo-a/cycle-board/extra').valid,false);
+  assert.equal(parseAdhocRoute('#/adhoc/topo-b/candidate-matrix').valid,false);
 });
