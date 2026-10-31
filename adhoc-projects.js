@@ -1,6 +1,7 @@
 // Optional Adhoc Projects navigation hub; never an extra Progress Page WBS,
 // Cycle assignment, agent report, or source of engineering status.
 import { el, link } from './util.js?v=34';
+import { TOPO_ADHOC_INFO, TOPO_GOVERNANCE, renderTopoAdhocBoard } from './topo-adhoc-board.js?v=34';
 
 export const ADHOC_ROOT = '#/adhoc';
 export const ADHOC_PROJECTS = Object.freeze([
@@ -9,7 +10,11 @@ export const ADHOC_PROJECTS = Object.freeze([
   Object.freeze({key:'xml-ps-mapping',label:'XML-PS Mapping',
     description:'Source-linked PS Mapping candidate reviews, identity rules and engineering evidence; no duplicate project WBS.'}),
   Object.freeze({key:'xml-compare',label:'XML-Compare',
-    description:'Source-bound XML comparison, ISO engineering audit and validation references.'})
+    description:'Source-bound XML comparison, ISO engineering audit and validation references.'}),
+  Object.freeze({key:'topo-a',label:'TOPO-A',
+    description:'Assisted connection repair · source-linked Task #12 · existing WBS 3.2/4.1.'}),
+  Object.freeze({key:'topo-b',label:'TOPO-B',
+    description:'Universal XML topology adapter · source-linked Task #239 · read-only first.'})
 ]);
 export const ADHOC_SECTIONS = Object.freeze([
   Object.freeze(['overview','Overview']),
@@ -30,9 +35,18 @@ export const XML_COMPARE_SECTIONS = Object.freeze([
   Object.freeze(['validation','Validation']),
   Object.freeze(['delivery','Delivery evidence'])
 ]);
+export const TOPO_ADHOC_SECTIONS = Object.freeze([
+  Object.freeze(['overview','Overview']),
+  Object.freeze(['cycle-board','Cycle Board']),
+  Object.freeze(['sources','Sources & fixtures']),
+  Object.freeze(['continuity','Oracle / agent']),
+  Object.freeze(['tests','Test cases'])
+]);
+
 export const sectionsForAdhocProject = project =>
   project==='xml-ps-mapping' ? XML_PS_MAPPING_SECTIONS :
-  project==='xml-compare' ? XML_COMPARE_SECTIONS : ADHOC_SECTIONS;
+  project==='xml-compare' ? XML_COMPARE_SECTIONS :
+  (project==='topo-a'||project==='topo-b') ? TOPO_ADHOC_SECTIONS : ADHOC_SECTIONS;
 
 const P = 'https://github.com/reallakshman19/progress-page';
 const C = 'https://github.com/reallakshman19/Common';
@@ -176,7 +190,74 @@ function renderXmlCompareWorkspace(body, selected) {
 }
 
 
-export function renderAdhocProjects(root,route,nav) {
+
+// Two read-only Adhoc test workspaces. These are projections of the native
+// issue and *existing* TopoFix WBS, not new Page project registration.
+function renderTopoWorkspace(root,key,view,{nativeFetcher,clock}={}) {
+ const i=TOPO_ADHOC_INFO[key];
+ const body=el('div','body adhoc-body');
+ body.append(el('h2',null,i.label),
+  el('p','adhoc-intro',i.objective),
+  el('p','muted','Existing governing WBS '+i.wbs+' · '+i.wbsNote+
+   '. Read-only Adhoc navigation; no assignment or engineering sign-off.'));
+ if(view==='overview') {
+  const s=section(body,'Original task and Owner objective',
+   'Two independent work areas under one governing TopoFix WBS, with no parallel status ledger.');
+  addCards(s,[
+   card('Original native task #'+i.issueNumber,i.next,
+     [['Open task',i.issue],['Open Cycle Board',adhocHref(key,'cycle-board')]]),
+   card('Source-grounded discriminating case',i.case,[['Check original source claim',i.issue]]),
+   card('WBS and allowed authority',i.wbsNote,[['Existing TopoFix WBS',TOPO_GOVERNANCE.wbs]]),
+   card('Concept and source relationship',
+    'Owner intent → governed TopoFix WBS → native agent task → original source → independent reviewer/relay → authorized Page audit. A link does not verify a source or transfer private files.',
+    [['Inspect source graph',adhocHref(key,'sources')]])
+  ]);
+ } else if(view==='cycle-board') {
+  renderTopoAdhocBoard(body,key,{fetcher:nativeFetcher,clock});
+ } else if(view==='sources') {
+  const s=section(body,'Original sources and Grounding Fixtures',
+   'Native issue or pinned file references are pointers, not authenticated private original XML or an engineering acceptance.');
+  addCards(s,i.sources.map(x=>card(x.label,x.detail,[['Open original / pinned source',x.url]])));
+  const concept=section(body,'Concept map and source-lineage chain',
+   'Read the native WBS, exact task, source custody, relay and Page record in that order. This graph is guidance, not a new source of authority.');
+  addCards(concept,[
+   card('1 · Owner and WBS','Owner objective and WBS 3.2/4.1 or 2.1/4.1 govern the work.',[['Read WBS',TOPO_GOVERNANCE.wbs]]),
+   card('2 · Task and source',i.case,[['Original task',i.issue]]),
+   card('3 · Artifact and custody','Common PR #572 holds a public-safe draft handoff register. Agent access/bytes, Oracle epoch and writer lease are NOT_VERIFIED.',
+     [['Read Common relay PR',TOPO_GOVERNANCE.relay],['Relay protocol',TOPO_GOVERNANCE.relayProtocol]]),
+   card('4 · Published Page evidence','Draft Page PR #95 is not a published WBS R2. Writer and audit must be checked separately after review.',
+     [['Open Page PR',TOPO_GOVERNANCE.page]])
+  ]);
+ } else if(view==='continuity') {
+  const s=section(body,'Oracle and agent continuity — without repeat onboarding',
+   'The native task remains the assignment source. A short recipient ID or a Board card is not a dispatch.');
+  addCards(s,[
+   card('Agent eligibility and identity',
+    'The task reports PREPARED / READ_ONLY FIRST; chat recipient, acknowledgment, original-file access and exclusive write lease are NOT_VERIFIED.',
+    [['Task issue',i.issue],['Common START_HERE',TOPO_GOVERNANCE.start]]),
+   card('One next bounded agent return',i.next,[['Return evidence in original issue',i.issue]]),
+   card('Writer-surface separation',i.ownership,[['Governing WBS',TOPO_GOVERNANCE.wbs]]),
+   card('Common artifact relay','PR #572 is a draft public-safe register, not proof that private XML or receipts were received.',
+    [['Common relay PR',TOPO_GOVERNANCE.relay]]),
+   card('Page reconciliation','Existing Page PR #95 remains a separately reviewed publisher proposal; the Board cannot update Page data.',
+    [['Page PR #95',TOPO_GOVERNANCE.page]])
+  ]);
+ } else if(view==='tests') {
+  const s=section(body,'Cycle Board and engineering falsifiers',
+   'This is a test plan, not a technical PASS, private original-file trial or approved implementation.');
+  addCards(s,[
+   ...i.tests.map((t,n)=>card('Contrary case '+(n+1),t,[['Original source task',i.issue]])),
+   card('Cycle Board change detection','Initial read UNKNOWN delta; unchanged exact issue revision / PR head is UNCHANGED on recheck; new immutable occurrence CHANGED; 403/mismatch PARTIAL or UNKNOWN.',
+    [['Run Board view',adhocHref(key,'cycle-board')]]),
+   card('Source authority separation',
+    'No implicit Canonical Cycle, owner-verified agent identity, protected write, duplicate Page WBS, or approval from source/status labels.',
+    [['Original WBS',TOPO_GOVERNANCE.wbs],['Page publisher proposal',TOPO_GOVERNANCE.page]])
+  ]);
+ }
+ root.append(body,el('p','foot muted','Adhoc '+key.toUpperCase()+': original-native-source Cycle Board test view. No Cycle activation, fresh dispatch, source-byte receipt, Page merge, engineering PASS or Owner acceptance.'));
+}
+
+export function renderAdhocProjects(root,route,nav,options={}) {
   const heading=el('div','adhoc-heading');
   heading.append(el('h2',null,'Adhoc Projects'),
     el('p','muted','A lightweight navigation home for bounded improvements. Authoritative project WBS, Cycle assignments and engineering evidence remain at their original sources.'));
@@ -221,6 +302,10 @@ export function renderAdhocProjects(root,route,nav) {
   root.append(subs);
   if(route.project==='xml-ps-mapping') {
     renderXmlPsMapping(root,route.section);
+    return;
+  }
+  if(route.project==='topo-a'||route.project==='topo-b') {
+    renderTopoWorkspace(root,route.project,route.section,options);
     return;
   }
   if(route.project==='xml-compare') {
