@@ -81,6 +81,46 @@ test('Wrong issue, forged acceptance, missing source and later return cannot man
  assert.match(taskEvidenceV2Text(m),/RECONCILE NEW RETURN/);
 });
 
+test('Recent TOPO-A 3/3 return is detected only as agent-reported and source-reviewed, never engineering PASS',()=>{
+ const recent=reply(A,4,'### TOPO-A · Cycle now · 3 synthetic CLOS falsifiers — native READ_ONLY evidence\nPRIVATE ORIGINAL: NOT_RUN. EXECUTED_SYNTHETIC_3_OF_3_PASS; 0 auto candidates.');
+ const review=reply(A,5,'### Oracle Cycle now · TOPO-A · Task Evidence v2 source reconciliation\nhttps://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/12#issuecomment-4\nACCEPTED AS AGENT-REPORTED EXECUTED SYNTHETIC EVIDENCE; engineering HOLD.');
+ const r=row('topo-a',A,'3.2 / 4.1');
+ const unreconciled=taskEvidenceV2Text(taskEvidenceV2Model(r,{projectKey:'topo-a',feed:feed(A,[...commentsA,recent])}));
+ assert.match(unreconciled,/3\/3 synthetic results claimed; Oracle review NOT_VERIFIED/);
+ assert.doesNotMatch(unreconciled,/ORACLE_REPORTED.*2026-10-31T08:00:00Z/);
+ const m=taskEvidenceV2Model(r,{projectKey:'topo-a',feed:feed(A,[...commentsA,recent,review])});
+ const t=taskEvidenceV2Text(m);
+ assert.equal(m.lines.length,5);
+ assert.match(t,/3\/3 synthetic falsifiers returned \(agent-reported\)/);
+ assert.match(t,/Tests: 3\/3 synthetic PASS \(agent-reported; independent NOT_RUN\)/);
+ assert.match(t,/scratch-only Find \/ Review source-key lookup proof/);
+ assert.match(t,/#issuecomment-4/);
+ assert.match(t,/Engineering HOLD/);
+ assert.doesNotMatch(t,/independent PASS|engineering PASS|recipient acknowledged/i);
+ assert.equal(m.canAuthorize,false);
+ const wrong=feed(B,[...commentsA,recent,review]);
+ assert.doesNotMatch(taskEvidenceV2Text(taskEvidenceV2Model(r,{projectKey:'topo-a',feed:wrong})),/3\/3 synthetic falsifiers returned/);
+});
+
+test('Recent TOPO-B core tests retain excluded harness error and A4 partial; native tests never inferred',()=>{
+ const recent=reply(B,11,'## TOPO-B · Cycle now · public strict-reader runtime and Appendix A\n16 valid V8 checks; 1 harness-invalid excluded. READ_ONLY_CHECKS_RECORDED / APPENDIX_A_IMPLEMENTATION_GATE_NOT_QUALIFIED.');
+ const review=reply(B,12,'### Oracle Cycle now · TOPO-B · Task Evidence v2 source reconciliation\nhttps://github.com/reallakshman19/XML_Compare_Utilities/issues/239#issuecomment-11\nAPPENDIX A INCOMPLETE / IMPLEMENTATION HOLD.');
+ const r=row('topo-b',B,'2.1 → 4.1');
+ const m=taskEvidenceV2Model(r,{projectKey:'topo-b',feed:feed(B,[...commentsB,recent,review])});
+ const t=taskEvidenceV2Text(m);
+ assert.equal(m.lines.length,5);
+ assert.match(t,/16 valid V8 checks reported \/ 1 excluded harness error/);
+ assert.match(t,/Appendix A 5\/5 assessed, 4\/5 threshold \(A4 16\/20 PARTIAL\)/);
+ assert.match(t,/16 V8 checks PASS \(agent-reported\); native Node NOT_RUN/);
+ assert.match(t,/Run unchanged native Node \+ xmldom public-fixture test in scratch/);
+ assert.match(t,/Engineering HOLD/);
+ assert.doesNotMatch(t,/engineering PASS|Appendix A QUALIFIED|native Node PASS/i);
+ assert.equal(m.canAuthorize,false);
+ const unreviewed=taskEvidenceV2Text(taskEvidenceV2Model(r,{projectKey:'topo-b',feed:feed(B,[...commentsB,recent])}));
+ assert.match(unreviewed,/Oracle reconcile latest native runtime and Appendix A/);
+ assert.doesNotMatch(unreviewed,/ORACLE_REPORTED.*2026-10-31T08:00:00Z/);
+});
+
 test('Native intake checks exact issue and PR identities; failed or paginated fetch fails closed',async()=>{
  const api='https://api.github.com/repos/reallakshman19/xml229-topology-wp1-preview-20261028/';
  const fetcher=async url=>{

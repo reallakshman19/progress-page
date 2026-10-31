@@ -29,6 +29,22 @@ const te2ReportedReturn=(c,key)=>key==='topo-a'?
  /TOPO-B\b.{0,70}Cycle-now bounded read-only evidence return/i.test(c.body):false;
 const te2AcceptedKind=key=>key==='topo-a'?'READ_ONLY_SOURCE_TRACE':
  key==='topo-b'?'READ_ONLY_FORMAT_CONTRACT':null;
+// A newer return is evidence only when it is attached to the exact native task.
+// Text is agent-REPORTED and cannot authenticate identity, execution or acceptance.
+const te2CurrentRunReturn=(c,key)=>key==='topo-a'?
+ /TOPO-A\s*[·—-]\s*Cycle now\s*[·—-]\s*3 synthetic CLOS falsifiers/i.test(c.body)&&
+ /EXECUTED_SYNTHETIC_3_OF_3_PASS/.test(c.body)&&/PRIVATE ORIGINAL:\s*NOT_RUN/i.test(c.body):
+ key==='topo-b'?
+ /TOPO-B\s*[·—-]\s*Cycle now\s*[·—-]\s*public strict-reader runtime and Appendix A/i.test(c.body)&&
+ /READ_ONLY_CHECKS_RECORDED/.test(c.body)&&/APPENDIX_A_IMPLEMENTATION_GATE_NOT_QUALIFIED/.test(c.body):false;
+// This is an Oracle-labeled GitHub report, NOT independent reviewer authority.
+const te2CurrentOracleReview=(c,key,returnId)=>c.body.includes('#issuecomment-'+returnId)&&
+ (key==='topo-a'?
+ /Oracle Cycle now\s*[·—-]\s*TOPO-A\s*[·—-]\s*Task Evidence v2 source reconciliation/.test(c.body)&&
+ /ACCEPTED AS AGENT-REPORTED EXECUTED SYNTHETIC EVIDENCE/.test(c.body):
+ key==='topo-b'?
+ /Oracle Cycle now\s*[·—-]\s*TOPO-B\s*[·—-]\s*Task Evidence v2 source reconciliation/.test(c.body)&&
+ /APPENDIX A INCOMPLETE\s*\/\s*IMPLEMENTATION HOLD/.test(c.body):false);
 
 function te2NativeClaim(row,feed){
  const empty={returnComment:null,acceptance:null,sourceComment:null,
@@ -37,18 +53,26 @@ function te2NativeClaim(row,feed){
  if(!feed||!['ok','partial'].includes(feed.status)||feed.issue!==row.source)return empty;
  const comments=(feed.comments||[]).filter(c=>te2CurrentIssueComment(c,row.source));
  const key=row.key,kind=te2AcceptedKind(key);
- const returns=comments.filter(c=>te2ReportedReturn(c,key));
+ const returns=comments.filter(c=>te2ReportedReturn(c,key)||te2CurrentRunReturn(c,key));
  const returned=returns.at(-1)||null;
+ const currentRun=!!returned&&te2CurrentRunReturn(returned,key);
  const accepts=kind&&returned?comments.filter(c=>
-  c.body.includes('Accepted as '+kind)&&
-  c.body.includes('#issuecomment-'+returned.id)&&
-  comments.indexOf(c)>comments.indexOf(returned)):[];
+  comments.indexOf(c)>comments.indexOf(returned)&&
+  (currentRun?te2CurrentOracleReview(c,key,returned.id):
+   c.body.includes('Accepted as '+kind)&&c.body.includes('#issuecomment-'+returned.id))):[];
  const acceptance=accepts.at(-1)||null;
  const sourceComments=comments.filter(c=>
   /Oracle-only (?:original-source read-through|format\/source reconciliation)/i.test(c.body));
  const sourceComment=sourceComments.at(-1)||null;
  let current='TOTAL UNKNOWN',tests='UNKNOWN',next=null,work='';
- if(key==='topo-a'){
+ if(key==='topo-a'&&currentRun){
+  current=acceptance?'3/3 synthetic falsifiers returned (agent-reported)':
+   '3/3 synthetic results claimed; Oracle review NOT_VERIFIED';
+  tests='3/3 synthetic PASS (agent-reported; independent NOT_RUN)';
+  next=acceptance?'Run scratch-only Find / Review source-key lookup proof':
+   'Oracle reconcile latest native synthetic return';
+  work='Read-only CLOS matrix and 3 synthetic cases reported; 0 auto repair candidates';
+ }else if(key==='topo-a'){
   const assigned=acceptance&&/3-case closure falsifier/i.test(acceptance.body);
   const after=acceptance?comments.slice(comments.indexOf(acceptance)+1):[];
   const newCandidate=after.some(c=>!sourceComments.includes(c)&&
@@ -60,6 +84,12 @@ function te2NativeClaim(row,feed){
   work=returned?'Read-only CLOS matrix returned':'Read-only matrix not observed';
   if(sourceComment&&/41 branches\s*\/\s*1,654/i.test(sourceComment.body)&&
    /240\.6 mm/i.test(sourceComment.body))work+='; Oracle-reported source: 41 branches / 1,654 nodes, 240.6 mm';
+ }else if(key==='topo-b'&&currentRun){
+  current='16 valid V8 checks reported / 1 excluded harness error; Appendix A 5/5 assessed, 4/5 threshold (A4 16/20 PARTIAL)';
+  tests='16 V8 checks PASS (agent-reported); native Node NOT_RUN';
+  next=acceptance?'Run unchanged native Node + xmldom public-fixture test in scratch':
+   'Oracle reconcile latest native runtime and Appendix A';
+  work='Read-only format contract and public F05/R4 core checks returned; no universal router';
  }else if(key==='topo-b'){
   const assigned=acceptance&&/Appendix A A1.A5/i.test(acceptance.body);
   current=assigned?'Runtime checks: TOTAL UNKNOWN; Appendix A: 0/5 returned':'TOTAL UNKNOWN';
