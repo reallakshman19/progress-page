@@ -48,6 +48,8 @@ jobs:
         run: node --experimental-default-type=module --test tests/prototype-trial.test.mjs
       - name: Adhoc Projects nested workspace navigation and read-only boundaries
         run: node --experimental-default-type=module --test tests/adhoc-projects.test.mjs
+      - name: TOPO-A and TOPO-B Adhoc Cycle Board source and authority falsifiers
+        run: node --experimental-default-type=module --test tests/adhoc-topo-cycle-board.test.mjs
       - name: Shared Smart Badge identifiers / writer / Agent Start / Oracle tests
         run: node --experimental-default-type=module --test tests/smart-badges.test.mjs
       - name: Cycle now via Timeline live-source privacy and WBS regressions
