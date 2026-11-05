@@ -2630,6 +2630,97 @@
       "before": "BLOCKED",
       "after": "BLOCKED",
       "rev": "R2"
+    },
+    {
+      "seq": 202,
+      "id": "TOPOFIX-R-0202",
+      "previous_id": "TOPOFIX-R-0201",
+      "at": "2026-11-05T06:34:42Z",
+      "kind": "FIXTURE",
+      "actor": "TopoFix Oracle eeea536d",
+      "summary": "Owner supplied the GLRD inputs as public 3D_Converters links (5 Nov); superseded by the six pinned entries",
+      "source": "https://github.com/reallakshman19/3D_Converters/blob/3377b7f4baeeee5851e72dcc414d6c4a93f5a933/Benchmarks/XML-CII-2019/revamped/GLRD-1000-PI-01%20-%20BM2.xml",
+      "list": "inputs",
+      "op": "remove",
+      "rev": "R2"
+    },
+    {
+      "seq": 203,
+      "id": "TOPOFIX-R-0203",
+      "previous_id": "TOPOFIX-R-0202",
+      "at": "2026-11-05T06:34:44Z",
+      "kind": "FIXTURE",
+      "actor": "TopoFix Oracle eeea536d",
+      "summary": "Owner-provided GLRD input (5 Nov), pinned by commit, size and SHA-256 so no one has to ask for it again",
+      "source": "https://github.com/reallakshman19/3D_Converters/blob/3377b7f4baeeee5851e72dcc414d6c4a93f5a933/Benchmarks/XML-CII-2019/revamped/GLRD-1000-PI-01%20-%20BM2.xml",
+      "list": "inputs",
+      "op": "add",
+      "rev": "R2"
+    },
+    {
+      "seq": 204,
+      "id": "TOPOFIX-R-0204",
+      "previous_id": "TOPOFIX-R-0203",
+      "at": "2026-11-05T06:34:45Z",
+      "kind": "FIXTURE",
+      "actor": "TopoFix Oracle eeea536d",
+      "summary": "Owner-provided GLRD input (5 Nov), pinned by commit, size and SHA-256 so no one has to ask for it again",
+      "source": "https://github.com/reallakshman19/3D_Converters/blob/3377b7f4baeeee5851e72dcc414d6c4a93f5a933/Benchmarks/XML-CII-2019/revamped/STF_2026Nov03-0839_managed_stage.json",
+      "list": "inputs",
+      "op": "add",
+      "rev": "R2"
+    },
+    {
+      "seq": 205,
+      "id": "TOPOFIX-R-0205",
+      "previous_id": "TOPOFIX-R-0204",
+      "at": "2026-11-05T06:34:45Z",
+      "kind": "FIXTURE",
+      "actor": "TopoFix Oracle eeea536d",
+      "summary": "Owner-provided GLRD input (5 Nov), pinned by commit, size and SHA-256 so no one has to ask for it again",
+      "source": "https://github.com/reallakshman19/3D_Converters/blob/3377b7f4baeeee5851e72dcc414d6c4a93f5a933/Benchmarks/XML-CII-2019/revamped/LL_BM2.xlsx",
+      "list": "inputs",
+      "op": "add",
+      "rev": "R2"
+    },
+    {
+      "seq": 206,
+      "id": "TOPOFIX-R-0206",
+      "previous_id": "TOPOFIX-R-0205",
+      "at": "2026-11-05T06:34:46Z",
+      "kind": "FIXTURE",
+      "actor": "TopoFix Oracle eeea536d",
+      "summary": "Owner-provided GLRD input (5 Nov), pinned by commit, size and SHA-256 so no one has to ask for it again",
+      "source": "https://github.com/reallakshman19/3D_Converters/blob/25db94769994751bb0fb6e6d83a578efd9ac8162/docs/docs/Masters/Piping%20class%20master.xlsx",
+      "list": "inputs",
+      "op": "add",
+      "rev": "R2"
+    },
+    {
+      "seq": 207,
+      "id": "TOPOFIX-R-0207",
+      "previous_id": "TOPOFIX-R-0206",
+      "at": "2026-11-05T06:34:47Z",
+      "kind": "FIXTURE",
+      "actor": "TopoFix Oracle eeea536d",
+      "summary": "Owner-provided GLRD input (5 Nov), pinned by commit, size and SHA-256 so no one has to ask for it again",
+      "source": "https://github.com/reallakshman19/3D_Converters/blob/25db94769994751bb0fb6e6d83a578efd9ac8162/docs/docs/Masters/wtValveweights.xlsx",
+      "list": "inputs",
+      "op": "add",
+      "rev": "R2"
+    },
+    {
+      "seq": 208,
+      "id": "TOPOFIX-R-0208",
+      "previous_id": "TOPOFIX-R-0207",
+      "at": "2026-11-05T06:34:48Z",
+      "kind": "FIXTURE",
+      "actor": "TopoFix Oracle eeea536d",
+      "summary": "Owner-provided GLRD input (5 Nov), pinned by commit, size and SHA-256 so no one has to ask for it again",
+      "source": "https://github.com/reallakshman19/3D_Converters/blob/25db94769994751bb0fb6e6d83a578efd9ac8162/docs/docs/Masters/PCF_MAT_MAP.TXT",
+      "list": "inputs",
+      "op": "add",
+      "rev": "R2"
     }
   ]
 }

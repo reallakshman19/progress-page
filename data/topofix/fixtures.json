@@ -118,15 +118,46 @@
       "milestone": "M54"
     },
     {
-      "t": "Pending Owner input (not received 5 Nov): GLRD BM2 xml and the STF stage JSON job bundle, via private handoff OWNER_PRIVATE_REF:HANDOFFS_PRIMARY; blocks perf P-LT3 to P-LT7 and rigid 2.5.",
-      "s": "OWNER_INPUT_NOT_RECEIVED",
-      "milestone": "M62"
-    },
-    {
       "t": "XCU at ddd3ebc7 tests/fixtures: uxml-s3-synthetic.workspace.input.xml 10867 B sha256 bbed4f226c32430d2d88d66be5024572feeff9a49592c8a37e4326edfdd7616a; uxml-s3-synthetic.workspace.delta-only.input.xml 10222 B sha256 7fc789216d6a07ef4d5a4357d2a7786d3bf7024863ff332ef938ea094625b0ea",
       "u": "https://github.com/reallakshman19/XML_Compare_Utilities/tree/ddd3ebc7/tests/fixtures",
       "s": "PUBLIC_SOURCE_PINNED",
       "milestone": "M54"
+    },
+    {
+      "t": "GLRD BM2 benchmark InputXML: 3D_Converters@3377b7f4 Benchmarks/XML-CII-2019/revamped/GLRD-1000-PI-01 - BM2.xml, 629889 B, sha256 6bcc477860fdbe9a80159839bf476a8c1e6ce7a966587a25bc62498709843151 (rigid 2.5 benchmark, Owner 19 mm / 150 N case)",
+      "u": "https://github.com/reallakshman19/3D_Converters/blob/3377b7f4baeeee5851e72dcc414d6c4a93f5a933/Benchmarks/XML-CII-2019/revamped/GLRD-1000-PI-01%20-%20BM2.xml",
+      "s": "PUBLIC_SOURCE_PINNED",
+      "milestone": "M62"
+    },
+    {
+      "t": "STF stage job bundle: 3D_Converters@3377b7f4 Benchmarks/XML-CII-2019/revamped/STF_2026Nov03-0839_managed_stage.json, 1816629 B, sha256 1d2469fe05d712cd1dd2da9913a840516ae686fb1616eb6d7b5e14d8918e2746 (perf P-LT3..7 Step 4 Preview browser run)",
+      "u": "https://github.com/reallakshman19/3D_Converters/blob/3377b7f4baeeee5851e72dcc414d6c4a93f5a933/Benchmarks/XML-CII-2019/revamped/STF_2026Nov03-0839_managed_stage.json",
+      "s": "PUBLIC_SOURCE_PINNED",
+      "milestone": "M61"
+    },
+    {
+      "t": "Line list: 3D_Converters@3377b7f4 Benchmarks/XML-CII-2019/revamped/LL_BM2.xlsx, 314449 B, sha256 73496a1277cd1f39de823d57180ee0d8c4b1d72241923f1e558af2c7c805d007",
+      "u": "https://github.com/reallakshman19/3D_Converters/blob/3377b7f4baeeee5851e72dcc414d6c4a93f5a933/Benchmarks/XML-CII-2019/revamped/LL_BM2.xlsx",
+      "s": "PUBLIC_SOURCE_PINNED",
+      "milestone": "M61"
+    },
+    {
+      "t": "Piping class master: 3D_Converters@25db9476 docs/docs/Masters/Piping class master.xlsx, 426876 B, sha256 bea1c45f3f7dcf51340a6d625cfcc23cfc5926be3413d697183b607e2ccab82c",
+      "u": "https://github.com/reallakshman19/3D_Converters/blob/25db94769994751bb0fb6e6d83a578efd9ac8162/docs/docs/Masters/Piping%20class%20master.xlsx",
+      "s": "PUBLIC_SOURCE_PINNED",
+      "milestone": "M62"
+    },
+    {
+      "t": "Weight table: 3D_Converters@25db9476 docs/docs/Masters/wtValveweights.xlsx, 88499 B, sha256 49b9e1c655c7124fbe471e988894ae200a978f640dc3119e36eba582fcfb7c78 (rigid weight master source)",
+      "u": "https://github.com/reallakshman19/3D_Converters/blob/25db94769994751bb0fb6e6d83a578efd9ac8162/docs/docs/Masters/wtValveweights.xlsx",
+      "s": "PUBLIC_SOURCE_PINNED",
+      "milestone": "M62"
+    },
+    {
+      "t": "Material map: 3D_Converters@25db9476 docs/docs/Masters/PCF_MAT_MAP.TXT, 6639 B, sha256 84b2e94488e5bceb135557a9272b0a75a87d9a53c46783865373b18f7c4dda29",
+      "u": "https://github.com/reallakshman19/3D_Converters/blob/25db94769994751bb0fb6e6d83a578efd9ac8162/docs/docs/Masters/PCF_MAT_MAP.TXT",
+      "s": "PUBLIC_SOURCE_PINNED",
+      "milestone": "M62"
     }
   ],
   "knownIssues": [
