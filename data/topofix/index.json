@@ -6,7 +6,7 @@
     "subtitle": "Reviewed work, InputXML repair, hub-screen review, Owner merge decisions and safety holds.",
     "aim": "TopoFix gives safe automatic fixes and clear, auditable review directions otherwise. A questioned CLOS-declared end about 240 mm away can be explained but never auto-joined. Every pipe-model format enters one Universal XML hub; TopoFix works there, then qualified results are patched into the original format.",
     "aimSrc": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/239#issuecomment-6544072702",
-    "updatedAt": "2026-11-05T03:32:45Z",
+    "updatedAt": "2026-11-05T03:59:20Z",
     "updatedBy": "TopoFix Oracle eeea536d",
     "staleAfterMin": 120
   },
@@ -235,7 +235,7 @@
     "M54": {
       "order": 54,
       "name": "Universal XML format expansion",
-      "full": "InputXML reader, TopoFix screen handshake and later format conversions.",
+      "full": "InputXML reader, TopoFix screen handshake and later formats. R2 lanes: A reads InputXML only (never writes; runs rebuilt from source); B is XCU-only writer (owner group within 0.001 mm, bytes outside ledger unchanged). CANDIDATE is a page checkpoint, not a lane A/B qualification.",
       "wbs": "5.4",
       "cap": "CANDIDATE",
       "canDo": "Page checkpoint only; not engineering or Owner acceptance.",
@@ -271,7 +271,7 @@
       "order": 61,
       "wbs": "6.1",
       "cap": "CANDIDATE",
-      "canDo": "Branch fix/glrd-preview-direct-handoff-20261104: full suite 0 new failures (Oracle L2); real browser probes wait for Owner GLRD inputs",
+      "canDo": "Public: branch head 386b739a. Oracle self-assessed: suite parity 0 new failures. Real browser probes wait for Owner GLRD inputs. CANDIDATE, not acceptance.",
       "capSrc": "https://github.com/reallakshman19/3D_Converters_v0.5a/commit/386b739af3a29ed0827fbfb7fea42ac2ac128324",
       "repo": "reallakshman19/3D_Converters_v0.5a",
       "branch": "fix/glrd-preview-direct-handoff-20261104",
@@ -321,12 +321,12 @@
     "active-hub": {
       "order": 6,
       "title": "Running · Universal XML handshake",
-      "sub": "Coder-b is repairing the InputXML reader after review; coder-a's screen route is awaiting independent review."
+      "sub": "R2 (5 Nov): lane A (TopoFix 35) and lane B (XCU 257) final rounds failed the Oracle gate; Owner rethink pending. Older cards here are PAGE-1 history (not re-checked)."
     },
     "next-formats": {
       "order": 7,
       "title": "Next · format return paths",
-      "sub": "Planned tasks only; no unreported PR or Owner test is claimed."
+      "sub": "Planned or not-started work; inputxml-return is now lane B (BLOCKED after its final round). Lane C (CII to CII transfer) not started."
     },
     "owner-gates": {
       "order": 8,

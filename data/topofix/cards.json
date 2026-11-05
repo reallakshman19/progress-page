@@ -882,7 +882,7 @@
       "chat": "coder-b7"
     },
     "state": "BLOCKED",
-    "now": "Lane B, XCU 257 (edit-ops v1, ALIAS_COINCIDENT_NODE). Final repair round 2 at d4ccec7c: CI 3/3 green. Oracle gate FAILED: fresh reviewer 76/100; IR NO-GO; Oracle reproduced 4 blockers (owner-group spread over 0.001 mm across ops, case-hidden coordinate witness, self-connected child records, real files refused). No third round: rethink.",
+    "now": "Lane B, XCU 257 (edit-ops v1, ALIAS_COINCIDENT_NODE): final repair round 2 at d4ccec7c; public CI green (not acceptance). Oracle self-assessed, private local evidence: gate FAILED (fresh reviewer 76/100; Oracle reproduced 4 blockers). The IR verdict is on the ir-257 card. No third round: rethink.",
     "next": {
       "actor": "Owner",
       "text": "decide the rethink (My actions)"
@@ -903,9 +903,15 @@
         "k": "comment",
         "l": "Coder RETURN on 239",
         "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/239#issuecomment-6645705383"
+      },
+      {
+        "k": "comment",
+        "l": "Coder RETURN on 239 (final round, BLOCKED after gate)",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/239#issuecomment-6645705383",
+        "s": "current"
       }
     ],
-    "updatedAt": "2026-11-05T03:32:34Z",
+    "updatedAt": "2026-11-05T03:59:07Z",
     "src": "OWNER_PRIVATE_REF:topofix-gate-257r2-20261105"
   },
   "enriched-converters": {
@@ -1044,7 +1050,7 @@
       "chat": "coder-a6"
     },
     "state": "BLOCKED",
-    "now": "Final repair round 2 at d196e345: CI 4/4 green. Oracle gate FAILED: fresh reviewer 77/100; Oracle reproduced a forged hub run partition accepted by resolve and cross-format compare. No third round: rethink.",
+    "now": "Final repair round 2 at d196e345; public CI 4/4 green (CI is not engineering acceptance). Oracle self-assessed, private local evidence: gate FAILED (fresh reviewer 77/100; Oracle reproduced a forged hub run partition accepted by resolve and cross-format compare). No third round: rethink.",
     "next": {
       "actor": "Owner",
       "text": "decide the rethink (My actions)"
@@ -1056,7 +1062,7 @@
         "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/pull/35"
       }
     ],
-    "updatedAt": "2026-11-05T03:32:33Z",
+    "updatedAt": "2026-11-05T03:59:06Z",
     "src": "OWNER_PRIVATE_REF:topofix-gate-35r2-20261105"
   },
   "ir-257": {
@@ -1068,12 +1074,12 @@
       "chat": "ir-257"
     },
     "state": "SUBMITTED",
-    "now": "Independent reviewer (OnBoard-IR, embargoed from runner and reviewer): NO-GO at d4ccec7c; independently found the multi-op owner-group and case-semantics defects.",
+    "now": "IR-reported, private IR return (not public): NO-GO at d4ccec7c. The OnBoard-IR reviewer was embargoed from the runner and reviewer results and independently found the multi-op owner-group and case-semantics defects.",
     "next": {
       "actor": "Oracle",
       "text": "reconciled into the lane B gate"
     },
-    "updatedAt": "2026-11-05T03:32:35Z",
+    "updatedAt": "2026-11-05T03:59:07Z",
     "src": "OWNER_PRIVATE_REF:ir257-d1-return"
   },
   "lane-c-cii": {
@@ -1098,7 +1104,7 @@
       "chat": "perf-coder"
     },
     "state": "BLOCKED",
-    "now": "Steps 1.R3 to 1.R6-FIX at 386b739a: v7 envelope write dropped; browser probes fixed. Oracle L2: full suite 1727/1605/117 vs base, 0 new failures; 3/3 mutants red. Real browser run (P-LT3 to P-LT7) waits for Owner GLRD inputs.",
+    "now": "Public: branch head 386b739a (envelope write dropped; browser probes fixed). Oracle self-assessed, private local run (not shown by the commit): full suite 1727/1605/117 vs base with 0 new failures; 3/3 mutants red. Real browser run (P-LT3 to P-LT7) waits for Owner GLRD inputs.",
     "next": {
       "actor": "Owner",
       "text": "supply GLRD job inputs (private handoff)"
@@ -1110,8 +1116,8 @@
         "u": "https://github.com/reallakshman19/3D_Converters_v0.5a/commit/386b739af3a29ed0827fbfb7fea42ac2ac128324"
       }
     ],
-    "updatedAt": "2026-11-05T03:32:36Z",
-    "src": "https://github.com/reallakshman19/3D_Converters_v0.5a/commit/386b739af3a29ed0827fbfb7fea42ac2ac128324"
+    "updatedAt": "2026-11-05T03:59:09Z",
+    "src": "OWNER_PRIVATE_REF:perf-l2-runs-20261105"
   },
   "rigid-mass": {
     "order": 70,
@@ -1122,12 +1128,12 @@
       "chat": "rigid-coder"
     },
     "state": "BLOCKED",
-    "now": "Steps 2.3b-B and 2.4 PASS (local-only commit, never pushed): weight master first, +-6 mm nearest row, UNKNOWN blocks final CII, UNVERIFIED preview allowed. 2.5 BM2 benchmark and the Owner 19 mm / 150 N case wait for the BM2 file; continuity after split has no step yet.",
+    "now": "Oracle self-assessed, private local evidence (commit is local-only, never pushed): steps 2.3b-B and 2.4 pass; weight master first, +-6 mm nearest row, UNKNOWN blocks the final CII, UNVERIFIED preview allowed. 2.5 BM2 benchmark and the Owner 19 mm / 150 N case wait for the BM2 file; continuity after split has no step yet.",
     "next": {
       "actor": "Owner",
       "text": "supply the BM2 file (private handoff)"
     },
-    "updatedAt": "2026-11-05T03:32:37Z",
+    "updatedAt": "2026-11-05T03:59:08Z",
     "src": "OWNER_PRIVATE_REF:rigid-2.4-gate-20261105"
   }
 }

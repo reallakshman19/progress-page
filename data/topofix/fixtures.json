@@ -59,7 +59,7 @@
       "s": "Owner's sequence"
     },
     {
-      "t": "R2 programme: A TopoFix on the UXML hub (read-only InputXML), B XCU edits patch the original XML with a ledger, C CII to CII transfer via enriched XML (later); XML to CII app: Step 4 Preview (perf) and RIGID split/weight (rigid); A later integrates into the app.",
+      "t": "Owner programme map (Owner words, private, 5 Nov): A TopoFix on the UXML hub (read-only InputXML); B XCU edits patch the original XML with a ledger; C CII to CII transfer via enriched XML (later); XML to CII app: Step 4 Preview (perf) and RIGID split/weight (rigid); A later integrates into the app.",
       "s": "PLAN_R2"
     }
   ],
@@ -94,7 +94,7 @@
       "s": "Owner's direction"
     },
     {
-      "t": "No merge to main without an Owner prototype on real inputs; agents never merge; two repair rounds per step, then rethink.",
+      "t": "Owner rules (Owner words, private): no merge to main without an Owner prototype on real inputs; agents never merge; two repair rounds per step, then rethink.",
       "s": "OWNER_RULE"
     }
   ],
@@ -112,21 +112,21 @@
       "milestone": "M13"
     },
     {
-      "t": "XCU at ddd3ebc7 tests/fixtures: uxml-s3-synthetic.workspace.input.xml 10867 B sha256 bbed4f226c32430d2d88d66be5024572feeff9a49592c8a37e4326edfdd7616a; workspace.delta-only.input.xml 10222 B sha256 7fc789216d6a07ef4d5a4357d2a7786d3bf7024863ff332ef938ea094625b0ea",
-      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/tree/ddd3ebc7/tests/fixtures",
-      "s": "PUBLIC_SOURCE_PINNED",
-      "milestone": "M54"
-    },
-    {
       "t": "XCU at ddd3ebc7 docs: GREInputxml.xml 179042 B sha256 cdedefc53a926069b8fba77d4ec078f177b0ce2e741b66bd55b5621d8930be48; PLB314Inputxml.xml 101154 B sha256 2769d628ec4237db016da6f2b3cda2b8e9882cf751436be99fc1384ed2d4e3de",
       "u": "https://github.com/reallakshman19/XML_Compare_Utilities/tree/ddd3ebc7/docs",
       "s": "PUBLIC_SOURCE_PINNED",
       "milestone": "M54"
     },
     {
-      "t": "GLRD BM2 xml and the STF stage JSON job bundle: Owner files via private handoff OWNER_PRIVATE_REF:HANDOFFS_PRIMARY; not received on 5 Nov; block perf P-LT3 to P-LT7 and rigid 2.5.",
+      "t": "Pending Owner input (not received 5 Nov): GLRD BM2 xml and the STF stage JSON job bundle, via private handoff OWNER_PRIVATE_REF:HANDOFFS_PRIMARY; blocks perf P-LT3 to P-LT7 and rigid 2.5.",
       "s": "OWNER_INPUT_NOT_RECEIVED",
       "milestone": "M62"
+    },
+    {
+      "t": "XCU at ddd3ebc7 tests/fixtures: uxml-s3-synthetic.workspace.input.xml 10867 B sha256 bbed4f226c32430d2d88d66be5024572feeff9a49592c8a37e4326edfdd7616a; uxml-s3-synthetic.workspace.delta-only.input.xml 10222 B sha256 7fc789216d6a07ef4d5a4357d2a7786d3bf7024863ff332ef938ea094625b0ea",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/tree/ddd3ebc7/tests/fixtures",
+      "s": "PUBLIC_SOURCE_PINNED",
+      "milestone": "M54"
     }
   ],
   "knownIssues": [
@@ -159,17 +159,17 @@
       "s": "On hold"
     },
     {
-      "t": "XCU 257 at d4ccec7c: coincidence checked per op, not per owner group; raw coordinate witness is case-sensitive (from_X hides it); self-loop guard covers element endpoints only; unknown-carrier rule refuses real CAESAR II fields (HYDRO_PRESSURE, TEMPERATURE1-16).",
+      "t": "Oracle finding (self-assessed, private local evidence): XCU 257 at d4ccec7c: coincidence checked per op, not per owner group; raw coordinate witness case-sensitive (from_X hides it); self-loop guard covers element endpoints only; unknown-carrier rule refuses real CAESAR II fields (HYDRO_PRESSURE, TEMPERATURE1-16).",
       "s": "FINAL_ROUND_FAILED",
       "milestone": "M54"
     },
     {
-      "t": "TopoFix 35 at d196e345: hub run membership trusted, not rebuilt from source FROM/TO; a forged run partition defeats the unanchored proximity-join and cross-format refusals; about 16 guards not pinned by exact-code tests.",
+      "t": "Oracle finding (self-assessed, private local evidence): TopoFix 35 at d196e345: hub run membership trusted, not rebuilt from source FROM/TO; a forged run partition defeats the unanchored proximity-join and cross-format refusals; about 16 guards not pinned by exact-code tests.",
       "s": "FINAL_ROUND_FAILED",
       "milestone": "M54"
     },
     {
-      "t": "RIGID weight error (Owner): an element of about 19 mm was given 150 N, the weight of a 109 mm flange. Acceptance case R-LT8: no element may take a weight from a different size.",
+      "t": "Owner-reported case (Owner words, private): a RIGID element of about 19 mm was given 150 N, the weight of a 109 mm flange. Oracle acceptance case R-LT8: no element may take a weight from a different size.",
       "s": "OWNER_CASE",
       "milestone": "M62"
     }
