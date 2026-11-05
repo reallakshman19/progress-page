@@ -3,11 +3,11 @@
   "project": {
     "key": "topofix",
     "title": "TopoFix — auditable repair solutions",
-    "subtitle": "Safe automatic solutions, precise manual directions, revised-source recheck and verified case outcomes.",
-    "aim": "Topo should not burden with finding but provide auditable solution which are auto fixable if not set clear directions for manual review. Support controlled manual correction, revised-source reimport, full Topo recheck and evidence-based closure.",
-    "aimSrc": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/1#issuecomment-6474563974",
-    "updatedAt": "2026-10-30T11:38:36Z",
-    "updatedBy": "Topo Oracle 6ae1b0f7",
+    "subtitle": "Reviewed work, InputXML repair, hub-screen review, Owner merge decisions and safety holds.",
+    "aim": "TopoFix gives safe automatic fixes and clear, auditable review directions otherwise. A questioned CLOS-declared end about 240 mm away can be explained but never auto-joined. Every pipe-model format enters one Universal XML hub; TopoFix works there, then qualified results are patched into the original format.",
+    "aimSrc": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/239#issuecomment-6544072702",
+    "updatedAt": "2026-10-31T17:49:22Z",
+    "updatedBy": "TopoFix progress-scribe",
     "staleAfterMin": 120
   },
   "rules": {
@@ -174,6 +174,51 @@
       "wbs": "4.3",
       "cap": "NOT_DEMONSTRATED",
       "canDo": "The complete usable repair cycle remains unfinished; protected PR #346 remains Draft/HOLD."
+    },
+    "M51": {
+      "order": 51,
+      "name": "Closure witness and Source Review",
+      "full": "Witness, Find/Review panel, Source Review Queue and five usability repairs.",
+      "wbs": "5.1",
+      "cap": "CANDIDATE",
+      "canDo": "Page checkpoint only; not engineering or Owner acceptance.",
+      "capSrc": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/12#issuecomment-6544901216"
+    },
+    "M52": {
+      "order": 52,
+      "name": "Format admission and Workspace",
+      "full": "Admission gate and 5B view, including the opt-in legacy PSI116 view.",
+      "wbs": "5.2",
+      "cap": "CANDIDATE",
+      "canDo": "Page checkpoint only; not engineering or Owner acceptance.",
+      "capSrc": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/239#issuecomment-6543866458"
+    },
+    "M53": {
+      "order": 53,
+      "name": "Universal XML PSI116 round trip",
+      "full": "Read PSI116 into the hub and patch selected changes back to original records.",
+      "wbs": "5.3",
+      "cap": "CANDIDATE",
+      "canDo": "Page checkpoint only; not engineering or Owner acceptance.",
+      "capSrc": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/12#issuecomment-6546277586"
+    },
+    "M54": {
+      "order": 54,
+      "name": "Universal XML format expansion",
+      "full": "InputXML reader, TopoFix screen handshake and later format conversions.",
+      "wbs": "5.4",
+      "cap": "CANDIDATE",
+      "canDo": "Page checkpoint only; not engineering or Owner acceptance.",
+      "capSrc": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/12#issuecomment-6546312679"
+    },
+    "M55": {
+      "order": 55,
+      "name": "Owner merge and safety gates",
+      "full": "Owner-only merge dependencies and explicit engineering/format/privacy HOLDs.",
+      "wbs": "5.5",
+      "cap": "CANDIDATE",
+      "canDo": "Page checkpoint only; not engineering or Owner acceptance.",
+      "capSrc": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/12#issuecomment-6546277586"
     }
   },
   "groups": {
@@ -201,6 +246,26 @@
       "title": "Connection and repair proof",
       "sub": "WP-D: evidenced connection meaning, independent proof and Owner trial.",
       "order": 4
+    },
+    "reviewed": {
+      "order": 5,
+      "title": "Reviewed deliverables · draft PRs",
+      "sub": "Scoped independent PASS, Owner trial and engineering acceptance reported separately."
+    },
+    "active-hub": {
+      "order": 6,
+      "title": "Running · Universal XML handshake",
+      "sub": "Coder-b is repairing the InputXML reader after review; coder-a's screen route is awaiting independent review."
+    },
+    "next-formats": {
+      "order": 7,
+      "title": "Next · format return paths",
+      "sub": "Planned tasks only; no unreported PR or Owner test is claimed."
+    },
+    "owner-gates": {
+      "order": 8,
+      "title": "Owner merge queue and HOLDs",
+      "sub": "Oracle checks, Owner-only merges; safety boundaries remain."
     }
   },
   "revisions": [
@@ -213,5 +278,10 @@
       "src": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/1#issuecomment-6474563974",
       "status": "current"
     }
-  ]
+  ],
+  "hold": {
+    "active": true,
+    "reason": "Scoped scores do not grant release: no declared-end edits or about 240 mm join, review-case Apply, tolerance changes, unsupported formats, engineering acceptance, agent merges or private files.",
+    "src": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/12#issuecomment-6546312679"
+  }
 }
