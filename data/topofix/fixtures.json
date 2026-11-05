@@ -57,12 +57,20 @@
       "t": "Closure review → Workspace admission → PSI116 hub read/patch → InputXML read and UI handshake → InputXML patch → Enriched/Categorised → F05/R4 hub.",
       "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/12#issuecomment-6546312679",
       "s": "Owner's sequence"
+    },
+    {
+      "t": "Owner programme map (Owner words, private, 5 Nov): A TopoFix on the UXML hub (read-only InputXML); B XCU edits patch the original XML with a ledger; C CII to CII transfer via enriched XML (later); XML to CII app: Step 4 Preview (perf) and RIGID split/weight (rigid); A later integrates into the app.",
+      "s": "PLAN_R2"
     }
   ],
   "highRoi": [
     {
       "t": "Reuse scene/picking, planner, transaction checks, selected-finding rebuild and exact automatic lineage. Improve auditable case solutions without a full revamp or ownership switch.",
       "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/3",
+      "s": "PLANNED"
+    },
+    {
+      "t": "Oracle local acceptance suites with RED baselines (XCU 257 LT-1 to LT-7) and an invariant review before any new card; every confirmed blocker becomes a regression case.",
       "s": "PLANNED"
     }
   ],
@@ -84,6 +92,10 @@
       "t": "One Universal XML hub; TopoFix runs on the hub, and qualified changes return as patches of the original format.",
       "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/239#issuecomment-6544072702",
       "s": "Owner's direction"
+    },
+    {
+      "t": "Owner rules (Owner words, private): no merge to main without an Owner prototype on real inputs; agents never merge; two repair rounds per step, then rethink.",
+      "s": "OWNER_RULE"
     }
   ],
   "inputs": [
@@ -98,6 +110,23 @@
       "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/actions/runs/40867386112",
       "s": "CI_BROWSER_PASS_NOT_ACCEPTANCE",
       "milestone": "M13"
+    },
+    {
+      "t": "XCU at ddd3ebc7 docs: GREInputxml.xml 179042 B sha256 cdedefc53a926069b8fba77d4ec078f177b0ce2e741b66bd55b5621d8930be48; PLB314Inputxml.xml 101154 B sha256 2769d628ec4237db016da6f2b3cda2b8e9882cf751436be99fc1384ed2d4e3de",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/tree/ddd3ebc7/docs",
+      "s": "PUBLIC_SOURCE_PINNED",
+      "milestone": "M54"
+    },
+    {
+      "t": "Pending Owner input (not received 5 Nov): GLRD BM2 xml and the STF stage JSON job bundle, via private handoff OWNER_PRIVATE_REF:HANDOFFS_PRIMARY; blocks perf P-LT3 to P-LT7 and rigid 2.5.",
+      "s": "OWNER_INPUT_NOT_RECEIVED",
+      "milestone": "M62"
+    },
+    {
+      "t": "XCU at ddd3ebc7 tests/fixtures: uxml-s3-synthetic.workspace.input.xml 10867 B sha256 bbed4f226c32430d2d88d66be5024572feeff9a49592c8a37e4326edfdd7616a; uxml-s3-synthetic.workspace.delta-only.input.xml 10222 B sha256 7fc789216d6a07ef4d5a4357d2a7786d3bf7024863ff332ef938ea094625b0ea",
+      "u": "https://github.com/reallakshman19/XML_Compare_Utilities/tree/ddd3ebc7/tests/fixtures",
+      "s": "PUBLIC_SOURCE_PINNED",
+      "milestone": "M54"
     }
   ],
   "knownIssues": [
@@ -128,6 +157,21 @@
       "t": "HOLD: no CLOS edit or about 240 mm join; no tolerance shift, review Apply, GLRD, CII Writer/Weight/Final, engineering acceptance, agent merge or private GitHub files.",
       "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/12#issuecomment-6546312679",
       "s": "On hold"
+    },
+    {
+      "t": "Oracle finding (self-assessed, private local evidence): XCU 257 at d4ccec7c: coincidence checked per op, not per owner group; raw coordinate witness case-sensitive (from_X hides it); self-loop guard covers element endpoints only; unknown-carrier rule refuses real CAESAR II fields (HYDRO_PRESSURE, TEMPERATURE1-16).",
+      "s": "FINAL_ROUND_FAILED",
+      "milestone": "M54"
+    },
+    {
+      "t": "Oracle finding (self-assessed, private local evidence): TopoFix 35 at d196e345: hub run membership trusted, not rebuilt from source FROM/TO; a forged run partition defeats the unanchored proximity-join and cross-format refusals; about 16 guards not pinned by exact-code tests.",
+      "s": "FINAL_ROUND_FAILED",
+      "milestone": "M54"
+    },
+    {
+      "t": "Owner-reported case (Owner words, private): a RIGID element of about 19 mm was given 150 N, the weight of a 109 mm flange. Oracle acceptance case R-LT8: no element may take a weight from a different size.",
+      "s": "OWNER_CASE",
+      "milestone": "M62"
     }
   ],
   "pending": [
@@ -142,6 +186,14 @@
       "t": "Owner merges: TopoFix #13 → #14 → #15 and #13 → #16 → #17; XML_Compare_Utilities #240 → #241 and #242; Common #584/#585.",
       "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/12#issuecomment-6546277586",
       "s": "Owner merge decision"
+    },
+    {
+      "t": "Rethink decisions for XCU 257 and TopoFix 35: both final rounds failed; no third round.",
+      "s": "OWNER_DECISION"
+    },
+    {
+      "t": "Cards recorded up to 31 Oct (PAGE-1) were not re-checked against native sources on 5 Nov; only the cards named in R2 were updated.",
+      "s": "NOT_RECONCILED"
     }
   ]
 }

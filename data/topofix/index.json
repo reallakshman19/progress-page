@@ -6,8 +6,8 @@
     "subtitle": "Reviewed work, InputXML repair, hub-screen review, Owner merge decisions and safety holds.",
     "aim": "TopoFix gives safe automatic fixes and clear, auditable review directions otherwise. A questioned CLOS-declared end about 240 mm away can be explained but never auto-joined. Every pipe-model format enters one Universal XML hub; TopoFix works there, then qualified results are patched into the original format.",
     "aimSrc": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/239#issuecomment-6544072702",
-    "updatedAt": "2026-10-31T17:49:22Z",
-    "updatedBy": "TopoFix progress-scribe",
+    "updatedAt": "2026-11-05T04:18:09Z",
+    "updatedBy": "TopoFix Oracle eeea536d",
     "staleAfterMin": 120
   },
   "rules": {
@@ -27,6 +27,36 @@
       "label": "Oracle (Owner confirmed)",
       "id8": "6ae1b0f7",
       "engine": "ChatGPT"
+    },
+    "coder-a6": {
+      "label": "Lane A coder",
+      "id8": "6aeb3e9a",
+      "engine": "ChatGPT"
+    },
+    "coder-b7": {
+      "label": "Lane B coder",
+      "id8": "6aeb2e0a",
+      "engine": "ChatGPT"
+    },
+    "ir-257": {
+      "label": "IR for XCU 257",
+      "id8": "6aeb74c7",
+      "engine": "ChatGPT"
+    },
+    "perf-coder": {
+      "label": "Perf Task 1 coder",
+      "id8": "6aeae4fd",
+      "engine": "ChatGPT"
+    },
+    "rigid-coder": {
+      "label": "Rigid Task 2 coder",
+      "id8": "6aeafc82",
+      "engine": "ChatGPT"
+    },
+    "oracle-cc": {
+      "label": "TopoFix Oracle",
+      "id8": "eeea536d",
+      "engine": "Claude Code"
     }
   },
   "milestones": {
@@ -205,7 +235,7 @@
     "M54": {
       "order": 54,
       "name": "Universal XML format expansion",
-      "full": "InputXML reader, TopoFix screen handshake and later format conversions.",
+      "full": "InputXML reader, TopoFix screen handshake and later formats. R2 required invariants, still UNPROVEN (both final rounds failed): lane A must read InputXML only and must rebuild runs from source; lane B (XCU only writer) must enforce owner-group all-pairs within 0.001 mm and keep bytes outside the ledger unchanged. CANDIDATE is a page checkpoint, not a lane A/B qualification.",
       "wbs": "5.4",
       "cap": "CANDIDATE",
       "canDo": "Page checkpoint only; not engineering or Owner acceptance.",
@@ -219,6 +249,42 @@
       "cap": "CANDIDATE",
       "canDo": "Page checkpoint only; not engineering or Owner acceptance.",
       "capSrc": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/12#issuecomment-6546277586"
+    },
+    "M56": {
+      "name": "CII to CII mapped transfer (lane C)",
+      "full": "Source and target CII to enriched XMLs, map nodes and elements, edit in XML (lane B), export the target CII: node names and properties such as PRESSURE1. Coordinate with CIIFR node map and mapped transfer before any card.",
+      "order": 56,
+      "wbs": "5.6",
+      "keeps": "Original CII bytes outside approved edits; XCU sole writer of originals",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "Not started; Owner: later"
+    },
+    "M6": {
+      "name": "XML to CII standalone app",
+      "full": "The 3D_Converters XML to CII app in the same programme: Step 4 Preview and tabs (perf) and RIGID split and weight (rigid).",
+      "order": 60,
+      "wbs": "6"
+    },
+    "M61": {
+      "name": "Step 4 Preview and tab improvements (perf)",
+      "full": "General improvement focused on the 4 Preview tab: direct in-memory result publication; no stale persisted cache envelope; engineering calculations untouched.",
+      "order": 61,
+      "wbs": "6.1",
+      "cap": "CANDIDATE",
+      "canDo": "Public: branch head 386b739a. Oracle self-assessed: suite parity 0 new failures. Real browser probes wait for Owner GLRD inputs. CANDIDATE, not acceptance.",
+      "capSrc": "https://github.com/reallakshman19/3D_Converters_v0.5a/commit/386b739af3a29ed0827fbfb7fea42ac2ac128324",
+      "repo": "reallakshman19/3D_Converters_v0.5a",
+      "branch": "fix/glrd-preview-direct-handoff-20261104",
+      "commit": "386b739af3a29ed0827fbfb7fea42ac2ac128324"
+    },
+    "M62": {
+      "name": "RIGID split, continuity and weight (rigid)",
+      "full": "When Flange+Valve+Flange is split into flange, valve, flange and blinds: keep coordinates and continuity (lane A integrates later) and give each part its own-size weight. Owner case: 19 mm given 150 N, the weight of a 109 mm flange.",
+      "order": 62,
+      "wbs": "6.2",
+      "keeps": "Weight master first; UNKNOWN blocks final CII; non-RIGID bytes same",
+      "cap": "NOT_DEMONSTRATED",
+      "canDo": "Mass-source policy implemented and tested locally (not pushed, so no public evidence); BM2 benchmark run waits for the Owner file"
     }
   },
   "groups": {
@@ -255,17 +321,21 @@
     "active-hub": {
       "order": 6,
       "title": "Running · Universal XML handshake",
-      "sub": "Coder-b is repairing the InputXML reader after review; coder-a's screen route is awaiting independent review."
+      "sub": "R2 (5 Nov): lane A (TopoFix 35) and lane B (XCU 257) final rounds failed the Oracle gate; Owner rethink pending. Older cards here are PAGE-1 history (not re-checked)."
     },
     "next-formats": {
       "order": 7,
       "title": "Next · format return paths",
-      "sub": "Planned tasks only; no unreported PR or Owner test is claimed."
+      "sub": "Planned or not-started work; inputxml-return is now lane B (BLOCKED after its final round). Lane C (CII to CII transfer) not started."
     },
     "owner-gates": {
       "order": 8,
       "title": "Owner merge queue and HOLDs",
       "sub": "Oracle checks, Owner-only merges; safety boundaries remain."
+    },
+    "xmlcii-app": {
+      "title": "XML to CII app (3D_Converters)",
+      "order": 60
     }
   },
   "revisions": [
@@ -276,7 +346,18 @@
       "why": "Owner requested WBS publication centered on auditable solutions and designated IR 6ae155fe.",
       "ownerWords": "Topo should not burden with finding but provide auditable solution which are auto fixable if not set clear directions for manual review. Owner: yes, now create WBS plan! upload to progress page.",
       "src": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/1#issuecomment-6474563974",
-      "status": "current"
+      "status": "superseded",
+      "commit": "7635110aa3e5"
+    },
+    {
+      "id": "R2",
+      "at": "2026-11-05T03:32:10Z",
+      "by": "TopoFix Oracle eeea536d",
+      "why": "One programme: TopoFix lanes A/B/C plus the XML->CII app (perf, rigid); lane C = CII->CII transfer via enriched XML",
+      "ownerWords": "pref, rigid, coder A,B,[C] all these are inter related. Coder C-> Transfer of CII data like specific Node name, Properties like Pressure 1 from one CII to another CII via enriched XML. Process: Source CII/Target CII>enriched xmls->Map them->Edit in XML (Code B) -> Export as Target CII",
+      "src": "OWNER_PRIVATE_REF:programme-map-20261105",
+      "status": "current",
+      "supersedes": "R1"
     }
   ],
   "hold": {

@@ -878,13 +878,14 @@
     "milestone": "M54",
     "label": "InputXML patched back",
     "who": {
-      "role": "Oracle"
+      "role": "Oracle",
+      "chat": "coder-b7"
     },
-    "state": "NOT_STARTED",
-    "now": "Planned next: patch qualified fixes back into the original CAESAR InputXML records rather than rebuilding the whole file. Draft, independent score and Owner trial: not yet reported.",
+    "state": "BLOCKED",
+    "now": "Lane B, XCU 257 (edit-ops v1, ALIAS_COINCIDENT_NODE): final repair round 2 at d4ccec7c; public CI green (not acceptance). Oracle self-assessed, private local evidence: gate FAILED (fresh reviewer 76/100; Oracle reproduced 4 blockers). The IR verdict is on the ir-257 card. No third round: rethink.",
     "next": {
-      "actor": "Oracle",
-      "text": "Assign after the InputXML reader contract is reviewed."
+      "actor": "Owner",
+      "text": "decide the rethink (My actions)"
     },
     "refs": [
       {
@@ -892,10 +893,32 @@
         "l": "Universal XML direction",
         "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/239",
         "s": "planned, not started"
+      },
+      {
+        "k": "pr",
+        "l": "XCU PR 257",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/pull/257"
+      },
+      {
+        "k": "comment",
+        "l": "Coder RETURN on 239",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/239#issuecomment-6645705383"
+      },
+      {
+        "k": "comment",
+        "l": "Coder RETURN on 239 (final round, BLOCKED after gate)",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/239#issuecomment-6645705383",
+        "s": "current"
+      },
+      {
+        "k": "comment",
+        "l": "Final-round coder receipt on 239 (not the gate)",
+        "u": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/239#issuecomment-6645705383",
+        "s": "coder-receipt"
       }
     ],
-    "updatedAt": "2026-10-31T17:49:16Z",
-    "src": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/12#issuecomment-6546629295"
+    "updatedAt": "2026-11-05T04:18:09Z",
+    "src": "OWNER_PRIVATE_REF:topofix-gate-257r2-20261105"
   },
   "enriched-converters": {
     "order": 62,
@@ -1023,5 +1046,100 @@
     ],
     "updatedAt": "2026-10-31T17:49:20Z",
     "src": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/issues/12#issuecomment-6546629295"
+  },
+  "lane-a-35": {
+    "order": 66,
+    "group": "active-hub",
+    "milestone": "M54",
+    "label": "Lane A: InputXML read-only #35",
+    "who": {
+      "chat": "coder-a6"
+    },
+    "state": "BLOCKED",
+    "now": "Final repair round 2 at d196e345; public CI 4/4 green (CI is not engineering acceptance). Oracle self-assessed, private local evidence: gate FAILED (fresh reviewer 77/100; Oracle reproduced a forged hub run partition accepted by resolve and cross-format compare). No third round: rethink.",
+    "next": {
+      "actor": "Owner",
+      "text": "decide the rethink (My actions)"
+    },
+    "refs": [
+      {
+        "k": "pr",
+        "l": "TopoFix PR 35",
+        "u": "https://github.com/reallakshman19/xml229-topology-wp1-preview-20261028/pull/35"
+      }
+    ],
+    "updatedAt": "2026-11-05T03:59:06Z",
+    "src": "OWNER_PRIVATE_REF:topofix-gate-35r2-20261105"
+  },
+  "ir-257": {
+    "order": 67,
+    "group": "active-hub",
+    "milestone": "M54",
+    "label": "IR: XCU 257",
+    "who": {
+      "chat": "ir-257"
+    },
+    "state": "SUBMITTED",
+    "now": "IR-reported, private IR return (not public): NO-GO at d4ccec7c. The OnBoard-IR reviewer was embargoed from the runner and reviewer results and independently found the multi-op owner-group and case-semantics defects.",
+    "next": {
+      "actor": "Oracle",
+      "text": "reconciled into the lane B gate"
+    },
+    "updatedAt": "2026-11-05T03:59:07Z",
+    "src": "OWNER_PRIVATE_REF:ir257-d1-return"
+  },
+  "lane-c-cii": {
+    "order": 68,
+    "group": "next-formats",
+    "milestone": "M56",
+    "label": "Lane C: CII to CII transfer",
+    "who": {},
+    "state": "NOT_STARTED",
+    "now": "Not started. Owner: later. Must coordinate with the CIIFR node map and mapped transfer, and must not edit 3D_Converters xml_to_cii2019 files while rigid Task 2 is open.",
+    "next": {
+      "actor": "Owner",
+      "text": "start when ready"
+    }
+  },
+  "perf-step4": {
+    "order": 69,
+    "group": "xmlcii-app",
+    "milestone": "M61",
+    "label": "Perf: Step 4 Preview",
+    "who": {
+      "chat": "perf-coder"
+    },
+    "state": "BLOCKED",
+    "now": "Public: branch head 386b739a (envelope write dropped; browser probes fixed). Oracle self-assessed, private local run (not shown by the commit): full suite 1727/1605/117 vs base with 0 new failures; 3/3 mutants red. Real browser run (P-LT3 to P-LT7) waits for Owner GLRD inputs.",
+    "next": {
+      "actor": "Owner",
+      "text": "supply GLRD job inputs (private handoff)"
+    },
+    "refs": [
+      {
+        "k": "pr",
+        "l": "Commit 386b739a",
+        "u": "https://github.com/reallakshman19/3D_Converters_v0.5a/commit/386b739af3a29ed0827fbfb7fea42ac2ac128324"
+      }
+    ],
+    "updatedAt": "2026-11-05T03:59:09Z",
+    "src": "OWNER_PRIVATE_REF:perf-l2-runs-20261105"
+  },
+  "rigid-mass": {
+    "order": 70,
+    "group": "xmlcii-app",
+    "milestone": "M62",
+    "label": "Rigid: split and weight",
+    "who": {
+      "chat": "rigid-coder"
+    },
+    "state": "BLOCKED",
+    "now": "Oracle self-assessed, private local evidence (commit is local-only, never pushed): steps 2.3b-B and 2.4 pass; weight master first, +-6 mm nearest row, UNKNOWN blocks the final CII, UNVERIFIED preview allowed. 2.5 BM2 benchmark and the Owner 19 mm / 150 N case wait for the BM2 file; continuity after split has no step yet.",
+    "next": {
+      "actor": "Owner",
+      "text": "supply the BM2 file (private handoff)"
+    },
+    "updatedAt": "2026-11-05T03:59:08Z",
+    "src": "OWNER_PRIVATE_REF:rigid-2.4-gate-20261105"
   }
 }
