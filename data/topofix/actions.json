@@ -39,5 +39,53 @@
       }
     ],
     "milestone": "M55"
+  },
+  "topofix-257-rethink": {
+    "order": 2,
+    "status": "open",
+    "title": "XCU 257 alias patch-back: how to rethink",
+    "lead": "The final repair round failed on four blockers; the Owner rule forbids a third round. Choose the direction for a new step.",
+    "options": [
+      {
+        "key": "invariant-first",
+        "label": "Invariant-first new step (suggested)",
+        "suggested": true,
+        "body": "Write invariants first (owner-group all-pairs within 0.001 mm, reader-shared attribute semantics, child-record distinctness, allow-list from real CAESAR II files including Owner files), IR invariant review, then a new step gated by the Oracle local suite.",
+        "reply": "invariant-first for topofix-257-rethink (Owner)"
+      },
+      {
+        "key": "park",
+        "label": "Park the alias kind",
+        "suggested": false,
+        "body": "Park ALIAS_COINCIDENT_NODE; keep the existing patch-backs; revisit after lane C design.",
+        "reply": "park for topofix-257-rethink (Owner)"
+      }
+    ],
+    "links": [],
+    "milestone": "M54"
+  },
+  "topofix-35-rethink": {
+    "order": 3,
+    "status": "open",
+    "title": "TopoFix 35 InputXML read-only: how to rethink",
+    "lead": "The final repair round failed: a forged hub run partition is accepted. Choose the direction for a new step.",
+    "options": [
+      {
+        "key": "narrow-fix",
+        "label": "Narrow new step (suggested)",
+        "suggested": true,
+        "body": "Rebuild runs from source FROM/TO, anchored flag = component has a literal anchor, exact-code tests for the untested guards; invariant review first.",
+        "reply": "narrow-fix for topofix-35-rethink (Owner)"
+      },
+      {
+        "key": "pause",
+        "label": "Pause lane A",
+        "suggested": false,
+        "body": "Pause lane A until lane B is rethought.",
+        "reply": "pause for topofix-35-rethink (Owner)"
+      }
+    ],
+    "links": [],
+    "milestone": "M54"
   }
 }
