@@ -211,7 +211,7 @@ test('TOPO operational read model uses actual published TopoFix WBS/INFO-Auto, n
   const m=topoOperationalContextModel(key,project,{status:'ok'});
   assert.equal(m.schema,'cycle-board.adhoc-operational/v1');
   assert.equal(m.status,'LIVE_READ');
-  assert.equal(m.revision,'R1');
+  assert.equal(m.revision,project.index.revisions.find(r=>r.status==='current').id,'current published revision, not a pinned literal');
   assert.deepEqual(m.scope,scope);
   assert.deepEqual(m.wbs.map(x=>x.wbs),scope);
   assert.equal(m.nativeAssignmentMapping,'UNMAPPED','native Adhoc task must not silently become a Page card');
