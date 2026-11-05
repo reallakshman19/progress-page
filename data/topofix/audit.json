@@ -2604,6 +2604,32 @@
       "list": "inputs",
       "op": "add",
       "rev": "R2"
+    },
+    {
+      "seq": 200,
+      "id": "TOPOFIX-R-0200",
+      "previous_id": "TOPOFIX-R-0199",
+      "at": "2026-11-05T04:18:08Z",
+      "kind": "PLAN",
+      "actor": "TopoFix Oracle eeea536d",
+      "summary": "Re-review P1: invariants stated as required and unproven",
+      "source": "https://github.com/reallakshman19/progress-page/pull/108",
+      "scope": "milestone:M54",
+      "rev": "R2"
+    },
+    {
+      "seq": 201,
+      "id": "TOPOFIX-R-0201",
+      "previous_id": "TOPOFIX-R-0200",
+      "at": "2026-11-05T04:18:09Z",
+      "kind": "UPDATE",
+      "actor": "TopoFix Oracle eeea536d",
+      "summary": "Re-review P2: correctly labelled ref; the earlier mislabelled ref is append-only history; the Oracle gate authority is the private src",
+      "source": "OWNER_PRIVATE_REF:topofix-gate-257r2-20261105",
+      "card": "inputxml-return",
+      "before": "BLOCKED",
+      "after": "BLOCKED",
+      "rev": "R2"
     }
   ]
 }

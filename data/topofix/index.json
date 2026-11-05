@@ -6,7 +6,7 @@
     "subtitle": "Reviewed work, InputXML repair, hub-screen review, Owner merge decisions and safety holds.",
     "aim": "TopoFix gives safe automatic fixes and clear, auditable review directions otherwise. A questioned CLOS-declared end about 240 mm away can be explained but never auto-joined. Every pipe-model format enters one Universal XML hub; TopoFix works there, then qualified results are patched into the original format.",
     "aimSrc": "https://github.com/reallakshman19/XML_Compare_Utilities/issues/239#issuecomment-6544072702",
-    "updatedAt": "2026-11-05T03:59:20Z",
+    "updatedAt": "2026-11-05T04:18:09Z",
     "updatedBy": "TopoFix Oracle eeea536d",
     "staleAfterMin": 120
   },
@@ -235,7 +235,7 @@
     "M54": {
       "order": 54,
       "name": "Universal XML format expansion",
-      "full": "InputXML reader, TopoFix screen handshake and later formats. R2 lanes: A reads InputXML only (never writes; runs rebuilt from source); B is XCU-only writer (owner group within 0.001 mm, bytes outside ledger unchanged). CANDIDATE is a page checkpoint, not a lane A/B qualification.",
+      "full": "InputXML reader, TopoFix screen handshake and later formats. R2 required invariants, still UNPROVEN (both final rounds failed): lane A must read InputXML only and must rebuild runs from source; lane B (XCU only writer) must enforce owner-group all-pairs within 0.001 mm and keep bytes outside the ledger unchanged. CANDIDATE is a page checkpoint, not a lane A/B qualification.",
       "wbs": "5.4",
       "cap": "CANDIDATE",
       "canDo": "Page checkpoint only; not engineering or Owner acceptance.",
